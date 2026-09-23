@@ -1,0 +1,513 @@
+'use client'
+
+import * as React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
+import { SourceBadge } from '@/components/ui/source-badge'
+import { useClient } from '@/lib/context/client-context'
+import { useToast } from '@/components/ui/toast'
+import {
+  Search,
+  Bookmark,
+  RotateCcw,
+  ArrowRight,
+  Building
+} from 'lucide-react'
+
+export default function PropertiesPage() {
+  const [searchQuery, setSearchQuery] = React.useState('')
+  const [selectedArea, setSelectedArea] = React.useState('ALL')
+  const [selectedType, setSelectedType] = React.useState('ALL')
+  const [selectedStatus, setSelectedStatus] = React.useState('ALL')
+  const [priceRange, setPriceRange] = React.useState('ALL')
+  const [selectedBedrooms, setSelectedBedrooms] = React.useState('ALL')
+  const [selectedDeveloper, setSelectedDeveloper] = React.useState('ALL')
+  const [sortBy, setSortBy] = React.useState('DEFAULT')
+
+  const { saveSearch, shortlistIds, toggleShortlist } = useClient()
+  const { addToast } = useToast()
+
+  const uniqueAreas = React.useMemo(() => {
+    return Array.from(new Set(VERIFIED_PROPERTIES.map((p) => p.area_name))).sort()
+  }, [])
+
+  const uniqueTypes = React.useMemo(() => {
+    return Array.from(new Set(VERIFIED_PROPERTIES.map((p) => p.property_type))).sort()
+  }, [])
+
+  const uniqueDevelopers = React.useMemo(() => {
+    return Array.from(new Set(VERIFIED_PROPERTIES.map((p) => p.developer_name))).sort()
+  }, [])
+
+  const filteredProperties = React.useMemo(() => {
+    const list = VERIFIED_PROPERTIES.filter((p) => {
+      // Search text
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase().trim()
+        const matches =
+          p.title.toLowerCase().includes(q) ||
+          p.area_name.toLowerCase().includes(q) ||
+          p.developer_name.toLowerCase().includes(q) ||
+          p.property_type.toLowerCase().includes(q) ||
+          (p.project_name && p.project_name.toLowerCase().includes(q))
+        if (!matches) return false
+      }
+
+      // Area filter
+      if (selectedArea !== 'ALL' && p.area_name !== selectedArea) return false
+
+      // Property type
+      if (selectedType !== 'ALL' && p.property_type !== selectedType) return false
+
+      // Status
+      if (selectedStatus !== 'ALL' && p.completion_status !== selectedStatus) return false
+
+      // Developer
+      if (selectedDeveloper !== 'ALL' && p.developer_name !== selectedDeveloper) return false
+
+      // Bedrooms
+      if (selectedBedrooms !== 'ALL') {
+        const minBeds = parseInt(selectedBedrooms, 10)
+        if (p.bedrooms < minBeds) return false
+      }
+
+      // Price range
+      if (priceRange !== 'ALL' && p.asking_price) {
+        if (priceRange === 'UNDER_25M' && p.asking_price >= 25000000) return false
+        if (priceRange === '25M_50M' && (p.asking_price < 25000000 || p.asking_price > 50000000)) return false
+        if (priceRange === '50M_100M' && (p.asking_price < 50000000 || p.asking_price > 100000000)) return false
+        if (priceRange === 'ABOVE_100M' && p.asking_price <= 100000000) return false
+      }
+
+      return true
+    })
+
+    // Sorting
+    return list.sort((a, b) => {
+      if (sortBy === 'PRICE_ASC') return (a.asking_price || 0) - (b.asking_price || 0)
+      if (sortBy === 'PRICE_DESC') return (b.asking_price || 0) - (a.asking_price || 0)
+      if (sortBy === 'AREA_DESC') return (b.internal_area_sqft || 0) - (a.internal_area_sqft || 0)
+      if (sortBy === 'BEDS_DESC') return (b.bedrooms || 0) - (a.bedrooms || 0)
+      return 0
+    })
+  }, [
+    searchQuery,
+    selectedArea,
+    selectedType,
+    selectedStatus,
+    selectedDeveloper,
+    selectedBedrooms,
+    priceRange,
+    sortBy,
+  ])
+
+  const handleResetFilters = () => {
+    setSearchQuery('')
+    setSelectedArea('ALL')
+    setSelectedType('ALL')
+    setSelectedStatus('ALL')
+    setPriceRange('ALL')
+    setSelectedBedrooms('ALL')
+    setSelectedDeveloper('ALL')
+    setSortBy('DEFAULT')
+  }
+
+  const handleSaveCurrentSearch = () => {
+    const label = `Filter: ${selectedArea !== 'ALL' ? selectedArea : 'All Areas'} • ${selectedType !== 'ALL' ? selectedType : 'All Types'}`
+    saveSearch(label, {
+      query: searchQuery,
+      area: selectedArea,
+      type: selectedType,
+      developer: selectedDeveloper,
+      priceRange,
+      bedrooms: selectedBedrooms,
+    })
+    addToast('Search criteria logged to private client workspace', 'success')
+  }
+
+  const heroProperty = filteredProperties[0]
+  const pairProperties = filteredProperties.slice(1, 3)
+  const stripProperties = filteredProperties.slice(3)
+
+  return (
+    <div className="flex flex-col min-h-screen bg-white text-text-primary">
+      {/* 1. EDITORIAL HEADER & TITLE */}
+      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
+              <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
+              <span>DLD Title Ledger & Direct Developer Inventory</span>
+            </div>
+            <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Records" />
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight">
+            Property Index.
+          </h1>
+
+          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
+            Curated verified freehold real estate across Palm Jumeirah, Jumeirah Bay Island, Downtown Dubai, and Emirates Hills. Every asset features direct provenance and statutory transfer schedules.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. REFINED FILTER BAR */}
+      <section className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-border py-4 px-4 sm:px-6 lg:px-8 shadow-2xs">
+        <div className="w-full max-w-6xl mx-auto space-y-3">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-3">
+            {/* Search Input */}
+            <div className="relative w-full lg:w-72">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search properties, projects, developers..."
+                className="w-full pl-9.5 pr-4 py-2 bg-surface rounded-xl border border-border text-xs text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent"
+              />
+            </div>
+
+            {/* Quick Filters */}
+            <div className="hidden lg:flex items-center gap-2 flex-wrap">
+              {/* Area */}
+              <select
+                value={selectedArea}
+                onChange={(e) => setSelectedArea(e.target.value)}
+                className="px-3 py-2 bg-surface rounded-xl border border-border text-xs font-semibold text-text-secondary focus:outline-none"
+              >
+                <option value="ALL">All Communities</option>
+                {uniqueAreas.map((area) => (
+                  <option key={area} value={area}>{area}</option>
+                ))}
+              </select>
+
+              {/* Property Type */}
+              <select
+                value={selectedType}
+                onChange={(e) => setSelectedType(e.target.value)}
+                className="px-3 py-2 bg-surface rounded-xl border border-border text-xs font-semibold text-text-secondary focus:outline-none"
+              >
+                <option value="ALL">All Typologies</option>
+                {uniqueTypes.map((type) => (
+                  <option key={type} value={type}>{type}</option>
+                ))}
+              </select>
+
+              {/* Developer */}
+              <select
+                value={selectedDeveloper}
+                onChange={(e) => setSelectedDeveloper(e.target.value)}
+                className="px-3 py-2 bg-surface rounded-xl border border-border text-xs font-semibold text-text-secondary focus:outline-none"
+              >
+                <option value="ALL">All Developers</option>
+                {uniqueDevelopers.map((dev) => (
+                  <option key={dev} value={dev}>{dev}</option>
+                ))}
+              </select>
+
+              {/* Price Tier */}
+              <select
+                value={priceRange}
+                onChange={(e) => setPriceRange(e.target.value)}
+                className="px-3 py-2 bg-surface rounded-xl border border-border text-xs font-semibold text-text-secondary focus:outline-none"
+              >
+                <option value="ALL">All Price Tiers</option>
+                <option value="UNDER_25M">&lt; AED 25M</option>
+                <option value="25M_50M">AED 25M – 50M</option>
+                <option value="50M_100M">AED 50M – 100M</option>
+                <option value="ABOVE_100M">&gt; AED 100M</option>
+              </select>
+
+              {/* Sort By */}
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-3 py-2 bg-surface rounded-xl border border-border text-xs font-semibold text-text-secondary focus:outline-none"
+              >
+                <option value="DEFAULT">Sort: Curated</option>
+                <option value="PRICE_DESC">Price: High to Low</option>
+                <option value="PRICE_ASC">Price: Low to High</option>
+                <option value="AREA_DESC">Size: Largest First</option>
+                <option value="BEDS_DESC">Bedrooms: Most</option>
+              </select>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-2 w-full lg:w-auto justify-end">
+              <button
+                type="button"
+                onClick={handleResetFilters}
+                className="p-2 rounded-xl border border-border bg-surface hover:bg-surface-elevated text-text-muted hover:text-text-primary text-xs flex items-center gap-1 transition-colors cursor-pointer"
+                title="Reset Filters"
+              >
+                <RotateCcw className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">Reset</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleSaveCurrentSearch}
+                className="px-3 py-2 rounded-xl border border-border bg-surface hover:bg-surface-elevated text-text-primary text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <Bookmark className="h-3.5 w-3.5 text-accent" />
+                <span>Save Search</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. EDITORIAL PROPERTY DOSSIER PRESENTATION */}
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+        {filteredProperties.length === 0 ? (
+          <div className="text-center py-20 border border-border rounded-3xl bg-surface space-y-4">
+            <Building className="h-12 w-12 text-text-muted mx-auto" />
+            <div className="space-y-1">
+              <h3 className="text-xl font-bold text-text-primary">No Properties Matching Selected Filters</h3>
+              <p className="text-xs text-text-secondary max-w-md mx-auto">
+                No verified records match your filter combination. Adjust your criteria or reset filters to view all audited assets.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleResetFilters}
+              className="px-6 py-2.5 rounded-xl bg-text-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-black transition-colors"
+            >
+              Reset All Filters
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* HERO FEATURE OBJECT */}
+            {heroProperty && (
+              <div className="group border border-border rounded-3xl overflow-hidden bg-white hover:border-accent transition-all duration-300 grid grid-cols-1 lg:grid-cols-12">
+                <div className="lg:col-span-7 relative aspect-[16/10] bg-surface-elevated overflow-hidden">
+                  <Image
+                    src={heroProperty.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'}
+                    alt={heroProperty.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4 flex items-center gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/95 backdrop-blur-sm text-text-primary shadow-sm">
+                      {heroProperty.area_name}
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-black/80 text-white backdrop-blur-sm">
+                      PRIMARY FEATURE
+                    </span>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between text-xs font-mono text-text-muted">
+                      <span>{heroProperty.developer_name}</span>
+                      <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Deed" />
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-black text-text-primary group-hover:text-accent transition-colors leading-tight">
+                      {heroProperty.title}
+                    </h2>
+                    <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">
+                      {heroProperty.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 pt-4 border-t border-border">
+                    <div className="grid grid-cols-3 gap-2 text-center text-xs">
+                      <div className="p-2.5 rounded-xl bg-surface-subtle border border-border">
+                        <div className="text-[10px] text-text-muted uppercase font-mono">Bedrooms</div>
+                        <strong className="text-text-primary">{heroProperty.bedrooms} Bed</strong>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-surface-subtle border border-border">
+                        <div className="text-[10px] text-text-muted uppercase font-mono">Area</div>
+                        <strong className="text-text-primary">{heroProperty.internal_area_sqft.toLocaleString()} sqft</strong>
+                      </div>
+                      <div className="p-2.5 rounded-xl bg-surface-subtle border border-border">
+                        <div className="text-[10px] text-text-muted uppercase font-mono">Status</div>
+                        <strong className="text-text-primary">{heroProperty.completion_status}</strong>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between pt-2">
+                      <div>
+                        <div className="text-[10px] text-text-muted font-mono uppercase">Asking Price</div>
+                        <div className="text-2xl font-black text-text-primary tabular-nums">
+                          AED {heroProperty.asking_price?.toLocaleString()}
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => toggleShortlist(heroProperty.id)}
+                        className={`p-3 rounded-xl border transition-colors ${
+                          shortlistIds.includes(heroProperty.id)
+                            ? 'border-accent bg-accent text-white'
+                            : 'border-border bg-surface text-text-secondary hover:text-text-primary'
+                        }`}
+                        title="Toggle Shortlist"
+                      >
+                        <Bookmark className="h-4 w-4" />
+                      </button>
+                    </div>
+
+                    <Link
+                      href={`/properties/${heroProperty.id}`}
+                      className="w-full py-3.5 rounded-xl bg-text-primary text-white hover:bg-black text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm"
+                    >
+                      <span>Access Dossier & Private Viewing</span>
+                      <ArrowRight className="h-4 w-4 text-accent" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* TWO-COLUMN EDITORIAL PAIR */}
+            {pairProperties.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                {pairProperties.map((prop) => (
+                  <div
+                    key={prop.id}
+                    className="group border border-border rounded-3xl overflow-hidden bg-white hover:border-accent transition-all duration-300 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
+                        <Image
+                          src={prop.images[0] || 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80'}
+                          alt={prop.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover group-hover:scale-102 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3">
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-text-primary shadow-xs">
+                            {prop.area_name}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="p-6 space-y-3">
+                        <div className="flex items-center justify-between text-[11px] font-mono text-text-muted">
+                          <span>{prop.developer_name}</span>
+                          <span className="text-accent">{prop.completion_status}</span>
+                        </div>
+                        <h3 className="text-xl font-bold text-text-primary group-hover:text-accent transition-colors">
+                          {prop.title}
+                        </h3>
+                        <p className="text-xs text-text-secondary line-clamp-2 leading-relaxed">
+                          {prop.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="p-6 pt-0 space-y-4">
+                      <div className="pt-3 border-t border-border-subtle flex items-center justify-between text-xs">
+                        <span className="text-text-muted font-mono">{prop.bedrooms} Bed • {prop.internal_area_sqft.toLocaleString()} sqft</span>
+                        <strong className="text-text-primary text-base tabular-nums">AED {prop.asking_price?.toLocaleString()}</strong>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <Link
+                          href={`/properties/${prop.id}`}
+                          className="flex-1 py-2.5 rounded-xl bg-surface hover:bg-text-primary hover:text-white text-xs font-bold text-center text-text-primary transition-all flex items-center justify-center gap-1.5"
+                        >
+                          <span>Open Dossier</span>
+                          <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => toggleShortlist(prop.id)}
+                          className={`p-2.5 rounded-xl border transition-colors ${
+                            shortlistIds.includes(prop.id)
+                              ? 'border-accent bg-accent text-white'
+                              : 'border-border bg-surface text-text-secondary'
+                          }`}
+                        >
+                          <Bookmark className="h-4 w-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* HORIZONTAL DOSSIER STRIPS */}
+            {stripProperties.length > 0 && (
+              <div className="pt-6 space-y-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-text-muted block">
+                  ADDITIONAL VERIFIED ACQUISITIONS
+                </span>
+                <div className="space-y-3">
+                  {stripProperties.map((prop) => (
+                    <div
+                      key={prop.id}
+                      className="p-5 rounded-2xl border border-border bg-white hover:border-accent hover:shadow-xs transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 group"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="relative h-16 w-24 rounded-xl overflow-hidden bg-surface-elevated shrink-0">
+                          <Image
+                            src={prop.images[0] || 'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=400&q=80'}
+                            alt={prop.title}
+                            fill
+                            sizes="100px"
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2 text-[10px] font-mono text-text-muted">
+                            <span>{prop.area_name}</span>
+                            <span>•</span>
+                            <span>{prop.developer_name}</span>
+                          </div>
+                          <h4 className="text-base font-bold text-text-primary group-hover:text-accent transition-colors">
+                            {prop.title}
+                          </h4>
+                          <div className="text-xs text-text-secondary">
+                            {prop.bedrooms} Bed • {prop.bathrooms} Bath • {prop.internal_area_sqft.toLocaleString()} sqft
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end pt-3 md:pt-0 border-t md:border-t-0 border-border-subtle">
+                        <div className="text-left md:text-right">
+                          <div className="text-[10px] font-mono text-text-muted uppercase">Asking Price</div>
+                          <div className="text-base font-black text-text-primary tabular-nums">
+                            AED {prop.asking_price?.toLocaleString()}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <Link
+                            href={`/properties/${prop.id}`}
+                            className="px-4 py-2 rounded-xl bg-surface hover:bg-text-primary hover:text-white text-xs font-bold text-text-primary transition-all flex items-center gap-1.5"
+                          >
+                            <span>Dossier</span>
+                            <ArrowRight className="h-3.5 w-3.5" />
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => toggleShortlist(prop.id)}
+                            className={`p-2 rounded-xl border transition-colors ${
+                              shortlistIds.includes(prop.id)
+                                ? 'border-accent bg-accent text-white'
+                                : 'border-border bg-surface text-text-secondary'
+                            }`}
+                          >
+                            <Bookmark className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </main>
+    </div>
+  )
+}
