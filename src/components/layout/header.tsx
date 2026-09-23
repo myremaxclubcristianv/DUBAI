@@ -168,7 +168,7 @@ export function Header() {
         className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-border transition-all"
         onMouseLeave={handleMouseLeave}
       >
-        <div className="w-full max-w-7xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-6xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* 1. LEFT: CRISTIAN VĂDUVA / DUBAI */}
           <div className="flex items-center space-x-3 shrink-0">
             <Link href="/" className="group flex items-center space-x-2.5">

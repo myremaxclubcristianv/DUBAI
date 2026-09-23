@@ -41,7 +41,7 @@ export default function InvestmentPage() {
             <SourceBadge status="CALCULATED" sourceName="DLD Tariffs & UAE Central Bank Regulations" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
             Investment Intelligence.
           </h1>
 

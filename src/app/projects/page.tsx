@@ -37,7 +37,7 @@ export default function ProjectsPage() {
             <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Master Developments" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
             Master Developments.
           </h1>
 

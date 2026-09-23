@@ -206,7 +206,7 @@ export default function BuyingGuidePage() {
             <SourceBadge status="UAE GOVERNMENT" sourceName="DLD & RERA Standard Framework" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
             12-Stage Acquisition Journey.
           </h1>
 

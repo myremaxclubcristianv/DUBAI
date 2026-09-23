@@ -119,7 +119,7 @@ export default function NetworkPage() {
           </div>
 
           <div className="space-y-3">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
               The Dubai Ecosystem.
             </h1>
             <p className="text-lg sm:text-xl text-text-secondary max-w-3xl font-light leading-relaxed">

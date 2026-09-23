@@ -143,7 +143,7 @@ export default function PropertiesPage() {
             <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Records" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
             Property Index.
           </h1>
 
@@ -165,7 +165,7 @@ export default function PropertiesPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search properties, projects, developers..."
-                className="w-full pl-9.5 pr-4 py-2 bg-surface rounded-xl border border-border text-xs text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent"
+                className="w-full pl-10 pr-4 py-2 bg-surface rounded-xl border border-border text-xs text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent"
               />
             </div>
 
