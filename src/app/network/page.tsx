@@ -6,6 +6,7 @@ import {
   VERIFIED_DUBAI_CONFERENCES,
 } from '@/lib/data/network'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro, MetricBand } from '@/components/layout/layout-primitives'
 import { useToast } from '@/components/ui/toast'
 import { LocalStore } from '@/lib/storage/local-store'
 import {
@@ -107,50 +108,50 @@ export default function NetworkPage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HERO */}
-      <section className="pt-12 pb-14 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
-              <span>DIFC • DLD • DET • CBUAE Ecosystem Architecture</span>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="UAE Statutory Authorities" />
-          </div>
-
-          <div className="space-y-3">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-              The Dubai Ecosystem.
-            </h1>
-            <p className="text-lg sm:text-xl text-text-secondary max-w-3xl font-light leading-relaxed">
-              Dubai is not merely a transaction market; it is an integrated sovereign ecosystem. We facilitate direct, institutional access across master developers, private wealth banks, DIFC family office structures, statutory conveyancers, and private aviation.
-            </p>
-          </div>
-
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-border/80">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted block">Jurisdictions</span>
-              <span className="text-lg font-bold text-text-primary tabular-nums">Common & Civil Law</span>
-            </div>
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted block">Foreign Ownership</span>
-              <span className="text-base font-bold text-text-primary">Designated Freehold Zones</span>
-            </div>
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted block">Corporate Tax</span>
-              <span className="text-lg font-bold text-text-primary tabular-nums">0% SME / 9% Standard</span>
-            </div>
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-text-muted block">Personal Income Tax</span>
-              <span className="text-base font-bold text-text-primary">No UAE Personal Tax</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="DIFC • DLD • DET • CBUAE Ecosystem Architecture"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="UAE Statutory Authorities" />}
+        title="The Dubai Ecosystem."
+        description="Dubai is not merely a transaction market; it is an integrated sovereign ecosystem. We facilitate direct, institutional access across master developers, private wealth banks, DIFC family office structures, statutory conveyancers, and private aviation."
+      />
 
       {/* 2. ECOSYSTEM PILLARS DIRECTORY */}
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-16">
+        {/* Quick Metrics Bar */}
+        <MetricBand
+          columns={4}
+          items={[
+            {
+              label: 'Jurisdictions',
+              value: 'Common & Civil',
+              unit: 'DUAL LAW',
+              subtext: 'DIFC common law courts + mainland UAE civil law',
+              source: 'DIFC / UAE',
+            },
+            {
+              label: 'Foreign Ownership',
+              value: 'Designated Areas',
+              unit: 'FREEHOLD ZONES',
+              subtext: 'Designated areas for foreign ownership (Regulation No. 3/2006)',
+              source: 'DLD LAW',
+            },
+            {
+              label: 'Corporate Tax',
+              value: '0% / 9%',
+              unit: 'STATUTORY',
+              subtext: '0% SME / 9% standard rate (Decree-Law 47/2022)',
+              source: 'FTA OFFICIAL',
+            },
+            {
+              label: 'Personal Income Tax',
+              value: 'NO PERSONAL TAX',
+              unit: 'QUALIFYING INDIVIDUALS',
+              subtext: 'No UAE personal income tax on qualifying individual investment returns',
+              source: 'FTA OFFICIAL',
+            },
+          ]}
+        />
         {/* Navigation / Filter pills */}
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">

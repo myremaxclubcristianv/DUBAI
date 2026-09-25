@@ -4,31 +4,19 @@ import * as React from 'react'
 import Link from 'next/link'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 
 export default function DevelopersPage() {
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
-              <span>Official DLD Master Developer Registry</span>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Developer Register" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Developer Index.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Institutional master developers licensed and audited by the Dubai Land Department (DLD). Direct escrow accounts and statutory project governance.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="Official DLD Master Developer Registry"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Developer Register" />}
+        title="Developer Index."
+        description="Institutional master developers licensed and audited by the Dubai Land Department (DLD). Direct escrow accounts and statutory project governance."
+      />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
         <div className="flex items-center justify-between border-b border-border pb-3">

@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import {
   CheckCircle2,
   ChevronDown,
@@ -195,26 +196,13 @@ export default function BuyingGuidePage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HERO HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span>Statutory Conveyancing & Acquisition Roadmap</span>
-            </div>
-            <SourceBadge status="UAE GOVERNMENT" sourceName="DLD & RERA Standard Framework" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            12-Stage Acquisition Journey.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            The complete statutory sequence for acquiring freehold real estate in Dubai — from jurisdiction identification and due diligence to title registration at the DLD Trustee and investor residency issuance.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="Statutory Conveyancing & Acquisition Roadmap"
+        badge={<SourceBadge status="UAE GOVERNMENT" sourceName="DLD & RERA Standard Framework" />}
+        title="12-Stage Acquisition Journey."
+        description="The complete statutory sequence for acquiring freehold real estate in Dubai — from jurisdiction identification and due diligence to title registration at the DLD Trustee and investor residency issuance."
+      />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* 2. CLASSIFICATION LEGEND */}

@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import {
   ArrowRight,
   Info,
@@ -13,26 +14,13 @@ export default function MarketPage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
-              <span>DLD Statutory Market Benchmarks & Transaction Framework</span>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Annual Open Registry" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Market Intelligence.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Macroeconomic real-estate indicators, statutory transfer fee structures, rental index mechanics, and submarket capital distribution across Dubai freehold districts.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="DLD Statutory Market Benchmarks & Transaction Framework"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Annual Open Registry" />}
+        title="Market Intelligence."
+        description="Macroeconomic real-estate indicators, statutory transfer fee structures, rental index mechanics, and submarket capital distribution across Dubai freehold districts."
+      />
 
       {/* 2. DLD LIVE DISCONNECTION STATUS BANNER */}
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
@@ -42,7 +30,7 @@ export default function MarketPage() {
             <div>
               <span className="font-bold text-amber-900">DLD LIVE STREAM: NOT CONNECTED</span>
               <span className="text-amber-800 ml-1.5">
-                The platform is architected for live DLD REST/WebSocket endpoints. Current data represents verified statutory rules and published institutional benchmarks.
+                The platform is prepared for future DLD REST/WebSocket integration. Current data represents verified statutory rules and published institutional benchmarks.
               </span>
             </div>
           </div>

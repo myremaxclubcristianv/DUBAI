@@ -431,3 +431,126 @@ export function Stack({
     </Component>
   )
 }
+
+/* ========================================================================= */
+/* 9. PAGE INTRO — Canonical Header Architecture Across Platform             */
+/* ========================================================================= */
+
+interface PageIntroProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
+  eyebrow?: React.ReactNode
+  title: React.ReactNode
+  description?: React.ReactNode
+  badge?: React.ReactNode
+  actions?: React.ReactNode
+  surface?: 'white' | 'subtle' | 'dark'
+}
+
+export function PageIntro({
+  eyebrow,
+  title,
+  description,
+  badge,
+  actions,
+  surface = 'subtle',
+  className,
+  ...props
+}: PageIntroProps) {
+  const surfaceClass = {
+    white: 'bg-white border-b border-border',
+    subtle: 'bg-surface-subtle border-b border-border',
+    dark: 'bg-[#111111] text-white border-b border-white/10',
+  }[surface]
+
+  return (
+    <section className={cn('pt-12 pb-10', surfaceClass, className)} {...props}>
+      <Container size="default" className="space-y-4">
+        {(eyebrow || badge) && (
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            {eyebrow && (
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
+                <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
+                <span>{eyebrow}</span>
+              </div>
+            )}
+            {badge && <div>{badge}</div>}
+          </div>
+        )}
+
+        <div className="space-y-3">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
+            {title}
+          </h1>
+
+          {description && (
+            <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
+              {description}
+            </p>
+          )}
+        </div>
+
+        {actions && <div className="pt-2 flex flex-wrap items-center gap-3">{actions}</div>}
+      </Container>
+    </section>
+  )
+}
+
+/* ========================================================================= */
+/* 10. METRIC BAND — Integrated Financial & Operational Ribbon               */
+/* ========================================================================= */
+
+export interface MetricBandItem {
+  label: string
+  value: React.ReactNode
+  unit?: string
+  subtext?: string
+  source?: string
+}
+
+interface MetricBandProps extends React.HTMLAttributes<HTMLDivElement> {
+  items: MetricBandItem[]
+  columns?: 2 | 3 | 4 | 5
+}
+
+export function MetricBand({ items, columns = 4, className, ...props }: MetricBandProps) {
+  const colClass = {
+    2: 'grid-cols-1 sm:grid-cols-2',
+    3: 'grid-cols-1 sm:grid-cols-3',
+    4: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+    5: 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5',
+  }[columns]
+
+  return (
+    <div
+      className={cn(
+        'w-full py-6 border-y border-border grid gap-6 divide-y sm:divide-y-0 sm:divide-x divide-border',
+        colClass,
+        className
+      )}
+      {...props}
+    >
+      {items.map((item, idx) => (
+        <div key={idx} className={cn('flex flex-col justify-between space-y-1.5', idx > 0 && 'pt-4 sm:pt-0 sm:pl-6')}>
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted">
+              {item.label}
+            </span>
+            {item.source && (
+              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface border border-border text-accent font-bold">
+                {item.source}
+              </span>
+            )}
+          </div>
+          <div className="flex items-baseline gap-1">
+            <span className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
+              {item.value}
+            </span>
+            {item.unit && <span className="text-xs font-semibold text-text-secondary">{item.unit}</span>}
+          </div>
+          {item.subtext && (
+            <p className="text-[11px] text-text-muted leading-normal">{item.subtext}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}

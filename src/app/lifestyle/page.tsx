@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import {
   ArrowRight,
   Plane,
@@ -88,26 +89,13 @@ export default function LifestylePage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span>Licensed Luxury Directory & Private Client Protocols</span>
-            </div>
-            <SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Operator Registry" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Lifestyle & Access.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Curated licensed operators across private aviation, superyachts, Michelin-starred gastronomy, and ultra-luxury hospitality in Dubai.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="Licensed Luxury Directory & Private Client Protocols"
+        badge={<SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Operator Registry" />}
+        title="Lifestyle & Access."
+        description="Curated licensed operators across private aviation, superyachts, Michelin-starred gastronomy, and ultra-luxury hospitality in Dubai."
+      />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
         {/* 2. DUAL FEATURED MOMENTS (AVIATION & SUPERYACHTS) */}

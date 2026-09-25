@@ -147,7 +147,7 @@ export function AcquisitionCostCalculator() {
 
         {/* Statutory & Customary Clarification Note */}
         <p className="text-[11px] text-text-muted leading-relaxed bg-surface-subtle p-3 rounded-lg border border-border">
-          <strong>Regulatory Transparency:</strong> Exact applicable fees depend on transaction type and DLD service scenario. Real estate transfer fees (4% statutory / 2% customary buyer share) and document tariffs (AED 250 Title Deed + AED 250/225/100 Map Category + AED 20 Knowledge/Innovation) are statutory government fees. Registration trustee partner fees (AED 4,000 / AED 2,000 + 5% VAT) are official partner charges. Brokerage (2.0% + 5% VAT) is a customary market assumption, not a statutory tax.
+          <strong>Regulatory Transparency:</strong> Exact applicable fees depend on transaction type and DLD service scenario. DLD property sale registration charges are 2% of the sale value for the buyer and 2% for the seller, for a combined 4% transfer charge. Map/document tariffs vary by category: AED 100 for land outside Dubai Municipality, AED 225 for the Unified Map under Dubai Municipality, or AED 250 for villas and apartments. Knowledge and innovation fees are AED 10 each where applicable. DLD service-partner charges are AED 4,000 + VAT for sale values of AED 500,000 or more, or AED 2,000 + VAT below AED 500,000. Brokerage, where applicable, is a customary market assumption and is not a statutory DLD fee.
         </p>
       </div>
     </div>

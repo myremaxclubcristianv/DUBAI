@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { calculateAcquisitionCosts } from '@/lib/calculators/investment'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { useClient } from '@/lib/context/client-context'
 import { useToast } from '@/components/ui/toast'
 import {
@@ -47,26 +48,13 @@ export default function ClientPortalPage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span>Private Client Workspace & Analytical Dossier Desk</span>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="Client Session & Saved Criteria" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Client Workspace.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Side-by-side asset comparison matrix, saved property shortlists, custom acquisition filters, and underwriting worksheets.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="Private Client Workspace & Analytical Dossier Desk"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Client Session & Saved Criteria" />}
+        title="Client Workspace."
+        description="Side-by-side asset comparison matrix, saved property shortlists, custom acquisition filters, and underwriting worksheets."
+      />
 
       {/* 2. LOCAL BROWSER STORAGE NOTICE */}
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -76,7 +64,7 @@ export default function ClientPortalPage() {
             <div>
               <span className="font-bold text-text-primary">Storage Mode:</span>
               <span className="text-text-secondary ml-1">
-                LOCAL BROWSER PERSISTENCE ACTIVE — Resilient client-side storage managing shortlists, comparison matrices, and search criteria.
+                Draft stored locally in this browser — Client-side storage managing shortlists, comparison matrices, and search criteria without server tracking.
               </span>
             </div>
           </div>

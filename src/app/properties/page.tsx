@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { useClient } from '@/lib/context/client-context'
 import { useToast } from '@/components/ui/toast'
 import {
@@ -132,26 +133,13 @@ export default function PropertiesPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-text-primary">
-      {/* 1. EDITORIAL HEADER & TITLE */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
-              <span>DLD Title Ledger & Direct Developer Inventory</span>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Records" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Property Index.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Curated verified freehold real estate across Palm Jumeirah, Jumeirah Bay Island, Downtown Dubai, and Emirates Hills. Every asset features direct provenance and statutory transfer schedules.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="DLD Title Ledger & Direct Developer Inventory"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Records" />}
+        title="Property Index."
+        description="Curated verified freehold real estate across Palm Jumeirah, Jumeirah Bay Island, Downtown Dubai, and Emirates Hills. Every asset features direct provenance and statutory transfer schedules."
+      />
 
       {/* 2. REFINED FILTER BAR */}
       <section className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-border py-4 px-4 sm:px-6 lg:px-8 shadow-2xs">

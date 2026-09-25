@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { SourceBadge } from '@/components/ui/source-badge'
-import { MetricCard } from '@/components/ui/metric-card'
+import { PageIntro, MetricBand } from '@/components/layout/layout-primitives'
 import { 
   ShieldCheck, 
   Building, 
@@ -224,55 +224,48 @@ export default function ResidencyPage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HERO HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span>UAE Federal Decrees & Official Authority Channels</span>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="Cabinet Res No. 65 of 2022" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Residency Intelligence.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Statutory immigration frameworks, Real Estate Investor Golden Residency criteria, procedural stages, and personal tax-neutrality mechanics.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="UAE Federal Decrees & Official Authority Channels"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Cabinet Res No. 65 of 2022" />}
+        title="Residency Intelligence."
+        description="Statutory immigration frameworks, Real Estate Investor Golden Residency criteria, procedural stages, and personal tax-neutrality mechanics."
+      />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
         {/* 2. STATUTORY MACRO BENCHMARKS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <MetricCard
-            label="Investor Capital Minimum"
-            value="AED 2,000,000"
-            subtext="Single or aggregated freehold properties"
-            status="UAE GOVERNMENT"
-          />
-          <MetricCard
-            label="Investor Residency Validity"
-            value="5 or 10 Years"
-            subtext="5-Yr UAE summary / 10-Yr service tracks"
-            status="UAE GOVERNMENT"
-          />
-          <MetricCard
-            label="UAE Personal Income Tax"
-            value="NO PERSONAL TAX"
-            subtext="No personal income tax levied (Decision 49/2023)"
-            status="FTA OFFICIAL"
-          />
-          <MetricCard
-            label="Stay Outside Constraint"
-            value="None (0 Days)"
-            subtext="Visa remains valid regardless of time abroad"
-            status="UAE GOVERNMENT"
-          />
-        </div>
+        <MetricBand
+          columns={4}
+          items={[
+            {
+              label: 'Investor Capital Minimum',
+              value: 'AED 2,000,000',
+              subtext: 'Property value threshold: AED 2,000,000 (single or aggregated freehold)',
+              source: 'UAE GOVT',
+            },
+            {
+              label: 'Investor Residency Validity',
+              value: '5 or 10',
+              unit: 'Years',
+              subtext: '5-Yr UAE Govt summary / 10-Yr official service portals (confirm with authority)',
+              source: 'UAE GOVT / ICP',
+            },
+            {
+              label: 'UAE Personal Income Tax',
+              value: 'NO PERSONAL TAX',
+              unit: 'QUALIFYING INDIVIDUALS',
+              subtext: 'No UAE personal income tax on qualifying individual returns (Cabinet Dec 49/2023)',
+              source: 'FTA OFFICIAL',
+            },
+            {
+              label: 'Stay Outside Constraint',
+              value: 'None',
+              unit: '0 DAYS',
+              subtext: 'Visa remains valid regardless of continuous time abroad',
+              source: 'UAE GOVT',
+            },
+          ]}
+        />
 
         {/* 3. INTERACTIVE DECISION FLOW: "WHAT ARE YOU TRYING TO ACHIEVE?" */}
         <div className="rounded-3xl border border-border bg-white shadow-sm overflow-hidden">

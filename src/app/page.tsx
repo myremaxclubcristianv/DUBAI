@@ -9,6 +9,7 @@ import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { NETWORK_ECOSYSTEM_PILLARS } from '@/lib/data/network'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { MetricBand } from '@/components/layout/layout-primitives'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -118,7 +119,7 @@ export default function Home() {
             </div>
             <div className="lg:col-span-8 space-y-4">
               <p className="text-lg sm:text-xl text-text-primary font-normal leading-relaxed">
-                Dubai has transformed from a regional trade hub into a premier global wealth management sanctuary, characterized by zero personal taxation, progressive legal jurisprudence, and world-class physical infrastructure.
+                Dubai has transformed from a regional trade hub into a premier global wealth management sanctuary, characterized by no UAE personal income tax for qualifying individuals, progressive legal jurisprudence, and world-class physical infrastructure.
               </p>
               <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
                 Navigating this territory requires separating speculative marketing claims from audited title deed records, verified developer escrow accounts, and statutory conveyance tariffs.
@@ -127,43 +128,38 @@ export default function Home() {
           </div>
 
           {/* Horizontal Verified Data Rail */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-6 rounded-2xl border border-border bg-white space-y-2">
-              <div className="flex items-center justify-between text-[10px] font-mono text-text-muted uppercase">
-                <span>Combined Transfer Fees</span>
-                <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD" />
-              </div>
-              <div className="text-2xl font-black text-text-primary tabular-nums">4.00%</div>
-              <div className="text-xs text-text-secondary">Combined DLD transfer fees (2% buyer + 2% seller standard breakdown)</div>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-border bg-white space-y-2">
-              <div className="flex items-center justify-between text-[10px] font-mono text-text-muted uppercase">
-                <span>Personal Taxation</span>
-                <SourceBadge status="FTA OFFICIAL" sourceName="Cabinet Decision 49/2023" />
-              </div>
-              <div className="text-xl font-black text-text-primary">NO PERSONAL INCOME TAX</div>
-              <div className="text-xs text-text-secondary">Qualifying individual property returns outside Business Activity</div>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-border bg-white space-y-2">
-              <div className="flex items-center justify-between text-[10px] font-mono text-text-muted uppercase">
-                <span>Investor Golden Visa</span>
-                <SourceBadge status="UAE GOVERNMENT" sourceName="Cabinet Res 65/2022" />
-              </div>
-              <div className="text-2xl font-black text-text-primary tabular-nums">5 or 10 Years</div>
-              <div className="text-xs text-text-secondary">5-Yr UAE summary / 10-Yr service portals (≥ AED 2M threshold)</div>
-            </div>
-
-            <div className="p-6 rounded-2xl border border-border bg-white space-y-2">
-              <div className="flex items-center justify-between text-[10px] font-mono text-text-muted uppercase">
-                <span>Freehold Rights</span>
-                <SourceBadge status="OFFICIAL SOURCE" sourceName="Regulation 3/2006" />
-              </div>
-              <div className="text-xl font-black text-text-primary">Designated Freehold</div>
-              <div className="text-xs text-text-secondary">Unrestricted foreign ownership in designated freehold zones</div>
-            </div>
-          </div>
+          <MetricBand
+            columns={4}
+            items={[
+              {
+                label: 'Combined Transfer Fees',
+                value: '4.00%',
+                subtext: 'Combined DLD transfer fees (2% buyer + 2% seller standard breakdown)',
+                source: 'DLD OFFICIAL',
+              },
+              {
+                label: 'Personal Taxation',
+                value: 'NO PERSONAL TAX',
+                unit: 'QUALIFYING INDIVIDUALS',
+                subtext: 'No UAE personal income tax on qualifying individual investment income (Cabinet Dec 49/2023)',
+                source: 'FTA OFFICIAL',
+              },
+              {
+                label: 'Investor Golden Visa',
+                value: '5 or 10',
+                unit: 'Years',
+                subtext: '5-Yr UAE Govt summary / 10-Yr official service portals (Property value threshold: AED 2,000,000)',
+                source: 'UAE GOVT / ICP',
+              },
+              {
+                label: 'Foreign Ownership',
+                value: 'Designated Areas',
+                unit: 'FREEHOLD ZONES',
+                subtext: 'Designated areas for foreign ownership per Regulation No. 3 of 2006',
+                source: 'DLD REGULATION',
+              },
+            ]}
+          />
         </div>
       </section>
 

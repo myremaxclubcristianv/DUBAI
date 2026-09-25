@@ -9,6 +9,7 @@ import { CashFlowCalculator } from '@/components/investment/cash-flow-calculator
 import { PaymentPlanCalculator } from '@/components/investment/payment-plan-calculator'
 import { PropertyComparison } from '@/components/investment/property-comparison'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import {
   Calculator,
   Percent,
@@ -30,26 +31,13 @@ export default function InvestmentPage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span>Institutional Underwriting & Due Diligence Architecture</span>
-            </div>
-            <SourceBadge status="CALCULATED" sourceName="DLD Tariffs & UAE Central Bank Regulations" />
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Investment Intelligence.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Institutional property underwriting, debt-service sensitivity, statutory DLD fee schedules, and multi-year holding cash-flow modeling with verified mathematical provenance.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="Institutional Underwriting & Due Diligence Architecture"
+        badge={<SourceBadge status="CALCULATED" sourceName="DLD Tariffs & UAE Central Bank Regulations" />}
+        title="Investment Intelligence."
+        description="Institutional property underwriting, debt-service sensitivity, statutory DLD fee schedules, and multi-year holding cash-flow modeling with verified mathematical provenance."
+      />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
         {/* 2. TAB CONTROLS */}

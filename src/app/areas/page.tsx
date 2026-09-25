@@ -4,6 +4,7 @@ import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { DUBAI_AREAS } from '@/lib/data/areas'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { Plane, ArrowRight, Compass } from 'lucide-react'
 
 export default function AreasPage() {
@@ -18,32 +19,21 @@ export default function AreasPage() {
 
   return (
     <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL ATLAS HEADER */}
-      <section className="pt-12 pb-10 border-b border-border bg-surface-subtle">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              <span>Statutory Freehold Zone Registry (Regulation No. 3/2006)</span>
-            </div>
-            <Link
-              href="/map"
-              className="px-4 py-2 bg-white hover:bg-surface border border-border text-xs font-bold text-text-primary rounded-xl transition-colors flex items-center gap-1.5 shadow-2xs"
-            >
-              <Compass className="h-3.5 w-3.5 text-accent" />
-              <span>Geodetic Vector Atlas</span>
-            </Link>
-          </div>
-
-          <h1 className="text-2xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            Freehold Atlas.
-          </h1>
-
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-            Geographic directory of Dubai prime freehold communities, master developer covenants, airport transit matrices, and foreign title ownership rights.
-          </p>
-        </div>
-      </section>
+      {/* 1. EDITORIAL PAGE INTRO */}
+      <PageIntro
+        eyebrow="Statutory Freehold Zone Registry (Regulation No. 3/2006)"
+        badge={
+          <Link
+            href="/map"
+            className="px-4 py-2 bg-white hover:bg-surface border border-border text-xs font-bold text-text-primary rounded-xl transition-colors flex items-center gap-1.5 shadow-2xs"
+          >
+            <Compass className="h-3.5 w-3.5 text-accent" />
+            <span>Geodetic Vector Atlas</span>
+          </Link>
+        }
+        title="Freehold Atlas."
+        description="Geographic directory of Dubai prime freehold communities, master developer covenants, airport transit matrices, and foreign title ownership rights."
+      />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
         {/* 2. SECTOR FILTER PILLS */}
