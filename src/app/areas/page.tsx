@@ -31,8 +31,8 @@ export default function AreasPage() {
             <span>Geodetic Vector Atlas</span>
           </Link>
         }
-        title="Freehold Atlas."
-        description="Geographic directory of Dubai prime freehold communities, master developer covenants, airport transit matrices, and foreign title ownership rights."
+        title="AREAS"
+        description="The prime Dubai community atlas. Geographic directory of Dubai freehold communities, master developer covenants, airport transit matrices, and foreign title ownership rights."
       />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">

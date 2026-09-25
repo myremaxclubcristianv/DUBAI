@@ -52,8 +52,8 @@ export default function ClientPortalPage() {
       <PageIntro
         eyebrow="Private Client Workspace & Analytical Dossier Desk"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Client Session & Saved Criteria" />}
-        title="Client Workspace."
-        description="Side-by-side asset comparison matrix, saved property shortlists, custom acquisition filters, and underwriting worksheets."
+        title="CLIENT WORKSPACE"
+        description="Draft stored locally in this browser. Side-by-side asset comparison matrix, saved property shortlists, custom acquisition filters, and underwriting worksheets."
       />
 
       {/* 2. LOCAL BROWSER STORAGE NOTICE */}

@@ -112,8 +112,8 @@ export default function NetworkPage() {
       <PageIntro
         eyebrow="DIFC • DLD • DET • CBUAE Ecosystem Architecture"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="UAE Statutory Authorities" />}
-        title="The Dubai Ecosystem."
-        description="Dubai is not merely a transaction market; it is an integrated sovereign ecosystem. We facilitate direct, institutional access across master developers, private wealth banks, DIFC family office structures, statutory conveyancers, and private aviation."
+        title="NETWORK"
+        description="Dubai private capital and business ecosystem. Facilitating direct institutional access across sovereign hubs, private banks, DIFC family office structures, and regulatory authorities."
       />
 
       {/* 2. ECOSYSTEM PILLARS DIRECTORY */}
@@ -219,7 +219,7 @@ export default function NetworkPage() {
 
                     <div className="space-y-2 pt-2 border-t border-border/60">
                       <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted block">
-                        Verified Entities & Desking
+                        Entities Identified in Public Registry
                       </span>
                       <ul className="space-y-1 text-xs text-text-secondary">
                         {pillar.verified_participants.slice(0, 3).map((item, pIdx) => (

@@ -47,97 +47,87 @@ interface MegaMenuSection {
 }
 
 const MEGA_MENUS: Record<string, MegaMenuSection> = {
-  'real-estate': {
-    pillar: 'REAL ESTATE',
+  'discover': {
+    pillar: 'DISCOVER',
     href: '/properties',
-    description: 'Verified freehold acquisitions, master developer allocations, and architectural dossiers.',
+    description: 'Verified freehold acquisitions, prime community atlas, master developments, and licensed developer registry.',
     items: [
-      { title: 'Verified Properties', subtitle: 'Authenticated freehold inventory', href: '/properties', icon: Building },
-      { title: 'Master Projects', subtitle: 'Escrow-verified developments', href: '/projects', icon: Layers },
-      { title: 'Developer Registry', subtitle: 'DLD registered developers', href: '/developers', icon: ShieldCheck },
-      { title: 'Dubai Communities', subtitle: 'Prime freehold atlas & covenants', href: '/areas', icon: MapPin },
-      { title: 'Vector Map', subtitle: 'Centroid classified atlas', href: '/map', icon: Compass },
-      { title: 'Market Pulse', subtitle: 'Historical benchmark intelligence', href: '/market', icon: TrendingUp },
+      { title: 'Properties', subtitle: 'Authenticated freehold property inventory', href: '/properties', icon: Building },
+      { title: 'Areas', subtitle: 'Prime freehold community atlas & covenants', href: '/areas', icon: MapPin },
+      { title: 'Developers', subtitle: 'DLD registered developer directory', href: '/developers', icon: ShieldCheck },
+      { title: 'Projects', subtitle: 'Escrow-verified master projects', href: '/projects', icon: Layers },
+      { title: 'Vector Map', subtitle: 'Geographic coordinate atlas', href: '/map', icon: Compass },
     ],
     highlight: {
-      title: 'DLD Title Deed Provenance',
-      subtitle: 'Every property mapped directly to Dubai Land Department title deed records with zero synthetic listings.',
-      cta: 'Explore Verified Properties',
+      title: 'Title Deed Provenance',
+      subtitle: 'Every asset mapped to official Dubai Land Department title records with zero synthetic listings.',
+      cta: 'Browse Verified Inventory',
       href: '/properties',
     }
   },
-  'investment': {
-    pillar: 'INVESTMENT',
+  'invest': {
+    pillar: 'INVEST',
     href: '/investment',
-    description: 'Institutional property underwriting, debt-service sensitivity, and statutory fee modeling.',
+    description: 'Institutional acquisition economics, debt underwriting, benchmark intelligence, and conveyancing roadmaps.',
     items: [
-      { title: 'Scenario Workspace', subtitle: 'Full multi-parameter underwriting', href: '/investment', icon: Calculator },
-      { title: 'Rental Yield Engine', subtitle: 'Gross, NOI & Net All-In yields', href: '/investment', icon: TrendingUp },
-      { title: 'Statutory Fee Tariffs', subtitle: 'DLD 4% and trustee schedules', href: '/investment', icon: Scale },
-      { title: 'Risk Framework', subtitle: 'Acquisition to exit parameters', href: '/investment', icon: ShieldCheck },
-      { title: 'Valuation Methodology', subtitle: 'Asking vs achieved transaction prices', href: '/investment', icon: Layers },
-      { title: '12-Stage Buying Journey', subtitle: 'Conveyancing roadmap', href: '/buying-guide', icon: Compass },
+      { title: 'Investment', subtitle: 'Acquisition economics & underwriting workspace', href: '/investment', icon: Calculator },
+      { title: 'Market', subtitle: 'Institutional benchmarks & regulatory context', href: '/market', icon: TrendingUp },
+      { title: 'Buying Guide', subtitle: '12-Stage acquisition & conveyancing roadmap', href: '/buying-guide', icon: Compass },
     ],
     highlight: {
-      title: 'Modelled From Your Assumptions',
-      subtitle: 'Transparent deterministic formulas stamped with CALCULATED. No invented market forecasts.',
-      cta: 'Launch Underwriting Desk',
+      title: 'Deterministic Underwriting',
+      subtitle: 'Transparent calculations based on user inputs and verified statutory fees. No invented forecasts.',
+      cta: 'Launch Underwriting Workspace',
       href: '/investment',
     }
   },
   'residency': {
     pillar: 'RESIDENCY',
     href: '/residency',
-    description: 'Statutory UAE Golden Visa criteria, DLD Cube processes, and tax neutrality provisions.',
+    description: 'Statutory UAE Golden Visa framework, DLD Cube application journey, and tax neutrality provisions.',
     items: [
-      { title: 'Decision Intelligence', subtitle: 'Interactive pathway selector', href: '/residency', icon: Compass },
-      { title: 'Golden Residency', subtitle: 'Official AED 2M property route', href: '/residency', icon: ShieldCheck },
-      { title: 'DLD Cube Procedure', subtitle: 'Investor residency journey', href: '/residency', icon: Building },
-      { title: 'Document Checklists', subtitle: 'MoFA & Police clearance standards', href: '/residency', icon: Layers },
-      { title: 'Personal & Corporate Tax', subtitle: 'Personal tax rules & corporate framework', href: '/residency', icon: Scale },
+      { title: 'Golden Visa', subtitle: 'Official AED 2,000,000 property investment route', href: '/residency', icon: ShieldCheck },
+      { title: 'Eligibility & Journey', subtitle: 'Criteria, MoFA verification & application steps', href: '/residency', icon: Layers },
+      { title: 'Tax Framework', subtitle: 'No personal income tax & corporate tax rules', href: '/residency', icon: Scale },
     ],
     highlight: {
       title: 'Cabinet Resolution No. 65 of 2022',
-      subtitle: 'Direct filing at Dubai Land Department Headquarters with full family and domestic staff sponsorship.',
-      cta: 'Review Statutory Criteria',
+      subtitle: 'Direct filing at Dubai Land Department Headquarters with family and domestic sponsorship eligibility.',
+      cta: 'Review Residency Framework',
       href: '/residency',
-    }
-  },
-  'network': {
-    pillar: 'NETWORK',
-    href: '/network',
-    description: 'The Dubai business and capital ecosystem: sovereign hubs, private banks, and family offices.',
-    items: [
-      { title: 'Ecosystem Architecture', subtitle: '5 Verified Institutional Pillars', href: '/network', icon: Users },
-      { title: 'Capital & Family Offices', subtitle: 'DIFC & private banking hubs', href: '/network', icon: Building },
-      { title: 'Corporate Setup', subtitle: 'Free Zone & mainland licensing', href: '/network', icon: Layers },
-      { title: 'Annual Summits', subtitle: 'GITEX, FinTech & IPS calendars', href: '/network', icon: Compass },
-      { title: 'Private Introductions', subtitle: 'Discreet intake review', href: '/network', icon: ArrowRight },
-    ],
-    highlight: {
-      title: 'Direct Ecosystem Gateways',
-      subtitle: 'Connect with verified institutional participants across real estate, finance, legal, and lifestyle.',
-      cta: 'Request Private Introduction',
-      href: '/network',
     }
   },
   'lifestyle': {
     pillar: 'LIFESTYLE',
     href: '/lifestyle',
-    description: 'Curated directory of licensed operators spanning private aviation, superyachts, and gastronomy.',
+    description: 'Curated editorial directory of licensed private aviation, superyachts, gastronomy, and business ecosystems.',
     items: [
-      { title: 'Private Aviation & FBO', subtitle: 'ExecuJet, Jetex private handling', href: '/lifestyle/aviation', icon: Plane },
-      { title: 'Superyacht Charters', subtitle: 'DMCA licensed luxury fleets', href: '/lifestyle/yachts', icon: Anchor },
-      { title: 'Michelin Fine Dining', subtitle: 'Michelin Guide verified tables', href: '/lifestyle/dining', icon: Utensils },
-      { title: 'Palace Hotels', subtitle: 'Ultra-luxury hotel residences', href: '/lifestyle/hotels', icon: Building },
-      { title: 'Exotic Automobiles', subtitle: 'Supercar & executive fleets', href: '/lifestyle/cars', icon: Compass },
-      { title: 'Bespoke Concierge', subtitle: 'Relocation & private protocol', href: '/lifestyle/concierge', icon: ShieldCheck },
+      { title: 'Lifestyle', subtitle: 'Private aviation, yachts, dining & hospitality', href: '/lifestyle', icon: Plane },
+      { title: 'Network', subtitle: 'Sovereign hubs, DIFC wealth & capital ecosystem', href: '/network', icon: Users },
+      { title: 'Aviation & FBO', subtitle: 'Private handling at Al Maktoum & DXB', href: '/lifestyle/aviation', icon: Plane },
+      { title: 'Superyacht Charters', subtitle: 'DMCA licensed luxury maritime fleets', href: '/lifestyle/yachts', icon: Anchor },
+      { title: 'Michelin Dining', subtitle: 'Culinary establishments & private tables', href: '/lifestyle/dining', icon: Utensils },
     ],
     highlight: {
-      title: 'Licensed Luxury Operators',
-      subtitle: 'Direct pricing and booking protocols for Dubai South FBOs, Dubai Harbour berths, and Michelin venues.',
+      title: 'Curated Private Access',
+      subtitle: 'Direct protocols for private aviation FBOs, yacht berths, and institutional ecosystem partners.',
       cta: 'Explore Lifestyle Directory',
       href: '/lifestyle',
+    }
+  },
+  'private': {
+    pillar: 'PRIVATE',
+    href: '/private-client',
+    description: 'Discreet private client advisory, bespoke acquisition briefs, and confidential client workspace.',
+    items: [
+      { title: 'Private Client', subtitle: 'Discreet advisory for high-value acquisitions', href: '/private-client', icon: ShieldCheck },
+      { title: 'Client Workspace', subtitle: 'Locally stored shortlist & comparison matrix', href: '/client', icon: Bookmark },
+    ],
+    highlight: {
+      title: 'Private Advisory Desk',
+      subtitle: 'Direct consultation on portfolio allocation, off-market acquisitions, and conveyancing.',
+      cta: 'Contact Private Office',
+      href: '/private-client',
     }
   }
 }
@@ -169,32 +159,26 @@ export function Header() {
         onMouseLeave={handleMouseLeave}
       >
         <div className="w-full max-w-6xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* 1. LEFT: CRISTIAN VĂDUVA / DUBAI */}
+          {/* 1. LEFT: DUBAI / PRIVATE CLIENT & INVESTMENT */}
           <div className="flex items-center space-x-3 shrink-0">
-            <Link href="/" className="group flex items-center space-x-2.5">
-              <span className="font-mono text-xs font-black tracking-widest text-text-primary px-1.5 py-0.5 rounded bg-surface border border-border group-hover:border-accent transition-colors">
-                CV
+            <Link href="/" className="group flex flex-col sm:flex-row sm:items-baseline sm:space-x-2">
+              <span className="text-sm font-black tracking-tight text-text-primary uppercase group-hover:text-accent transition-colors">
+                DUBAI
               </span>
-              <div className="flex items-baseline space-x-1.5">
-                <span className="text-xs sm:text-sm font-extrabold tracking-tight text-text-primary uppercase">
-                  Cristian Văduva
-                </span>
-                <span className="text-xs font-light text-text-muted">/</span>
-                <span className="text-xs font-semibold tracking-wider text-accent uppercase">
-                  Dubai
-                </span>
-              </div>
+              <span className="text-[9px] font-mono tracking-wider text-text-muted uppercase">
+                Private Client & Investment
+              </span>
             </Link>
           </div>
 
-          {/* 2. CENTER: 5 PILLARS MEGA-NAVIGATION (Desktop lg+) */}
+          {/* 2. CENTER: NAVIGATION GROUPS (Desktop lg+) */}
           <nav className="hidden lg:flex items-center space-x-1 text-xs font-semibold">
             {[
-              { id: 'real-estate', label: 'REAL ESTATE', href: '/properties' },
-              { id: 'investment', label: 'INVESTMENT', href: '/investment' },
+              { id: 'discover', label: 'DISCOVER', href: '/properties' },
+              { id: 'invest', label: 'INVEST', href: '/investment' },
               { id: 'residency', label: 'RESIDENCY', href: '/residency' },
-              { id: 'network', label: 'NETWORK', href: '/network' },
               { id: 'lifestyle', label: 'LIFESTYLE', href: '/lifestyle' },
+              { id: 'private', label: 'PRIVATE', href: '/private-client' },
             ].map((pillar) => {
               const isActive = pathname === pillar.href || (pillar.href !== '/' && pathname.startsWith(pillar.href))
               const isOpen = activeMegaMenu === pillar.id

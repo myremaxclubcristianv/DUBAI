@@ -93,8 +93,8 @@ export default function LifestylePage() {
       <PageIntro
         eyebrow="Licensed Luxury Directory & Private Client Protocols"
         badge={<SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Operator Registry" />}
-        title="Lifestyle & Access."
-        description="Curated licensed operators across private aviation, superyachts, Michelin-starred gastronomy, and ultra-luxury hospitality in Dubai."
+        title="LIFESTYLE"
+        description="Curated luxury directory across private aviation, superyachts, Michelin gastronomy, palatial hospitality, and desert conservation in Dubai."
       />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">

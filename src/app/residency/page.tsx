@@ -228,8 +228,8 @@ export default function ResidencyPage() {
       <PageIntro
         eyebrow="UAE Federal Decrees & Official Authority Channels"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Cabinet Res No. 65 of 2022" />}
-        title="Residency Intelligence."
-        description="Statutory immigration frameworks, Real Estate Investor Golden Residency criteria, procedural stages, and personal tax-neutrality mechanics."
+        title="RESIDENCY"
+        description="Golden Residency through qualifying investment. Statutory immigration frameworks, Real Estate Investor Golden Residency criteria, procedural stages, and personal tax neutrality provisions."
       />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">

@@ -16,26 +16,26 @@ export default function MarketPage() {
     <div className="bg-white text-text-primary min-h-screen pb-24">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
-        eyebrow="DLD Statutory Market Benchmarks & Transaction Framework"
-        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Annual Open Registry" />}
-        title="Market Intelligence."
-        description="Macroeconomic real-estate indicators, statutory transfer fee structures, rental index mechanics, and submarket capital distribution across Dubai freehold districts."
+        eyebrow="Institutional Market Intelligence & Regulatory Research"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Open Registry & Statutory Laws" />}
+        title="MARKET"
+        description="Dubai real estate intelligence. Macroeconomic indicators, statutory transfer fee structures, rental index mechanics, and submarket capital distribution across Dubai freehold districts."
       />
 
-      {/* 2. DLD LIVE DISCONNECTION STATUS BANNER */}
+      {/* 2. DATA STATUS BANNER */}
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="p-4 rounded-xl border border-border bg-surface flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
           <div className="flex items-center gap-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-amber-500 shrink-0 animate-pulse" />
-            <div>
-              <span className="font-bold text-amber-900">DLD LIVE STREAM: NOT CONNECTED</span>
-              <span className="text-amber-800 ml-1.5">
-                The platform is prepared for future DLD REST/WebSocket integration. Current data represents verified statutory rules and published institutional benchmarks.
-              </span>
+            <span className="h-2.5 w-2.5 rounded-full bg-amber-500 shrink-0" />
+            <div className="space-y-0.5">
+              <div className="font-bold text-text-primary">DATA STATUS: VERIFIED STATUTORY RULES & PUBLISHED BENCHMARKS</div>
+              <div className="text-text-secondary">
+                DLD LIVE INTEGRATION: NOT CONNECTED • The platform is prepared for future DLD REST/WebSocket integration. Current data represents verified statutory rules and published institutional benchmarks.
+              </div>
             </div>
           </div>
-          <span className="font-mono text-[10px] px-2.5 py-1 rounded bg-white text-amber-900 border border-amber-200 font-bold shrink-0">
-            ZERO FAKE DATA
+          <span className="font-mono text-[10px] px-2.5 py-1 rounded bg-white text-text-primary border border-border font-bold shrink-0 self-start md:self-auto">
+            ZERO SYNTHETIC DATA
           </span>
         </div>
       </div>

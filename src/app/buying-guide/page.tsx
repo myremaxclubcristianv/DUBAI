@@ -200,8 +200,8 @@ export default function BuyingGuidePage() {
       <PageIntro
         eyebrow="Statutory Conveyancing & Acquisition Roadmap"
         badge={<SourceBadge status="UAE GOVERNMENT" sourceName="DLD & RERA Standard Framework" />}
-        title="12-Stage Acquisition Journey."
-        description="The complete statutory sequence for acquiring freehold real estate in Dubai — from jurisdiction identification and due diligence to title registration at the DLD Trustee and investor residency issuance."
+        title="BUYING GUIDE"
+        description="12-Stage acquisition & conveyancing roadmap. From initial objective definition to DLD registration trustee title deed transfer and Golden Visa processing."
       />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">

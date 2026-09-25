@@ -33,10 +33,10 @@ export default function InvestmentPage() {
     <div className="bg-white text-text-primary min-h-screen pb-24">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
-        eyebrow="Institutional Underwriting & Due Diligence Architecture"
+        eyebrow="Institutional Underwriting & Due Diligence Workspace"
         badge={<SourceBadge status="CALCULATED" sourceName="DLD Tariffs & UAE Central Bank Regulations" />}
-        title="Investment Intelligence."
-        description="Institutional property underwriting, debt-service sensitivity, statutory DLD fee schedules, and multi-year holding cash-flow modeling with verified mathematical provenance."
+        title="INVESTMENT"
+        description="Dubai acquisition economics. Multi-parameter underwriting, debt-service sensitivity, statutory DLD fee schedules, and multi-year cash flow modeling with verified mathematical provenance."
       />
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
