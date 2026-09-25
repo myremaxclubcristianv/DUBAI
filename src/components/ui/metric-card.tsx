@@ -25,29 +25,33 @@ export function MetricCard({
   return (
     <div
       className={cn(
-        'p-5 bg-white rounded-lg border border-border flex flex-col justify-between transition-all hover:border-border-strong',
+        'p-5 sm:p-6 bg-white rounded-2xl border border-border flex flex-col justify-between h-full space-y-4 transition-all hover:border-border-strong shadow-2xs',
         className
       )}
     >
-      <div className="flex items-start justify-between gap-2 mb-3">
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">
-          {label}
-        </span>
-        {(provenance || status) && (
-          <SourceBadge provenance={provenance} status={status} />
-        )}
-      </div>
-
-      <div>
-        <div className="flex items-baseline gap-1.5">
-          <span className="text-2xl md:text-3xl font-bold tracking-tight text-text-primary tabular-nums">
-            {value}
+      <div className="space-y-2">
+        <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted">
+            {label}
           </span>
-          {unit && <span className="text-sm font-medium text-text-secondary">{unit}</span>}
+          {(provenance || status) && (
+            <SourceBadge provenance={provenance} status={status} />
+          )}
         </div>
 
-        {subtext && <p className="text-xs text-text-muted mt-1.5">{subtext}</p>}
+        <div className="flex items-baseline gap-1.5 pt-1 min-h-[2.25rem]">
+          <span className="text-2xl sm:text-3xl font-extrabold tracking-tight text-text-primary tabular-nums leading-none">
+            {value}
+          </span>
+          {unit && <span className="text-xs font-semibold text-text-secondary tracking-tight">{unit}</span>}
+        </div>
       </div>
+
+      {subtext && (
+        <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
+          {subtext}
+        </p>
+      )}
     </div>
   )
 }

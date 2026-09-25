@@ -278,7 +278,7 @@ export function Header() {
             className="hidden lg:block border-t border-border bg-white shadow-xl animate-in fade-in slide-in-from-top-1 duration-150"
             onMouseEnter={() => handleMouseEnter(activeMegaMenu)}
           >
-            <div className="w-full max-w-6xl mx-auto px-8 py-8">
+            <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
               <div className="grid grid-cols-12 gap-8">
                 {/* Left: Section Summary & Highlight */}
                 <div className="col-span-4 pr-6 border-r border-border space-y-4 flex flex-col justify-between">

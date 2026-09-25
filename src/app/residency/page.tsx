@@ -286,14 +286,14 @@ export default function ResidencyPage() {
               <button
                 type="button"
                 onClick={() => setSelectedObjective('property_2m')}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between h-full min-h-[5.75rem] cursor-pointer ${
                   selectedObjective === 'property_2m'
                     ? 'border-accent bg-white shadow-md ring-1 ring-accent'
                     : 'border-border bg-white/60 hover:bg-white hover:border-text-muted'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Building className={`h-4 w-4 ${selectedObjective === 'property_2m' ? 'text-accent' : 'text-text-muted'}`} />
+                  <Building className={`h-4 w-4 shrink-0 ${selectedObjective === 'property_2m' ? 'text-accent' : 'text-text-muted'}`} />
                   <span className="text-xs font-bold text-text-primary">Acquire Real Estate (≥ AED 2M)</span>
                 </div>
                 <p className="text-[11px] text-text-secondary mt-1.5 leading-snug">
@@ -304,14 +304,14 @@ export default function ResidencyPage() {
               <button
                 type="button"
                 onClick={() => setSelectedObjective('property_sub2m')}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between h-full min-h-[5.75rem] cursor-pointer ${
                   selectedObjective === 'property_sub2m'
                     ? 'border-accent bg-white shadow-md ring-1 ring-accent'
                     : 'border-border bg-white/60 hover:bg-white hover:border-text-muted'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Building className={`h-4 w-4 ${selectedObjective === 'property_sub2m' ? 'text-accent' : 'text-text-muted'}`} />
+                  <Building className={`h-4 w-4 shrink-0 ${selectedObjective === 'property_sub2m' ? 'text-accent' : 'text-text-muted'}`} />
                   <span className="text-xs font-bold text-text-primary">Property Purchase (AED 750k–2M)</span>
                 </div>
                 <p className="text-[11px] text-text-secondary mt-1.5 leading-snug">
@@ -322,14 +322,14 @@ export default function ResidencyPage() {
               <button
                 type="button"
                 onClick={() => setSelectedObjective('business_setup')}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between h-full min-h-[5.75rem] cursor-pointer ${
                   selectedObjective === 'business_setup'
                     ? 'border-accent bg-white shadow-md ring-1 ring-accent'
                     : 'border-border bg-white/60 hover:bg-white hover:border-text-muted'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Briefcase className={`h-4 w-4 ${selectedObjective === 'business_setup' ? 'text-accent' : 'text-text-muted'}`} />
+                  <Briefcase className={`h-4 w-4 shrink-0 ${selectedObjective === 'business_setup' ? 'text-accent' : 'text-text-muted'}`} />
                   <span className="text-xs font-bold text-text-primary">Establish Business / Company</span>
                 </div>
                 <p className="text-[11px] text-text-secondary mt-1.5 leading-snug">
@@ -340,14 +340,14 @@ export default function ResidencyPage() {
               <button
                 type="button"
                 onClick={() => setSelectedObjective('remote_work')}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between h-full min-h-[5.75rem] cursor-pointer ${
                   selectedObjective === 'remote_work'
                     ? 'border-accent bg-white shadow-md ring-1 ring-accent'
                     : 'border-border bg-white/60 hover:bg-white hover:border-text-muted'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Laptop className={`h-4 w-4 ${selectedObjective === 'remote_work' ? 'text-accent' : 'text-text-muted'}`} />
+                  <Laptop className={`h-4 w-4 shrink-0 ${selectedObjective === 'remote_work' ? 'text-accent' : 'text-text-muted'}`} />
                   <span className="text-xs font-bold text-text-primary">Live in Dubai & Work Remotely</span>
                 </div>
                 <p className="text-[11px] text-text-secondary mt-1.5 leading-snug">
@@ -358,14 +358,14 @@ export default function ResidencyPage() {
               <button
                 type="button"
                 onClick={() => setSelectedObjective('retirement')}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between h-full min-h-[5.75rem] cursor-pointer ${
                   selectedObjective === 'retirement'
                     ? 'border-accent bg-white shadow-md ring-1 ring-accent'
                     : 'border-border bg-white/60 hover:bg-white hover:border-text-muted'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <ShieldCheck className={`h-4 w-4 ${selectedObjective === 'retirement' ? 'text-accent' : 'text-text-muted'}`} />
+                  <ShieldCheck className={`h-4 w-4 shrink-0 ${selectedObjective === 'retirement' ? 'text-accent' : 'text-text-muted'}`} />
                   <span className="text-xs font-bold text-text-primary">Retire in Dubai (Age 55+)</span>
                 </div>
                 <p className="text-[11px] text-text-secondary mt-1.5 leading-snug">
@@ -376,14 +376,14 @@ export default function ResidencyPage() {
               <button
                 type="button"
                 onClick={() => setSelectedObjective('hybrid')}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between h-full min-h-[5.75rem] cursor-pointer ${
                   selectedObjective === 'hybrid'
                     ? 'border-accent bg-white shadow-md ring-1 ring-accent'
                     : 'border-border bg-white/60 hover:bg-white hover:border-text-muted'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Landmark className={`h-4 w-4 ${selectedObjective === 'hybrid' ? 'text-accent' : 'text-text-muted'}`} />
+                  <Landmark className={`h-4 w-4 shrink-0 ${selectedObjective === 'hybrid' ? 'text-accent' : 'text-text-muted'}`} />
                   <span className="text-xs font-bold text-text-primary">Capital + Commercial Desk</span>
                 </div>
                 <p className="text-[11px] text-text-secondary mt-1.5 leading-snug">

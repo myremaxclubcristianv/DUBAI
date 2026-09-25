@@ -265,11 +265,11 @@ export default function BuyingGuidePage() {
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                      <div className="p-4 rounded-xl bg-white border border-border space-y-2">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent">
+                      <div className="p-5 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-2.5 shadow-2xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">
                           Required Documentation
                         </span>
-                        <ul className="space-y-1 text-text-secondary">
+                        <ul className="space-y-1.5 text-text-secondary pt-1 border-t border-border-subtle mt-auto">
                           {stage.documents.map((doc, idx) => (
                             <li key={idx} className="flex items-start gap-1.5">
                               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
@@ -279,20 +279,20 @@ export default function BuyingGuidePage() {
                         </ul>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-white border border-border space-y-2">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent">
+                      <div className="p-5 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-2.5 shadow-2xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">
                           Statutory & Professional Fees
                         </span>
-                        <p className="text-text-secondary leading-relaxed">
+                        <p className="text-text-secondary leading-relaxed pt-1 border-t border-border-subtle mt-auto">
                           {stage.statutory_fees}
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xl bg-white border border-border space-y-2">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent">
+                      <div className="p-5 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-2.5 shadow-2xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">
                           Primary Responsibility
                         </span>
-                        <p className="text-text-secondary leading-relaxed">
+                        <p className="text-text-secondary leading-relaxed pt-1 border-t border-border-subtle mt-auto">
                           {stage.responsibilities}
                         </p>
                       </div>

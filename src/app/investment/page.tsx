@@ -197,75 +197,87 @@ function InvestmentFrameworkSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* PILLAR 1: ACQUISITION & TRANSFER */}
-        <div className="p-5 rounded-xl border border-border bg-surface-subtle space-y-3">
-          <span className="text-[10px] font-mono uppercase font-bold text-accent">01 • ACQUISITION & TRANSFER</span>
-          <h3 className="text-base font-bold text-text-primary">Statutory Capital Outlay</h3>
-          <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed">
-            <li>• <strong>DLD Transfer Fee:</strong> Combined 4% transaction fee (2% buyer + 2% seller standard breakdown per official DLD portal; contractually allocated).</li>
-            <li>• <strong>Title Deed Fee:</strong> AED 250 (plus applicable map tariff: AED 250 villa/apt, AED 225 DM unified map, or AED 100 land outside DM, and AED 20 Knowledge/Innovation fees).</li>
-            <li>• <strong>DLD Registration Trustee:</strong> AED 4,000 + 5% VAT (AED 4,200 for properties ≥ AED 500,000; AED 2,100 for &lt; AED 500k).</li>
-            <li>• <strong>Brokerage Commission:</strong> Customary 2% + 5% VAT.</li>
-          </ul>
+        <div className="p-6 rounded-2xl border border-border bg-surface-subtle flex flex-col justify-between h-full space-y-4 shadow-2xs">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">01 • ACQUISITION & TRANSFER</span>
+            <h3 className="text-base font-bold text-text-primary">Statutory Capital Outlay</h3>
+            <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
+              <li>• <strong>DLD Transfer Fee:</strong> Combined 4% transaction fee (2% buyer + 2% seller standard breakdown per official DLD portal; contractually allocated).</li>
+              <li>• <strong>Title Deed Fee:</strong> AED 250 (plus applicable map tariff: AED 250 villa/apt, AED 225 DM unified map, or AED 100 land outside DM, and AED 20 Knowledge/Innovation fees).</li>
+              <li>• <strong>DLD Registration Trustee:</strong> AED 4,000 + 5% VAT (AED 4,200 for properties ≥ AED 500,000; AED 2,100 for &lt; AED 500k).</li>
+              <li>• <strong>Brokerage Commission:</strong> Customary 2% + 5% VAT.</li>
+            </ul>
+          </div>
         </div>
 
         {/* PILLAR 2: FINANCING & LEVERAGE */}
-        <div className="p-5 rounded-xl border border-border bg-surface-subtle space-y-3">
-          <span className="text-[10px] font-mono uppercase font-bold text-accent">02 • FINANCING & DEBT</span>
-          <h3 className="text-base font-bold text-text-primary">CBUAE Mortgage Constraints</h3>
-          <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed">
-            <li>• <strong>Expatriate First Home LTV:</strong> Max 80% (properties ≤ AED 5M); Max 70% (properties &gt; AED 5M).</li>
-            <li>• <strong>Second Property / Off-Plan:</strong> Max 60% LTV on completed secondary / 50% max on off-plan.</li>
-            <li>• <strong>Debt Burden Ratio (DBR):</strong> Max 50% of verified monthly income per CBUAE rules.</li>
-            <li>• <strong>Mortgage Registration Fee:</strong> 0.25% of mortgage value + AED 250 title deed + AED 10 knowledge + AED 10 innovation fees and applicable registration trustee partner fees (DLD Mortgage Registration Tariff).</li>
-          </ul>
+        <div className="p-6 rounded-2xl border border-border bg-surface-subtle flex flex-col justify-between h-full space-y-4 shadow-2xs">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">02 • FINANCING & DEBT</span>
+            <h3 className="text-base font-bold text-text-primary">CBUAE Mortgage Constraints</h3>
+            <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
+              <li>• <strong>Expatriate First Home LTV:</strong> Max 80% (properties ≤ AED 5M); Max 70% (properties &gt; AED 5M).</li>
+              <li>• <strong>Second Property / Off-Plan:</strong> Max 60% LTV on completed secondary / 50% max on off-plan.</li>
+              <li>• <strong>Debt Burden Ratio (DBR):</strong> Max 50% of verified monthly income per CBUAE rules.</li>
+              <li>• <strong>Mortgage Registration Fee:</strong> 0.25% of mortgage value + AED 250 title deed + AED 10 knowledge + AED 10 innovation fees and applicable registration trustee partner fees (DLD Mortgage Registration Tariff).</li>
+            </ul>
+          </div>
         </div>
 
         {/* PILLAR 3: HOLDING COSTS */}
-        <div className="p-5 rounded-xl border border-border bg-surface-subtle space-y-3">
-          <span className="text-[10px] font-mono uppercase font-bold text-accent">03 • HOLDING COSTS</span>
-          <h3 className="text-base font-bold text-text-primary">Mollak & Maintenance</h3>
-          <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed">
-            <li>• <strong>Service Charges:</strong> Governed by RERA Mollak index (typically AED 12–35/sqft annually).</li>
-            <li>• <strong>Property Management:</strong> 5%–8% of gross annual rent for managed leasing.</li>
-            <li>• <strong>Sinking Fund:</strong> Reserve fund contribution mandated under Jointly Owned Property Law.</li>
-            <li>• <strong>No Annual Property Holding Tax:</strong> Dubai does not levy recurring annual municipal property taxes on residential freehold properties.</li>
-          </ul>
+        <div className="p-6 rounded-2xl border border-border bg-surface-subtle flex flex-col justify-between h-full space-y-4 shadow-2xs">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">03 • HOLDING COSTS</span>
+            <h3 className="text-base font-bold text-text-primary">Mollak & Maintenance</h3>
+            <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
+              <li>• <strong>Service Charges:</strong> Governed by RERA Mollak index (typically AED 12–35/sqft annually).</li>
+              <li>• <strong>Property Management:</strong> 5%–8% of gross annual rent for managed leasing.</li>
+              <li>• <strong>Sinking Fund:</strong> Reserve fund contribution mandated under Jointly Owned Property Law.</li>
+              <li>• <strong>No Annual Property Holding Tax:</strong> Dubai does not levy recurring annual municipal property taxes on residential freehold properties.</li>
+            </ul>
+          </div>
         </div>
 
         {/* PILLAR 4: OFF-PLAN SAFEGUARDS */}
-        <div className="p-5 rounded-xl border border-border bg-surface-subtle space-y-3">
-          <span className="text-[10px] font-mono uppercase font-bold text-accent">04 • OFF-PLAN DUE DILIGENCE</span>
-          <h3 className="text-base font-bold text-text-primary">Law No. 8 of 2007 (Escrow)</h3>
-          <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed">
-            <li>• <strong>Mandatory DLD Escrow:</strong> 100% of buyer off-plan payments must be deposited into a DLD-monitored project escrow account under Law No. 8 of 2007.</li>
-            <li>• <strong>Construction Milestones:</strong> Funds released to developer only against certified engineering progress.</li>
-            <li>• <strong>Oqood Registration:</strong> Interim title registration issued by DLD protecting pre-handover equity.</li>
-            <li>• <strong>1-Year Defect Liability:</strong> Statutory 1-year snagging and 10-year structural warranty mandated by UAE law.</li>
-          </ul>
+        <div className="p-6 rounded-2xl border border-border bg-surface-subtle flex flex-col justify-between h-full space-y-4 shadow-2xs">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">04 • OFF-PLAN DUE DILIGENCE</span>
+            <h3 className="text-base font-bold text-text-primary">Law No. 8 of 2007 (Escrow)</h3>
+            <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
+              <li>• <strong>Mandatory DLD Escrow:</strong> 100% of buyer off-plan payments must be deposited into a DLD-monitored project escrow account under Law No. 8 of 2007.</li>
+              <li>• <strong>Construction Milestones:</strong> Funds released to developer only against certified engineering progress.</li>
+              <li>• <strong>Oqood Registration:</strong> Interim title registration issued by DLD protecting pre-handover equity.</li>
+              <li>• <strong>1-Year Defect Liability:</strong> Statutory 1-year snagging and 10-year structural warranty mandated by UAE law.</li>
+            </ul>
+          </div>
         </div>
 
         {/* PILLAR 5: RENTAL & EJARI */}
-        <div className="p-5 rounded-xl border border-border bg-surface-subtle space-y-3">
-          <span className="text-[10px] font-mono uppercase font-bold text-accent">05 • LEASING & EJARI</span>
-          <h3 className="text-base font-bold text-text-primary">Rental Increase Decree 43/2013</h3>
-          <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed">
-            <li>• <strong>Mandatory Ejari:</strong> All lease agreements must be registered in DLD Ejari system.</li>
-            <li>• <strong>RERA Rent Index:</strong> Statutory cap on renewal increases linked to average market rents (0% to 20% max).</li>
-            <li>• <strong>Eviction Notice:</strong> 12-month notarized notice required for owner occupancy or major sale/renovation.</li>
-            <li>• <strong>Security Deposit:</strong> Customary 5% (unfurnished) or 10% (furnished) held as damage security.</li>
-          </ul>
+        <div className="p-6 rounded-2xl border border-border bg-surface-subtle flex flex-col justify-between h-full space-y-4 shadow-2xs">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">05 • LEASING & EJARI</span>
+            <h3 className="text-base font-bold text-text-primary">Rental Increase Decree 43/2013</h3>
+            <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
+              <li>• <strong>Mandatory Ejari:</strong> All lease agreements must be registered in DLD Ejari system.</li>
+              <li>• <strong>RERA Rent Index:</strong> Statutory cap on renewal increases linked to average market rents (0% to 20% max).</li>
+              <li>• <strong>Eviction Notice:</strong> 12-month notarized notice required for owner occupancy or major sale/renovation.</li>
+              <li>• <strong>Security Deposit:</strong> Customary 5% (unfurnished) or 10% (furnished) held as damage security.</li>
+            </ul>
+          </div>
         </div>
 
         {/* PILLAR 6: EXIT & LIQUIDITY */}
-        <div className="p-5 rounded-xl border border-border bg-surface-subtle space-y-3">
-          <span className="text-[10px] font-mono uppercase font-bold text-accent">06 • EXIT & CAPITAL RECOVERY</span>
-          <h3 className="text-base font-bold text-text-primary">Liquidity & Transfer Velocity</h3>
-          <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed">
-            <li>• <strong>Developer NOC Fee:</strong> AED 1,000–5,000 (No Objection Certificate required for resale).</li>
-            <li>• <strong>Capital Gains Treatment:</strong> No UAE personal income tax on capital gains from individual real estate disposals (Cabinet Decision No. 49 of 2023).</li>
-            <li>• <strong>Repatriation:</strong> 100% unrestricted capital and dividend repatriation through CBUAE banking system.</li>
-            <li>• <strong>Settlement Timelines:</strong> Cash transfers settle in 7–14 days; mortgaged transfers 20–35 days.</li>
-          </ul>
+        <div className="p-6 rounded-2xl border border-border bg-surface-subtle flex flex-col justify-between h-full space-y-4 shadow-2xs">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">06 • EXIT & CAPITAL RECOVERY</span>
+            <h3 className="text-base font-bold text-text-primary">Liquidity & Transfer Velocity</h3>
+            <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
+              <li>• <strong>Developer NOC Fee:</strong> AED 1,000–5,000 (No Objection Certificate required for resale).</li>
+              <li>• <strong>Capital Gains Treatment:</strong> No UAE personal income tax on capital gains from individual real estate disposals (Cabinet Decision No. 49 of 2023).</li>
+              <li>• <strong>Repatriation:</strong> 100% unrestricted capital and dividend repatriation through CBUAE banking system.</li>
+              <li>• <strong>Settlement Timelines:</strong> Cash transfers settle in 7–14 days; mortgaged transfers 20–35 days.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

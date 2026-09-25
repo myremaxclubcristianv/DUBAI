@@ -312,49 +312,57 @@ export function DataRail({ items, theme = 'light', className, ...props }: DataRa
   return (
     <div
       className={cn(
-        'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 rounded-2xl border divide-y sm:divide-y-0 divide-x-0 sm:divide-x overflow-hidden',
+        'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px rounded-2xl border overflow-hidden',
         isDark
-          ? 'bg-white/5 border-white/10 divide-white/10'
-          : 'bg-surface-subtle border-border divide-border',
+          ? 'bg-white/10 border-white/10'
+          : 'bg-border border-border',
         className
       )}
       {...props}
     >
       {items.map((item, idx) => (
-        <div key={idx} className="p-4 sm:p-5 flex flex-col justify-between space-y-2">
-          <div className="flex items-center justify-between gap-1">
-            <span
-              className={cn(
-                'text-[10px] font-mono uppercase tracking-wider',
-                isDark ? 'text-white/60' : 'text-text-muted'
-              )}
-            >
-              {item.label}
-            </span>
-            {item.status && (
+        <div
+          key={idx}
+          className={cn(
+            'p-5 sm:p-6 flex flex-col justify-between h-full space-y-4',
+            isDark ? 'bg-[#141414]' : 'bg-white'
+          )}
+        >
+          <div className="space-y-2">
+            <div className="flex items-center justify-between gap-1.5 min-h-[1.25rem]">
               <span
                 className={cn(
-                  'text-[9px] font-mono px-1.5 py-0.5 rounded',
-                  isDark ? 'bg-[#c9a962]/20 text-[#c9a962]' : 'bg-accent-subtle text-accent font-bold'
+                  'text-[10px] font-mono uppercase tracking-wider',
+                  isDark ? 'text-white/60' : 'text-text-muted'
                 )}
               >
-                {item.status}
+                {item.label}
               </span>
-            )}
-          </div>
-          <div
-            className={cn(
-              'text-lg sm:text-xl font-black tabular-nums tracking-tight',
-              isDark ? 'text-white' : 'text-text-primary'
-            )}
-          >
-            {item.value}
+              {item.status && (
+                <span
+                  className={cn(
+                    'text-[9px] font-mono px-1.5 py-0.5 rounded shrink-0',
+                    isDark ? 'bg-[#c9a962]/20 text-[#c9a962]' : 'bg-accent-subtle text-accent font-bold'
+                  )}
+                >
+                  {item.status}
+                </span>
+              )}
+            </div>
+            <div
+              className={cn(
+                'text-xl sm:text-2xl font-extrabold tabular-nums tracking-tight leading-none min-h-[2rem] flex items-baseline',
+                isDark ? 'text-white' : 'text-text-primary'
+              )}
+            >
+              {item.value}
+            </div>
           </div>
           {item.subtext && (
             <div
               className={cn(
-                'text-[11px] font-normal leading-snug',
-                isDark ? 'text-white/50' : 'text-text-secondary'
+                'text-[11px] font-normal leading-relaxed pt-3 border-t',
+                isDark ? 'text-white/50 border-white/10' : 'text-text-secondary border-border-subtle'
               )}
             >
               {item.subtext}
@@ -522,32 +530,48 @@ export function MetricBand({ items, columns = 4, className, ...props }: MetricBa
   return (
     <div
       className={cn(
-        'w-full py-6 border-y border-border grid gap-6 divide-y sm:divide-y-0 sm:divide-x divide-border',
+        'w-full grid gap-px bg-border border border-border rounded-2xl overflow-hidden shadow-2xs',
         colClass,
         className
       )}
       {...props}
     >
       {items.map((item, idx) => (
-        <div key={idx} className={cn('flex flex-col justify-between space-y-1.5', idx > 0 && 'pt-4 sm:pt-0 sm:pl-6')}>
-          <div className="flex items-center justify-between gap-2">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted">
-              {item.label}
-            </span>
-            {item.source && (
-              <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface border border-border text-accent font-bold">
-                {item.source}
+        <div
+          key={idx}
+          className="bg-white p-5 sm:p-6 flex flex-col justify-between h-full space-y-4"
+        >
+          <div className="space-y-2">
+            {/* 1. Header: Label + Source Tag */}
+            <div className="flex items-center justify-between gap-2 min-h-[1.25rem]">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted truncate">
+                {item.label}
               </span>
-            )}
+              {item.source && (
+                <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                  {item.source}
+                </span>
+              )}
+            </div>
+
+            {/* 2. Numeric / Display Value on strict baseline */}
+            <div className="flex items-baseline gap-1.5 pt-1 min-h-[2.25rem]">
+              <span className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums leading-none">
+                {item.value}
+              </span>
+              {item.unit && (
+                <span className="text-xs font-semibold text-text-secondary tracking-tight">
+                  {item.unit}
+                </span>
+              )}
+            </div>
           </div>
-          <div className="flex items-baseline gap-1">
-            <span className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
-              {item.value}
-            </span>
-            {item.unit && <span className="text-xs font-semibold text-text-secondary">{item.unit}</span>}
-          </div>
+
+          {/* 3. Supporting context with top hairline divider */}
           {item.subtext && (
-            <p className="text-[11px] text-text-muted leading-normal">{item.subtext}</p>
+            <p className="text-[11px] text-text-secondary leading-relaxed pt-3 border-t border-border-subtle">
+              {item.subtext}
+            </p>
           )}
         </div>
       ))}

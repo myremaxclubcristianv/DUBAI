@@ -164,31 +164,31 @@ export default function PropertyDetailPage() {
         {/* ========================================================================= */}
         {/* 3. LARGE SPECIFICATIONS & METRICS STRIP */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 p-4 rounded-2xl border border-border bg-surface-subtle">
-          <div className="p-3 bg-white rounded-xl border border-border text-center space-y-0.5">
-            <div className="text-[10px] font-mono text-text-muted uppercase">Bedrooms</div>
-            <div className="text-base font-black text-text-primary">{property.bedrooms} Bed</div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px rounded-2xl border border-border bg-border overflow-hidden shadow-2xs">
+          <div className="p-4 bg-white flex flex-col items-center justify-center text-center space-y-1 min-h-[5.25rem]">
+            <div className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">Bedrooms</div>
+            <div className="text-base font-extrabold text-text-primary">{property.bedrooms} Bed</div>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-border text-center space-y-0.5">
-            <div className="text-[10px] font-mono text-text-muted uppercase">Bathrooms</div>
-            <div className="text-base font-black text-text-primary">{property.bathrooms} Bath</div>
+          <div className="p-4 bg-white flex flex-col items-center justify-center text-center space-y-1 min-h-[5.25rem]">
+            <div className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">Bathrooms</div>
+            <div className="text-base font-extrabold text-text-primary">{property.bathrooms} Bath</div>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-border text-center space-y-0.5">
-            <div className="text-[10px] font-mono text-text-muted uppercase">Internal Area</div>
-            <div className="text-base font-black text-text-primary">{property.internal_area_sqft.toLocaleString()} sqft</div>
-            <div className="text-[10px] text-text-muted font-mono">({sqMeters} m²)</div>
+          <div className="p-4 bg-white flex flex-col items-center justify-center text-center space-y-1 min-h-[5.25rem]">
+            <div className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">Internal Area</div>
+            <div className="text-base font-extrabold text-text-primary tabular-nums">{property.internal_area_sqft.toLocaleString()} sqft</div>
+            <div className="text-[10px] text-text-muted font-mono leading-none">({sqMeters} m²)</div>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-border text-center space-y-0.5">
-            <div className="text-[10px] font-mono text-text-muted uppercase">Community</div>
-            <div className="text-base font-black text-text-primary truncate">{property.area_name}</div>
+          <div className="p-4 bg-white flex flex-col items-center justify-center text-center space-y-1 min-h-[5.25rem]">
+            <div className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">Community</div>
+            <div className="text-base font-extrabold text-text-primary truncate max-w-full">{property.area_name}</div>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-border text-center space-y-0.5">
-            <div className="text-[10px] font-mono text-text-muted uppercase">Master Project</div>
-            <div className="text-base font-black text-text-primary truncate">{property.project_name || 'Individual Estate'}</div>
+          <div className="p-4 bg-white flex flex-col items-center justify-center text-center space-y-1 min-h-[5.25rem]">
+            <div className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">Master Project</div>
+            <div className="text-base font-extrabold text-text-primary truncate max-w-full">{property.project_name || 'Individual Estate'}</div>
           </div>
-          <div className="p-3 bg-white rounded-xl border border-border text-center space-y-0.5">
-            <div className="text-[10px] font-mono text-text-muted uppercase">Developer</div>
-            <div className="text-base font-black text-text-primary truncate">{property.developer_name}</div>
+          <div className="p-4 bg-white flex flex-col items-center justify-center text-center space-y-1 min-h-[5.25rem]">
+            <div className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">Developer</div>
+            <div className="text-base font-extrabold text-text-primary truncate max-w-full">{property.developer_name}</div>
           </div>
         </div>
 

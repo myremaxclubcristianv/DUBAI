@@ -74,7 +74,7 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
 
         {/* Editorial Body Content */}
         <div className="p-5 space-y-3">
-          <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center justify-between gap-2 min-h-[1.25rem]">
             <div className="flex items-center gap-1 text-xs text-text-secondary font-medium">
               <MapPin className="h-3.5 w-3.5 text-accent shrink-0" />
               <span className="truncate">{property.area_name}</span>
@@ -83,35 +83,35 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
           </div>
 
           <Link href={`/properties/${property.id}`} className="block group-hover:text-accent transition-colors">
-            <h3 className="text-base font-bold text-text-primary line-clamp-1 leading-snug">
+            <h3 className="text-base font-bold text-text-primary line-clamp-1 leading-snug min-h-[1.5rem]">
               {property.editorial_display_name || property.title}
             </h3>
           </Link>
 
-          <p className="text-xs text-text-muted font-mono uppercase tracking-wider">
+          <p className="text-xs text-text-muted font-mono uppercase tracking-wider min-h-[1.125rem] truncate">
             Developer: {property.developer_name}
           </p>
 
           {/* Key Metric Specs */}
-          <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-border-subtle text-xs text-text-secondary">
-            <div className="flex items-center gap-1.5">
+          <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-border-subtle text-xs text-text-secondary min-h-[2.5rem] items-center">
+            <div className="flex items-center gap-1.5 truncate">
               <Bed className="h-3.5 w-3.5 text-text-muted shrink-0" />
-              <span className="font-semibold">{property.bedrooms} Beds</span>
+              <span className="font-semibold truncate">{property.bedrooms} Beds</span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 truncate">
               <Bath className="h-3.5 w-3.5 text-text-muted shrink-0" />
-              <span className="font-semibold">{property.bathrooms} Baths</span>
+              <span className="font-semibold truncate">{property.bathrooms} Baths</span>
             </div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 truncate">
               <Maximize2 className="h-3.5 w-3.5 text-text-muted shrink-0" />
-              <span className="font-semibold tabular-nums">
+              <span className="font-semibold tabular-nums truncate">
                 {property.internal_area_sqft.toLocaleString()} sqft
               </span>
             </div>
           </div>
 
           {/* Price & Price/sqft */}
-          <div className="pt-1 flex items-baseline justify-between">
+          <div className="pt-1 flex items-baseline justify-between min-h-[2.75rem]">
             <div>
               <span className="text-[10px] font-mono uppercase text-text-muted block">
                 Asking Price

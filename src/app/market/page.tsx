@@ -75,63 +75,117 @@ export default function MarketPage() {
 
           {/* 6 Macro Financial Indicators */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="p-5 rounded-xl bg-white border border-border space-y-2">
-              <span className="text-[10px] font-mono text-text-muted uppercase block">
-                Combined DLD Transfer Fees
-              </span>
-              <div className="text-3xl font-extrabold text-text-primary tabular-nums">4.00%</div>
-              <p className="text-[11px] text-text-secondary">
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-4 shadow-2xs">
+              <div className="space-y-2">
+                <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+                  <span className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">
+                    Combined DLD Transfer Fees
+                  </span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                    DLD LAW
+                  </span>
+                </div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tabular-nums leading-none min-h-[2.25rem] flex items-baseline">
+                  4.00%
+                </div>
+              </div>
+              <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
                 Combined transaction transfer fees (2% buyer + 2% seller standard allocation under Dubai Law No. 7 of 2006).
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-white border border-border space-y-2">
-              <span className="text-[10px] font-mono text-text-muted uppercase block">
-                RERA Maximum Annual Rent Increase Cap
-              </span>
-              <div className="text-3xl font-extrabold text-text-primary tabular-nums">20.00%</div>
-              <p className="text-[11px] text-text-secondary">
-                Maximum allowable annual increase under Dubai Decree No. 43 of 2013.
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-4 shadow-2xs">
+              <div className="space-y-2">
+                <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+                  <span className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">
+                    RERA Maximum Rent Cap
+                  </span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                    DECREE 43/2013
+                  </span>
+                </div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tabular-nums leading-none min-h-[2.25rem] flex items-baseline">
+                  20.00%
+                </div>
+              </div>
+              <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
+                Maximum allowable annual increase under Dubai Decree No. 43 of 2013 rental index formula.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-white border border-border space-y-2">
-              <span className="text-[10px] font-mono text-text-muted uppercase block">
-                Expat Maximum Loan-to-Value (LTV)
-              </span>
-              <div className="text-3xl font-extrabold text-text-primary tabular-nums">80.00%</div>
-              <p className="text-[11px] text-text-secondary">
-                For first residential property value ≤ AED 5M per CBUAE mortgage regulations.
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-4 shadow-2xs">
+              <div className="space-y-2">
+                <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+                  <span className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">
+                    Expat Maximum LTV Cap
+                  </span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                    CBUAE REG
+                  </span>
+                </div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tabular-nums leading-none min-h-[2.25rem] flex items-baseline">
+                  80.00%
+                </div>
+              </div>
+              <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
+                For first residential property value ≤ AED 5M per Central Bank of the UAE mortgage rules.
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-white border border-border space-y-2">
-              <span className="text-[10px] font-mono text-text-muted uppercase block">
-                Investor Golden Visa Freehold Floor
-              </span>
-              <div className="text-3xl font-extrabold text-text-primary tabular-nums">AED 2,000,000</div>
-              <p className="text-[11px] text-text-secondary">
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-4 shadow-2xs">
+              <div className="space-y-2">
+                <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+                  <span className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">
+                    Investor Golden Visa Floor
+                  </span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                    UAE GOVT
+                  </span>
+                </div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tabular-nums leading-none min-h-[2.25rem] flex items-baseline">
+                  AED 2,000,000
+                </div>
+              </div>
+              <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
                 Property value threshold (5-Yr UAE summary / 10-Yr service portals per Cabinet Res 65/2022).
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-white border border-border space-y-2">
-              <span className="text-[10px] font-mono text-text-muted uppercase block">
-                UAE Personal Income Tax
-              </span>
-              <div className="text-2xl font-extrabold text-text-primary uppercase tracking-tight">NO TAX LEVIED</div>
-              <p className="text-[11px] text-text-secondary">
-                The UAE does not levy personal income tax on natural persons. Qualifying real estate income is outside Business Activity (Decision 49/2023).
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-4 shadow-2xs">
+              <div className="space-y-2">
+                <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+                  <span className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">
+                    UAE Personal Income Tax
+                  </span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                    DECISION 49/2023
+                  </span>
+                </div>
+                <div className="text-xl sm:text-2xl font-extrabold text-text-primary uppercase tracking-tight leading-none min-h-[2.25rem] flex items-baseline">
+                  NO PERSONAL TAX
+                </div>
+              </div>
+              <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
+                No personal income tax on qualifying individual investment income (Cabinet Dec 49/2023).
               </p>
             </div>
 
-            <div className="p-5 rounded-xl bg-white border border-border space-y-2">
-              <span className="text-[10px] font-mono text-text-muted uppercase block">
-                DLD Mortgage Registration Tariff
-              </span>
-              <div className="text-3xl font-extrabold text-text-primary tabular-nums">0.25%</div>
-              <p className="text-[11px] text-text-secondary">
-                0.25% of mortgage value + applicable title deed, document, knowledge, innovation, and registration trustee fees.
+            <div className="p-5 sm:p-6 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-4 shadow-2xs">
+              <div className="space-y-2">
+                <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
+                  <span className="text-[10px] font-mono text-text-muted uppercase font-bold tracking-wider">
+                    Mortgage Registration Tariff
+                  </span>
+                  <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                    DLD TARIFF
+                  </span>
+                </div>
+                <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tabular-nums leading-none min-h-[2.25rem] flex items-baseline">
+                  0.25%
+                </div>
+              </div>
+              <p className="text-[11px] text-text-secondary pt-3 border-t border-border-subtle leading-relaxed">
+                0.25% of mortgage value + applicable title deed, document, knowledge, and innovation tariffs.
               </p>
             </div>
           </div>
