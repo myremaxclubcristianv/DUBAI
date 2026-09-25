@@ -65,8 +65,12 @@
   --color-error-bg: var(--error-bg);
   --color-info: var(--info);
   --color-info-bg: var(--info-bg);
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-mono: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@utility scale-102 {
+  transform: scale(1.02);
 }
 
 * {

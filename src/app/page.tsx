@@ -29,20 +29,20 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 1. HERO — EDITORIAL COMPOSITION (Left Typography + Right Architectural Visual) */}
       {/* ========================================================================= */}
-      <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 bg-white">
+      <section className="relative pt-8 pb-12 sm:pt-12 sm:pb-16 md:pt-16 md:pb-24 bg-white">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
             {/* Left: Typographic Anchor */}
-            <div className="lg:col-span-6 space-y-8">
-              <div className="space-y-4">
+            <div className="lg:col-span-6 space-y-6 sm:space-y-8">
+              <div className="space-y-3 sm:space-y-4">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-accent" />
-                  <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
                     DUBAI • PRIVATE CLIENT & INVESTMENT INTELLIGENCE
                   </span>
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-text-primary uppercase leading-[0.96]">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-text-primary uppercase leading-[0.98]">
                   Property.
                   <br />
                   Capital.
@@ -52,23 +52,23 @@ export default function Home() {
                   <span className="text-text-secondary font-light">Access.</span>
                 </h1>
 
-                <p className="text-base sm:text-lg text-text-secondary font-normal leading-relaxed pt-2 max-w-lg">
+                <p className="text-sm sm:text-base lg:text-lg text-text-secondary font-normal leading-relaxed max-w-lg">
                   A private-client platform for navigating Dubai real estate, institutional investment underwriting, statutory residency frameworks, and lifestyle access.
                 </p>
               </div>
 
               {/* Action CTAs */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-1">
                 <Link
                   href="/properties"
-                  className="px-6 py-3.5 bg-text-primary hover:bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center gap-2"
+                  className="px-6 py-3.5 bg-text-primary hover:bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-sm flex items-center justify-center gap-2"
                 >
                   <span>Explore Verified Assets</span>
                   <ArrowRight className="h-4 w-4 text-accent" />
                 </Link>
                 <Link
                   href="/private-client"
-                  className="px-6 py-3.5 bg-surface hover:bg-surface-elevated border border-border text-text-primary text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center gap-2"
+                  className="px-6 py-3.5 bg-surface hover:bg-surface-elevated border border-border text-text-primary text-xs font-bold uppercase tracking-wider rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   <span>Private Advisory Desk</span>
                   <ArrowUpRight className="h-4 w-4 text-text-muted" />
@@ -87,16 +87,16 @@ export default function Home() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover group-hover:scale-102 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                <div className="absolute bottom-6 left-6 right-6 text-white space-y-1.5 pointer-events-auto">
-                  <div className="flex items-center justify-between text-[11px] font-mono tracking-wider text-white/80">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 text-white space-y-1.5 pointer-events-auto">
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono tracking-wider text-white/80">
                     <span>{dominantProperty.area_name}</span>
                     <span className="text-[#c9a962]">DLD REGISTERED TITLE DEED</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white tracking-tight">
+                  <h3 className="text-base sm:text-xl font-bold text-white tracking-tight line-clamp-2">
                     {dominantProperty.title}
                   </h3>
-                  <div className="flex items-center justify-between pt-2 border-t border-white/20 text-xs text-white/90 font-mono">
+                  <div className="flex items-center justify-between pt-2 border-t border-white/20 text-[11px] sm:text-xs text-white/90 font-mono">
                     <span>{dominantProperty.developer_name}</span>
                     <span className="font-bold text-white">AED {dominantProperty.asking_price?.toLocaleString()}</span>
                   </div>
@@ -112,13 +112,13 @@ export default function Home() {
       {/* ========================================================================= */}
       <section className="border-y border-border bg-[#fafaf8] py-8">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {/* Metric 01 */}
             <div className="space-y-1.5">
               <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
                 DLD TRANSFER
               </span>
-              <div className="text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
+              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
                 4.00%
               </div>
               <p className="text-xs text-text-secondary leading-relaxed pt-1">
@@ -131,7 +131,7 @@ export default function Home() {
               <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
                 PERSONAL TAX
               </span>
-              <div className="text-3xl font-extrabold text-text-primary tracking-tight">
+              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
                 NO PERSONAL TAX
               </div>
               <p className="text-xs text-text-secondary leading-relaxed pt-1">
@@ -144,7 +144,7 @@ export default function Home() {
               <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
                 GOLDEN RESIDENCY
               </span>
-              <div className="text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
+              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
                 5 / 10 YEARS
               </div>
               <p className="text-xs text-text-secondary leading-relaxed pt-1">
@@ -157,7 +157,7 @@ export default function Home() {
               <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
                 FOREIGN OWNERSHIP — DESIGNATED AREAS
               </span>
-              <div className="text-3xl font-extrabold text-text-primary tracking-tight">
+              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
                 100% TITLE
               </div>
               <p className="text-xs text-text-secondary leading-relaxed pt-1">
@@ -171,14 +171,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 3. SECTION 01 — THE MARKET (Editorial Research Perspective)              */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-white border-b border-border">
+      <section className="py-12 sm:py-16 md:py-24 bg-white border-b border-border">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-border">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 pb-6 border-b border-border">
             <div className="space-y-1.5 max-w-xl">
               <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-accent">
                 01 • THE MARKET
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary">
+              <h2 className="text-2xl sm:text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary">
                 Selected verified indicators.
               </h2>
             </div>
@@ -187,7 +187,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs text-text-secondary">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-xs text-text-secondary">
             <div className="space-y-2 border-l-2 border-accent pl-4">
               <h4 className="font-bold text-text-primary text-sm">Statutory Conveyancing</h4>
               <p className="leading-relaxed">
@@ -213,14 +213,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 4. SECTION 02 — PROPERTY FEATURE (1 Large + 2 Secondary Stacked)         */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-surface-subtle border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="py-12 sm:py-16 md:py-24 bg-surface-subtle border-b border-border">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
             <div>
               <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
                 02 • PROPERTY
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
+              <h2 className="text-2xl sm:text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
                 Selected Dubai opportunities.
               </h2>
             </div>
@@ -234,9 +234,9 @@ export default function Home() {
           </div>
 
           {/* Architectural Asymmetric Composition */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
             {/* Large Dominant Property (Col 7) */}
-            <div className="lg:col-span-7 border border-border rounded-2xl overflow-hidden bg-white flex flex-col justify-between group">
+            <div className="lg:col-span-7 border border-border rounded-2xl overflow-hidden bg-white flex flex-col justify-between group shadow-2xs">
               <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
                 <Image
                   src={dominantProperty.images[0]}
@@ -252,24 +252,24 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="p-6 sm:p-8 space-y-4">
-                <div className="flex items-center justify-between text-xs font-mono text-text-muted">
+              <div className="p-5 sm:p-8 space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-text-muted">
                   <span>{dominantProperty.developer_name} • {dominantProperty.project_name}</span>
                   <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Record" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-extrabold text-text-primary group-hover:text-accent transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-text-primary group-hover:text-accent transition-colors">
                     {dominantProperty.title}
                   </h3>
                   <p className="text-xs text-text-secondary mt-1.5 line-clamp-2 leading-relaxed">
                     {dominantProperty.description}
                   </p>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-border text-xs">
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-4 border-t border-border text-xs">
                   <div className="text-text-muted font-mono">
                     {dominantProperty.bedrooms} BED • {dominantProperty.internal_area_sqft.toLocaleString()} SQFT
                   </div>
-                  <div className="text-xl font-extrabold text-text-primary tabular-nums">
+                  <div className="text-lg sm:text-xl font-extrabold text-text-primary tabular-nums">
                     AED {dominantProperty.asking_price?.toLocaleString()}
                   </div>
                 </div>
@@ -288,7 +288,7 @@ export default function Home() {
               {secondaryProperties.map((prop) => (
                 <div
                   key={prop.id}
-                  className="p-5 rounded-2xl border border-border bg-white hover:border-accent transition-all flex flex-col justify-between group space-y-3"
+                  className="p-4 sm:p-5 rounded-2xl border border-border bg-white hover:border-accent transition-all flex flex-col justify-between group space-y-3 shadow-2xs"
                 >
                   <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-surface-elevated">
                     <Image
@@ -307,7 +307,7 @@ export default function Home() {
 
                   <div className="space-y-1">
                     <div className="text-[10px] font-mono text-text-muted">{prop.developer_name}</div>
-                    <h4 className="text-base font-bold text-text-primary group-hover:text-accent transition-colors">
+                    <h4 className="text-sm sm:text-base font-bold text-text-primary group-hover:text-accent transition-colors">
                       {prop.title}
                     </h4>
                     <div className="flex items-center justify-between pt-2 border-t border-border-subtle text-xs">
@@ -318,7 +318,7 @@ export default function Home() {
 
                   <Link
                     href={`/properties/${prop.id}`}
-                    className="py-2 px-3 rounded-lg border border-border bg-surface hover:bg-white text-xs font-bold text-center text-text-primary transition-colors flex items-center justify-center gap-1"
+                    className="py-2.5 px-3 rounded-lg border border-border bg-surface hover:bg-white text-xs font-bold text-center text-text-primary transition-colors flex items-center justify-center gap-1"
                   >
                     <span>View Dossier</span>
                     <ArrowRight className="h-3 w-3 text-accent" />
@@ -333,14 +333,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 5. SECTION 03 — AREAS (Where Capital Meets Location)                     */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="py-12 sm:py-16 md:py-24 bg-white border-b border-border">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
             <div>
               <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
                 03 • AREAS
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
+              <h2 className="text-2xl sm:text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
                 Where capital meets location.
               </h2>
             </div>
@@ -353,15 +353,15 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
             {/* Primary Geographic Feature (Col 7) */}
-            <div className="lg:col-span-7 p-6 sm:p-8 rounded-2xl border border-border bg-surface-subtle space-y-6">
+            <div className="lg:col-span-7 p-5 sm:p-8 rounded-2xl border border-border bg-surface-subtle space-y-6 shadow-2xs">
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono">
+                <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
                   <span className="text-accent font-bold">PRIME FREEHOLD TERRITORY</span>
                   <span className="text-text-muted">{primaryArea.freehold_status}</span>
                 </div>
-                <h3 className="text-3xl font-black text-text-primary tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-black text-text-primary tracking-tight">
                   {primaryArea.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
@@ -411,14 +411,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 6. SECTION 04 — INVESTMENT (Structured Analytical Framework)             */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-[#111111] text-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-white/10">
+      <section className="py-12 sm:py-16 md:py-24 bg-[#111111] text-white border-b border-border">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 pb-6 border-b border-white/10">
             <div className="space-y-2 max-w-xl">
               <span className="text-[11px] font-mono font-bold text-[#c9a962] uppercase tracking-widest">
                 04 • INVESTMENT
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase">
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight uppercase">
                 Underwriting framework.
               </h2>
               <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
@@ -427,7 +427,7 @@ export default function Home() {
             </div>
             <Link
               href="/investment"
-              className="px-6 py-3 bg-white text-black hover:bg-white/90 text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center gap-2 shrink-0"
+              className="px-6 py-3 bg-white text-black hover:bg-white/90 text-xs font-bold uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 shrink-0"
             >
               <span>Open Underwriting Workspace</span>
               <Calculator className="h-4 w-4 text-accent" />
@@ -482,7 +482,7 @@ export default function Home() {
                   <span className="text-[#c9a962] font-bold">{item.code}</span>
                   <span className="text-white/40 text-[10px] uppercase">{item.subtitle}</span>
                 </div>
-                <h3 className="text-base font-bold text-white tracking-wide">{item.title}</h3>
+                <h3 className="text-sm sm:text-base font-bold text-white tracking-wide">{item.title}</h3>
                 <p className="text-xs text-white/70 leading-relaxed">{item.details}</p>
               </div>
             ))}
@@ -493,14 +493,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 7. SECTION 05 — RESIDENCY (Linear Process Roadmap)                        */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="py-12 sm:py-16 md:py-24 bg-white border-b border-border">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
             <div>
               <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
                 05 • RESIDENCY
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
+              <h2 className="text-2xl sm:text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
                 Golden Visa process.
               </h2>
             </div>
@@ -514,7 +514,7 @@ export default function Home() {
           </div>
 
           {/* Process Timeline: 01 to 06 with Hairline Connectors */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
             {[
               {
                 step: '01',
@@ -570,14 +570,14 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 8. SECTION 06 — LIFESTYLE (Editorial Magazine Feature)                   */}
       {/* ========================================================================= */}
-      <section className="py-16 md:py-24 bg-surface-subtle border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      <section className="py-12 sm:py-16 md:py-24 bg-surface-subtle border-b border-border">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
             <div>
               <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
                 06 • LIFESTYLE
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
+              <h2 className="text-2xl sm:text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
                 Aviation, yachts & gastronomy.
               </h2>
             </div>
@@ -591,9 +591,9 @@ export default function Home() {
           </div>
 
           {/* High-End Editorial Spread: 1 Large Feature + 2 Side Features */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
             {/* Dominant Feature: Private Aviation (Col 7) */}
-            <div className="lg:col-span-7 border border-border rounded-2xl overflow-hidden bg-white flex flex-col justify-between group">
+            <div className="lg:col-span-7 border border-border rounded-2xl overflow-hidden bg-white flex flex-col justify-between group shadow-2xs">
               <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
                 <Image
                   src={lifestyleAviation.image || 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80'}
@@ -603,13 +603,13 @@ export default function Home() {
                   className="object-cover group-hover:scale-102 transition-transform duration-500"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-white/95 text-text-primary shadow-xs uppercase">
+                  <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold bg-white/95 text-text-primary shadow-xs uppercase">
                     Private Aviation & FBO
                   </span>
                 </div>
               </div>
-              <div className="p-6 sm:p-8 space-y-2">
-                <h3 className="text-xl font-bold text-text-primary">{lifestyleAviation.title}</h3>
+              <div className="p-5 sm:p-8 space-y-2">
+                <h3 className="text-lg sm:text-xl font-bold text-text-primary">{lifestyleAviation.title}</h3>
                 <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">{lifestyleAviation.description}</p>
                 <div className="pt-3">
                   <Link
@@ -625,7 +625,7 @@ export default function Home() {
             {/* 2 Side Features: Yachts & Michelin Dining (Col 5) */}
             <div className="lg:col-span-5 flex flex-col justify-between gap-6">
               {/* Yachts */}
-              <div className="p-5 rounded-2xl border border-border bg-white flex flex-col justify-between group space-y-3">
+              <div className="p-4 sm:p-5 rounded-2xl border border-border bg-white flex flex-col justify-between group space-y-3 shadow-2xs">
                 <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-surface-elevated">
                   <Image
                     src={lifestyleYachts.image || 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80'}
@@ -641,7 +641,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-base font-bold text-text-primary">{lifestyleYachts.title}</h4>
+                  <h4 className="text-sm sm:text-base font-bold text-text-primary">{lifestyleYachts.title}</h4>
                   <p className="text-xs text-text-secondary line-clamp-2">{lifestyleYachts.description}</p>
                 </div>
                 <Link
@@ -653,7 +653,7 @@ export default function Home() {
               </div>
 
               {/* Dining */}
-              <div className="p-5 rounded-2xl border border-border bg-white flex flex-col justify-between group space-y-3">
+              <div className="p-4 sm:p-5 rounded-2xl border border-border bg-white flex flex-col justify-between group space-y-3 shadow-2xs">
                 <div className="relative aspect-[16/9] rounded-xl overflow-hidden bg-surface-elevated">
                   <Image
                     src={lifestyleDining.image || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'}
@@ -669,7 +669,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-base font-bold text-text-primary">{lifestyleDining.title}</h4>
+                  <h4 className="text-sm sm:text-base font-bold text-text-primary">{lifestyleDining.title}</h4>
                   <p className="text-xs text-text-secondary line-clamp-2">{lifestyleDining.description}</p>
                 </div>
                 <Link
@@ -687,22 +687,22 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 9. SECTION 07 — PRIVATE CLIENT (Quiet Luxury Private Office Moment)       */}
       {/* ========================================================================= */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
+      <section className="py-16 sm:py-20 md:py-28 bg-white">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 sm:space-y-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-border text-xs font-semibold text-text-secondary">
             <span className="h-2 w-2 rounded-full bg-accent" />
             <span>DISCREET PRIVATE ADVISORY</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-text-primary uppercase leading-[0.98]">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-text-primary uppercase leading-[0.98]">
             Private Client Advisory
           </h2>
 
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
             Direct advisory for principals, family offices, and investors acquiring prime Dubai real estate, structuring portfolios, and securing residency.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-left max-w-2xl mx-auto pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left max-w-2xl mx-auto pt-2">
             {[
               'Property acquisition',
               'Investment underwriting',
