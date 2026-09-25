@@ -274,7 +274,7 @@ function InvestmentFrameworkSection() {
             <ul className="text-xs text-text-secondary space-y-1.5 leading-relaxed pt-2 border-t border-border-subtle">
               <li>• <strong>Developer NOC Fee:</strong> AED 1,000–5,000 (No Objection Certificate required for resale).</li>
               <li>• <strong>Capital Gains Treatment:</strong> No UAE personal income tax on capital gains from individual real estate disposals (Cabinet Decision No. 49 of 2023).</li>
-              <li>• <strong>Repatriation:</strong> 100% unrestricted capital and dividend repatriation through CBUAE banking system.</li>
+              <li>• <strong>Repatriation:</strong> Capital and dividend repatriation through CBUAE banking system without foreign exchange controls.</li>
               <li>• <strong>Settlement Timelines:</strong> Cash transfers settle in 7–14 days; mortgaged transfers 20–35 days.</li>
             </ul>
           </div>
