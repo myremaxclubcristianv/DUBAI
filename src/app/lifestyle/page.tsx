@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { SourceBadge } from '@/components/ui/source-badge'
-import { PageIntro } from '@/components/layout/layout-primitives'
 import {
   ArrowRight,
   Plane,
@@ -13,7 +12,8 @@ import {
   Utensils,
   Building,
   Compass,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react'
 
 const LIFESTYLE_SECTORS = [
@@ -88,56 +88,75 @@ export default function LifestylePage() {
   const otherSectors = LIFESTYLE_SECTORS.slice(2)
 
   return (
-    <div className="bg-white text-text-primary min-h-screen pb-24">
-      {/* 1. EDITORIAL PAGE INTRO */}
-      <PageIntro
-        eyebrow="Licensed Luxury Directory & Private Client Protocols"
-        badge={<SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Operator Registry" />}
-        title="LIFESTYLE"
-        description="Curated luxury directory across private aviation, superyachts, Michelin gastronomy, palatial hospitality, and desert conservation in Dubai."
-      />
+    <div className="bg-black text-white min-h-screen pb-24">
+      {/* 1. APPLE PRO HERO SECTION */}
+      <section className="relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+            <Sparkles className="h-3 w-3 text-gold" />
+            <span className="text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
+              Beyond the Asset • Curated Ecosystem
+            </span>
+          </div>
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
-        {/* 2. DUAL FEATURED MOMENTS (AVIATION & SUPERYACHTS) */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
+                Lifestyle & Protocols<span className="text-gradient-gold">.</span>
+              </h1>
+              <p className="text-base sm:text-xl text-zinc-400 mt-2 max-w-3xl font-normal leading-relaxed">
+                Licensed luxury directory across private aviation, superyachts, Michelin gastronomy, palatial hospitality, and desert conservation in Dubai.
+              </p>
+            </div>
+            <SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Operator Registry" />
+          </div>
+        </div>
+      </section>
+
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
+        {/* 2. DUAL FEATURED KEYNOTE CARDS (AVIATION & SUPERYACHTS) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Aviation Feature */}
           <Link
             href={`/lifestyle/${aviationSector.id}`}
-            className="group border border-border rounded-3xl overflow-hidden bg-white hover:border-accent transition-all duration-300 flex flex-col justify-between shadow-2xs"
+            className="group border border-white/10 rounded-3xl overflow-hidden bg-zinc-950/80 hover:border-gold/40 transition-all duration-300 flex flex-col justify-between shadow-2xl backdrop-blur-md"
           >
             <div>
-              <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
+              <div className="relative aspect-[16/10] bg-zinc-900 overflow-hidden">
                 <Image
                   src={aviationSector.image}
                   alt={aviationSector.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/95 text-text-primary shadow-xs">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-black/70 backdrop-blur-md text-white border border-white/15">
                     {aviationSector.count} Verified FBOs
                   </span>
                 </div>
               </div>
 
               <div className="p-6 sm:p-8 space-y-2">
-                <span className="text-[10px] font-mono font-bold text-accent uppercase tracking-widest block">
+                <span className="text-[10px] font-mono font-bold text-gold uppercase tracking-widest block">
                   01 • EXECUTIVE MOBILITY
                 </span>
-                <h2 className="text-2xl font-black text-text-primary group-hover:text-accent transition-colors">
+                <h2 className="text-2xl font-bold text-white group-hover:text-gold transition-colors">
                   {aviationSector.title}
                 </h2>
-                <p className="text-xs text-text-secondary leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {aviationSector.description}
                 </p>
               </div>
             </div>
 
             <div className="p-6 sm:p-8 pt-0">
-              <div className="w-full py-3 rounded-xl bg-text-primary group-hover:bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors">
+              <div className="w-full py-3.5 rounded-full bg-white text-black group-hover:bg-zinc-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg">
                 <span>View Aviation Directory & Tariffs</span>
-                <ArrowRight className="h-3.5 w-3.5 text-accent" />
+                <ArrowRight className="h-3.5 w-3.5 text-black" />
               </div>
             </div>
           </Link>
@@ -145,53 +164,54 @@ export default function LifestylePage() {
           {/* Superyachts Feature */}
           <Link
             href={`/lifestyle/${yachtSector.id}`}
-            className="group border border-border rounded-3xl overflow-hidden bg-white hover:border-accent transition-all duration-300 flex flex-col justify-between shadow-2xs"
+            className="group border border-white/10 rounded-3xl overflow-hidden bg-zinc-950/80 hover:border-gold/40 transition-all duration-300 flex flex-col justify-between shadow-2xl backdrop-blur-md"
           >
             <div>
-              <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
+              <div className="relative aspect-[16/10] bg-zinc-900 overflow-hidden">
                 <Image
                   src={yachtSector.image}
                   alt={yachtSector.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-102 transition-transform duration-500"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/95 text-text-primary shadow-xs">
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-black/70 backdrop-blur-md text-white border border-white/15">
                     {yachtSector.count} Verified Fleets
                   </span>
                 </div>
               </div>
 
               <div className="p-6 sm:p-8 space-y-2">
-                <span className="text-[10px] font-mono font-bold text-accent uppercase tracking-widest block">
+                <span className="text-[10px] font-mono font-bold text-gold uppercase tracking-widest block">
                   02 • MARINE & BERTHS
                 </span>
-                <h2 className="text-2xl font-black text-text-primary group-hover:text-accent transition-colors">
+                <h2 className="text-2xl font-bold text-white group-hover:text-gold transition-colors">
                   {yachtSector.title}
                 </h2>
-                <p className="text-xs text-text-secondary leading-relaxed">
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                   {yachtSector.description}
                 </p>
               </div>
             </div>
 
             <div className="p-6 sm:p-8 pt-0">
-              <div className="w-full py-3 rounded-xl bg-text-primary group-hover:bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors">
+              <div className="w-full py-3.5 rounded-full bg-white text-black group-hover:bg-zinc-200 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg">
                 <span>View Superyacht Fleets & Rates</span>
-                <ArrowRight className="h-3.5 w-3.5 text-accent" />
+                <ArrowRight className="h-3.5 w-3.5 text-black" />
               </div>
             </div>
           </Link>
         </div>
 
-        {/* 3. ADDITIONAL 5 CURATED SECTOR TILES */}
-        <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-border pb-3">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-text-muted">
+        {/* 3. ADDITIONAL 5 CURATED BENTO TILES */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-gold">
               ADDITIONAL LIFESTYLE SECTORS
             </span>
-            <span className="text-xs text-text-muted font-mono">DET Licensed Protocols</span>
+            <span className="text-xs text-zinc-500 font-mono">DET Licensed Protocols</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
@@ -201,38 +221,39 @@ export default function LifestylePage() {
                 <Link
                   key={sector.id}
                   href={`/lifestyle/${sector.id}`}
-                  className={`group bg-white rounded-2xl border border-border overflow-hidden flex flex-col justify-between hover:border-accent hover:shadow-xs transition-all duration-300 ${spanClass}`}
+                  className={`group bg-zinc-950/80 rounded-3xl border border-white/10 overflow-hidden flex flex-col justify-between hover:border-gold/40 transition-all duration-300 backdrop-blur-md ${spanClass}`}
                 >
                   <div>
-                    <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
+                    <div className="relative aspect-[16/10] bg-zinc-900 overflow-hidden">
                       <Image
                         src={sector.image}
                         alt={sector.title}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover group-hover:scale-102 transition-transform duration-500"
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-white/95 text-text-primary shadow-2xs">
+                        <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-black/70 backdrop-blur-md text-white border border-white/10">
                           {sector.count} Entities
                         </span>
                       </div>
                     </div>
 
-                    <div className="p-5 sm:p-6 space-y-1.5">
-                      <h3 className="text-lg font-bold text-text-primary group-hover:text-accent transition-colors">
+                    <div className="p-6 space-y-2">
+                      <h3 className="text-xl font-bold text-white group-hover:text-gold transition-colors">
                         {sector.title}
                       </h3>
-                      <p className="text-xs text-text-secondary leading-relaxed line-clamp-2">
+                      <p className="text-xs text-zinc-400 leading-relaxed line-clamp-2">
                         {sector.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-5 sm:p-6 pt-0">
-                    <div className="flex items-center gap-1 text-xs font-bold text-accent group-hover:underline">
+                  <div className="p-6 pt-0">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-gold group-hover:translate-x-1 transition-transform">
                       <span>Explore Sector & Protocols</span>
-                      <ArrowRight className="h-3 w-3" />
+                      <ArrowRight className="h-3.5 w-3.5" />
                     </div>
                   </div>
                 </Link>
