@@ -47,7 +47,7 @@ export default function HotelsPage() {
               <div className="space-y-5">
                 <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-white/[0.02]">
                   <Image
-                    src={hotelImages[item.id] || 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'}
+                    src={item.image || hotelImages[item.id] || 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"

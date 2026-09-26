@@ -42,7 +42,7 @@ export default function SafariPage() {
               <div className="space-y-5">
                 <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-white/[0.02]">
                   <Image
-                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80"
+                    src={item.image || 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80'}
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"

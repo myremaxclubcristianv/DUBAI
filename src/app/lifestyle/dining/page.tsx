@@ -49,7 +49,7 @@ export default function DiningPage() {
               <div className="space-y-5">
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-white/[0.02]">
                   <Image
-                    src={diningImages[item.id] || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'}
+                    src={item.image || diningImages[item.id] || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"

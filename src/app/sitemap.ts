@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/lifestyle/hotels',
     '/lifestyle/safari',
     '/lifestyle/yachts',
+    '/lifestyle/clubs',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: currentDate,

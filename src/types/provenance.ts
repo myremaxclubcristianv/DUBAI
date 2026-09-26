@@ -172,7 +172,7 @@ export interface LifestyleRecord {
   id: string
   slug: string
   title: string
-  category: 'yachts' | 'aviation' | 'safari' | 'cars' | 'dining' | 'hotels' | 'concierge'
+  category: 'yachts' | 'aviation' | 'safari' | 'cars' | 'dining' | 'hotels' | 'concierge' | 'clubs'
   operator_name: string
   location: string
   image?: string
