@@ -23,7 +23,7 @@ export function Footer() {
           </div>
 
           {/* Navigation Columns */}
-          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-5 gap-6">
             <div className="space-y-3">
               <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-white block">
                 Discover
@@ -44,6 +44,7 @@ export function Footer() {
                 <li><Link href="/investment" className="text-[#a1a1a6] hover:text-white transition-colors">Underwriting Desk</Link></li>
                 <li><Link href="/market" className="text-[#a1a1a6] hover:text-white transition-colors">Market Intelligence</Link></li>
                 <li><Link href="/buying-guide" className="text-[#a1a1a6] hover:text-white transition-colors">Buying Guide</Link></li>
+                <li><Link href="/map" className="text-[#a1a1a6] hover:text-white transition-colors">Master Map</Link></li>
               </ul>
             </div>
 
@@ -53,8 +54,9 @@ export function Footer() {
               </span>
               <ul className="space-y-2 text-xs">
                 <li><Link href="/residency" className="text-[#a1a1a6] hover:text-white transition-colors">Golden Visa</Link></li>
-                <li><Link href="/residency" className="text-[#a1a1a6] hover:text-white transition-colors">Statutory Criteria</Link></li>
-                <li><Link href="/residency" className="text-[#a1a1a6] hover:text-white transition-colors">Tax Framework</Link></li>
+                <li><Link href="/residency#statutory-criteria" className="text-[#a1a1a6] hover:text-white transition-colors">AED 2M Criteria</Link></li>
+                <li><Link href="/residency#tax-arbitrage" className="text-[#a1a1a6] hover:text-white transition-colors">0% Tax Framework</Link></li>
+                <li><Link href="/lifestyle" className="text-[#a1a1a6] hover:text-white transition-colors">Lifestyle Assets</Link></li>
               </ul>
             </div>
 
@@ -63,10 +65,21 @@ export function Footer() {
                 Private Client
               </span>
               <ul className="space-y-2 text-xs">
-                <li><Link href="/private-client" className="text-accent hover:underline transition-colors font-medium">Advisory Desk →</Link></li>
+                <li><Link href="/private-client" className="text-accent hover:underline transition-colors font-medium">Advisory Mandate →</Link></li>
                 <li><Link href="/client" className="text-[#a1a1a6] hover:text-white transition-colors">Client Workspace</Link></li>
-                <li><Link href="/lifestyle" className="text-[#a1a1a6] hover:text-white transition-colors">Lifestyle Assets</Link></li>
                 <li><Link href="/network" className="text-[#a1a1a6] hover:text-white transition-colors">The Ecosystem</Link></li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-white block">
+                Legal &amp; Trust
+              </span>
+              <ul className="space-y-2 text-xs">
+                <li><Link href="/regulatory" className="text-[#a1a1a6] hover:text-white transition-colors">Statutory Register</Link></li>
+                <li><Link href="/privacy" className="text-[#a1a1a6] hover:text-white transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-[#a1a1a6] hover:text-white transition-colors">Terms of Service</Link></li>
+                <li><Link href="/accessibility" className="text-[#a1a1a6] hover:text-white transition-colors">Accessibility (WCAG)</Link></li>
               </ul>
             </div>
           </div>
