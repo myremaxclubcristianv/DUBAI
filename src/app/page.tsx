@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { DUBAI_AREAS } from '@/lib/data/areas'
 import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
+import { useClient } from '@/lib/context/client-context'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -20,39 +21,50 @@ import {
 } from 'lucide-react'
 
 export default function Home() {
-  const activeProperty = VERIFIED_PROPERTIES[0]
+  const { formatCurrency } = useClient()
+  const [selectedPropertyIndex, setSelectedPropertyIndex] = React.useState(0)
+  const heroProperties = VERIFIED_PROPERTIES.slice(0, 5)
+  const activeProperty = heroProperties[selectedPropertyIndex] || heroProperties[0]
   const primeAreas = DUBAI_AREAS.slice(0, 6)
+
+  // Interactive Live Simulator state
+  const [simValue, setSimValue] = React.useState(5000000)
+  const dldFee = simValue * 0.04
+  const adminFee = 4000
+  const totalAcquisition = simValue + dldFee + adminFee
+  const isGoldenVisa = simValue >= 2000000
+  const estNetRent = simValue * 0.066
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-[#1d1d1f] selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
       {/* ========================================================================= */}
-      {/* 01 — HERO: Apple Keynote White Product Reveal & Cinematic Showcase         */}
+      {/* 01 — HERO: Apple Keynote Interactive Asset Theater                          */}
       {/* ========================================================================= */}
-      <section className="relative pt-16 pb-24 sm:pt-28 sm:pb-36 overflow-hidden border-b border-black/10 bg-white">
-        {/* Subtle Ambient Apple Light Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[400px] bg-gradient-to-b from-[#f5f5f7] via-[#fbfbfd] to-transparent blur-[80px] pointer-events-none -z-10" />
+      <section className="relative pt-16 pb-24 sm:pt-28 sm:pb-36 overflow-hidden border-b border-black/10 bg-gradient-to-b from-white via-[#fbfbfd] to-[#f5f5f7]">
+        {/* Subtle Ambient Apple Light Shimmer */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[500px] bg-gradient-to-b from-[#f5f5f7]/80 via-[#fffbf2]/40 to-transparent blur-[100px] pointer-events-none -z-10" />
 
         <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto">
             {/* Apple Pill Eyebrow */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/10 bg-[#f5f5f7] shadow-xs text-xs font-medium text-[#6e6e73]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-black/10 bg-white/80 backdrop-blur-md shadow-xs text-xs font-medium text-[#6e6e73]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#b8860b] animate-pulse" />
               <span className="font-mono text-[11px] tracking-wider uppercase text-[#1d1d1f] font-bold">
-                DUBAI PRIVATE CLIENT PLATFORM
+                DUBAI SOVEREIGN INTELLIGENCE
               </span>
               <span className="text-black/20">•</span>
-              <span className="text-[11px] text-[#6e6e73]">Statutory Intelligence</span>
+              <span className="text-[11px] text-[#6e6e73]">Official DLD Provenance</span>
             </div>
 
             {/* Apple Keynote Headline */}
             <h1 className="text-5xl sm:text-7xl lg:text-[88px] font-extrabold tracking-tight text-[#1d1d1f] leading-[0.98]">
               Property. Capital. <br />
-              <span className="text-gradient-gold">Absolute Access.</span>
+              <span className="text-gradient-gold">Absolute Precision.</span>
             </h1>
 
             {/* Restrained Subheadline */}
             <p className="text-lg sm:text-2xl text-[#6e6e73] font-normal leading-relaxed max-w-2xl pt-2">
-              An institutional perspective on Dubai prime real estate, deterministic capital underwriting, official Golden Visa pathways, and bespoke lifestyle curation.
+              The institutional standard for Dubai prime freehold acquisitions, deterministic underwriting, official Golden Visa qualification, and sovereign economics.
             </p>
 
             {/* Apple Dual Pill CTA Actions */}
@@ -61,21 +73,21 @@ export default function Home() {
                 href="/properties"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#1d1d1f] text-white hover:bg-[#000000] text-sm font-semibold tracking-tight transition-all shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
               >
-                <span>Explore Properties</span>
+                <span>Explore Properties ({VERIFIED_PROPERTIES.length})</span>
                 <ChevronRight className="h-4 w-4 text-white/70" />
               </Link>
               <Link
                 href="/private-client"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-white hover:bg-[#f5f5f7] text-[#1d1d1f] text-sm font-semibold tracking-tight border border-black/10 transition-all flex items-center justify-center gap-2 shadow-xs hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span>Private Client Desk</span>
+                <span>Private Client Advisory</span>
                 <ArrowUpRight className="h-4 w-4 text-[#86868b]" />
               </Link>
             </div>
           </div>
 
-          {/* Cinematic Media Showcase Frame */}
-          <div className="mt-16 sm:mt-24 relative rounded-[2.5rem] overflow-hidden border border-black/10 shadow-[0_20px_60px_rgba(0,0,0,0.08)] bg-[#f5f5f7]">
+          {/* Interactive Cinematic Asset Theater Frame */}
+          <div className="mt-16 sm:mt-20 relative rounded-[2.5rem] overflow-hidden border border-black/10 shadow-[0_25px_70px_rgba(0,0,0,0.07)] bg-white">
             <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full">
               <Image
                 src={activeProperty.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85'}
@@ -83,38 +95,159 @@ export default function Home() {
                 fill
                 priority
                 sizes="(max-width: 1240px) 100vw, 1240px"
-                className="object-cover"
+                className="object-cover transition-all duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+              {/* Floating Top Pill Badges */}
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-wrap gap-2">
+                <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-sm">
+                  {activeProperty.completion_status}
+                </span>
+                {activeProperty.asking_price && activeProperty.asking_price >= 2000000 && (
+                  <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase bg-emerald-600/90 backdrop-blur-md text-white border border-emerald-500 shadow-sm flex items-center gap-1.5">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    <span>Golden Visa 10-Yr Qualified</span>
+                  </span>
+                )}
+              </div>
             </div>
 
-            {/* Floating Apple Glass Spec Bar */}
-            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 sm:p-6 rounded-2xl bg-white/90 backdrop-blur-2xl border border-black/10 shadow-lg flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            {/* Bottom Specs & Asset Selector Dock */}
+            <div className="p-6 sm:p-8 bg-white border-t border-black/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 text-xs font-mono text-[#6e6e73]">
                   <span className="text-[#b8860b] font-bold uppercase">{activeProperty.area_name}</span>
                   <span>•</span>
                   <span>{activeProperty.developer_name}</span>
+                  <span>•</span>
+                  <span>{activeProperty.internal_area_sqft.toLocaleString()} SQFT</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#1d1d1f] tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#1d1d1f] tracking-tight">
                   {activeProperty.title}
                 </h3>
               </div>
 
-              <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-                <div className="text-right">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#86868b] block font-medium">Asking Price</span>
-                  <span className="text-lg sm:text-2xl font-extrabold text-[#1d1d1f] tabular-nums">
-                    AED {activeProperty.asking_price?.toLocaleString()}
+              {/* Interactive Property Thumbnails Strip */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 w-full lg:w-auto">
+                {heroProperties.map((prop, idx) => (
+                  <button
+                    key={prop.id}
+                    onClick={() => setSelectedPropertyIndex(idx)}
+                    className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
+                      selectedPropertyIndex === idx
+                        ? 'border-[#b8860b] scale-105 shadow-md'
+                        : 'border-transparent opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <Image
+                      src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=200&q=80'}
+                      alt={prop.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+
+              {/* Price & Primary CTA */}
+              <div className="flex items-center gap-4 sm:gap-6 shrink-0 w-full lg:w-auto justify-between lg:justify-end pt-4 lg:pt-0 border-t lg:border-t-0 border-black/5">
+                <div className="text-left lg:text-right">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#86868b] block font-medium">
+                    Asking Price (Live Currency)
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tabular-nums">
+                    {formatCurrency(activeProperty.asking_price)}
                   </span>
                 </div>
                 <Link
                   href={`/properties/${activeProperty.id}`}
-                  className="px-6 py-3 rounded-full bg-[#1d1d1f] text-white hover:bg-[#000000] text-xs font-semibold tracking-tight transition-all flex items-center gap-1.5 shrink-0 shadow-xs"
+                  className="px-6 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#000000] text-xs font-semibold tracking-tight transition-all flex items-center gap-1.5 shrink-0 shadow-md"
                 >
-                  <span>Dossier</span>
+                  <span>Inspect Dossier</span>
                   <ArrowRight className="h-3.5 w-3.5 text-white/70" />
                 </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-Time Interactive Underwriting & Golden Visa Mini-Simulator */}
+          <div className="mt-12 bg-white rounded-[2.5rem] p-8 sm:p-10 border border-black/10 shadow-[0_10px_40px_rgba(0,0,0,0.03)]">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-black/5 gap-4 mb-6">
+              <div className="flex items-center gap-3">
+                <div className="p-3 rounded-2xl bg-[#f5f5f7] border border-black/5">
+                  <Calculator className="h-5 w-5 text-[#b8860b]" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#b8860b] block">
+                    Institutional Valuation Engine
+                  </span>
+                  <h3 className="text-xl font-bold text-[#1d1d1f]">
+                    Instant Acquisition &amp; Golden Visa Calculator
+                  </h3>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-[#6e6e73]">Select Target Investment:</span>
+                <span className="px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-black/10 text-xs font-bold text-[#1d1d1f] font-mono">
+                  {formatCurrency(simValue)}
+                </span>
+              </div>
+            </div>
+
+            {/* Slider Bar */}
+            <div className="mb-8">
+              <input
+                type="range"
+                min="1000000"
+                max="30000000"
+                step="500000"
+                value={simValue}
+                onChange={(e) => setSimValue(Number(e.target.value))}
+                className="w-full accent-[#b8860b] cursor-pointer h-2 bg-[#f5f5f7] rounded-lg"
+              />
+              <div className="flex justify-between text-[11px] font-mono text-[#86868b] mt-2">
+                <span>AED 1,000,000</span>
+                <span>AED 10,000,000</span>
+                <span>AED 20,000,000</span>
+                <span>AED 30,000,000+</span>
+              </div>
+            </div>
+
+            {/* Interactive Output Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-black/5">
+                <span className="text-[10px] uppercase font-bold text-[#86868b] block">4% DLD Tariff</span>
+                <span className="text-base sm:text-lg font-extrabold text-[#1d1d1f] mt-1 block">
+                  {formatCurrency(dldFee)}
+                </span>
+                <span className="text-[10px] text-[#6e6e73]">Fixed statutory conveyance fee</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-black/5">
+                <span className="text-[10px] uppercase font-bold text-[#86868b] block">Total Acquisition</span>
+                <span className="text-base sm:text-lg font-extrabold text-[#1d1d1f] mt-1 block">
+                  {formatCurrency(totalAcquisition)}
+                </span>
+                <span className="text-[10px] text-[#6e6e73]">Includes admin registration</span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-black/5">
+                <span className="text-[10px] uppercase font-bold text-[#86868b] block">Est. Net Annual Yield</span>
+                <span className="text-base sm:text-lg font-extrabold text-emerald-700 mt-1 block">
+                  {formatCurrency(estNetRent)}/yr
+                </span>
+                <span className="text-[10px] text-emerald-800">~6.6% net after service charges</span>
+              </div>
+
+              <div className={`p-4 rounded-2xl border ${isGoldenVisa ? 'bg-emerald-50/50 border-emerald-200 text-emerald-900' : 'bg-zinc-50 border-zinc-200 text-zinc-700'}`}>
+                <span className="text-[10px] uppercase font-bold block">Golden Visa Status</span>
+                <span className="text-base sm:text-lg font-extrabold mt-1 flex items-center gap-1.5 block">
+                  <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                  <span>{isGoldenVisa ? '10-Yr Qualified' : 'Standard Visa'}</span>
+                </span>
+                <span className="text-[10px] opacity-80">{isGoldenVisa ? 'Qualifies under AED 2M law' : 'Requires ≥ AED 2M threshold'}</span>
               </div>
             </div>
           </div>
@@ -506,10 +639,16 @@ export default function Home() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10">
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-1.5">
+                      <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-white/95 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-xs">
                         {prop.completion_status}
                       </span>
+                      {prop.asking_price && prop.asking_price >= 2000000 && (
+                        <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-600/90 backdrop-blur-md text-white border border-emerald-500 shadow-xs flex items-center gap-1">
+                          <ShieldCheck className="h-3 w-3" />
+                          <span>10-Yr Visa</span>
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -528,9 +667,9 @@ export default function Home() {
 
                 <div className="p-6 pt-0 flex items-baseline justify-between border-t border-black/5 mt-4">
                   <div>
-                    <span className="text-[10px] font-mono text-[#86868b] uppercase block">Asking Price</span>
+                    <span className="text-[10px] font-mono text-[#86868b] uppercase block">Asking Valuation</span>
                     <span className="text-lg font-extrabold text-[#1d1d1f] tabular-nums">
-                      AED {prop.asking_price?.toLocaleString()}
+                      {formatCurrency(prop.asking_price)}
                     </span>
                   </div>
                   <span className="text-xs font-bold text-[#b8860b] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">

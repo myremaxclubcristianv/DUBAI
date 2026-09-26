@@ -27,7 +27,12 @@ export interface ClientViewingRequest {
   status: 'REQUESTED' | 'PREPARED_LOCALLY' | 'CONFIRMED'
 }
 
+export type SupportedCurrency = 'AED' | 'USD' | 'EUR' | 'GBP'
+
 interface ClientContextType {
+  currency: SupportedCurrency
+  setCurrency: (c: SupportedCurrency) => void
+  formatCurrency: (amountAed: number | undefined | null) => string
   shortlist: string[]
   shortlistIds: string[]
   comparisonIds: string[]
@@ -105,10 +110,38 @@ const ClientContext = React.createContext<ClientContextType | undefined>(undefin
 export function ClientProvider({ children }: { children: React.ReactNode }) {
   const { addToast } = useToast()
 
+  const [currency, setCurrency] = useLocalStorage<SupportedCurrency>('dubai_client_currency', 'AED')
   const [shortlistIds, setShortlistIds] = useLocalStorage<string[]>('dubai_client_shortlist', EMPTY_STRINGS)
   const [comparisonIds, setComparisonIds] = useLocalStorage<string[]>('dubai_client_comparison', EMPTY_STRINGS)
   const [savedSearches, setSavedSearches] = useLocalStorage<SavedSearchItem[]>('dubai_saved_searches', EMPTY_SEARCHES)
   const [viewingRequests, setViewingRequests] = useLocalStorage<ClientViewingRequest[]>('dubai_viewing_requests', EMPTY_VIEWINGS)
+
+  const formatCurrency = React.useCallback(
+    (amountAed: number | undefined | null) => {
+      if (amountAed === undefined || amountAed === null || isNaN(amountAed)) {
+        return 'Price On Request'
+      }
+
+      switch (currency) {
+        case 'USD': {
+          const usdVal = Math.round(amountAed / 3.6725)
+          return `$${usdVal.toLocaleString('en-US')}`
+        }
+        case 'EUR': {
+          const eurVal = Math.round(amountAed / 4.0)
+          return `€${eurVal.toLocaleString('en-US')}`
+        }
+        case 'GBP': {
+          const gbpVal = Math.round(amountAed / 4.7)
+          return `£${gbpVal.toLocaleString('en-US')}`
+        }
+        case 'AED':
+        default:
+          return `AED ${amountAed.toLocaleString('en-US')}`
+      }
+    },
+    [currency]
+  )
 
   const toggleShortlist = React.useCallback(
     (propertyId: string, propertyTitle?: string) => {
@@ -295,6 +328,9 @@ export function ClientProvider({ children }: { children: React.ReactNode }) {
   return (
     <ClientContext.Provider
       value={{
+        currency,
+        setCurrency,
+        formatCurrency,
         shortlist: shortlistIds,
         shortlistIds,
         comparisonIds,

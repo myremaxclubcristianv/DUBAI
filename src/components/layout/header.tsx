@@ -15,7 +15,7 @@ import { useClient } from '@/lib/context/client-context'
 
 export function Header() {
   const pathname = usePathname()
-  const { shortlistIds } = useClient()
+  const { shortlistIds, currency, setCurrency } = useClient()
 
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -85,6 +85,24 @@ export function Header() {
                 ⌘K
               </kbd>
             </button>
+
+            {/* Global Currency Switcher */}
+            <div className="flex items-center bg-[#f5f5f7] rounded-full p-0.5 border border-black/10 text-[11px] font-semibold">
+              {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr) => (
+                <button
+                  key={curr}
+                  onClick={() => setCurrency(curr)}
+                  className={`px-2 py-0.5 rounded-full transition-all text-[10px] font-mono ${
+                    currency === curr
+                      ? 'bg-white text-[#1d1d1f] shadow-xs font-bold'
+                      : 'text-[#86868b] hover:text-[#1d1d1f]'
+                  }`}
+                  title={`Switch currency display to ${curr}`}
+                >
+                  {curr}
+                </button>
+              ))}
+            </div>
 
             {/* Saved Shortlist */}
             <Link
