@@ -33,20 +33,20 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-border transition-all">
         <div className="w-full max-w-6xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* 1. LEFT: DUBAI BRAND LOCKUP */}
+          {/* 1. LEFT: INSTITUTIONAL BRAND LOCKUP */}
           <div className="flex items-center gap-3 shrink-0">
-            <Link href="/" className="group flex flex-col sm:flex-row sm:items-baseline sm:gap-2">
-              <span className="text-sm font-black tracking-tight text-text-primary uppercase group-hover:text-accent transition-colors">
+            <Link href="/" className="group flex flex-col py-1">
+              <span className="text-sm font-black tracking-tight text-text-primary uppercase group-hover:text-accent transition-colors leading-none">
                 DUBAI
               </span>
-              <span className="text-[10px] font-mono tracking-wider text-text-muted uppercase hidden sm:inline">
-                Private Client & Investment
+              <span className="text-[9px] font-mono tracking-widest text-text-muted uppercase mt-0.5">
+                Private Client &amp; Investment
               </span>
             </Link>
           </div>
 
-          {/* 2. CENTER: CLEAN EDITORIAL NAVIGATION (Desktop lg+) */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold">
+          {/* 2. CENTER: EDITORIAL NAVIGATION (Desktop lg+) */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold">
             {navLinks.map((item) => {
               const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
               return (
@@ -55,7 +55,7 @@ export function Header() {
                   href={item.href}
                   className={`tracking-wide text-xs transition-colors py-1 ${
                     isActive
-                      ? 'text-text-primary font-bold border-b-2 border-accent'
+                      ? 'text-text-primary font-bold border-b-2 border-text-primary'
                       : 'text-text-secondary hover:text-text-primary'
                   }`}
                 >
@@ -65,12 +65,12 @@ export function Header() {
             })}
           </nav>
 
-          {/* 3. RIGHT: SEARCH, SHORTLIST, PRIVATE CLIENT DESK */}
+          {/* 3. RIGHT: RESTRAINED UTILITY CONTROLS + PRIVATE CLIENT CTA */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-surface hover:bg-surface-elevated text-xs text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-border bg-surface hover:bg-surface-elevated text-xs text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
               title="Global Search (Cmd+K)"
               aria-label="Open Search"
             >
@@ -81,10 +81,10 @@ export function Header() {
               </kbd>
             </button>
 
-            {/* Saved Properties */}
+            {/* Saved Shortlist */}
             <Link
               href="/client"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-surface hover:bg-surface-elevated text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-border bg-surface hover:bg-surface-elevated text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors"
               title="Saved Shortlist"
               aria-label="View Saved Shortlist"
             >
@@ -100,7 +100,7 @@ export function Header() {
             {/* Private Client Desk CTA */}
             <Link
               href="/private-client"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-text-primary hover:bg-black text-white text-[11px] font-bold uppercase tracking-wider transition-colors shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-text-primary hover:bg-black text-white text-[11px] font-bold uppercase tracking-wider transition-colors shadow-2xs"
             >
               <span>Private Client</span>
               <ArrowRight className="h-3 w-3 text-accent" />
@@ -109,7 +109,7 @@ export function Header() {
             {/* Mobile / Tablet Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg border border-border bg-surface text-text-primary hover:bg-surface-elevated transition-colors lg:hidden cursor-pointer"
+              className="p-1.5 rounded border border-border bg-surface text-text-primary hover:bg-surface-elevated transition-colors lg:hidden cursor-pointer"
               aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -151,7 +151,7 @@ export function Header() {
               <Link
                 href="/private-client"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full py-3 px-4 rounded-xl bg-text-primary text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-3 px-4 rounded bg-text-primary text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
               >
                 <span>Private Client Desk</span>
                 <ArrowRight className="h-4 w-4 text-accent" />

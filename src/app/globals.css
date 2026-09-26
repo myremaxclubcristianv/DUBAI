@@ -69,10 +69,6 @@
   --font-mono: var(--font-geist-mono), "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-@utility scale-102 {
-  transform: scale(1.02);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -83,6 +79,7 @@ html {
   scroll-behavior: smooth;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -96,6 +93,7 @@ body {
   min-width: 320px;
   width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 /* Financial figures monospace alignment */
