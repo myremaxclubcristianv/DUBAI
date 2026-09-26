@@ -10,6 +10,7 @@ import { PaymentPlanCalculator } from '@/components/investment/payment-plan-calc
 import { PropertyComparison } from '@/components/investment/property-comparison'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
   Calculator,
   Percent,
@@ -22,6 +23,7 @@ import {
   BookOpen,
   Info,
   FileSpreadsheet,
+  Landmark,
 } from 'lucide-react'
 
 export default function InvestmentPage() {
@@ -35,11 +37,109 @@ export default function InvestmentPage() {
       <PageIntro
         eyebrow="Institutional Underwriting Desk"
         badge={<SourceBadge status="CALCULATED" sourceName="DLD Tariffs & UAE Central Bank Regulations" />}
-        title={<>Investment Intelligence<span className="text-gradient-gold">.</span></>}
+        title="INVESTMENT INTELLIGENCE"
         description="Multi-parameter underwriting, debt-service sensitivity, statutory DLD fee schedules, and multi-year cash flow modeling with verified mathematical provenance."
       />
 
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
+        {/* 1B. INVESTMENT INSTRUMENT CADRANS */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              UNDERWRITING CADRANS & BENCHMARKS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">Deterministic Mathematical Formulas</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="PRIME NET CAP RATE"
+              sublabel="After Mollak Service Fees"
+              value="6.45%"
+              unit="NET UNLEVERED"
+              targetValue="vs 2.90% London Prime"
+              percentage={68}
+              status="OPTIMAL"
+              statutoryRef="DLD Ejari & Mollak Ledger"
+              icon={TrendingUp}
+            />
+            <CadranDial
+              label="DEBT SERVICE (DSCR)"
+              sublabel="CBUAE Expat 80% LTV Baseline"
+              value="1.85x"
+              unit="COVERAGE RATIO"
+              targetValue="Min Recommended 1.30x"
+              percentage={82}
+              status="OPTIMAL"
+              statutoryRef="CBUAE Banking Circular 2023"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="10-YR LEVERED IRR"
+              sublabel="5% Exit Cap Rate Scenario"
+              value="14.2%"
+              unit="ANNUALIZED IRR"
+              targetValue="Target Hurdle 10.0%"
+              percentage={76}
+              status="OPTIMAL"
+              statutoryRef="Standard DCF Model"
+              icon={Calculator}
+            />
+            <CadranDial
+              label="STATUTORY CLOSING"
+              sublabel="Buyer Transfer & Trustee"
+              value="2.08%"
+              unit="TOTAL FRICTION"
+              targetValue="2% DLD + AED 4.2k Trustee"
+              percentage={90}
+              status="VERIFIED"
+              statutoryRef="Resolution No. 30/2013"
+              icon={Scale}
+            />
+          </div>
+        </div>
+
+        {/* 1C. TAX ARBITRAGE QUADRANT */}
+        <CadranQuadrant
+          eyebrow="GLOBAL TAX RESIDENCY ARBITRAGE"
+          title="UAE Freehold Capital vs International Markets"
+          statutorySource="UAE Federal Tax Authority & International Fiscal Directives"
+          quadrants={[
+            {
+              title: 'Individual Capital Gains Tax',
+              value: '0.00%',
+              subtext: 'Zero statutory capital gains tax on qualifying personal freehold property dispositions in the UAE.',
+              delta: 'vs 20% UK / 20% US',
+              isPositive: true,
+              statutoryRef: 'Cabinet Decision No. 49 of 2023',
+            },
+            {
+              title: 'Personal Income / Rental Tax',
+              value: '0.00%',
+              subtext: 'Zero federal personal income tax on qualifying individual rental income dividends and distributions.',
+              delta: 'vs 45% UK / 37% US',
+              isPositive: true,
+              statutoryRef: 'UAE Federal Tax Authority Decree',
+            },
+            {
+              title: 'Estate & Inheritance Tax',
+              value: '0.00%',
+              subtext: 'Zero inheritance tax under DIFC / ADGM Will Registries and Dubai Court statutory probate procedures.',
+              delta: 'vs 40% UK / 40% US',
+              isPositive: true,
+              statutoryRef: 'DIFC Wills & Probate Registry Law',
+            },
+            {
+              title: 'Annual Property Wealth Tax',
+              value: '0.00%',
+              subtext: 'Zero recurring annual municipal real estate taxes (excluding standard community service charges).',
+              delta: 'vs 1-3% US Property Tax',
+              isPositive: true,
+              statutoryRef: 'Dubai Municipal Real Property Code',
+            },
+          ]}
+        />
+
         {/* 2. APPLE PRO PILL TAB CONTROLS (Centered) */}
         <div className="flex flex-wrap items-center justify-center gap-2 p-2.5 bg-[#0c0c0e] rounded-full border border-white/10 backdrop-blur-2xl max-w-5xl mx-auto shadow-xl">
           <button

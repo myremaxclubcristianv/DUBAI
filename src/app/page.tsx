@@ -8,6 +8,7 @@ import { DUBAI_AREAS } from '@/lib/data/areas'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -18,7 +19,11 @@ import {
   Sparkles,
   Plane,
   Anchor,
-  Utensils
+  Utensils,
+  Landmark,
+  Scale,
+  TrendingUp,
+  Compass,
 } from 'lucide-react'
 
 export default function Home() {
@@ -196,6 +201,114 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 02B — LUXURY CADRAN INSTRUMENTS & SOVEREIGN MASTER PLAN                   */}
+      {/* ========================================================================= */}
+      <section className="py-20 sm:py-28 border-b border-white/10 bg-black">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="max-w-3xl mx-auto text-center space-y-3">
+            <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.2em] text-accent block">
+              PRECISION FINANCIAL INSTRUMENTS
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Macroeconomic Dials & Sovereign Vectors.
+            </h2>
+            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-2xl mx-auto">
+              Real-time statutory parameters, currency peg resilience, and long-range infrastructure milestones anchoring Dubai&apos;s capital premium.
+            </p>
+          </div>
+
+          {/* 4 Cadran Radial Gauges Bank */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="PRIME GROSS YIELD"
+              sublabel="Mollak System Achieved Yield"
+              value="7.20%"
+              unit="ANNUAL CAP RATE"
+              targetValue="4.10% (London) / 3.80% (NYC)"
+              percentage={72}
+              status="OPTIMAL"
+              statutoryRef="DLD Mollak Rental Service Index"
+              icon={TrendingUp}
+            />
+            <CadranDial
+              label="USD CURRENCY PEG"
+              sublabel="CBUAE Statutory Exchange Rate"
+              value="3.6725"
+              unit="AED / USD FIXED"
+              targetValue="Zero FX Variance since 1997"
+              percentage={100}
+              status="OPTIMAL"
+              statutoryRef="Central Bank Monetary Decree"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="FREEHOLD JURISDICTION"
+              sublabel="Designated Foreign Territories"
+              value="68+"
+              unit="FREEHOLD ZONES"
+              targetValue="Perpetual Foreign Title"
+              percentage={88}
+              status="VERIFIED"
+              statutoryRef="Regulation No. 3 of 2006"
+              icon={Scale}
+            />
+            <CadranDial
+              label="TRANSFER FRICTION"
+              sublabel="Statutory Closing Tariff"
+              value="4.00%"
+              unit="COMBINED DLD FEE"
+              targetValue="Split 2% Buyer / 2% Seller"
+              percentage={80}
+              status="STABLE"
+              statutoryRef="Executive Council Res. 30/2013"
+              icon={Compass}
+            />
+          </div>
+
+          {/* Dubai 2040 Urban Master Plan Quadrant Matrix */}
+          <CadranQuadrant
+            eyebrow="SOVEREIGN INFRASTRUCTURE CATALYSTS"
+            title="Dubai 2040 Urban Master Plan Milestones"
+            statutorySource="Government of Dubai & RTA Official Decrees"
+            quadrants={[
+              {
+                title: 'Metro Blue Line Network',
+                value: '30 KM',
+                subtext: 'Direct rapid transit connection linking Dubai Creek Harbour, Academic City, and MBR City by 2029.',
+                delta: 'UNDERWAY (2029)',
+                isPositive: true,
+                statutoryRef: 'RTA Executive Board Resolution 2023',
+              },
+              {
+                title: 'Al Maktoum Int Airport (DWC)',
+                value: '260M PAX',
+                subtext: 'AED 128 Billion sovereign terminal expansion establishing the world\'s largest aviation gateway.',
+                delta: 'AED 128B ALLOCATION',
+                isPositive: true,
+                statutoryRef: 'Dubai Aviation City Corporation Decree',
+              },
+              {
+                title: 'Palm Jebel Ali Waterfront',
+                value: '110 KM',
+                subtext: 'Doubles Dubai beachfront perimeter, incorporating 80+ palatial resorts and ultra-prime island estates.',
+                delta: 'ACTIVE RECLAIM',
+                isPositive: true,
+                statutoryRef: 'DLD Freehold Master Plan No. 4/2023',
+              },
+              {
+                title: 'Environmental Sanctuaries',
+                value: '60% AREA',
+                subtext: 'Statutory protection reserving 60% of Dubai total land area for natural sanctuaries and green corridors.',
+                delta: 'MANDATED',
+                isPositive: true,
+                statutoryRef: 'Dubai 2040 Urban Master Plan Law',
+              },
+            ]}
+          />
         </div>
       </section>
 

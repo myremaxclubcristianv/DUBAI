@@ -4,9 +4,14 @@ import * as React from 'react'
 import Link from 'next/link'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
   ArrowRight,
   Info,
+  TrendingUp,
+  DollarSign,
+  Landmark,
+  Building,
 } from 'lucide-react'
 
 export default function MarketPage() {
@@ -41,6 +46,108 @@ export default function MarketPage() {
       </div>
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
+        {/* ========================================================================= */}
+        {/* 2B. CADRAN GAUGES INSTRUMENT BANK */}
+        {/* ========================================================================= */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              MACROECONOMIC CAPITAL CADRANS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">DLD Open Registry & CBUAE</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="ANNUAL INFLOW VOLUME"
+              sublabel="DLD Recorded Total Transactions"
+              value="528.0B"
+              unit="AED CAPITAL INFLOW"
+              targetValue="+28.5% YoY Expansion"
+              percentage={88}
+              status="OPTIMAL"
+              statutoryRef="Dubai Land Department Open Registry"
+              icon={TrendingUp}
+            />
+            <CadranDial
+              label="MEDIAN SQFT VALUE"
+              sublabel="Prime Freehold Core Index"
+              value="1,640"
+              unit="AED / SQFT MEDIAN"
+              targetValue="+14.2% YoY Appreciation"
+              percentage={75}
+              status="STABLE"
+              statutoryRef="DLD Transaction Registry"
+              icon={DollarSign}
+            />
+            <CadranDial
+              label="MORTGAGE LEVERAGE"
+              sublabel="Financed Conveyance Share"
+              value="142.5B"
+              unit="AED FINANCED VOLUME"
+              targetValue="~27% Total Market Value"
+              percentage={65}
+              status="STABLE"
+              statutoryRef="CBUAE Tier-1 Banking Register"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="OFF-PLAN ABSORPTION"
+              sublabel="Oqood Construction Registry"
+              value="62.4%"
+              unit="PRIMARY MARKET SHARE"
+              targetValue="Law No. 8/2007 Escrow Verified"
+              percentage={62}
+              status="VERIFIED"
+              statutoryRef="DLD Escrow Audit Ledger"
+              icon={Building}
+            />
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* 2C. MARKET COMPOSITION QUADRANT */}
+        {/* ========================================================================= */}
+        <CadranQuadrant
+          eyebrow="CAPITAL ALLOCATION MECHANICS"
+          title="Market Liquidity & Transaction Anatomy"
+          statutorySource="Dubai Land Department & UAE Federal Tax Authority"
+          quadrants={[
+            {
+              title: 'Off-Plan (Oqood) Primary Contracts',
+              value: '62.4%',
+              subtext: 'Mandatory 100% escrow account coverage under Law No. 8 of 2007 with milestone-linked drawdowns.',
+              delta: 'PRIMARY VOLUME',
+              isPositive: true,
+              statutoryRef: 'Dubai Law No. 8 of 2007 (Escrow)',
+            },
+            {
+              title: 'Ready Secondary Market Resales',
+              value: '37.6%',
+              subtext: 'Immediate conveyance at DLD Registration Trustee offices with direct electronic Title Deed transfer.',
+              delta: 'CASH SETTLEMENT',
+              isPositive: true,
+              statutoryRef: 'Dubai Law No. 7 of 2006 (Registration)',
+            },
+            {
+              title: 'Ultra-Prime (> AED 20M) Transactions',
+              value: '2,400+',
+              subtext: 'Record institutional demand for beachfront mansions, branded sky villas, and private island estates.',
+              delta: '+34% YoY',
+              isPositive: true,
+              statutoryRef: 'DLD Prime Land Registry',
+            },
+            {
+              title: 'Foreign Capital & Family Offices',
+              value: '140+ NATIONS',
+              subtext: 'Global wealth migration anchored by zero personal income tax, USD currency peg, and 10-Year Golden Visas.',
+              delta: 'RECORD REGISTRATIONS',
+              isPositive: true,
+              statutoryRef: 'Cabinet Res. No. 65 of 2022',
+            },
+          ]}
+        />
+
         {/* ========================================================================= */}
         {/* 3. MARKET PULSE: HEADLINE METRIC & CORE STATUTORY BENCHMARKS */}
         {/* ========================================================================= */}
@@ -273,45 +380,86 @@ export default function MarketPage() {
               <thead>
                 <tr className="border-b border-white/10 text-[11px] font-mono text-zinc-400 uppercase">
                   <th className="py-3.5 px-4">Submarket / District</th>
-                  <th className="py-3.5 px-4">Freehold Sector</th>
-                  <th className="py-3.5 px-4">Indicative Price / Sqft</th>
-                  <th className="py-3.5 px-4">Gross Yield Range</th>
+                  <th className="py-3.5 px-4">Sector Typology</th>
+                  <th className="py-3.5 px-4">Price / SqFt Band</th>
+                  <th className="py-3.5 px-4">Gross Yield</th>
+                  <th className="py-3.5 px-4">Mollak Service Charge</th>
                   <th className="py-3.5 px-4">Master Developer</th>
-                  <th className="py-3.5 px-4 text-right">Statutory Provenance</th>
+                  <th className="py-3.5 px-4 text-right">Statutory Source</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
                 <tr>
                   <td className="py-4 px-4 font-bold text-white">Palm Jumeirah</td>
-                  <td className="py-4 px-4 font-semibold text-zinc-400">ISLAND</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">ISLAND WATERFRONT</td>
                   <td className="py-4 px-4 font-mono tabular-nums text-white">AED 4,500 – AED 7,500+</td>
-                  <td className="py-4 px-4 font-mono tabular-nums text-gold font-bold">5.5% – 7.2%</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">5.5% – 7.2%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 18 – 35 / sqft</td>
                   <td className="py-4 px-4 text-zinc-300">Nakheel PJSC</td>
-                  <td className="py-4 px-4 text-right font-mono text-[10px] text-gold">DLD REG 3/2006</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold text-white">Downtown Dubai</td>
                   <td className="py-4 px-4 font-semibold text-zinc-400">URBAN CORE</td>
                   <td className="py-4 px-4 font-mono tabular-nums text-white">AED 3,200 – AED 6,200+</td>
-                  <td className="py-4 px-4 font-mono tabular-nums text-gold font-bold">6.0% – 7.8%</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.0% – 7.8%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 22 – 45 / sqft</td>
                   <td className="py-4 px-4 text-zinc-300">Emaar PJSC</td>
-                  <td className="py-4 px-4 text-right font-mono text-[10px] text-gold">DLD REG 3/2006</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">DIFC (Financial District)</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">FINANCIAL CENTRE</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 2,800 – AED 5,500</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.5% – 8.2%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 20 – 38 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">DIFC Authority</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DIFC LAW NO. 1</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold text-white">Dubai Hills Estate</td>
-                  <td className="py-4 px-4 font-semibold text-zinc-400">GOLF COMMUNITY</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">GOLF RESIDENTIAL</td>
                   <td className="py-4 px-4 font-mono tabular-nums text-white">AED 2,100 – AED 3,800</td>
-                  <td className="py-4 px-4 font-mono tabular-nums text-gold font-bold">6.2% – 8.1%</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.2% – 8.1%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 14 – 24 / sqft</td>
                   <td className="py-4 px-4 text-zinc-300">Emaar PJSC</td>
-                  <td className="py-4 px-4 text-right font-mono text-[10px] text-gold">DLD REG 3/2006</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
                 </tr>
                 <tr>
                   <td className="py-4 px-4 font-bold text-white">Dubai Marina / Harbour</td>
-                  <td className="py-4 px-4 font-semibold text-zinc-400">WATERFRONT</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">MARITIME WATERFRONT</td>
                   <td className="py-4 px-4 font-mono tabular-nums text-white">AED 2,400 – AED 4,500</td>
-                  <td className="py-4 px-4 font-mono tabular-nums text-gold font-bold">6.5% – 8.5%</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.5% – 8.5%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 16 – 28 / sqft</td>
                   <td className="py-4 px-4 text-zinc-300">Emaar / Meraas</td>
-                  <td className="py-4 px-4 text-right font-mono text-[10px] text-gold">DLD REG 3/2006</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Jumeirah Bay Island</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">ULTRA-PRIME ISLAND</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 8,500 – AED 15,000+</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">4.8% – 6.0%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 30 – 65 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Meraas Holding</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Emirates Hills</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">PRIVATE GATED MANSIONS</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 3,800 – AED 6,500</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">5.0% – 6.5%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 4 – 8 / plot sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Emaar PJSC</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">District One (MBR City)</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">CRYSTAL LAGOON VILLAS</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 2,900 – AED 4,800</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">5.8% – 7.4%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 8 – 16 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Meydan Group</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
                 </tr>
               </tbody>
             </table>

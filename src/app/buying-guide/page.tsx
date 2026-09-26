@@ -4,12 +4,17 @@ import * as React from 'react'
 import Link from 'next/link'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
   CheckCircle2,
   ChevronDown,
   ChevronUp,
   Info,
   ArrowRight,
+  Landmark,
+  Scale,
+  CreditCard,
+  FileCheck,
 } from 'lucide-react'
 
 type ClassificationType = 
@@ -221,6 +226,104 @@ export default function BuyingGuidePage() {
             <span>[VERIFY WITH PROFESSIONAL]</span>
           </div>
         </div>
+
+        {/* 2B. STATUTORY CONVEYANCING CADRANS */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              STATUTORY CONVEYANCING CADRANS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">Executive Council Res. No. 30 of 2013</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="DLD TRANSFER FEE"
+              sublabel="Statutory Closing Tariff"
+              value="4.00%"
+              unit="COMBINED TARIFF"
+              targetValue="Split 2% Buyer / 2% Seller"
+              percentage={80}
+              status="VERIFIED"
+              statutoryRef="Resolution No. 30/2013"
+              icon={Scale}
+            />
+            <CadranDial
+              label="TRUSTEE REGISTRATION"
+              sublabel="Property Value ≥ AED 500k"
+              value="4,000"
+              unit="AED + 5% VAT (AED 4,200)"
+              targetValue="AED 2,000 if < AED 500k"
+              percentage={90}
+              status="VERIFIED"
+              statutoryRef="DLD Trustee Schedule"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="MOU SECURITY DEPOSIT"
+              sublabel="RERA Form F Escrow Cheque"
+              value="10.00%"
+              unit="HELD IN ESCROW"
+              targetValue="Manager Cheque Standard"
+              percentage={100}
+              status="OPTIMAL"
+              statutoryRef="Dubai Law No. 85/2006"
+              icon={CreditCard}
+            />
+            <CadranDial
+              label="TITLE DEED ISSUANCE"
+              sublabel="Electronic Ledger Update"
+              value="AED 250"
+              unit="E-CERTIFICATE"
+              targetValue="Instant Conveyance Closing"
+              percentage={95}
+              status="VERIFIED"
+              statutoryRef="Dubai Law No. 7/2006"
+              icon={FileCheck}
+            />
+          </div>
+        </div>
+
+        {/* 2C. STATUTORY CONVEYANCING FEE QUADRANT */}
+        <CadranQuadrant
+          eyebrow="TRANSACTION COST TAXONOMY"
+          title="Complete Statutory Closing Fee Breakdown"
+          statutorySource="Dubai Land Department (DLD) & RERA Regulatory Fee Tables"
+          quadrants={[
+            {
+              title: 'Buyer DLD Transfer Fee (2%)',
+              value: '2.00% + AED 580',
+              subtext: 'Buyer standard share of 4% combined transfer fee plus AED 250 Title Deed + AED 250 Map + AED 20 Knowledge/Innovation.',
+              delta: 'STATUTORY',
+              isPositive: true,
+              statutoryRef: 'Executive Council Res. 30/2013',
+            },
+            {
+              title: 'DLD Registration Trustee Fee',
+              value: 'AED 4,200',
+              subtext: 'Mandatory Trustee conveyance fee collected at counter (AED 4,000 + 5% VAT for assets ≥ AED 500k).',
+              delta: 'MANDATORY',
+              isPositive: true,
+              statutoryRef: 'DLD Trustee Tariff Table',
+            },
+            {
+              title: 'RERA Brokerage Commission',
+              value: '2.00% + 5% VAT',
+              subtext: 'Standard licensed real estate consultancy fee split 2% buyer side under RERA Form B mandate.',
+              delta: 'PROFESSIONAL',
+              isPositive: true,
+              statutoryRef: 'Dubai Law No. 85/2006',
+            },
+            {
+              title: 'Master Developer NOC Tariff',
+              value: 'AED 500 – 5,000',
+              subtext: 'Developer resale clearance certificate verifying all service charges and utility accounts are zero-arrears.',
+              delta: 'CLEARANCE',
+              isPositive: true,
+              statutoryRef: 'DLD Master Community Rules',
+            },
+          ]}
+        />
 
         {/* 3. 12-STAGE TIMELINE ACCORDION */}
         <div className="space-y-4">

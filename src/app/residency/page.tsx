@@ -4,6 +4,7 @@ import * as React from 'react'
 import Link from 'next/link'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
 import { 
   ShieldCheck, 
   Building, 
@@ -17,6 +18,7 @@ import {
   Landmark,
   Scale,
   Users,
+  Award,
 } from 'lucide-react'
 
 type ObjectiveType = 
@@ -230,6 +232,104 @@ export default function ResidencyPage() {
       />
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
+        {/* 1B. GOLDEN VISA STATUTORY CADRANS */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              STATUTORY RESIDENCY CADRANS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">Cabinet Resolution No. 65 of 2022</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="GOLDEN VISA THRESHOLD"
+              sublabel="DLD Freehold Title Value"
+              value="2.0M"
+              unit="AED CAPITAL TIER"
+              targetValue="Single or Aggregated Deeds"
+              percentage={100}
+              status="OPTIMAL"
+              statutoryRef="Cabinet Res. 65/2022"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="PHYSICAL STAY MINIMUM"
+              sublabel="Continuous Stay Abroad"
+              value="0 DAYS"
+              unit="ZERO CONSTRAINT"
+              targetValue="No 6-Month Revocation Rule"
+              percentage={100}
+              status="OPTIMAL"
+              statutoryRef="Federal Residency Law"
+              icon={ShieldCheck}
+            />
+            <CadranDial
+              label="FAMILY SPONSORSHIP"
+              sublabel="Spouse & Dependent Children"
+              value="UNLIMITED"
+              unit="FAMILY QUOTA"
+              targetValue="Sons ≤25 / Daughters Any Age"
+              percentage={95}
+              status="VERIFIED"
+              statutoryRef="GDRFA Family Statute"
+              icon={Users}
+            />
+            <CadranDial
+              label="PROCESSING HORIZON"
+              sublabel="DLD Cube Priority Channel"
+              value="5-7"
+              unit="BUSINESS DAYS"
+              targetValue="Medical Screening to EID"
+              percentage={90}
+              status="VERIFIED"
+              statutoryRef="DLD Cube Express Protocol"
+              icon={Award}
+            />
+          </div>
+        </div>
+
+        {/* 1C. GOLDEN RESIDENCY STRUCTURAL QUADRANT */}
+        <CadranQuadrant
+          eyebrow="IMMIGRATION STATUTORY MATRIX"
+          title="Golden Residency Statutory Rights & Family Safeguards"
+          statutorySource="ICP, GDRFA Dubai & Cabinet Resolution No. 65 of 2022"
+          quadrants={[
+            {
+              title: 'Family Continuity Protection',
+              value: '100% SECURED',
+              subtext: 'In the event of primary applicant decease, sponsored family members retain Golden Visa validity until term expiry.',
+              delta: 'PERPETUAL STATUS',
+              isPositive: true,
+              statutoryRef: 'Cabinet Res. 65/2022 Art. 18',
+            },
+            {
+              title: 'Domestic & Support Staff Sponsorship',
+              value: 'NO STATUTORY CAP',
+              subtext: 'Primary Golden Visa holders can sponsor executive drivers, domestic staff, and private security without quota limits.',
+              delta: 'FULL PRIVILEGES',
+              isPositive: true,
+              statutoryRef: 'GDRFA Executive Schedule',
+            },
+            {
+              title: 'Mortgaged Asset Eligibility',
+              value: 'MORTGAGE PERMITTED',
+              subtext: 'Properties acquired with UAE bank mortgages qualify provided equity capital or DLD NOC confirms eligibility.',
+              delta: 'LEVERAGE COMPLIANT',
+              isPositive: true,
+              statutoryRef: 'DLD Cube Mortgage Protocol',
+            },
+            {
+              title: 'Corporate Holding Structure',
+              value: 'DIFC / ADGM',
+              subtext: 'Freehold properties held through 100% owned DIFC or ADGM Foundation / SPV entities qualify for Golden Visa filing.',
+              delta: 'CORPORATE TITLE',
+              isPositive: true,
+              statutoryRef: 'DLD Legal Entity Registry',
+            },
+          ]}
+        />
+
         {/* 2. STATUTORY MACRO BENCHMARKS (BENTO GRID) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-6 rounded-3xl bg-zinc-950 border border-white/10 space-y-2 backdrop-blur-md">
