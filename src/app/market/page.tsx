@@ -461,6 +461,60 @@ export default function MarketPage() {
                   <td className="py-4 px-4 text-zinc-300">Meydan Group</td>
                   <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
                 </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Bluewaters Island</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">ISLAND HOSPITALITY</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 3,600 – AED 6,000</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.2% – 7.9%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 24 – 38 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Meraas Holding</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Dubai Creek Harbour</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">WATERFRONT RESIDENTIAL</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 1,950 – AED 3,200</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.8% – 8.6%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 16 – 26 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Emaar PJSC</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">City Walk (Jumeirah)</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">URBAN LOW-RISE</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 2,700 – AED 4,400</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.4% – 7.9%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 20 – 32 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Meraas Holding</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Sobha Hartland (MBR City)</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">SANCTUARY WATERFRONT</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 2,200 – AED 3,600</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">6.9% – 8.4%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 15 – 25 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Sobha Realty</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Palm Jebel Ali</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">FUTURE ULTRA-PRIME</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 3,200 – AED 5,800</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">5.2% – 6.8%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 12 – 22 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Nakheel PJSC</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
+                <tr>
+                  <td className="py-4 px-4 font-bold text-white">Dubai South (DWC / Expo)</td>
+                  <td className="py-4 px-4 font-semibold text-zinc-400">LOGISTICS & GOLF</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-white">AED 1,150 – AED 1,850</td>
+                  <td className="py-4 px-4 font-mono tabular-nums text-accent font-bold">7.8% – 9.6%</td>
+                  <td className="py-4 px-4 font-mono text-zinc-300">AED 10 – 16 / sqft</td>
+                  <td className="py-4 px-4 text-zinc-300">Dubai Aviation Corp</td>
+                  <td className="py-4 px-4 text-right font-mono text-[10px] text-accent">DLD REG 3/2006</td>
+                </tr>
               </tbody>
             </table>
           </div>
