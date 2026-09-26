@@ -17,19 +17,19 @@ export default function AviationPage() {
   }
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-white text-[#1d1d1f] min-h-screen pb-24 selection:bg-accent/20 selection:text-[#1d1d1f]">
       {/* 1. CENTERED PAGE INTRO */}
       <PageIntro
         eyebrow="DCAA Licensed Aviation Operators"
         badge={<SourceBadge status="LICENSED OPERATOR" sourceName="Dubai Civil Aviation Authority" />}
-        title="PRIVATE AVIATION & FBO"
+        title={<>Private Aviation & FBO<span className="text-gradient-gold">.</span></>}
         description="VIP Fixed Base Operators (FBO), private jet charters, and certified commercial helicopter transfers operating at Al Maktoum International (DWC) and Dubai International (DXB)."
       />
 
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <Link
           href="/lifestyle"
-          className="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Back to Lifestyle Directory</span>
@@ -37,16 +37,15 @@ export default function AviationPage() {
       </div>
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-10">
-
         {/* Entities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {aviationList.map((item) => (
             <div
               key={item.id}
-              className="p-6 sm:p-8 bg-[#0c0c0e] rounded-3xl border border-white/10 hover:border-accent/40 transition-all duration-300 flex flex-col justify-between space-y-6 group shadow-2xl"
+              className="p-6 sm:p-8 bg-white rounded-3xl border border-black/10 hover:border-black/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group shadow-sm"
             >
               <div className="space-y-5">
-                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-white/[0.02]">
+                <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-[#f5f5f7]">
                   <Image
                     src={aviationImages[item.id] || 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
@@ -55,7 +54,7 @@ export default function AviationPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-black/80 backdrop-blur-md text-white border border-white/10 shadow-lg">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-sm">
                       DCAA Licensed
                     </span>
                   </div>
@@ -63,8 +62,8 @@ export default function AviationPage() {
 
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-xl font-semibold text-white tracking-tight">{item.title}</h3>
-                    <p className="text-xs text-zinc-400 flex items-center gap-1.5 mt-1 font-mono">
+                    <h3 className="text-xl font-extrabold text-[#1d1d1f] tracking-tight">{item.title}</h3>
+                    <p className="text-xs text-[#6e6e73] flex items-center gap-1.5 mt-1 font-mono">
                       <MapPin className="h-3.5 w-3.5 text-accent shrink-0" />
                       <span className="truncate">{item.location}</span>
                     </p>
@@ -72,34 +71,34 @@ export default function AviationPage() {
                   <SourceBadge provenance={item.provenance} showDetailButton={false} />
                 </div>
 
-                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
                   {item.description}
                 </p>
 
                 {item.specs && (
-                  <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/10 text-xs space-y-2 font-mono">
+                  <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5 text-xs space-y-2 font-mono">
                     {Object.entries(item.specs).map(([k, v]) => (
                       <div key={k} className="flex justify-between">
-                        <span className="text-zinc-400">{k}:</span>
-                        <span className="font-medium text-white text-right max-w-[240px]">{v}</span>
+                        <span className="text-[#6e6e73]">{k}:</span>
+                        <span className="font-semibold text-[#1d1d1f] text-right max-w-[240px]">{v}</span>
                       </div>
                     ))}
                   </div>
                 )}
 
                 <div className="pt-2">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-400 block mb-1">Tariff / Charter Structure</span>
-                  <span className="text-base font-semibold text-accent font-mono">{item.price_display}</span>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#6e6e73] font-semibold block mb-1">Tariff / Charter Structure</span>
+                  <span className="text-base font-bold text-accent font-mono">{item.price_display}</span>
                 </div>
               </div>
 
               {item.official_url && (
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-4 border-t border-black/10">
                   <a
                     href={item.official_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-xl border border-white/10 bg-white/[0.03] hover:bg-white hover:text-black text-xs font-semibold text-center transition-all flex items-center justify-center gap-2 cursor-pointer text-zinc-300"
+                    className="w-full py-3 px-4 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-[#1d1d1f] hover:text-white text-xs font-semibold text-center transition-all flex items-center justify-center gap-2 cursor-pointer text-[#1d1d1f]"
                   >
                     <span>Operator Flight Portal</span>
                     <ExternalLink className="h-3.5 w-3.5" />

@@ -139,101 +139,103 @@ const BUYING_STAGES: BuyingStage[] = [
     subtitle: 'Preparation of Official Bank Cheques for DLD Closing',
     classification: 'OFFICIAL_REQUIREMENT',
     classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'Buyer prepares official UAE bank manager cheques for: (1) purchase balance to seller, (2) Buyer DLD transfer fee (2% of price; combined 4% transfer fee is split 2% buyer / 2% seller per official DLD tariff schedule or contractual agreement), (3) DLD Registration Trustee fee (AED 4,000 + 5% VAT), (4) Brokerage commission (2% + 5% VAT).',
-    documents: ['Manager Cheques', 'Proof of Source of Funds', 'Original Passports / EIDs'],
-    statutory_fees: 'DLD Transfer Fee (2% buyer + 2% seller) + AED 250 Title Deed + AED 250/225/100 Map Category + AED 10 Knowledge + AED 10 Innovation + AED 4,000 Trustee (+5% VAT)',
-    responsibilities: 'Buyer bank issues bank-certified manager cheques in exact beneficiary names.',
-    statutory_source: 'Executive Council Resolution No. 30 of 2013.'
+    description: 'Buyer prepares official UAE bank manager cheques for purchase balance, 2% DLD transfer fee, AED 4,200 Registration Trustee fee, and broker commission.',
+    documents: ['Bank Manager Cheques', 'Original Emirates IDs / Passports', 'Approved Developer NOC'],
+    statutory_fees: 'Manager Cheque issuance fee (typically AED 25 per cheque charged by bank)',
+    responsibilities: 'Buyer obtains guaranteed bank manager cheques from their UAE banking institution.',
+    statutory_source: 'DLD Conveyancing Guidelines & Central Bank Standard.'
   },
   {
     step: '10',
-    title: 'Conveyance Closing & Title Deed Issuance',
-    subtitle: 'DLD Registration Trustee Closing & Land Ledger Registration',
+    title: 'DLD Registration Trustee Closing & Conveyance',
+    subtitle: 'Formal Title Transfer & E-Title Deed Issuance',
     classification: 'OFFICIAL_REQUIREMENT',
     classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'Buyer and Seller convene at an authorized DLD Registration Trustee office to execute the transfer. The trustee validates all original documents and immediately triggers title transfer on the DLD central electronic ledger.',
-    documents: ['Original Passports / Emirates IDs', 'Developer NOC', 'Manager Cheques', 'Form F'],
-    statutory_fees: 'Conveyance fees collected at Trustee counter',
-    responsibilities: 'DLD Registration Trustee validates identities, executes transfer, and issues electronic Title Deed.',
-    statutory_source: 'Dubai Law No. 7 of 2006 Concerning Real Property Registration.'
+    description: 'Parties attend a licensed DLD Registration Trustee office. The Trustee verifies identities, logs manager cheques, discharges existing mortgages, registers new title, and triggers electronic Title Deed generation.',
+    documents: ['Original Passports / Emirates IDs', 'Developer NOC', 'Original Title Deed / Form F', 'Manager Cheques'],
+    statutory_fees: '4% Combined DLD fee + AED 4,000 (+5% VAT) Trustee Fee + AED 580 Admin/Map/Knowledge Tariffs',
+    responsibilities: 'DLD Registration Trustee executes legal conveyance on the central land ledger.',
+    statutory_source: 'Executive Council Resolution No. 30 of 2013 on DLD Tariffs.'
   },
   {
     step: '11',
-    title: 'Handover, Utilities & DEWA Activation',
-    subtitle: 'Key Exchange, Snagging Handover & District Cooling',
-    classification: 'GENERAL_GUIDANCE',
-    classificationLabel: 'GENERAL GUIDANCE',
-    description: 'Seller surrenders keys, access fobs, and parking permits to buyer. Buyer activates DEWA move-in, air conditioning account (Empower / Tabreed), and registers the tenancy in Ejari if property is leased.',
-    documents: ['New Electronic Title Deed', 'DEWA Move-in Number', 'Key Handover Protocol Form'],
-    statutory_fees: 'DEWA Deposit: AED 2,000 (Apt) / AED 4,000 (Villa) + AED 130 connection',
-    responsibilities: 'New owner activates utility accounts and assumes physical custody.',
-    statutory_source: 'DEWA Move-In Regulations & DLD Ejari System Rules.'
+    title: 'Utility Transfer, Key Handover & Snagging',
+    subtitle: 'DEWA, Empower / Tabreed, and Access Activation',
+    classification: 'OFFICIAL_REQUIREMENT',
+    classificationLabel: 'OFFICIAL REQUIREMENT',
+    description: 'Buyer activates DEWA (Dubai Electricity and Water Authority) account using the new Title Deed number, settles security deposits, transfers district cooling accounts, and conducts physical unit handover with keys and access fobs.',
+    documents: ['New Electronic Title Deed', 'Passport / Emirates ID Copy', 'DEWA Move-in Form'],
+    statutory_fees: 'DEWA Deposit: AED 2,000 (Apartment) / AED 4,000 (Villa) + AED 130 Connection + District Cooling Deposit',
+    responsibilities: 'Buyer activates utility accounts online and takes formal vacant possession.',
+    statutory_source: 'DEWA & District Cooling Connection Regulations.'
   },
   {
     step: '12',
-    title: 'Residency Application & Post-Purchase Structuring',
-    subtitle: 'Golden Visa (Cabinet Res. No. 65/2022) & Tax Context',
-    classification: 'OFFICIAL_REQUIREMENT',
-    classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'For property value threshold ≥ AED 2,000,000, apply for Real Estate Investor Golden Residency (5 years per UAE Government summary / 10 years per federal service portals) via DLD Cube or GDRFA. Ownership, financing, property eligibility and residency requirements are subject to the competent authority\'s current rules.',
-    documents: ['Electronic Title Deed (≥ AED 2M)', 'Medical Fitness Test', 'Dubai Police Good Conduct Certificate', 'Passport'],
-    statutory_fees: 'DLD Cube Golden Visa statutory fees (approx. AED 9,500 per applicant)',
-    responsibilities: 'Investor files residency petition at DLD Cube headquarters or via GDRFA.',
-    statutory_source: 'Cabinet Resolution No. 65 of 2022 on the Executive Regulations of the Law on Entry and Residence of Foreigners.'
+    title: 'Golden Visa & Investor Residency Filing (If Qualifying)',
+    subtitle: 'DLD Cube Express 10-Year Residency Track',
+    classification: 'GENERAL_GUIDANCE',
+    classificationLabel: 'GENERAL GUIDANCE',
+    description: 'For acquisitions meeting or exceeding AED 2,000,000, apply for the 10-Year Real Estate Investor Golden Residency Visa via DLD Cube. Complete medical fitness examination, Emirates ID biometrics, and family sponsorship.',
+    documents: ['New Title Deed (Value ≥ AED 2M)', 'Passport Copy', 'DHA Health Insurance', 'Police Clearance Certificate'],
+    statutory_fees: 'DLD Cube Golden Visa processing fee (~AED 9,500 to AED 10,500 inclusive of medical, Emirates ID, and stamping)',
+    responsibilities: 'Investor files residency petition through DLD Cube VIP service centre.',
+    statutory_source: 'Cabinet Resolution No. 65 of 2022 on Entry and Residence of Foreigners.'
   }
 ]
 
 export default function BuyingGuidePage() {
-  const [expandedStep, setExpandedStep] = React.useState<string | null>('10')
+  const [expandedStep, setExpandedStep] = React.useState<string | null>('01')
 
   const getBadgeStyle = (classification: ClassificationType) => {
     switch (classification) {
       case 'OFFICIAL_REQUIREMENT':
-        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200'
       case 'GENERAL_GUIDANCE':
-        return 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+        return 'bg-blue-50 text-blue-700 border-blue-200'
       case 'PLATFORM_WORKFLOW':
-        return 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+        return 'bg-amber-50 text-amber-700 border-amber-200'
       case 'VERIFY_WITH_PROFESSIONAL':
-        return 'bg-purple-500/10 text-purple-400 border-purple-500/20'
+        return 'bg-purple-50 text-purple-700 border-purple-200'
+      default:
+        return 'bg-zinc-100 text-zinc-700 border-zinc-200'
     }
   }
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Statutory Conveyancing & Acquisition Roadmap"
         badge={<SourceBadge status="UAE GOVERNMENT" sourceName="DLD & RERA Standard Framework" />}
-        title="BUYING GUIDE"
+        title="Buying Guide."
         description="12-Stage acquisition & conveyancing roadmap. From initial objective definition to DLD registration trustee title deed transfer and Golden Visa processing."
       />
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-8">
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
         {/* 2. CLASSIFICATION LEGEND */}
-        <div className="p-5 rounded-2xl border border-white/10 bg-[#0c0c0e] flex flex-wrap items-center gap-3 text-xs shadow-xl">
-          <span className="font-bold text-zinc-300 uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+        <div className="p-5 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-wrap items-center gap-3 text-xs shadow-xs">
+          <span className="font-bold text-[#1d1d1f] uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border-emerald-200">
             <span>[OFFICIAL REQUIREMENT]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-blue-500/10 text-blue-400 border-blue-500/20">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-blue-50 text-blue-700 border-blue-200">
             <span>[GENERAL GUIDANCE]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-amber-500/10 text-amber-400 border-amber-500/20">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-amber-50 text-amber-700 border-amber-200">
             <span>[PLATFORM WORKFLOW]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-purple-500/10 text-purple-400 border-purple-500/20">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-purple-50 text-purple-700 border-purple-200">
             <span>[VERIFY WITH PROFESSIONAL]</span>
           </div>
         </div>
 
         {/* 2B. STATUTORY CONVEYANCING CADRANS */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+          <div className="flex items-center justify-between border-b border-black/10 pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#b8860b]">
               STATUTORY CONVEYANCING CADRANS
             </span>
-            <span className="text-xs font-mono text-zinc-400">Executive Council Res. No. 30 of 2013</span>
+            <span className="text-xs font-mono text-[#86868b]">Executive Council Res. No. 30 of 2013</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -332,7 +334,7 @@ export default function BuyingGuidePage() {
             return (
               <div
                 key={stage.step}
-                className="rounded-3xl border border-white/10 bg-[#0c0c0e] overflow-hidden transition-all shadow-xl hover:border-accent/40"
+                className="rounded-3xl border border-black/10 bg-white overflow-hidden transition-all shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover"
               >
                 <button
                   type="button"
@@ -340,68 +342,68 @@ export default function BuyingGuidePage() {
                   className="w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
                 >
                   <div className="flex items-start sm:items-center gap-5">
-                    <span className="text-xl sm:text-2xl font-light font-mono text-accent shrink-0">
+                    <span className="text-xl sm:text-2xl font-bold font-mono text-[#b8860b] shrink-0">
                       {stage.step}
                     </span>
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="text-base sm:text-lg font-semibold text-white tracking-tight">
+                        <span className="text-base sm:text-lg font-bold text-[#1d1d1f] tracking-tight">
                           {stage.title}
                         </span>
-                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium border ${getBadgeStyle(stage.classification)}`}>
+                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border ${getBadgeStyle(stage.classification)}`}>
                           [{stage.classificationLabel}]
                         </span>
                       </div>
-                      <p className="text-xs text-zinc-400">{stage.subtitle}</p>
+                      <p className="text-xs text-[#6e6e73]">{stage.subtitle}</p>
                     </div>
                   </div>
 
-                  <div className="p-2.5 rounded-xl bg-white/[0.04] text-zinc-400 shrink-0">
+                  <div className="p-2.5 rounded-xl bg-[#f5f5f7] text-[#1d1d1f] shrink-0">
                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </div>
                 </button>
 
                 {isExpanded && (
-                  <div className="px-6 sm:px-7 pb-7 pt-3 border-t border-white/10 bg-white/[0.01] space-y-6 animate-in fade-in duration-150">
-                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-4xl">
+                  <div className="px-6 sm:px-7 pb-7 pt-4 border-t border-black/10 bg-[#fbfbfd] space-y-6 animate-in fade-in duration-150">
+                    <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed max-w-4xl">
                       {stage.description}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                      <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-full space-y-3">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-widest">
+                      <div className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-3 shadow-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b] tracking-widest">
                           Required Documentation
                         </span>
-                        <ul className="space-y-2 text-zinc-400 pt-2 border-t border-white/5 mt-auto">
+                        <ul className="space-y-2 text-[#6e6e73] pt-2 border-t border-black/5 mt-auto">
                           {stage.documents.map((doc, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0 mt-0.5" />
-                              <span className="text-zinc-300">{doc}</span>
+                              <CheckCircle2 className="h-3.5 w-3.5 text-[#b8860b] shrink-0 mt-0.5" />
+                              <span className="text-[#1d1d1f] font-medium">{doc}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-full space-y-3">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-widest">
+                      <div className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-3 shadow-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b] tracking-widest">
                           Statutory & Professional Fees
                         </span>
-                        <p className="text-zinc-300 leading-relaxed pt-2 border-t border-white/5 mt-auto">
+                        <p className="text-[#1d1d1f] leading-relaxed pt-2 border-t border-black/5 mt-auto font-medium">
                           {stage.statutory_fees}
                         </p>
                       </div>
 
-                      <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-full space-y-3">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-widest">
+                      <div className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-3 shadow-xs">
+                        <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b] tracking-widest">
                           Primary Responsibility
                         </span>
-                        <p className="text-zinc-300 leading-relaxed pt-2 border-t border-white/5 mt-auto">
+                        <p className="text-[#1d1d1f] leading-relaxed pt-2 border-t border-black/5 mt-auto font-medium">
                           {stage.responsibilities}
                         </p>
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-zinc-400">
+                    <div className="pt-4 border-t border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-[#86868b]">
                       <span>Legal Authority: {stage.statutory_source}</span>
                       <span>DLD Verification: Current Official Framework</span>
                     </div>
@@ -413,28 +415,28 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 4. INTAKE PROMPT */}
-        <div className="p-8 sm:p-10 rounded-3xl border border-white/10 bg-[#0c0c0e] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-2xl">
+        <div className="p-8 sm:p-12 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs">
           <div className="space-y-1.5 max-w-xl">
-            <h3 className="text-lg font-semibold text-white tracking-tight">
+            <h3 className="text-xl font-bold text-[#1d1d1f] tracking-tight">
               Ready to initiate a transaction or verify portfolio due diligence?
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
               Cristian Văduva Private Client Advisory coordinates direct DLD conveyancing, trustee settlements, and investor residency files.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black hover:bg-zinc-200 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors shrink-0 cursor-pointer shadow-lg"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1d1d1f] text-white hover:bg-[#000000] rounded-full text-xs font-bold uppercase tracking-wider transition-all shrink-0 cursor-pointer shadow-sm"
           >
             <span>Access Private Client Desk</span>
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 text-white/70" />
           </Link>
         </div>
 
         {/* 5. LEGAL NOTICE */}
-        <div className="p-6 rounded-3xl border border-white/10 bg-white/[0.02] text-xs text-zinc-400 space-y-2">
-          <div className="flex items-center gap-2 font-semibold text-zinc-300">
-            <Info className="h-4 w-4 text-accent" />
+        <div className="p-6 rounded-3xl border border-black/10 bg-[#f5f5f7] text-xs text-[#6e6e73] space-y-2">
+          <div className="flex items-center gap-2 font-bold text-[#1d1d1f]">
+            <Info className="h-4 w-4 text-[#b8860b]" />
             <span>Statutory Conveyancing Disclaimer</span>
           </div>
           <p className="leading-relaxed text-[11px]">

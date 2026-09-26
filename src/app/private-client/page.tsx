@@ -149,12 +149,12 @@ export default function PrivateClientPage() {
   }
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-white text-[#1d1d1f] min-h-screen pb-24 selection:bg-accent/20 selection:text-[#1d1d1f]">
       {/* 1. APPLE PRO CENTERED PAGE INTRO */}
       <PageIntro
         eyebrow="Cristian Văduva Private Client Desk"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Direct Principal Advisory" />}
-        title="PRIVATE CLIENT DESK"
+        title={<>Private Client Desk<span className="text-gradient-gold">.</span></>}
         description="A more considered way to approach Dubai. Direct advisory across prime property, capital structuring, Golden Visa residency, and private lifestyle protocols for principals and single family offices."
       />
 
@@ -169,105 +169,105 @@ export default function PrivateClientPage() {
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">
-              <div className="h-12 w-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-gold">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 hover:border-black/20 hover:shadow-xl transition-all shadow-sm">
+              <div className="h-12 w-12 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-accent">
                 <Building2 className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Real Estate Acquisition</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <h3 className="text-lg font-extrabold text-[#1d1d1f]">Real Estate Acquisition</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
                 Off-market sourcing, branded penthouses, beachfront estates, and direct developer allocation negotiations.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">
-              <div className="h-12 w-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-gold">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 hover:border-black/20 hover:shadow-xl transition-all shadow-sm">
+              <div className="h-12 w-12 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-accent">
                 <Scale className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Investment Structuring</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <h3 className="text-lg font-extrabold text-[#1d1d1f]">Investment Structuring</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
                 Yield underwriting, statutory conveyance audits, multi-asset portfolio rebalancing, and exit horizons.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">
-              <div className="h-12 w-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-gold">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 hover:border-black/20 hover:shadow-xl transition-all shadow-sm">
+              <div className="h-12 w-12 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-accent">
                 <CreditCard className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Mortgage & Leverage</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <h3 className="text-lg font-extrabold text-[#1d1d1f]">Mortgage & Leverage</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
                 Resident and non-resident mortgage pre-approvals via licensed UAE Tier-1 banking partners.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">
-              <div className="h-12 w-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-gold">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 hover:border-black/20 hover:shadow-xl transition-all shadow-sm">
+              <div className="h-12 w-12 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-accent">
                 <ShieldCheck className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Title & Asset Protection</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <h3 className="text-lg font-extrabold text-[#1d1d1f]">Title & Asset Protection</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
                 Comprehensive property structural indemnity, landlord insurance, and high-value asset protection.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">
-              <div className="h-12 w-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-gold">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 hover:border-black/20 hover:shadow-xl transition-all shadow-sm">
+              <div className="h-12 w-12 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-accent">
                 <Compass className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Lifestyle & Protocol</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <h3 className="text-lg font-extrabold text-[#1d1d1f]">Lifestyle & Protocol</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
                 Private jet FBO handling, yacht berth allocations, Michelin access, and bespoke relocation logistics.
               </p>
             </div>
 
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">
-              <div className="h-12 w-12 rounded-2xl bg-black border border-white/10 flex items-center justify-center text-gold">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 hover:border-black/20 hover:shadow-xl transition-all shadow-sm">
+              <div className="h-12 w-12 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-accent">
                 <Lock className="h-6 w-6" />
               </div>
-              <h3 className="text-lg font-bold text-white">Residency & Corporate</h3>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <h3 className="text-lg font-extrabold text-[#1d1d1f]">Residency & Corporate</h3>
+              <p className="text-xs text-[#6e6e73] leading-relaxed">
                 10-Year Real Estate Investor Residency processing and DIFC / ADGM holding structure coordination.
               </p>
             </div>
           </div>
         </div>
 
-        {/* 3. DARK TITANIUM MANDATE STRIP */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950 border border-white/10 text-white space-y-3 shadow-2xl backdrop-blur-md">
-          <span className="text-xs font-mono font-bold text-gold uppercase tracking-widest">
+        {/* 3. LIGHT SIGNATURE MANDATE STRIP */}
+        <div className="p-8 sm:p-12 rounded-3xl bg-[#f5f5f7] border border-black/10 text-[#1d1d1f] space-y-3 shadow-sm">
+          <span className="text-xs font-mono font-bold text-accent uppercase tracking-widest">
             THE PRIVATE CLIENT COMMITMENT
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
             Institutional Rigor. Zero Intermediary Friction.
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-400 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#6e6e73] max-w-2xl leading-relaxed">
             Every transaction is executed with direct developer pricing, verified land registry title records, and transparent statutory fee calculations. No inflated valuations or fabricated availability.
           </p>
         </div>
 
         {/* 4. FUNCTIONAL 10-STEP INTAKE WIZARD */}
-        <div className="p-6 sm:p-10 rounded-3xl border border-white/10 bg-zinc-950/90 space-y-8 backdrop-blur-md shadow-2xl">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+        <div className="p-6 sm:p-10 rounded-3xl border border-black/10 bg-white space-y-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/10 pb-6">
             <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-gold">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-accent">
                 CONFIDENTIAL MANDATE INTAKE
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] mt-1">
                 Private Client Advisory Flow
               </h2>
             </div>
             {!isSubmitted && (
-              <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400">
+              <div className="flex items-center gap-1.5 text-xs font-mono text-[#6e6e73]">
                 <span>Step {step} of 10:</span>
-                <span className="font-bold text-gold">{stepsList[step - 1]}</span>
+                <span className="font-bold text-accent">{stepsList[step - 1]}</span>
               </div>
             )}
           </div>
 
           {/* Progress Bar */}
           {!isSubmitted && (
-            <div className="w-full bg-zinc-900 h-2 rounded-full overflow-hidden border border-white/5">
+            <div className="w-full bg-[#f5f5f7] h-2 rounded-full overflow-hidden border border-black/5">
               <div 
-                className="bg-gold h-full transition-all duration-300 shadow-sm"
+                className="bg-[#1d1d1f] h-full transition-all duration-300 shadow-sm"
                 style={{ width: `${(step / 10) * 100}%` }}
               />
             </div>
@@ -275,19 +275,19 @@ export default function PrivateClientPage() {
 
           {isSubmitted ? (
             <div className="py-14 text-center space-y-4">
-              <div className="h-16 w-16 rounded-full bg-gold/10 text-gold border border-gold/30 flex items-center justify-center mx-auto shadow-lg shadow-gold/10">
+              <div className="h-16 w-16 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto shadow-sm">
                 <Check className="h-8 w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-white">
+              <h3 className="text-2xl font-extrabold text-[#1d1d1f]">
                 Mandate Logged in Confidential Desk Queue
               </h3>
-              <p className="text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">
-                Thank you, <strong className="text-white">{fullName}</strong>. Your mandate details have been securely stored in the private client registry queue. Cristian Văduva’s advisory desk will review your specifications discreetly.
+              <p className="text-sm text-[#6e6e73] max-w-md mx-auto leading-relaxed">
+                Thank you, <strong className="text-[#1d1d1f]">{fullName}</strong>. Your mandate details have been securely stored in the private client registry queue. Cristian Văduva’s advisory desk will review your specifications discreetly.
               </p>
               <div className="pt-4">
                 <button
                   onClick={handleReset}
-                  className="px-6 py-3 rounded-full border border-white/15 bg-zinc-900 text-xs font-bold text-white hover:bg-zinc-800 transition-colors cursor-pointer"
+                  className="px-6 py-3 rounded-full border border-black/10 bg-[#f5f5f7] text-xs font-semibold text-[#1d1d1f] hover:bg-[#1d1d1f] hover:text-white transition-colors cursor-pointer"
                 >
                   Submit Another Advisory Mandate
                 </button>
@@ -298,7 +298,7 @@ export default function PrivateClientPage() {
               {/* STEP 01: SERVICE CATEGORY */}
               {step === 1 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 01: What are you looking for?</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 01: What are you looking for?</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       { id: 'REAL_ESTATE', label: 'Prime Real Estate Acquisition', desc: 'Penthouse, waterfront villa, or full-floor residential' },
@@ -313,12 +313,12 @@ export default function PrivateClientPage() {
                         onClick={() => setService(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           service === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -328,7 +328,7 @@ export default function PrivateClientPage() {
               {/* STEP 02: CAPITAL / BUDGET */}
               {step === 2 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 02: Capital & Budget Allocation:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 02: Capital & Budget Allocation:</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {[
                       { id: '2M_5M', label: 'AED 2,000,000 – 5,000,000', desc: 'Prime 1-2BR / Golden Visa threshold' },
@@ -344,12 +344,12 @@ export default function PrivateClientPage() {
                         onClick={() => setBudget(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           budget === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -359,7 +359,7 @@ export default function PrivateClientPage() {
               {/* STEP 03: PURPOSE */}
               {step === 3 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 03: Strategic Purpose of Acquisition:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 03: Strategic Purpose of Acquisition:</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {[
                       { id: 'RESIDENCE', label: 'Primary Family Residence', desc: 'Immediate luxury living & school zoning' },
@@ -374,12 +374,12 @@ export default function PrivateClientPage() {
                         onClick={() => setPurpose(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           purpose === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -389,7 +389,7 @@ export default function PrivateClientPage() {
               {/* STEP 04: TIMELINE */}
               {step === 4 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 04: Execution Timeline:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 04: Execution Timeline:</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                     {[
                       { id: 'IMMEDIATE', label: 'Immediate (< 30 Days)', desc: 'Funds ready for immediate deployment' },
@@ -403,12 +403,12 @@ export default function PrivateClientPage() {
                         onClick={() => setTimeline(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           timeline === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -419,8 +419,8 @@ export default function PrivateClientPage() {
               {step === 5 && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-white">Step 05: Preferred Dubai Communities:</h3>
-                    <span className="text-xs text-zinc-400">Select all relevant locations</span>
+                    <h3 className="text-sm font-bold text-[#1d1d1f]">Step 05: Preferred Dubai Communities:</h3>
+                    <span className="text-xs text-[#6e6e73]">Select all relevant locations</span>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                     {[
@@ -445,13 +445,13 @@ export default function PrivateClientPage() {
                           onClick={() => toggleArea(area)}
                           className={`p-4 rounded-2xl border text-left text-xs font-semibold transition-all cursor-pointer ${
                             isSelected
-                              ? 'border-gold bg-gold/10 text-white shadow-lg ring-1 ring-gold'
-                              : 'border-white/10 bg-black text-zinc-400 hover:bg-zinc-900 hover:text-white'
+                              ? 'border-black bg-[#1d1d1f] text-white shadow-sm ring-1 ring-black'
+                              : 'border-black/10 bg-white text-[#6e6e73] hover:bg-[#f5f5f7] hover:text-[#1d1d1f]'
                           }`}
                         >
                           <div className="flex items-center justify-between">
                             <span>{area}</span>
-                            {isSelected && <Check className="h-4 w-4 text-gold" />}
+                            {isSelected && <Check className="h-4 w-4 text-white" />}
                           </div>
                         </button>
                       )
@@ -463,7 +463,7 @@ export default function PrivateClientPage() {
               {/* STEP 06: PROPERTY TYPE */}
               {step === 6 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 06: Preferred Property Typology:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 06: Preferred Property Typology:</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {[
                       { id: 'PENTHOUSE', label: 'Branded Penthouse / Sky Villa', desc: 'Panoramic city or sea skyline' },
@@ -479,12 +479,12 @@ export default function PrivateClientPage() {
                         onClick={() => setPropertyType(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           propertyType === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -494,7 +494,7 @@ export default function PrivateClientPage() {
               {/* STEP 07: FINANCING */}
               {step === 7 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 07: Financing & Settlement Structure:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 07: Financing & Settlement Structure:</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       { id: 'CASH', label: '100% Cash Settlement', desc: 'Fast trustee transfer via bank manager cheques' },
@@ -508,12 +508,12 @@ export default function PrivateClientPage() {
                         onClick={() => setFinancing(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           financing === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -524,8 +524,8 @@ export default function PrivateClientPage() {
               {step === 8 && (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-sm font-bold text-white">Step 08: Complementary Lifestyle Protocols:</h3>
-                    <span className="text-xs text-zinc-400">Select all applicable services</span>
+                    <h3 className="text-sm font-bold text-[#1d1d1f]">Step 08: Complementary Lifestyle Protocols:</h3>
+                    <span className="text-xs text-[#6e6e73]">Select all applicable services</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {[
@@ -544,13 +544,13 @@ export default function PrivateClientPage() {
                           onClick={() => toggleLifestyle(item)}
                           className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                             isSelected
-                              ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                              : 'border-white/10 bg-black text-zinc-400 hover:bg-zinc-900 hover:text-white'
+                              ? 'border-black bg-[#1d1d1f] text-white shadow-sm ring-1 ring-black'
+                              : 'border-black/10 bg-white text-[#6e6e73] hover:bg-[#f5f5f7] hover:text-[#1d1d1f]'
                           }`}
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold text-white">{item}</span>
-                            {isSelected && <Check className="h-4 w-4 text-gold" />}
+                            <span className="text-xs font-bold">{item}</span>
+                            {isSelected && <Check className="h-4 w-4 text-white" />}
                           </div>
                         </button>
                       )
@@ -562,7 +562,7 @@ export default function PrivateClientPage() {
               {/* STEP 09: RESIDENCY INTEREST */}
               {step === 9 && (
                 <div className="space-y-4">
-                  <h3 className="text-sm font-bold text-white">Step 09: UAE Residency & Visa Strategy:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 09: UAE Residency & Visa Strategy:</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       { id: 'GOLDEN_VISA_2M', label: '10-Year Real Estate Golden Visa (≥ AED 2M)', desc: 'Full family sponsorship through DLD Cube' },
@@ -576,12 +576,12 @@ export default function PrivateClientPage() {
                         onClick={() => setResidencyInterest(item.id)}
                         className={`p-5 rounded-2xl border text-left transition-all cursor-pointer ${
                           residencyInterest === item.id
-                            ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                            : 'border-white/10 bg-black hover:bg-zinc-900'
+                            ? 'border-black bg-[#f5f5f7] shadow-sm ring-1 ring-black'
+                            : 'border-black/10 bg-white hover:bg-[#f5f5f7]'
                         }`}
                       >
-                        <span className="font-bold text-xs text-white block">{item.label}</span>
-                        <span className="text-xs text-zinc-400 mt-1 block">{item.desc}</span>
+                        <span className="font-bold text-xs text-[#1d1d1f] block">{item.label}</span>
+                        <span className="text-xs text-[#6e6e73] mt-1 block">{item.desc}</span>
                       </button>
                     ))}
                   </div>
@@ -591,77 +591,77 @@ export default function PrivateClientPage() {
               {/* STEP 10: CONTACT & BRIEF */}
               {step === 10 && (
                 <div className="space-y-6">
-                  <h3 className="text-sm font-bold text-white">Step 10: Principal Contact & Confidential Brief:</h3>
+                  <h3 className="text-sm font-bold text-[#1d1d1f]">Step 10: Principal Contact & Confidential Brief:</h3>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-zinc-300">Principal Full Name *</label>
+                      <label className="text-xs font-bold text-[#1d1d1f]">Principal Full Name *</label>
                       <input
                         type="text"
                         required
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
                         placeholder="Dr. / Mr. / Ms. Cristian Văduva"
-                        className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-black text-xs text-white focus:outline-none focus:border-gold"
+                        className="w-full px-4 py-3 rounded-2xl border border-black/10 bg-[#f5f5f7] text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-zinc-300">Confidential Direct Email *</label>
+                      <label className="text-xs font-bold text-[#1d1d1f]">Confidential Direct Email *</label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="principal@familyoffice.com"
-                        className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-black text-xs text-white focus:outline-none focus:border-gold"
+                        className="w-full px-4 py-3 rounded-2xl border border-black/10 bg-[#f5f5f7] text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-zinc-300">Direct Phone / WhatsApp *</label>
+                      <label className="text-xs font-bold text-[#1d1d1f]">Direct Phone / WhatsApp *</label>
                       <input
                         type="tel"
                         required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+971 50 000 0000"
-                        className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-black text-xs text-white focus:outline-none focus:border-gold"
+                        className="w-full px-4 py-3 rounded-2xl border border-black/10 bg-[#f5f5f7] text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-zinc-300">Tax Residency / Domicile Country</label>
+                      <label className="text-xs font-bold text-[#1d1d1f]">Tax Residency / Domicile Country</label>
                       <input
                         type="text"
                         value={taxCountry}
                         onChange={(e) => setTaxCountry(e.target.value)}
                         placeholder="United Kingdom / Switzerland / Monaco / UAE"
-                        className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-black text-xs text-white focus:outline-none focus:border-gold"
+                        className="w-full px-4 py-3 rounded-2xl border border-black/10 bg-[#f5f5f7] text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-zinc-300">Mandate Notes & Specific Criteria (Optional)</label>
+                    <label className="text-xs font-bold text-[#1d1d1f]">Mandate Notes & Specific Criteria (Optional)</label>
                     <textarea
                       rows={3}
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       placeholder="Specify preferred tower, floor height, specific view requirements, or privacy constraints..."
-                      className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-black text-xs text-white focus:outline-none focus:border-gold resize-none"
+                      className="w-full px-4 py-3 rounded-2xl border border-black/10 bg-[#f5f5f7] text-xs text-[#1d1d1f] focus:outline-none focus:border-accent resize-none"
                     />
                   </div>
                 </div>
               )}
 
               {/* NAVIGATION BUTTONS */}
-              <div className="flex items-center justify-between pt-6 border-t border-white/10">
+              <div className="flex items-center justify-between pt-6 border-t border-black/10">
                 {step > 1 ? (
                   <button
                     type="button"
                     onClick={handleBack}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 bg-zinc-900 text-xs font-bold text-zinc-300 hover:text-white transition-colors cursor-pointer"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 bg-[#f5f5f7] text-xs font-semibold text-[#1d1d1f] hover:bg-white transition-colors cursor-pointer"
                   >
                     <ArrowLeft className="h-4 w-4" />
                     <span>Back</span>
@@ -672,18 +672,18 @@ export default function PrivateClientPage() {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black hover:bg-zinc-200 text-xs font-bold transition-all cursor-pointer shadow-lg"
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-all cursor-pointer shadow-sm hover:shadow-md"
                   >
                     <span>Continue to Step {step + 1}</span>
-                    <ArrowRight className="h-4 w-4 text-black" />
+                    <ArrowRight className="h-4 w-4 text-white" />
                   </button>
                 ) : (
                   <button
                     type="submit"
-                    className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-white text-black hover:bg-zinc-200 text-xs font-bold transition-all cursor-pointer shadow-xl shadow-white/10"
+                    className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-all cursor-pointer shadow-sm hover:shadow-md"
                   >
                     <span>Submit Confidential Mandate</span>
-                    <ArrowRight className="h-4 w-4 text-black" />
+                    <ArrowRight className="h-4 w-4 text-white" />
                   </button>
                 )}
               </div>

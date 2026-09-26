@@ -194,12 +194,12 @@ export default function RegulatoryPage() {
   })
 
   return (
-    <div className="bg-black text-white min-h-screen pb-28 selection:bg-accent/30 selection:text-white">
+    <div className="bg-white text-[#1d1d1f] min-h-screen pb-28 selection:bg-accent/20 selection:text-[#1d1d1f]">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Statutory Law & Regulatory Gazette Directory"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="UAE Official Gazettes & Government Laws" />}
-        title="STATUTORY REGISTER"
+        title={<>Statutory Register<span className="text-gradient-gold">.</span></>}
         description="Comprehensive compendium of official Dubai and UAE statutory laws, executive council resolutions, ministerial decrees, and regulatory fee structures governing real estate title, escrow, and residency."
       />
 
@@ -254,21 +254,21 @@ export default function RegulatoryPage() {
             description="Filter official legal decrees by regulatory domain, gazette reference, or statutory authority."
           />
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-3xl bg-[#0c0c0e] border border-white/10 shadow-xl">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-3xl bg-[#f5f5f7] border border-black/5 shadow-sm">
             {/* Search Input */}
             <div className="relative flex-1">
-              <Search className="h-4 w-4 text-zinc-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <Search className="h-4 w-4 text-[#6e6e73] absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by law number, title, or authority..."
-                className="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-white/[0.04] border border-white/10 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-accent"
+                className="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-black/10 text-xs text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
               />
             </div>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white/[0.04] rounded-2xl border border-white/10 shrink-0">
+            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-2xl border border-black/10 shrink-0">
               {[
                 { id: 'ALL', label: 'All Laws' },
                 { id: 'REAL_ESTATE', label: 'Real Estate' },
@@ -279,10 +279,10 @@ export default function RegulatoryPage() {
                 <button
                   key={tab.id}
                   onClick={() => setSelectedCategory(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     selectedCategory === tab.id
-                      ? 'bg-white text-black shadow-md'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-[#1d1d1f] text-white shadow-sm'
+                      : 'text-[#6e6e73] hover:text-[#1d1d1f]'
                   }`}
                 >
                   {tab.label}
@@ -297,43 +297,43 @@ export default function RegulatoryPage() {
           {filteredLaws.map((law) => (
             <div
               key={law.id}
-              className="p-6 sm:p-8 rounded-3xl bg-[#0c0c0e] border border-white/10 hover:border-accent/40 transition-all space-y-6 shadow-2xl"
+              className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 hover:border-black/20 hover:shadow-xl transition-all space-y-6 shadow-sm"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-white/10 pb-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-black/10 pb-6">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-mono font-bold text-accent uppercase tracking-wider">
                       {law.lawNumber}
                     </span>
-                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white/[0.05] border border-white/10 text-zinc-300">
+                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#f5f5f7] border border-black/5 text-[#6e6e73]">
                       {law.year}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#1d1d1f] tracking-tight">
                     {law.title}
                   </h3>
-                  <div className="text-xs font-mono text-zinc-400 pt-1">
-                    Authority: <strong className="text-zinc-200">{law.authority}</strong>
+                  <div className="text-xs font-mono text-[#6e6e73] pt-1">
+                    Authority: <strong className="text-[#1d1d1f]">{law.authority}</strong>
                   </div>
                 </div>
 
                 <div className="shrink-0 flex items-center gap-3">
-                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent font-semibold">
+                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#c9a962]/10 border border-[#c9a962]/30 text-accent font-semibold">
                     {law.officialGazetteRef}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-4xl">
+              <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed max-w-4xl">
                 {law.summary}
               </p>
 
               {/* Core Provisions */}
-              <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
+              <div className="p-5 rounded-2xl bg-[#f5f5f7] border border-black/5 space-y-3">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
                   Core Statutory Provisions
                 </span>
-                <ul className="space-y-2 text-xs text-zinc-300">
+                <ul className="space-y-2 text-xs text-[#1d1d1f]">
                   {law.coreProvisions.map((prov, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <span className="text-accent font-bold mt-0.5">›</span>
@@ -344,7 +344,7 @@ export default function RegulatoryPage() {
               </div>
 
               {law.officialPortalUrl && (
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-zinc-400">
+                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#6e6e73]">
                   <span>Official Legal Verification: Active Gazette</span>
                   <a
                     href={law.officialPortalUrl}
@@ -362,18 +362,18 @@ export default function RegulatoryPage() {
         </div>
 
         {/* 5. PRIVATE CLIENT CTA */}
-        <div className="p-8 sm:p-10 rounded-3xl border border-white/10 bg-gradient-to-b from-[#141418] to-[#0c0c0e] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-2xl">
+        <div className="p-8 sm:p-10 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
           <div className="space-y-2 max-w-xl">
-            <h3 className="text-xl font-bold text-white tracking-tight">
+            <h3 className="text-xl font-extrabold text-[#1d1d1f] tracking-tight">
               Need statutory due diligence on a specific transaction?
             </h3>
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
               Cristian Văduva Private Client Advisory coordinates title deed searches, escrow status verification, and conveyancing with DLD Registration Trustees.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="px-6 py-3.5 rounded-full bg-white text-black hover:bg-zinc-200 text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer shadow-lg"
+            className="px-6 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer shadow-sm hover:shadow-md"
           >
             <span>Access Advisory Desk</span>
             <ArrowRight className="h-4 w-4" />

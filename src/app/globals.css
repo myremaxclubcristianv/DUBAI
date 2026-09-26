@@ -1,46 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  /* Apple Pro Titanium Dark Palette */
-  --background: #000000;
-  --foreground: #f5f5f7;
+  /* Apple Signature White / Light Palette */
+  --background: #ffffff;
+  --foreground: #1d1d1f;
   
-  --surface: #0a0a0c;
-  --surface-elevated: #141418;
-  --surface-card: #16161a;
-  --surface-subtle: #1c1c22;
+  --surface: #f5f5f7;
+  --surface-elevated: #ffffff;
+  --surface-card: #ffffff;
+  --surface-subtle: #fbfbfd;
   
-  --border: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.04);
-  --border-strong: rgba(255, 255, 255, 0.15);
-  --border-glow: rgba(212, 175, 55, 0.3);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.04);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --border-glow: rgba(201, 169, 98, 0.4);
   
   /* Apple Champagne Gold / Titanium Accent */
-  --accent: #d4af37;
-  --accent-hover: #e5c158;
-  --accent-subtle: rgba(212, 175, 55, 0.1);
-  --accent-border: rgba(212, 175, 55, 0.25);
-  --apple-blue: #2997ff;
+  --accent: #b8860b;
+  --accent-hover: #996f08;
+  --accent-subtle: rgba(184, 134, 11, 0.08);
+  --accent-border: rgba(184, 134, 11, 0.25);
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
   
-  /* Apple Typography Hierarchy */
-  --text-primary: #f5f5f7;
-  --text-secondary: #a1a1a6;
+  /* Apple Typography Hierarchy (Light Mode) */
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
   --text-muted: #86868b;
-  --text-tertiary: #6e6e73;
+  --text-tertiary: #a1a1a6;
   
   /* Status Indicators */
-  --success: #30d158;
-  --success-bg: rgba(48, 209, 88, 0.1);
-  --warning: #ffd60a;
-  --warning-bg: rgba(255, 214, 10, 0.1);
-  --error: #ff453a;
-  --error-bg: rgba(255, 69, 58, 0.1);
-  --info: #0a84ff;
-  --info-bg: rgba(10, 132, 255, 0.1);
+  --success: #28cd41;
+  --success-bg: rgba(40, 205, 65, 0.1);
+  --warning: #ff9500;
+  --warning-bg: rgba(255, 149, 0, 0.1);
+  --error: #ff3b30;
+  --error-bg: rgba(255, 59, 48, 0.1);
+  --info: #0071e3;
+  --info-bg: rgba(0, 113, 227, 0.1);
   
   /* DLD Official Source Badge */
-  --dld-green: #30d158;
-  --dld-bg: rgba(48, 209, 88, 0.12);
+  --dld-green: #15803d;
+  --dld-bg: rgba(21, 128, 61, 0.08);
 }
 
 @theme inline {
@@ -59,6 +60,7 @@
   --color-accent-subtle: var(--accent-subtle);
   --color-accent-border: var(--accent-border);
   --color-apple-blue: var(--apple-blue);
+  --color-apple-blue-hover: var(--apple-blue-hover);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
@@ -86,8 +88,8 @@ html {
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  background-color: #000000;
-  color: #f5f5f7;
+  background-color: #ffffff;
+  color: #1d1d1f;
 }
 
 body {
@@ -104,39 +106,49 @@ body {
   overflow-x: hidden;
 }
 
-/* Apple Metallic Text Gradients */
+/* Apple Keynote Headlines & Dark Gradients */
 .text-gradient-silver {
-  background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 60%, #999999 100%);
+  background: linear-gradient(180deg, #1d1d1f 0%, #434344 60%, #86868b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(180deg, #fff2cc 0%, #d4af37 60%, #9f8144 100%);
+  background: linear-gradient(180deg, #996f08 0%, #b8860b 60%, #d4af37 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-titanium {
-  background: linear-gradient(180deg, #f5f5f7 0%, #a1a1a6 60%, #6e6e73 100%);
+  background: linear-gradient(180deg, #1d1d1f 0%, #515154 60%, #86868b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Apple Frosted Glass */
+/* Apple Light Frosted Glass */
 .apple-glass {
-  background: rgba(18, 18, 22, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .apple-glass-card {
-  background: radial-gradient(100% 100% at 50% 0%, rgba(30, 30, 38, 0.5) 0%, rgba(12, 12, 16, 0.8) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+/* Apple Card Hover Lift */
+.apple-card-hover {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.apple-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.14);
 }
 
 /* Financial figures monospace alignment */
@@ -144,27 +156,27 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Custom Apple minimal scrollbar */
+/* Custom Apple minimal light scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #f5f5f7;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2c2c2e;
-  border-radius: 3px;
+  background: #d2d2d7;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #48484a;
+  background: #a1a1a6;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(212, 175, 55, 0.3);
-  color: #ffffff;
+  background: rgba(0, 113, 227, 0.15);
+  color: #1d1d1f;
 }

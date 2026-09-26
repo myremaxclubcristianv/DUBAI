@@ -47,28 +47,28 @@ export default function ClientPortalPage() {
   }
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-white text-[#1d1d1f] min-h-screen pb-24 selection:bg-accent/20 selection:text-[#1d1d1f]">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Private Client Workspace & Analytical Dossier Desk"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Client Session & Saved Criteria" />}
-        title="CLIENT WORKSPACE"
+        title={<>Client Workspace<span className="text-gradient-gold">.</span></>}
         description="Draft stored locally in this browser. Side-by-side asset comparison matrix, saved property shortlists, custom acquisition filters, and underwriting worksheets."
       />
 
       {/* 2. LOCAL BROWSER STORAGE NOTICE */}
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="p-4 rounded-2xl border border-white/10 bg-[#0c0c0e] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xl">
+        <div className="p-4 rounded-2xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-sm">
           <div className="flex items-center gap-2.5">
-            <span className="h-2 w-2 rounded-full bg-accent shrink-0 animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
             <div>
-              <span className="font-semibold text-white">Storage Mode:</span>
-              <span className="text-zinc-400 ml-1.5 leading-relaxed">
+              <span className="font-semibold text-[#1d1d1f]">Storage Mode:</span>
+              <span className="text-[#6e6e73] ml-1.5 leading-relaxed">
                 Draft stored locally in this browser — Client-side storage managing shortlists, comparison matrices, and search criteria without server tracking.
               </span>
             </div>
           </div>
-          <span className="font-mono text-[10px] px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-zinc-300 font-semibold shrink-0">
+          <span className="font-mono text-[10px] px-3 py-1 rounded-full bg-white border border-black/10 text-[#1d1d1f] font-semibold shrink-0 shadow-sm">
             LOCAL ENGINE
           </span>
         </div>
@@ -77,15 +77,15 @@ export default function ClientPortalPage() {
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
         {/* 3. SAVED PROPERTY SHORTLIST (PRIMARY FOCUS) */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-5">
+          <div className="flex items-center justify-between border-b border-black/10 pb-5">
             <div>
               <div className="flex items-center gap-2">
                 <Bookmark className="h-5 w-5 text-accent shrink-0" />
-                <h2 className="text-2xl font-semibold text-white tracking-tight">
+                <h2 className="text-2xl font-extrabold text-[#1d1d1f] tracking-tight">
                   Saved Property Shortlist ({shortlistedProperties.length})
                 </h2>
               </div>
-              <p className="text-xs text-zinc-400 mt-1 font-mono">
+              <p className="text-xs text-[#6e6e73] mt-1 font-mono">
                 Curated portfolio assets saved during this session.
               </p>
             </div>
@@ -95,9 +95,13 @@ export default function ClientPortalPage() {
                 type="button"
                 onClick={() => {
                   clearShortlist()
-                  addToast('Cleared saved shortlist', 'info')
+                  addToast({
+                    title: 'Shortlist Cleared',
+                    description: 'All saved properties have been removed.',
+                    type: 'info',
+                  })
                 }}
-                className="px-3.5 py-1.5 rounded-xl border border-white/10 bg-white/[0.04] hover:bg-red-500/10 hover:border-red-500/30 text-xs font-semibold text-zinc-400 hover:text-red-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-rose-50 hover:border-rose-300 text-xs font-semibold text-[#6e6e73] hover:text-rose-600 transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 <span>Clear Shortlist</span>
@@ -110,10 +114,10 @@ export default function ClientPortalPage() {
               {shortlistedProperties.map((prop) => (
                 <div
                   key={prop.id}
-                  className="p-5 rounded-3xl border border-white/10 bg-[#0c0c0e] hover:border-accent/40 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 group shadow-xl"
+                  className="p-5 rounded-3xl border border-black/10 bg-white hover:border-black/20 hover:shadow-lg transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 group shadow-sm"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="relative h-16 w-24 rounded-2xl overflow-hidden bg-white/[0.02] shrink-0">
+                    <div className="relative h-16 w-24 rounded-2xl overflow-hidden bg-[#f5f5f7] shrink-0 border border-black/10">
                       <Image
                         src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80'}
                         alt={prop.title}
@@ -123,26 +127,26 @@ export default function ClientPortalPage() {
                       />
                     </div>
                     <div>
-                      <div className="text-[10px] font-mono text-zinc-400">{prop.developer_name} • {prop.area_name}</div>
-                      <h4 className="text-base font-semibold text-white group-hover:text-accent transition-colors tracking-tight">
+                      <div className="text-[10px] font-mono text-[#6e6e73]">{prop.developer_name} • {prop.area_name}</div>
+                      <h4 className="text-base font-bold text-[#1d1d1f] group-hover:text-accent transition-colors tracking-tight">
                         {prop.title}
                       </h4>
-                      <div className="text-xs text-zinc-400">
+                      <div className="text-xs text-[#6e6e73]">
                         {prop.bedrooms} Bed • {prop.bathrooms} Bath • {prop.internal_area_sqft.toLocaleString()} sqft
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end pt-3 md:pt-0 border-t md:border-t-0 border-white/10">
+                  <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end pt-3 md:pt-0 border-t md:border-t-0 border-black/10">
                     <div className="text-left md:text-right">
-                      <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Asking Price</div>
-                      <div className="text-base font-semibold text-accent tabular-nums font-mono">
+                      <div className="text-[10px] font-mono text-[#6e6e73] uppercase font-semibold tracking-widest">Asking Price</div>
+                      <div className="text-base font-bold text-[#1d1d1f] tabular-nums font-mono">
                         AED {prop.asking_price?.toLocaleString()}
                       </div>
                     </div>
                     <Link
                       href={`/properties/${prop.id}`}
-                      className="px-4 py-2.5 rounded-xl bg-white text-black hover:bg-zinc-200 text-xs font-semibold transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+                      className="px-5 py-2.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm hover:shadow-md"
                     >
                       <span>Open Dossier</span>
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -152,10 +156,10 @@ export default function ClientPortalPage() {
               ))}
             </div>
           ) : (
-            <div className="p-10 rounded-3xl border border-dashed border-white/10 bg-[#0c0c0e] text-center space-y-3">
-              <Bookmark className="h-8 w-8 text-zinc-600 mx-auto" />
-              <div className="text-sm font-semibold text-white">No Properties Saved Yet</div>
-              <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-[#f5f5f7] text-center space-y-3">
+              <Bookmark className="h-8 w-8 text-[#6e6e73] mx-auto" />
+              <div className="text-sm font-bold text-[#1d1d1f]">No Properties Saved Yet</div>
+              <p className="text-xs text-[#6e6e73] max-w-sm mx-auto leading-relaxed">
                 Bookmark verified properties from the property index to assemble your private acquisition shortlist.
               </p>
               <Link
@@ -170,15 +174,15 @@ export default function ClientPortalPage() {
 
         {/* 4. SIDE-BY-SIDE ASSET COMPARISON MATRIX */}
         <div className="space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/10 pb-5">
             <div>
               <div className="flex items-center gap-2">
                 <Table className="h-5 w-5 text-accent shrink-0" />
-                <h2 className="text-2xl font-semibold text-white tracking-tight">
+                <h2 className="text-2xl font-extrabold text-[#1d1d1f] tracking-tight">
                   Asset Comparison Desk ({comparedProperties.length} / 4 Assets)
                 </h2>
               </div>
-              <p className="text-xs text-zinc-400 mt-1 font-mono">
+              <p className="text-xs text-[#6e6e73] mt-1 font-mono">
                 Structured side-by-side financial metric and specification matrix.
               </p>
             </div>
@@ -188,9 +192,13 @@ export default function ClientPortalPage() {
                 type="button"
                 onClick={() => {
                   clearComparison()
-                  addToast('Cleared comparison matrix', 'info')
+                  addToast({
+                    title: 'Comparison Reset',
+                    description: 'All assets have been removed from comparison desk.',
+                    type: 'info',
+                  })
                 }}
-                className="px-3.5 py-1.5 rounded-xl border border-white/10 bg-white/[0.04] hover:bg-red-500/10 hover:border-red-500/30 text-xs font-semibold text-zinc-400 hover:text-red-400 transition-colors flex items-center gap-1.5 cursor-pointer w-fit"
+                className="px-3.5 py-1.5 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-rose-50 hover:border-rose-300 text-xs font-semibold text-[#6e6e73] hover:text-rose-600 transition-colors flex items-center gap-1.5 cursor-pointer w-fit"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
                 <span>Reset Matrix</span>
@@ -199,12 +207,12 @@ export default function ClientPortalPage() {
           </div>
 
           {comparedProperties.length > 0 ? (
-            <div className="rounded-3xl border border-white/10 bg-[#0c0c0e] overflow-hidden shadow-2xl">
+            <div className="rounded-3xl border border-black/10 bg-white overflow-hidden shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="border-b border-white/10 bg-white/[0.02]">
-                      <th className="p-4 font-mono uppercase text-[10px] text-zinc-400 tracking-widest font-semibold min-w-[170px] sticky left-0 bg-[#0c0c0e] z-10 border-r border-white/10">
+                    <tr className="border-b border-black/10 bg-[#f5f5f7]">
+                      <th className="p-4 font-mono uppercase text-[10px] text-[#6e6e73] tracking-widest font-semibold min-w-[170px] sticky left-0 bg-[#f5f5f7] z-10 border-r border-black/10">
                         Field / Metric
                       </th>
                       {comparedProperties.map((prop) => (
@@ -217,13 +225,13 @@ export default function ClientPortalPage() {
                               <button
                                 type="button"
                                 onClick={() => removeFromComparison(prop.id)}
-                                className="text-zinc-500 hover:text-rose-400 transition-colors p-1 cursor-pointer"
+                                className="text-[#6e6e73] hover:text-rose-600 transition-colors p-1 cursor-pointer"
                                 title="Remove from comparison"
                               >
                                 <Trash2 className="h-3.5 w-3.5" />
                               </button>
                             </div>
-                            <Link href={`/properties/${prop.id}`} className="font-semibold text-sm text-white hover:text-accent transition-colors block line-clamp-1">
+                            <Link href={`/properties/${prop.id}`} className="font-bold text-sm text-[#1d1d1f] hover:text-accent transition-colors block line-clamp-1">
                               {prop.title}
                             </Link>
                           </div>
@@ -231,65 +239,65 @@ export default function ClientPortalPage() {
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/5 bg-[#0c0c0e]">
+                  <tbody className="divide-y divide-black/5 bg-white">
                     <tr>
-                      <td className="p-4 font-mono font-medium text-zinc-400 uppercase text-[10px] tracking-widest sticky left-0 bg-[#0c0c0e] border-r border-white/10">
+                      <td className="p-4 font-mono font-medium text-[#6e6e73] uppercase text-[10px] tracking-widest sticky left-0 bg-white border-r border-black/10">
                         Asking Price
                       </td>
                       {comparedProperties.map((p) => (
-                        <td key={p.id} className="p-4 font-semibold text-accent text-sm tabular-nums font-mono">
+                        <td key={p.id} className="p-4 font-bold text-[#1d1d1f] text-sm tabular-nums font-mono">
                           AED {p.asking_price?.toLocaleString()}
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="p-4 font-mono font-medium text-zinc-400 uppercase text-[10px] tracking-widest sticky left-0 bg-[#0c0c0e] border-r border-white/10">
+                      <td className="p-4 font-mono font-medium text-[#6e6e73] uppercase text-[10px] tracking-widest sticky left-0 bg-white border-r border-black/10">
                         Community
                       </td>
                       {comparedProperties.map((p) => (
-                        <td key={p.id} className="p-4 font-medium text-white">
+                        <td key={p.id} className="p-4 font-semibold text-[#1d1d1f]">
                           {p.area_name}
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="p-4 font-mono font-medium text-zinc-400 uppercase text-[10px] tracking-widest sticky left-0 bg-[#0c0c0e] border-r border-white/10">
+                      <td className="p-4 font-mono font-medium text-[#6e6e73] uppercase text-[10px] tracking-widest sticky left-0 bg-white border-r border-black/10">
                         Internal Area
                       </td>
                       {comparedProperties.map((p) => (
-                        <td key={p.id} className="p-4 text-zinc-300 font-mono">
+                        <td key={p.id} className="p-4 text-[#1d1d1f] font-mono">
                           {p.internal_area_sqft.toLocaleString()} sqft ({(p.internal_area_sqft * 0.092903).toFixed(1)} m²)
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="p-4 font-mono font-medium text-zinc-400 uppercase text-[10px] tracking-widest sticky left-0 bg-[#0c0c0e] border-r border-white/10">
+                      <td className="p-4 font-mono font-medium text-[#6e6e73] uppercase text-[10px] tracking-widest sticky left-0 bg-white border-r border-black/10">
                         Bedrooms / Baths
                       </td>
                       {comparedProperties.map((p) => (
-                        <td key={p.id} className="p-4 text-zinc-300">
+                        <td key={p.id} className="p-4 text-[#1d1d1f]">
                           {p.bedrooms} Bed • {p.bathrooms} Bath
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="p-4 font-mono font-medium text-zinc-400 uppercase text-[10px] tracking-widest sticky left-0 bg-[#0c0c0e] border-r border-white/10">
+                      <td className="p-4 font-mono font-medium text-[#6e6e73] uppercase text-[10px] tracking-widest sticky left-0 bg-white border-r border-black/10">
                         Developer / Project
                       </td>
                       {comparedProperties.map((p) => (
-                        <td key={p.id} className="p-4 text-zinc-300">
+                        <td key={p.id} className="p-4 text-[#1d1d1f]">
                           {p.developer_name} • {p.project_name || 'Individual'}
                         </td>
                       ))}
                     </tr>
                     <tr>
-                      <td className="p-4 font-mono font-medium text-zinc-400 uppercase text-[10px] tracking-widest sticky left-0 bg-[#0c0c0e] border-r border-white/10">
+                      <td className="p-4 font-mono font-medium text-[#6e6e73] uppercase text-[10px] tracking-widest sticky left-0 bg-white border-r border-black/10">
                         Statutory 4% DLD
                       </td>
                       {comparedProperties.map((p) => {
                         const acq = calculateAcquisitionCosts(p.asking_price || 0, false)
                         return (
-                          <td key={p.id} className="p-4 font-mono text-accent">
+                          <td key={p.id} className="p-4 font-mono font-bold text-accent">
                             AED {acq.dld_transfer_fee.toLocaleString()}
                           </td>
                         )
@@ -300,10 +308,10 @@ export default function ClientPortalPage() {
               </div>
             </div>
           ) : (
-            <div className="p-10 rounded-3xl border border-dashed border-white/10 bg-[#0c0c0e] text-center space-y-3">
-              <Table className="h-8 w-8 text-zinc-600 mx-auto" />
-              <div className="text-sm font-semibold text-white">No Assets Selected in Comparison Desk</div>
-              <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-[#f5f5f7] text-center space-y-3">
+              <Table className="h-8 w-8 text-[#6e6e73] mx-auto" />
+              <div className="text-sm font-bold text-[#1d1d1f]">No Assets Selected in Comparison Desk</div>
+              <p className="text-xs text-[#6e6e73] max-w-sm mx-auto leading-relaxed">
                 Select &ldquo;Compare Asset&rdquo; on any property dossier to generate an institutional side-by-side financial metric worksheet.
               </p>
             </div>
@@ -312,11 +320,11 @@ export default function ClientPortalPage() {
 
         {/* 5. SAVED SEARCHES */}
         <div className="space-y-6">
-          <div className="border-b border-white/10 pb-5">
-            <h2 className="text-2xl font-semibold text-white tracking-tight">
+          <div className="border-b border-black/10 pb-5">
+            <h2 className="text-2xl font-extrabold text-[#1d1d1f] tracking-tight">
               Saved Acquisition Criteria ({savedSearches.length})
             </h2>
-            <p className="text-xs text-zinc-400 mt-1 font-mono">
+            <p className="text-xs text-[#6e6e73] mt-1 font-mono">
               Custom filter presets saved in your private client desk.
             </p>
           </div>
@@ -326,7 +334,7 @@ export default function ClientPortalPage() {
               {savedSearches.map((search) => (
                 <div
                   key={search.id}
-                  className="p-6 rounded-3xl border border-white/10 bg-[#0c0c0e] space-y-4 flex flex-col justify-between shadow-xl"
+                  className="p-6 rounded-3xl border border-black/10 bg-white space-y-4 flex flex-col justify-between shadow-sm"
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
@@ -334,18 +342,18 @@ export default function ClientPortalPage() {
                       <button
                         type="button"
                         onClick={() => removeSavedSearch(search.id)}
-                        className="text-zinc-500 hover:text-rose-400 p-1 cursor-pointer"
+                        className="text-[#6e6e73] hover:text-rose-600 p-1 cursor-pointer"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                       </button>
                     </div>
-                    <div className="text-sm font-semibold text-white tracking-tight">{search.name}</div>
+                    <div className="text-sm font-bold text-[#1d1d1f] tracking-tight">{search.name}</div>
                   </div>
 
                   <button
                     type="button"
                     onClick={() => handleApplySavedSearch(search.filters)}
-                    className="w-full py-2.5 rounded-xl bg-white/[0.04] hover:bg-white hover:text-black text-xs font-semibold text-zinc-300 transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-white/10"
+                    className="w-full py-2.5 rounded-full bg-[#f5f5f7] hover:bg-[#1d1d1f] hover:text-white text-xs font-semibold text-[#1d1d1f] transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-black/10"
                   >
                     <span>Apply Filters</span>
                     <ArrowRight className="h-3 w-3" />
@@ -354,10 +362,10 @@ export default function ClientPortalPage() {
               ))}
             </div>
           ) : (
-            <div className="p-10 rounded-3xl border border-dashed border-white/10 bg-[#0c0c0e] text-center space-y-3">
-              <SlidersHorizontal className="h-8 w-8 text-zinc-600 mx-auto" />
-              <div className="text-sm font-semibold text-white">No Search Presets Saved</div>
-              <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-[#f5f5f7] text-center space-y-3">
+              <SlidersHorizontal className="h-8 w-8 text-[#6e6e73] mx-auto" />
+              <div className="text-sm font-bold text-[#1d1d1f]">No Search Presets Saved</div>
+              <p className="text-xs text-[#6e6e73] max-w-sm mx-auto leading-relaxed">
                 Filter properties by community, price tier, or typology and save your configuration for quick access.
               </p>
             </div>

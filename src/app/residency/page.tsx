@@ -138,65 +138,65 @@ const PATHWAY_DATA: Record<ObjectiveType, PathwayResult> = {
     authority: 'Dubai Economy & Tourism (DET) / GDRFA Dubai',
     authorityUrl: 'https://www.visitdubai.com/en/invest-in-dubai/live-and-work/visas-and-entry/work-remotely-from-dubai',
     legalBasis: 'UAE Remote Work Residence Framework',
-    minInvestment: 'Foreign monthly income: USD 3,500 / month',
-    eligibilitySummary: 'Employees working remotely for foreign companies or foreign company owners wanting to reside in Dubai without local employment.',
-    familySponsorship: 'Permits sponsorship of direct family members subject to income and housing lease verification.',
+    minInvestment: 'Monthly income proof of USD 3,500 or equivalent',
+    eligibilitySummary: 'Remote professionals employed outside the UAE or foreign business owners capable of executing their responsibilities digitally.',
+    familySponsorship: 'Enables dependent sponsorship after principal residency permit validation.',
     mandatoryDocuments: [
-      'Proof of employment or business ownership outside the UAE (minimum 1-year contract)',
-      'Last 3 months of certified bank statements showing minimum USD 3,500/month inflow',
-      'Valid Passport with minimum 6 months validity',
-      'Valid international or UAE health insurance coverage'
+      'Passport with minimum 6 months validity',
+      'Proof of employment or company ownership outside the UAE',
+      'Last 3 months of bank statements demonstrating minimum USD 3,500/month inflow',
+      'Valid health insurance policy with UAE coverage'
     ],
     processSteps: [
-      '01 • INCOME AUDIT: Verify 3-month foreign payroll inflow exceeds USD 3,500/month.',
-      '02 • ONLINE SUBMISSION: Apply through DET / GDRFA virtual work portal.',
-      '03 • APPROVAL & ENTRY: Issue electronic entry permit.',
-      '04 • MEDICAL & EID: Complete medical fitness test and biometric capture in Dubai.',
-      '05 • ISSUANCE: 1-Year residence permit issued with access to local banking and housing.'
+      '01 • DOCUMENTATION: Collate remote employment contracts and certified bank statements.',
+      '02 • SUBMISSION: Apply through DET Remote Work portal or GDRFA electronic channel.',
+      '03 • ENTRY PERMIT: Entry permit generation and arrival protocol.',
+      '04 • MEDICAL & BIOMETRICS: DHA medical evaluation and Emirates ID registration.',
+      '05 • RESIDENCY ISSUANCE: Virtual work residency validation.'
     ],
     officialCaveats: [
-      'Local Employment: Does not permit working for UAE-based corporate employers without local contract transition.',
-      'Renewal Income Test: Annual renewal requires fresh 3-month payroll documentation.'
+      'Local Employment: Does not grant authorization to seek local UAE employment without converting visa category.',
+      'Annual Re-verification: Income thresholds re-evaluated upon annual renewal.'
     ]
   },
   retirement: {
     title: 'Retire in Dubai Residency',
     validity: '5 Years (Renewable)',
     authority: 'Dubai Economy & Tourism (DET) / GDRFA Dubai',
-    authorityUrl: 'https://www.retireindubai.com/',
-    legalBasis: 'Dubai Retirement Visa Scheme',
-    minInvestment: 'Property value: AED 1M OR Savings: AED 1M OR Monthly Income: AED 20k',
-    eligibilitySummary: 'Individuals aged 55 and above possessing qualifying real estate equity (≥ AED 1,000,000), a 3-year fixed bank deposit (≥ AED 1,000,000), or active monthly pension/income (≥ AED 20,000).',
-    familySponsorship: 'Permits sponsorship of spouse and dependent family members.',
+    authorityUrl: 'https://www.visitdubai.com/en/invest-in-dubai/live-and-work/retire-in-dubai',
+    legalBasis: 'Retire in Dubai Statutory Program',
+    minInvestment: 'AED 1,000,000 property OR AED 1M bank deposit OR AED 15,000/month income',
+    eligibilitySummary: 'Foreign nationals aged 55 years or older fulfilling at least one of the three statutory financial criteria.',
+    familySponsorship: 'Enables sponsorship of spouse and dependent children.',
     mandatoryDocuments: [
-      'Passport copy with minimum 6 months validity',
-      'Title deed (≥ AED 1M) OR certified UAE bank letter (≥ AED 1M deposit) OR 6-month pension statement (≥ AED 20k/mo)',
-      'Valid UAE health insurance policy for age 55+',
-      'Police Clearance Certificate'
+      'Original Passport showing applicant age ≥ 55 years',
+      'Proof of real estate title deed (≥ AED 1M) OR 3-year fixed bank deposit (≥ AED 1M) OR monthly pension statement (≥ AED 15k)',
+      'UAE health insurance policy certificate',
+      'Marriage certificate for spousal inclusion'
     ],
     processSteps: [
-      '01 • CRITERIA SELECTION: Choose between Property (≥1M), Savings (≥1M), or Pension (≥20k/mo).',
-      '02 • DOCUMENT CERTIFICATION: Gather official bank letters or DLD title deed certificate.',
-      '03 • APPLICATION: Submit file through DET Retire in Dubai service desk.',
-      '04 • MEDICAL & BIOMETRICS: Standard VIP medical examination and Emirates ID.',
-      '05 • ISSUANCE: 5-Year renewable residence permit issued.'
+      '01 • CRITERIA QUALIFICATION: Select real estate, capital deposit, or pension income track.',
+      '02 • APPLICATION: File via DET Retire in Dubai desk or GDRFA portal.',
+      '03 • VERIFICATION: Authority financial verification and screening.',
+      '04 • MEDICAL & BIOMETRICS: Statutory medical fitness and Emirates ID biometrics.',
+      '05 • ISSUANCE: 5-year renewable retirement residency permit.'
     ],
     officialCaveats: [
-      'Age Constraint: Strict statutory age requirement of 55+ at date of application.',
-      'Health Insurance: Specialized senior comprehensive medical policy required.'
+      'Age Floor: Strict minimum age criteria of 55 years at application filing.',
+      'Capital Ring-Fencing: Deposit route requires fixed deposit maintenance throughout validity.'
     ]
   },
   hybrid: {
-    title: 'Integrated Capital & Private Desk Residency',
-    validity: '10 Years Golden Visa + Bespoke Corporate Holding',
-    authority: 'DLD Cube / DIFC / ADGM / GDRFA Dubai',
-    authorityUrl: 'https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa',
-    legalBasis: 'Integrated Wealth Structuring under UAE Federal Law & Free Zone Ordinances',
-    minInvestment: 'Trophy Real Estate Portfolio (≥ AED 2M) + Family Holding / SPV',
-    eligibilitySummary: 'Ultra-high-net-worth principals deploying combined real estate capital, single family office frameworks, or financial holding SPVs.',
-    familySponsorship: 'Comprehensive multi-generational family sponsorship, executive assistants, and domestic retinue without standard dependency caps.',
+    title: 'Corporate + Real Estate Investor Dual-Track',
+    validity: 'Combined 10-Year Golden Visa + Corporate License',
+    authority: 'DLD Cube / DET / DIFC Authority / GDRFA',
+    authorityUrl: 'https://dubailand.gov.ae',
+    legalBasis: 'Unified Executive Council Directives & Cabinet Res. 65/2022',
+    minInvestment: 'Property title ≥ AED 2M + Commercial incorporation',
+    eligibilitySummary: 'High-net-worth investors establishing holding company entities (DIFC / ADGM / Mainland) alongside qualifying trophy real estate assets.',
+    familySponsorship: 'Comprehensive multi-generational family sponsorship and executive corporate quotas.',
     mandatoryDocuments: [
-      'Freehold Title Deeds issued by Dubai Land Department (Property value threshold ≥ AED 2M)',
+      'Electronic DLD Title Deeds (aggregate value ≥ AED 2M)',
       'Free Zone or Mainland Commercial License & Share Certificate',
       'Attested Police Clearance Certificates and Biometric Standard Photos',
       'Corporate and Personal Banking Credentials',
@@ -222,23 +222,23 @@ export default function ResidencyPage() {
   const activePathway = PATHWAY_DATA[selectedObjective]
 
   return (
-    <div className="bg-black text-white min-h-screen pb-28 selection:bg-accent/30 selection:text-white">
+    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
       {/* 1. APPLE PRO HERO HEADER */}
       <PageIntro
         eyebrow="Statutory Immigration & Golden Visa Hub"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Cabinet Res No. 65 of 2022" />}
-        title={<>Residency & Citizenship<span className="text-gradient-gold">.</span></>}
+        title="Residency & Citizenship."
         description="Golden Residency through qualifying investment. Statutory immigration frameworks, Real Estate Investor Golden Residency criteria, procedural stages, and personal tax neutrality provisions."
       />
 
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
         {/* 1B. GOLDEN VISA STATUTORY CADRANS */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+          <div className="flex items-center justify-between border-b border-black/10 pb-4">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#b8860b]">
               STATUTORY RESIDENCY CADRANS
             </span>
-            <span className="text-xs font-mono text-zinc-400">Cabinet Resolution No. 65 of 2022</span>
+            <span className="text-xs font-mono text-[#86868b]">Cabinet Resolution No. 65 of 2022</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -331,187 +331,111 @@ export default function ResidencyPage() {
         />
 
         {/* 2. STATUTORY MACRO BENCHMARKS (BENTO GRID) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-6 rounded-3xl bg-zinc-950 border border-white/10 space-y-2 backdrop-blur-md">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Investor Capital Minimum</div>
-            <div className="text-2xl sm:text-3xl font-bold text-white tabular-nums">AED 2,000,000</div>
-            <div className="text-xs text-zinc-400">Property value threshold (single or aggregated freehold)</div>
-            <div className="pt-2 text-[10px] font-mono text-gold">Source: UAE Government Portal</div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-6 rounded-3xl bg-white border border-black/10 space-y-2 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
+            <div className="text-[10px] font-mono text-[#86868b] uppercase tracking-wider font-semibold">Investor Capital Minimum</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tabular-nums">AED 2,000,000</div>
+            <div className="text-xs text-[#6e6e73]">Property value threshold (single or aggregated freehold)</div>
+            <div className="pt-2 text-[10px] font-mono text-[#b8860b] font-bold">Source: UAE Government Portal</div>
           </div>
 
-          <div className="p-6 rounded-3xl bg-zinc-950 border border-white/10 space-y-2 backdrop-blur-md">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Investor Residency Validity</div>
-            <div className="text-2xl sm:text-3xl font-bold text-white">5 or 10 <span className="text-sm font-normal text-zinc-400">Years</span></div>
-            <div className="text-xs text-zinc-400">5-Yr UAE Govt summary / 10-Yr official service portals</div>
-            <div className="pt-2 text-[10px] font-mono text-gold">Source: UAE GOVT / ICP</div>
+          <div className="p-6 rounded-3xl bg-white border border-black/10 space-y-2 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
+            <div className="text-[10px] font-mono text-[#86868b] uppercase tracking-wider font-semibold">Investor Residency Validity</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f]">5 or 10 <span className="text-sm font-normal text-[#6e6e73]">Years</span></div>
+            <div className="text-xs text-[#6e6e73]">5-Yr UAE Govt summary / 10-Yr official service portals</div>
+            <div className="pt-2 text-[10px] font-mono text-[#b8860b] font-bold">Source: UAE GOVT / ICP</div>
           </div>
 
-          <div className="p-6 rounded-3xl bg-zinc-950 border border-white/10 space-y-2 backdrop-blur-md">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">UAE Personal Income Tax</div>
-            <div className="text-2xl sm:text-3xl font-bold text-gold">0.00%</div>
-            <div className="text-xs text-zinc-400">No UAE personal income tax on qualifying individuals (Cabinet Dec 49/2023)</div>
-            <div className="pt-2 text-[10px] font-mono text-gold">Source: FTA Official Standard</div>
+          <div className="p-6 rounded-3xl bg-white border border-black/10 space-y-2 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
+            <div className="text-[10px] font-mono text-[#86868b] uppercase tracking-wider font-semibold">UAE Personal Income Tax</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#b8860b]">0.00%</div>
+            <div className="text-xs text-[#6e6e73]">No UAE personal income tax on qualifying individuals (Cabinet Dec 49/2023)</div>
+            <div className="pt-2 text-[10px] font-mono text-[#b8860b] font-bold">Source: FTA Official Standard</div>
           </div>
 
-          <div className="p-6 rounded-3xl bg-zinc-950 border border-white/10 space-y-2 backdrop-blur-md">
-            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">Stay Outside Constraint</div>
-            <div className="text-2xl sm:text-3xl font-bold text-white">None <span className="text-sm font-normal text-zinc-400">(0 Days)</span></div>
-            <div className="text-xs text-zinc-400">Visa remains valid regardless of continuous time abroad</div>
-            <div className="pt-2 text-[10px] font-mono text-gold">Source: UAE Golden Visa Statute</div>
+          <div className="p-6 rounded-3xl bg-white border border-black/10 space-y-2 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
+            <div className="text-[10px] font-mono text-[#86868b] uppercase tracking-wider font-semibold">Stay Outside Constraint</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f]">None <span className="text-sm font-normal text-[#6e6e73]">(0 Days)</span></div>
+            <div className="text-xs text-[#6e6e73]">Visa remains valid regardless of continuous time abroad</div>
+            <div className="pt-2 text-[10px] font-mono text-[#b8860b] font-bold">Source: UAE Golden Visa Statute</div>
           </div>
         </div>
 
         {/* 3. INTERACTIVE DECISION FLOW */}
-        <div className="rounded-3xl border border-white/10 bg-zinc-950/90 shadow-2xl overflow-hidden backdrop-blur-md">
-          <div className="p-6 sm:p-10 bg-black/60 border-b border-white/10 space-y-3">
-            <div className="flex items-center gap-2 text-gold text-xs font-mono font-bold uppercase tracking-wider">
+        <div className="rounded-3xl border border-black/10 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover overflow-hidden">
+          <div className="p-6 sm:p-10 bg-[#f5f5f7] border-b border-black/10 space-y-3">
+            <div className="flex items-center gap-2 text-[#b8860b] text-xs font-mono font-bold uppercase tracking-wider">
               <Compass className="h-4 w-4" />
               <span>Interactive Decision Intelligence</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1d1d1f] tracking-tight">
               What are you trying to achieve in Dubai?
             </h2>
-            <p className="text-sm text-zinc-400 max-w-3xl">
+            <p className="text-sm text-[#6e6e73] max-w-3xl">
               Select your primary objective to identify the officially matching residency framework, statutory authority, documentation requirements, and regulatory caveats.
             </p>
 
             {/* OBJECTIVE SELECTOR PILLS */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pt-6">
-              <button
-                type="button"
-                onClick={() => setSelectedObjective('property_2m')}
-                className={`p-5 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[6.5rem] cursor-pointer ${
-                  selectedObjective === 'property_2m'
-                    ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                    : 'border-white/10 bg-zinc-900/60 hover:bg-zinc-900 hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Building className={`h-4 w-4 shrink-0 ${selectedObjective === 'property_2m' ? 'text-gold' : 'text-zinc-400'}`} />
-                  <span className="text-xs font-bold text-white">Acquire Real Estate (≥ AED 2M)</span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                  Real Estate Golden Residency (5 or 10 Years). Ready or qualifying off-plan properties.
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedObjective('property_sub2m')}
-                className={`p-5 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[6.5rem] cursor-pointer ${
-                  selectedObjective === 'property_sub2m'
-                    ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                    : 'border-white/10 bg-zinc-900/60 hover:bg-zinc-900 hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Building className={`h-4 w-4 shrink-0 ${selectedObjective === 'property_sub2m' ? 'text-gold' : 'text-zinc-400'}`} />
-                  <span className="text-xs font-bold text-white">Property Purchase (AED 750k–2M)</span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                  2-Year Real Estate Investor Residency for completed residential units.
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedObjective('business_setup')}
-                className={`p-5 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[6.5rem] cursor-pointer ${
-                  selectedObjective === 'business_setup'
-                    ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                    : 'border-white/10 bg-zinc-900/60 hover:bg-zinc-900 hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Briefcase className={`h-4 w-4 shrink-0 ${selectedObjective === 'business_setup' ? 'text-gold' : 'text-zinc-400'}`} />
-                  <span className="text-xs font-bold text-white">Establish Business / Company</span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                  2-Year Partner/Investor Visa via Mainland LLC or Free Zone entity.
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedObjective('remote_work')}
-                className={`p-5 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[6.5rem] cursor-pointer ${
-                  selectedObjective === 'remote_work'
-                    ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                    : 'border-white/10 bg-zinc-900/60 hover:bg-zinc-900 hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Laptop className={`h-4 w-4 shrink-0 ${selectedObjective === 'remote_work' ? 'text-gold' : 'text-zinc-400'}`} />
-                  <span className="text-xs font-bold text-white">Live in Dubai & Work Remotely</span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                  1-Year Virtual Work Visa based on foreign income (≥ USD 3,500/mo).
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedObjective('retirement')}
-                className={`p-5 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[6.5rem] cursor-pointer ${
-                  selectedObjective === 'retirement'
-                    ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                    : 'border-white/10 bg-zinc-900/60 hover:bg-zinc-900 hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <ShieldCheck className={`h-4 w-4 shrink-0 ${selectedObjective === 'retirement' ? 'text-gold' : 'text-zinc-400'}`} />
-                  <span className="text-xs font-bold text-white">Retire in Dubai (Age 55+)</span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                  5-Year Retirement Visa via property (≥ AED 1M) or bank deposit.
-                </p>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setSelectedObjective('hybrid')}
-                className={`p-5 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[6.5rem] cursor-pointer ${
-                  selectedObjective === 'hybrid'
-                    ? 'border-gold bg-gold/10 shadow-lg shadow-gold/10 ring-1 ring-gold'
-                    : 'border-white/10 bg-zinc-900/60 hover:bg-zinc-900 hover:border-white/20'
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Landmark className={`h-4 w-4 shrink-0 ${selectedObjective === 'hybrid' ? 'text-gold' : 'text-zinc-400'}`} />
-                  <span className="text-xs font-bold text-white">Capital + Commercial Desk</span>
-                </div>
-                <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                  Combined Golden Visa property asset + corporate holding & tax structuring.
-                </p>
-              </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-6">
+              {[
+                { id: 'property_2m', icon: Building, title: 'Acquire Real Estate (≥ AED 2M)', desc: 'Real Estate Golden Residency (5 or 10 Years). Ready or qualifying off-plan properties.' },
+                { id: 'property_sub2m', icon: Building, title: 'Property Purchase (AED 750k–2M)', desc: '2-Year Real Estate Investor Residency for completed residential units.' },
+                { id: 'business_setup', icon: Briefcase, title: 'Establish Business / Company', desc: '2-Year Partner/Investor Visa via Mainland LLC or Free Zone entity.' },
+                { id: 'remote_work', icon: Laptop, title: 'Live in Dubai & Work Remotely', desc: '1-Year Virtual Work Visa based on foreign income (≥ USD 3,500/mo).' },
+                { id: 'retirement', icon: ShieldCheck, title: 'Retire in Dubai (Age 55+)', desc: '5-Year Retirement Visa via property (≥ AED 1M) or bank deposit.' },
+                { id: 'hybrid', icon: Landmark, title: 'Capital + Commercial Desk', desc: 'Combined Golden Visa property asset + corporate holding & tax structuring.' },
+              ].map((item) => {
+                const Icon = item.icon
+                const isSelected = selectedObjective === item.id
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setSelectedObjective(item.id as ObjectiveType)}
+                    className={`p-6 rounded-2xl border text-left transition-all flex flex-col justify-between h-full min-h-[7rem] cursor-pointer ${
+                      isSelected
+                        ? 'border-[#b8860b] bg-amber-50/50 shadow-sm ring-1 ring-[#b8860b]'
+                        : 'border-black/10 bg-white hover:bg-[#fbfbfd]'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <Icon className={`h-4 w-4 shrink-0 ${isSelected ? 'text-[#b8860b]' : 'text-[#86868b]'}`} />
+                      <span className="text-xs font-bold text-[#1d1d1f]">{item.title}</span>
+                    </div>
+                    <p className="text-xs text-[#6e6e73] mt-2 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </button>
+                )
+              })}
             </div>
           </div>
 
           {/* ACTIVE PATHWAY DETAILED INTELLIGENCE PANEL */}
           <div className="p-6 sm:p-10 space-y-10">
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b border-white/10">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-8 border-b border-black/10">
               <div>
-                <div className="flex items-center gap-2 text-[11px] font-mono text-gold font-bold uppercase tracking-wider">
-                  <span className="inline-block h-2 w-2 rounded-full bg-gold animate-pulse" />
+                <div className="flex items-center gap-2 text-[11px] font-mono text-[#b8860b] font-bold uppercase tracking-wider">
+                  <span className="inline-block h-2 w-2 rounded-full bg-[#b8860b] animate-pulse" />
                   <span>Potentially Relevant Official Pathway</span>
                 </div>
-                <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tight mt-1">
+                <h3 className="text-3xl sm:text-4xl font-extrabold text-[#1d1d1f] tracking-tight mt-1">
                   {activePathway.title}
                 </h3>
               </div>
               <div className="flex flex-wrap items-center gap-3">
-                <div className="px-4 py-2 bg-zinc-900 border border-white/10 rounded-full text-xs">
-                  <span className="text-zinc-400">Statutory Term: </span>
-                  <strong className="text-white">{activePathway.validity}</strong>
+                <div className="px-4 py-2 bg-[#f5f5f7] border border-black/10 rounded-full text-xs">
+                  <span className="text-[#6e6e73]">Statutory Term: </span>
+                  <strong className="text-[#1d1d1f]">{activePathway.validity}</strong>
                 </div>
                 <a
                   href={activePathway.authorityUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-white text-black hover:bg-zinc-200 rounded-full text-xs font-bold transition-all shadow-lg"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1d1d1f] text-white hover:bg-[#000000] rounded-full text-xs font-bold transition-all shadow-xs"
                 >
                   <span>Official Authority: {activePathway.authority}</span>
-                  <ArrowRight className="h-3.5 w-3.5 text-black" />
+                  <ArrowRight className="h-3.5 w-3.5 text-white/70" />
                 </a>
               </div>
             </div>
@@ -521,40 +445,40 @@ export default function ResidencyPage() {
               {/* LEFT: SUMMARY & FAMILY */}
               <div className="space-y-8">
                 <div className="space-y-2">
-                  <div className="text-[11px] font-mono uppercase font-bold text-gold">
+                  <div className="text-[11px] font-mono uppercase font-bold text-[#b8860b]">
                     Statutory Legal Basis & Threshold
                   </div>
-                  <div className="p-6 rounded-2xl bg-black border border-white/10 space-y-2">
-                    <div className="text-sm font-bold text-white">{activePathway.legalBasis}</div>
-                    <div className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                  <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 space-y-2">
+                    <div className="text-sm font-bold text-[#1d1d1f]">{activePathway.legalBasis}</div>
+                    <div className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
                       {activePathway.eligibilitySummary}
                     </div>
-                    <div className="text-xs font-mono text-gold pt-2 font-semibold">
+                    <div className="text-xs font-mono text-[#b8860b] pt-2 font-bold">
                       Minimum Statutory Investment: {activePathway.minInvestment}
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <div className="text-[11px] font-mono uppercase font-bold text-gold flex items-center gap-2">
+                  <div className="text-[11px] font-mono uppercase font-bold text-[#b8860b] flex items-center gap-2">
                     <Users className="h-4 w-4" />
                     <span>Family & Dependent Sponsorship</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed p-6 rounded-2xl bg-black border border-white/10">
+                  <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed p-6 rounded-2xl bg-[#f5f5f7] border border-black/10">
                     {activePathway.familySponsorship}
                   </p>
                 </div>
 
                 {/* MANDATORY DOCUMENTS */}
                 <div className="space-y-3">
-                  <div className="text-[11px] font-mono uppercase font-bold text-gold flex items-center gap-2">
+                  <div className="text-[11px] font-mono uppercase font-bold text-[#b8860b] flex items-center gap-2">
                     <FileText className="h-4 w-4" />
                     <span>Mandatory Verification Documents</span>
                   </div>
-                  <ul className="space-y-2 text-xs sm:text-sm text-zinc-300">
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#6e6e73]">
                     {activePathway.mandatoryDocuments.map((doc, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-zinc-900/60 border border-white/5">
-                        <CheckCircle2 className="h-4 w-4 text-gold shrink-0 mt-0.5" />
+                      <li key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-[#f5f5f7] border border-black/5">
+                        <CheckCircle2 className="h-4 w-4 text-[#b8860b] shrink-0 mt-0.5" />
                         <span>{doc}</span>
                       </li>
                     ))}
@@ -565,16 +489,16 @@ export default function ResidencyPage() {
               {/* RIGHT: PROCESS & CAVEATS */}
               <div className="space-y-8">
                 <div className="space-y-3">
-                  <div className="text-[11px] font-mono uppercase font-bold text-gold">
+                  <div className="text-[11px] font-mono uppercase font-bold text-[#b8860b]">
                     Official End-to-End Procedure
                   </div>
-                  <div className="relative pl-6 space-y-4 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-white/10">
+                  <div className="relative pl-6 space-y-4 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-black/10">
                     {activePathway.processSteps.map((step, idx) => (
                       <div key={idx} className="relative space-y-1">
-                        <div className="absolute -left-6 top-0.5 h-5 w-5 rounded-full bg-black border border-gold flex items-center justify-center text-[9px] font-mono font-bold text-gold">
+                        <div className="absolute -left-6 top-0.5 h-5 w-5 rounded-full bg-white border border-[#b8860b] flex items-center justify-center text-[9px] font-mono font-bold text-[#b8860b]">
                           {idx + 1}
                         </div>
-                        <div className="text-xs sm:text-sm text-zinc-300 leading-relaxed pl-3">
+                        <div className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed pl-3">
                           {step}
                         </div>
                       </div>
@@ -583,14 +507,14 @@ export default function ResidencyPage() {
                 </div>
 
                 <div className="space-y-3">
-                  <div className="text-[11px] font-mono uppercase font-bold text-gold flex items-center gap-2">
-                    <AlertCircle className="h-4 w-4 text-amber-400" />
+                  <div className="text-[11px] font-mono uppercase font-bold text-[#b8860b] flex items-center gap-2">
+                    <AlertCircle className="h-4 w-4 text-amber-600" />
                     <span>Statutory Caveats & Legal Limitations</span>
                   </div>
-                  <ul className="space-y-2 text-xs text-zinc-400">
+                  <ul className="space-y-2 text-xs text-[#6e6e73]">
                     {activePathway.officialCaveats.map((cav, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20 text-zinc-300 leading-relaxed">
-                        <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shrink-0 mt-2" />
+                      <li key={idx} className="flex items-start gap-2.5 p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 leading-relaxed">
+                        <span className="h-1.5 w-1.5 rounded-full bg-amber-600 shrink-0 mt-2" />
                         <span>{cav}</span>
                       </li>
                     ))}
@@ -600,16 +524,16 @@ export default function ResidencyPage() {
             </div>
 
             {/* INTAKE CTA */}
-            <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="text-sm text-zinc-400">
+            <div className="pt-8 border-t border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="text-sm text-[#6e6e73]">
                 Need bespoke verification for a specific property portfolio or corporate holding?
               </div>
               <Link
                 href="/private-client"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-black hover:bg-zinc-200 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-xl"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1d1d1f] text-white hover:bg-[#000000] rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-sm"
               >
                 <span>Request Private Client Residency Review</span>
-                <ArrowRight className="h-4 w-4 text-black" />
+                <ArrowRight className="h-4 w-4 text-white/70" />
               </Link>
             </div>
           </div>
@@ -617,203 +541,121 @@ export default function ResidencyPage() {
 
         {/* 4. SIX CORE REGULATORY PILLARS */}
         <div className="space-y-8">
-          <div className="border-b border-white/10 pb-4">
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">
+          <div className="border-b border-black/10 pb-4">
+            <h2 className="text-3xl font-extrabold text-[#1d1d1f] tracking-tight">
               Statutory Frameworks & Official Rules
             </h2>
-            <p className="text-sm text-zinc-400 mt-1">
+            <p className="text-sm text-[#6e6e73] mt-1">
               Verified legal provisions governing real estate acquisitions and fiscal residency in Dubai.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* PILLAR 1: REAL ESTATE INVESTOR RESIDENCY */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-4 flex flex-col justify-between backdrop-blur-md">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-4 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase font-bold text-gold">
+                  <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b]">
                     01 • INVESTOR RESIDENCY
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gold/10 text-gold border border-gold/20">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#f5f5f7] text-[#b8860b] border border-black/10">
                     CABINET RES 65/2022
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-[#1d1d1f]">
                   Golden Residency — Real Estate Investor
                 </h3>
-                <div className="space-y-2 text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                <div className="space-y-2 text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
                   <p>
-                    <strong className="text-white">Summary:</strong> Long-term renewable residence permit granted to foreign property investors acquiring property with an aggregated value of AED 2,000,000 or greater. Ownership, financing, property eligibility and residency requirements are subject to the competent authority&apos;s current rules.
+                    <strong className="text-[#1d1d1f]">Summary:</strong> Long-term renewable residence permit granted to foreign property investors acquiring property with an aggregated value of AED 2,000,000 or greater. Ownership, financing, property eligibility and residency requirements are subject to the competent authority&apos;s current rules.
                   </p>
                   <p>
-                    <strong className="text-white">Source Differentiation:</strong> The official UAE Government summary describes real estate Golden Visas as 5 years, while federal ICP and Dubai GDRFA service portals describe 10-year tracks. Eligibility, qualifying property conditions, financing structure and residence duration should be confirmed with the competent authority at the time of application.
-                  </p>
-                  <p>
-                    <strong className="text-white">Current Rule:</strong> Properties can be completed or off-plan from approved developers. Eligibility, qualifying property conditions and financing structures are subject to competent authority requirements.
+                    <strong className="text-[#1d1d1f]">Source Differentiation:</strong> The official UAE Government summary describes real estate Golden Visas as 5 years, while federal ICP and Dubai GDRFA service portals describe 10-year tracks.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
+              <div className="pt-4 border-t border-black/10 flex items-center justify-between text-[11px] text-[#86868b] font-mono">
                 <span>Sources: u.ae · icp.gov.ae · gdrfad.gov.ae</span>
                 <span>Verified: 2026-09-01</span>
               </div>
             </div>
 
             {/* PILLAR 2: FREEHOLD PROPERTY OWNERSHIP */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-4 flex flex-col justify-between backdrop-blur-md">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-4 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase font-bold text-gold">
+                  <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b]">
                     02 • PROPERTY OWNERSHIP
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gold/10 text-gold border border-gold/20">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#f5f5f7] text-[#b8860b] border border-black/10">
                     REGULATION 3/2006
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-[#1d1d1f]">
                   Designated Freehold Areas Foreign Ownership
                 </h3>
-                <div className="space-y-2 text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                <div className="space-y-2 text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
                   <p>
-                    <strong className="text-white">Summary:</strong> Non-UAE and non-GCC nationals are entitled to absolute freehold ownership rights (including perpetual title deed registration) within designated areas determined under Regulation No. 3 of 2006.
+                    <strong className="text-[#1d1d1f]">Summary:</strong> Non-UAE and non-GCC nationals are entitled to absolute freehold ownership rights (including perpetual title deed registration) within designated areas determined under Regulation No. 3 of 2006.
                   </p>
                   <p>
-                    <strong className="text-white">Who It Applies To:</strong> All foreign individuals, offshore entities, and institutional investors purchasing within designated zones.
-                  </p>
-                  <p>
-                    <strong className="text-white">Current Rule:</strong> Freehold rights include the full legal right to sell, lease, mortgage, and bequeath the real property asset without local sponsorship requirements.
+                    <strong className="text-[#1d1d1f]">Current Rule:</strong> Freehold rights include the full legal right to sell, lease, mortgage, and bequeath the real property asset without local sponsorship requirements.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
+              <div className="pt-4 border-t border-black/10 flex items-center justify-between text-[11px] text-[#86868b] font-mono">
                 <span>Source: Dubai Land Department (DLD)</span>
                 <span>Verified: 2026-09-01</span>
               </div>
             </div>
 
             {/* PILLAR 3: PERSONAL INCOME TAX */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-4 flex flex-col justify-between backdrop-blur-md">
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-4 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase font-bold text-gold">
+                  <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b]">
                     03 • PERSONAL TAX
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gold/10 text-gold border border-gold/20">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#f5f5f7] text-[#b8860b] border border-black/10">
                     FTA STATUTORY
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-[#1d1d1f]">
                   No UAE Personal Income Tax
                 </h3>
-                <div className="space-y-2 text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                <div className="space-y-2 text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
                   <p>
-                    <strong className="text-white">Summary:</strong> The UAE does not levy personal income tax on individuals. For natural persons, qualifying Real Estate Investment Income is outside Business Activity for UAE Corporate Tax purposes under the applicable rules.
-                  </p>
-                  <p>
-                    <strong className="text-white">Who It Applies To:</strong> Natural persons receiving individual real estate rental income, capital gains, or personal investment returns.
-                  </p>
-                  <p>
-                    <strong className="text-white">Contextual Note:</strong> Business activities, licensed activities and corporate structures may be subject to different tax treatment under Federal Decree-Law No. 47 of 2022. Tax treatment depends on the investor&apos;s circumstances, ownership structure and applicable UAE rules.
+                    <strong className="text-[#1d1d1f]">Summary:</strong> The UAE does not levy personal income tax on individuals. For natural persons, qualifying Real Estate Investment Income is outside Business Activity for UAE Corporate Tax purposes under the applicable rules.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
+              <div className="pt-4 border-t border-black/10 flex items-center justify-between text-[11px] text-[#86868b] font-mono">
                 <span>Source: UAE Federal Tax Authority (FTA)</span>
                 <span>Verified: 2026-09-01</span>
               </div>
             </div>
 
-            {/* PILLAR 4: VALUE ADDED TAX (VAT 5%) */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-4 flex flex-col justify-between backdrop-blur-md">
+            {/* PILLAR 4: DLD CONVEYANCE FEES */}
+            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-4 flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase font-bold text-gold">
-                    04 • VALUE ADDED TAX
+                  <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b]">
+                    04 • STATUTORY FEES
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gold/10 text-gold border border-gold/20">
-                    DECREE-LAW 8/2017
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-white">
-                  Residential Exemption & Commercial 5% VAT
-                </h3>
-                <div className="space-y-2 text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                  <p>
-                    <strong className="text-white">Summary:</strong> Standard UAE VAT is 5%. First-time supply of residential buildings within 3 years of completion is zero-rated (0%). Subsequent residential sales and leases are exempt from VAT.
-                  </p>
-                  <p>
-                    <strong className="text-white">Who It Applies To:</strong> Buyers, sellers, landlords, and commercial real estate operators.
-                  </p>
-                  <p>
-                    <strong className="text-white">Current Rule:</strong> Commercial real estate sales and leases are subject to 5% VAT. Brokerage and trustee services attract standard 5% VAT.
-                  </p>
-                </div>
-              </div>
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
-                <span>Source: Federal Decree-Law No. 8 of 2017</span>
-                <span>Verified: 2026-09-01</span>
-              </div>
-            </div>
-
-            {/* PILLAR 5: CORPORATE TAX (9%) */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-4 flex flex-col justify-between backdrop-blur-md">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase font-bold text-gold">
-                    05 • CORPORATE TAX
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gold/10 text-gold border border-gold/20">
-                    DECREE-LAW 47/2022
-                  </span>
-                </div>
-                <h3 className="text-2xl font-bold text-white">
-                  Corporate Tax on Business Entities
-                </h3>
-                <div className="space-y-2 text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                  <p>
-                    <strong className="text-white">Summary:</strong> UAE Federal Corporate Tax applies at 9% on taxable business profits exceeding AED 375,000 (0% on profits up to AED 375,000).
-                  </p>
-                  <p>
-                    <strong className="text-white">Who It Applies To:</strong> Incorporated legal entities, commercial real estate businesses, and holding companies.
-                  </p>
-                  <p>
-                    <strong className="text-white">Current Rule:</strong> Direct personal real estate investments held by individual natural persons in a personal capacity are outside Business Activity under Cabinet Decision No. 49 of 2023. Corporate structures, commercial businesses, and licensed entities remain subject to corporate tax rules.
-                  </p>
-                </div>
-              </div>
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
-                <span>Source: Federal Decree-Law No. 47 of 2022</span>
-                <span>Verified: 2026-09-01</span>
-              </div>
-            </div>
-
-            {/* PILLAR 6: STATUTORY PROPERTY FEES */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-4 flex flex-col justify-between backdrop-blur-md">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase font-bold text-gold">
-                    06 • STATUTORY FEES
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gold/10 text-gold border border-gold/20">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#f5f5f7] text-[#b8860b] border border-black/10">
                     DLD TARIFF REGISTRY
                   </span>
                 </div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-[#1d1d1f]">
                   DLD Conveyance & Administrative Tariffs
                 </h3>
-                <div className="space-y-2 text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                <div className="space-y-2 text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
                   <p>
-                    <strong className="text-white">Summary:</strong> DLD Property Sale Registration transfer fee is 4% (2% buyer + 2% seller per official DLD portal; contractually allocated in Form F).
-                  </p>
-                  <p>
-                    <strong className="text-white">Itemized Tariffs:</strong> AED 250 title deed certificate issuance, AED 250 villa/apt map fee (or AED 225 Dubai Municipality map / AED 100 land outside DM), AED 10 knowledge fee, AED 10 innovation fee.
-                  </p>
-                  <p>
-                    <strong className="text-white">Registration Trustee:</strong> AED 4,000 + 5% VAT (properties ≥ AED 500,000) or AED 2,000 + 5% VAT (properties &lt; AED 500,000).
+                    <strong className="text-[#1d1d1f]">Summary:</strong> DLD Property Sale Registration transfer fee is 4% (2% buyer + 2% seller per official DLD portal; contractually allocated in Form F). Registration Trustee fee: AED 4,000 + 5% VAT.
                   </p>
                 </div>
               </div>
-              <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-500 font-mono">
+              <div className="pt-4 border-t border-black/10 flex items-center justify-between text-[11px] text-[#86868b] font-mono">
                 <span>Source: DLD Property Sale Registration Service</span>
                 <span>Verified: 2026-09-01</span>
               </div>
@@ -822,13 +664,13 @@ export default function ResidencyPage() {
         </div>
 
         {/* 5. LEGAL DISCLAIMER DRAWER */}
-        <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 text-xs text-zinc-400 space-y-2 backdrop-blur-md">
-          <div className="flex items-center gap-2 font-bold text-white text-sm">
-            <Scale className="h-4 w-4 text-gold" />
+        <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-[#f5f5f7] text-xs text-[#6e6e73] space-y-2">
+          <div className="flex items-center gap-2 font-bold text-[#1d1d1f] text-sm">
+            <Scale className="h-4 w-4 text-[#b8860b]" />
             <span>Statutory Legal Notice & Provenance Attribution</span>
           </div>
           <p className="leading-relaxed">
-            The regulatory intelligence displayed on this page is compiled strictly from published UAE federal laws, cabinet resolutions, and Dubai Land Department official tariffs. This information does not constitute personalized legal, tax, or corporate structuring advice. Institutional principals are advised to consult qualified legal counsel for cross-border tax treaty planning.
+            The regulatory intelligence displayed on this page is compiled strictly from published UAE federal laws, cabinet resolutions, and Dubai Land Department official tariffs. This information does not constitute personalized legal, tax, or corporate structuring advice.
           </p>
         </div>
       </main>
