@@ -52,31 +52,33 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
       {children}
       {/* Toast Notification Floating Container */}
-      <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0">
-        {toasts.map((t) => (
-          <div
-            key={t.id}
-            className="pointer-events-auto bg-white rounded-xl border border-border shadow-xl p-3.5 flex items-start gap-3 animate-in slide-in-from-bottom-3 fade-in duration-200"
-          >
-            {t.type === 'info' && <Info className="h-4 w-4 text-accent shrink-0 mt-0.5" />}
-            {t.type === 'warning' && <AlertCircle className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />}
-            {t.type === 'error' && <AlertCircle className="h-4 w-4 text-rose-600 shrink-0 mt-0.5" />}
-            {(!t.type || t.type === 'success') && (
-              <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
-            )}
-            <div className="flex-1 text-xs">
-              <h4 className="font-bold text-text-primary">{t.title}</h4>
-              {t.description && <p className="text-text-secondary mt-0.5 text-[11px]">{t.description}</p>}
-            </div>
-            <button
-              onClick={() => removeToast(t.id)}
-              className="text-text-muted hover:text-text-primary p-0.5"
+      {toasts.length > 0 && (
+        <div className="fixed bottom-5 right-4 left-4 sm:left-auto sm:right-5 sm:max-w-sm z-50 flex flex-col gap-2 pointer-events-none">
+          {toasts.map((t) => (
+            <div
+              key={t.id}
+              className="pointer-events-auto bg-white rounded-xl border border-border shadow-xl p-3.5 flex items-start gap-3 animate-in slide-in-from-bottom-3 fade-in duration-200"
             >
-              <X className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        ))}
-      </div>
+              {t.type === 'info' && <Info className="h-4 w-4 text-accent shrink-0 mt-0.5" />}
+              {t.type === 'warning' && <AlertCircle className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />}
+              {t.type === 'error' && <AlertCircle className="h-4 w-4 text-rose-600 shrink-0 mt-0.5" />}
+              {(!t.type || t.type === 'success') && (
+                <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+              )}
+              <div className="flex-1 text-xs">
+                <h4 className="font-bold text-text-primary">{t.title}</h4>
+                {t.description && <p className="text-text-secondary mt-0.5 text-[11px]">{t.description}</p>}
+              </div>
+              <button
+                onClick={() => removeToast(t.id)}
+                className="text-text-muted hover:text-text-primary p-0.5"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </ToastContext.Provider>
   )
 }

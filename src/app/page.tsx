@@ -12,12 +12,19 @@ import {
   ArrowRight,
   ArrowUpRight,
   Calculator,
-  ChevronRight
+  ChevronRight,
+  ShieldCheck,
+  Building2,
+  Sparkles,
+  Plane,
+  Anchor,
+  Utensils
 } from 'lucide-react'
 
 export default function Home() {
-  const dominantProperty = VERIFIED_PROPERTIES[0] // One at Palm Jumeirah
-  const secondaryProperties = VERIFIED_PROPERTIES.slice(1, 3) // Bulgari Lighthouse & Il Primo
+  const [selectedPropertyIndex, setSelectedPropertyIndex] = React.useState(0)
+  const activeProperty = VERIFIED_PROPERTIES[selectedPropertyIndex] || VERIFIED_PROPERTIES[0]
+  
   const primeAreas = DUBAI_AREAS.slice(0, 6)
   const topDevelopers = VERIFIED_DEVELOPERS.slice(0, 5)
   const lifestyleAviation = VERIFIED_LIFESTYLE.find((l) => l.category === 'aviation') || VERIFIED_LIFESTYLE[0]
@@ -25,77 +32,97 @@ export default function Home() {
   const lifestyleDining = VERIFIED_LIFESTYLE.find((l) => l.category === 'dining') || VERIFIED_LIFESTYLE[2]
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-text-primary">
+    <div className="flex flex-col min-h-screen bg-black text-[#f5f5f7] selection:bg-accent/30 selection:text-white">
       {/* ========================================================================= */}
-      {/* 01 — HERO (Editorial Opening: Proportional Left Text + Right Hero Image)  */}
+      {/* 01 — HERO: Apple Keynote Product Reveal & Cinematic Showcase              */}
       {/* ========================================================================= */}
-      <section className="relative pt-10 pb-14 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left: Typographic Narrative (~42% on desktop) */}
-            <div className="lg:col-span-5 space-y-6 sm:space-y-8">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
-                    DUBAI / PRIVATE CLIENT PLATFORM
-                  </span>
-                </div>
+      <section className="relative pt-12 pb-20 sm:pt-20 sm:pb-32 overflow-hidden border-b border-white/10">
+        {/* Subtle Ambient Apple Light Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] sm:h-[400px] bg-radial from-white/10 via-accent/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
-                <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-black tracking-tight text-text-primary uppercase leading-[1.02]">
-                  Property.
-                  <br />
-                  Capital.
-                  <br />
-                  <span className="text-text-secondary font-light">Access.</span>
-                </h1>
-
-                <p className="text-base sm:text-lg text-text-secondary font-normal leading-relaxed max-w-md pt-1">
-                  A private-client view of Dubai real estate, investment underwriting, statutory residency frameworks, and curated lifestyle.
-                </p>
-              </div>
-
-              {/* Two Restrained Actions */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <Link
-                  href="/properties"
-                  className="px-6 py-3.5 bg-text-primary hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-2xs flex items-center justify-center gap-2"
-                >
-                  <span>Explore Properties</span>
-                  <ArrowRight className="h-4 w-4 text-accent" />
-                </Link>
-                <Link
-                  href="/private-client"
-                  className="px-6 py-3.5 bg-surface hover:bg-surface-elevated border border-border text-text-primary text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
-                >
-                  <span>Private Client Desk</span>
-                  <ArrowUpRight className="h-4 w-4 text-text-muted" />
-                </Link>
-              </div>
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto">
+            {/* Apple Pill Eyebrow */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md shadow-inner text-xs font-medium text-[#a1a1a6]">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="font-mono text-[11px] tracking-wider uppercase text-white font-semibold">
+                DUBAI PRIVATE CLIENT PLATFORM
+              </span>
+              <span className="text-white/20">•</span>
+              <span className="text-[11px]">Statutory Intelligence</span>
             </div>
 
-            {/* Right: Architectural Hero Visual (~58% on desktop) */}
-            <div className="lg:col-span-7 space-y-3">
-              <div className="relative aspect-[16/11] border border-border bg-surface-elevated overflow-hidden">
-                <Image
-                  src={dominantProperty.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80'}
-                  alt="Dubai Prime Architecture"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-text-muted font-mono pt-1">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-text-primary uppercase">{dominantProperty.area_name}</span>
+            {/* Apple Keynote Gradient Headline */}
+            <h1 className="text-5xl sm:text-7xl lg:text-[80px] font-extrabold tracking-tight text-gradient-silver leading-[0.96]">
+              Property. Capital. <br />
+              <span className="text-gradient-gold">Absolute Access.</span>
+            </h1>
+
+            {/* Restrained Subheadline */}
+            <p className="text-lg sm:text-xl text-[#a1a1a6] font-normal leading-relaxed max-w-2xl pt-2">
+              An institutional perspective on Dubai prime real estate, deterministic capital underwriting, official Golden Visa pathways, and bespoke lifestyle curation.
+            </p>
+
+            {/* Apple Dual Pill CTA Actions */}
+            <div className="flex flex-col sm:flex-row items-center gap-3.5 pt-4 w-full sm:w-auto">
+              <Link
+                href="/properties"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-black hover:bg-white/90 text-xs sm:text-sm font-semibold tracking-tight transition-all shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+              >
+                <span>Explore Properties</span>
+                <ChevronRight className="h-4 w-4 text-black/60" />
+              </Link>
+              <Link
+                href="/private-client"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full apple-glass hover:bg-white/10 text-white text-xs sm:text-sm font-semibold tracking-tight transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span>Private Client Desk</span>
+                <ArrowUpRight className="h-4 w-4 text-[#a1a1a6]" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Cinematic Media Showcase Frame */}
+          <div className="mt-14 sm:mt-20 relative rounded-[2rem] overflow-hidden border border-white/15 shadow-2xl bg-[#0c0c10]">
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full">
+              <Image
+                src={activeProperty.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85'}
+                alt={activeProperty.title}
+                fill
+                priority
+                sizes="(max-width: 1240px) 100vw, 1240px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            </div>
+
+            {/* Floating Apple Glass Spec Bar */}
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 sm:p-6 rounded-2xl apple-glass flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-xs font-mono text-[#a1a1a6]">
+                  <span className="text-accent font-bold uppercase">{activeProperty.area_name}</span>
                   <span>•</span>
-                  <span className="line-clamp-1">{dominantProperty.title}</span>
+                  <span>{activeProperty.developer_name}</span>
                 </div>
-                <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-accent text-[10px] tracking-wider uppercase font-semibold">DLD REGISTERED</span>
-                  <span className="font-bold text-text-primary">AED {dominantProperty.asking_price?.toLocaleString()}</span>
+                <h3 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                  {activeProperty.title}
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-4 sm:gap-6 shrink-0">
+                <div className="text-right">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#86868b] block">Asking Price</span>
+                  <span className="text-lg sm:text-xl font-extrabold text-white tabular-nums">
+                    AED {activeProperty.asking_price?.toLocaleString()}
+                  </span>
                 </div>
+                <Link
+                  href={`/properties/${activeProperty.id}`}
+                  className="px-5 py-2.5 rounded-full bg-white text-black hover:bg-white/90 text-xs font-semibold tracking-tight transition-all flex items-center gap-1.5 shrink-0"
+                >
+                  <span>Dossier</span>
+                  <ArrowRight className="h-3.5 w-3.5 text-black/60" />
+                </Link>
               </div>
             </div>
           </div>
@@ -103,68 +130,68 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — MARKET / POSITIONING STATEMENT & FACTUAL STRIP                       */}
+      {/* 02 — APPLE BENTO TECH SPECS (Factual Intelligence Strip)                  */}
       {/* ========================================================================= */}
-      <section className="bg-[#fafaf8] py-14 sm:py-18 border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="max-w-3xl space-y-3">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-accent">
+      <section className="py-20 sm:py-28 border-b border-white/10 bg-[#060608]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="max-w-2xl space-y-3">
+            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-accent block">
               DUBAI, FRAMED DIFFERENTLY
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-text-primary leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
               Separating verified asset fundamentals from speculative marketing.
             </h2>
-            <p className="text-sm sm:text-base text-text-secondary leading-relaxed pt-1">
-              We anchor every analysis in published statutory schedules, centralized electronic land records, and institutional underwriting models across four disciplined dimensions: Property, Capital, Residency, and Lifestyle.
+            <p className="text-sm sm:text-base text-[#a1a1a6] leading-relaxed">
+              We anchor every analysis in published statutory schedules, centralized electronic land records, and institutional underwriting models.
             </p>
           </div>
 
-          {/* 4 Editorial Columns Separated by Thin Vertical Rules */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-border pt-8 gap-y-6 lg:gap-y-0 lg:divide-x lg:divide-border">
-            <div className="lg:pr-6 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
+          {/* 4 Apple Glass Bento Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="p-6 rounded-2xl apple-glass-card space-y-3 flex flex-col justify-between">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#86868b] font-semibold">
                 DLD TRANSFER TARIFF
               </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
+              <div className="text-4xl font-extrabold text-white tracking-tight text-gradient-silver tabular-nums">
                 4.00%
               </div>
-              <p className="text-xs text-text-secondary leading-relaxed pt-1">
+              <p className="text-xs text-[#a1a1a6] leading-relaxed">
                 Statutory tariff schedule per Executive Council Resolution No. 30 of 2013.
               </p>
             </div>
 
-            <div className="sm:border-t sm:border-border lg:border-t-0 sm:pt-6 lg:pt-0 sm:pr-6 lg:px-6 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
+            <div className="p-6 rounded-2xl apple-glass-card space-y-3 flex flex-col justify-between">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#86868b] font-semibold">
                 PERSONAL INCOME TAX
               </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
+              <div className="text-3xl font-extrabold text-white tracking-tight text-gradient-silver">
                 NO PERSONAL TAX
               </div>
-              <p className="text-xs text-text-secondary leading-relaxed pt-1">
+              <p className="text-xs text-[#a1a1a6] leading-relaxed">
                 Qualifying individual investment returns (Cabinet Decision No. 49 of 2023).
               </p>
             </div>
 
-            <div className="border-t border-border sm:border-t-0 pt-6 sm:pt-0 lg:px-6 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
+            <div className="p-6 rounded-2xl apple-glass-card space-y-3 flex flex-col justify-between">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#86868b] font-semibold">
                 GOLDEN VISA THRESHOLD
               </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums">
+              <div className="text-3xl font-extrabold text-white tracking-tight text-gradient-gold tabular-nums">
                 AED 2,000,000
               </div>
-              <p className="text-xs text-text-secondary leading-relaxed pt-1">
-                Freehold title value qualifying for 5 / 10-year investor residency.
+              <p className="text-xs text-[#a1a1a6] leading-relaxed">
+                Freehold title deed value qualifying natural person investors for long-term residency.
               </p>
             </div>
 
-            <div className="border-t border-border sm:border-t-0 pt-6 sm:pt-0 lg:pl-6 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-text-muted font-bold block">
+            <div className="p-6 rounded-2xl apple-glass-card space-y-3 flex flex-col justify-between">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-[#86868b] font-semibold">
                 FOREIGN OWNERSHIP
               </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
+              <div className="text-3xl font-extrabold text-white tracking-tight text-gradient-silver">
                 DESIGNATED AREAS
               </div>
-              <p className="text-xs text-text-secondary leading-relaxed pt-1">
+              <p className="text-xs text-[#a1a1a6] leading-relaxed">
                 Designated freehold areas for foreign nationals (Regulation No. 3 of 2006).
               </p>
             </div>
@@ -173,213 +200,203 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 03 — THE MARKET (Selected Dubai Properties — Rebuilt Editorial Spread)   */}
+      {/* 03 — "EXPLORE THE LINEUP" — Apple Flagship Asset Showcase                 */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
+      <section className="py-20 sm:py-32 border-b border-white/10 bg-black">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
-                THE MARKET
+              <span className="text-xs font-mono font-semibold tracking-wider text-accent uppercase block">
+                SELECTED DUBAI PROPERTIES
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
-                Selected Dubai Properties.
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-1.5">
+                Explore the collection.
               </h2>
             </div>
             <Link
               href="/properties"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:underline transition-all"
             >
-              <span>View Full Property Catalogue ({VERIFIED_PROPERTIES.length})</span>
-              <ArrowRight className="h-4 w-4" />
+              <span>View all {VERIFIED_PROPERTIES.length} verified trophies</span>
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* Editorial Spread: 01 Primary Asset (~64%) + 02 & 03 Secondary Assets (~36%) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Primary Asset (01) */}
-            <div className="lg:col-span-7 border border-border bg-white flex flex-col">
-              <div className="p-4 border-b border-border flex items-center justify-between text-xs font-mono">
-                <span className="font-bold text-accent">01 / PRIMARY ASSET</span>
-                <span className="text-text-muted uppercase">{dominantProperty.area_name}</span>
-              </div>
-              
-              <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
-                <Image
-                  src={dominantProperty.images[0]}
-                  alt={dominantProperty.title}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover"
-                />
-              </div>
+          {/* Apple Style Asset Tab Bar Switcher */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            {VERIFIED_PROPERTIES.slice(0, 4).map((prop, idx) => (
+              <button
+                key={prop.id}
+                onClick={() => setSelectedPropertyIndex(idx)}
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                  selectedPropertyIndex === idx
+                    ? 'bg-white text-black shadow-lg scale-[1.02]'
+                    : 'bg-white/5 text-[#a1a1a6] hover:text-white hover:bg-white/10 border border-white/10'
+                }`}
+              >
+                <span>{prop.title.split('—')[0].split(',')[0]}</span>
+              </button>
+            ))}
+          </div>
 
-              <div className="p-6 sm:p-7 space-y-5">
-                <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-text-muted">
-                  <span>{dominantProperty.developer_name} • {dominantProperty.project_name}</span>
+          {/* Active Featured Property Spread */}
+          <div className="rounded-3xl border border-white/15 bg-[#0a0a0e] overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch">
+            {/* Left Media (7 Cols) */}
+            <div className="lg:col-span-7 relative min-h-[380px] sm:min-h-[480px]">
+              <Image
+                src={activeProperty.images[0]}
+                alt={activeProperty.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="object-cover"
+              />
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-black/70 backdrop-blur-md border border-white/20 text-accent">
+                  0{selectedPropertyIndex + 1} / PRIMARY ASSET
+                </span>
+              </div>
+            </div>
+
+            {/* Right Data Sheet (5 Cols) */}
+            <div className="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between space-y-8 bg-gradient-to-b from-[#121218] to-[#0a0a0c]">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-accent font-semibold">
+                    {activeProperty.area_name}
+                  </span>
                   <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Record" />
                 </div>
 
-                <div className="space-y-2">
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-text-primary tracking-tight">
-                    {dominantProperty.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-text-secondary line-clamp-2 leading-relaxed">
-                    {dominantProperty.description}
-                  </p>
-                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+                  {activeProperty.title}
+                </h3>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 border-y border-border text-xs">
-                  <div>
-                    <span className="text-[9px] font-mono text-text-muted uppercase block">BEDROOMS</span>
-                    <span className="font-bold text-text-primary font-mono">{dominantProperty.bedrooms} Bed</span>
+                <p className="text-xs sm:text-sm text-[#a1a1a6] leading-relaxed">
+                  {activeProperty.description}
+                </p>
+              </div>
+
+              <div className="space-y-6 pt-6 border-t border-white/10">
+                <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                    <span className="text-[10px] text-[#86868b] uppercase block">Bedrooms</span>
+                    <span className="text-sm font-bold text-white">{activeProperty.bedrooms} Bed</span>
                   </div>
-                  <div>
-                    <span className="text-[9px] font-mono text-text-muted uppercase block">INTERNAL AREA</span>
-                    <span className="font-bold text-text-primary font-mono">{dominantProperty.internal_area_sqft.toLocaleString()} SQFT</span>
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                    <span className="text-[10px] text-[#86868b] uppercase block">Internal Area</span>
+                    <span className="text-sm font-bold text-white">{activeProperty.internal_area_sqft.toLocaleString()} SQFT</span>
                   </div>
-                  <div>
-                    <span className="text-[9px] font-mono text-text-muted uppercase block">PRICE / SQFT</span>
-                    <span className="font-bold text-text-primary font-mono">AED {dominantProperty.price_per_sqft?.toLocaleString()}</span>
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                    <span className="text-[10px] text-[#86868b] uppercase block">Price / SQFT</span>
+                    <span className="text-sm font-bold text-white">AED {activeProperty.price_per_sqft?.toLocaleString()}</span>
                   </div>
-                  <div>
-                    <span className="text-[9px] font-mono text-text-muted uppercase block">ASKING PRICE</span>
-                    <span className="font-extrabold text-text-primary font-mono tabular-nums">
-                      AED {dominantProperty.asking_price?.toLocaleString()}
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
+                    <span className="text-[10px] text-[#86868b] uppercase block">Asking Price</span>
+                    <span className="text-sm font-extrabold text-accent tabular-nums">
+                      AED {activeProperty.asking_price?.toLocaleString()}
                     </span>
                   </div>
                 </div>
 
-                <div>
-                  <Link
-                    href={`/properties/${dominantProperty.id}`}
-                    className="w-full py-3.5 bg-text-primary hover:bg-black text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
-                  >
-                    <span>Access Asset Dossier</span>
-                    <ArrowRight className="h-4 w-4 text-accent" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Secondary Assets (02 & 03) */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
-              {secondaryProperties.map((prop, idx) => (
-                <div
-                  key={prop.id}
-                  className="border border-border bg-white flex flex-col"
+                <Link
+                  href={`/properties/${activeProperty.id}`}
+                  className="w-full py-3.5 rounded-full bg-white hover:bg-white/90 text-black text-xs font-semibold tracking-tight transition-all flex items-center justify-center gap-2 shadow-lg"
                 >
-                  <div className="p-3.5 border-b border-border flex items-center justify-between text-xs font-mono">
-                    <span className="font-bold text-accent">0{idx + 2} / CURATED ASSET</span>
-                    <span className="text-text-muted uppercase">{prop.area_name}</span>
-                  </div>
-
-                  <div className="relative aspect-[16/9] bg-surface-elevated overflow-hidden">
-                    <Image
-                      src={prop.images[0]}
-                      alt={prop.title}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                      className="object-cover"
-                    />
-                  </div>
-
-                  <div className="p-5 space-y-3">
-                    <div className="text-[10px] font-mono text-text-muted uppercase">
-                      {prop.developer_name} • {prop.project_name}
-                    </div>
-                    <h4 className="text-base font-bold text-text-primary tracking-tight">
-                      {prop.title}
-                    </h4>
-                    
-                    <div className="flex items-center justify-between py-2 border-t border-border text-xs font-mono">
-                      <span className="text-text-muted">{prop.bedrooms} Bed • {prop.internal_area_sqft.toLocaleString()} sqft</span>
-                      <strong className="text-text-primary tabular-nums">AED {prop.asking_price?.toLocaleString()}</strong>
-                    </div>
-
-                    <Link
-                      href={`/properties/${prop.id}`}
-                      className="w-full py-2.5 border border-border bg-surface hover:bg-white text-xs font-bold uppercase tracking-wider text-center text-text-primary transition-colors flex items-center justify-center gap-1.5"
-                    >
-                      <span>View Dossier</span>
-                      <ArrowRight className="h-3.5 w-3.5 text-accent" />
-                    </Link>
-                  </div>
-                </div>
-              ))}
+                  <span>Access Asset Dossier</span>
+                  <ArrowRight className="h-4 w-4 text-black/60" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 04 — CAPITAL (Institutional Investment Memorandum)                        */}
+      {/* 04 — "ENGINEERED FOR CAPITAL" — Apple Style Underwriting Memorandum      */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-[#111111] text-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+      <section className="py-20 sm:py-32 border-b border-white/10 bg-[#08080a]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             {/* Left Statement */}
             <div className="lg:col-span-5 space-y-6">
-              <span className="text-[11px] font-mono font-bold text-[#c9a962] uppercase tracking-widest block">
+              <span className="text-xs font-mono font-semibold text-accent uppercase tracking-wider block">
                 CAPITAL UNDERWRITING
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight uppercase leading-tight text-white">
-                Underwrite the acquisition, not the story.
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Underwrite the acquisition.
               </h2>
-              <p className="text-sm text-white/70 leading-relaxed">
+              <p className="text-sm sm:text-base text-[#a1a1a6] leading-relaxed">
                 Deterministic mathematical modeling separating statutory conveyance tariffs, debt covenants, Mollak service charges, and multi-year exit proceeds.
               </p>
               <div className="pt-2">
                 <Link
                   href="/investment"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-black hover:bg-white/90 text-xs font-bold uppercase tracking-wider transition-all shadow-md"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white text-black hover:bg-white/90 text-xs font-semibold tracking-tight transition-all shadow-lg"
                 >
-                  <span>Open Underwriting Desk</span>
                   <Calculator className="h-4 w-4 text-accent" />
+                  <span>Open Underwriting Desk</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right Numbered Memorandum Rows */}
+            {/* Right Numbered Research Rows */}
             <div className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
               {[
                 {
                   code: '01',
-                  title: 'ACQUISITION',
-                  desc: '4% statutory DLD transfer tariff + AED 4,000 trustee registration fee + verified transaction costs.',
+                  title: 'ACQUISITION TARIFFS & COSTS',
+                  items: [
+                    'DLD TRANSFER: 4% combined statutory transfer tariff (2% buyer + 2% seller under Executive Council Resolution No. 30 of 2013 schedule).',
+                    'TRANSACTION COSTS: AED 4,000 (+VAT) trustee registration fee, title deed issuance, and agreed commercial brokerage where applicable.'
+                  ]
                 },
                 {
                   code: '02',
-                  title: 'FINANCING',
-                  desc: 'CBUAE mortgage regulatory loan-to-value caps (up to 80% resident / 60–80% non-resident) and debt service.',
+                  title: 'FINANCING & LEVERAGE',
+                  items: [
+                    'CBUAE mortgage regulatory loan-to-value caps (up to 80% resident / 60–80% non-resident).',
+                    'Deterministic debt service modeling across fixed and variable margin terms.'
+                  ]
                 },
                 {
                   code: '03',
-                  title: 'INCOME',
-                  desc: 'Gross rental yield modeling vs Net Operating Income (NOI) after approved Mollak service budgets.',
+                  title: 'INCOME & NET OPERATING INCOME',
+                  items: [
+                    'Gross rental yield modeling vs Net Operating Income (NOI).',
+                    'Deduction of approved Mollak statutory service charge budgets and property management.'
+                  ]
                 },
                 {
                   code: '04',
-                  title: 'HOLDING',
-                  desc: 'Statutory sinking funds, building management fees, property insurance, and tenant retention schedules.',
+                  title: 'HOLDING & PRESERVATION',
+                  items: [
+                    'Statutory reserve sinking funds, building maintenance allocations, and property insurance.',
+                    'Tenancy retention schedules and statutory rental index escalation caps.'
+                  ]
                 },
                 {
                   code: '05',
-                  title: 'EXIT',
-                  desc: 'Capital realization with no UAE personal capital gains tax on qualifying individual investment income.',
+                  title: 'CAPITAL REALIZATION & EXIT',
+                  items: [
+                    'Capital realization modeling with no UAE personal capital gains tax on qualifying individual investment income.',
+                    'Statutory compliance and escrow release verification upon transfer.'
+                  ]
                 },
               ].map((row) => (
-                <div key={row.code} className="py-4.5 flex items-start gap-4">
-                  <span className="text-sm font-mono font-bold text-[#c9a962] shrink-0 pt-0.5">
+                <div key={row.code} className="py-6 flex items-start gap-5">
+                  <span className="text-xs font-mono font-bold text-accent shrink-0 pt-0.5">
                     {row.code}
                   </span>
-                  <div className="space-y-1">
-                    <h4 className="text-sm font-bold text-white uppercase tracking-wide">
+                  <div className="space-y-1.5">
+                    <h4 className="text-sm font-bold text-white uppercase tracking-wider">
                       {row.title}
                     </h4>
-                    <p className="text-xs text-white/70 leading-relaxed">
-                      {row.desc}
-                    </p>
+                    <div className="space-y-1 text-xs text-[#a1a1a6] leading-relaxed">
+                      {row.items.map((item, i) => (
+                        <p key={i}>{item}</p>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -389,109 +406,133 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 05 — RESIDENCY (Institutional UAE Framework Roadmap)                      */}
+      {/* 05 — RESIDENCY (Apple Step-by-Step Interactive Workflow)                   */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
+      <section className="py-20 sm:py-32 border-b border-white/10 bg-black">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
-                RESIDENCY FRAMEWORK
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
-                A route through the official UAE framework.
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-semibold tracking-wider text-accent uppercase">
+                  GOLDEN RESIDENCY FRAMEWORK
+                </span>
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-[#a1a1a6] uppercase font-bold">
+                  INFORMATIONAL
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-1.5">
+                The official UAE framework.
               </h2>
             </div>
             <Link
               href="/residency"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:underline transition-all"
             >
               <span>Review Statutory Guidelines</span>
-              <ArrowRight className="h-4 w-4" />
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* Golden Visa Threshold Callout & 6-Stage Process */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div className="lg:col-span-4 p-6 sm:p-8 bg-surface border border-border space-y-3">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-accent">
+            {/* Criterion Card */}
+            <div className="lg:col-span-4 p-8 rounded-3xl apple-glass-card space-y-4">
+              <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-accent block">
                 STATUTORY PROPERTY CRITERION
               </span>
-              <div className="text-3xl sm:text-4xl font-extrabold text-text-primary tabular-nums">
+              <div className="text-4xl font-extrabold text-white text-gradient-gold tabular-nums">
                 AED 2,000,000
               </div>
-              <p className="text-xs text-text-secondary leading-relaxed">
-                Official freehold title deed valuation qualifying natural person investors for 5 or 10-year Golden Residency status.
+              <p className="text-xs sm:text-sm text-[#a1a1a6] leading-relaxed">
+                Official freehold title deed valuation qualifying natural person investors for long-term Golden Residency status.
               </p>
+              
+              <div className="pt-4 border-t border-white/10 space-y-2 text-[11px] text-[#86868b] leading-relaxed font-mono">
+                <div className="flex items-start gap-1.5">
+                  <ShieldCheck className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                  <span><strong>Statutory Reference:</strong> Cabinet Resolution No. 65 of 2022.</span>
+                </div>
+                <p className="text-[10px] text-[#6e6e73]">
+                  *Official source notes: UAE Government summaries reference 5 years; ICP / GDRFA guidelines reference 10 years. Operational paths and duration must be confirmed with the competent authority (GDRFA / ICP / DLD Cube).
+                </p>
+              </div>
             </div>
 
-            {/* 6-Stage Informational Framework */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                { step: '01', title: 'Eligibility', desc: 'Qualifying freehold property investment registered with DLD.' },
-                { step: '02', title: 'Property / Ownership', desc: 'Electronic Title Deed issuance under Law No. 7 of 2006.' },
-                { step: '03', title: 'Documentation', desc: 'Attested certificates, passport verification, and financial proofs.' },
-                { step: '04', title: 'Application', desc: 'Submission via DLD Cube or official GDRFA / ICP portals.' },
-                { step: '05', title: 'Authority Review', desc: 'Medical fitness evaluation and biometric capture.' },
-                { step: '06', title: 'Issuance', desc: 'Residency permit issued per Cabinet Resolution No. 65 of 2022.' },
-              ].map((item) => (
-                <div key={item.step} className="p-4 bg-surface border border-border space-y-1.5">
-                  <span className="text-xs font-mono font-bold text-accent">{item.step}</span>
-                  <h4 className="text-xs font-bold text-text-primary uppercase tracking-wider">{item.title}</h4>
-                  <p className="text-xs text-text-secondary leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
+            {/* 6 Step Interactive Timeline */}
+            <div className="lg:col-span-8 space-y-3">
+              <div className="text-xs font-mono text-[#86868b] pb-2">
+                ILLUSTRATIVE OPERATIONAL STAGES:
+              </div>
+              <div className="divide-y divide-white/10 border-y border-white/10">
+                {[
+                  { step: '01', title: 'ELIGIBILITY ASSESSMENT', desc: 'Verify qualifying freehold property investment title registered with DLD.' },
+                  { step: '02', title: 'TITLE DEED ISSUANCE', desc: 'Electronic Title Deed issued under Law No. 7 of 2006 meeting statutory threshold.' },
+                  { step: '03', title: 'DOCUMENTATION', desc: 'Attested certificates, passport verification, and financial proofs.' },
+                  { step: '04', title: 'PORTAL SUBMISSION', desc: 'Filing through DLD Cube or official GDRFA / ICP federal channels.' },
+                  { step: '05', title: 'AUTHORITY CLEARANCE', desc: 'Medical fitness assessment and Emirates ID biometric registration.' },
+                  { step: '06', title: 'PERMIT ISSUANCE', desc: 'Residency permit issued per prevailing statutory regulations.' },
+                ].map((item) => (
+                  <div key={item.step} className="py-4 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 group hover:bg-white/5 px-3 rounded-lg transition-colors">
+                    <div className="flex items-center gap-3 shrink-0 sm:w-56">
+                      <span className="text-xs font-mono font-bold text-accent">{item.step}</span>
+                      <h4 className="text-xs font-bold text-white uppercase tracking-wider">{item.title}</h4>
+                    </div>
+                    <p className="text-xs text-[#a1a1a6] leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 06 — GEOGRAPHY (Prime Freehold Territories)                                */}
+      {/* 06 — "EXPLORE TERRITORIES" — Geography Atlas (Apple Maps Style)           */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-[#fafaf8] border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
+      <section className="py-20 sm:py-32 border-b border-white/10 bg-[#08080a]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
-                GEOGRAPHY
+              <span className="text-xs font-mono font-semibold tracking-wider text-accent uppercase block">
+                DUBAI GEOGRAPHY ATLAS
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-1.5">
                 Prime Freehold Territories.
               </h2>
             </div>
             <Link
               href="/areas"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:underline transition-all"
             >
-              <span>Explore Prime Atlas ({DUBAI_AREAS.length} Areas)</span>
-              <ArrowRight className="h-4 w-4" />
+              <span>Explore Atlas ({DUBAI_AREAS.length} Areas)</span>
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* 6 Geographic Destinations */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Atlas Bento Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {primeAreas.map((area) => (
               <Link
                 key={area.id}
                 href={`/areas/${area.slug}`}
-                className="p-6 bg-white border border-border hover:border-accent transition-colors group flex flex-col justify-between space-y-4"
+                className="p-7 rounded-3xl apple-glass-card hover:border-white/20 transition-all group flex flex-col justify-between space-y-6 hover:scale-[1.01]"
               >
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs font-mono">
                     <span className="text-accent font-bold uppercase">{area.master_developer}</span>
-                    <span className="text-[10px] text-text-muted">DESIGNATED AREA</span>
+                    <span className="text-[10px] text-[#86868b] px-2 py-0.5 rounded-full bg-white/5">FREEHOLD</span>
                   </div>
-                  <h3 className="text-xl font-bold text-text-primary group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-bold text-white group-hover:text-accent transition-colors">
                     {area.name}
                   </h3>
-                  <p className="text-xs text-text-secondary leading-relaxed line-clamp-3">
+                  <p className="text-xs text-[#a1a1a6] leading-relaxed line-clamp-3">
                     {area.description}
                   </p>
                 </div>
-                <div className="pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-semibold text-text-secondary group-hover:text-accent">
-                  <span>Explore Atlas</span>
-                  <ChevronRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-[#a1a1a6] group-hover:text-white">
+                  <span>Explore Territory</span>
+                  <ChevronRight className="h-4 w-4 text-accent group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             ))}
@@ -500,45 +541,45 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 07 — DEVELOPERS (The Names Behind Dubai's Landmarks)                      */}
+      {/* 07 — DEVELOPERS (Registry Table Directory)                                */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
+      <section className="py-20 sm:py-28 border-b border-white/10 bg-black">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
-                DEVELOPERS
+              <span className="text-xs font-mono font-semibold tracking-wider text-accent uppercase block">
+                DEVELOPERS REGISTRY
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
-                The names behind Dubai&apos;s most important developments.
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-1.5">
+                The names behind Dubai&apos;s landmarks.
               </h2>
             </div>
             <Link
               href="/developers"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:underline transition-all"
             >
-              <span>View Developer Registry</span>
-              <ArrowRight className="h-4 w-4" />
+              <span>View Full Registry</span>
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* Restrained Developer Directory List (5 Names) */}
-          <div className="divide-y divide-border border-y border-border">
+          <div className="divide-y divide-white/10 border-y border-white/10">
             {topDevelopers.map((dev) => (
-              <div key={dev.id} className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-1 max-w-md">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-base font-bold text-text-primary uppercase">{dev.name}</h3>
-                    <span className="text-[10px] font-mono px-2 py-0.5 bg-surface border border-border text-text-muted">
+              <div key={dev.id} className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-white/5 px-3 rounded-xl transition-colors">
+                <div className="space-y-1.5 max-w-lg">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-base font-bold text-white uppercase tracking-wide">{dev.name}</h3>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-accent font-semibold">
                       DLD #{dev.dld_developer_number}
                     </span>
                   </div>
-                  <p className="text-xs text-text-secondary">{dev.portfolio_overview.substring(0, 120)}...</p>
+                  <p className="text-xs text-[#a1a1a6] leading-relaxed">{dev.portfolio_overview.substring(0, 130)}...</p>
                 </div>
-                <div className="flex items-center gap-4 text-xs font-mono text-text-muted shrink-0">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-5 text-xs font-mono text-[#86868b] shrink-0">
                   <span>Founded {dev.founded_year}</span>
                   <span className="text-accent">•</span>
-                  <span>Listed in DLD approved developer registry</span>
+                  <span>DLD Approved Registry</span>
                 </div>
               </div>
             ))}
@@ -547,30 +588,30 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 08 — THE ECOSYSTEM (Editorial Directory — No Card Wall)                    */}
+      {/* 08 — THE ECOSYSTEM (Institutional Multi-Column Directory)                 */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-[#fafaf8] border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
+      <section className="py-20 sm:py-28 border-b border-white/10 bg-[#08080a]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
+              <span className="text-xs font-mono font-semibold tracking-wider text-accent uppercase block">
                 THE ECOSYSTEM
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
-                Institutions &amp; service categories surrounding an acquisition.
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-1.5">
+                Institutions &amp; service categories.
               </h2>
             </div>
             <Link
               href="/network"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:underline transition-all"
             >
               <span>Explore Ecosystem Map</span>
-              <ArrowRight className="h-4 w-4" />
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* Typographic Multi-Column Directory */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 pt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 pt-2">
             {[
               {
                 code: '01',
@@ -584,7 +625,7 @@ export default function Home() {
               },
               {
                 code: '03',
-                title: 'JURISDICTIONS & STRUCTURING',
+                title: 'JURISDICTIONS',
                 items: ['DIFC Common Law Courts', 'ADGM Wealth Structuring', 'Mainland Commercial Registers', 'SPV & Foundation Vehicles']
               },
               {
@@ -598,14 +639,14 @@ export default function Home() {
                 items: ['Dubai Civil Aviation Authority', 'DMCA Luxury Maritime Registries', 'Department of Economy & Tourism', 'Executive FBO Terminals']
               },
             ].map((eco) => (
-              <div key={eco.code} className="space-y-3">
+              <div key={eco.code} className="space-y-3 p-5 rounded-2xl apple-glass-card">
                 <span className="text-xs font-mono font-bold text-accent block">
                   {eco.code}
                 </span>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-text-primary border-b border-border pb-2">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-white border-b border-white/10 pb-2">
                   {eco.title}
                 </h3>
-                <ul className="space-y-2 text-xs text-text-secondary">
+                <ul className="space-y-2 text-xs text-[#a1a1a6]">
                   {eco.items.map((item, i) => (
                     <li key={i} className="leading-snug">
                       {item}
@@ -619,37 +660,33 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 09 — BEYOND THE ASSET (Curated Editorial Lifestyle)                       */}
+      {/* 09 — BEYOND THE ASSET (Apple TV+ Style Curated Lifestyle Spread)           */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white border-b border-border">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-border">
+      <section className="py-20 sm:py-32 border-b border-white/10 bg-black">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <span className="text-[11px] font-mono font-bold tracking-widest text-accent uppercase">
+              <span className="text-xs font-mono font-semibold tracking-wider text-accent uppercase block">
                 BEYOND THE ASSET
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary mt-1">
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mt-1.5">
                 Aviation, superyachts &amp; gastronomy.
               </h2>
             </div>
             <Link
               href="/lifestyle"
-              className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-text-secondary hover:text-accent transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-accent hover:underline transition-all"
             >
               <span>Explore Lifestyle Directory</span>
-              <ArrowRight className="h-4 w-4" />
+              <ChevronRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* High-End Editorial Spread */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            {/* Dominant Feature: Aviation (~58%) */}
-            <div className="lg:col-span-7 border border-border bg-white flex flex-col">
-              <div className="p-3.5 border-b border-border flex items-center justify-between text-xs font-mono">
-                <span className="font-bold text-accent uppercase">PRIVATE AVIATION &amp; FBO</span>
-                <span className="text-text-muted">OMDW / DWC</span>
-              </div>
-              <div className="relative aspect-[16/10] bg-surface-elevated overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            {/* Dominant Feature: Aviation (7 Cols) */}
+            <div className="lg:col-span-7 rounded-3xl overflow-hidden border border-white/15 apple-glass-card flex flex-col justify-between">
+              <div className="relative aspect-[16/10] w-full">
                 <Image
                   src={lifestyleAviation.image || 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80'}
                   alt={lifestyleAviation.title}
@@ -657,14 +694,20 @@ export default function Home() {
                   sizes="(max-width: 1024px) 100vw, 58vw"
                   className="object-cover"
                 />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-black/70 backdrop-blur-md border border-white/20 text-accent flex items-center gap-1">
+                    <Plane className="h-3 w-3" />
+                    <span>PRIVATE AVIATION</span>
+                  </span>
+                </div>
               </div>
-              <div className="p-6 space-y-2">
-                <h3 className="text-xl font-bold text-text-primary">{lifestyleAviation.title}</h3>
-                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed line-clamp-3">{lifestyleAviation.description}</p>
+              <div className="p-8 space-y-3">
+                <h3 className="text-2xl font-bold text-white">{lifestyleAviation.title}</h3>
+                <p className="text-xs sm:text-sm text-[#a1a1a6] leading-relaxed line-clamp-3">{lifestyleAviation.description}</p>
                 <div className="pt-2">
                   <Link
                     href="/lifestyle/aviation"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-accent hover:underline uppercase tracking-wider font-mono"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:underline uppercase tracking-wider font-mono"
                   >
                     <span>View Aviation Directory &amp; Tariffs →</span>
                   </Link>
@@ -672,14 +715,10 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 2 Stacked Editorial Features (~42%) */}
-            <div className="lg:col-span-5 flex flex-col gap-6">
-              <div className="border border-border bg-white flex flex-col">
-                <div className="p-3 border-b border-border flex items-center justify-between text-xs font-mono">
-                  <span className="font-bold text-accent uppercase">SUPERYACHTS</span>
-                  <span className="text-text-muted">DMCA REGISTER</span>
-                </div>
-                <div className="relative aspect-[16/9] bg-surface-elevated overflow-hidden">
+            {/* 2 Stacked Media Cards (5 Cols) */}
+            <div className="lg:col-span-5 flex flex-col gap-8">
+              <div className="rounded-3xl overflow-hidden border border-white/15 apple-glass-card flex flex-col">
+                <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={lifestyleYachts.image || 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80'}
                     alt={lifestyleYachts.title}
@@ -687,25 +726,27 @@ export default function Home() {
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover"
                   />
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-black/70 backdrop-blur-md border border-white/20 text-accent flex items-center gap-1">
+                      <Anchor className="h-2.5 w-2.5" />
+                      <span>SUPERYACHTS</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="p-4 space-y-1.5">
-                  <h4 className="text-base font-bold text-text-primary">{lifestyleYachts.title}</h4>
-                  <p className="text-xs text-text-secondary line-clamp-2">{lifestyleYachts.description}</p>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-base font-bold text-white">{lifestyleYachts.title}</h4>
+                  <p className="text-xs text-[#a1a1a6] line-clamp-2 leading-relaxed">{lifestyleYachts.description}</p>
                   <Link
                     href="/lifestyle/yachts"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:underline pt-1 font-mono uppercase tracking-wider"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:underline pt-1 font-mono uppercase tracking-wider"
                   >
                     <span>Yacht Charters &amp; Berthing →</span>
                   </Link>
                 </div>
               </div>
 
-              <div className="border border-border bg-white flex flex-col">
-                <div className="p-3 border-b border-border flex items-center justify-between text-xs font-mono">
-                  <span className="font-bold text-accent uppercase">MICHELIN GASTRONOMY</span>
-                  <span className="text-text-muted">GUIDE 2026</span>
-                </div>
-                <div className="relative aspect-[16/9] bg-surface-elevated overflow-hidden">
+              <div className="rounded-3xl overflow-hidden border border-white/15 apple-glass-card flex flex-col">
+                <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={lifestyleDining.image || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'}
                     alt={lifestyleDining.title}
@@ -713,13 +754,19 @@ export default function Home() {
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover"
                   />
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-black/70 backdrop-blur-md border border-white/20 text-accent flex items-center gap-1">
+                      <Utensils className="h-2.5 w-2.5" />
+                      <span>MICHELIN GASTRONOMY</span>
+                    </span>
+                  </div>
                 </div>
-                <div className="p-4 space-y-1.5">
-                  <h4 className="text-base font-bold text-text-primary">{lifestyleDining.title}</h4>
-                  <p className="text-xs text-text-secondary line-clamp-2">{lifestyleDining.description}</p>
+                <div className="p-6 space-y-2">
+                  <h4 className="text-base font-bold text-white">{lifestyleDining.title}</h4>
+                  <p className="text-xs text-[#a1a1a6] line-clamp-2 leading-relaxed">{lifestyleDining.description}</p>
                   <Link
                     href="/lifestyle/dining"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:underline pt-1 font-mono uppercase tracking-wider"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:underline pt-1 font-mono uppercase tracking-wider"
                   >
                     <span>Dining Directory &amp; Tables →</span>
                   </Link>
@@ -731,42 +778,51 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 10 — PRIVATE CLIENT (Quiet Luxury Private Office Moment)                  */}
+      {/* 10 — PRIVATE CLIENT (Apple Pro Bespoke Invitation)                        */}
       {/* ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-white">
-        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border text-xs font-semibold text-text-secondary">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            <span className="font-mono uppercase tracking-wider text-[11px]">DISCREET PRIVATE ADVISORY</span>
+      <section className="py-24 sm:py-36 bg-radial from-[#181820] via-black to-black text-center relative overflow-hidden">
+        <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-semibold text-[#a1a1a6]">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="font-mono uppercase tracking-wider text-[11px] text-white">DISCREET PRIVATE ADVISORY</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-text-primary uppercase leading-tight">
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gradient-silver leading-tight">
             A more considered way to approach Dubai.
           </h2>
 
-          <p className="text-base sm:text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#a1a1a6] max-w-2xl mx-auto leading-relaxed">
             Private advisory for principals, investors and family offices acquiring prime real estate, underwriting capital structures, and securing statutory residency in Dubai.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-left max-w-2xl mx-auto pt-2">
-            {['Property', 'Capital', 'Residency', 'Lifestyle'].map((pillar, idx) => (
-              <div key={idx} className="p-3.5 border border-border bg-surface text-center">
-                <span className="text-xs font-bold text-text-primary uppercase tracking-wider block font-mono">{pillar}</span>
-              </div>
-            ))}
+            {[
+              { name: 'Property', icon: Building2 },
+              { name: 'Capital', icon: Calculator },
+              { name: 'Residency', icon: ShieldCheck },
+              { name: 'Lifestyle', icon: Sparkles }
+            ].map((pillar, idx) => {
+              const Icon = pillar.icon
+              return (
+                <div key={idx} className="p-4 rounded-2xl apple-glass-card text-center space-y-1">
+                  <Icon className="h-4 w-4 text-accent mx-auto" />
+                  <span className="text-xs font-semibold text-white uppercase tracking-wider block font-mono">{pillar.name}</span>
+                </div>
+              )
+            })}
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/private-client"
-              className="w-full sm:w-auto px-8 py-4 bg-text-primary hover:bg-black text-white text-xs font-bold uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-10 py-4 rounded-full bg-white hover:bg-white/90 text-black text-xs sm:text-sm font-semibold tracking-tight transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
             >
               <span>Start Private Client Brief</span>
-              <ArrowRight className="h-4 w-4 text-accent" />
+              <ChevronRight className="h-4 w-4 text-black/60" />
             </Link>
             <Link
               href="/client"
-              className="w-full sm:w-auto px-6 py-4 bg-surface hover:bg-surface-elevated border border-border text-text-primary text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-full apple-glass hover:bg-white/10 text-white text-xs sm:text-sm font-semibold tracking-tight transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
             >
               <span>Client Workspace</span>
             </Link>

@@ -8,7 +8,7 @@ import {
   Bookmark, 
   Menu, 
   X, 
-  ArrowRight
+  ChevronRight
 } from 'lucide-react'
 import { GlobalSearchDialog } from '@/components/ui/global-search-dialog'
 import { useClient } from '@/lib/context/client-context'
@@ -31,32 +31,33 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-border transition-all">
-        <div className="w-full max-w-6xl mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* 1. LEFT: INSTITUTIONAL BRAND LOCKUP */}
+      <header className="sticky top-0 z-50 w-full bg-black/75 backdrop-blur-2xl border-b border-white/10 transition-all">
+        <div className="w-full max-w-[1240px] mx-auto flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+          {/* 1. LEFT: APPLE PRO BRAND MARK */}
           <div className="flex items-center gap-3 shrink-0">
-            <Link href="/" className="group flex flex-col py-1">
-              <span className="text-sm font-black tracking-tight text-text-primary uppercase group-hover:text-accent transition-colors leading-none">
+            <Link href="/" className="group flex items-center gap-2 py-1">
+              <span className="text-sm sm:text-base font-extrabold tracking-tight text-white uppercase group-hover:text-accent transition-colors">
                 DUBAI
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-text-muted uppercase mt-0.5">
-                Private Client &amp; Investment
+              <span className="h-3.5 w-px bg-white/20 hidden xs:block" />
+              <span className="text-[10px] font-mono tracking-widest text-[#a1a1a6] uppercase hidden xs:inline">
+                Private Client
               </span>
             </Link>
           </div>
 
-          {/* 2. CENTER: EDITORIAL NAVIGATION (Desktop lg+) */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold">
+          {/* 2. CENTER: APPLE STYLE COMPACT NAV LINKS (Desktop lg+) */}
+          <nav className="hidden lg:flex items-center gap-7 text-[13px] font-medium tracking-tight">
             {navLinks.map((item) => {
               const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`tracking-wide text-xs transition-colors py-1 ${
+                  className={`transition-colors py-1 ${
                     isActive
-                      ? 'text-text-primary font-bold border-b-2 border-text-primary'
-                      : 'text-text-secondary hover:text-text-primary'
+                      ? 'text-white font-semibold'
+                      : 'text-[#a1a1a6] hover:text-white'
                   }`}
                 >
                   {item.label}
@@ -65,18 +66,18 @@ export function Header() {
             })}
           </nav>
 
-          {/* 3. RIGHT: RESTRAINED UTILITY CONTROLS + PRIVATE CLIENT CTA */}
+          {/* 3. RIGHT: APPLE GLASS UTILITIES + PRO PILL CTA */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-border bg-surface hover:bg-surface-elevated text-xs text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
-              title="Global Search (Cmd+K)"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs text-[#a1a1a6] hover:text-white transition-all cursor-pointer"
+              title="Search (⌘K)"
               aria-label="Open Search"
             >
-              <Search className="h-3.5 w-3.5 text-text-muted" />
-              <span className="hidden sm:inline font-medium text-[11px]">Search</span>
-              <kbd className="hidden md:inline-flex px-1.5 py-0.2 text-[9px] font-mono text-text-muted bg-white border border-border rounded">
+              <Search className="h-3.5 w-3.5 text-[#86868b]" />
+              <span className="text-[11px] hidden sm:inline">Search</span>
+              <kbd className="hidden md:inline-flex px-1.5 py-0.2 text-[9px] font-mono text-[#86868b] bg-white/10 border border-white/10 rounded-full">
                 ⌘K
               </kbd>
             </button>
@@ -84,32 +85,31 @@ export function Header() {
             {/* Saved Shortlist */}
             <Link
               href="/client"
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-border bg-surface hover:bg-surface-elevated text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-medium text-[#a1a1a6] hover:text-white transition-all"
               title="Saved Shortlist"
               aria-label="View Saved Shortlist"
             >
-              <Bookmark className={`h-3.5 w-3.5 ${shortlistIds.length > 0 ? 'text-accent fill-accent' : 'text-text-muted'}`} />
-              <span className="hidden sm:inline text-[11px]">Saved</span>
+              <Bookmark className={`h-3.5 w-3.5 ${shortlistIds.length > 0 ? 'text-accent fill-accent' : 'text-[#86868b]'}`} />
               {shortlistIds.length > 0 && (
-                <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold bg-accent text-white">
+                <span className="px-1.5 py-0.2 rounded-full text-[9px] font-mono font-bold bg-accent text-black">
                   {shortlistIds.length}
                 </span>
               )}
             </Link>
 
-            {/* Private Client Desk CTA */}
+            {/* Private Client Desk CTA (Apple Pill Button) */}
             <Link
               href="/private-client"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-text-primary hover:bg-black text-white text-[11px] font-bold uppercase tracking-wider transition-colors shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white hover:bg-white/90 text-black text-[11px] sm:text-xs font-semibold tracking-tight transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-[1.02] active:scale-[0.98] shrink-0"
             >
               <span>Private Client</span>
-              <ArrowRight className="h-3 w-3 text-accent" />
+              <ChevronRight className="h-3 w-3 text-black/60" />
             </Link>
 
-            {/* Mobile / Tablet Menu Button */}
+            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-1.5 rounded border border-border bg-surface text-text-primary hover:bg-surface-elevated transition-colors lg:hidden cursor-pointer"
+              className="p-1.5 rounded-full border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors lg:hidden cursor-pointer shrink-0"
               aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
@@ -119,14 +119,35 @@ export function Header() {
 
         {/* 4. MOBILE DRAWER */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-border bg-white px-4 py-6 space-y-4 animate-in slide-in-from-top-2 duration-150">
-            <nav className="flex flex-col space-y-3">
+          <div className="lg:hidden border-t border-white/10 bg-black/95 backdrop-blur-3xl px-4 py-6 space-y-4 animate-in slide-in-from-top-2 duration-150">
+            <div className="grid grid-cols-2 gap-2 pb-2">
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  setIsSearchOpen(true)
+                }}
+                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-xs font-medium text-white"
+              >
+                <Search className="h-3.5 w-3.5 text-[#86868b]" />
+                <span>Search</span>
+              </button>
+              <Link
+                href="/client"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-white/10 bg-white/5 text-xs font-medium text-white"
+              >
+                <Bookmark className={`h-3.5 w-3.5 ${shortlistIds.length > 0 ? 'text-accent fill-accent' : 'text-[#86868b]'}`} />
+                <span>Saved ({shortlistIds.length})</span>
+              </Link>
+            </div>
+
+            <nav className="flex flex-col space-y-1">
               {navLinks.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-sm font-semibold text-text-primary hover:text-accent py-1.5 border-b border-border-subtle"
+                  className="text-sm font-medium text-[#f5f5f7] hover:text-accent py-2.5 px-2 rounded-lg hover:bg-white/5 transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -134,27 +155,27 @@ export function Header() {
               <Link
                 href="/network"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-sm font-semibold text-text-primary hover:text-accent py-1.5 border-b border-border-subtle"
+                className="text-sm font-medium text-[#f5f5f7] hover:text-accent py-2.5 px-2 rounded-lg hover:bg-white/5 transition-colors"
               >
                 The Ecosystem
               </Link>
               <Link
                 href="/developers"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-sm font-semibold text-text-primary hover:text-accent py-1.5 border-b border-border-subtle"
+                className="text-sm font-medium text-[#f5f5f7] hover:text-accent py-2.5 px-2 rounded-lg hover:bg-white/5 transition-colors"
               >
                 Developers Registry
               </Link>
             </nav>
 
-            <div className="pt-3 space-y-2">
+            <div className="pt-2">
               <Link
                 href="/private-client"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full py-3 px-4 rounded bg-text-primary text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-3 px-4 rounded-full bg-white text-black text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
               >
                 <span>Private Client Desk</span>
-                <ArrowRight className="h-4 w-4 text-accent" />
+                <ChevronRight className="h-4 w-4 text-black/60" />
               </Link>
             </div>
           </div>
