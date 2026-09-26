@@ -9,7 +9,7 @@ interface CadranDialProps {
   unit?: string
   targetValue?: string | number
   percentage?: number // 0 to 100 for arc meter
-  status?: 'OPTIMAL' | 'STABLE' | 'MODERATE' | 'RESTRICTED' | 'VERIFIED'
+  status?: 'OPTIMAL' | 'STABLE' | 'MODERATE' | 'RESTRICTED' | 'VERIFIED' | 'OFFICIAL'
   statutoryRef?: string
   icon?: LucideIcon
   className?: string
@@ -59,7 +59,7 @@ export function CadranDial({
           <span
             className={cn(
               'px-2.5 py-0.5 rounded-full text-[9px] font-mono uppercase tracking-wider font-semibold border shrink-0',
-              status === 'VERIFIED' || status === 'OPTIMAL'
+              status === 'VERIFIED' || status === 'OPTIMAL' || status === 'OFFICIAL'
                 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                 : status === 'STABLE'
                 ? 'bg-blue-500/10 text-blue-400 border-blue-500/30'

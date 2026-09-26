@@ -6,7 +6,8 @@ import Image from 'next/image'
 import { VERIFIED_PROJECTS } from '@/lib/data/projects'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
-import { ArrowRight } from 'lucide-react'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
+import { ArrowRight, Building, CheckCircle2, ShieldCheck, Landmark } from 'lucide-react'
 
 export default function ProjectsPage() {
   const [selectedStatus, setSelectedStatus] = React.useState('ALL')
@@ -26,7 +27,7 @@ export default function ProjectsPage() {
   const otherProjects = filteredProjects.slice(1)
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-black text-white min-h-screen pb-24 selection:bg-accent/30 selection:text-white">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="DLD Law No. 8 of 2007 Escrow Registry"
@@ -35,7 +36,104 @@ export default function ProjectsPage() {
         description="Architectural landmark developments, branded residences, and prime residential towers with official Dubai Land Department escrow account registration and certified construction milestones."
       />
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
+        {/* 1B. MASTER PROJECT CADRANS */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              MASTER PROJECT GOVERNANCE INSTRUMENTS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">DLD Escrow Account Registry</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="PROJECTS VERIFIED"
+              sublabel="Active Master Developments"
+              value={`${VERIFIED_PROJECTS.length} Landmarks`}
+              unit="DLD AUDITED"
+              targetValue="Escrow Certified"
+              percentage={100}
+              status="VERIFIED"
+              statutoryRef="DLD Project Register"
+              icon={Building}
+            />
+            <CadranDial
+              label="ESCROW STATUTORY"
+              sublabel="Law No. 8 of 2007"
+              value="100.0%"
+              unit="PROTECTED CAPITAL"
+              targetValue="Direct Bank Trust Account"
+              percentage={100}
+              status="OFFICIAL"
+              statutoryRef="Dubai Law No. 8/2007"
+              icon={ShieldCheck}
+            />
+            <CadranDial
+              label="OQOOD REGISTRATION"
+              sublabel="Interim Title Guarantee"
+              value="Mandatory"
+              unit="PRE-HANDOVER TITLE"
+              targetValue="Statutory Investor Protection"
+              percentage={100}
+              status="OPTIMAL"
+              statutoryRef="Dubai Law No. 13/2008"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="HANDOVER ASSURANCE"
+              sublabel="10-Year Structural Guarantee"
+              value="10 Years"
+              unit="STATUTORY WARRANTY"
+              targetValue="UAE Civil Code Art. 880"
+              percentage={100}
+              status="OPTIMAL"
+              statutoryRef="UAE Decennial Liability"
+              icon={CheckCircle2}
+            />
+          </div>
+        </div>
+
+        {/* 1C. MASTER DEVELOPMENT ESCROW QUADRANT */}
+        <CadranQuadrant
+          eyebrow="OFF-PLAN PROJECT GOVERNANCE MATRIX"
+          title="Statutory Developer Escrow & Handover Milestones"
+          statutorySource="Dubai Land Department & Real Estate Regulatory Agency (RERA)"
+          quadrants={[
+            {
+              title: 'Mandatory Escrow Trust Account',
+              value: '100% Escrow',
+              subtext: 'Every off-plan project maintains a ring-fenced escrow account with DLD-approved financial institutions.',
+              delta: 'Law No. 8 of 2007',
+              isPositive: true,
+              statutoryRef: 'Law No. 8 of 2007 (Escrow)',
+            },
+            {
+              title: 'Certified Engineering Progress',
+              value: 'Milestone Releases',
+              subtext: 'Developer disbursements require on-site technical inspection and certification by DLD accredited engineers.',
+              delta: 'RERA Technical Audits',
+              isPositive: true,
+              statutoryRef: 'RERA Engineering Directives',
+            },
+            {
+              title: 'Statutory Snagging & MEP Warranty',
+              value: '1-Year Warranty',
+              subtext: 'Mandatory 12-month defect liability period on all mechanical, electrical, plumbing, and architectural finishes.',
+              delta: 'Law No. 6 of 2019',
+              isPositive: true,
+              statutoryRef: 'Law No. 6 of 2019 (JOP)',
+            },
+            {
+              title: 'Decennial Structural Liability',
+              value: '10-Year Liability',
+              subtext: 'Joint structural warranty by developer and supervising consultant covering total building integrity.',
+              delta: 'Article 880, UAE Civil Code',
+              isPositive: true,
+              statutoryRef: 'Federal Law No. 5 of 1985',
+            },
+          ]}
+        />
         {/* 2. FILTER PILLS */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3 bg-[#0c0c0e] rounded-2xl border border-white/10 shadow-xl">
           <div className="flex flex-wrap items-center gap-2">

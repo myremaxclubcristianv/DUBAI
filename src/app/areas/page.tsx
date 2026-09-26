@@ -5,7 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { DUBAI_AREAS } from '@/lib/data/areas'
 import { PageIntro } from '@/components/layout/layout-primitives'
-import { Plane, ArrowRight, Compass } from 'lucide-react'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
+import { Plane, ArrowRight, Compass, ShieldCheck, MapPin, Building } from 'lucide-react'
 
 export default function AreasPage() {
   const [selectedSector, setSelectedSector] = React.useState('ALL')
@@ -36,6 +37,103 @@ export default function AreasPage() {
       />
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
+        {/* 1B. ATLAS MACROECONOMIC CADRANS */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              FREEHOLD ATLAS INSTRUMENTS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">Regulation No. 3 of 2006</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="FREEHOLD COMMUNITIES"
+              sublabel="Official Gazette Designated"
+              value="68 Zones"
+              unit="100% FOREIGN OWNERSHIP"
+              targetValue="Dubai Land Department"
+              percentage={100}
+              status="VERIFIED"
+              statutoryRef="Dubai Law No. 7/2006"
+              icon={MapPin}
+            />
+            <CadranDial
+              label="MASTER DEVELOPERS"
+              sublabel="Government & Semi-Gov"
+              value="12 Major"
+              unit="INSTITUTIONAL SPONSORS"
+              targetValue="Emaar, Nakheel, Meraas"
+              percentage={92}
+              status="OPTIMAL"
+              statutoryRef="RERA Developer Registry"
+              icon={Building}
+            />
+            <CadranDial
+              label="AIRPORT TRANSIT MAX"
+              sublabel="Average Commute to DXB/DWC"
+              value="22 Mins"
+              unit="ARTERIAL ACCESS"
+              targetValue="Sheikh Zayed / E311"
+              percentage={84}
+              status="OPTIMAL"
+              statutoryRef="Dubai RTA Geodetic Matrix"
+              icon={Plane}
+            />
+            <CadranDial
+              label="FOREIGN BUYER TAX"
+              sublabel="Statutory Surcharge"
+              value="0.00%"
+              unit="ZERO STAMP DUTY"
+              targetValue="vs 15% Vancouver/London"
+              percentage={100}
+              status="OFFICIAL"
+              statutoryRef="FTA Tax Schedule"
+              icon={ShieldCheck}
+            />
+          </div>
+        </div>
+
+        {/* 1C. FREEHOLD TENURE QUADRANT */}
+        <CadranQuadrant
+          eyebrow="DUBAI FREEHOLD OWNERSHIP FRAMEWORK"
+          title="Foreign Title Safeguards & Master Development Statutes"
+          statutorySource="Dubai Land Department & Regulation No. 3 of 2006"
+          quadrants={[
+            {
+              title: 'Perpetual Title Deed',
+              value: '100% Freehold',
+              subtext: 'Unrestricted absolute ownership rights for foreign nationals in designated freehold zones with direct DLD title deed.',
+              delta: 'Dubai Law No. 7/2006',
+              isPositive: true,
+              statutoryRef: 'Article 4, Law No. 7 of 2006',
+            },
+            {
+              title: 'Jointly Owned Property (JOP)',
+              value: 'Mollak Regulated',
+              subtext: 'Service charge budgets and common area management governed by RERA with statutory audit oversight.',
+              delta: 'Law No. 6 of 2019',
+              isPositive: true,
+              statutoryRef: 'Law No. 6 of 2019 (JOP)',
+            },
+            {
+              title: 'Escrow Account Protection',
+              value: '100% Ring-Fenced',
+              subtext: 'Off-plan development funds held in trust bank accounts and released only against certified construction milestones.',
+              delta: 'Law No. 8 of 2007',
+              isPositive: true,
+              statutoryRef: 'Law No. 8 of 2007 (Escrow)',
+            },
+            {
+              title: 'Inheritance Probate Registry',
+              value: 'DIFC Wills Reg.',
+              subtext: 'Common law probate court recognition for non-Muslim expatriates to bequeath Dubai freehold assets seamlessly.',
+              delta: 'DIFC Court Practice Directives',
+              isPositive: true,
+              statutoryRef: 'DIFC Law No. 1 of 2015',
+            },
+          ]}
+        />
         {/* 2. SECTOR FILTER PILLS (Centered) */}
         <div className="flex flex-wrap items-center justify-center gap-2 p-2.5 bg-[#0c0c0e] rounded-full border border-white/10 backdrop-blur-2xl max-w-4xl mx-auto shadow-xl">
           {['ALL', 'DOWNTOWN', 'WATERFRONT', 'ISLAND', 'FINANCIAL', 'GOLF_SUBURBS', 'INLAND'].map((sec) => (

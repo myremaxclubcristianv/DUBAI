@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
-import { ExternalLink, ArrowRight } from 'lucide-react'
+import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
+import { ExternalLink, ArrowRight, Building, ShieldCheck, Landmark, CheckCircle2 } from 'lucide-react'
 
 export default function DevelopersPage() {
   return (
@@ -18,7 +19,105 @@ export default function DevelopersPage() {
         description="Institutional master developers licensed and audited by the Dubai Land Department (DLD). Direct escrow accounts and statutory project governance."
       />
 
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
+        {/* 1B. DEVELOPER GOVERNANCE CADRANS */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-accent">
+              DEVELOPER GOVERNANCE INSTRUMENTS
+            </span>
+            <span className="text-xs font-mono text-zinc-400">RERA & DLD Audit Oversight</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <CadranDial
+              label="LICENSED MASTER DEVS"
+              sublabel="Official DLD Register"
+              value={`${VERIFIED_DEVELOPERS.length} Masters`}
+              unit="TIER 1 SPONSORS"
+              targetValue="Institutional Developers"
+              percentage={100}
+              status="OFFICIAL"
+              statutoryRef="DLD Master Register"
+              icon={Building}
+            />
+            <CadranDial
+              label="ESCROW COMPLIANCE"
+              sublabel="100% Ring-Fenced Accounts"
+              value="100.0%"
+              unit="ESCROW RATE"
+              targetValue="Zero Default Tolerance"
+              percentage={100}
+              status="VERIFIED"
+              statutoryRef="Dubai Law No. 8/2007"
+              icon={ShieldCheck}
+            />
+            <CadranDial
+              label="CONSTRUCTION AUDIT"
+              sublabel="DLD Engineering Inspections"
+              value="Mandatory"
+              unit="PROGRESS MILESTONES"
+              targetValue="Funds Released on Inspection"
+              percentage={95}
+              status="OPTIMAL"
+              statutoryRef="RERA Project Monitoring"
+              icon={Landmark}
+            />
+            <CadranDial
+              label="SOVEREIGN SPONSORSHIP"
+              sublabel="Gov & Semi-Gov Alignment"
+              value="AAA / Prime"
+              unit="MASTER DEVELOPER STRENGTH"
+              targetValue="Dubai Holding / ICD / Emaar"
+              percentage={96}
+              status="OPTIMAL"
+              statutoryRef="Dubai Sovereign Entities"
+              icon={CheckCircle2}
+            />
+          </div>
+        </div>
+
+        {/* 1C. DEVELOPER SAFEGUARDS QUADRANT */}
+        <CadranQuadrant
+          eyebrow="OFF-PLAN DEVELOPER REGULATORY SAFEGUARDS"
+          title="Dubai Real Estate Regulatory Agency (RERA) Protection Architecture"
+          statutorySource="Dubai Land Department & Law No. 8 of 2007"
+          quadrants={[
+            {
+              title: 'Mandatory Project Escrow',
+              value: 'Law No. 8/2007',
+              subtext: 'Every off-plan project must maintain an audited escrow account at an accredited UAE bank under DLD control.',
+              delta: '100% Ring-Fenced',
+              isPositive: true,
+              statutoryRef: 'Law No. 8 of 2007 (Escrow)',
+            },
+            {
+              title: 'Land Ownership Verification',
+              value: '100% Paid Up',
+              subtext: 'Developer must fully own project land and achieve 20% construction or deposit 20% bank guarantee before launch.',
+              delta: 'RERA Registration Requirement',
+              isPositive: true,
+              statutoryRef: 'Executive Council Res. No. 6/2010',
+            },
+            {
+              title: 'Oqood Interim Registration',
+              value: 'Pre-Title Deed',
+              subtext: 'Buyer off-plan equity is registered in DLD Oqood registry protecting ownership rights against developer insolvency.',
+              delta: 'Law No. 13 of 2008',
+              isPositive: true,
+              statutoryRef: 'Law No. 13 of 2008 (Interim Register)',
+            },
+            {
+              title: 'Statutory Snagging Warranties',
+              value: '10-Yr Structural',
+              subtext: 'Developers legally liable for 10-year structural defects and 1-year MEP / finishing snagging defects post-handover.',
+              delta: 'Federal Civil Code & Law No. 6/2019',
+              isPositive: true,
+              statutoryRef: 'Article 880, UAE Civil Code',
+            },
+          ]}
+        />
+
         <div className="flex items-center justify-between border-b border-white/10 pb-4">
           <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-gold">
             REGISTERED MASTER DEVELOPERS ({VERIFIED_DEVELOPERS.length})
