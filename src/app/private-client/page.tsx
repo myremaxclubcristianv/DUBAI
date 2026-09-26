@@ -2,6 +2,8 @@
 
 import * as React from 'react'
 import { useToast } from '@/components/ui/toast'
+import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro, SectionHeader } from '@/components/layout/layout-primitives'
 import {
   ShieldCheck,
   ArrowRight,
@@ -12,7 +14,6 @@ import {
   Lock,
   Compass,
   Check,
-  Sparkles
 } from 'lucide-react'
 
 export default function PrivateClientPage() {
@@ -75,7 +76,11 @@ export default function PrivateClientPage() {
   const handleNext = () => {
     if (step === 10) {
       if (!fullName.trim() || !email.trim() || !phone.trim()) {
-        addToast('Please complete all required contact fields', 'error')
+        addToast({
+          title: 'Missing Required Contact Fields',
+          description: 'Please complete your name, email, and phone number to continue.',
+          type: 'error',
+        })
         return
       }
     }
@@ -90,7 +95,11 @@ export default function PrivateClientPage() {
     e.preventDefault()
 
     if (!fullName.trim() || !email.trim() || !phone.trim()) {
-      addToast('Please complete all contact details', 'error')
+      addToast({
+        title: 'Incomplete Contact Profile',
+        description: 'Please complete all required fields.',
+        type: 'error',
+      })
       return
     }
 
@@ -123,7 +132,11 @@ export default function PrivateClientPage() {
     }
 
     setIsSubmitted(true)
-    addToast('Advisory mandate registered directly with Cristian Văduva desk', 'success')
+    addToast({
+      title: 'Advisory Mandate Registered',
+      description: 'Your mandate has been registered directly with Cristian Văduva desk.',
+      type: 'success',
+    })
   }
 
   const handleReset = () => {
@@ -137,49 +150,23 @@ export default function PrivateClientPage() {
 
   return (
     <div className="bg-black text-white min-h-screen pb-24">
-      {/* 1. APPLE PRO HERO SECTION */}
-      <section className="relative pt-24 pb-16 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-gold" />
-            <span className="text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
-              Cristian Văduva Private Client Desk
-            </span>
-          </div>
+      {/* 1. APPLE PRO CENTERED PAGE INTRO */}
+      <PageIntro
+        eyebrow="Cristian Văduva Private Client Desk"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Direct Principal Advisory" />}
+        title="PRIVATE CLIENT DESK"
+        description="A more considered way to approach Dubai. Direct advisory across prime property, capital structuring, Golden Visa residency, and private lifestyle protocols for principals and single family offices."
+      />
 
-          <div className="space-y-3">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.05]">
-              A more considered way to approach Dubai<span className="text-gradient-gold">.</span>
-            </h1>
-          </div>
-
-          <p className="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto font-normal leading-relaxed">
-            Property · Capital · Residency · Lifestyle · Direct advisory for principals, single family offices and institutional investors.
-          </p>
-
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-zinc-400 font-mono">
-            <span>DLD Title Deed Registry</span>
-            <span>•</span>
-            <span>Statutory Conveyance</span>
-            <span>•</span>
-            <span>Strict Client Discretion</span>
-          </div>
-        </div>
-      </section>
-
-      <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 space-y-16">
+      <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
         {/* 2. SIX PILLARS OF PRIVATE PRACTICE */}
         <div className="space-y-8">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-[11px] font-mono uppercase font-bold text-gold tracking-widest">
-              DISCIPLINED ADVISORY PILLARS
-            </span>
-            <h2 className="text-3xl font-extrabold tracking-tight text-white">
-              Six Practice Disciplines
-            </h2>
-          </div>
+          <SectionHeader
+            align="center"
+            eyebrow="Disciplined Advisory Pillars"
+            title="Six Practice Disciplines"
+            description="End-to-end advisory executed with institutional rigor and strict discretion."
+          />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 sm:p-8 rounded-3xl border border-white/10 bg-zinc-950/80 space-y-3 hover:border-gold/40 transition-colors backdrop-blur-md">

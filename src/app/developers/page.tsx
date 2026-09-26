@@ -4,36 +4,19 @@ import * as React from 'react'
 import Link from 'next/link'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { SourceBadge } from '@/components/ui/source-badge'
-import { ExternalLink, ArrowRight, Sparkles } from 'lucide-react'
+import { PageIntro } from '@/components/layout/layout-primitives'
+import { ExternalLink, ArrowRight } from 'lucide-react'
 
 export default function DevelopersPage() {
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-black text-white min-h-screen pb-28 selection:bg-accent/30 selection:text-white">
       {/* 1. APPLE PRO HERO */}
-      <section className="relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-gold" />
-            <span className="text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
-              Official DLD Master Developer Registry
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
-                Developer Directory<span className="text-gradient-gold">.</span>
-              </h1>
-              <p className="text-base sm:text-xl text-zinc-400 mt-2 max-w-3xl font-normal leading-relaxed">
-                Institutional master developers licensed and audited by the Dubai Land Department (DLD). Direct escrow accounts and statutory project governance.
-              </p>
-            </div>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Developer Register" />
-          </div>
-        </div>
-      </section>
+      <PageIntro
+        eyebrow="Official DLD Master Developer Registry"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Developer Register" />}
+        title={<>Developer Directory<span className="text-gradient-gold">.</span></>}
+        description="Institutional master developers licensed and audited by the Dubai Land Department (DLD). Direct escrow accounts and statutory project governance."
+      />
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
         <div className="flex items-center justify-between border-b border-white/10 pb-4">

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { useClient } from '@/lib/context/client-context'
 import { useToast } from '@/components/ui/toast'
 import {
@@ -13,7 +14,6 @@ import {
   RotateCcw,
   ArrowRight,
   Building,
-  Sparkles
 } from 'lucide-react'
 
 export default function PropertiesPage() {
@@ -114,32 +114,16 @@ export default function PropertiesPage() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       {/* 1. APPLE KEYNOTE HERO HEADER */}
-      <section className="relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-gold" />
-            <span className="text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
-              Curated Trophy Portfolio
-            </span>
+      <PageIntro
+        eyebrow="Curated Trophy Portfolio"
+        badge={
+          <div className="text-xs font-mono text-zinc-400 bg-white/[0.04] px-3.5 py-1.5 rounded-full border border-white/10 shrink-0">
+            <span className="text-white font-semibold">{filteredProperties.length}</span> of {VERIFIED_PROPERTIES.length} verified assets
           </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
-                Properties<span className="text-gradient-gold">.</span>
-              </h1>
-              <p className="text-base sm:text-xl text-zinc-400 mt-2 max-w-2xl font-normal leading-relaxed">
-                Direct statutory title records. Prime freehold penthouses, waterfront villas, and ultra-prime estates.
-              </p>
-            </div>
-            <div className="text-xs font-mono text-zinc-400 bg-zinc-900/80 px-3.5 py-1.5 rounded-full border border-white/10 shrink-0">
-              <span className="text-white font-semibold">{filteredProperties.length}</span> of {VERIFIED_PROPERTIES.length} verified assets
-            </div>
-          </div>
-        </div>
-      </section>
+        }
+        title={<>Properties<span className="text-gradient-gold">.</span></>}
+        description="Direct statutory title records. Prime freehold penthouses, waterfront villas, and ultra-prime estates."
+      />
 
       {/* 2. APPLE FROSTED GLASS CONTROL BAR */}
       <section className="sticky top-16 z-30 bg-black/80 backdrop-blur-2xl border-b border-white/10 py-3.5 px-4 sm:px-6 lg:px-8">

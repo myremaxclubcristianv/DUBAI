@@ -131,7 +131,7 @@ export function SectionHeader({
   title,
   description,
   action,
-  align = 'split',
+  align = 'center',
   className,
   ...props
 }: SectionHeaderProps) {
@@ -140,30 +140,31 @@ export function SectionHeader({
       className={cn(
         'w-full flex flex-col gap-4',
         align === 'split' && 'sm:flex-row sm:items-end sm:justify-between',
-        align === 'center' && 'text-center items-center',
+        align === 'center' && 'text-center items-center justify-center',
         align === 'left' && 'text-left items-start',
         className
       )}
       {...props}
     >
-      <div className={cn('space-y-2', align === 'split' && 'max-w-2xl', align === 'center' && 'max-w-2xl mx-auto')}>
+      <div className={cn('space-y-3', align === 'split' && 'max-w-2xl', align === 'center' && 'max-w-3xl mx-auto text-center')}>
         {eyebrow && (
-          <div className="text-[11px] font-mono font-bold tracking-widest uppercase text-gold">
-            {eyebrow}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[10px] font-mono font-semibold tracking-[0.2em] uppercase text-accent">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+            <span>{eyebrow}</span>
           </div>
         )}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
           {title}
         </h2>
         {description && (
-          <p className="text-sm sm:text-base leading-relaxed font-normal text-zinc-400">
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed font-normal text-zinc-400 max-w-2xl mx-auto">
             {description}
           </p>
         )}
       </div>
 
       {action && (
-        <div className={cn('shrink-0 pt-2 sm:pt-0', align === 'center' && 'pt-4')}>
+        <div className={cn('shrink-0 pt-2 sm:pt-0', align === 'center' && 'pt-3 flex justify-center')}>
           {action}
         </div>
       )}
@@ -395,7 +396,7 @@ export function Stack({
 }
 
 /* ========================================================================= */
-/* 9. PAGE INTRO — Canonical Header Architecture Across Platform             */
+/* 9. PAGE INTRO — Canonical Apple Pro Centered Keynote Architecture         */
 /* ========================================================================= */
 
 interface PageIntroProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
@@ -404,6 +405,7 @@ interface PageIntroProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'tit
   description?: React.ReactNode
   badge?: React.ReactNode
   actions?: React.ReactNode
+  align?: 'left' | 'center' | 'split'
   surface?: 'white' | 'subtle' | 'dark'
 }
 
@@ -413,40 +415,77 @@ export function PageIntro({
   description,
   badge,
   actions,
+  align = 'center',
   className,
   ...props
 }: PageIntroProps) {
+  const isCentered = align === 'center'
+
   return (
-    <section className={cn('relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black', className)} {...props}>
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-      
-      <Container size="default" className="relative z-10 space-y-4">
-        {(eyebrow || badge) && (
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            {eyebrow && (
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
-                <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-                <span>{eyebrow}</span>
-              </div>
-            )}
-            {badge && <div>{badge}</div>}
-          </div>
-        )}
+    <section
+      className={cn(
+        'relative pt-24 pb-16 sm:pt-28 sm:pb-20 overflow-hidden border-b border-white/10 bg-gradient-to-b from-[#0e0e12] via-[#050507] to-[#000000]',
+        className
+      )}
+      {...props}
+    >
+      {/* Multilayer Ambient Luxury Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[900px] h-[350px] bg-gradient-to-b from-accent/10 via-accent/5 to-transparent blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-full max-w-[500px] h-[200px] bg-white/[0.03] blur-[100px] rounded-full pointer-events-none" />
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div className="space-y-2 max-w-3xl">
-            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
-              {title}
-            </h1>
+      <Container size="default" className="relative z-10">
+        <div
+          className={cn(
+            'flex flex-col gap-5',
+            isCentered ? 'items-center text-center mx-auto max-w-4xl' : 'items-start text-left'
+          )}
+        >
+          {/* Eyebrow / Badges */}
+          {(eyebrow || badge) && (
+            <div
+              className={cn(
+                'flex flex-wrap items-center gap-3',
+                isCentered ? 'justify-center' : 'justify-between w-full'
+              )}
+            >
+              {eyebrow && (
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-xl text-xs font-mono font-semibold tracking-wider text-accent uppercase shadow-inner">
+                  <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+                  <span>{eyebrow}</span>
+                </div>
+              )}
+              {badge && <div className="shrink-0">{badge}</div>}
+            </div>
+          )}
 
-            {description && (
-              <p className="text-base sm:text-xl text-zinc-400 font-normal leading-relaxed">
-                {description}
-              </p>
-            )}
-          </div>
+          {/* Keynote Display Title */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight bg-gradient-to-b from-white via-[#f4f4f6] to-[#a1a1a6] bg-clip-text text-transparent leading-[1.08]">
+            {title}
+          </h1>
 
-          {actions && <div className="pt-2 flex flex-wrap items-center gap-3 shrink-0">{actions}</div>}
+          {/* Editorial Subtitle */}
+          {description && (
+            <p
+              className={cn(
+                'text-base sm:text-lg md:text-xl text-zinc-400 font-normal leading-relaxed',
+                isCentered ? 'max-w-2xl mx-auto' : 'max-w-3xl'
+              )}
+            >
+              {description}
+            </p>
+          )}
+
+          {/* Action CTAs */}
+          {actions && (
+            <div
+              className={cn(
+                'pt-3 flex flex-wrap items-center gap-3.5 shrink-0',
+                isCentered ? 'justify-center' : 'justify-start'
+              )}
+            >
+              {actions}
+            </div>
+          )}
         </div>
       </Container>
     </section>
@@ -481,7 +520,7 @@ export function MetricBand({ items, columns = 4, className, ...props }: MetricBa
   return (
     <div
       className={cn(
-        'w-full grid gap-4',
+        'w-full grid gap-4 sm:gap-6',
         colClass,
         className
       )}
@@ -490,28 +529,28 @@ export function MetricBand({ items, columns = 4, className, ...props }: MetricBa
       {items.map((item, idx) => (
         <div
           key={idx}
-          className="p-6 rounded-3xl bg-zinc-950 border border-white/10 flex flex-col justify-between h-full space-y-3 backdrop-blur-md"
+          className="p-6 sm:p-7 rounded-3xl bg-[#0c0c0e] border border-white/10 flex flex-col justify-between h-full space-y-3 backdrop-blur-xl shadow-xl hover:border-white/20 transition-all text-center sm:text-left"
         >
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {/* 1. Header: Label + Source Tag */}
             <div className="flex items-center justify-between gap-2 min-h-[1.25rem]">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 truncate">
+              <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-400 truncate">
                 {item.label}
               </span>
               {item.source && (
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-zinc-900 border border-white/10 text-gold font-bold shrink-0">
+                <span className="text-[9px] font-mono px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/10 text-accent font-semibold shrink-0">
                   {item.source}
                 </span>
               )}
             </div>
 
             {/* 2. Numeric / Display Value */}
-            <div className="flex items-baseline gap-1.5 pt-1 min-h-[2.25rem]">
-              <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight tabular-nums leading-none">
+            <div className="flex items-baseline justify-center sm:justify-start gap-1.5 pt-1 min-h-[2.5rem]">
+              <span className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight tabular-nums leading-none">
                 {item.value}
               </span>
               {item.unit && (
-                <span className="text-xs font-semibold text-zinc-400 tracking-tight">
+                <span className="text-xs font-mono font-semibold text-zinc-400 tracking-tight">
                   {item.unit}
                 </span>
               )}

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { ArrowLeft, ExternalLink, MapPin } from 'lucide-react'
 
 export default function SafariPage() {
@@ -12,35 +13,25 @@ export default function SafariPage() {
 
   return (
     <div className="bg-black text-white min-h-screen pb-24">
-      <div className="border-b border-white/10 bg-black/60 backdrop-blur-md py-4">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/lifestyle"
-            className="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Back to Lifestyle Directory</span>
-          </Link>
-        </div>
+      {/* 1. CENTERED PAGE INTRO */}
+      <PageIntro
+        eyebrow="DDCR Conservation Operators"
+        badge={<SourceBadge status="LICENSED OPERATOR" sourceName="Dubai Desert Conservation Reserve" />}
+        title="CONSERVATION DESERT SAFARIS"
+        description="Eco-luxury private desert expeditions inside the protected Dubai Desert Conservation Reserve (DDCR) with vintage heritage fleets and astronomy camps."
+      />
+
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <Link
+          href="/lifestyle"
+          className="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Back to Lifestyle Directory</span>
+        </Link>
       </div>
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-8">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-accent font-mono">
-                DDCR CONSERVATION OPERATORS
-              </span>
-              <SourceBadge status="LICENSED OPERATOR" sourceName="Dubai Economy and Tourism Licensed Eco-Operator" />
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight mt-2">
-              Conservation Desert Safaris
-            </h1>
-            <p className="text-xs sm:text-sm text-zinc-400 mt-2 max-w-2xl">
-              Eco-luxury private desert expeditions inside the protected Dubai Desert Conservation Reserve (DDCR).
-            </p>
-          </div>
-        </div>
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-10">
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {safariList.map((item) => (

@@ -4,7 +4,8 @@ import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { DUBAI_AREAS } from '@/lib/data/areas'
-import { Plane, ArrowRight, Compass, Sparkles } from 'lucide-react'
+import { PageIntro } from '@/components/layout/layout-primitives'
+import { Plane, ArrowRight, Compass } from 'lucide-react'
 
 export default function AreasPage() {
   const [selectedSector, setSelectedSector] = React.useState('ALL')
@@ -17,42 +18,26 @@ export default function AreasPage() {
   const otherAreas = filteredAreas.slice(1)
 
   return (
-    <div className="bg-black text-white min-h-screen pb-24">
+    <div className="bg-black text-white min-h-screen pb-28 selection:bg-accent/30 selection:text-white">
       {/* 1. APPLE PRO HERO */}
-      <section className="relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-gold" />
-            <span className="text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
-              Statutory Freehold Zone Registry (Regulation No. 3/2006)
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
-                Geography Atlas<span className="text-gradient-gold">.</span>
-              </h1>
-              <p className="text-base sm:text-xl text-zinc-400 mt-2 max-w-3xl font-normal leading-relaxed">
-                The prime Dubai community atlas. Geographic directory of Dubai freehold communities, master developer covenants, airport transit matrices, and foreign title ownership rights.
-              </p>
-            </div>
-            <Link
-              href="/map"
-              className="px-5 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-white/15 text-xs font-bold text-white rounded-full transition-all flex items-center gap-2 shadow-lg shrink-0"
-            >
-              <Compass className="h-4 w-4 text-gold" />
-              <span>Interactive Geodetic Map</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PageIntro
+        eyebrow="Statutory Freehold Zone Registry (Regulation No. 3/2006)"
+        actions={
+          <Link
+            href="/map"
+            className="px-6 py-3 bg-white text-black hover:bg-zinc-200 text-xs font-semibold rounded-full transition-all flex items-center gap-2 shadow-lg shrink-0"
+          >
+            <Compass className="h-4 w-4 text-accent" />
+            <span>Interactive Geodetic Map</span>
+          </Link>
+        }
+        title={<>Geography Atlas<span className="text-gradient-gold">.</span></>}
+        description="The prime Dubai community atlas. Geographic directory of Dubai freehold communities, master developer covenants, airport transit matrices, and foreign title ownership rights."
+      />
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
-        {/* 2. SECTOR FILTER PILLS */}
-        <div className="flex flex-wrap items-center gap-2 p-2 bg-zinc-950/80 rounded-2xl border border-white/10 backdrop-blur-xl">
+        {/* 2. SECTOR FILTER PILLS (Centered) */}
+        <div className="flex flex-wrap items-center justify-center gap-2 p-2.5 bg-[#0c0c0e] rounded-full border border-white/10 backdrop-blur-2xl max-w-4xl mx-auto shadow-xl">
           {['ALL', 'DOWNTOWN', 'WATERFRONT', 'ISLAND', 'FINANCIAL', 'GOLF_SUBURBS', 'INLAND'].map((sec) => (
             <button
               key={sec}

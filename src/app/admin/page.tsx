@@ -8,6 +8,7 @@ import { DUBAI_AREAS } from '@/lib/data/areas'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { MetricCard } from '@/components/ui/metric-card'
 import {
   CheckCircle2,
@@ -122,27 +123,18 @@ export default function AdminPage() {
   ).length
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 bg-[#000000] text-white min-h-screen selection:bg-accent/30 selection:text-white">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-accent">
-              Platform Administration
-            </span>
-            <SourceBadge status="OFFICIAL SOURCE" sourceName="Data Quality Engine v1.0" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-1.5">
-            Data Quality & Source Governance Center
-          </h1>
-          <p className="text-xs sm:text-sm text-zinc-400 mt-1">
-            Dynamic audit diagnostics, source registry governance, CRM lead tracking, and database integrity monitoring.
-          </p>
-        </div>
-      </div>
+    <div className="bg-[#000000] text-white min-h-screen pb-24 selection:bg-accent/30 selection:text-white">
+      {/* 1. APPLE PRO CENTERED PAGE INTRO */}
+      <PageIntro
+        eyebrow="Platform Administration & Audit Diagnostics"
+        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Data Quality Engine v1.0" />}
+        title="DATA QUALITY & GOVERNANCE"
+        description="Dynamic provenance audits, source registry verification, statutory compliance validation, and database integrity monitoring across all platform entities."
+      />
 
-      {/* Database Connection Status Banner */}
-      <div className="p-4 sm:p-5 rounded-2xl border border-amber-500/30 bg-amber-500/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
+        {/* Database Connection Status Banner */}
+        <div className="p-4 sm:p-5 rounded-2xl border border-amber-500/30 bg-amber-500/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2.5">
           <div className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 animate-pulse" />
           <div>
@@ -363,6 +355,7 @@ export default function AdminPage() {
           )}
         </div>
       </div>
-    </div>
+    </main>
+  </div>
   )
 }

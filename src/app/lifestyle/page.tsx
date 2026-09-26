@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { SourceBadge } from '@/components/ui/source-badge'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import {
   ArrowRight,
   Plane,
@@ -13,7 +14,6 @@ import {
   Building,
   Compass,
   ShieldCheck,
-  Sparkles
 } from 'lucide-react'
 
 const LIFESTYLE_SECTORS = [
@@ -89,31 +89,13 @@ export default function LifestylePage() {
 
   return (
     <div className="bg-black text-white min-h-screen pb-24">
-      {/* 1. APPLE PRO HERO SECTION */}
-      <section className="relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
-        
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
-            <Sparkles className="h-3 w-3 text-gold" />
-            <span className="text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
-              Beyond the Asset • Curated Ecosystem
-            </span>
-          </div>
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
-                Lifestyle & Protocols<span className="text-gradient-gold">.</span>
-              </h1>
-              <p className="text-base sm:text-xl text-zinc-400 mt-2 max-w-3xl font-normal leading-relaxed">
-                Licensed luxury directory across private aviation, superyachts, Michelin gastronomy, palatial hospitality, and desert conservation in Dubai.
-              </p>
-            </div>
-            <SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Operator Registry" />
-          </div>
-        </div>
-      </section>
+      {/* 1. APPLE PRO CENTERED PAGE INTRO */}
+      <PageIntro
+        eyebrow="Curated Ecosystem • Licensed Protocols"
+        badge={<SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Registry" />}
+        title="LIFESTYLE PROTOCOLS"
+        description="Licensed luxury directory across private aviation FBOs, superyachts, Michelin gastronomy, palatial hospitality, and desert conservation in Dubai."
+      />
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
         {/* 2. DUAL FEATURED KEYNOTE CARDS (AVIATION & SUPERYACHTS) */}
