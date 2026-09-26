@@ -15,13 +15,17 @@ export type SourceStatus =
   | 'ESTIMATE'
   | 'USER PROVIDED'
   | 'CALCULATED'
+  | 'VERIFIED'
+  | 'STATUTORY_RECORDS'
+  | 'GOVERNMENT_REGISTRY'
+  | 'THIRD_PARTY_AUDIT'
   | 'NOT VERIFIED'
   | 'PRICE ON REQUEST'
 
 export interface ProvenanceMetadata {
-  source_id: string
+  source_id?: string
   source_name: string
-  source_type: 'GOVERNMENT' | 'DEVELOPER' | 'LICENSED_OPERATOR' | 'REGULATORY' | 'CALCULATED' | 'USER' | 'EDITORIAL' | 'CORPORATE'
+  source_type: 'GOVERNMENT' | 'DEVELOPER' | 'LICENSED_OPERATOR' | 'REGULATORY' | 'CALCULATED' | 'USER' | 'EDITORIAL' | 'CORPORATE' | 'GOVERNMENT_REGISTRY' | 'STATUTORY_RECORDS' | 'THIRD_PARTY_AUDIT'
   source_tier?: 'TIER_1_STATUTORY' | 'TIER_2_CORPORATE' | 'TIER_2_DEVELOPER' | 'TIER_3_OPERATOR' | 'TIER_3_LICENSED_PROFESSIONAL' | 'TIER_4_EDITORIAL' | 'TIER_5_UNVERIFIED'
   source_url?: string
   source_reference?: string
@@ -29,13 +33,15 @@ export interface ProvenanceMetadata {
   legal_decree?: string
   publication_date?: string
   data_period?: string
-  retrieved_at: string
+  retrieved_at?: string
   verified_at?: string
   verification_status: SourceStatus
   confidence_score?: number // 0 to 100
   notes?: string
   conditions?: string
 }
+
+export type SourceProvenance = ProvenanceMetadata
 
 export interface ProvenanceField<T> {
   value: T

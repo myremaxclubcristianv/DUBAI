@@ -294,7 +294,178 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* 04 — CURATED TROPHY PORTFOLIO SHOWCASE                                     */}
+      {/* 04 — ENCYCLOPEDIC SOVEREIGN ATLAS & DIRECTORIES                           */}
+      {/* ========================================================================= */}
+      <section className="py-24 sm:py-32 border-b border-black/10 bg-[#ffffff]">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="max-w-3xl mx-auto text-center space-y-3.5">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#b8860b] block">
+              SOVEREIGN ENCYCLOPEDIA &amp; PUBLIC INTELLIGENCE
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#1d1d1f]">
+              The Complete Dubai Operating Ecosystem
+            </h2>
+            <p className="text-base sm:text-lg text-[#6e6e73] max-w-2xl mx-auto">
+              From macroeconomic agendas and corporate conglomerates to statutory decrees, judicial systems, and sovereign infrastructure.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Economy & D33 */}
+            <Link
+              href="/economy"
+              className="group rounded-3xl p-8 bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-white border border-black/10 text-[#b8860b]">
+                    D33 Agenda
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#1d1d1f] group-hover:translate-x-1 transition-all" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">
+                  Macro Economy &amp; D33
+                </h3>
+                <p className="text-xs text-[#6e6e73] leading-relaxed mb-6">
+                  AED 429.7B GDP, demographic census dynamics, trade corridors, and the 10-year Royal charter to double economic output.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-[#1d1d1f]">
+                <span>Explore Economic Registry</span>
+                <span className="text-[#b8860b]">8 Macro Indicators →</span>
+              </div>
+            </Link>
+
+            {/* Companies */}
+            <Link
+              href="/companies"
+              className="group rounded-3xl p-8 bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-white border border-black/10 text-[#b8860b]">
+                    Corporates
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#1d1d1f] group-hover:translate-x-1 transition-all" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">
+                  Sovereign &amp; Enterprise Directory
+                </h3>
+                <p className="text-xs text-[#6e6e73] leading-relaxed mb-6">
+                  Investment Corporation of Dubai (ICD), Dubai Holding, DP World, Emirates Group, Emirates NBD, and major free zones.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-[#1d1d1f]">
+                <span>Explore Enterprise Base</span>
+                <span className="text-[#b8860b]">Major Conglomerates →</span>
+              </div>
+            </Link>
+
+            {/* Government & Programs */}
+            <Link
+              href="/government"
+              className="group rounded-3xl p-8 bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-white border border-black/10 text-[#b8860b]">
+                    Governance
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#1d1d1f] group-hover:translate-x-1 transition-all" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">
+                  Government &amp; Authorities
+                </h3>
+                <p className="text-xs text-[#6e6e73] leading-relaxed mb-6">
+                  The Executive Council, DLD, RERA, DEWA, RTA, Digital Dubai, and Dubai 2040 Urban Master Plan directives.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-[#1d1d1f]">
+                <span>Statutory Authority Profiles</span>
+                <span className="text-[#b8860b]">Executive Councils →</span>
+              </div>
+            </Link>
+
+            {/* Legal Atlas */}
+            <Link
+              href="/legal"
+              className="group rounded-3xl p-8 bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-white border border-black/10 text-[#b8860b]">
+                    Jurisprudence
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#1d1d1f] group-hover:translate-x-1 transition-all" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">
+                  Legal &amp; Regulatory Codes
+                </h3>
+                <p className="text-xs text-[#6e6e73] leading-relaxed mb-6">
+                  Federal Corporate Tax Law No. 47, Law No. 8 Escrow regulations, Rental Cap decree, and DIFC Common Law courts.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-[#1d1d1f]">
+                <span>Inspect Decrees &amp; Courts</span>
+                <span className="text-[#b8860b]">Gazette Codes →</span>
+              </div>
+            </Link>
+
+            {/* Mega Infrastructure */}
+            <Link
+              href="/infrastructure"
+              className="group rounded-3xl p-8 bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-white border border-black/10 text-[#b8860b]">
+                    Megaprojects
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#1d1d1f] group-hover:translate-x-1 transition-all" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">
+                  Sovereign Infrastructure
+                </h3>
+                <p className="text-xs text-[#6e6e73] leading-relaxed mb-6">
+                  AED 128B Al Maktoum Airport DWC, AED 18B Metro Blue Line, Palm Jebel Ali, and MBR 5,000 MW Solar Park.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-[#1d1d1f]">
+                <span>Capex &amp; Engineering Specs</span>
+                <span className="text-[#b8860b]">Active Build Sites →</span>
+              </div>
+            </Link>
+
+            {/* Insurance & Healthcare */}
+            <Link
+              href="/insurance"
+              className="group rounded-3xl p-8 bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-lg transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-full bg-white border border-black/10 text-[#b8860b]">
+                    Protection
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#86868b] group-hover:text-[#1d1d1f] group-hover:translate-x-1 transition-all" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#1d1d1f] mb-2">
+                  Insurance &amp; Healthcare
+                </h3>
+                <p className="text-xs text-[#6e6e73] leading-relaxed mb-6">
+                  DHA mandatory health framework (ISAHD), Golden Visa medical compliance, property damage, and cross-border succession.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between text-[11px] font-bold text-[#1d1d1f]">
+                <span>Underwriting Standards</span>
+                <span className="text-[#b8860b]">ISAHD &amp; Tariffs →</span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 05 — CURATED TROPHY PORTFOLIO SHOWCASE                                     */}
       {/* ========================================================================= */}
       <section className="py-24 sm:py-32 border-b border-black/10 bg-[#f5f5f7]">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">

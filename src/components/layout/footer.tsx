@@ -26,58 +26,63 @@ export function Footer() {
           <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-5 gap-6">
             <div className="space-y-3">
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Discover
+                Real Estate
               </span>
               <ul className="space-y-2 text-xs">
-                <li><Link href="/properties" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Properties</Link></li>
-                <li><Link href="/areas" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Areas</Link></li>
-                <li><Link href="/developers" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Developers</Link></li>
-                <li><Link href="/projects" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Projects</Link></li>
+                <li><Link href="/properties" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Verified Properties</Link></li>
+                <li><Link href="/areas" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Geodetic Areas</Link></li>
+                <li><Link href="/developers" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Developer Registry</Link></li>
+                <li><Link href="/projects" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Master Projects</Link></li>
+                <li><Link href="/infrastructure" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Megaprojects</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3">
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Investment
+                Economy &amp; Finance
               </span>
               <ul className="space-y-2 text-xs">
+                <li><Link href="/economy" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">D33 Economic Agenda</Link></li>
+                <li><Link href="/companies" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Corporate Directory</Link></li>
                 <li><Link href="/investment" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Underwriting Desk</Link></li>
                 <li><Link href="/market" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Market Intelligence</Link></li>
-                <li><Link href="/buying-guide" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Buying Guide</Link></li>
-                <li><Link href="/map" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Master Map</Link></li>
+                <li><Link href="/insurance" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Insurance &amp; Health</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3">
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Residency
+                Governance &amp; Law
               </span>
               <ul className="space-y-2 text-xs">
-                <li><Link href="/residency" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Golden Visa</Link></li>
-                <li><Link href="/residency" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">AED 2M Criteria</Link></li>
-                <li><Link href="/residency" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">0% Tax Framework</Link></li>
-                <li><Link href="/lifestyle" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Lifestyle Assets</Link></li>
+                <li><Link href="/government" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Government Entities</Link></li>
+                <li><Link href="/legal" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Statutory Legal Codes</Link></li>
+                <li><Link href="/residency" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Golden Visa Law</Link></li>
+                <li><Link href="/regulatory" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Gazette Archive</Link></li>
               </ul>
             </div>
 
             <div className="space-y-3">
               <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Private Client
+                Lifestyle &amp; Network
+              </span>
+              <ul className="space-y-2 text-xs">
+                <li><Link href="/lifestyle/dining" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Michelin Dining</Link></li>
+                <li><Link href="/lifestyle/yachts" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Superyacht Fleet</Link></li>
+                <li><Link href="/lifestyle/aviation" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Private Jet FBOs</Link></li>
+                <li><Link href="/lifestyle/hotels" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">5-Star Hospitality</Link></li>
+                <li><Link href="/network" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Sovereign Summits</Link></li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
+                Private Advisory
               </span>
               <ul className="space-y-2 text-xs">
                 <li><Link href="/private-client" className="text-[#b8860b] hover:underline transition-colors font-semibold">Advisory Mandate →</Link></li>
                 <li><Link href="/client" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Client Workspace</Link></li>
-                <li><Link href="/network" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">The Ecosystem</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Legal &amp; Trust
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/regulatory" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Statutory Register</Link></li>
-                <li><Link href="/privacy" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/privacy" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Privacy Governance</Link></li>
                 <li><Link href="/terms" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Terms of Service</Link></li>
                 <li><Link href="/accessibility" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Accessibility (WCAG)</Link></li>
               </ul>

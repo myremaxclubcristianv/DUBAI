@@ -118,9 +118,11 @@ export function Section({
 /* ========================================================================= */
 
 interface SectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  eyebrow?: string
+  eyebrow?: React.ReactNode
+  badge?: React.ReactNode
   title: React.ReactNode
   description?: React.ReactNode
+  subtitle?: React.ReactNode
   action?: React.ReactNode
   align?: 'left' | 'center' | 'split'
   theme?: 'light' | 'dark'
@@ -128,13 +130,17 @@ interface SectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
 
 export function SectionHeader({
   eyebrow,
+  badge,
   title,
   description,
+  subtitle,
   action,
   align = 'center',
   className,
   ...props
 }: SectionHeaderProps) {
+  const effectiveEyebrow = eyebrow || badge
+  const effectiveDescription = description || subtitle
   return (
     <div
       className={cn(
@@ -147,18 +153,18 @@ export function SectionHeader({
       {...props}
     >
       <div className={cn('space-y-3.5', align === 'split' && 'max-w-2xl', align === 'center' && 'max-w-3xl mx-auto text-center')}>
-        {eyebrow && (
+        {effectiveEyebrow && (
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-black/10 text-[11px] font-mono font-semibold tracking-[0.15em] uppercase text-[#b8860b]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#b8860b] animate-pulse" />
-            <span>{eyebrow}</span>
+            <span>{effectiveEyebrow}</span>
           </div>
         )}
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#1d1d1f] leading-[1.08]">
           {title}
         </h2>
-        {description && (
+        {effectiveDescription && (
           <p className="text-base sm:text-lg md:text-xl leading-relaxed font-normal text-[#6e6e73] max-w-2xl mx-auto">
-            {description}
+            {effectiveDescription}
           </p>
         )}
       </div>
@@ -403,6 +409,7 @@ interface PageIntroProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'tit
   eyebrow?: React.ReactNode
   title: React.ReactNode
   description?: React.ReactNode
+  subtitle?: React.ReactNode
   badge?: React.ReactNode
   actions?: React.ReactNode
   align?: 'left' | 'center' | 'split'
@@ -413,6 +420,7 @@ export function PageIntro({
   eyebrow,
   title,
   description,
+  subtitle,
   badge,
   actions,
   align = 'center',
@@ -420,6 +428,7 @@ export function PageIntro({
   ...props
 }: PageIntroProps) {
   const isCentered = align === 'center'
+  const effectiveDescription = description || subtitle
 
   return (
     <section
@@ -463,14 +472,14 @@ export function PageIntro({
           </h1>
 
           {/* Editorial Subtitle */}
-          {description && (
+          {effectiveDescription && (
             <p
               className={cn(
                 'text-base sm:text-xl md:text-2xl text-[#6e6e73] font-normal leading-relaxed',
                 isCentered ? 'max-w-2xl mx-auto' : 'max-w-3xl'
               )}
             >
-              {description}
+              {effectiveDescription}
             </p>
           )}
 
