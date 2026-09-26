@@ -13,12 +13,12 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const CONTAINER_SIZES: Record<ContainerSize, string> = {
-  default: 'max-w-6xl',
+  default: 'max-w-7xl',
   narrow: 'max-w-4xl',
   wide: 'max-w-7xl',
   editorial: 'max-w-[1400px]',
   cinematic: 'max-w-[1600px]',
-  prose: 'max-w-2xl',
+  prose: 'max-w-3xl',
   full: 'max-w-full',
 }
 
@@ -62,7 +62,7 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 const SPACING_CLASSES: Record<SectionSpacing, string> = {
-  hero: 'pt-12 pb-16 md:pt-16 md:pb-24',
+  hero: 'pt-16 pb-20 md:pt-24 md:pb-28',
   default: 'py-16 md:py-24',
   tight: 'py-10 md:py-16',
   loose: 'py-20 md:py-32',
@@ -70,16 +70,16 @@ const SPACING_CLASSES: Record<SectionSpacing, string> = {
 }
 
 const SURFACE_CLASSES: Record<SectionSurface, string> = {
-  white: 'bg-white text-text-primary',
-  subtle: 'bg-surface-subtle text-text-primary',
-  elevated: 'bg-surface text-text-primary',
-  dark: 'bg-[#111111] text-white',
-  'dark-elevated': 'bg-[#181818] text-white',
+  white: 'bg-black text-white',
+  subtle: 'bg-zinc-950 text-white',
+  elevated: 'bg-zinc-900/80 text-white',
+  dark: 'bg-black text-white',
+  'dark-elevated': 'bg-zinc-950 text-white',
 }
 
 export function Section({
   spacing = 'default',
-  surface = 'white',
+  surface = 'dark',
   bordered = false,
   borderBottom = true,
   containerSize = 'default',
@@ -96,8 +96,8 @@ export function Section({
         'relative w-full overflow-hidden',
         SPACING_CLASSES[spacing],
         SURFACE_CLASSES[surface],
-        bordered && (surface.startsWith('dark') ? 'border-y border-white/10' : 'border-y border-border'),
-        borderBottom && !bordered && (surface.startsWith('dark') ? 'border-b border-white/10' : 'border-b border-border'),
+        bordered && 'border-y border-white/10',
+        borderBottom && !bordered && 'border-b border-white/10',
         className
       )}
       {...props}
@@ -132,12 +132,9 @@ export function SectionHeader({
   description,
   action,
   align = 'split',
-  theme = 'light',
   className,
   ...props
 }: SectionHeaderProps) {
-  const isDark = theme === 'dark'
-
   return (
     <div
       className={cn(
@@ -149,32 +146,17 @@ export function SectionHeader({
       )}
       {...props}
     >
-      <div className={cn('space-y-1.5', align === 'split' && 'max-w-2xl', align === 'center' && 'max-w-xl mx-auto')}>
+      <div className={cn('space-y-2', align === 'split' && 'max-w-2xl', align === 'center' && 'max-w-2xl mx-auto')}>
         {eyebrow && (
-          <div
-            className={cn(
-              'text-[11px] font-mono font-bold tracking-widest uppercase',
-              isDark ? 'text-[#c9a962]' : 'text-accent'
-            )}
-          >
+          <div className="text-[11px] font-mono font-bold tracking-widest uppercase text-gold">
             {eyebrow}
           </div>
         )}
-        <h2
-          className={cn(
-            'text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight',
-            isDark ? 'text-white' : 'text-text-primary'
-          )}
-        >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
           {title}
         </h2>
         {description && (
-          <p
-            className={cn(
-              'text-xs sm:text-sm leading-relaxed font-normal',
-              isDark ? 'text-white/70' : 'text-text-secondary'
-            )}
-          >
+          <p className="text-sm sm:text-base leading-relaxed font-normal text-zinc-400">
             {description}
           </p>
         )}
@@ -306,16 +288,11 @@ interface DataRailProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: 'light' | 'dark'
 }
 
-export function DataRail({ items, theme = 'light', className, ...props }: DataRailProps) {
-  const isDark = theme === 'dark'
-
+export function DataRail({ items, className, ...props }: DataRailProps) {
   return (
     <div
       className={cn(
-        'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px rounded-2xl border overflow-hidden',
-        isDark
-          ? 'bg-white/10 border-white/10'
-          : 'bg-border border-border',
+        'w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3',
         className
       )}
       {...props}
@@ -323,48 +300,25 @@ export function DataRail({ items, theme = 'light', className, ...props }: DataRa
       {items.map((item, idx) => (
         <div
           key={idx}
-          className={cn(
-            'p-5 sm:p-6 flex flex-col justify-between h-full space-y-4',
-            isDark ? 'bg-[#141414]' : 'bg-white'
-          )}
+          className="p-5 sm:p-6 rounded-3xl bg-zinc-950 border border-white/10 flex flex-col justify-between h-full space-y-4 backdrop-blur-md"
         >
           <div className="space-y-2">
             <div className="flex items-center justify-between gap-1.5 min-h-[1.25rem]">
-              <span
-                className={cn(
-                  'text-[10px] font-mono uppercase tracking-wider',
-                  isDark ? 'text-white/60' : 'text-text-muted'
-                )}
-              >
+              <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
                 {item.label}
               </span>
               {item.status && (
-                <span
-                  className={cn(
-                    'text-[9px] font-mono px-1.5 py-0.5 rounded shrink-0',
-                    isDark ? 'bg-[#c9a962]/20 text-[#c9a962]' : 'bg-accent-subtle text-accent font-bold'
-                  )}
-                >
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 font-bold shrink-0">
                   {item.status}
                 </span>
               )}
             </div>
-            <div
-              className={cn(
-                'text-xl sm:text-2xl font-extrabold tabular-nums tracking-tight leading-none min-h-[2rem] flex items-baseline',
-                isDark ? 'text-white' : 'text-text-primary'
-              )}
-            >
+            <div className="text-xl sm:text-2xl font-bold tabular-nums tracking-tight text-white leading-none min-h-[2rem] flex items-baseline">
               {item.value}
             </div>
           </div>
           {item.subtext && (
-            <div
-              className={cn(
-                'text-[11px] font-normal leading-relaxed pt-3 border-t',
-                isDark ? 'text-white/50 border-white/10' : 'text-text-secondary border-border-subtle'
-              )}
-            >
+            <div className="text-xs font-normal leading-relaxed pt-3 border-t border-white/10 text-zinc-400">
               {item.subtext}
             </div>
           )}
@@ -459,24 +413,19 @@ export function PageIntro({
   description,
   badge,
   actions,
-  surface = 'subtle',
   className,
   ...props
 }: PageIntroProps) {
-  const surfaceClass = {
-    white: 'bg-white border-b border-border',
-    subtle: 'bg-surface-subtle border-b border-border',
-    dark: 'bg-[#111111] text-white border-b border-white/10',
-  }[surface]
-
   return (
-    <section className={cn('pt-12 pb-10', surfaceClass, className)} {...props}>
-      <Container size="default" className="space-y-4">
+    <section className={cn('relative pt-20 pb-12 overflow-hidden border-b border-white/10 bg-gradient-to-b from-zinc-950 via-black to-black', className)} {...props}>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <Container size="default" className="relative z-10 space-y-4">
         {(eyebrow || badge) && (
           <div className="flex flex-wrap items-center justify-between gap-4">
             {eyebrow && (
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-border text-xs font-semibold text-text-secondary shadow-2xs">
-                <span className="h-2 w-2 rounded-full bg-emerald-600 animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-[11px] font-mono font-semibold tracking-wider text-gold uppercase">
+                <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
                 <span>{eyebrow}</span>
               </div>
             )}
@@ -484,19 +433,21 @@ export function PageIntro({
           </div>
         )}
 
-        <div className="space-y-3">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary uppercase leading-tight break-words">
-            {title}
-          </h1>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div className="space-y-2 max-w-3xl">
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white">
+              {title}
+            </h1>
 
-          {description && (
-            <p className="text-base sm:text-lg text-text-secondary max-w-2xl font-normal leading-relaxed">
-              {description}
-            </p>
-          )}
+            {description && (
+              <p className="text-base sm:text-xl text-zinc-400 font-normal leading-relaxed">
+                {description}
+              </p>
+            )}
+          </div>
+
+          {actions && <div className="pt-2 flex flex-wrap items-center gap-3 shrink-0">{actions}</div>}
         </div>
-
-        {actions && <div className="pt-2 flex flex-wrap items-center gap-3">{actions}</div>}
       </Container>
     </section>
   )
@@ -530,7 +481,7 @@ export function MetricBand({ items, columns = 4, className, ...props }: MetricBa
   return (
     <div
       className={cn(
-        'w-full grid gap-px bg-border border border-border rounded-2xl overflow-hidden shadow-2xs',
+        'w-full grid gap-4',
         colClass,
         className
       )}
@@ -539,37 +490,37 @@ export function MetricBand({ items, columns = 4, className, ...props }: MetricBa
       {items.map((item, idx) => (
         <div
           key={idx}
-          className="bg-white p-5 sm:p-6 flex flex-col justify-between h-full space-y-4"
+          className="p-6 rounded-3xl bg-zinc-950 border border-white/10 flex flex-col justify-between h-full space-y-3 backdrop-blur-md"
         >
           <div className="space-y-2">
             {/* 1. Header: Label + Source Tag */}
             <div className="flex items-center justify-between gap-2 min-h-[1.25rem]">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted truncate">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 truncate">
                 {item.label}
               </span>
               {item.source && (
-                <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-surface-subtle border border-border text-accent font-bold shrink-0">
+                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-zinc-900 border border-white/10 text-gold font-bold shrink-0">
                   {item.source}
                 </span>
               )}
             </div>
 
-            {/* 2. Numeric / Display Value on strict baseline */}
+            {/* 2. Numeric / Display Value */}
             <div className="flex items-baseline gap-1.5 pt-1 min-h-[2.25rem]">
-              <span className="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight tabular-nums leading-none">
+              <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight tabular-nums leading-none">
                 {item.value}
               </span>
               {item.unit && (
-                <span className="text-xs font-semibold text-text-secondary tracking-tight">
+                <span className="text-xs font-semibold text-zinc-400 tracking-tight">
                   {item.unit}
                 </span>
               )}
             </div>
           </div>
 
-          {/* 3. Supporting context with top hairline divider */}
+          {/* 3. Supporting context */}
           {item.subtext && (
-            <p className="text-[11px] text-text-secondary leading-relaxed pt-3 border-t border-border-subtle">
+            <p className="text-xs text-zinc-400 leading-relaxed pt-3 border-t border-white/10">
               {item.subtext}
             </p>
           )}

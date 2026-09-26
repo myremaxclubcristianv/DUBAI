@@ -7,13 +7,13 @@ import { ArrowLeft } from 'lucide-react'
 
 export default function ConciergePage() {
   return (
-    <div className="bg-white text-text-primary min-h-screen pb-24">
+    <div className="bg-black text-white min-h-screen pb-24">
       {/* 1. TOP BREADCRUMB */}
-      <div className="border-b border-border bg-surface-subtle py-4">
+      <div className="border-b border-white/10 bg-black/60 backdrop-blur-md py-4">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/lifestyle"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-text-secondary hover:text-text-primary transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Lifestyle Directory</span>
@@ -21,66 +21,66 @@ export default function ConciergePage() {
         </div>
       </div>
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-8">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-accent font-mono">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-accent font-mono">
                 PRIVATE CLIENT PROTOCOL
               </span>
               <SourceBadge status="OFFICIAL SOURCE" sourceName="Cristian Văduva Private Client Desk" />
             </div>
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight mt-1">
-              Private Client Concierge & Protocol
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight mt-2">
+              Private Concierge & Protocol
             </h1>
-            <p className="text-xs sm:text-sm text-text-secondary mt-1">
+            <p className="text-xs sm:text-sm text-zinc-400 mt-2 max-w-2xl">
               Lifestyle management, private dining reservations, luxury asset curation, and confidential executive coordination.
             </p>
           </div>
         </div>
 
         {/* Concierge Showcase Card */}
-        <div className="p-8 sm:p-10 rounded-3xl border border-border bg-surface flex flex-col lg:flex-row items-center justify-between gap-8">
-          <div className="space-y-4 max-w-xl">
-            <span className="text-xs font-mono font-bold text-accent uppercase tracking-widest">
+        <div className="p-8 sm:p-12 rounded-3xl border border-white/10 bg-[#0c0c0e] flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
+          <div className="space-y-6 max-w-xl">
+            <span className="text-[10px] font-mono font-bold text-accent uppercase tracking-widest">
               PRIVATE CLIENT SERVICES
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-text-primary">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white tracking-tight">
               Advisory & Lifestyle Execution
             </h2>
-            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Our private desk assists with arrangements for international clients acquiring Dubai real estate, including private aviation ground handling, superyacht moorings, reservation coordination at Michelin establishments, and family relocation support.
             </p>
-            <div className="grid grid-cols-2 gap-3 pt-2 text-xs">
-              <div className="p-3 bg-white rounded-xl border border-border">
-                <span className="font-bold text-text-primary block">Private Aviation FBO</span>
-                <span className="text-text-muted">Tarmac meet & greet</span>
+            <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono">
+              <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/10">
+                <span className="font-semibold text-white block">Private Aviation FBO</span>
+                <span className="text-zinc-400 text-[11px] font-sans">Tarmac meet & greet</span>
               </div>
-              <div className="p-3 bg-white rounded-xl border border-border">
-                <span className="font-bold text-text-primary block">Michelin Dining</span>
-                <span className="text-text-muted">Direct table reservations</span>
+              <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/10">
+                <span className="font-semibold text-white block">Michelin Dining</span>
+                <span className="text-zinc-400 text-[11px] font-sans">Direct table reservations</span>
               </div>
-              <div className="p-3 bg-white rounded-xl border border-border">
-                <span className="font-bold text-text-primary block">Superyacht Berths</span>
-                <span className="text-text-muted">Dubai Harbour & Marina</span>
+              <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/10">
+                <span className="font-semibold text-white block">Superyacht Berths</span>
+                <span className="text-zinc-400 text-[11px] font-sans">Dubai Harbour & Marina</span>
               </div>
-              <div className="p-3 bg-white rounded-xl border border-border">
-                <span className="font-bold text-text-primary block">Investor Visa Filing</span>
-                <span className="text-text-muted">DLD Cube investor track</span>
+              <div className="p-4 bg-white/[0.02] rounded-2xl border border-white/10">
+                <span className="font-semibold text-white block">Investor Visa Filing</span>
+                <span className="text-zinc-400 text-[11px] font-sans">DLD Cube investor track</span>
               </div>
             </div>
           </div>
 
-          <div className="w-full lg:w-auto p-6 bg-white rounded-2xl border border-border shadow-sm space-y-4 shrink-0 text-center">
-            <h3 className="text-sm font-bold text-text-primary">
+          <div className="w-full lg:w-96 p-8 bg-white/[0.02] rounded-3xl border border-white/10 shadow-xl space-y-5 shrink-0 text-center">
+            <h3 className="text-base font-semibold text-white tracking-tight">
               Request Private Concierge Consultation
             </h3>
-            <p className="text-xs text-text-muted max-w-xs mx-auto">
+            <p className="text-xs text-zinc-400 max-w-xs mx-auto leading-relaxed">
               Available for registered private clients and prospective investors.
             </p>
             <Link
               href="/private-client"
-              className="block w-full py-3 px-6 rounded-xl bg-text-primary hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-all shadow-xs"
+              className="block w-full py-3.5 px-6 rounded-xl bg-white hover:bg-zinc-200 text-black text-xs font-semibold uppercase tracking-wider transition-all shadow-lg cursor-pointer"
             >
               Access Private Client Intake
             </Link>

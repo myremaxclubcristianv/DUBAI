@@ -122,39 +122,39 @@ export default function AdminPage() {
   ).length
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 bg-white text-text-primary min-h-screen">
+    <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 bg-[#000000] text-white min-h-screen selection:bg-accent/30 selection:text-white">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
         <div>
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-accent">
+            <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-accent">
               Platform Administration
             </span>
             <SourceBadge status="OFFICIAL SOURCE" sourceName="Data Quality Engine v1.0" />
           </div>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-text-primary tracking-tight mt-1">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mt-1.5">
             Data Quality & Source Governance Center
           </h1>
-          <p className="text-xs sm:text-sm text-text-secondary mt-1">
+          <p className="text-xs sm:text-sm text-zinc-400 mt-1">
             Dynamic audit diagnostics, source registry governance, CRM lead tracking, and database integrity monitoring.
           </p>
         </div>
       </div>
 
       {/* Database Connection Status Banner */}
-      <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div className="p-4 sm:p-5 rounded-2xl border border-amber-500/30 bg-amber-500/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div className="flex items-center gap-2.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0 animate-pulse" />
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 animate-pulse" />
           <div>
-            <span className="font-bold text-amber-900">Database Layer Status:</span>
-            <span className="text-amber-800 ml-1">
+            <span className="font-semibold text-amber-300">Database Layer Status:</span>
+            <span className="text-amber-200/90 ml-1">
               {process.env.NEXT_PUBLIC_SUPABASE_URL && !process.env.NEXT_PUBLIC_SUPABASE_URL.includes('placeholder')
                 ? 'CONNECTED — Live Supabase PostgreSQL Storage Active'
                 : 'STATIC VERIFIED REGISTRY ACTIVE — Live Supabase Connection Requires External Provisioning'}
             </span>
           </div>
         </div>
-        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-amber-900 border border-amber-200 font-semibold shrink-0">
+        <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold shrink-0">
           25 Tables / 28 RLS Policies Schema-Ready
         </span>
       </div>
@@ -188,47 +188,47 @@ export default function AdminPage() {
       </div>
 
       {/* Section 1: Automated Integrity Audit Checklist */}
-      <div className="p-6 bg-surface-subtle rounded-xl border border-border space-y-4">
+      <div className="p-6 sm:p-7 bg-[#0c0c0e] rounded-3xl border border-white/10 space-y-5">
         <div className="flex items-center justify-between">
-          <h3 className="text-base font-bold text-text-primary flex items-center gap-2">
-            <Activity className="h-4 w-4 text-emerald-700" />
+          <h3 className="text-base font-bold text-white flex items-center gap-2">
+            <Activity className="h-4 w-4 text-emerald-400" />
             <span>Automated Data Integrity Rules Engine</span>
           </h3>
-          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-            INTEGRITY STATUS: {duplicateRecordsCount === 0 && recordsWithoutVerificationDate === 0 ? 'OPTIMAL (100%)' : 'ACTION REQUIRED'}
+          <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            INTEGRITY: {duplicateRecordsCount === 0 && recordsWithoutVerificationDate === 0 ? 'OPTIMAL (100%)' : 'ACTION REQUIRED'}
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          <div className="p-3 bg-white rounded-lg border border-border flex items-center gap-2.5">
-            <CheckCircle2 className="h-4 w-4 text-emerald-700 shrink-0" />
+          <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/10 flex items-center gap-3">
+            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
             <div>
-              <span className="font-bold text-text-primary">Zero Synthetic/Placeholder Values:</span>
-              <span className="text-text-muted block text-[11px]">Strict enforcement of NO FAKE DATA directive.</span>
+              <span className="font-semibold text-white">Zero Synthetic/Placeholder Values:</span>
+              <span className="text-zinc-400 block text-[11px] mt-0.5">Strict enforcement of NO FAKE DATA directive.</span>
             </div>
           </div>
 
-          <div className="p-3 bg-white rounded-lg border border-border flex items-center gap-2.5">
-            <CheckCircle2 className="h-4 w-4 text-emerald-700 shrink-0" />
+          <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/10 flex items-center gap-3">
+            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
             <div>
-              <span className="font-bold text-text-primary">Asking vs Transaction vs Estimate Separation:</span>
-              <span className="text-text-muted block text-[11px]">Zero pricing channel conflation in database schema.</span>
+              <span className="font-semibold text-white">Asking vs Transaction vs Estimate Separation:</span>
+              <span className="text-zinc-400 block text-[11px] mt-0.5">Zero pricing channel conflation in database schema.</span>
             </div>
           </div>
 
-          <div className="p-3 bg-white rounded-lg border border-border flex items-center gap-2.5">
-            <CheckCircle2 className="h-4 w-4 text-emerald-700 shrink-0" />
+          <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/10 flex items-center gap-3">
+            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
             <div>
-              <span className="font-bold text-text-primary">Statutory Fee Citation Compliance:</span>
-              <span className="text-text-muted block text-[11px]">All DLD tariffs cite Law No. 7/2006 & Res. No. 30/2013.</span>
+              <span className="font-semibold text-white">Statutory Fee Citation Compliance:</span>
+              <span className="text-zinc-400 block text-[11px] mt-0.5">All DLD tariffs cite Law No. 7/2006 & Res. No. 30/2013.</span>
             </div>
           </div>
 
-          <div className="p-3 bg-white rounded-lg border border-border flex items-center gap-2.5">
-            <CheckCircle2 className="h-4 w-4 text-emerald-700 shrink-0" />
+          <div className="p-4 bg-white/[0.03] rounded-2xl border border-white/10 flex items-center gap-3">
+            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
             <div>
-              <span className="font-bold text-text-primary">Central Bank LTV Rules Active:</span>
-              <span className="text-text-muted block text-[11px]">Mortgage engines adhere to UAE Central Bank ceilings.</span>
+              <span className="font-semibold text-white">Central Bank LTV Rules Active:</span>
+              <span className="text-zinc-400 block text-[11px] mt-0.5">Mortgage engines adhere to UAE Central Bank ceilings.</span>
             </div>
           </div>
         </div>
@@ -237,46 +237,46 @@ export default function AdminPage() {
       {/* Section 2: Official Source Registry Health Table */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-text-primary">Source Registry Governance & Breakdown</h3>
-          <span className="text-xs text-text-muted font-medium">
-            {OFFICIAL_SOURCES_REGISTRY.length} Catalogued Sources (Statutory & Editorial)
+          <h3 className="text-lg font-bold text-white">Source Registry Governance & Breakdown</h3>
+          <span className="text-xs text-zinc-400 font-mono">
+            {OFFICIAL_SOURCES_REGISTRY.length} Catalogued Sources
           </span>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs bg-white border border-border rounded-xl overflow-hidden">
-            <thead className="bg-surface border-b border-border">
+        <div className="overflow-x-auto rounded-3xl border border-white/10">
+          <table className="w-full text-left text-xs bg-[#0c0c0e]">
+            <thead className="bg-white/[0.04] border-b border-white/10">
               <tr>
-                <th className="py-3 px-4 font-semibold text-text-primary">Source Code</th>
-                <th className="py-3 px-4 font-semibold text-text-primary">Authority Name</th>
-                <th className="py-3 px-4 font-semibold text-text-primary">Jurisdiction</th>
-                <th className="py-3 px-4 font-semibold text-text-primary">Reliability Level</th>
-                <th className="py-3 px-4 font-semibold text-text-primary">Last Verified</th>
-                <th className="py-3 px-4 font-semibold text-text-primary text-right">Portal</th>
+                <th className="py-3.5 px-4 font-semibold text-zinc-300">Source Code</th>
+                <th className="py-3.5 px-4 font-semibold text-zinc-300">Authority Name</th>
+                <th className="py-3.5 px-4 font-semibold text-zinc-300">Jurisdiction</th>
+                <th className="py-3.5 px-4 font-semibold text-zinc-300">Reliability Level</th>
+                <th className="py-3.5 px-4 font-semibold text-zinc-300">Last Verified</th>
+                <th className="py-3.5 px-4 font-semibold text-zinc-300 text-right">Portal</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
+            <tbody className="divide-y divide-white/10">
               {OFFICIAL_SOURCES_REGISTRY.map((src) => (
-                <tr key={src.id} className="hover:bg-surface-elevated/50">
-                  <td className="py-3 px-4 font-mono font-bold text-accent">{src.code}</td>
-                  <td className="py-3 px-4 font-medium text-text-primary">{src.name}</td>
-                  <td className="py-3 px-4 text-text-secondary">{src.jurisdiction}</td>
-                  <td className="py-3 px-4">
-                    <span className={`px-2 py-0.5 rounded text-[10px] font-semibold border ${
+                <tr key={src.id} className="hover:bg-white/[0.02] transition-colors">
+                  <td className="py-3.5 px-4 font-mono font-bold text-accent">{src.code}</td>
+                  <td className="py-3.5 px-4 font-medium text-white">{src.name}</td>
+                  <td className="py-3.5 px-4 text-zinc-400">{src.jurisdiction}</td>
+                  <td className="py-3.5 px-4">
+                    <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${
                       src.reliability_level === 'TIER_1_STATUTORY' 
-                        ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
-                        : 'bg-blue-50 text-blue-800 border-blue-200'
+                        ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
+                        : 'bg-blue-500/20 text-blue-400 border-blue-500/30'
                     }`}>
                       {src.reliability_level}
                     </span>
                   </td>
-                  <td className="py-3 px-4 font-mono text-text-muted">{src.verification_date}</td>
-                  <td className="py-3 px-4 text-right">
+                  <td className="py-3.5 px-4 font-mono text-zinc-400">{src.verification_date}</td>
+                  <td className="py-3.5 px-4 text-right">
                     <a
                       href={src.official_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-accent hover:underline font-semibold"
+                      className="inline-flex items-center gap-1 text-accent hover:text-white font-semibold transition-colors"
                     >
                       <span>Direct</span>
                       <ExternalLink className="h-3 w-3" />
@@ -292,9 +292,9 @@ export default function AdminPage() {
       {/* Section 3: CRM Leads & Viewings Desk */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Private Client Consultation Leads */}
-        <div className="p-6 bg-white rounded-xl border border-border space-y-4">
+        <div className="p-6 sm:p-7 bg-[#0c0c0e] rounded-3xl border border-white/10 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-bold text-text-primary flex items-center gap-2">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
               <Users className="h-4 w-4 text-accent" />
               <span>Private Client Leads ({leads.length})</span>
             </h3>
@@ -303,18 +303,18 @@ export default function AdminPage() {
           {leads.length > 0 ? (
             <div className="space-y-3">
               {leads.map((lead) => (
-                <div key={lead.id} className="p-3 bg-surface rounded-lg border border-border text-xs space-y-1">
-                  <div className="flex justify-between font-semibold text-text-primary">
+                <div key={lead.id} className="p-4 bg-white/[0.03] rounded-2xl border border-white/10 text-xs space-y-1.5">
+                  <div className="flex justify-between font-semibold text-white">
                     <span>{lead.client_name}</span>
-                    <span className="px-2 py-0.2 rounded text-[10px] bg-accent-subtle text-accent border border-accent-border">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-white/[0.06] text-accent border border-white/10">
                       {lead.service_category}
                     </span>
                   </div>
-                  <div className="text-text-muted text-[11px]">
+                  <div className="text-zinc-400 text-[11px]">
                     {lead.client_email} • {lead.client_phone}
                   </div>
                   {lead.notes && (
-                    <p className="text-text-secondary text-[11px] pt-1 italic">
+                    <p className="text-zinc-300 text-[11px] pt-1 italic">
                       &ldquo;{lead.notes}&rdquo;
                     </p>
                   )}
@@ -322,16 +322,16 @@ export default function AdminPage() {
               ))}
             </div>
           ) : (
-            <div className="p-6 text-center text-xs text-text-muted">
+            <div className="p-8 text-center text-xs text-zinc-500">
               No private client consultation inquiries submitted yet.
             </div>
           )}
         </div>
 
         {/* Viewing Appointments */}
-        <div className="p-6 bg-white rounded-xl border border-border space-y-4">
+        <div className="p-6 sm:p-7 bg-[#0c0c0e] rounded-3xl border border-white/10 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-bold text-text-primary flex items-center gap-2">
+            <h3 className="text-base font-bold text-white flex items-center gap-2">
               <Calendar className="h-4 w-4 text-accent" />
               <span>Viewing Schedule ({viewings.length})</span>
             </h3>
@@ -340,24 +340,24 @@ export default function AdminPage() {
           {viewings.length > 0 ? (
             <div className="space-y-3">
               {viewings.map((vw) => (
-                <div key={vw.id} className="p-3 bg-surface rounded-lg border border-border text-xs space-y-1">
-                  <div className="flex justify-between font-semibold text-text-primary">
+                <div key={vw.id} className="p-4 bg-white/[0.03] rounded-2xl border border-white/10 text-xs space-y-1.5">
+                  <div className="flex justify-between font-semibold text-white">
                     <span>{vw.property_title}</span>
-                    <span className="px-2 py-0.2 rounded text-[10px] bg-emerald-50 text-emerald-800 border border-emerald-200">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
                       {vw.status}
                     </span>
                   </div>
-                  <div className="text-text-muted text-[11px]">
+                  <div className="text-zinc-400 text-[11px]">
                     Client: {vw.client_name} ({vw.client_phone})
                   </div>
-                  <div className="text-text-secondary text-[11px] font-mono">
+                  <div className="text-zinc-300 text-[11px] font-mono">
                     Slot: {vw.requested_date} ({vw.time_slot})
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="p-6 text-center text-xs text-text-muted">
+            <div className="p-8 text-center text-xs text-zinc-500">
               No property viewing requests scheduled yet.
             </div>
           )}

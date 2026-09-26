@@ -184,18 +184,18 @@ export default function BuyingGuidePage() {
   const getBadgeStyle = (classification: ClassificationType) => {
     switch (classification) {
       case 'OFFICIAL_REQUIREMENT':
-        return 'bg-emerald-50 text-emerald-800 border-emerald-200'
+        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
       case 'GENERAL_GUIDANCE':
-        return 'bg-blue-50 text-blue-800 border-blue-200'
+        return 'bg-blue-500/10 text-blue-400 border-blue-500/20'
       case 'PLATFORM_WORKFLOW':
-        return 'bg-amber-50 text-amber-800 border-amber-200'
+        return 'bg-amber-500/10 text-amber-400 border-amber-500/20'
       case 'VERIFY_WITH_PROFESSIONAL':
-        return 'bg-purple-50 text-purple-800 border-purple-200'
+        return 'bg-purple-500/10 text-purple-400 border-purple-500/20'
     }
   }
 
   return (
-    <div className="bg-white text-text-primary min-h-screen pb-24">
+    <div className="bg-black text-white min-h-screen pb-24">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Statutory Conveyancing & Acquisition Roadmap"
@@ -204,20 +204,20 @@ export default function BuyingGuidePage() {
         description="12-Stage acquisition & conveyancing roadmap. From initial objective definition to DLD registration trustee title deed transfer and Golden Visa processing."
       />
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-8">
         {/* 2. CLASSIFICATION LEGEND */}
-        <div className="p-4 rounded-xl border border-border bg-surface-subtle flex flex-wrap items-center gap-4 text-xs">
-          <span className="font-bold text-text-primary uppercase tracking-wider font-mono text-[10px]">Classification Standard:</span>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[11px] font-semibold bg-emerald-50 text-emerald-800 border-emerald-200">
+        <div className="p-5 rounded-2xl border border-white/10 bg-[#0c0c0e] flex flex-wrap items-center gap-3 text-xs shadow-xl">
+          <span className="font-bold text-zinc-300 uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
             <span>[OFFICIAL REQUIREMENT]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[11px] font-semibold bg-blue-50 text-blue-800 border-blue-200">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-blue-500/10 text-blue-400 border-blue-500/20">
             <span>[GENERAL GUIDANCE]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[11px] font-semibold bg-amber-50 text-amber-800 border-amber-200">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-amber-500/10 text-amber-400 border-amber-500/20">
             <span>[PLATFORM WORKFLOW]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border text-[11px] font-semibold bg-purple-50 text-purple-800 border-purple-200">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-purple-500/10 text-purple-400 border-purple-500/20">
             <span>[VERIFY WITH PROFESSIONAL]</span>
           </div>
         </div>
@@ -229,76 +229,76 @@ export default function BuyingGuidePage() {
             return (
               <div
                 key={stage.step}
-                className="rounded-2xl border border-border bg-white overflow-hidden transition-all shadow-2xs hover:border-text-muted"
+                className="rounded-3xl border border-white/10 bg-[#0c0c0e] overflow-hidden transition-all shadow-xl hover:border-accent/40"
               >
                 <button
                   type="button"
                   onClick={() => setExpandedStep(isExpanded ? null : stage.step)}
-                  className="w-full p-6 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
+                  className="w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
                 >
-                  <div className="flex items-start sm:items-center gap-4">
-                    <span className="text-xl sm:text-2xl font-black font-mono text-accent shrink-0">
+                  <div className="flex items-start sm:items-center gap-5">
+                    <span className="text-xl sm:text-2xl font-light font-mono text-accent shrink-0">
                       {stage.step}
                     </span>
                     <div className="space-y-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-base sm:text-lg font-bold text-text-primary">
+                      <div className="flex flex-wrap items-center gap-2.5">
+                        <span className="text-base sm:text-lg font-semibold text-white tracking-tight">
                           {stage.title}
                         </span>
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold border ${getBadgeStyle(stage.classification)}`}>
+                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium border ${getBadgeStyle(stage.classification)}`}>
                           [{stage.classificationLabel}]
                         </span>
                       </div>
-                      <p className="text-xs text-text-secondary">{stage.subtitle}</p>
+                      <p className="text-xs text-zinc-400">{stage.subtitle}</p>
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-lg bg-surface-subtle text-text-secondary shrink-0">
+                  <div className="p-2.5 rounded-xl bg-white/[0.04] text-zinc-400 shrink-0">
                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </div>
                 </button>
 
                 {isExpanded && (
-                  <div className="px-6 pb-6 pt-2 border-t border-border-subtle bg-surface-subtle/50 space-y-6 animate-in fade-in duration-150">
-                    <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  <div className="px-6 sm:px-7 pb-7 pt-3 border-t border-white/10 bg-white/[0.01] space-y-6 animate-in fade-in duration-150">
+                    <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-4xl">
                       {stage.description}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                      <div className="p-5 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-2.5 shadow-2xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">
+                      <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-full space-y-3">
+                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-widest">
                           Required Documentation
                         </span>
-                        <ul className="space-y-1.5 text-text-secondary pt-1 border-t border-border-subtle mt-auto">
+                        <ul className="space-y-2 text-zinc-400 pt-2 border-t border-white/5 mt-auto">
                           {stage.documents.map((doc, idx) => (
-                            <li key={idx} className="flex items-start gap-1.5">
-                              <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                              <span>{doc}</span>
+                            <li key={idx} className="flex items-start gap-2">
+                              <CheckCircle2 className="h-3.5 w-3.5 text-accent shrink-0 mt-0.5" />
+                              <span className="text-zinc-300">{doc}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="p-5 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-2.5 shadow-2xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">
+                      <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-full space-y-3">
+                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-widest">
                           Statutory & Professional Fees
                         </span>
-                        <p className="text-text-secondary leading-relaxed pt-1 border-t border-border-subtle mt-auto">
+                        <p className="text-zinc-300 leading-relaxed pt-2 border-t border-white/5 mt-auto">
                           {stage.statutory_fees}
                         </p>
                       </div>
 
-                      <div className="p-5 rounded-2xl bg-white border border-border flex flex-col justify-between h-full space-y-2.5 shadow-2xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-wider">
+                      <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/10 flex flex-col justify-between h-full space-y-3">
+                        <span className="text-[10px] font-mono uppercase font-bold text-accent tracking-widest">
                           Primary Responsibility
                         </span>
-                        <p className="text-text-secondary leading-relaxed pt-1 border-t border-border-subtle mt-auto">
+                        <p className="text-zinc-300 leading-relaxed pt-2 border-t border-white/5 mt-auto">
                           {stage.responsibilities}
                         </p>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-text-muted">
+                    <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-zinc-400">
                       <span>Legal Authority: {stage.statutory_source}</span>
                       <span>DLD Verification: Current Official Framework</span>
                     </div>
@@ -310,31 +310,31 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 4. INTAKE PROMPT */}
-        <div className="p-6 sm:p-8 rounded-2xl border border-border bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <h3 className="text-base font-bold text-text-primary">
+        <div className="p-8 sm:p-10 rounded-3xl border border-white/10 bg-[#0c0c0e] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-2xl">
+          <div className="space-y-1.5 max-w-xl">
+            <h3 className="text-lg font-semibold text-white tracking-tight">
               Ready to initiate a transaction or verify portfolio due diligence?
             </h3>
-            <p className="text-xs text-text-secondary">
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
               Cristian Văduva Private Client Advisory coordinates direct DLD conveyancing, trustee settlements, and investor residency files.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-text-primary text-white hover:bg-black rounded-xl text-xs font-bold transition-colors shrink-0"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-black hover:bg-zinc-200 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors shrink-0 cursor-pointer shadow-lg"
           >
             <span>Access Private Client Desk</span>
-            <ArrowRight className="h-4 w-4 text-accent" />
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
         {/* 5. LEGAL NOTICE */}
-        <div className="p-6 rounded-2xl border border-border bg-surface text-xs text-text-secondary space-y-2">
-          <div className="flex items-center gap-2 font-bold text-text-primary">
+        <div className="p-6 rounded-3xl border border-white/10 bg-white/[0.02] text-xs text-zinc-400 space-y-2">
+          <div className="flex items-center gap-2 font-semibold text-zinc-300">
             <Info className="h-4 w-4 text-accent" />
             <span>Statutory Conveyancing Disclaimer</span>
           </div>
-          <p className="leading-relaxed">
+          <p className="leading-relaxed text-[11px]">
             This guide outlines the standard statutory procedure established by Dubai Land Department and RERA for freehold property transactions. Complex transactions involving corporate offshore entities (DIFC, JAFZA, BVI) or Power of Attorney representations require notarized and MoFA-attested documentation.
           </p>
         </div>

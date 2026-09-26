@@ -107,7 +107,7 @@ export default function NetworkPage() {
   }
 
   return (
-    <div className="bg-white text-text-primary min-h-screen pb-24">
+    <div className="bg-[#000000] text-white min-h-screen pb-28 selection:bg-accent/30 selection:text-white">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="DIFC • DLD • DET • CBUAE Ecosystem Architecture"
@@ -117,7 +117,7 @@ export default function NetworkPage() {
       />
 
       {/* 2. ECOSYSTEM PILLARS DIRECTORY */}
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-16">
+      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-16">
         {/* Quick Metrics Bar */}
         <MetricBand
           columns={4}
@@ -152,22 +152,25 @@ export default function NetworkPage() {
             },
           ]}
         />
+
         {/* Navigation / Filter pills */}
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-accent-gold block mb-1">Pillars of Access</span>
-              <h2 className="text-2xl font-bold tracking-tight text-text-primary">Ecosystem Verticals</h2>
+              <span className="text-[10px] font-mono font-semibold uppercase tracking-widest text-accent block mb-1">
+                Pillars of Access
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">Ecosystem Verticals</h2>
             </div>
 
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
                 onClick={() => setSelectedPillar('ALL')}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   selectedPillar === 'ALL'
-                    ? 'bg-text-primary text-white border-text-primary'
-                    : 'bg-surface border-border text-text-secondary hover:text-text-primary'
+                    ? 'bg-white text-black shadow-md scale-[1.02]'
+                    : 'bg-white/[0.04] border border-white/10 text-zinc-400 hover:text-white hover:bg-white/[0.08]'
                 }`}
               >
                 All Verticals ({NETWORK_ECOSYSTEM_PILLARS.length})
@@ -177,10 +180,10 @@ export default function NetworkPage() {
                   type="button"
                   key={pillar.id}
                   onClick={() => setSelectedPillar(pillar.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     selectedPillar === pillar.id
-                      ? 'bg-text-primary text-white border-text-primary'
-                      : 'bg-surface border-border text-text-secondary hover:text-text-primary'
+                      ? 'bg-white text-black shadow-md scale-[1.02]'
+                      : 'bg-white/[0.04] border border-white/10 text-zinc-400 hover:text-white hover:bg-white/[0.08]'
                   }`}
                 >
                   {pillar.title.split(' ')[0]} {pillar.title.split(' ')[1]}
@@ -196,48 +199,48 @@ export default function NetworkPage() {
               return (
                 <div
                   key={pillar.id}
-                  className={`p-6 sm:p-7 rounded-2xl bg-surface border border-border flex flex-col justify-between hover:border-accent/50 transition-colors space-y-6 ${
+                  className={`p-6 sm:p-7 rounded-3xl bg-[#0c0c0e] border border-white/10 flex flex-col justify-between hover:border-accent/40 transition-all space-y-6 ${
                     isPrimaryPillar ? 'lg:col-span-6' : 'lg:col-span-4'
                   }`}
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-xl bg-surface-subtle border border-border flex items-center justify-center text-text-primary">
+                      <div className="h-10 w-10 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-white">
                         <Icon className="h-5 w-5 text-accent" />
                       </div>
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-surface-subtle border border-border text-text-muted">
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/[0.05] border border-white/10 text-zinc-400">
                         {pillar.subtitle}
                       </span>
                     </div>
 
                     <div>
-                      <h3 className="text-xl font-bold text-text-primary">{pillar.title}</h3>
-                      <p className="text-xs text-text-secondary mt-2 leading-relaxed">
+                      <h3 className="text-xl font-bold text-white tracking-tight">{pillar.title}</h3>
+                      <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
                         {pillar.description}
                       </p>
                     </div>
 
-                    <div className="space-y-2 pt-2 border-t border-border/60">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted block">
+                    <div className="space-y-2 pt-3 border-t border-white/10">
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-400 block">
                         Entities Identified in Public Registry
                       </span>
-                      <ul className="space-y-1 text-xs text-text-secondary">
+                      <ul className="space-y-1.5 text-xs text-zinc-300">
                         {pillar.verified_participants.slice(0, 3).map((item, pIdx) => (
-                          <li key={pIdx} className="flex items-center gap-1.5">
-                            <span className="h-1 w-1 rounded-full bg-accent" />
+                          <li key={pIdx} className="flex items-center gap-2">
+                            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                             <span>{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="space-y-2 pt-2 border-t border-border/60">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-text-muted block">
+                    <div className="space-y-2 pt-3 border-t border-white/10">
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-zinc-400 block">
                         Advisory Scope
                       </span>
-                      <ul className="space-y-1 text-[11px] text-text-muted">
+                      <ul className="space-y-1 text-[11px] text-zinc-400">
                         {pillar.advisory_focus.slice(0, 2).map((focus, fIdx) => (
-                          <li key={fIdx} className="flex items-start gap-1">
+                          <li key={fIdx} className="flex items-start gap-1.5">
                             <span className="text-accent font-bold">›</span>
                             <span>{focus}</span>
                           </li>
@@ -246,15 +249,15 @@ export default function NetworkPage() {
                     </div>
                   </div>
 
-                  <div className="pt-4 border-t border-border flex items-center justify-between">
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                     <SourceBadge status={pillar.provenance.verification_status} sourceName={pillar.provenance.source_name} />
                     <button
                       type="button"
                       onClick={() => handleOpenIntro(pillar.title)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-text-primary hover:bg-black text-white text-xs font-bold transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white text-black hover:bg-zinc-200 text-xs font-bold transition-all cursor-pointer shadow-md"
                     >
                       <span>Request Access</span>
-                      <ArrowRight className="h-3 w-3 text-accent" />
+                      <ArrowRight className="h-3.5 w-3.5 text-accent" />
                     </button>
                   </div>
                 </div>
@@ -264,45 +267,49 @@ export default function NetworkPage() {
         </section>
 
         {/* 3. VERIFIED GLOBAL SUMMITS & CONFERENCES */}
-        <section className="space-y-6 pt-6 border-t border-border">
+        <section className="space-y-6 pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-accent-gold block mb-1">Global Forums & Gatherings</span>
-              <h2 className="text-2xl font-bold tracking-tight text-text-primary">Verified Annual Dubai Summits</h2>
+              <span className="text-[10px] font-mono font-semibold uppercase tracking-widest text-accent block mb-1">
+                Global Forums & Gatherings
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">Verified Annual Dubai Summits</h2>
             </div>
-            <p className="text-xs text-text-muted max-w-md">
+            <p className="text-xs text-zinc-400 max-w-md">
               Official institutional and technology gatherings registered with the Dubai Department of Economy and Tourism (DET) and Dubai World Trade Centre.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VERIFIED_DUBAI_CONFERENCES.map((conf) => (
-              <div key={conf.id} className="p-5 rounded-xl bg-surface border border-border flex flex-col justify-between space-y-4">
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs text-text-muted">
-                    <span className="flex items-center gap-1 font-medium text-text-primary">
-                      <Calendar className="h-3.5 w-3.5 text-accent-gold" />
+              <div key={conf.id} className="p-5 rounded-3xl bg-[#0c0c0e] border border-white/10 flex flex-col justify-between space-y-4">
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between text-xs text-zinc-400">
+                    <span className="flex items-center gap-1.5 font-medium text-zinc-200">
+                      <Calendar className="h-3.5 w-3.5 text-accent" />
                       <span>{conf.frequency}</span>
                     </span>
-                    <span className="text-[10px] uppercase font-mono">{conf.organizer.split(' ')[0]}</span>
+                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-white/[0.04] border border-white/10">
+                      {conf.organizer.split(' ')[0]}
+                    </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-text-primary leading-snug">{conf.name}</h3>
-                  <p className="text-[11px] text-text-muted leading-relaxed line-clamp-3">
+                  <h3 className="text-sm font-bold text-white leading-snug">{conf.name}</h3>
+                  <p className="text-[11px] text-zinc-400 leading-relaxed line-clamp-3">
                     {conf.focus}
                   </p>
-                  <p className="text-[11px] text-text-secondary font-medium">
+                  <p className="text-[11px] text-zinc-300 font-medium pt-1">
                     📍 {conf.venue}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-border flex items-center justify-between">
-                  <span className="text-[10px] text-text-muted">Official Portal</span>
+                <div className="pt-3.5 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[10px] text-zinc-500 font-mono">Official Portal</span>
                   <a
                     href={conf.official_website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-text-primary hover:text-accent-gold transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-accent hover:text-white transition-colors"
                   >
                     <span>Visit</span>
                     <ExternalLink className="h-3 w-3" />
@@ -314,15 +321,15 @@ export default function NetworkPage() {
         </section>
 
         {/* 4. PRIVATE INTRODUCTIONS WORKFLOW CTA */}
-        <section className="p-8 sm:p-10 rounded-2xl bg-text-primary text-white space-y-6">
+        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-[#141418] to-[#0c0c0e] border border-white/10 text-white space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-2xl">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-accent-gold text-xs font-semibold">
+            <div className="space-y-2.5 max-w-2xl">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-accent text-xs font-semibold">
                 <Sparkles className="h-3.5 w-3.5" />
                 <span>Private Client Advisory Desk</span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Direct Introductions Across Dubai Sovereign Networks</h2>
-              <p className="text-sm text-text-subtle leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                 Whether structuring an off-market penthouse acquisition, establishing a DIFC foundation, or coordinating non-resident bank onboarding, our private client desk facilitates deterministic, protocol-compliant introductions.
               </p>
             </div>
@@ -330,7 +337,7 @@ export default function NetworkPage() {
             <button
               type="button"
               onClick={() => handleOpenIntro('Private Client Desk Consultation')}
-              className="px-6 py-3.5 rounded-lg bg-white text-text-primary font-bold text-xs uppercase tracking-wider hover:bg-surface-subtle transition-colors shrink-0 flex items-center justify-center gap-2"
+              className="px-7 py-4 rounded-xl bg-white text-black font-semibold text-xs uppercase tracking-wider hover:bg-zinc-200 transition-all shrink-0 flex items-center justify-center gap-2 cursor-pointer shadow-lg"
             >
               <span>Initiate Private Introduction</span>
               <ArrowRight className="h-4 w-4" />
@@ -341,26 +348,28 @@ export default function NetworkPage() {
 
       {/* 5. PRIVATE INTRODUCTION INTAKE MODAL */}
       {introModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-border shadow-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-[#141418] rounded-3xl border border-white/15 shadow-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto text-white">
             <div className="flex items-start justify-between">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-accent-gold block mb-1">Private Client Desk</span>
-                <h3 className="text-xl font-bold text-text-primary">Ecosystem Introduction Intake</h3>
-                <p className="text-xs text-text-muted mt-1">Target: {introTargetPillar}</p>
+                <span className="text-[10px] font-mono font-semibold uppercase tracking-widest text-accent block mb-1">
+                  Private Client Desk
+                </span>
+                <h3 className="text-xl font-bold text-white tracking-tight">Ecosystem Introduction Intake</h3>
+                <p className="text-xs text-zinc-400 mt-1">Target: {introTargetPillar}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setIntroModalOpen(false)}
-                className="text-text-muted hover:text-text-primary text-lg font-bold p-1"
+                className="text-zinc-400 hover:text-white text-lg font-bold p-1 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
             <form onSubmit={handleSubmitIntro} className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-wider text-text-secondary block">
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 block">
                   Full Name *
                 </label>
                 <input
@@ -369,13 +378,13 @@ export default function NetworkPage() {
                   placeholder="e.g. Lord Alistair Vance"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border text-sm text-text-primary focus:outline-none focus:border-text-primary"
+                  className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-accent"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-text-secondary block">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 block">
                     Email Address *
                   </label>
                   <input
@@ -384,12 +393,12 @@ export default function NetworkPage() {
                     placeholder="name@familyoffice.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border text-sm text-text-primary focus:outline-none focus:border-text-primary"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-accent"
                   />
                 </div>
-                <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-text-secondary block">
-                    Telephone (with country code) *
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 block">
+                    Telephone (with code) *
                   </label>
                   <input
                     type="tel"
@@ -397,20 +406,20 @@ export default function NetworkPage() {
                     placeholder="+971 50 000 0000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border text-sm text-text-primary focus:outline-none focus:border-text-primary"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-accent"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-text-secondary block">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 block">
                     Entity / Profile
                   </label>
                   <select
                     value={formData.entityType}
                     onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border text-sm text-text-primary focus:outline-none focus:border-text-primary"
+                    className="w-full px-4 py-3 rounded-xl bg-[#1c1c22] border border-white/10 text-sm text-white focus:outline-none focus:border-accent cursor-pointer"
                   >
                     <option value="Private Investor">Private Investor</option>
                     <option value="Single Family Office">Single Family Office</option>
@@ -419,14 +428,14 @@ export default function NetworkPage() {
                     <option value="Advisory Partner">Advisory Partner</option>
                   </select>
                 </div>
-                <div className="space-y-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-text-secondary block">
+                <div className="space-y-1.5">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 block">
                     Allocation Tier (AED)
                   </label>
                   <select
                     value={formData.capitalTier}
                     onChange={(e) => setFormData({ ...formData, capitalTier: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border text-sm text-text-primary focus:outline-none focus:border-text-primary"
+                    className="w-full px-4 py-3 rounded-xl bg-[#1c1c22] border border-white/10 text-sm text-white focus:outline-none focus:border-accent cursor-pointer"
                   >
                     <option value="AED 5M - 10M">AED 5M - 10M</option>
                     <option value="AED 10M - 25M">AED 10M - 25M</option>
@@ -436,8 +445,8 @@ export default function NetworkPage() {
                 </div>
               </div>
 
-              <div className="space-y-1">
-                <label className="text-xs font-bold uppercase tracking-wider text-text-secondary block">
+              <div className="space-y-1.5">
+                <label className="text-xs font-semibold uppercase tracking-wider text-zinc-300 block">
                   Strategic Objective / Desired Introduction
                 </label>
                 <textarea
@@ -445,12 +454,12 @@ export default function NetworkPage() {
                   placeholder="e.g. Seeking off-plan penthouse allocation in Downtown and introduction to DIFC foundation structuring team..."
                   value={formData.interestSummary}
                   onChange={(e) => setFormData({ ...formData, interestSummary: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-surface border border-border text-sm text-text-primary focus:outline-none focus:border-text-primary resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-accent resize-none"
                 />
               </div>
 
-              <div className="p-3 rounded-lg bg-surface-subtle border border-border flex items-start gap-2 text-[11px] text-text-muted">
-                <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/10 flex items-start gap-2.5 text-[11px] text-zinc-400">
+                <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
                 <span>
                   All inquiries are managed under strict client confidentiality. Data is retained on your local device during development mode.
                 </span>
@@ -460,14 +469,14 @@ export default function NetworkPage() {
                 <button
                   type="button"
                   onClick={() => setIntroModalOpen(false)}
-                  className="px-4 py-2 rounded-lg border border-border text-xs font-semibold text-text-secondary hover:text-text-primary"
+                  className="px-4 py-2.5 rounded-xl border border-white/10 text-xs font-semibold text-zinc-400 hover:text-white cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-5 py-2 rounded-lg bg-text-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-black transition-colors flex items-center gap-1.5"
+                  className="px-5 py-2.5 rounded-xl bg-white text-black text-xs font-semibold uppercase tracking-wider hover:bg-zinc-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
                 >
                   <Send className="h-3.5 w-3.5" />
                   <span>{isSubmitting ? 'Recording...' : 'Submit Request'}</span>

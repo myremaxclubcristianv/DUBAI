@@ -74,21 +74,21 @@ export function ScenarioWorkspace() {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-border overflow-hidden space-y-6">
-      <div className="p-6 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="bg-zinc-950/90 rounded-3xl border border-white/10 overflow-hidden space-y-6 backdrop-blur-md shadow-2xl">
+      <div className="p-6 sm:p-8 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <Calculator className="h-5 w-5 text-accent" />
-            <h2 className="text-xl font-bold text-text-primary">Multi-Scenario Investment Builder</h2>
+            <Calculator className="h-5 w-5 text-gold" />
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Multi-Scenario Investment Builder</h2>
           </div>
-          <p className="text-xs text-text-secondary mt-1">
+          <p className="text-xs sm:text-sm text-zinc-400 mt-1">
             Dynamic institutional underwriting workspace. All model inputs are user-configured with zero synthetic assumptions.
           </p>
         </div>
         <div className="flex items-center gap-3">
           <button
             onClick={handleReset}
-            className="px-3 py-1.5 rounded-lg border border-border bg-surface text-text-secondary hover:text-text-primary text-xs font-semibold flex items-center gap-1 transition-colors"
+            className="px-4 py-2 rounded-full border border-white/10 bg-zinc-900 text-zinc-400 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             <span>Reset Scenario</span>
@@ -97,24 +97,24 @@ export function ScenarioWorkspace() {
         </div>
       </div>
 
-      <div className="p-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: User Input Parameters */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="p-5 bg-surface-subtle rounded-xl border border-border space-y-4">
-            <div className="flex items-center justify-between border-b border-border pb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-accent">
+          <div className="p-6 bg-black rounded-2xl border border-white/10 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-gold">
                 1. Acquisition & Financing Inputs
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-text-secondary border border-border font-semibold">
+              <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-900 text-zinc-400 border border-white/10 font-semibold">
                 USER INPUT
               </span>
             </div>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-4 text-xs">
               <div>
-                <div className="flex justify-between mb-1">
-                  <span className="font-semibold text-text-primary">Target Purchase Price (AED)</span>
-                  <span className="font-mono text-accent font-bold">AED {purchasePrice.toLocaleString()}</span>
+                <div className="flex justify-between mb-1.5">
+                  <span className="font-semibold text-zinc-300">Target Purchase Price (AED)</span>
+                  <span className="font-mono text-gold font-bold">AED {purchasePrice.toLocaleString()}</span>
                 </div>
                 <input
                   type="range"
@@ -123,62 +123,62 @@ export function ScenarioWorkspace() {
                   step={250000}
                   value={purchasePrice}
                   onChange={(e) => setPurchasePrice(Number(e.target.value))}
-                  className="w-full accent-accent cursor-pointer"
+                  className="w-full accent-gold cursor-pointer"
                 />
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Equity Down (%)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Equity Down (%)</label>
                   <input
                     type="number"
                     min={20}
                     max={100}
                     value={downPaymentPct}
                     onChange={(e) => setDownPaymentPct(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Interest Rate (%)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Interest Rate (%)</label>
                   <input
                     type="number"
                     step={0.05}
                     value={interestRate}
                     onChange={(e) => setInterestRate(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Loan Term (Yrs)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Loan Term (Yrs)</label>
                   <input
                     type="number"
                     min={5}
                     max={30}
                     value={loanTermYears}
                     onChange={(e) => setLoanTermYears(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="p-5 bg-surface-subtle rounded-xl border border-border space-y-4">
-            <div className="flex items-center justify-between border-b border-border pb-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-accent">
+          <div className="p-6 bg-black rounded-2xl border border-white/10 space-y-4 shadow-xl">
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <span className="text-xs font-bold uppercase tracking-wider text-gold">
                 2. Operations & Exit Parameters
               </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white text-text-secondary border border-border font-semibold">
+              <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-zinc-900 text-zinc-400 border border-white/10 font-semibold">
                 USER INPUT
               </span>
             </div>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-4 text-xs">
               <div>
-                <div className="flex justify-between mb-1">
-                  <span className="font-semibold text-text-primary">Expected Annual Gross Rent (AED)</span>
-                  <span className="font-mono text-accent font-bold">AED {annualRent.toLocaleString()}</span>
+                <div className="flex justify-between mb-1.5">
+                  <span className="font-semibold text-zinc-300">Expected Annual Gross Rent (AED)</span>
+                  <span className="font-mono text-gold font-bold">AED {annualRent.toLocaleString()}</span>
                 </div>
                 <input
                   type="range"
@@ -187,77 +187,77 @@ export function ScenarioWorkspace() {
                   step={25000}
                   value={annualRent}
                   onChange={(e) => setAnnualRent(Number(e.target.value))}
-                  className="w-full accent-accent cursor-pointer"
+                  className="w-full accent-gold cursor-pointer"
                 />
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Vacancy Reserve (%)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Vacancy Reserve (%)</label>
                   <input
                     type="number"
                     min={0}
                     max={30}
                     value={vacancyPct}
                     onChange={(e) => setVacancyPct(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Maintenance (%)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Maintenance (%)</label>
                   <input
                     type="number"
                     min={0}
                     max={20}
                     value={maintenancePct}
                     onChange={(e) => setMaintenancePct(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Management (%)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Management (%)</label>
                   <input
                     type="number"
                     min={0}
                     max={20}
                     value={managementPct}
                     onChange={(e) => setManagementPct(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Annual Service Charge (AED)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Annual Service Charge (AED)</label>
                   <input
                     type="number"
                     value={annualServiceCharge}
                     onChange={(e) => setAnnualServiceCharge(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-semibold text-text-primary mb-1">Holding Period (Yrs)</label>
+                  <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Holding Period (Yrs)</label>
                   <input
                     type="number"
                     min={1}
                     max={25}
                     value={holdingPeriodYears}
                     onChange={(e) => setHoldingPeriodYears(Number(e.target.value))}
-                    className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                    className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-text-primary mb-1">Target Exit Price (AED)</label>
+                <label className="block text-[11px] font-semibold text-zinc-400 mb-1">Target Exit Price (AED)</label>
                 <input
                   type="number"
                   step={100000}
                   value={exitPrice}
                   onChange={(e) => setExitPrice(Number(e.target.value))}
-                  className="w-full px-2.5 py-1.5 bg-white border border-border rounded-md font-mono"
+                  className="w-full px-3 py-2 bg-zinc-900 border border-white/10 rounded-xl font-mono text-white text-xs focus:outline-none focus:border-gold"
                 />
               </div>
             </div>
@@ -267,83 +267,83 @@ export function ScenarioWorkspace() {
         {/* Right Column: Calculated Outputs & Financial Ledger */}
         <div className="lg:col-span-6 space-y-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <div className="p-4 bg-surface rounded-xl border border-border">
-              <span className="text-[10px] font-bold uppercase text-text-muted block">Gross Rental Yield</span>
-              <div className="text-2xl font-bold font-mono text-accent mt-1">{grossYield}%</div>
-              <span className="text-[10px] text-text-muted mt-0.5 block">CALCULATED</span>
+            <div className="p-5 bg-black rounded-2xl border border-white/10 shadow-lg">
+              <span className="text-[10px] font-bold uppercase text-zinc-400 block">Gross Rental Yield</span>
+              <div className="text-2xl font-bold font-mono text-gold mt-1">{grossYield}%</div>
+              <span className="text-[10px] text-zinc-500 mt-0.5 block">CALCULATED</span>
             </div>
 
-            <div className="p-4 bg-surface rounded-xl border border-border">
-              <span className="text-[10px] font-bold uppercase text-text-muted block">Net Yield on Cost</span>
-              <div className="text-2xl font-bold font-mono text-emerald-700 mt-1">{netYield}%</div>
-              <span className="text-[10px] text-text-muted mt-0.5 block">CALCULATED</span>
+            <div className="p-5 bg-black rounded-2xl border border-white/10 shadow-lg">
+              <span className="text-[10px] font-bold uppercase text-zinc-400 block">Net Yield on Cost</span>
+              <div className="text-2xl font-bold font-mono text-white mt-1">{netYield}%</div>
+              <span className="text-[10px] text-zinc-500 mt-0.5 block">CALCULATED</span>
             </div>
 
-            <div className="p-4 bg-surface rounded-xl border border-border">
-              <span className="text-[10px] font-bold uppercase text-text-muted block">Cash-on-Cash Return</span>
-              <div className="text-2xl font-bold font-mono text-text-primary mt-1">{cashOnCash}%</div>
-              <span className="text-[10px] text-text-muted mt-0.5 block">CALCULATED</span>
+            <div className="p-5 bg-black rounded-2xl border border-white/10 shadow-lg">
+              <span className="text-[10px] font-bold uppercase text-zinc-400 block">Cash-on-Cash Return</span>
+              <div className="text-2xl font-bold font-mono text-gold mt-1">{cashOnCash}%</div>
+              <span className="text-[10px] text-zinc-500 mt-0.5 block">CALCULATED</span>
             </div>
 
-            <div className="p-4 bg-surface rounded-xl border border-border">
-              <span className="text-[10px] font-bold uppercase text-text-muted block">Total Required Capital</span>
-              <div className="text-lg font-bold font-mono text-accent mt-1">
+            <div className="p-5 bg-black rounded-2xl border border-white/10 shadow-lg">
+              <span className="text-[10px] font-bold uppercase text-zinc-400 block">Total Required Capital</span>
+              <div className="text-lg font-bold font-mono text-white mt-1">
                 AED {totalEquityRequired.toLocaleString()}
               </div>
-              <span className="text-[10px] text-text-muted mt-0.5 block">Down payment + estimated acquisition costs</span>
+              <span className="text-[10px] text-zinc-500 mt-0.5 block">Down payment + statutory fees</span>
             </div>
 
-            <div className="p-4 bg-surface rounded-xl border border-border">
-              <span className="text-[10px] font-bold uppercase text-text-muted block">Annual Net Cash Flow</span>
-              <div className="text-lg font-bold font-mono text-text-primary mt-1">
+            <div className="p-5 bg-black rounded-2xl border border-white/10 shadow-lg">
+              <span className="text-[10px] font-bold uppercase text-zinc-400 block">Annual Net Cash Flow</span>
+              <div className="text-lg font-bold font-mono text-white mt-1">
                 AED {netAnnualCashFlow.toLocaleString()}
               </div>
-              <span className="text-[10px] text-text-muted mt-0.5 block">Post Debt & OPEX</span>
+              <span className="text-[10px] text-zinc-500 mt-0.5 block">Post Debt & OPEX</span>
             </div>
 
-            <div className="p-4 bg-surface rounded-xl border border-border">
-              <span className="text-[10px] font-bold uppercase text-text-muted block">Total Scenario ROI</span>
-              <div className="text-2xl font-bold font-mono text-emerald-700 mt-1">
+            <div className="p-5 bg-black rounded-2xl border border-white/10 shadow-lg">
+              <span className="text-[10px] font-bold uppercase text-zinc-400 block">Total Scenario ROI</span>
+              <div className="text-2xl font-bold font-mono text-gold mt-1">
                 {simpleROI}%
               </div>
-              <span className="text-[10px] text-text-muted mt-0.5 block">Over {holdingPeriodYears} Years</span>
+              <span className="text-[10px] text-zinc-500 mt-0.5 block">Over {holdingPeriodYears} Years</span>
             </div>
           </div>
 
           {/* Underwriting Breakdown Table */}
-          <div className="p-5 bg-white rounded-xl border border-border space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-text-muted">
+          <div className="p-6 bg-black rounded-2xl border border-white/10 space-y-4 shadow-xl">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400">
               Annual Operating & Underwriting Breakdown
             </h4>
 
-            <div className="space-y-2 text-xs divide-y divide-border-subtle">
+            <div className="space-y-2.5 text-xs divide-y divide-white/5">
               <div className="flex justify-between py-1">
-                <span className="text-text-secondary">Gross Scheduled Rent:</span>
-                <span className="font-mono font-semibold text-text-primary">AED {grossRent.toLocaleString()}</span>
+                <span className="text-zinc-400">Gross Scheduled Rent:</span>
+                <span className="font-mono font-semibold text-white">AED {grossRent.toLocaleString()}</span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-text-secondary">Less Vacancy Loss ({vacancyPct}%):</span>
-                <span className="font-mono text-text-muted">- AED {vacancyLoss.toLocaleString()}</span>
+                <span className="text-zinc-400">Less Vacancy Loss ({vacancyPct}%):</span>
+                <span className="font-mono text-zinc-500">- AED {vacancyLoss.toLocaleString()}</span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-text-secondary">Effective Gross Income (EGI):</span>
-                <span className="font-mono font-semibold text-text-primary">AED {effectiveGrossIncome.toLocaleString()}</span>
+                <span className="text-zinc-400">Effective Gross Income (EGI):</span>
+                <span className="font-mono font-semibold text-white">AED {effectiveGrossIncome.toLocaleString()}</span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-text-secondary">Less Total Operating Expenses (OPEX):</span>
-                <span className="font-mono text-text-muted">- AED {totalOperatingExpenses.toLocaleString()}</span>
+                <span className="text-zinc-400">Less Total Operating Expenses (OPEX):</span>
+                <span className="font-mono text-zinc-500">- AED {totalOperatingExpenses.toLocaleString()}</span>
               </div>
               <div className="flex justify-between py-1.5 font-bold">
-                <span className="text-text-primary">Net Operating Income (NOI):</span>
-                <span className="font-mono text-emerald-700">AED {annualNOI.toLocaleString()}</span>
+                <span className="text-white">Net Operating Income (NOI):</span>
+                <span className="font-mono text-gold">AED {annualNOI.toLocaleString()}</span>
               </div>
               <div className="flex justify-between py-1">
-                <span className="text-text-secondary">Less Annual Debt Service:</span>
-                <span className="font-mono text-text-muted">- AED {annualDebtService.toLocaleString()}</span>
+                <span className="text-zinc-400">Less Annual Debt Service:</span>
+                <span className="font-mono text-zinc-500">- AED {annualDebtService.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between py-2 border-t border-border font-bold text-sm">
-                <span className="text-text-primary">Net Annual Cash Flow to Equity:</span>
-                <span className="font-mono text-accent">AED {netAnnualCashFlow.toLocaleString()}</span>
+              <div className="flex justify-between py-2.5 border-t border-white/10 font-bold text-sm">
+                <span className="text-white">Net Annual Cash Flow to Equity:</span>
+                <span className="font-mono text-gold">AED {netAnnualCashFlow.toLocaleString()}</span>
               </div>
             </div>
           </div>

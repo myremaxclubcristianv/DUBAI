@@ -29,24 +29,24 @@ export function PropertyComparison() {
   }
 
   return (
-    <div className="bg-white rounded-xl border border-border overflow-hidden">
-      <div className="p-6 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="bg-[#0c0c0e] rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+      <div className="p-6 sm:p-8 border-b border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-gradient-to-b from-white/[0.04] to-transparent">
         <div>
           <div className="flex items-center gap-2">
-            <ArrowLeftRight className="h-5 w-5 text-accent" />
-            <h2 className="text-xl font-bold text-text-primary">Institutional Property & Deal Matrix</h2>
+            <ArrowLeftRight className="h-4 w-4 text-accent" />
+            <h2 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">Institutional Property & Deal Matrix</h2>
           </div>
-          <p className="text-xs text-text-secondary mt-1">
+          <p className="text-xs text-zinc-400 mt-1">
             Side-by-side comparative analysis of verified properties, acquisition capital, and service charges.
           </p>
         </div>
         <SourceBadge status="OFFICIAL SOURCE" sourceName="Direct Verified Records Comparison" />
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="p-6 sm:p-8 space-y-6">
         {/* Selector pills */}
         <div>
-          <span className="text-xs font-semibold text-text-muted uppercase tracking-wider block mb-2">
+          <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest block mb-3">
             Select Properties to Compare (Max 3):
           </span>
           <div className="flex flex-wrap gap-2">
@@ -56,13 +56,13 @@ export function PropertyComparison() {
                 <button
                   key={p.id}
                   onClick={() => toggleProperty(p.id)}
-                  className={`px-3 py-1.5 rounded text-xs font-medium border transition-colors flex items-center gap-1.5 ${
+                  className={`px-3.5 py-2 rounded-xl text-xs font-medium border transition-all flex items-center gap-2 cursor-pointer ${
                     isSelected
-                      ? 'bg-text-primary text-white border-text-primary'
-                      : 'bg-surface text-text-secondary border-border hover:bg-surface-elevated'
+                      ? 'bg-white text-black border-white shadow-lg font-semibold'
+                      : 'bg-white/[0.03] text-zinc-400 border-white/10 hover:bg-white/[0.08] hover:text-white'
                   }`}
                 >
-                  {isSelected && <Check className="h-3 w-3" />}
+                  {isSelected && <Check className="h-3 w-3 text-black" />}
                   <span>{p.title}</span>
                 </button>
               )
@@ -71,81 +71,81 @@ export function PropertyComparison() {
         </div>
 
         {/* Comparison Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs border border-border rounded-lg overflow-hidden">
-            <thead className="bg-surface border-b border-border">
+        <div className="overflow-x-auto rounded-2xl border border-white/10">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-white/[0.03] border-b border-white/10">
               <tr>
-                <th className="py-3 px-4 font-semibold text-text-primary w-48">Metric / Characteristic</th>
+                <th className="py-4 px-5 font-semibold text-zinc-300 w-48">Metric / Characteristic</th>
                 {selectedProperties.map((p) => (
-                  <th key={p.id} className="py-3 px-4 font-bold text-text-primary min-w-[220px]">
-                    <Link href={`/properties/${p.id}`} className="hover:text-accent transition-colors">
+                  <th key={p.id} className="py-4 px-5 font-semibold text-white min-w-[220px]">
+                    <Link href={`/properties/${p.id}`} className="hover:text-accent transition-colors font-medium text-sm">
                       {p.title}
                     </Link>
-                    <div className="text-[11px] font-normal text-text-muted mt-0.5">
+                    <div className="text-[11px] font-normal text-zinc-400 mt-0.5 font-mono">
                       {p.area_name} • {p.developer_name}
                     </div>
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-border">
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">Asking Price</td>
+            <tbody className="divide-y divide-white/5 bg-[#0c0c0e]">
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">Asking Price</td>
                 {selectedProperties.map((p) => (
-                  <td key={p.id} className="py-3 px-4 font-mono font-bold text-accent text-sm tabular-nums">
+                  <td key={p.id} className="py-3.5 px-5 font-mono font-semibold text-accent text-sm tabular-nums">
                     AED {p.asking_price?.toLocaleString()}
                   </td>
                 ))}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">Price per Sq Ft</td>
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">Price per Sq Ft</td>
                 {selectedProperties.map((p) => (
-                  <td key={p.id} className="py-3 px-4 font-mono font-semibold text-text-primary tabular-nums">
+                  <td key={p.id} className="py-3.5 px-5 font-mono text-zinc-200 tabular-nums">
                     AED {p.price_per_sqft?.toLocaleString()} / sqft
                   </td>
                 ))}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">Internal Area</td>
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">Internal Area</td>
                 {selectedProperties.map((p) => (
-                  <td key={p.id} className="py-3 px-4 font-mono text-text-primary tabular-nums">
+                  <td key={p.id} className="py-3.5 px-5 font-mono text-zinc-200 tabular-nums">
                     {p.internal_area_sqft.toLocaleString()} sqft
                   </td>
                 ))}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">Bedrooms & Baths</td>
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">Bedrooms & Baths</td>
                 {selectedProperties.map((p) => (
-                  <td key={p.id} className="py-3 px-4 text-text-primary">
+                  <td key={p.id} className="py-3.5 px-5 text-white">
                     {p.bedrooms} Beds / {p.bathrooms} Baths
                   </td>
                 ))}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">Completion Status</td>
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">Completion Status</td>
                 {selectedProperties.map((p) => (
-                  <td key={p.id} className="py-3 px-4">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-surface-elevated border border-border text-text-secondary">
+                  <td key={p.id} className="py-3.5 px-5">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-white/[0.05] border border-white/10 text-zinc-300">
                       {p.completion_status}
                     </span>
                   </td>
                 ))}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">
                   Total Statutory Acquisition Costs
                 </td>
                 {selectedProperties.map((p) => {
                   const acq = calculateAcquisitionCosts(p.asking_price || 0, false)
                   return (
-                    <td key={p.id} className="py-3 px-4 font-mono text-text-secondary tabular-nums">
+                    <td key={p.id} className="py-3.5 px-5 font-mono text-zinc-300 tabular-nums">
                       + AED {acq.total_statutory_fees.toLocaleString()}
-                      <span className="block text-[10px] text-text-muted">
+                      <span className="block text-[10px] text-zinc-400 font-sans mt-0.5">
                         Total Capital: AED {acq.total_acquisition_cost.toLocaleString()}
                       </span>
                     </td>
@@ -153,16 +153,16 @@ export function PropertyComparison() {
                 })}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">
                   Annual Service Charge (Est.)
                 </td>
                 {selectedProperties.map((p) => {
                   const sc = (p.service_charge_per_sqft || 0) * p.internal_area_sqft
                   return (
-                    <td key={p.id} className="py-3 px-4 font-mono text-text-secondary tabular-nums">
+                    <td key={p.id} className="py-3.5 px-5 font-mono text-zinc-300 tabular-nums">
                       AED {sc.toLocaleString()} / yr
-                      <span className="block text-[10px] text-text-muted">
+                      <span className="block text-[10px] text-zinc-400 font-sans mt-0.5">
                         (AED {p.service_charge_per_sqft} / sqft)
                       </span>
                     </td>
@@ -170,10 +170,10 @@ export function PropertyComparison() {
                 })}
               </tr>
 
-              <tr>
-                <td className="py-3 px-4 font-semibold text-text-secondary bg-surface-subtle">Data Provenance</td>
+              <tr className="hover:bg-white/[0.02] transition-colors">
+                <td className="py-3.5 px-5 font-medium text-zinc-400 bg-white/[0.01]">Data Provenance</td>
                 {selectedProperties.map((p) => (
-                  <td key={p.id} className="py-3 px-4">
+                  <td key={p.id} className="py-3.5 px-5">
                     <SourceBadge provenance={p.provenance} />
                   </td>
                 ))}
