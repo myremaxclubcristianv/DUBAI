@@ -136,7 +136,7 @@ export default function ProjectsPage() {
         />
 
         {/* 2. FILTER PILLS */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3.5 bg-[#f5f5f7] rounded-2xl border border-black/10 shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-3.5 bg-white rounded-2xl border border-black/10 shadow-xs">
           <div className="flex flex-wrap items-center gap-2">
             <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-xl border border-black/10 shadow-2xs">
               {['ALL', 'Completed', 'Under Construction', 'Off-Plan'].map((st) => (
@@ -146,7 +146,7 @@ export default function ProjectsPage() {
                   className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     selectedStatus === st
                       ? 'bg-[#1d1d1f] text-white shadow-xs'
-                      : 'text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-[#f5f5f7]'
+                      : 'text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-white'
                   }`}
                 >
                   {st === 'ALL' ? 'All Stages' : st}
@@ -177,7 +177,7 @@ export default function ProjectsPage() {
         {/* 3. LARGE PROJECT FEATURE MOMENT */}
         {primaryProject && (
           <div className="group border border-black/10 rounded-3xl overflow-hidden bg-white shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover grid grid-cols-1 lg:grid-cols-12">
-            <div className="lg:col-span-7 relative aspect-[16/10] bg-[#f5f5f7] overflow-hidden">
+            <div className="lg:col-span-7 relative aspect-[16/10] bg-white overflow-hidden">
               <Image
                 src={primaryProject.image || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'}
                 alt={primaryProject.name}
@@ -211,7 +211,7 @@ export default function ProjectsPage() {
               </div>
 
               <div className="space-y-4 pt-4 border-t border-black/10">
-                <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/10 text-xs space-y-1 font-mono">
+                <div className="p-4 bg-white rounded-2xl border border-black/10 text-xs space-y-1 font-mono">
                   <div className="text-[10px] text-[#86868b] font-mono uppercase tracking-widest font-semibold">Unit Configurations</div>
                   <div className="font-bold text-[#1d1d1f]">{primaryProject.unit_types}</div>
                 </div>
@@ -252,7 +252,7 @@ export default function ProjectsPage() {
                 className="p-5 sm:p-6 rounded-3xl border border-black/10 bg-white hover:border-black/20 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover"
               >
                 <div className="flex items-start sm:items-center gap-5">
-                  <div className="relative h-20 w-32 rounded-2xl overflow-hidden bg-[#f5f5f7] shrink-0">
+                  <div className="relative h-20 w-32 rounded-2xl overflow-hidden bg-white shrink-0">
                     <Image
                       src={project.image || 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80'}
                       alt={project.name}
@@ -285,7 +285,7 @@ export default function ProjectsPage() {
                   </div>
                   <Link
                     href="/properties"
-                    className="px-5 py-2.5 rounded-full bg-[#f5f5f7] hover:bg-[#1d1d1f] hover:text-white text-xs font-bold text-[#1d1d1f] transition-all flex items-center gap-1.5 border border-black/10 shadow-2xs"
+                    className="px-5 py-2.5 rounded-full bg-white hover:bg-[#1d1d1f] hover:text-white text-xs font-bold text-[#1d1d1f] transition-all flex items-center gap-1.5 border border-black/10 shadow-2xs"
                   >
                     <span>View Units</span>
                     <ArrowRight className="h-3.5 w-3.5" />

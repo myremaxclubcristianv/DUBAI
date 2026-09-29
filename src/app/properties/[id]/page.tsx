@@ -6,19 +6,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getPropertyById, VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { calculateAcquisitionCosts } from '@/lib/calculators/investment'
-import { SourceBadge } from '@/components/ui/source-badge'
-import { ViewingModal } from '@/components/property/viewing-modal'
 import { useClient } from '@/lib/context/client-context'
-import { useToast } from '@/components/ui/toast'
+import { ProvenanceTag } from '@/components/layout/layout-primitives'
 import {
   ArrowLeft,
-  Bookmark,
-  Layers,
-  ShieldCheck,
-  Calculator,
-  Calendar,
   ArrowRight,
-  CheckCircle2
+  ShieldCheck,
+  CheckCircle2,
+  ExternalLink,
 } from 'lucide-react'
 
 export default function PropertyDetailPage() {
@@ -26,27 +21,12 @@ export default function PropertyDetailPage() {
   const id = params?.id as string
   const property = getPropertyById(id) || VERIFIED_PROPERTIES[0]
 
-  const [isViewingOpen, setIsViewingOpen] = React.useState(false)
   const [activeImageIndex, setActiveImageIndex] = React.useState(0)
-  const { isShortlisted, toggleShortlist, isInComparison, toggleComparison } = useClient()
-  const { addToast } = useToast()
+  const { formatCurrency } = useClient()
 
-  const isSaved = isShortlisted(property.id)
-  const isCompared = isInComparison(property.id)
-
-  // Interactive Investment Simulator
-  const estimatedRent = Math.round(((property.asking_price || 0) * 0.06) / 10000) * 10000 || 500000
-
-  // Conversions & Statutory Calculations
-  const sqMeters = (property.internal_area_sqft * 0.092903).toFixed(1)
+  // Statutory Calculations
   const acquisition = calculateAcquisitionCosts(property.asking_price || 0, false)
-
-  // Service Charge & Yield Calculations
-  const annualServiceCharge = (property.service_charge_per_sqft || 20) * property.internal_area_sqft
-  const annualMaintenance = estimatedRent * 0.05 // 5% reserve
-  const annualNOI = Math.max(0, estimatedRent - annualServiceCharge - annualMaintenance)
-  const grossYield = property.asking_price ? ((estimatedRent / property.asking_price) * 100).toFixed(2) : '0.00'
-  const netYield = property.asking_price ? ((annualNOI / acquisition.total_acquisition_cost) * 100).toFixed(2) : '0.00'
+  const isGoldenVisaEligible = (property.asking_price || 0) >= 2000000
 
   const propertyImages = property.images && property.images.length > 0 ? property.images : [
     'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=80',
@@ -55,312 +35,276 @@ export default function PropertyDetailPage() {
   ]
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
-      {/* 1. TOP NAV & BREADCRUMB */}
-      <div className="border-b border-black/10 bg-white/85 backdrop-blur-md py-3.5 sticky top-16 z-20">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+      
+      {/* 1. TOP BREADCRUMB STRIP */}
+      <div className="border-b border-[#e5e5ea] bg-[#fafaf8] py-3">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             href="/properties"
-            className="inline-flex items-center gap-2 text-xs font-semibold text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#6b6b6b] hover:text-[#111111] transition-colors"
           >
-            <ArrowLeft className="h-4 w-4" />
-            <span>Property Directory</span>
+            <ArrowLeft className="h-3.5 w-3.5" />
+            <span>Back to Property Register</span>
           </Link>
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => {
-                toggleComparison(property.id)
-                addToast(
-                  isCompared ? `Removed from comparison desk` : `Added ${property.title} to comparison desk`,
-                  'info'
-                )
-              }}
-              className="text-xs font-semibold text-[#6e6e73] hover:text-[#1d1d1f] flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-black/10 bg-[#f5f5f7] cursor-pointer transition-colors shadow-2xs"
-            >
-              <Layers className="h-3.5 w-3.5" />
-              <span>{isCompared ? 'In Comparison' : 'Compare'}</span>
-            </button>
-
-            <button
-              onClick={() => {
-                toggleShortlist(property.id, property.title)
-                addToast(
-                  isSaved ? `Removed from saved shortlist` : `Saved ${property.title} to shortlist`,
-                  'success'
-                )
-              }}
-              className={`text-xs font-semibold flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border cursor-pointer transition-all shadow-2xs ${
-                isSaved
-                  ? 'border-black/10 bg-[#1d1d1f] text-white'
-                  : 'border-black/10 bg-[#f5f5f7] text-[#6e6e73] hover:text-[#1d1d1f]'
-              }`}
-            >
-              <Bookmark className={`h-3.5 w-3.5 ${isSaved ? 'fill-white' : ''}`} />
-              <span>{isSaved ? 'Shortlisted' : 'Save'}</span>
-            </button>
+          <div className="flex items-center gap-2">
+            <ProvenanceTag sourceClass="OFFICIAL REGULATORY" sourceName={property.developer_name} />
           </div>
         </div>
       </div>
 
-      {/* ========================================================================= */}
-      {/* 2. APPLE KEYNOTE HERO MEDIA SHOWCASE */}
-      {/* ========================================================================= */}
-      <div className="relative w-full aspect-[21/9] min-h-[480px] max-h-[75vh] bg-[#f5f5f7] overflow-hidden border-b border-black/10">
-        <Image
-          src={propertyImages[activeImageIndex] || propertyImages[0]}
-          alt={property.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        {/* Subtle Vignette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
-
-        <div className="absolute bottom-0 inset-x-0 p-6 sm:p-10 lg:p-14 text-white">
-          <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="space-y-3 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 backdrop-blur-md border border-black/10 text-xs font-mono font-bold tracking-widest text-[#1d1d1f] uppercase shadow-xs">
-                <span>{property.area_name}</span>
-                <span>•</span>
+      {/* 2. PROPERTY MEMORANDUM HEADER */}
+      <section className="pt-8 pb-10 border-b border-[#e5e5ea]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono text-[#6b6b6b]">
+                <span className="text-[#9f8144] font-semibold">{property.area_name}</span>
+                <span>&bull;</span>
                 <span>{property.developer_name}</span>
+                <span>&bull;</span>
+                <span>DLD Title Record</span>
               </div>
-              <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight uppercase text-white drop-shadow-md">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111]">
                 {property.title}
               </h1>
-            </div>
-
-            <div className="text-left md:text-right shrink-0 space-y-1 bg-white/90 backdrop-blur-md p-5 sm:p-7 rounded-3xl border border-black/10 text-[#1d1d1f] shadow-lg">
-              <div className="text-[10px] font-mono font-bold text-[#86868b] uppercase tracking-wider">
-                Asking Price
-              </div>
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1d1d1f] tabular-nums">
-                AED {property.asking_price?.toLocaleString()}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Thumbnail Selector (Top Right) */}
-        {propertyImages.length > 1 && (
-          <div className="absolute top-6 right-6 flex items-center gap-2 z-10 bg-white/85 backdrop-blur-md p-2 rounded-2xl border border-black/10 shadow-md">
-            {propertyImages.map((img, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => setActiveImageIndex(idx)}
-                className={`relative h-12 w-16 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${
-                  activeImageIndex === idx ? 'border-[#1d1d1f] scale-105 shadow-sm' : 'border-transparent opacity-60 hover:opacity-100'
-                }`}
-              >
-                <Image src={img} alt={`View ${idx + 1}`} fill sizes="80px" className="object-cover" />
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
-        {/* ========================================================================= */}
-        {/* 3. APPLE TECH SPECS BENTO STRIP */}
-        {/* ========================================================================= */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          <div className="p-6 rounded-3xl bg-white border border-black/10 flex flex-col items-center justify-center text-center space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            <div className="text-[10px] font-mono text-[#86868b] uppercase font-semibold tracking-wider">Bedrooms</div>
-            <div className="text-xl font-extrabold text-[#1d1d1f]">{property.bedrooms} Bed</div>
-          </div>
-          <div className="p-6 rounded-3xl bg-white border border-black/10 flex flex-col items-center justify-center text-center space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            <div className="text-[10px] font-mono text-[#86868b] uppercase font-semibold tracking-wider">Bathrooms</div>
-            <div className="text-xl font-extrabold text-[#1d1d1f]">{property.bathrooms} Bath</div>
-          </div>
-          <div className="p-6 rounded-3xl bg-white border border-black/10 flex flex-col items-center justify-center text-center space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            <div className="text-[10px] font-mono text-[#86868b] uppercase font-semibold tracking-wider">Internal Area</div>
-            <div className="text-xl font-extrabold text-[#1d1d1f] tabular-nums">{property.internal_area_sqft.toLocaleString()} sqft</div>
-            <div className="text-[10px] text-[#86868b] font-mono">({sqMeters} m²)</div>
-          </div>
-          <div className="p-6 rounded-3xl bg-white border border-black/10 flex flex-col items-center justify-center text-center space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            <div className="text-[10px] font-mono text-[#86868b] uppercase font-semibold tracking-wider">Community</div>
-            <div className="text-lg font-extrabold text-[#1d1d1f] truncate max-w-full">{property.area_name}</div>
-          </div>
-          <div className="p-6 rounded-3xl bg-white border border-black/10 flex flex-col items-center justify-center text-center space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            <div className="text-[10px] font-mono text-[#86868b] uppercase font-semibold tracking-wider">Master Project</div>
-            <div className="text-lg font-extrabold text-[#1d1d1f] truncate max-w-full">{property.project_name || 'Individual Estate'}</div>
-          </div>
-          <div className="p-6 rounded-3xl bg-white border border-black/10 flex flex-col items-center justify-center text-center space-y-1 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            <div className="text-[10px] font-mono text-[#86868b] uppercase font-semibold tracking-wider">Developer</div>
-            <div className="text-lg font-extrabold text-[#1d1d1f] truncate max-w-full">{property.developer_name}</div>
-          </div>
-        </div>
-
-        {/* ========================================================================= */}
-        {/* 4. EDITORIAL DESCRIPTION & DOSSIER FACTS */}
-        {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-8 space-y-10">
-            {/* Description */}
-            <div className="space-y-4">
-              <span className="text-[11px] font-mono font-bold text-[#b8860b] uppercase tracking-widest block">
-                ARCHITECTURAL OVERVIEW
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1d1d1f] tracking-tight">
-                Asset Intelligence & Living Experience
-              </h2>
-              <p className="text-base sm:text-lg text-[#6e6e73] leading-relaxed font-normal">
-                {property.description}
+              <p className="text-sm text-[#484848] max-w-2xl">
+                {property.unit_descriptor || `${property.bedrooms} Bedroom ${property.property_type} in ${property.area_name}`}
               </p>
             </div>
 
-            {/* Property Facts Matrix */}
-            <div className="space-y-4 pt-6 border-t border-black/10">
-              <span className="text-[11px] font-mono font-bold text-[#b8860b] uppercase tracking-widest block">
-                AUDITED ASSET SPECIFICATIONS
+            {/* Asking Price Card */}
+            <div className="bg-[#fafaf8] p-5 rounded border border-[#e5e5ea] space-y-1 shrink-0 min-w-[260px]">
+              <span className="text-[10px] font-mono uppercase text-[#6b6b6b] block">Asking Price</span>
+              <div className="text-2xl sm:text-3xl font-bold text-[#111111] tabular-nums">
+                {formatCurrency(property.asking_price)}
+              </div>
+              <span className="text-[11px] font-mono text-[#6b6b6b] block">
+                {property.price_per_sqft ? `~${property.price_per_sqft.toLocaleString()} AED / SQFT • Asking Price Direct` : 'Asking Price Direct'}
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                <div className="p-5 rounded-2xl border border-black/10 bg-[#f5f5f7] flex items-center justify-between">
-                  <span className="text-[#6e6e73] font-mono">Completion Status:</span>
-                  <strong className="text-[#1d1d1f] font-semibold">{property.completion_status}</strong>
-                </div>
-                <div className="p-5 rounded-2xl border border-black/10 bg-[#f5f5f7] flex items-center justify-between">
-                  <span className="text-[#6e6e73] font-mono">Ownership Rights:</span>
-                  <strong className="text-[#1d1d1f] font-semibold">Designated Freehold Area (Perpetual Title)</strong>
-                </div>
-                <div className="p-5 rounded-2xl border border-black/10 bg-[#f5f5f7] flex items-center justify-between">
-                  <span className="text-[#6e6e73] font-mono">Service Charge Index:</span>
-                  <strong className="text-[#1d1d1f] font-semibold">AED {property.service_charge_per_sqft || 20} / sqft annually</strong>
-                </div>
-                <div className="p-5 rounded-2xl border border-black/10 bg-[#f5f5f7] flex items-center justify-between">
-                  <span className="text-[#6e6e73] font-mono">Residency Qualification:</span>
-                  <strong className="text-emerald-700 font-bold flex items-center gap-1">
-                    <CheckCircle2 className="h-3.5 w-3.5" />
-                    10-Year Golden Visa Eligible
-                  </strong>
-                </div>
-              </div>
-            </div>
-
-            {/* Provenance Box */}
-            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-[#f5f5f7] space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 text-sm font-bold text-[#1d1d1f]">
-                  <ShieldCheck className="h-5 w-5 text-[#b8860b]" />
-                  <span>Statutory Land Ledger Provenance</span>
-                </div>
-                <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Deed" />
-              </div>
-              <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
-                This asset is verified in the central freehold register of the Dubai Land Department. Pricing reflects direct developer / title holder asking terms without intermediary markup.
-              </p>
             </div>
           </div>
 
-          {/* Right Column: Acquisition Desk Action & Private Viewing */}
-          <div className="lg:col-span-4 space-y-6">
-            <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-6 sticky top-28 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-              <div className="space-y-2">
-                <span className="text-[10px] font-mono font-bold text-[#b8860b] uppercase tracking-wider">
-                  CONFIDENTIAL ADVISORY
+          {/* Large Architectural Photography Spread */}
+          <div className="space-y-3">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded border border-[#e5e5ea] bg-[#f5f5f3]">
+              <Image
+                src={propertyImages[activeImageIndex]}
+                alt={property.title}
+                fill
+                priority
+                sizes="(max-width: 1240px) 100vw, 1240px"
+                className="object-cover"
+              />
+              <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                <span className="px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase bg-[#ffffff]/90 backdrop-blur-xs text-[#111111] border border-[#e5e5ea]">
+                  {property.completion_status}
                 </span>
-                <h3 className="text-2xl font-extrabold text-[#1d1d1f]">
-                  Private Acquisition Desk
+                {isGoldenVisaEligible && (
+                  <span className="px-2.5 py-1 rounded text-[10px] font-mono font-bold uppercase bg-emerald-800 text-white flex items-center gap-1">
+                    <ShieldCheck className="h-3 w-3" />
+                    <span>Golden Visa ≥ AED 2M</span>
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Thumbnail Strip */}
+            {propertyImages.length > 1 && (
+              <div className="flex gap-2 overflow-x-auto pb-1">
+                {propertyImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveImageIndex(idx)}
+                    className={`relative w-20 h-14 rounded overflow-hidden border shrink-0 cursor-pointer ${
+                      activeImageIndex === idx ? 'border-[#111111]' : 'border-[#e5e5ea] opacity-60 hover:opacity-100'
+                    }`}
+                  >
+                    <Image src={img} alt="" fill className="object-cover" />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. STRUCTURED PROPERTY DOSSIER & CONVEYANCING COST FRAMEWORK */}
+      <section className="py-12 border-b border-[#e5e5ea]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            {/* Left 60%: Specifications, Features, and Location Context */}
+            <div className="lg:col-span-7 space-y-10">
+              
+              {/* Specifications Matrix */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-[#111111] border-b border-[#e5e5ea] pb-2">
+                  Technical Specifications
                 </h3>
-                <p className="text-xs text-[#6e6e73] leading-relaxed">
-                  Schedule an on-site walkthrough, request the title deed dossier, or review escrow status with an accredited advisor.
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-mono">
+                  <div className="p-3.5 rounded border border-[#e5e5ea] bg-[#fafaf8]">
+                    <span className="text-[#6b6b6b] block text-[10px]">INTERNAL AREA</span>
+                    <span className="font-semibold text-sm text-[#111111]">{property.internal_area_sqft.toLocaleString()} SQFT</span>
+                  </div>
+                  <div className="p-3.5 rounded border border-[#e5e5ea] bg-[#fafaf8]">
+                    <span className="text-[#6b6b6b] block text-[10px]">CONFIGURATION</span>
+                    <span className="font-semibold text-sm text-[#111111]">{property.bedrooms} Bed &bull; {property.bathrooms} Bath</span>
+                  </div>
+                  <div className="p-3.5 rounded border border-[#e5e5ea] bg-[#fafaf8]">
+                    <span className="text-[#6b6b6b] block text-[10px]">PROPERTY TYPE</span>
+                    <span className="font-semibold text-sm text-[#111111]">{property.property_type}</span>
+                  </div>
+                  <div className="p-3.5 rounded border border-[#e5e5ea] bg-[#fafaf8]">
+                    <span className="text-[#6b6b6b] block text-[10px]">FURNISHING</span>
+                    <span className="font-semibold text-sm text-[#111111]">{property.furnishing || 'Unfurnished'}</span>
+                  </div>
+                  <div className="p-3.5 rounded border border-[#e5e5ea] bg-[#fafaf8]">
+                    <span className="text-[#6b6b6b] block text-[10px]">SERVICE CHARGES</span>
+                    <span className="font-semibold text-sm text-[#111111]">{property.service_charge_per_sqft || 20} AED / SQFT</span>
+                  </div>
+                  <div className="p-3.5 rounded border border-[#e5e5ea] bg-[#fafaf8]">
+                    <span className="text-[#6b6b6b] block text-[10px]">COMPLETION</span>
+                    <span className="font-semibold text-sm text-[#111111]">{property.completion_status}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Verified Features */}
+              {property.verified_features && property.verified_features.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-[#111111] border-b border-[#e5e5ea] pb-2">
+                    Verified Architectural Features
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[#484848]">
+                    {property.verified_features.map((feat, idx) => (
+                      <div key={idx} className="flex items-start gap-2 p-2.5 rounded bg-[#fafaf8] border border-[#e5e5ea]">
+                        <CheckCircle2 className="h-4 w-4 text-[#9f8144] shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Amenities */}
+              {property.amenities && property.amenities.length > 0 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold text-[#111111] border-b border-[#e5e5ea] pb-2">
+                    Building &amp; Community Amenities
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {property.amenities.map((amenity, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 rounded bg-[#fafaf8] border border-[#e5e5ea] text-xs font-mono text-[#484848]"
+                      >
+                        {amenity}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Provenance Record */}
+              <div className="p-5 rounded bg-[#fafaf8] border border-[#e5e5ea] space-y-2">
+                <span className="text-[10px] font-mono uppercase text-[#6b6b6b] block font-semibold">
+                  Data Provenance &amp; Verification Record
+                </span>
+                <p className="text-xs text-[#484848] leading-relaxed">
+                  Source: <strong>{property.provenance.source_name}</strong>. Verification status: <strong>{property.provenance.verification_status}</strong>. Last verified on <strong>{property.provenance.verified_at}</strong>.
+                </p>
+                {property.provenance.source_url && (
+                  <div className="pt-1">
+                    <a
+                      href={property.provenance.source_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-[#111111] underline inline-flex items-center gap-1 font-mono"
+                    >
+                      <span>Review Source Reference</span>
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                )}
+              </div>
+
+            </div>
+
+            {/* Right 40%: Statutory Conveyancing & Acquisition Cost Memorandum */}
+            <div className="lg:col-span-5 bg-[#fafaf8] p-6 sm:p-7 rounded border border-[#e5e5ea] space-y-6">
+              <div className="space-y-1 border-b border-[#e5e5ea] pb-4">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#9f8144] block">
+                  STATUTORY CONVEYANCING
+                </span>
+                <h3 className="text-xl font-semibold text-[#111111]">
+                  Acquisition Cost Framework
+                </h3>
+                <p className="text-xs text-[#6b6b6b]">
+                  Deterministic fee breakdown governed by DLD and RERA statutory schedules.
                 </p>
               </div>
 
-              <div className="space-y-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setIsViewingOpen(true)}
-                  className="w-full py-4 rounded-full bg-[#1d1d1f] text-white hover:bg-[#000000] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer"
-                >
-                  <Calendar className="h-4 w-4 text-white/70" />
-                  <span>Schedule Private Viewing</span>
-                </button>
+              {/* Breakdown Rows */}
+              <div className="space-y-3 text-xs font-mono">
+                <div className="flex items-center justify-between py-1 border-b border-[#e5e5ea]">
+                  <span className="text-[#6b6b6b]">ASSET ASKING VALUE</span>
+                  <span className="font-semibold text-[#111111] tabular-nums">{formatCurrency(property.asking_price)}</span>
+                </div>
+                
+                <div className="flex items-center justify-between py-1 border-b border-[#e5e5ea]">
+                  <div>
+                    <span className="text-[#6b6b6b]">DLD REGISTRATION (4%)</span>
+                    <span className="text-[10px] text-[#8e8e93] block">2% Buyer / 2% Seller standard</span>
+                  </div>
+                  <span className="font-semibold text-[#111111] tabular-nums">{formatCurrency(acquisition.dld_transfer_fee)}</span>
+                </div>
 
+                <div className="flex items-center justify-between py-1 border-b border-[#e5e5ea]">
+                  <span className="text-[#6b6b6b]">DLD REGISTRATION TRUSTEE</span>
+                  <span className="font-semibold text-[#111111] tabular-nums">{formatCurrency(acquisition.dld_admin_fee)}</span>
+                </div>
+
+                <div className="flex items-center justify-between py-1 border-b border-[#e5e5ea]">
+                  <span className="text-[#6b6b6b]">TITLE DEED ISSUANCE</span>
+                  <span className="font-semibold text-[#111111] tabular-nums">{formatCurrency(acquisition.dld_title_deed_fee)}</span>
+                </div>
+
+                <div className="flex items-center justify-between pt-2 text-sm font-bold border-t border-[#111111]">
+                  <span className="text-[#111111]">TOTAL ACQUISITION COST</span>
+                  <span className="text-[#111111] tabular-nums">{formatCurrency(acquisition.total_acquisition_cost)}</span>
+                </div>
+              </div>
+
+              <div className="p-3 rounded bg-[#ffffff] border border-[#e5e5ea] text-[11px] text-[#6b6b6b]">
+                <span>Calculated under Dubai Law No. 7 of 2006. Brokerage and auxiliary legal representation fees vary by mandate.</span>
+              </div>
+
+              {/* Private Client CTA */}
+              <div className="pt-2 space-y-2">
                 <Link
                   href="/private-client"
-                  className="w-full py-3.5 rounded-full bg-[#f5f5f7] border border-black/10 hover:bg-[#ebebeb] text-[#1d1d1f] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-2xs"
+                  className="w-full py-3 rounded bg-[#111111] hover:bg-[#2a2a2e] text-[#fafaf8] text-center text-xs font-medium tracking-tight transition-colors flex items-center justify-center gap-2"
                 >
-                  <span>Private Client Mandate</span>
-                  <ArrowRight className="h-3.5 w-3.5 text-[#b8860b]" />
+                  <span>Request Private Viewing &amp; Mandate</span>
+                  <ArrowRight className="h-3.5 w-3.5 opacity-70" />
+                </Link>
+                <Link
+                  href="/investment"
+                  className="w-full py-2.5 rounded border border-[#e5e5ea] hover:border-[#111111] text-[#111111] text-center text-xs font-medium tracking-tight transition-colors block"
+                >
+                  Open Financial Underwriting Desk
                 </Link>
               </div>
 
-              <div className="pt-4 border-t border-black/10 text-[11px] font-mono text-[#86868b] space-y-1.5">
-                <div>• Direct DLD conveyance closing</div>
-                <div>• Zero buyer advisory markup</div>
-                <div>• 10-Year Golden Visa legal sponsorship</div>
-              </div>
             </div>
+
           </div>
         </div>
+      </section>
 
-        {/* ========================================================================= */}
-        {/* 5. STATUTORY ACQUISITION UNDERWRITING SIMULATOR */}
-        {/* ========================================================================= */}
-        <div className="p-6 sm:p-10 rounded-3xl border border-black/10 bg-white space-y-8 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-black/10 pb-6">
-            <div>
-              <div className="flex items-center gap-2 text-[11px] font-mono font-bold text-[#b8860b] uppercase tracking-wider">
-                <Calculator className="h-4 w-4" />
-                <span>Statutory Underwriting Simulator</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] mt-1">
-                Financial Model & Cash Flow Analysis
-              </h3>
-            </div>
-            <SourceBadge status="CALCULATED" sourceName="DLD Tariff Resolution No. 30/2013" />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 space-y-1">
-              <div className="text-[10px] font-mono text-[#86868b] uppercase">Statutory 4% DLD Fee</div>
-              <div className="text-2xl font-extrabold text-[#1d1d1f] tabular-nums">
-                AED {acquisition.dld_transfer_fee.toLocaleString()}
-              </div>
-              <div className="text-[11px] text-[#6e6e73]">Statutory conveyance registration</div>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 space-y-1">
-              <div className="text-[10px] font-mono text-[#86868b] uppercase">Total Capital Outlay</div>
-              <div className="text-2xl font-extrabold text-[#1d1d1f] tabular-nums">
-                AED {acquisition.total_acquisition_cost.toLocaleString()}
-              </div>
-              <div className="text-[11px] text-[#6e6e73]">Asset price + all statutory & customary fees</div>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 space-y-1">
-              <div className="text-[10px] font-mono text-[#86868b] uppercase">Modeled Gross Yield</div>
-              <div className="text-2xl font-extrabold text-[#b8860b] tabular-nums">{grossYield}%</div>
-              <div className="text-[11px] text-[#6e6e73]">Based on AED {estimatedRent.toLocaleString()} rent</div>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 space-y-1">
-              <div className="text-[10px] font-mono text-[#86868b] uppercase">All-In Net Yield</div>
-              <div className="text-2xl font-extrabold text-[#1d1d1f] tabular-nums">{netYield}%</div>
-              <div className="text-[11px] text-[#6e6e73]">Net operating income ÷ all-in acquisition</div>
-            </div>
-          </div>
-
-          <div className="text-center pt-2">
-            <Link
-              href="/investment"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#b8860b] hover:underline"
-            >
-              <span>Launch Full Multi-Scenario Investment Builder →</span>
-            </Link>
-          </div>
-        </div>
-      </main>
-
-      {/* Viewing Request Modal */}
-      <ViewingModal
-        isOpen={isViewingOpen}
-        onClose={() => setIsViewingOpen(false)}
-        property={property}
-      />
     </div>
   )
 }

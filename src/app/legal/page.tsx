@@ -44,7 +44,7 @@ export default function LegalAtlasPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-[#f5f5f7] text-[#1d1d1f] border border-black/5">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-white text-[#1d1d1f] border border-black/5">
                       {tribunal.legalSystem.replace(/_/g, ' ')}
                     </span>
                     <Gavel className="h-4 w-4 text-[#b8860b]" />
@@ -58,7 +58,7 @@ export default function LegalAtlasPage() {
                     {tribunal.description}
                   </p>
 
-                  <div className="space-y-3 bg-[#f5f5f7] p-4 rounded-2xl border border-black/5 text-xs mb-6">
+                  <div className="space-y-3 bg-white p-4 rounded-2xl border border-black/5 text-xs mb-6">
                     <div>
                       <span className="text-[10px] font-bold uppercase text-[#86868b] block">Jurisdiction Scope</span>
                       <span className="text-[#1d1d1f] font-medium">{tribunal.primaryJurisdiction}</span>
@@ -104,7 +104,7 @@ export default function LegalAtlasPage() {
                   className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
                     activeJurisdiction === f.val
                       ? 'bg-[#1d1d1f] text-white shadow-xs'
-                      : 'bg-[#f5f5f7] text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/5'
+                      : 'bg-white text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/5'
                   }`}
                 >
                   {f.label}
@@ -122,7 +122,7 @@ export default function LegalAtlasPage() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-black/5 gap-4 mb-6">
                   <div>
                     <div className="flex items-center gap-2 mb-1.5">
-                      <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-[#f5f5f7] border border-black/5 text-[#b8860b]">
+                      <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-white border border-black/5 text-[#b8860b]">
                         {statute.decreeCode}
                       </span>
                       <span className="text-xs text-[#86868b]">
@@ -162,7 +162,7 @@ export default function LegalAtlasPage() {
 
                   {/* Conditions & Penalties */}
                   <div className="space-y-4">
-                    <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-black/5 text-xs">
+                    <div className="p-4 rounded-2xl bg-white border border-black/5 text-xs">
                       <span className="text-[10px] font-bold uppercase text-[#86868b] block mb-1">
                         Exemptions & Qualifying Criteria
                       </span>

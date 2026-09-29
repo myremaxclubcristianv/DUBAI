@@ -41,26 +41,26 @@ export default function ConciergePage() {
               Our private desk assists with arrangements for international clients acquiring Dubai real estate, including private aviation ground handling, superyacht moorings, reservation coordination at Michelin establishments, and family relocation support.
             </p>
             <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono">
-              <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5">
+              <div className="p-4 bg-white rounded-2xl border border-black/5">
                 <span className="font-semibold text-[#1d1d1f] block">Private Aviation FBO</span>
                 <span className="text-[#6e6e73] text-[11px] font-sans">Tarmac meet & greet</span>
               </div>
-              <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5">
+              <div className="p-4 bg-white rounded-2xl border border-black/5">
                 <span className="font-semibold text-[#1d1d1f] block">Michelin Dining</span>
                 <span className="text-[#6e6e73] text-[11px] font-sans">Direct table reservations</span>
               </div>
-              <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5">
+              <div className="p-4 bg-white rounded-2xl border border-black/5">
                 <span className="font-semibold text-[#1d1d1f] block">Superyacht Berths</span>
                 <span className="text-[#6e6e73] text-[11px] font-sans">Dubai Harbour & Marina</span>
               </div>
-              <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5">
+              <div className="p-4 bg-white rounded-2xl border border-black/5">
                 <span className="font-semibold text-[#1d1d1f] block">Investor Visa Filing</span>
                 <span className="text-[#6e6e73] text-[11px] font-sans">DLD Cube investor track</span>
               </div>
             </div>
           </div>
 
-          <div className="w-full lg:w-96 p-8 bg-[#f5f5f7] rounded-3xl border border-black/5 shadow-sm space-y-5 shrink-0 text-center">
+          <div className="w-full lg:w-96 p-8 bg-white rounded-3xl border border-black/5 shadow-sm space-y-5 shrink-0 text-center">
             <h3 className="text-base font-bold text-[#1d1d1f] tracking-tight">
               Request Private Concierge Consultation
             </h3>

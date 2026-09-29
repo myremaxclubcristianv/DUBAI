@@ -23,7 +23,7 @@ export function PaymentPlanCalculator() {
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden shadow-sm">
-      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#f5f5f7]">
+      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white">
         <div>
           <div className="flex items-center gap-2">
             <Layers className="h-4 w-4 text-accent" />
@@ -65,7 +65,7 @@ export function PaymentPlanCalculator() {
                   type="number"
                   value={reservationPct}
                   onChange={(e) => setReservationPct(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
               <div>
@@ -74,7 +74,7 @@ export function PaymentPlanCalculator() {
                   type="number"
                   value={constructionPct}
                   onChange={(e) => setConstructionPct(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
             </div>
@@ -86,7 +86,7 @@ export function PaymentPlanCalculator() {
                   type="number"
                   value={handoverPct}
                   onChange={(e) => setHandoverPct(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
               <div>
@@ -95,7 +95,7 @@ export function PaymentPlanCalculator() {
                   type="number"
                   value={postHandoverPct}
                   onChange={(e) => setPostHandoverPct(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
             </div>
@@ -109,7 +109,7 @@ export function PaymentPlanCalculator() {
         </div>
 
         {/* Milestone Timeline */}
-        <div className="lg:col-span-6 p-6 sm:p-8 space-y-4 bg-[#f5f5f7]">
+        <div className="lg:col-span-6 p-6 sm:p-8 space-y-4 bg-white">
           <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#6e6e73]">Capital Outlay Timeline</h3>
 
           <div className="space-y-3">

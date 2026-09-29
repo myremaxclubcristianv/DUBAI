@@ -46,7 +46,7 @@ export default function DiningPage() {
               className="p-6 sm:p-7 bg-white rounded-3xl border border-black/10 hover:border-black/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group shadow-sm"
             >
               <div className="space-y-5">
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#f5f5f7]">
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-white">
                   <Image
                     src={item.image || diningImages[item.id] || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80'}
                     alt={item.title}
@@ -77,7 +77,7 @@ export default function DiningPage() {
                 </p>
 
                 {item.specs && (
-                  <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5 text-xs space-y-2 font-mono">
+                  <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs space-y-2 font-mono">
                     {Object.entries(item.specs).map(([k, v]) => (
                       <div key={k} className="flex justify-between">
                         <span className="text-[#6e6e73]">{k}:</span>
@@ -99,7 +99,7 @@ export default function DiningPage() {
                     href={item.official_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 px-4 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-[#1d1d1f] hover:text-white text-xs font-semibold text-center transition-all flex items-center justify-center gap-2 cursor-pointer text-[#1d1d1f]"
+                    className="w-full py-3 px-4 rounded-full border border-black/10 bg-white hover:bg-[#1d1d1f] hover:text-white text-xs font-semibold text-center transition-all flex items-center justify-center gap-2 cursor-pointer text-[#1d1d1f]"
                   >
                     <span>Official Reservations Portal</span>
                     <ExternalLink className="h-3.5 w-3.5" />

@@ -3,260 +3,221 @@
 import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
-import { SourceBadge } from '@/components/ui/source-badge'
-import { PageIntro } from '@/components/layout/layout-primitives'
+import { ProvenanceTag } from '@/components/layout/layout-primitives'
 import {
   ArrowRight,
-  Plane,
-  Anchor,
-  Utensils,
-  Building,
-  Compass,
-  ShieldCheck,
 } from 'lucide-react'
 
 const LIFESTYLE_SECTORS = [
   {
+    id: 'dining',
+    title: 'Michelin Gastronomy',
+    category: 'DINING & CULINARY',
+    description: 'Verified Michelin-starred tasting menus and chef tables across the Emirate of Dubai, evaluated by anonymous Michelin Guide inspectors.',
+    image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80',
+    provenance: 'Michelin Guide Dubai (Editorial Source)',
+    href: '/lifestyle/dining',
+    subItems: ['Ossiano (1-Star)', 'Trèsind Studio (2-Star)', 'Stay by Yannick Alléno (2-Star)']
+  },
+  {
     id: 'aviation',
-    title: 'Private Aviation & FBO',
-    subtitle: 'VIP Terminals & Jet Charters',
-    description: 'VIP executive FBO terminals at Al Maktoum International (DWC), bespoke private jet flight manifests, and scenic helicopter transfers.',
+    title: 'Private Aviation & FBO Terminals',
+    category: 'MOBILITY & AVIATION',
+    description: 'Executive private aviation VIP FBO handling at Al Maktoum International Airport (DWC) and Dubai International (DXB).',
     image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'aviation').length,
-    icon: Plane,
+    provenance: 'Licensed GCAA & DWC Operators',
+    href: '/lifestyle/aviation',
+    subItems: ['DWC VIP Terminal', 'ExecuJet FBO', 'Falcon Aviation Services']
   },
   {
     id: 'yachts',
-    title: 'Superyachts & Marine',
-    subtitle: 'Private Yacht Charters & Berths',
-    description: 'Licensed luxury motor yacht and superyacht charters departing Dubai Marina Yacht Club and Dubai Harbour.',
+    title: 'Superyachts & Marine Berths',
+    category: 'MARINE & HARBOURS',
+    description: 'Deep-water superyacht berths, luxury charter operations, and private mooring management across Dubai Harbour and Dubai Marina.',
     image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'yachts').length,
-    icon: Anchor,
-  },
-  {
-    id: 'dining',
-    title: 'Michelin Gastronomy',
-    subtitle: 'Fine Dining & Culinary Theaters',
-    description: 'Verified Michelin-starred tasting menus and multi-course culinary experiences certified by the Michelin Guide Dubai.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'dining').length,
-    icon: Utensils,
+    provenance: 'Dubai Maritime Authority Licensed',
+    href: '/lifestyle/yachts',
+    subItems: ['Dubai Harbour Marina (160m berths)', 'Bulgari Marina', 'Dubai Marina Yacht Club']
   },
   {
     id: 'hotels',
-    title: 'Ultra-Luxury Hospitality',
-    subtitle: 'Five-Star Palaces & Suites',
-    description: 'Iconic palatial hotels and residences including Dorchester Collection, Bulgari Resort Dubai, and Atlantis The Royal.',
+    title: 'Ultra-Luxury Hospitality Palaces',
+    category: 'ACCOMMODATION & SUITES',
+    description: 'Private branded hotel suites and palatial residences including Bulgari Resort Dubai, Atlantis The Royal, and The Lana (Dorchester Collection).',
     image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'hotels').length,
-    icon: Building,
-  },
-  {
-    id: 'safari',
-    title: 'Conservation Desert Safaris',
-    subtitle: 'Protected Sanctuary Expeditions',
-    description: 'Eco-luxury desert safaris operating inside the protected Dubai Desert Conservation Reserve (DDCR) with vintage Land Rovers.',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'safari').length,
-    icon: Compass,
-  },
-  {
-    id: 'cars',
-    title: 'Exotic Supercars & Chauffeur',
-    subtitle: 'Bespoke Fleet & Executive Mobility',
-    description: 'Licensed luxury exotic supercar fleet rentals, racetrack coaching at Dubai Autodrome, and executive chauffeur transportation services.',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'cars').length,
-    icon: Compass,
+    provenance: 'Dubai Department of Economy & Tourism',
+    href: '/lifestyle/hotels',
+    subItems: ['Bulgari Resort Jumeira Bay', 'Atlantis The Royal', 'The Lana Dorchester Collection']
   },
   {
     id: 'clubs',
-    title: 'Private Member Clubs & Networking',
-    subtitle: 'Exclusive Salons & Sovereign Hubs',
-    description: 'Prestigious private members clubs, financial networking sanctuaries in DIFC, and beachfront lifestyle pavilions.',
+    title: 'Private Member Salons & Clubs',
+    category: 'PRIVATE NETWORK',
+    description: 'Exclusive private member clubs and business salons in DIFC and Downtown providing discreet networking and dining.',
     image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'clubs').length,
-    icon: ShieldCheck,
+    provenance: 'Licensed Private Member Operators',
+    href: '/lifestyle/clubs',
+    subItems: ['The Arts Club Dubai (DIFC)', 'Capital Club Dubai', 'Surveillant DIFC']
   },
   {
-    id: 'concierge',
-    title: 'Private Client Concierge',
-    subtitle: 'Bespoke Access & Lifestyle Desk',
-    description: 'Confidential lifestyle management, priority reservation access, private event curation, and executive relocation protocol.',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80',
-    count: VERIFIED_LIFESTYLE.filter((l) => l.category === 'concierge').length,
-    icon: ShieldCheck,
-  },
+    id: 'safari',
+    title: 'Conservation Desert Sanctuaries',
+    category: 'NATURE & RESERVES',
+    description: 'Eco-luxury wildlife conservation expeditions within the protected Dubai Desert Conservation Reserve (DDCR).',
+    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
+    provenance: 'Dubai Desert Conservation Reserve (DDCR)',
+    href: '/lifestyle/safari',
+    subItems: ['DDCR Protected Sanctuary', 'Al Maha Resort & Spa', 'Platinum Heritage Expeditions']
+  }
 ]
 
 export default function LifestylePage() {
-  const aviationSector = LIFESTIFESTYLE_SECTORS_0()
-  const yachtSector = LIFESTYLE_SECTORS[1]
-  const otherSectors = LIFESTYLE_SECTORS.slice(2)
-
-  function LIFESTIFESTYLE_SECTORS_0() {
-    return LIFESTYLE_SECTORS[0]
-  }
+  const featureSector = LIFESTYLE_SECTORS[0]
+  const otherSectors = LIFESTYLE_SECTORS.slice(1)
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-24 selection:bg-accent/20 selection:text-[#1d1d1f]">
-      {/* 1. APPLE PRO CENTERED PAGE INTRO */}
-      <PageIntro
-        eyebrow="Curated Ecosystem • Licensed Protocols"
-        badge={<SourceBadge status="LICENSED OPERATOR" sourceName="DET & Licensed Registry" />}
-        title={<>Lifestyle Protocols<span className="text-gradient-gold">.</span></>}
-        description="Licensed luxury directory across private aviation FBOs, superyachts, Michelin gastronomy, palatial hospitality, and desert conservation in Dubai."
-      />
-
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
-        {/* 2. DUAL FEATURED KEYNOTE CARDS (AVIATION & SUPERYACHTS) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Aviation Feature */}
-          <Link
-            href={`/lifestyle/${aviationSector.id}`}
-            className="group border border-black/10 rounded-3xl overflow-hidden bg-white hover:border-black/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-sm"
-          >
-            <div>
-              <div className="relative aspect-[16/10] bg-[#f5f5f7] overflow-hidden">
-                <Image
-                  src={aviationSector.image}
-                  alt={aviationSector.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-sm">
-                    {aviationSector.count} Verified FBOs
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 sm:p-8 space-y-2">
-                <span className="text-[10px] font-mono font-bold text-accent uppercase tracking-widest block">
-                  01 • EXECUTIVE MOBILITY
-                </span>
-                <h2 className="text-2xl font-extrabold text-[#1d1d1f] group-hover:text-accent transition-colors">
-                  {aviationSector.title}
-                </h2>
-                <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
-                  {aviationSector.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="p-6 sm:p-8 pt-0">
-              <div className="w-full py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md">
-                <span>View Aviation Directory & Tariffs</span>
-                <ArrowRight className="h-3.5 w-3.5 text-white" />
-              </div>
-            </div>
-          </Link>
-
-          {/* Superyachts Feature */}
-          <Link
-            href={`/lifestyle/${yachtSector.id}`}
-            className="group border border-black/10 rounded-3xl overflow-hidden bg-white hover:border-black/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between shadow-sm"
-          >
-            <div>
-              <div className="relative aspect-[16/10] bg-[#f5f5f7] overflow-hidden">
-                <Image
-                  src={yachtSector.image}
-                  alt={yachtSector.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-sm">
-                    {yachtSector.count} Verified Fleets
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 sm:p-8 space-y-2">
-                <span className="text-[10px] font-mono font-bold text-accent uppercase tracking-widest block">
-                  02 • MARINE & BERTHS
-                </span>
-                <h2 className="text-2xl font-extrabold text-[#1d1d1f] group-hover:text-accent transition-colors">
-                  {yachtSector.title}
-                </h2>
-                <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
-                  {yachtSector.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="p-6 sm:p-8 pt-0">
-              <div className="w-full py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md">
-                <span>View Superyacht Fleets & Rates</span>
-                <ArrowRight className="h-3.5 w-3.5 text-white" />
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        {/* 3. ADDITIONAL 5 CURATED BENTO TILES */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-black/10 pb-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-accent">
-              ADDITIONAL LIFESTYLE SECTORS
+    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+      
+      {/* 1. EDITORIAL HEADER */}
+      <section className="pt-12 pb-12 sm:pt-16 sm:pb-16 border-b border-[#e5e5ea] bg-[#fafaf8]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
+              CURATED ACCESS &bull; LIFESTYLE INFRASTRUCTURE
             </span>
-            <span className="text-xs text-[#6e6e73] font-mono">DET Licensed Protocols</span>
+            <ProvenanceTag sourceClass="EDITORIAL SOURCE" sourceName="Michelin &bull; Licensed Operators" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-            {otherSectors.map((sector, idx) => {
-              const spanClass = idx === 0 ? 'lg:col-span-7' : idx === 1 ? 'lg:col-span-5' : 'lg:col-span-4'
-              return (
-                <Link
-                  key={sector.id}
-                  href={`/lifestyle/${sector.id}`}
-                  className={`group bg-white rounded-3xl border border-black/10 overflow-hidden flex flex-col justify-between hover:border-black/20 hover:shadow-xl transition-all duration-300 shadow-sm ${spanClass}`}
-                >
-                  <div>
-                    <div className="relative aspect-[16/10] bg-[#f5f5f7] overflow-hidden">
-                      <Image
-                        src={sector.image}
-                        alt={sector.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-                      <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-sm">
-                          {sector.count} Entities
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="p-6 space-y-2">
-                      <h3 className="text-xl font-bold text-[#1d1d1f] group-hover:text-accent transition-colors">
-                        {sector.title}
-                      </h3>
-                      <p className="text-xs text-[#6e6e73] leading-relaxed line-clamp-2">
-                        {sector.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-6 pt-0">
-                    <div className="flex items-center gap-1.5 text-xs font-semibold text-accent group-hover:translate-x-1 transition-transform">
-                      <span>Explore Sector & Protocols</span>
-                      <ArrowRight className="h-3.5 w-3.5" />
-                    </div>
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111]">
+            Curated Lifestyle &amp; Marine Protocols
+          </h1>
+          
+          <p className="text-sm sm:text-base text-[#484848] max-w-3xl leading-relaxed">
+            Institutional directory of Dubai private aviation FBOs, certified superyacht harbours, Michelin gastronomy selections, and private member networks.
+          </p>
         </div>
+      </section>
+
+      {/* 2. FEATURE SPREAD: Asymmetric Composition */}
+      <section className="py-14 border-b border-[#e5e5ea]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          
+          <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
+              FEATURE PROTOCOL &bull; {featureSector.category}
+            </span>
+            <span className="text-xs font-mono text-[#6b6b6b]">{featureSector.provenance}</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded border border-[#e5e5ea] bg-[#f5f5f3]">
+                <Image
+                  src={featureSector.image}
+                  alt={featureSector.title}
+                  fill
+                  priority
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111111]">
+                {featureSector.title}
+              </h2>
+              <p className="text-sm text-[#484848] leading-relaxed">
+                {featureSector.description}
+              </p>
+              
+              <div className="space-y-2 pt-2 border-t border-[#e5e5ea]">
+                <span className="text-[10px] font-mono uppercase text-[#6b6b6b] block font-semibold">
+                  Verified Selections:
+                </span>
+                <ul className="space-y-1 text-xs text-[#484848]">
+                  {featureSector.subItems.map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-2">
+                      <span className="text-[#9f8144] font-bold">&bull;</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-2">
+                <Link
+                  href={featureSector.href}
+                  className="px-4 py-2 rounded bg-[#111111] hover:bg-[#2a2a2e] text-[#fafaf8] text-xs font-medium inline-flex items-center gap-1.5 transition-colors"
+                >
+                  <span>Explore Gastronomy Guide</span>
+                  <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. LIFESTYLE SECTOR GRID */}
+      <main className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-10">
+        
+        <div className="border-b border-[#e5e5ea] pb-3">
+          <h3 className="text-xl font-semibold text-[#111111]">
+            Curated Lifestyle Infrastructure
+          </h3>
+          <p className="text-xs text-[#6b6b6b]">
+            Verified operators, licensing credentials, and bespoke protocols.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {otherSectors.map((sec) => (
+            <div
+              key={sec.id}
+              className="bg-[#ffffff] rounded border border-[#e5e5ea] overflow-hidden flex flex-col justify-between"
+            >
+              <div>
+                <div className="relative aspect-[16/10] w-full bg-[#f5f5f3] overflow-hidden border-b border-[#e5e5ea]">
+                  <Image
+                    src={sec.image}
+                    alt={sec.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#ffffff]/90 text-[10px] font-mono text-[#111111] border border-[#e5e5ea]">
+                    {sec.category}
+                  </div>
+                </div>
+
+                <div className="p-5 space-y-2.5">
+                  <h4 className="text-lg font-semibold text-[#111111]">
+                    {sec.title}
+                  </h4>
+                  <p className="text-xs text-[#484848] line-clamp-3 leading-relaxed">
+                    {sec.description}
+                  </p>
+
+                  <div className="pt-2 border-t border-[#f5f5f3] text-[10px] font-mono text-[#6b6b6b]">
+                    Source: {sec.provenance}
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-5 pt-0 border-t border-[#f5f5f3] mt-2 flex items-center justify-between">
+                <Link
+                  href={sec.href}
+                  className="text-xs font-semibold text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 transition-colors"
+                >
+                  <span>Protocol Dossier &rarr;</span>
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </main>
+
     </div>
   )
 }

@@ -176,7 +176,7 @@ export function CadranQuadrant({
           </h3>
         </div>
         {statutorySource && (
-          <span className="text-xs font-mono text-[#86868b] bg-[#f5f5f7] px-3 py-1.5 rounded-full border border-black/10 shrink-0 font-medium">
+          <span className="text-xs font-mono text-[#86868b] bg-white px-3 py-1.5 rounded-full border border-black/10 shrink-0 font-medium">
             {statutorySource}
           </span>
         )}
@@ -186,7 +186,7 @@ export function CadranQuadrant({
         {quadrants.map((q, idx) => (
           <div
             key={idx}
-            className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between space-y-4 hover:border-black/20 transition-all duration-200"
+            className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between space-y-4 hover:border-black/20 transition-all duration-200"
           >
             <div className="space-y-2">
               <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">

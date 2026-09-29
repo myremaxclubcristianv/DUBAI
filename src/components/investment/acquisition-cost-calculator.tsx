@@ -17,7 +17,7 @@ export function AcquisitionCostCalculator() {
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden shadow-sm">
-      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#f5f5f7]">
+      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white">
         <div>
           <div className="flex items-center gap-2">
             <Scale className="h-4 w-4 text-accent" />
@@ -32,7 +32,7 @@ export function AcquisitionCostCalculator() {
 
       <div className="p-6 sm:p-8 space-y-6">
         {/* Controls: Price, Mortgage toggle, Map Category */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-[#f5f5f7] p-5 rounded-2xl border border-black/5">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 bg-white p-5 rounded-2xl border border-black/5">
           <div className="md:col-span-5">
             <div className="flex justify-between text-xs mb-2">
               <label className="font-semibold text-[#1d1d1f]">Agreed Purchase Price</label>
@@ -94,7 +94,7 @@ export function AcquisitionCostCalculator() {
         {/* Itemized Table */}
         <div className="overflow-x-auto rounded-2xl border border-black/10 shadow-sm">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#f5f5f7] border-b border-black/10">
+            <thead className="bg-white border-b border-black/10">
               <tr>
                 <th className="py-3 px-4 font-semibold text-[#1d1d1f]">Fee Component</th>
                 <th className="py-3 px-4 font-semibold text-[#1d1d1f]">Authority / Category</th>
@@ -104,13 +104,13 @@ export function AcquisitionCostCalculator() {
             </thead>
             <tbody className="divide-y divide-black/5 bg-white">
               {result.line_items.map((item, idx) => (
-                <tr key={idx} className="hover:bg-[#f5f5f7] transition-colors">
+                <tr key={idx} className="hover:bg-white transition-colors">
                   <td className="py-3 px-4 font-medium text-[#1d1d1f] flex items-center gap-2">
                     <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
                     <span>{item.label}</span>
                   </td>
                   <td className="py-3 px-4">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-[#f5f5f7] border border-black/10 text-[#6e6e73] font-mono">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-medium bg-white border border-black/10 text-[#6e6e73] font-mono">
                       {item.category}
                     </span>
                   </td>
@@ -121,7 +121,7 @@ export function AcquisitionCostCalculator() {
                 </tr>
               ))}
             </tbody>
-            <tfoot className="bg-[#f5f5f7] font-semibold text-sm border-t border-black/10">
+            <tfoot className="bg-white font-semibold text-sm border-t border-black/10">
               <tr>
                 <td colSpan={3} className="py-3 px-4 text-[#6e6e73]">
                   Estimated Buyer Acquisition Fees:
@@ -146,7 +146,7 @@ export function AcquisitionCostCalculator() {
         </div>
 
         {/* Statutory & Customary Clarification Note */}
-        <p className="text-[11px] text-[#6e6e73] leading-relaxed bg-[#f5f5f7] p-4 rounded-2xl border border-black/5">
+        <p className="text-[11px] text-[#6e6e73] leading-relaxed bg-white p-4 rounded-2xl border border-black/5">
           <strong className="text-[#1d1d1f]">Regulatory Transparency:</strong> Exact applicable fees depend on transaction type and DLD service scenario. DLD property sale registration charges are 2% of the sale value for the buyer and 2% for the seller, for a combined 4% transfer charge. Map/document tariffs vary by category: AED 100 for land outside Dubai Municipality, AED 225 for the Unified Map under Dubai Municipality, or AED 250 for villas and apartments. Knowledge and innovation fees are AED 10 each where applicable. DLD service-partner charges are AED 4,000 + VAT for sale values of AED 500,000 or more, or AED 2,000 + VAT below AED 500,000. Brokerage, where applicable, is a customary market assumption and is not a statutory DLD fee.
         </p>
       </div>

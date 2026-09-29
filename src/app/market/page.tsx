@@ -29,7 +29,7 @@ export default function MarketPage() {
 
       {/* 2. DATA STATUS BANNER */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="p-5 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs shadow-xs">
+        <div className="p-5 rounded-3xl border border-black/10 bg-white flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs shadow-xs">
           <div className="flex items-center gap-3">
             <span className="h-2.5 w-2.5 rounded-full bg-[#b8860b] shrink-0 animate-pulse" />
             <div className="space-y-0.5">
@@ -163,7 +163,7 @@ export default function MarketPage() {
             </div>
 
             {/* Period Selector */}
-            <div className="inline-flex items-center p-1.5 rounded-full bg-[#f5f5f7] border border-black/10 text-xs font-semibold">
+            <div className="inline-flex items-center p-1.5 rounded-full bg-white border border-black/10 text-xs font-semibold">
               {(['7D', '30D', '90D', '1Y', '5Y'] as const).map((period) => (
                 <button
                   key={period}
@@ -182,7 +182,7 @@ export default function MarketPage() {
 
           {/* 6 Macro Financial Indicators (Bento Grid) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between h-full space-y-4">
+            <div className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-4 shadow-xs">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                   <span className="text-[10px] font-mono text-[#86868b] uppercase font-bold tracking-wider">
@@ -201,7 +201,7 @@ export default function MarketPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between h-full space-y-4">
+            <div className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-4">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                   <span className="text-[10px] font-mono text-[#86868b] uppercase font-bold tracking-wider">
@@ -220,7 +220,7 @@ export default function MarketPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between h-full space-y-4">
+            <div className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-4">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                   <span className="text-[10px] font-mono text-[#86868b] uppercase font-bold tracking-wider">
@@ -239,7 +239,7 @@ export default function MarketPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between h-full space-y-4">
+            <div className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-4">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                   <span className="text-[10px] font-mono text-[#86868b] uppercase font-bold tracking-wider">
@@ -258,7 +258,7 @@ export default function MarketPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between h-full space-y-4">
+            <div className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-4">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                   <span className="text-[10px] font-mono text-[#86868b] uppercase font-bold tracking-wider">
@@ -277,7 +277,7 @@ export default function MarketPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10 flex flex-col justify-between h-full space-y-4">
+            <div className="p-6 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-4">
               <div className="space-y-2">
                 <div className="flex items-start justify-between gap-2 min-h-[1.5rem]">
                   <span className="text-[10px] font-mono text-[#86868b] uppercase font-bold tracking-wider">
@@ -468,7 +468,7 @@ export default function MarketPage() {
         {/* ========================================================================= */}
         {/* 5. METHODOLOGY & AUDIT TRAIL */}
         {/* ========================================================================= */}
-        <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-[#f5f5f7] space-y-3 text-xs text-[#6e6e73] shadow-xs">
+        <div className="p-6 sm:p-8 rounded-3xl border border-black/10 bg-white space-y-3 text-xs text-[#6e6e73] shadow-xs">
           <div className="flex items-center gap-2 text-[#1d1d1f] font-bold text-sm">
             <Info className="h-4 w-4 text-[#b8860b]" />
             <span>Market Intelligence Methodology & Legal Governance</span>

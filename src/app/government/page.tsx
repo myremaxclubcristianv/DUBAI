@@ -38,7 +38,7 @@ export default function GovernmentPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#f5f5f7] border border-black/5 text-[#b8860b]">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white border border-black/5 text-[#b8860b]">
                       {program.programCode}
                     </span>
                     <span className="text-xs font-semibold text-[#86868b]">
@@ -57,7 +57,7 @@ export default function GovernmentPage() {
                     {program.coreObjective}
                   </p>
 
-                  <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-black/5 mb-6">
+                  <div className="p-4 rounded-2xl bg-white border border-black/5 mb-6">
                     <span className="text-[10px] uppercase font-bold text-[#86868b] block mb-1">
                       Legal Foundation / Enactment
                     </span>
@@ -113,7 +113,7 @@ export default function GovernmentPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-[#f5f5f7] text-[#1d1d1f] border border-black/5">
+                    <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-white text-[#1d1d1f] border border-black/5">
                       {entity.category.replace(/_/g, ' ')}
                     </span>
                     <span className="text-xs text-[#86868b]">
@@ -132,7 +132,7 @@ export default function GovernmentPage() {
                     {entity.mandate}
                   </p>
 
-                  <div className="p-4 rounded-2xl bg-[#f5f5f7] border border-black/5 space-y-2 mb-6">
+                  <div className="p-4 rounded-2xl bg-white border border-black/5 space-y-2 mb-6">
                     <div className="text-xs">
                       <span className="text-[#86868b] font-medium block">Leadership:</span>
                       <span className="font-semibold text-[#1d1d1f]">{entity.leadership}</span>

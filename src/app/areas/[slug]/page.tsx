@@ -38,7 +38,7 @@ export default function AreaDetailPage() {
   return (
     <div className="bg-white text-[#1d1d1f] min-h-screen pb-28 selection:bg-accent/20 selection:text-[#1d1d1f]">
       {/* 1. TOP BREADCRUMB */}
-      <div className="border-b border-black/10 bg-[#f5f5f7] py-3.5">
+      <div className="border-b border-black/10 bg-white py-3.5">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <Link
             href="/areas"
@@ -56,7 +56,7 @@ export default function AreaDetailPage() {
 
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-12">
         {/* 2. HERO IDENTITY BANNER */}
-        <div className="relative aspect-[21/9] min-h-[340px] md:min-h-[480px] rounded-3xl overflow-hidden border border-black/10 bg-[#f5f5f7] shadow-lg">
+        <div className="relative aspect-[21/9] min-h-[340px] md:min-h-[480px] rounded-3xl overflow-hidden border border-black/10 bg-white shadow-lg">
           <Image
             src={area.image || 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=80'}
             alt={area.name}
@@ -204,7 +204,7 @@ export default function AreaDetailPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#f5f5f7] border border-black/5 text-xs space-y-2">
+            <div className="p-5 rounded-2xl bg-white border border-black/5 text-xs space-y-2">
               <div className="font-semibold text-[#1d1d1f] flex items-center gap-2">
                 <Building2 className="h-4 w-4 text-accent" />
                 <span>Investment & Capital Profile</span>
@@ -222,7 +222,7 @@ export default function AreaDetailPage() {
                   {area.lifestyle_tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-black/5 text-xs font-semibold text-[#1d1d1f]"
+                      className="px-3.5 py-1.5 rounded-full bg-white border border-black/5 text-xs font-semibold text-[#1d1d1f]"
                     >
                       {tag}
                     </span>
@@ -286,7 +286,7 @@ export default function AreaDetailPage() {
           </div>
 
           {matchingProperties.length === 0 ? (
-            <div className="p-10 rounded-3xl border border-black/10 bg-[#f5f5f7] text-center space-y-3">
+            <div className="p-10 rounded-3xl border border-black/10 bg-white text-center space-y-3">
               <p className="text-xs text-[#6e6e73]">
                 No active properties listed in {area.name} in current audited registry.
               </p>
@@ -305,7 +305,7 @@ export default function AreaDetailPage() {
                   className="p-5 sm:p-6 rounded-3xl border border-black/10 bg-white hover:border-black/20 hover:shadow-lg transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-6 group shadow-sm"
                 >
                   <div className="flex items-center gap-4 sm:gap-5">
-                    <div className="relative h-20 w-28 rounded-2xl overflow-hidden bg-[#f5f5f7] shrink-0 border border-black/10">
+                    <div className="relative h-20 w-28 rounded-2xl overflow-hidden bg-white shrink-0 border border-black/10">
                       <Image
                         src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80'}
                         alt={prop.title}

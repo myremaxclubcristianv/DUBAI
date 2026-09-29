@@ -1,136 +1,117 @@
+'use client'
+
+import * as React from 'react'
 import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="border-t border-black/10 bg-[#f5f5f7] text-[#6e6e73] text-xs">
-      <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-12">
-        {/* Top Row: Brand & Concise Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-          {/* Brand Lockup */}
-          <div className="md:col-span-4 space-y-3.5">
-            <div className="flex flex-col">
-              <span className="text-base font-extrabold tracking-tight text-[#1d1d1f] uppercase">
+    <footer className="border-t border-black/[0.06] bg-[#ffffff] text-[#484848] text-xs">
+      <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-28 space-y-16">
+        
+        {/* Top Institutional Identity Strip */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-12 border-b border-black/[0.06]">
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <span className="text-[17px] font-semibold tracking-[-0.02em] uppercase text-[#111111]">
                 DUBAI
               </span>
-              <span className="text-[10px] font-mono tracking-widest text-[#b8860b] uppercase mt-0.5 font-bold">
-                Private Client &amp; Investment Platform
+              <span className="h-3.5 w-px bg-black/[0.1]" />
+              <span className="text-[11px] font-mono tracking-widest text-[#8e8e93] uppercase font-medium">
+                Property &bull; Capital &bull; Access
               </span>
             </div>
-            <p className="text-xs text-[#6e6e73] leading-relaxed pt-1 max-w-sm">
-              An institutional platform engineered for navigating Dubai prime real estate, statutory underwriting, UAE Golden Visa pathways, and bespoke lifestyle assets.
+            <p className="text-xs text-[#8e8e93] max-w-lg font-light leading-relaxed">
+              A private intelligence platform and research publication for principals, institutional investors, and family offices navigating the Emirate of Dubai.
             </p>
           </div>
 
-          {/* Navigation Columns */}
-          <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-5 gap-6">
-            <div className="space-y-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Real Estate
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/properties" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Verified Properties</Link></li>
-                <li><Link href="/areas" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Geodetic Areas</Link></li>
-                <li><Link href="/developers" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Developer Registry</Link></li>
-                <li><Link href="/projects" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Master Projects</Link></li>
-                <li><Link href="/infrastructure" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Megaprojects</Link></li>
-              </ul>
+          <div className="flex items-center gap-4">
+            <div className="px-3.5 py-1.5 rounded-full bg-[#fafaf8] border border-black/[0.06] text-[10px] font-mono text-[#6b6b6b]">
+              <span>USD Peg: 1 USD = 3.6725 AED</span>
             </div>
-
-            <div className="space-y-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Economy &amp; Finance
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/economy" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">D33 Economic Agenda</Link></li>
-                <li><Link href="/companies" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Corporate Directory</Link></li>
-                <li><Link href="/investment" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Underwriting Desk</Link></li>
-                <li><Link href="/market" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Market Intelligence</Link></li>
-                <li><Link href="/insurance" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Insurance &amp; Health</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Governance &amp; Law
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/government" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Government Entities</Link></li>
-                <li><Link href="/legal" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Statutory Legal Codes</Link></li>
-                <li><Link href="/residency" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Golden Visa Law</Link></li>
-                <li><Link href="/regulatory" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Gazette Archive</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Lifestyle &amp; Network
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/lifestyle/dining" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Michelin Dining</Link></li>
-                <li><Link href="/lifestyle/yachts" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Superyacht Fleet</Link></li>
-                <li><Link href="/lifestyle/aviation" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Private Jet FBOs</Link></li>
-                <li><Link href="/lifestyle/hotels" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">5-Star Hospitality</Link></li>
-                <li><Link href="/network" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Sovereign Summits</Link></li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#1d1d1f] block">
-                Private Advisory
-              </span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/private-client" className="text-[#b8860b] hover:underline transition-colors font-semibold">Advisory Mandate →</Link></li>
-                <li><Link href="/client" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Client Workspace</Link></li>
-                <li><Link href="/privacy" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Privacy Governance</Link></li>
-                <li><Link href="/terms" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Terms of Service</Link></li>
-                <li><Link href="/accessibility" className="text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">Accessibility (WCAG)</Link></li>
-              </ul>
+            <div className="px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-mono text-emerald-800 font-medium">
+              <span>Tier-1 Statutory Provenance</span>
             </div>
           </div>
         </div>
 
-        {/* Hairline Divider & Bottom Citations */}
-        <div className="pt-8 border-t border-black/10 space-y-4 text-xs text-[#86868b]">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px]">
+        {/* Sitemap 4-Column Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          {/* Column 1: Platform */}
+          <div className="space-y-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#111111] block">
+              Platform
+            </span>
+            <ul className="space-y-2.5 text-xs">
+              <li><Link href="/properties" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Curated Properties</Link></li>
+              <li><Link href="/investment" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Capital &amp; Underwriting</Link></li>
+              <li><Link href="/residency" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Golden Visa Residency</Link></li>
+              <li><Link href="/districts" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Dubai Atlas &amp; Districts</Link></li>
+              <li><Link href="/developers" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Developer Registry</Link></li>
+              <li><Link href="/lifestyle" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Curated Lifestyle Access</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 2: Governance & Structure */}
+          <div className="space-y-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#111111] block">
+              Governance &amp; Intelligence
+            </span>
+            <ul className="space-y-2.5 text-xs">
+              <li><Link href="/legal" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Legal &amp; Regulatory Atlas</Link></li>
+              <li><Link href="/government" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Government Authorities</Link></li>
+              <li><Link href="/economy" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">D33 Economic Agenda</Link></li>
+              <li><Link href="/infrastructure" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Sovereign Megaprojects</Link></li>
+              <li><Link href="/insurance" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Healthcare &amp; Insurance</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Private Client */}
+          <div className="space-y-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#111111] block">
+              Private Client
+            </span>
+            <ul className="space-y-2.5 text-xs">
+              <li><Link href="/private-client" className="text-[#9f8144] hover:underline font-medium flex items-center gap-1">Advisory Mandates <ArrowUpRight className="h-3 w-3" /></Link></li>
+              <li><Link href="/client" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Saved Portfolio Records</Link></li>
+              <li><Link href="/buying-guide" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Conveyancing Map</Link></li>
+              <li><Link href="/network" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Ecosystem Directory</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Sources & Legal */}
+          <div className="space-y-4">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#111111] block">
+              Sources &amp; Methodology
+            </span>
+            <ul className="space-y-2.5 text-xs">
+              <li><Link href="/sources" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Data Provenance Charter</Link></li>
+              <li><Link href="/terms" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Terms of Platform</Link></li>
+              <li><Link href="/privacy" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Data Privacy Charter</Link></li>
+              <li><Link href="/accessibility" className="text-[#6b6b6b] hover:text-[#111111] transition-colors">Accessibility (WCAG 2.1)</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Regulatory & Provenance Legal Footnote */}
+        <div className="pt-10 border-t border-black/[0.06] space-y-4 text-[#8e8e93] text-[11px] leading-relaxed font-light">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <p>
-              © {new Date().getFullYear()} DUBAI Platform. All verified data sourced directly from public registries.
+              &copy; {new Date().getFullYear()} DUBAI Platform. All data presented with explicit source provenance and statutory citations.
             </p>
             <div className="flex flex-wrap gap-4 font-mono text-[10px]">
-              <a
-                href="https://dubailand.gov.ae/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#1d1d1f] transition-colors flex items-center gap-1 text-[#6e6e73]"
-              >
-                <span>DLD Registry</span>
-                <ExternalLink className="h-2.5 w-2.5" />
-              </a>
-              <a
-                href="https://www.gdrfad.gov.ae/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#1d1d1f] transition-colors flex items-center gap-1 text-[#6e6e73]"
-              >
-                <span>GDRFA Dubai</span>
-                <ExternalLink className="h-2.5 w-2.5" />
-              </a>
-              <a
-                href="https://tax.gov.ae/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#1d1d1f] transition-colors flex items-center gap-1 text-[#6e6e73]"
-              >
-                <span>Federal Tax Authority</span>
-                <ExternalLink className="h-2.5 w-2.5" />
-              </a>
+              <a href="https://dubailand.gov.ae/" target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors underline">DLD Official</a>
+              <a href="https://www.gdrfad.gov.ae/" target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors underline">GDRFA Dubai</a>
+              <a href="https://tax.gov.ae/" target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors underline">Federal Tax Authority</a>
+              <a href="https://www.difc.ae/" target="_blank" rel="noopener noreferrer" className="hover:text-[#111111] transition-colors underline">DIFC Authority</a>
             </div>
           </div>
-
-          <p className="text-[10px] leading-relaxed text-[#86868b]">
-            <strong>Statutory Notice:</strong> Data presented on this platform references official public registries and statutory schedules including Dubai Law No. 7 of 2006, Executive Council Resolution No. 30 of 2013, and Cabinet Resolution No. 65 of 2022. Deterministic calculations are indicative models based on user parameters and published legal tariffs.
+          <p className="text-[10px] text-[#a1a1a6]">
+            <strong>Regulatory Disclaimer:</strong> Statutory information references official UAE legislation including Law No. 7 of 2006 (Land Registration), Law No. 8 of 2007 (Escrow Accounts), Cabinet Resolution No. 65 of 2022 (Golden Visa Regulations), and Federal Decree-Law No. 47 of 2022 (Corporate Tax). Yield calculations are deterministic indicative models based on statutory schedules. This platform does not provide automated legal or financial advice without direct professional consultation.
           </p>
         </div>
+
       </div>
     </footer>
   )

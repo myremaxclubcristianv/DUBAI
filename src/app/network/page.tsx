@@ -170,7 +170,7 @@ export default function NetworkPage() {
                 className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                   selectedPillar === 'ALL'
                     ? 'bg-[#1d1d1f] text-white shadow-sm'
-                    : 'bg-[#f5f5f7] border border-black/5 text-[#6e6e73] hover:text-[#1d1d1f]'
+                    : 'bg-white border border-black/5 text-[#6e6e73] hover:text-[#1d1d1f]'
                 }`}
               >
                 All Verticals ({NETWORK_ECOSYSTEM_PILLARS.length})
@@ -183,7 +183,7 @@ export default function NetworkPage() {
                   className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                     selectedPillar === pillar.id
                       ? 'bg-[#1d1d1f] text-white shadow-sm'
-                      : 'bg-[#f5f5f7] border border-black/5 text-[#6e6e73] hover:text-[#1d1d1f]'
+                      : 'bg-white border border-black/5 text-[#6e6e73] hover:text-[#1d1d1f]'
                   }`}
                 >
                   {pillar.title.split(' ')[0]} {pillar.title.split(' ')[1]}
@@ -205,10 +205,10 @@ export default function NetworkPage() {
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="h-10 w-10 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-center justify-center text-[#1d1d1f]">
+                      <div className="h-10 w-10 rounded-2xl bg-white border border-black/5 flex items-center justify-center text-[#1d1d1f]">
                         <Icon className="h-5 w-5 text-accent" />
                       </div>
-                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#f5f5f7] border border-black/5 text-[#6e6e73]">
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white border border-black/5 text-[#6e6e73]">
                         {pillar.subtitle}
                       </span>
                     </div>
@@ -289,7 +289,7 @@ export default function NetworkPage() {
                       <Calendar className="h-3.5 w-3.5 text-accent" />
                       <span>{conf.frequency}</span>
                     </span>
-                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-[#f5f5f7] border border-black/5">
+                    <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-white border border-black/5">
                       {conf.organizer.split(' ')[0]}
                     </span>
                   </div>
@@ -321,7 +321,7 @@ export default function NetworkPage() {
         </section>
 
         {/* 4. PRIVATE INTRODUCTIONS WORKFLOW CTA */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-[#f5f5f7] border border-black/10 text-[#1d1d1f] space-y-6 shadow-sm">
+        <section className="p-8 sm:p-12 rounded-3xl bg-white border border-black/10 text-[#1d1d1f] space-y-6 shadow-sm">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-2.5 max-w-2xl">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-black/10 text-accent text-xs font-semibold shadow-sm">
@@ -378,7 +378,7 @@ export default function NetworkPage() {
                   placeholder="e.g. Lord Alistair Vance"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
+                  className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
                 />
               </div>
 
@@ -393,7 +393,7 @@ export default function NetworkPage() {
                     placeholder="name@familyoffice.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -406,7 +406,7 @@ export default function NetworkPage() {
                     placeholder="+971 50 000 0000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
                   />
                 </div>
               </div>
@@ -419,7 +419,7 @@ export default function NetworkPage() {
                   <select
                     value={formData.entityType}
                     onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border border-black/10 text-sm text-[#1d1d1f] focus:outline-none focus:border-accent cursor-pointer"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#1d1d1f] focus:outline-none focus:border-accent cursor-pointer"
                   >
                     <option value="Private Investor">Private Investor</option>
                     <option value="Single Family Office">Single Family Office</option>
@@ -435,7 +435,7 @@ export default function NetworkPage() {
                   <select
                     value={formData.capitalTier}
                     onChange={(e) => setFormData({ ...formData, capitalTier: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border border-black/10 text-sm text-[#1d1d1f] focus:outline-none focus:border-accent cursor-pointer"
+                    className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#1d1d1f] focus:outline-none focus:border-accent cursor-pointer"
                   >
                     <option value="AED 5M - 10M">AED 5M - 10M</option>
                     <option value="AED 10M - 25M">AED 10M - 25M</option>
@@ -454,11 +454,11 @@ export default function NetworkPage() {
                   placeholder="e.g. Seeking off-plan penthouse allocation in Downtown and introduction to DIFC foundation structuring team..."
                   value={formData.interestSummary}
                   onChange={(e) => setFormData({ ...formData, interestSummary: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl bg-[#f5f5f7] border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white border border-black/10 text-sm text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent resize-none"
                 />
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-[#f5f5f7] border border-black/5 flex items-start gap-2.5 text-[11px] text-[#6e6e73]">
+              <div className="p-3.5 rounded-2xl bg-white border border-black/5 flex items-start gap-2.5 text-[11px] text-[#6e6e73]">
                 <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                 <span>
                   All inquiries are managed under strict client confidentiality. Data is retained on your local device during development mode.

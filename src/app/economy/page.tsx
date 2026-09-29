@@ -60,7 +60,7 @@ export default function EconomyPage() {
                   className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
                     selectedCategory === filter.val
                       ? 'bg-[#1d1d1f] text-white shadow-xs'
-                      : 'bg-[#f5f5f7] text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/5'
+                      : 'bg-white text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-black/5'
                   }`}
                 >
                   {filter.label}
@@ -77,7 +77,7 @@ export default function EconomyPage() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="px-2.5 py-0.5 rounded-md bg-[#f5f5f7] border border-black/5 text-[10px] font-bold text-[#6e6e73]">
+                    <span className="px-2.5 py-0.5 rounded-md bg-white border border-black/5 text-[10px] font-bold text-[#6e6e73]">
                       {item.period}
                     </span>
                     <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">
@@ -106,7 +106,7 @@ export default function EconomyPage() {
         </div>
 
         {/* 3. DUBAI ECONOMIC AGENDA D33 SECTION */}
-        <div className="bg-[#f5f5f7] rounded-[36px] p-8 md:p-14 border border-black/5">
+        <div className="bg-white rounded-[36px] p-8 md:p-14 border border-black/5">
           <div className="max-w-3xl mb-12">
             <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white border border-black/10 text-[#b8860b] inline-block mb-3">
               Royal Economic Charter
@@ -130,7 +130,7 @@ export default function EconomyPage() {
                     <span className="text-xs font-bold uppercase text-[#b8860b] tracking-wider">
                       {target.targetNumber}
                     </span>
-                    <span className="text-[11px] font-semibold text-[#86868b] bg-[#f5f5f7] px-2.5 py-1 rounded-full">
+                    <span className="text-[11px] font-semibold text-[#86868b] bg-white px-2.5 py-1 rounded-full">
                       Lead: {target.leadEntity}
                     </span>
                   </div>
@@ -142,7 +142,7 @@ export default function EconomyPage() {
                     {target.description}
                   </p>
 
-                  <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-[#f5f5f7] border border-black/5 mb-6">
+                  <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-white border border-black/5 mb-6">
                     <div>
                       <span className="text-[10px] uppercase font-bold text-[#86868b] block">Baseline Metric</span>
                       <span className="text-sm font-bold text-[#1d1d1f] mt-0.5 block">{target.baseline}</span>
@@ -210,7 +210,7 @@ export default function EconomyPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8">
           <Link
             href="/companies"
-            className="p-8 rounded-3xl bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-md transition-all group"
+            className="p-8 rounded-3xl bg-white hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-md transition-all group"
           >
             <Building2 className="h-6 w-6 text-[#b8860b] mb-4 group-hover:scale-110 transition-transform" />
             <h4 className="text-lg font-bold text-[#1d1d1f] mb-2 flex items-center justify-between">
@@ -224,7 +224,7 @@ export default function EconomyPage() {
 
           <Link
             href="/government"
-            className="p-8 rounded-3xl bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-md transition-all group"
+            className="p-8 rounded-3xl bg-white hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-md transition-all group"
           >
             <Landmark className="h-6 w-6 text-[#b8860b] mb-4 group-hover:scale-110 transition-transform" />
             <h4 className="text-lg font-bold text-[#1d1d1f] mb-2 flex items-center justify-between">
@@ -238,7 +238,7 @@ export default function EconomyPage() {
 
           <Link
             href="/legal"
-            className="p-8 rounded-3xl bg-[#f5f5f7] hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-md transition-all group"
+            className="p-8 rounded-3xl bg-white hover:bg-white border border-black/5 hover:border-black/15 shadow-xs hover:shadow-md transition-all group"
           >
             <FileCheck className="h-6 w-6 text-[#b8860b] mb-4 group-hover:scale-110 transition-transform" />
             <h4 className="text-lg font-bold text-[#1d1d1f] mb-2 flex items-center justify-between">

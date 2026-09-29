@@ -58,7 +58,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-[#6e6e73] hover:text-[#1d1d1f] text-sm p-1 rounded-full hover:bg-[#f5f5f7] cursor-pointer"
+          className="absolute top-5 right-5 text-[#6e6e73] hover:text-[#1d1d1f] text-sm p-1 rounded-full hover:bg-white cursor-pointer"
         >
           ✕
         </button>
@@ -88,7 +88,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
                     required
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
+                    className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                   />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
                   <select
                     value={timeSlot}
                     onChange={(e) => setTimeSlot(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent cursor-pointer"
+                    className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent cursor-pointer"
                   >
                     <option value="10:00 AM - 11:30 AM">Morning (10:00 AM)</option>
                     <option value="02:00 PM - 03:30 PM">Afternoon (02:00 PM)</option>
@@ -115,7 +115,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
                   placeholder="e.g. Lord Alexander Wright"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                 />
               </div>
 
@@ -128,7 +128,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
                     placeholder="client@familyoffice.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
+                    className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                   />
                 </div>
                 <div>
@@ -139,7 +139,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
                     placeholder="+971 50 000 0000"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
+                    className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent"
                   />
                 </div>
               </div>
@@ -153,12 +153,12 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
                   placeholder="e.g. Chauffeur pickup required, building architect meeting..."
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent resize-none"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent resize-none"
                 />
               </div>
             </div>
 
-            <div className="p-3 bg-[#f5f5f7] rounded-xl border border-black/5 text-[11px] text-[#6e6e73] flex items-start gap-2">
+            <div className="p-3 bg-white rounded-xl border border-black/5 text-[11px] text-[#6e6e73] flex items-start gap-2">
               <ShieldCheck className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
               <span>
                 All viewing arrangements are conducted in strict confidentiality with authorized DLD license verification and owner clearance.
@@ -169,7 +169,7 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-2 bg-white border border-black/10 hover:bg-[#f5f5f7] text-[#6e6e73] hover:text-[#1d1d1f] text-xs font-semibold rounded-full transition-colors cursor-pointer"
+                className="px-4 py-2 bg-white border border-black/10 hover:bg-white text-[#6e6e73] hover:text-[#1d1d1f] text-xs font-semibold rounded-full transition-colors cursor-pointer"
               >
                 Cancel
               </button>

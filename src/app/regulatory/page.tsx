@@ -254,7 +254,7 @@ export default function RegulatoryPage() {
             description="Filter official legal decrees by regulatory domain, gazette reference, or statutory authority."
           />
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-3xl bg-[#f5f5f7] border border-black/5 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-3xl bg-white border border-black/5 shadow-sm">
             {/* Search Input */}
             <div className="relative flex-1">
               <Search className="h-4 w-4 text-[#6e6e73] absolute left-4 top-1/2 -translate-y-1/2" />
@@ -305,7 +305,7 @@ export default function RegulatoryPage() {
                     <span className="text-xs font-mono font-bold text-accent uppercase tracking-wider">
                       {law.lawNumber}
                     </span>
-                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-[#f5f5f7] border border-black/5 text-[#6e6e73]">
+                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white border border-black/5 text-[#6e6e73]">
                       {law.year}
                     </span>
                   </div>
@@ -329,7 +329,7 @@ export default function RegulatoryPage() {
               </p>
 
               {/* Core Provisions */}
-              <div className="p-5 rounded-2xl bg-[#f5f5f7] border border-black/5 space-y-3">
+              <div className="p-5 rounded-2xl bg-white border border-black/5 space-y-3">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
                   Core Statutory Provisions
                 </span>
@@ -362,7 +362,7 @@ export default function RegulatoryPage() {
         </div>
 
         {/* 5. PRIVATE CLIENT CTA */}
-        <div className="p-8 sm:p-10 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+        <div className="p-8 sm:p-10 rounded-3xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
           <div className="space-y-2 max-w-xl">
             <h3 className="text-xl font-extrabold text-[#1d1d1f] tracking-tight">
               Need statutory due diligence on a specific transaction?

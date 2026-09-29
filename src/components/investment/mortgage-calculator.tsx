@@ -24,7 +24,7 @@ export function MortgageCalculator() {
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden shadow-sm">
-      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#f5f5f7]">
+      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white">
         <div>
           <div className="flex items-center gap-2">
             <DollarSign className="h-4 w-4 text-accent" />
@@ -54,7 +54,7 @@ export function MortgageCalculator() {
                   else if (val === 'EXPAT_SUBSEQUENT') setDownPaymentPct(35)
                   else setDownPaymentPct(20)
                 }}
-                className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-medium cursor-pointer"
+                className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-medium cursor-pointer"
               >
                 <option value="EXPAT_FIRST_HOME">Expatriate Resident (First Home — Max 80% LTV)</option>
                 <option value="UAE_NATIONAL">UAE National (First Home — Max 85% LTV)</option>
@@ -90,7 +90,7 @@ export function MortgageCalculator() {
                   max={90}
                   value={downPaymentPct}
                   onChange={(e) => setDownPaymentPct(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
 
@@ -105,7 +105,7 @@ export function MortgageCalculator() {
                   max={15}
                   value={interestRate}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
 
@@ -119,13 +119,13 @@ export function MortgageCalculator() {
                   max={25}
                   value={tenureYears}
                   onChange={(e) => setTenureYears(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
             </div>
           </div>
 
-          <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5 text-xs text-[#6e6e73] space-y-1.5">
+          <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs text-[#6e6e73] space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-[#1d1d1f]">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
               <span>Central Bank Regulatory Ceiling:</span>
@@ -135,7 +135,7 @@ export function MortgageCalculator() {
         </div>
 
         {/* Outputs */}
-        <div className="lg:col-span-6 p-6 sm:p-8 space-y-6 bg-[#f5f5f7]">
+        <div className="lg:col-span-6 p-6 sm:p-8 space-y-6 bg-white">
           <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#6e6e73]">
             Repayment & Capital Breakdown
           </h3>
@@ -195,7 +195,7 @@ export function MortgageCalculator() {
                 </thead>
                 <tbody className="divide-y divide-black/5">
                   {result.amortization_schedule_sample.map((row) => (
-                    <tr key={row.year} className="hover:bg-[#f5f5f7] transition-colors">
+                    <tr key={row.year} className="hover:bg-white transition-colors">
                       <td className="py-2 text-[#6e6e73] font-medium">Year {row.year}</td>
                       <td className="py-2 font-mono text-[#1d1d1f]">AED {row.principal_paid.toLocaleString()}</td>
                       <td className="py-2 font-mono text-[#1d1d1f]">AED {row.interest_paid.toLocaleString()}</td>

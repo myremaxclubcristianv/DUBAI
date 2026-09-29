@@ -40,7 +40,7 @@ export default function LuxuryCarsPage() {
               className="p-6 sm:p-7 bg-white rounded-3xl border border-black/10 hover:border-black/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group shadow-sm"
             >
               <div className="space-y-5">
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#f5f5f7]">
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-white">
                   <Image
                     src={item.image || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80'}
                     alt={item.title}
@@ -67,7 +67,7 @@ export default function LuxuryCarsPage() {
                 </p>
 
                 {item.specs && (
-                  <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5 text-xs space-y-1.5 font-mono">
+                  <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs space-y-1.5 font-mono">
                     {Object.entries(item.specs).map(([key, val]) => (
                       <div key={key} className="flex justify-between text-[11px]">
                         <span className="text-[#6e6e73]">{key}:</span>
@@ -77,7 +77,7 @@ export default function LuxuryCarsPage() {
                   </div>
                 )}
 
-                <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5 text-xs space-y-1.5 font-mono">
+                <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs space-y-1.5 font-mono">
                   <span className="text-[10px] uppercase tracking-widest text-[#6e6e73] font-semibold block">Tariff Structure</span>
                   <span className="font-bold text-accent block">
                     {item.price_display}

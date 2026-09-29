@@ -51,12 +51,12 @@ export default function InfrastructurePage() {
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-black/5 gap-4 mb-8">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-2xl bg-[#f5f5f7] border border-black/5 shrink-0">
+                  <div className="p-3 rounded-2xl bg-white border border-black/5 shrink-0">
                     {getCategoryIcon(project.category)}
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="px-3 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#f5f5f7] text-[#1d1d1f] border border-black/5">
+                      <span className="px-3 py-0.5 rounded-full text-[10px] font-bold uppercase bg-white text-[#1d1d1f] border border-black/5">
                         {project.category.replace(/_/g, ' ')}
                       </span>
                       <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">
@@ -95,7 +95,7 @@ export default function InfrastructurePage() {
               </div>
 
               {/* Scale Highlights Grid */}
-              <div className="bg-[#f5f5f7] p-6 sm:p-8 rounded-3xl border border-black/5 mb-8">
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-black/5 mb-8">
                 <span className="text-xs font-bold uppercase text-[#86868b] block mb-4">
                   Engineering Scale & Technical Specifications
                 </span>

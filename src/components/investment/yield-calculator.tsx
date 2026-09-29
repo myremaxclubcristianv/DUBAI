@@ -26,7 +26,7 @@ export function YieldCalculator() {
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden shadow-sm">
-      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#f5f5f7]">
+      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white">
         <div>
           <div className="flex items-center gap-2">
             <Percent className="h-4 w-4 text-accent" />
@@ -111,7 +111,7 @@ export function YieldCalculator() {
                   type="number"
                   value={areaSqft}
                   onChange={(e) => setAreaSqft(Math.max(100, Number(e.target.value)))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
 
@@ -123,7 +123,7 @@ export function YieldCalculator() {
                   type="number"
                   value={serviceChargePerSqft}
                   onChange={(e) => setServiceChargePerSqft(Math.max(0, Number(e.target.value)))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
             </div>
@@ -137,7 +137,7 @@ export function YieldCalculator() {
                   type="number"
                   value={maintenanceReservePct}
                   onChange={(e) => setMaintenanceReservePct(Math.max(0, Number(e.target.value)))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
 
@@ -149,13 +149,13 @@ export function YieldCalculator() {
                   type="number"
                   value={managementFeePct}
                   onChange={(e) => setManagementFeePct(Math.max(0, Number(e.target.value)))}
-                  className="w-full px-3.5 py-2.5 bg-[#f5f5f7] border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
                 />
               </div>
             </div>
           </div>
 
-          <div className="p-4 bg-[#f5f5f7] rounded-2xl border border-black/5 text-xs text-[#6e6e73] space-y-1.5">
+          <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs text-[#6e6e73] space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-[#1d1d1f]">
               <Info className="h-3.5 w-3.5 text-accent" />
               <span>Transparent Statutory Inclusions:</span>
@@ -167,7 +167,7 @@ export function YieldCalculator() {
         </div>
 
         {/* Calculated Yield Outputs */}
-        <div className="lg:col-span-6 p-6 sm:p-8 space-y-6 flex flex-col justify-between bg-[#f5f5f7]">
+        <div className="lg:col-span-6 p-6 sm:p-8 space-y-6 flex flex-col justify-between bg-white">
           <div className="space-y-6">
             <h3 className="text-[11px] font-bold uppercase tracking-widest text-[#6e6e73]">
               Calculated Returns & Cash Flow

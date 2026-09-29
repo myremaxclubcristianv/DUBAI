@@ -58,7 +58,7 @@ export default function ClientPortalPage() {
 
       {/* 2. LOCAL BROWSER STORAGE NOTICE */}
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        <div className="p-4 rounded-2xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-sm">
+        <div className="p-4 rounded-2xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-sm">
           <div className="flex items-center gap-2.5">
             <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
             <div>
@@ -101,7 +101,7 @@ export default function ClientPortalPage() {
                     type: 'info',
                   })
                 }}
-                className="px-3.5 py-1.5 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-rose-50 hover:border-rose-300 text-xs font-semibold text-[#6e6e73] hover:text-rose-600 transition-colors flex items-center gap-1.5 cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full border border-black/10 bg-white hover:bg-rose-50 hover:border-rose-300 text-xs font-semibold text-[#6e6e73] hover:text-rose-600 transition-colors flex items-center gap-1.5 cursor-pointer"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 <span>Clear Shortlist</span>
@@ -117,7 +117,7 @@ export default function ClientPortalPage() {
                   className="p-5 rounded-3xl border border-black/10 bg-white hover:border-black/20 hover:shadow-lg transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 group shadow-sm"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="relative h-16 w-24 rounded-2xl overflow-hidden bg-[#f5f5f7] shrink-0 border border-black/10">
+                    <div className="relative h-16 w-24 rounded-2xl overflow-hidden bg-white shrink-0 border border-black/10">
                       <Image
                         src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=400&q=80'}
                         alt={prop.title}
@@ -156,7 +156,7 @@ export default function ClientPortalPage() {
               ))}
             </div>
           ) : (
-            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-[#f5f5f7] text-center space-y-3">
+            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-white text-center space-y-3">
               <Bookmark className="h-8 w-8 text-[#6e6e73] mx-auto" />
               <div className="text-sm font-bold text-[#1d1d1f]">No Properties Saved Yet</div>
               <p className="text-xs text-[#6e6e73] max-w-sm mx-auto leading-relaxed">
@@ -198,7 +198,7 @@ export default function ClientPortalPage() {
                     type: 'info',
                   })
                 }}
-                className="px-3.5 py-1.5 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-rose-50 hover:border-rose-300 text-xs font-semibold text-[#6e6e73] hover:text-rose-600 transition-colors flex items-center gap-1.5 cursor-pointer w-fit"
+                className="px-3.5 py-1.5 rounded-full border border-black/10 bg-white hover:bg-rose-50 hover:border-rose-300 text-xs font-semibold text-[#6e6e73] hover:text-rose-600 transition-colors flex items-center gap-1.5 cursor-pointer w-fit"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
                 <span>Reset Matrix</span>
@@ -211,8 +211,8 @@ export default function ClientPortalPage() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="border-b border-black/10 bg-[#f5f5f7]">
-                      <th className="p-4 font-mono uppercase text-[10px] text-[#6e6e73] tracking-widest font-semibold min-w-[170px] sticky left-0 bg-[#f5f5f7] z-10 border-r border-black/10">
+                    <tr className="border-b border-black/10 bg-white">
+                      <th className="p-4 font-mono uppercase text-[10px] text-[#6e6e73] tracking-widest font-semibold min-w-[170px] sticky left-0 bg-white z-10 border-r border-black/10">
                         Field / Metric
                       </th>
                       {comparedProperties.map((prop) => (
@@ -308,7 +308,7 @@ export default function ClientPortalPage() {
               </div>
             </div>
           ) : (
-            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-[#f5f5f7] text-center space-y-3">
+            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-white text-center space-y-3">
               <Table className="h-8 w-8 text-[#6e6e73] mx-auto" />
               <div className="text-sm font-bold text-[#1d1d1f]">No Assets Selected in Comparison Desk</div>
               <p className="text-xs text-[#6e6e73] max-w-sm mx-auto leading-relaxed">
@@ -353,7 +353,7 @@ export default function ClientPortalPage() {
                   <button
                     type="button"
                     onClick={() => handleApplySavedSearch(search.filters)}
-                    className="w-full py-2.5 rounded-full bg-[#f5f5f7] hover:bg-[#1d1d1f] hover:text-white text-xs font-semibold text-[#1d1d1f] transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-black/10"
+                    className="w-full py-2.5 rounded-full bg-white hover:bg-[#1d1d1f] hover:text-white text-xs font-semibold text-[#1d1d1f] transition-all flex items-center justify-center gap-1.5 cursor-pointer border border-black/10"
                   >
                     <span>Apply Filters</span>
                     <ArrowRight className="h-3 w-3" />
@@ -362,7 +362,7 @@ export default function ClientPortalPage() {
               ))}
             </div>
           ) : (
-            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-[#f5f5f7] text-center space-y-3">
+            <div className="p-10 rounded-3xl border border-dashed border-black/15 bg-white text-center space-y-3">
               <SlidersHorizontal className="h-8 w-8 text-[#6e6e73] mx-auto" />
               <div className="text-sm font-bold text-[#1d1d1f]">No Search Presets Saved</div>
               <p className="text-xs text-[#6e6e73] max-w-sm mx-auto leading-relaxed">

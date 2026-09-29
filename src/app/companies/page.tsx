@@ -45,7 +45,7 @@ export default function CompaniesPage() {
 
       <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* 2. SEARCH & FILTER BAR */}
-        <div className="bg-[#f5f5f7] p-4 sm:p-6 rounded-3xl border border-black/5 flex flex-col md:flex-row gap-4 justify-between items-center">
+        <div className="bg-white p-4 sm:p-6 rounded-3xl border border-black/5 flex flex-col md:flex-row gap-4 justify-between items-center">
           {/* Search Box */}
           <div className="relative w-full md:w-96">
             <Search className="h-4 w-4 text-[#86868b] absolute left-3.5 top-3.5" />
@@ -86,7 +86,7 @@ export default function CompaniesPage() {
               <div>
                 {/* Header Tag */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#f5f5f7] text-[#1d1d1f] border border-black/5">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-[#1d1d1f] border border-black/5">
                     {company.ownership.replace(/_/g, ' ')}
                   </span>
                   <span className="text-[11px] font-mono font-semibold text-[#86868b]">
@@ -110,7 +110,7 @@ export default function CompaniesPage() {
                 </p>
 
                 {/* Metric Strip */}
-                <div className="bg-[#f5f5f7] p-4 rounded-2xl border border-black/5 mb-6">
+                <div className="bg-white p-4 rounded-2xl border border-black/5 mb-6">
                   <span className="text-[10px] uppercase font-bold text-[#86868b] block">
                     {company.scaleLabel}
                   </span>

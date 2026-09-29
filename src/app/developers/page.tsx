@@ -1,175 +1,123 @@
 'use client'
 
 import * as React from 'react'
-import Link from 'next/link'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
-import { SourceBadge } from '@/components/ui/source-badge'
-import { PageIntro } from '@/components/layout/layout-primitives'
-import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
-import { ExternalLink, ArrowRight, Building, ShieldCheck, Landmark, CheckCircle2 } from 'lucide-react'
+import { ProvenanceTag } from '@/components/layout/layout-primitives'
+import {
+  ExternalLink,
+  ShieldCheck,
+  Search,
+} from 'lucide-react'
 
 export default function DevelopersPage() {
+  const [searchQuery, setSearchQuery] = React.useState('')
+
+  const filteredDevelopers = React.useMemo(() => {
+    if (!searchQuery) return VERIFIED_DEVELOPERS
+    const q = searchQuery.toLowerCase().trim()
+    return VERIFIED_DEVELOPERS.filter(
+      (d) =>
+        d.name.toLowerCase().includes(q) ||
+        d.headquarters.toLowerCase().includes(q) ||
+        d.notable_communities.some((c) => c.toLowerCase().includes(q))
+    )
+  }, [searchQuery])
+
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
-      {/* 1. APPLE PRO HERO */}
-      <PageIntro
-        eyebrow="Official DLD Master Developer Registry"
-        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Developer Register" />}
-        title="Developer Directory."
-        description="Institutional master developers licensed and audited by the Dubai Land Department (DLD). Direct escrow accounts and statutory project governance."
-      />
-
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
-        {/* 1B. DEVELOPER GOVERNANCE CADRANS */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-black/10 pb-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#b8860b]">
-              DEVELOPER GOVERNANCE INSTRUMENTS
+    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+      
+      {/* 1. EDITORIAL HEADER */}
+      <section className="pt-12 pb-12 sm:pt-16 sm:pb-16 border-b border-[#e5e5ea] bg-[#fafaf8]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
+              OFFICIAL REGISTRY &bull; DLD REGISTERED DEVELOPERS
             </span>
-            <span className="text-xs font-mono text-[#86868b]">RERA & DLD Audit Oversight</span>
+            <ProvenanceTag sourceClass="OFFICIAL REGULATORY" sourceName="DLD Developer Register" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <CadranDial
-              label="LICENSED MASTER DEVS"
-              sublabel="Official DLD Register"
-              value={`${VERIFIED_DEVELOPERS.length} Masters`}
-              unit="TIER 1 SPONSORS"
-              targetValue="Institutional Developers"
-              percentage={100}
-              status="OFFICIAL"
-              statutoryRef="DLD Master Register"
-              icon={Building}
-            />
-            <CadranDial
-              label="ESCROW COMPLIANCE"
-              sublabel="100% Ring-Fenced Accounts"
-              value="100.0%"
-              unit="ESCROW RATE"
-              targetValue="Zero Default Tolerance"
-              percentage={100}
-              status="VERIFIED"
-              statutoryRef="Dubai Law No. 8/2007"
-              icon={ShieldCheck}
-            />
-            <CadranDial
-              label="CONSTRUCTION AUDIT"
-              sublabel="DLD Engineering Inspections"
-              value="Mandatory"
-              unit="PROGRESS MILESTONES"
-              targetValue="Funds Released on Inspection"
-              percentage={95}
-              status="OPTIMAL"
-              statutoryRef="RERA Project Monitoring"
-              icon={Landmark}
-            />
-            <CadranDial
-              label="SOVEREIGN SPONSORSHIP"
-              sublabel="Gov & Semi-Gov Alignment"
-              value="AAA / Prime"
-              unit="MASTER DEVELOPER STRENGTH"
-              targetValue="Dubai Holding / ICD / Emaar"
-              percentage={96}
-              status="OPTIMAL"
-              statutoryRef="Dubai Sovereign Entities"
-              icon={CheckCircle2}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111]">
+            Master Developer Registry
+          </h1>
+          
+          <p className="text-sm sm:text-base text-[#484848] max-w-3xl leading-relaxed">
+            Institutional master developers licensed by the Dubai Land Department (DLD) and regulated by RERA under Law No. 8 of 2007 (Escrow Accounts).
+          </p>
+        </div>
+      </section>
+
+      {/* 2. SEARCH & CONTROLS */}
+      <section className="sticky top-16 z-30 bg-[#ffffff] border-b border-[#e5e5ea] py-3.5 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1240px] mx-auto flex items-center justify-between gap-4">
+          <div className="relative w-full sm:w-80">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#6b6b6b]" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search developer entity, community..."
+              className="w-full pl-9 pr-3 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] placeholder:text-[#8e8e93] focus:outline-none focus:border-[#111111]"
             />
           </div>
+
+          <div className="text-xs font-mono text-[#6b6b6b] hidden sm:block">
+            {filteredDevelopers.length} Verified Master Developers
+          </div>
         </div>
+      </section>
 
-        {/* 1C. DEVELOPER SAFEGUARDS QUADRANT */}
-        <CadranQuadrant
-          eyebrow="OFF-PLAN DEVELOPER REGULATORY SAFEGUARDS"
-          title="Dubai Real Estate Regulatory Agency (RERA) Protection Architecture"
-          statutorySource="Dubai Land Department & Law No. 8 of 2007"
-          quadrants={[
-            {
-              title: 'Mandatory Project Escrow',
-              value: 'Law No. 8/2007',
-              subtext: 'Every off-plan project must maintain an audited escrow account at an accredited UAE bank under DLD control.',
-              delta: '100% Ring-Fenced',
-              isPositive: true,
-              statutoryRef: 'Law No. 8 of 2007 (Escrow)',
-            },
-            {
-              title: 'Land Ownership Verification',
-              value: '100% Paid Up',
-              subtext: 'Developer must fully own project land and achieve 20% construction or deposit 20% bank guarantee before launch.',
-              delta: 'RERA Registration Requirement',
-              isPositive: true,
-              statutoryRef: 'Executive Council Res. No. 6/2010',
-            },
-            {
-              title: 'Oqood Interim Registration',
-              value: 'Pre-Title Deed',
-              subtext: 'Buyer off-plan equity is registered in DLD Oqood registry protecting ownership rights against developer insolvency.',
-              delta: 'Law No. 13 of 2008',
-              isPositive: true,
-              statutoryRef: 'Law No. 13 of 2008 (Interim Register)',
-            },
-            {
-              title: 'Statutory Snagging Warranties',
-              value: '10-Yr Structural',
-              subtext: 'Developers legally liable for 10-year structural defects and 1-year MEP / finishing snagging defects post-handover.',
-              delta: 'Federal Civil Code & Law No. 6/2019',
-              isPositive: true,
-              statutoryRef: 'Article 880, UAE Civil Code',
-            },
-          ]}
-        />
+      {/* 3. STRUCTURED DIRECTORY REGISTER TABLE */}
+      <main className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+        
+        <div className="border border-[#e5e5ea] rounded divide-y divide-[#e5e5ea] bg-[#ffffff]">
+          {/* Header */}
+          <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3.5 bg-[#fafaf8] text-[10px] font-mono text-[#6b6b6b] uppercase tracking-wider font-semibold">
+            <div className="col-span-4">Developer Entity</div>
+            <div className="col-span-2">DLD Registration</div>
+            <div className="col-span-2">Founded / HQ</div>
+            <div className="col-span-3">Key Master Developments</div>
+            <div className="col-span-1 text-right">Official</div>
+          </div>
 
-        <div className="flex items-center justify-between border-b border-black/10 pb-4">
-          <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#b8860b]">
-            REGISTERED MASTER DEVELOPERS ({VERIFIED_DEVELOPERS.length})
-          </span>
-          <span className="text-xs text-[#86868b] font-mono">DLD Registry Standards</span>
-        </div>
-
-        {/* 2. TYPOGRAPHIC DEVELOPER DIRECTORY */}
-        <div className="divide-y divide-black/10 border-y border-black/10">
-          {VERIFIED_DEVELOPERS.map((dev, idx) => (
+          {/* Developer Rows */}
+          {filteredDevelopers.map((dev) => (
             <div
               key={dev.id}
-              className="py-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start group hover:bg-[#f5f5f7] transition-all px-4 sm:px-8 rounded-3xl"
+              className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-5 md:px-6 md:py-5 items-start hover:bg-[#fafaf8] transition-colors"
             >
-              {/* Col 1: Monospace Index */}
-              <div className="lg:col-span-1">
-                <span className="text-3xl sm:text-4xl font-extrabold font-mono text-[#b8860b]">
-                  0{idx + 1}
+              <div className="col-span-1 md:col-span-4 space-y-1">
+                <div className="text-base font-semibold text-[#111111]">
+                  {dev.name}
+                </div>
+                {dev.arabic_name && (
+                  <span className="text-xs text-[#6b6b6b] font-mono block">
+                    {dev.arabic_name}
+                  </span>
+                )}
+                <p className="text-xs text-[#484848] leading-relaxed pt-1 line-clamp-2">
+                  {dev.portfolio_overview}
+                </p>
+              </div>
+
+              <div className="col-span-1 md:col-span-2 text-xs font-mono text-[#484848] pt-1">
+                <span className="md:hidden text-[#6b6b6b] text-[10px] mr-2">DLD REG:</span>
+                <span className="px-2 py-0.5 rounded bg-[#fafaf8] border border-[#e5e5ea] font-semibold">
+                  DLD No. {dev.dld_developer_number}
                 </span>
               </div>
 
-              {/* Col 4: Identity & Registration */}
-              <div className="lg:col-span-4 space-y-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono uppercase px-2.5 py-0.5 rounded-full bg-white border border-black/10 text-[#6e6e73] font-bold shadow-2xs">
-                    DLD #{dev.dld_developer_number}
-                  </span>
-                  <span className="text-xs font-mono text-[#86868b]">
-                    Est. {dev.founded_year}
-                  </span>
-                </div>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] group-hover:text-[#b8860b] transition-colors">
-                  {dev.name}
-                </h2>
-                {dev.arabic_name && (
-                  <div className="text-xs text-[#86868b] font-sans">{dev.arabic_name}</div>
-                )}
-                <div className="text-xs text-[#6e6e73] pt-0.5 font-normal">
-                  HQ: {dev.headquarters}
-                </div>
+              <div className="col-span-1 md:col-span-2 text-xs font-mono text-[#484848] pt-1 space-y-0.5">
+                <div>Founded: {dev.founded_year}</div>
+                <div className="text-[11px] text-[#6b6b6b]">{dev.headquarters}</div>
               </div>
 
-              {/* Col 4: Overview & Key Communities */}
-              <div className="lg:col-span-4 space-y-3">
-                <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed line-clamp-3">
-                  {dev.portfolio_overview}
-                </p>
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {dev.notable_communities.map((comm) => (
+              <div className="col-span-1 md:col-span-3 text-xs text-[#484848] pt-1">
+                <span className="md:hidden text-[#6b6b6b] font-mono text-[10px] mr-2">COMMUNITIES:</span>
+                <div className="flex flex-wrap gap-1">
+                  {dev.notable_communities.map((comm, cIdx) => (
                     <span
-                      key={comm}
-                      className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#1d1d1f] border border-black/10 shadow-2xs"
+                      key={cIdx}
+                      className="px-1.5 py-0.5 rounded bg-[#fafaf8] border border-[#e5e5ea] text-[10px] font-mono text-[#6b6b6b]"
                     >
                       {comm}
                     </span>
@@ -177,35 +125,36 @@ export default function DevelopersPage() {
                 </div>
               </div>
 
-              {/* Col 3: Actions & Verification */}
-              <div className="lg:col-span-3 flex flex-col justify-between items-start lg:items-end gap-4 pt-2 lg:pt-0">
-                <SourceBadge provenance={dev.provenance} showDetailButton={false} />
-
-                <div className="flex items-center gap-2 w-full lg:w-auto">
+              <div className="col-span-1 md:col-span-1 flex md:justify-end pt-2 md:pt-1">
+                {dev.official_website && (
                   <a
                     href={dev.official_website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-full border border-black/10 bg-white hover:bg-[#f5f5f7] text-xs font-semibold text-[#1d1d1f] transition-colors flex items-center gap-1.5 shadow-2xs"
-                    title="Official Developer Portal"
+                    className="text-xs text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 font-mono"
+                    title="Visit Official Developer Portal"
                   >
-                    <span>Portal</span>
-                    <ExternalLink className="h-3 w-3 text-[#86868b]" />
+                    <ExternalLink className="h-3.5 w-3.5" />
                   </a>
-
-                  <Link
-                    href="/properties"
-                    className="px-5 py-2 rounded-full bg-[#1d1d1f] hover:bg-[#000000] text-white text-xs font-bold transition-all flex items-center gap-1.5 shadow-xs"
-                  >
-                    <span>Inventory</span>
-                    <ArrowRight className="h-3.5 w-3.5 text-white/70" />
-                  </Link>
-                </div>
+                )}
               </div>
             </div>
           ))}
         </div>
+
+        {/* Regulatory Governance Note */}
+        <div className="p-5 rounded bg-[#fafaf8] border border-[#e5e5ea] space-y-2 text-xs text-[#484848] leading-relaxed">
+          <div className="flex items-center gap-2 font-semibold text-[#111111]">
+            <ShieldCheck className="h-4 w-4 text-[#9f8144]" />
+            <span>Escrow &amp; Off-Plan Protection Notice</span>
+          </div>
+          <p>
+            Under Dubai Law No. 8 of 2007, every licensed developer operating off-plan sales must maintain an audited project escrow account. Purchaser installment funds are ring-fenced and disbursed exclusively in alignment with certified construction progress audits verified by RERA engineering inspectors.
+          </p>
+        </div>
+
       </main>
+
     </div>
   )
 }

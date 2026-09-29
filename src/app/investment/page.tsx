@@ -1,222 +1,355 @@
 'use client'
 
 import * as React from 'react'
-import { ScenarioWorkspace } from '@/components/investment/scenario-workspace'
-import { YieldCalculator } from '@/components/investment/yield-calculator'
-import { MortgageCalculator } from '@/components/investment/mortgage-calculator'
-import { AcquisitionCostCalculator } from '@/components/investment/acquisition-cost-calculator'
-import { CashFlowCalculator } from '@/components/investment/cash-flow-calculator'
-import { PaymentPlanCalculator } from '@/components/investment/payment-plan-calculator'
-import { PropertyComparison } from '@/components/investment/property-comparison'
-import { SourceBadge } from '@/components/ui/source-badge'
-import { PageIntro } from '@/components/layout/layout-primitives'
-import { CadranDial, CadranQuadrant } from '@/components/ui/luxury-cadran'
-import {
-  Calculator,
-  Percent,
-  DollarSign,
-  Scale,
-  TrendingUp,
-  Clock,
-  Layers,
-  ShieldCheck,
-  BookOpen,
-  FileSpreadsheet,
-  Landmark,
-} from 'lucide-react'
+import { useClient } from '@/lib/context/client-context'
+import { ProvenanceTag } from '@/components/layout/layout-primitives'
 
 export default function InvestmentPage() {
-  const [activeTab, setActiveTab] = React.useState<
-    'SCENARIO' | 'YIELD' | 'MORTGAGE' | 'ACQUISITION' | 'CASH_FLOW' | 'PAYMENT_PLAN' | 'COMPARISON' | 'FRAMEWORK' | 'METHODOLOGY'
-  >('SCENARIO')
+  const { formatCurrency } = useClient()
+
+  // Deterministic Calculator State
+  const [purchasePrice, setPurchasePrice] = React.useState(10000000)
+  const [isFinanced, setIsFinanced] = React.useState(true)
+  const [ltvPercent, setLtvPercent] = React.useState(60)
+  const [interestRate, setInterestRate] = React.useState(4.75)
+  const [loanTermYears, setLoanTermYears] = React.useState(25)
+  const [estGrossYield, setEstGrossYield] = React.useState(6.5)
+  const [serviceChargePerSqft, setServiceChargePerSqft] = React.useState(22)
+  const [propertyAreaSqft] = React.useState(2500)
+
+  // Calculations
+  const buyerDldFee = purchasePrice * 0.02
+  const dldTrusteeAdmin = purchasePrice >= 500000 ? 4000 : 2000
+  const titleDeedFee = 580
+  
+  const loanAmount = isFinanced ? (purchasePrice * (ltvPercent / 100)) : 0
+  const mortgageRegFee = isFinanced ? (loanAmount * 0.0025) : 0
+  const mortgageAdminFee = isFinanced ? 290 : 0
+  
+  const totalStatutoryClosingCosts = buyerDldFee + dldTrusteeAdmin + titleDeedFee + mortgageRegFee + mortgageAdminFee
+  const totalInitialCapitalRequired = (purchasePrice - loanAmount) + totalStatutoryClosingCosts
+
+  // Mortgage Payment (Monthly)
+  const monthlyRate = (interestRate / 100) / 12
+  const totalMonths = loanTermYears * 12
+  const monthlyMortgagePayment = isFinanced && loanAmount > 0
+    ? (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths))) / (Math.pow(1 + monthlyRate, totalMonths) - 1)
+    : 0
+  const annualMortgagePayment = monthlyMortgagePayment * 12
+
+  // Rental Income & Net Yield
+  const annualGrossRent = purchasePrice * (estGrossYield / 100)
+  const annualServiceCharge = serviceChargePerSqft * propertyAreaSqft
+  const annualMaintenanceReserve = annualGrossRent * 0.05
+  const netOperatingIncome = Math.max(0, annualGrossRent - annualServiceCharge - annualMaintenanceReserve)
+  const unleveredNetYield = (netOperatingIncome / (purchasePrice + buyerDldFee + dldTrusteeAdmin)) * 100
+  const netCashFlowAfterDebt = netOperatingIncome - annualMortgagePayment
+  const cashOnCashReturn = totalInitialCapitalRequired > 0 ? (netCashFlowAfterDebt / totalInitialCapitalRequired) * 100 : 0
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
-      {/* 1. APPLE PRO HERO INTRO */}
-      <PageIntro
-        eyebrow="Institutional Underwriting Desk"
-        badge={<SourceBadge status="CALCULATED" sourceName="DLD Tariffs & UAE Central Bank Regulations" />}
-        title="Investment Intelligence."
-        description="Multi-parameter underwriting, debt-service sensitivity, statutory DLD fee schedules, and multi-year cash flow modeling with verified mathematical provenance."
-      />
-
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
-        {/* 1B. INVESTMENT INSTRUMENT CADRANS */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-black/10 pb-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#b8860b]">
-              UNDERWRITING CADRANS & BENCHMARKS
+    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+      
+      {/* 1. EDITORIAL HEADER */}
+      <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 border-b border-black/[0.06] bg-[#fafaf8]">
+        <div className="w-full max-w-[1120px] mx-auto px-6 sm:px-8 space-y-6">
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144]">
+              CAPITAL &bull; UNDERWRITING &bull; STATUTORY FRAMEWORK
             </span>
-            <span className="text-xs font-mono text-[#86868b]">Deterministic Mathematical Formulas</span>
+            <ProvenanceTag sourceClass="CALCULATED" sourceName="DLD &bull; CBUAE &bull; FTA Laws" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <CadranDial
-              label="PRIME NET CAP RATE"
-              sublabel="After Mollak Service Fees"
-              value="6.45%"
-              unit="NET UNLEVERED"
-              targetValue="vs 2.90% London Prime"
-              percentage={68}
-              status="OPTIMAL"
-              statutoryRef="DLD Ejari & Mollak Ledger"
-              icon={TrendingUp}
-            />
-            <CadranDial
-              label="DEBT SERVICE (DSCR)"
-              sublabel="CBUAE Expat 80% LTV Baseline"
-              value="1.85x"
-              unit="COVERAGE RATIO"
-              targetValue="Min Recommended 1.30x"
-              percentage={82}
-              status="OPTIMAL"
-              statutoryRef="CBUAE Banking Circular 2023"
-              icon={Landmark}
-            />
-            <CadranDial
-              label="10-YR LEVERED IRR"
-              sublabel="5% Exit Cap Rate Scenario"
-              value="14.2%"
-              unit="ANNUALIZED IRR"
-              targetValue="Target Hurdle 10.0%"
-              percentage={76}
-              status="OPTIMAL"
-              statutoryRef="Standard DCF Model"
-              icon={Calculator}
-            />
-            <CadranDial
-              label="STATUTORY CLOSING"
-              sublabel="Buyer Transfer & Trustee"
-              value="2.08%"
-              unit="TOTAL FRICTION"
-              targetValue="2% DLD + AED 4.2k Trustee"
-              percentage={90}
-              status="VERIFIED"
-              statutoryRef="Resolution No. 30/2013"
-              icon={Scale}
-            />
+          <h1 className="text-[38px] sm:text-[54px] lg:text-[64px] font-light tracking-[-0.03em] leading-[1.04] text-[#111111]">
+            Investment Underwriting &amp; Capital Framework
+          </h1>
+          
+          <p className="text-base sm:text-xl text-[#6b6b6b] font-light max-w-2xl leading-relaxed">
+            Institutional research on Dubai freehold acquisitions, statutory transaction schedules, mortgage leverage boundaries, and natural person tax exemptions.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. STATUTORY CAPITAL FRAMEWORK (4 Pillars, Minimal Lines) */}
+      <section className="py-24 sm:py-32 border-b border-black/[0.06] bg-[#ffffff]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            
+            <div className="space-y-2 border-t border-black/[0.08] pt-4">
+              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">01 &bull; Statutory Fees</span>
+              <h3 className="text-lg font-normal text-[#111111]">DLD Sale Registration</h3>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                4% combined statutory transfer fee (standard 2% buyer / 2% seller allocation under Dubai Law No. 7 of 2006).
+              </p>
+              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: DLD Fee Schedule</div>
+            </div>
+
+            <div className="space-y-2 border-t border-black/[0.08] pt-4">
+              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">02 &bull; Bank Financing</span>
+              <h3 className="text-lg font-normal text-[#111111]">CBUAE Mortgage LTV</h3>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                Expat LTV limit up to 80% on first residential property (≤ AED 5M) under CBUAE regulations, with 0.25% mortgage registration.
+              </p>
+              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: CBUAE Regulation</div>
+            </div>
+
+            <div className="space-y-2 border-t border-black/[0.08] pt-4">
+              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">03 &bull; Tax Context</span>
+              <h3 className="text-lg font-normal text-[#111111]">No UAE Personal Income Tax</h3>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                Natural persons are not subject to personal income or capital gains tax. Real estate investment income is excluded from Corporate Tax.
+              </p>
+              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: FTA Cabinet Dec. 49/2023</div>
+            </div>
+
+            <div className="space-y-2 border-t border-black/[0.08] pt-4">
+              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">04 &bull; Currency Security</span>
+              <h3 className="text-lg font-normal text-[#111111]">Fixed USD Peg</h3>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                The UAE Dirham is formally pegged to the US Dollar at 1 USD = 3.6725 AED, eliminating FX risk for USD-denominated capital.
+              </p>
+              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: Central Bank of the UAE</div>
+            </div>
+
           </div>
         </div>
+      </section>
 
-        {/* 1C. TAX ARBITRAGE QUADRANT */}
-        <CadranQuadrant
-          eyebrow="GLOBAL TAX RESIDENCY ARBITRAGE"
-          title="UAE Freehold Capital vs International Markets"
-          statutorySource="UAE Federal Tax Authority & International Fiscal Directives"
-          quadrants={[
-            {
-              title: 'Individual Capital Gains Tax',
-              value: '0.00%',
-              subtext: 'Zero statutory capital gains tax on qualifying personal freehold property dispositions in the UAE.',
-              delta: 'vs 20% UK / 20% US',
-              isPositive: true,
-              statutoryRef: 'Cabinet Decision No. 49 of 2023',
-            },
-            {
-              title: 'Personal Income / Rental Tax',
-              value: '0.00%',
-              subtext: 'Zero federal personal income tax on qualifying individual rental income dividends and distributions.',
-              delta: 'vs 45% UK / 37% US',
-              isPositive: true,
-              statutoryRef: 'UAE Federal Tax Authority',
-            },
-            {
-              title: 'Inheritance & Estate Duty',
-              value: '0.00%',
-              subtext: 'Zero statutory inheritance tax with seamless probate registration through DIFC Wills Service Centre.',
-              delta: 'vs 40% UK / 40% US',
-              isPositive: true,
-              statutoryRef: 'DIFC Law No. 1 of 2015',
-            },
-            {
-              title: 'Statutory Stamp Duty Surcharge',
-              value: '0.00%',
-              subtext: 'No punitive foreign buyer stamp duty surcharge beyond the standard universal 4% DLD transfer fee.',
-              delta: 'vs 15% Vancouver / London',
-              isPositive: true,
-              statutoryRef: 'Resolution No. 30 of 2013',
-            },
-          ]}
-        />
-
-        {/* 2. TABBED TOOL WORKSPACE */}
-        <div className="space-y-8">
-          <div className="flex flex-wrap items-center gap-2 p-2 bg-[#f5f5f7] rounded-2xl border border-black/10 overflow-x-auto shadow-xs">
-            {[
-              { id: 'SCENARIO', label: 'Multi-Asset Scenario', icon: Layers },
-              { id: 'YIELD', label: 'Net Yield & Cap Rate', icon: Percent },
-              { id: 'MORTGAGE', label: 'Debt Service (DSCR)', icon: DollarSign },
-              { id: 'ACQUISITION', label: 'DLD Closing Friction', icon: Scale },
-              { id: 'CASH_FLOW', label: '10-Yr Cash Flow DCF', icon: TrendingUp },
-              { id: 'PAYMENT_PLAN', label: 'Off-Plan Milestones', icon: Clock },
-              { id: 'COMPARISON', label: 'Asset Matrix', icon: FileSpreadsheet },
-              { id: 'FRAMEWORK', label: 'Tax Arbitrage', icon: ShieldCheck },
-              { id: 'METHODOLOGY', label: 'Mathematical Laws', icon: BookOpen },
-            ].map((tab) => {
-              const Icon = tab.icon
-              const isActive = activeTab === tab.id
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
-                    isActive
-                      ? 'bg-[#1d1d1f] text-white shadow-xs'
-                      : 'text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-white/60'
-                  }`}
-                >
-                  <Icon className={`h-4 w-4 ${isActive ? 'text-[#b8860b]' : 'text-[#86868b]'}`} />
-                  <span>{tab.label}</span>
-                </button>
-              )
-            })}
+      {/* 3. DETERMINISTIC UNDERWRITING CALCULATOR */}
+      <section className="py-24 sm:py-36 border-b border-black/[0.06] bg-[#fafaf8]">
+        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
+          
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-black/[0.06] pb-6">
+            <div className="space-y-1">
+              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
+                DETERMINISTIC ACQUISITION CALCULATOR
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-light tracking-tight text-[#111111]">
+                Interactive Underwriting Desk
+              </h2>
+            </div>
+            <div className="flex items-center gap-2">
+              <ProvenanceTag sourceClass="CALCULATED" sourceName="Audited Formulas" />
+            </div>
           </div>
 
-          {/* ACTIVE TOOL CONTENT CONTAINER */}
-          <div className="p-6 sm:p-10 rounded-3xl bg-white border border-black/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover">
-            {activeTab === 'SCENARIO' && <ScenarioWorkspace />}
-            {activeTab === 'YIELD' && <YieldCalculator />}
-            {activeTab === 'MORTGAGE' && <MortgageCalculator />}
-            {activeTab === 'ACQUISITION' && <AcquisitionCostCalculator />}
-            {activeTab === 'CASH_FLOW' && <CashFlowCalculator />}
-            {activeTab === 'PAYMENT_PLAN' && <PaymentPlanCalculator />}
-            {activeTab === 'COMPARISON' && <PropertyComparison />}
-            {activeTab === 'FRAMEWORK' && (
-              <div className="space-y-6 text-sm text-[#6e6e73]">
-                <h3 className="text-xl font-bold text-[#1d1d1f]">UAE Global Fiscal Arbitrage Architecture</h3>
-                <p className="leading-relaxed">
-                  The UAE operates a zero personal income tax and zero capital gains tax regime for qualifying individual real estate investors. All rental revenues, capital gains on resale, and dividend distributions remain 100% tax-free at the federal level under UAE Cabinet Decision No. 49 of 2023.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-                  <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10">
-                    <span className="text-xs font-mono text-[#86868b] uppercase block">Capital Gains Tax</span>
-                    <span className="text-2xl font-extrabold text-[#1d1d1f] block mt-1">0.00%</span>
-                    <span className="text-xs text-[#6e6e73] mt-2 block">Cabinet Decision No. 49 of 2023</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            {/* Left 50%: Inputs Column */}
+            <div className="lg:col-span-6 bg-[#ffffff] p-8 rounded-2xl border border-black/[0.06] space-y-8">
+              <div className="flex items-center justify-between border-b border-black/[0.06] pb-4">
+                <span className="text-xs font-mono font-medium uppercase text-[#111111]">1. Underwriting Assumptions</span>
+                <span className="text-[11px] font-mono text-[#6b6b6b]">All Figures in AED</span>
+              </div>
+
+              {/* Purchase Price Input */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs">
+                  <label className="font-semibold text-[#111111]">Agreed Purchase Price</label>
+                  <span className="font-mono font-bold text-[#111111]">{formatCurrency(purchasePrice)}</span>
+                </div>
+                <input
+                  type="range"
+                  min="1000000"
+                  max="50000000"
+                  step="500000"
+                  value={purchasePrice}
+                  onChange={(e) => setPurchasePrice(Number(e.target.value))}
+                  className="w-full accent-[#111111] cursor-pointer"
+                />
+                <div className="flex justify-between text-[10px] font-mono text-[#6b6b6b]">
+                  <span>AED 1M</span>
+                  <span>AED 25M</span>
+                  <span>AED 50M+</span>
+                </div>
+              </div>
+
+              {/* Financing Toggle */}
+              <div className="pt-2 border-t border-[#f5f5f3] space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold text-[#111111]">Mortgage Debt Financing</span>
+                  <div className="flex border border-[#e5e5ea] rounded overflow-hidden text-xs">
+                    <button
+                      onClick={() => setIsFinanced(true)}
+                      className={`px-3 py-1 font-medium transition-colors ${
+                        isFinanced ? 'bg-[#111111] text-[#fafaf8]' : 'text-[#6b6b6b]'
+                      }`}
+                    >
+                      Financed
+                    </button>
+                    <button
+                      onClick={() => setIsFinanced(false)}
+                      className={`px-3 py-1 font-medium transition-colors ${
+                        !isFinanced ? 'bg-[#111111] text-[#fafaf8]' : 'text-[#6b6b6b]'
+                      }`}
+                    >
+                      100% Cash
+                    </button>
                   </div>
-                  <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10">
-                    <span className="text-xs font-mono text-[#86868b] uppercase block">Personal Income Tax</span>
-                    <span className="text-2xl font-extrabold text-[#1d1d1f] block mt-1">0.00%</span>
-                    <span className="text-xs text-[#6e6e73] mt-2 block">UAE Federal Tax Authority</span>
+                </div>
+
+                {isFinanced && (
+                  <div className="space-y-4 pt-2">
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-xs">
+                        <label className="text-[#484848]">Loan-to-Value (LTV %)</label>
+                        <span className="font-mono font-semibold">{ltvPercent}% ({formatCurrency(loanAmount)})</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="20"
+                        max="80"
+                        step="5"
+                        value={ltvPercent}
+                        onChange={(e) => setLtvPercent(Number(e.target.value))}
+                        className="w-full accent-[#111111] cursor-pointer"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      <div className="space-y-1">
+                        <label className="text-[11px] text-[#484848]">Mortgage Rate (%)</label>
+                        <input
+                          type="number"
+                          step="0.1"
+                          value={interestRate}
+                          onChange={(e) => setInterestRate(Number(e.target.value))}
+                          className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-[11px] text-[#484848]">Term (Years)</label>
+                        <input
+                          type="number"
+                          value={loanTermYears}
+                          onChange={(e) => setLoanTermYears(Number(e.target.value))}
+                          className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-6 rounded-2xl bg-[#f5f5f7] border border-black/10">
-                    <span className="text-xs font-mono text-[#86868b] uppercase block">Inheritance Duty</span>
-                    <span className="text-2xl font-extrabold text-[#1d1d1f] block mt-1">0.00%</span>
-                    <span className="text-xs text-[#6e6e73] mt-2 block">DIFC Wills Service Centre</span>
+                )}
+              </div>
+
+              {/* Yield & Property Specs */}
+              <div className="pt-2 border-t border-[#f5f5f3] space-y-3">
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="space-y-1">
+                    <label className="text-[11px] text-[#484848]">Estimated Gross Yield (%)</label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={estGrossYield}
+                      onChange={(e) => setEstGrossYield(Number(e.target.value))}
+                      className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[11px] text-[#484848]">Service Charge (AED/sqft)</label>
+                    <input
+                      type="number"
+                      value={serviceChargePerSqft}
+                      onChange={(e) => setServiceChargePerSqft(Number(e.target.value))}
+                      className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
+                    />
                   </div>
                 </div>
               </div>
-            )}
-            {activeTab === 'METHODOLOGY' && (
-              <div className="space-y-4 text-sm text-[#6e6e73]">
-                <h3 className="text-xl font-bold text-[#1d1d1f]">Mathematical Underwriting Methodology</h3>
-                <p className="leading-relaxed">
-                  Our calculations utilize standard Discounted Cash Flow (DCF) models incorporating precise DLD transaction fee schedules (Executive Council Resolution No. 30 of 2013), verified Mollak service charge schedules (Law No. 6 of 2019), and CBUAE loan-to-value limits.
-                </p>
+
+            </div>
+
+            {/* Right 50%: Deterministic Statutory Outputs Column */}
+            <div className="lg:col-span-6 space-y-6">
+              
+              {/* Closing Cost Memorandum */}
+              <div className="bg-[#ffffff] p-6 sm:p-7 rounded border border-[#e5e5ea] space-y-4">
+                <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
+                  <span className="text-xs font-mono font-semibold uppercase text-[#111111]">2. Statutory Acquisition Cost</span>
+                  <ProvenanceTag sourceClass="CALCULATED" sourceName="DLD Reg. Schedule" />
+                </div>
+
+                <div className="space-y-2.5 text-xs font-mono">
+                  <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
+                    <span className="text-[#6b6b6b]">Buyer DLD Transfer Fee (2%)</span>
+                    <span className="font-semibold text-[#111111]">{formatCurrency(buyerDldFee)}</span>
+                  </div>
+                  <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
+                    <span className="text-[#6b6b6b]">DLD Registration Trustee Fee</span>
+                    <span className="font-semibold text-[#111111]">{formatCurrency(dldTrusteeAdmin)}</span>
+                  </div>
+                  <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
+                    <span className="text-[#6b6b6b]">Title Deed Certificate Issuance</span>
+                    <span className="font-semibold text-[#111111]">{formatCurrency(titleDeedFee)}</span>
+                  </div>
+                  {isFinanced && (
+                    <>
+                      <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
+                        <span className="text-[#6b6b6b]">Mortgage Registration (0.25%)</span>
+                        <span className="font-semibold text-[#111111]">{formatCurrency(mortgageRegFee)}</span>
+                      </div>
+                      <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
+                        <span className="text-[#6b6b6b]">Mortgage Admin Fee</span>
+                        <span className="font-semibold text-[#111111]">{formatCurrency(mortgageAdminFee)}</span>
+                      </div>
+                    </>
+                  )}
+                  <div className="flex justify-between pt-2 text-sm font-bold border-t border-[#111111]">
+                    <span>Total Initial Capital Outlay</span>
+                    <span className="text-[#111111] tabular-nums">{formatCurrency(totalInitialCapitalRequired)}</span>
+                  </div>
+                </div>
               </div>
-            )}
+
+              {/* Yield & Cash Flow Summary */}
+              <div className="bg-[#ffffff] p-6 sm:p-7 rounded border border-[#e5e5ea] space-y-4">
+                <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
+                  <span className="text-xs font-mono font-semibold uppercase text-[#111111]">3. Cash Flow &amp; Net Yield Model</span>
+                  <ProvenanceTag sourceClass="CALCULATED" sourceName="Deterministic" />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
+                    <span className="text-[10px] text-[#6b6b6b] block">ANNUAL GROSS RENT</span>
+                    <span className="text-base font-bold text-[#111111]">{formatCurrency(annualGrossRent)}</span>
+                  </div>
+                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
+                    <span className="text-[10px] text-[#6b6b6b] block">ANNUAL SERVICE CHARGE</span>
+                    <span className="text-base font-bold text-[#111111]">{formatCurrency(annualServiceCharge)}</span>
+                  </div>
+                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
+                    <span className="text-[10px] text-[#6b6b6b] block">NET OPERATING INCOME</span>
+                    <span className="text-base font-bold text-emerald-800">{formatCurrency(netOperatingIncome)}</span>
+                  </div>
+                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
+                    <span className="text-[10px] text-[#6b6b6b] block">UNLEVERED NET YIELD</span>
+                    <span className="text-base font-bold text-emerald-800">{unleveredNetYield.toFixed(2)}%</span>
+                  </div>
+                </div>
+
+                {isFinanced && (
+                  <div className="space-y-2 pt-2 border-t border-[#f5f5f3]">
+                    <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea] text-xs font-mono flex items-center justify-between">
+                      <span className="text-[#6b6b6b]">Est. Monthly Debt Service:</span>
+                      <span className="font-bold text-[#111111]">{formatCurrency(monthlyMortgagePayment)} / month</span>
+                    </div>
+                    <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea] text-xs font-mono flex items-center justify-between">
+                      <span className="text-[#6b6b6b]">Est. Cash-on-Cash Return:</span>
+                      <span className="font-bold text-emerald-800">{cashOnCashReturn.toFixed(2)}% / yr</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+            </div>
+
           </div>
+
+          <div className="p-4 rounded bg-[#ffffff] border border-[#e5e5ea] text-xs text-[#6b6b6b] leading-relaxed">
+            <strong>Calculation Transparency:</strong> All statutory closing fees are computed strictly in accordance with published schedules from the Dubai Land Department (Law No. 7 of 2006, Resolution No. 30 of 2013) and the Central Bank of the UAE. Net rental calculations are indicative models based on user inputs and do not constitute guaranteed returns.
+          </div>
+
         </div>
-      </main>
+      </section>
+
     </div>
   )
 }

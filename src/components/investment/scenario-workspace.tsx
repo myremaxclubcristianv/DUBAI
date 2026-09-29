@@ -74,7 +74,7 @@ export function ScenarioWorkspace() {
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden space-y-6 shadow-sm">
-      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#f5f5f7]">
+      <div className="p-6 sm:p-8 border-b border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white">
         <div>
           <div className="flex items-center gap-2">
             <Calculator className="h-5 w-5 text-accent" />
@@ -99,7 +99,7 @@ export function ScenarioWorkspace() {
       <div className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Column: User Input Parameters */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="p-6 bg-[#f5f5f7] rounded-2xl border border-black/5 space-y-4 shadow-sm">
+          <div className="p-6 bg-white rounded-2xl border border-black/5 space-y-4 shadow-sm">
             <div className="flex items-center justify-between border-b border-black/10 pb-3">
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 1. Acquisition & Financing Inputs
@@ -163,7 +163,7 @@ export function ScenarioWorkspace() {
             </div>
           </div>
 
-          <div className="p-6 bg-[#f5f5f7] rounded-2xl border border-black/5 space-y-4 shadow-sm">
+          <div className="p-6 bg-white rounded-2xl border border-black/5 space-y-4 shadow-sm">
             <div className="flex items-center justify-between border-b border-black/10 pb-3">
               <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 2. Operations & Exit Parameters
@@ -310,7 +310,7 @@ export function ScenarioWorkspace() {
           </div>
 
           {/* Underwriting Breakdown Table */}
-          <div className="p-6 bg-[#f5f5f7] rounded-2xl border border-black/5 space-y-4 shadow-sm">
+          <div className="p-6 bg-white rounded-2xl border border-black/5 space-y-4 shadow-sm">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#1d1d1f]">
               Annual Operating & Underwriting Breakdown
             </h4>

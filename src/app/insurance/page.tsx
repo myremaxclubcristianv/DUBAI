@@ -33,7 +33,7 @@ export default function InsurancePage() {
               <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-black/5 gap-4 mb-8">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="px-3 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#f5f5f7] text-[#1d1d1f] border border-black/5">
+                    <span className="px-3 py-0.5 rounded-full text-[10px] font-bold uppercase bg-white text-[#1d1d1f] border border-black/5">
                       {pillar.category.replace(/_/g, ' ')}
                     </span>
                     <span className="text-xs text-[#86868b]">
@@ -48,7 +48,7 @@ export default function InsurancePage() {
                   </div>
                 </div>
 
-                <div className="bg-[#f5f5f7] p-4 rounded-2xl border border-black/5 text-xs text-left lg:text-right">
+                <div className="bg-white p-4 rounded-2xl border border-black/5 text-xs text-left lg:text-right">
                   <span className="text-[10px] uppercase font-bold text-[#86868b] block">Typical Annual Premium</span>
                   <span className="text-sm font-bold text-[#1d1d1f] block mt-0.5">{pillar.typicalAnnualCost}</span>
                 </div>
@@ -65,7 +65,7 @@ export default function InsurancePage() {
               </div>
 
               {/* Coverage Scope */}
-              <div className="bg-[#f5f5f7] p-6 sm:p-8 rounded-3xl border border-black/5 mb-8">
+              <div className="bg-white p-6 sm:p-8 rounded-3xl border border-black/5 mb-8">
                 <span className="text-xs font-bold uppercase text-[#86868b] block mb-4">
                   Standard Statutory Coverage Scope
                 </span>
@@ -99,7 +99,7 @@ export default function InsurancePage() {
                     {pillar.approvedProviders.map((provider, idx) => (
                       <span
                         key={idx}
-                        className="px-2.5 py-1 rounded-md bg-[#f5f5f7] border border-black/5 text-xs font-medium text-[#1d1d1f]"
+                        className="px-2.5 py-1 rounded-md bg-white border border-black/5 text-xs font-medium text-[#1d1d1f]"
                       >
                         {provider}
                       </span>

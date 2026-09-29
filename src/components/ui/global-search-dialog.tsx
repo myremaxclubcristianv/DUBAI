@@ -112,7 +112,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
         className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl border border-black/10 overflow-hidden text-left"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center px-6 border-b border-black/10 bg-[#f5f5f7]">
+        <div className="flex items-center px-6 border-b border-black/10 bg-white">
           <Search className="h-5 w-5 text-[#6e6e73] shrink-0 mr-3" />
           <input
             ref={inputRef}
@@ -137,7 +137,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                   <button
                     onClick={() => handleSelect('/investment')}
-                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
+                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
                   >
                     <Calculator className="h-4 w-4 text-accent" />
                     <div>
@@ -147,7 +147,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   </button>
                   <button
                     onClick={() => handleSelect('/residency')}
-                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
+                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
                   >
                     <ShieldCheck className="h-4 w-4 text-accent" />
                     <div>
@@ -157,7 +157,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   </button>
                   <button
                     onClick={() => handleSelect('/properties')}
-                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
+                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
                   >
                     <Building className="h-4 w-4 text-accent" />
                     <div>
@@ -167,7 +167,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   </button>
                   <button
                     onClick={() => handleSelect('/private-client')}
-                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
+                    className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white text-left transition-colors border border-transparent hover:border-black/5 cursor-pointer"
                   >
                     <ArrowRight className="h-4 w-4 text-accent" />
                     <div>
@@ -199,7 +199,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   <button
                     key={prop.id}
                     onClick={() => handleSelect(`/properties/${prop.id}`)}
-                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-white text-left transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       <Building className="h-4 w-4 text-[#6e6e73]" />
@@ -229,7 +229,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   <button
                     key={proj.id}
                     onClick={() => handleSelect('/projects')}
-                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-white text-left transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       <Building className="h-4 w-4 text-[#6e6e73]" />
@@ -257,7 +257,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   <button
                     key={area.id}
                     onClick={() => handleSelect(`/areas/${area.slug}`)}
-                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-white text-left transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       <MapPin className="h-4 w-4 text-[#6e6e73]" />
@@ -283,7 +283,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   <button
                     key={idx}
                     onClick={() => handleSelect(net.url)}
-                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-white text-left transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       <ShieldCheck className="h-4 w-4 text-[#6e6e73]" />
@@ -309,7 +309,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   <button
                     key={dev.id}
                     onClick={() => handleSelect('/developers')}
-                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-white text-left transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       <Building className="h-4 w-4 text-[#6e6e73]" />
@@ -335,7 +335,7 @@ export function GlobalSearchDialog({ isOpen, onClose }: GlobalSearchDialogProps)
                   <button
                     key={life.id}
                     onClick={() => handleSelect(`/lifestyle/${life.category}`)}
-                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f7] text-left transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between p-3 rounded-2xl hover:bg-white text-left transition-colors cursor-pointer"
                   >
                     <div className="flex items-center gap-3">
                       {life.category === 'dining' && <Utensils className="h-4 w-4 text-[#6e6e73]" />}

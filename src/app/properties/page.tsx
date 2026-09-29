@@ -4,16 +4,15 @@ import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
-import { SourceBadge } from '@/components/ui/source-badge'
-import { PageIntro } from '@/components/layout/layout-primitives'
 import { useClient } from '@/lib/context/client-context'
-import { useToast } from '@/components/ui/toast'
+import { ProvenanceTag } from '@/components/layout/layout-primitives'
 import {
   Search,
-  Bookmark,
   RotateCcw,
   ArrowRight,
   Building,
+  Table as TableIcon,
+  LayoutGrid,
 } from 'lucide-react'
 
 export default function PropertiesPage() {
@@ -23,9 +22,9 @@ export default function PropertiesPage() {
   const [priceRange, setPriceRange] = React.useState('ALL')
   const [selectedDeveloper, setSelectedDeveloper] = React.useState('ALL')
   const [sortBy, setSortBy] = React.useState('DEFAULT')
+  const [viewMode, setViewMode] = React.useState<'table' | 'grid'>('table')
 
-  const { saveSearch, shortlistIds, toggleShortlist } = useClient()
-  const { addToast } = useToast()
+  const { formatCurrency } = useClient()
 
   const uniqueAreas = React.useMemo(() => {
     return Array.from(new Set(VERIFIED_PROPERTIES.map((p) => p.area_name))).sort()
@@ -48,8 +47,7 @@ export default function PropertiesPage() {
           p.title.toLowerCase().includes(q) ||
           p.area_name.toLowerCase().includes(q) ||
           p.developer_name.toLowerCase().includes(q) ||
-          p.property_type.toLowerCase().includes(q) ||
-          (p.project_name && p.project_name.toLowerCase().includes(q))
+          p.property_type.toLowerCase().includes(q)
         if (!matches) return false
       }
 
@@ -78,7 +76,6 @@ export default function PropertiesPage() {
       if (sortBy === 'PRICE_ASC') return (a.asking_price || 0) - (b.asking_price || 0)
       if (sortBy === 'PRICE_DESC') return (b.asking_price || 0) - (a.asking_price || 0)
       if (sortBy === 'AREA_DESC') return (b.internal_area_sqft || 0) - (a.internal_area_sqft || 0)
-      if (sortBy === 'BEDS_DESC') return (b.bedrooms || 0) - (a.bedrooms || 0)
       return 0
     })
   }, [
@@ -99,56 +96,87 @@ export default function PropertiesPage() {
     setSortBy('DEFAULT')
   }
 
-  const handleSaveCurrentSearch = () => {
-    const label = `Filter: ${selectedArea !== 'ALL' ? selectedArea : 'All Areas'} • ${selectedType !== 'ALL' ? selectedType : 'All Types'}`
-    saveSearch(label, {
-      query: searchQuery,
-      area: selectedArea,
-      type: selectedType,
-      developer: selectedDeveloper,
-      priceRange,
-    })
-    addToast('Search criteria logged to private client workspace', 'success')
-  }
-
   return (
-    <div className="flex flex-col min-h-screen bg-white text-[#1d1d1f] selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
-      {/* 1. APPLE KEYNOTE HERO HEADER */}
-      <PageIntro
-        eyebrow="Curated Trophy Portfolio"
-        badge={
-          <div className="text-xs font-mono text-[#6e6e73] bg-[#f5f5f7] px-3.5 py-1.5 rounded-full border border-black/10 shrink-0 font-medium">
-            <span className="text-[#1d1d1f] font-bold">{filteredProperties.length}</span> of {VERIFIED_PROPERTIES.length} verified assets
+    <div className="flex flex-col min-h-screen bg-[#ffffff] text-[#111111]">
+      
+      {/* 1. EDITORIAL HEADER */}
+      <section className="pt-12 pb-10 sm:pt-16 sm:pb-12 border-b border-[#e5e5ea] bg-[#fafaf8]">
+        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
+              PROPERTY REGISTER &bull; STATUTORY INVENTORY
+            </span>
+            <div className="text-[11px] font-mono text-[#6b6b6b]">
+              Showing <span className="text-[#111111] font-semibold">{filteredProperties.length}</span> of {VERIFIED_PROPERTIES.length} verified records
+            </div>
           </div>
-        }
-        title="Properties."
-        description="Direct statutory title records. Prime freehold penthouses, waterfront villas, and ultra-prime estates."
-      />
 
-      {/* 2. APPLE FROSTED GLASS CONTROL BAR */}
-      <section className="sticky top-16 z-30 bg-white/85 backdrop-blur-2xl border-b border-black/10 py-3.5 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-3">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#111111]">
+                Curated Property Portfolio
+              </h1>
+              <p className="text-sm text-[#484848] max-w-2xl mt-1 leading-relaxed">
+                Direct statutory title deeds, developer inventory records, and prime freehold penthouses with verified pricing and provenance.
+              </p>
+            </div>
+
+            {/* View Mode Toggle */}
+            <div className="flex items-center border border-[#e5e5ea] rounded bg-[#ffffff] p-0.5">
+              <button
+                onClick={() => setViewMode('table')}
+                className={`p-1.5 rounded text-xs flex items-center gap-1.5 transition-colors ${
+                  viewMode === 'table'
+                    ? 'bg-[#111111] text-[#fafaf8]'
+                    : 'text-[#6b6b6b] hover:text-[#111111]'
+                }`}
+                title="Directory Table View"
+              >
+                <TableIcon className="h-3.5 w-3.5" />
+                <span className="text-[10px] font-mono font-medium hidden sm:inline">Register</span>
+              </button>
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`p-1.5 rounded text-xs flex items-center gap-1.5 transition-colors ${
+                  viewMode === 'grid'
+                    ? 'bg-[#111111] text-[#fafaf8]'
+                    : 'text-[#6b6b6b] hover:text-[#111111]'
+                }`}
+                title="Dossier Cards View"
+              >
+                <LayoutGrid className="h-3.5 w-3.5" />
+                <span className="text-[10px] font-mono font-medium hidden sm:inline">Cards</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. RESTRAINED INSTITUTIONAL FILTER BAR */}
+      <section className="sticky top-16 z-30 bg-[#ffffff] border-b border-[#e5e5ea] py-3.5 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1240px] mx-auto">
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3">
+            
             {/* Search Input */}
             <div className="relative w-full lg:w-72">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#86868b]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#6b6b6b]" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search asset, area, developer..."
-                className="w-full pl-10 pr-3.5 py-2 bg-[#f5f5f7] rounded-full border border-black/10 text-xs text-[#1d1d1f] placeholder:text-[#86868b] focus:outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#b8860b] transition-all"
+                placeholder="Search asset, district, developer..."
+                className="w-full pl-9 pr-3 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] placeholder:text-[#8e8e93] focus:outline-none focus:border-[#111111]"
               />
             </div>
 
-            {/* Restrained Filters: Area, Price, Property Type, Developer */}
-            <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full lg:w-auto">
+            {/* Select Dropdowns */}
+            <div className="grid grid-cols-2 sm:flex sm:items-center gap-2">
               <select
                 value={selectedArea}
                 onChange={(e) => setSelectedArea(e.target.value)}
-                className="px-3.5 py-2 bg-[#f5f5f7] rounded-full border border-black/10 text-xs font-medium text-[#1d1d1f] focus:outline-none focus:border-black/30 w-full sm:w-auto cursor-pointer"
+                className="px-2.5 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] focus:outline-none focus:border-[#111111] cursor-pointer"
               >
-                <option value="ALL">All Areas</option>
+                <option value="ALL">All Districts</option>
                 {uniqueAreas.map((area) => (
                   <option key={area} value={area}>{area}</option>
                 ))}
@@ -157,9 +185,9 @@ export default function PropertiesPage() {
               <select
                 value={priceRange}
                 onChange={(e) => setPriceRange(e.target.value)}
-                className="px-3.5 py-2 bg-[#f5f5f7] rounded-full border border-black/10 text-xs font-medium text-[#1d1d1f] focus:outline-none focus:border-black/30 w-full sm:w-auto cursor-pointer"
+                className="px-2.5 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] focus:outline-none focus:border-[#111111] cursor-pointer"
               >
-                <option value="ALL">All Prices</option>
+                <option value="ALL">All Price Ranges</option>
                 <option value="UNDER_25M">&lt; AED 25M</option>
                 <option value="25M_50M">AED 25M – 50M</option>
                 <option value="50M_100M">AED 50M – 100M</option>
@@ -169,9 +197,9 @@ export default function PropertiesPage() {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="px-3.5 py-2 bg-[#f5f5f7] rounded-full border border-black/10 text-xs font-medium text-[#1d1d1f] focus:outline-none focus:border-black/30 w-full sm:w-auto cursor-pointer"
+                className="px-2.5 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] focus:outline-none focus:border-[#111111] cursor-pointer"
               >
-                <option value="ALL">All Types</option>
+                <option value="ALL">All Asset Types</option>
                 {uniqueTypes.map((type) => (
                   <option key={type} value={type}>{type}</option>
                 ))}
@@ -180,7 +208,7 @@ export default function PropertiesPage() {
               <select
                 value={selectedDeveloper}
                 onChange={(e) => setSelectedDeveloper(e.target.value)}
-                className="px-3.5 py-2 bg-[#f5f5f7] rounded-full border border-black/10 text-xs font-medium text-[#1d1d1f] focus:outline-none focus:border-black/30 w-full sm:w-auto cursor-pointer"
+                className="px-2.5 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] focus:outline-none focus:border-[#111111] cursor-pointer"
               >
                 <option value="ALL">All Developers</option>
                 {uniqueDevelopers.map((dev) => (
@@ -191,163 +219,165 @@ export default function PropertiesPage() {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="col-span-2 sm:col-span-1 px-3.5 py-2 bg-[#f5f5f7] rounded-full border border-black/10 text-xs font-medium text-[#1d1d1f] focus:outline-none focus:border-black/30 w-full sm:w-auto cursor-pointer"
+                className="col-span-2 sm:col-span-1 px-2.5 py-1.5 bg-[#ffffff] rounded border border-[#e5e5ea] text-xs text-[#111111] focus:outline-none focus:border-[#111111] cursor-pointer font-mono"
               >
-                <option value="DEFAULT">Sort: Curated</option>
+                <option value="DEFAULT">Sort: Default</option>
                 <option value="PRICE_DESC">Price: High to Low</option>
                 <option value="PRICE_ASC">Price: Low to High</option>
                 <option value="AREA_DESC">Size: Largest</option>
               </select>
-            </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-2 shrink-0 justify-end w-full lg:w-auto">
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="p-2 rounded-full border border-black/10 bg-[#f5f5f7] hover:bg-[#ebebeb] text-[#6e6e73] hover:text-[#1d1d1f] text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+                className="p-1.5 rounded border border-[#e5e5ea] text-[#6b6b6b] hover:text-[#111111] hover:bg-[#f5f5f3] transition-colors"
                 title="Reset Filters"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline text-[11px] font-medium">Reset</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleSaveCurrentSearch}
-                className="px-4 py-2 rounded-full border border-black/10 bg-[#1d1d1f] hover:bg-[#000000] text-white text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
-              >
-                <Bookmark className="h-3.5 w-3.5 fill-white" />
-                <span className="text-[11px]">Save Search</span>
               </button>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* 3. APPLE PRO BENTO GRID */}
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* 3. PROPERTY REGISTER DISPLAY (Table or Cards) */}
+      <main className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
         {filteredProperties.length === 0 ? (
-          <div className="text-center py-24 border border-black/10 rounded-3xl bg-[#f5f5f7] p-8 space-y-4">
-            <Building className="h-12 w-12 text-[#86868b] mx-auto" />
-            <h3 className="text-xl font-bold text-[#1d1d1f]">No Properties Matching Filters</h3>
-            <p className="text-sm text-[#6e6e73] max-w-sm mx-auto">
-              Adjust your criteria or reset the filters to view all verified statutory records.
+          <div className="text-center py-20 border border-[#e5e5ea] rounded bg-[#fafaf8] p-8 space-y-4">
+            <Building className="h-10 w-10 text-[#8e8e93] mx-auto" />
+            <h3 className="text-lg font-semibold text-[#111111]">No Assets Matching Criteria</h3>
+            <p className="text-xs text-[#6b6b6b] max-w-sm mx-auto">
+              Please adjust your filters or reset to review all verified statutory records.
             </p>
             <button
               type="button"
               onClick={handleResetFilters}
-              className="px-6 py-2.5 rounded-full bg-[#1d1d1f] text-white hover:bg-[#000000] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+              className="px-4 py-2 rounded bg-[#111111] text-[#fafaf8] text-xs font-medium"
             >
               Reset Filters
             </button>
           </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        ) : viewMode === 'table' ? (
+          /* DIRECTORY TABLE VIEW */
+          <div className="border border-[#e5e5ea] rounded divide-y divide-[#e5e5ea] bg-[#ffffff]">
+            {/* Header */}
+            <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 bg-[#fafaf8] text-[10px] font-mono text-[#6b6b6b] uppercase tracking-wider font-semibold">
+              <div className="col-span-4">Property Asset / District</div>
+              <div className="col-span-2">Type / Beds</div>
+              <div className="col-span-2">Internal Area</div>
+              <div className="col-span-2 text-right">Asking Price</div>
+              <div className="col-span-2 text-right">Action</div>
+            </div>
+
+            {/* Rows */}
             {filteredProperties.map((prop) => (
               <div
                 key={prop.id}
-                className="border border-black/10 rounded-3xl overflow-hidden bg-white shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover flex flex-col justify-between group"
+                className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-5 md:px-6 md:py-4 items-center hover:bg-[#fafaf8] transition-colors"
               >
-                {/* Image Showcase */}
-                <div className="relative aspect-[16/10] bg-[#f5f5f7] overflow-hidden">
-                  <Image
-                    src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'}
-                    alt={prop.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                  
-                  {/* Top Badges */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-xs">
-                      {prop.area_name}
-                    </span>
+                <div className="col-span-1 md:col-span-4 flex items-center gap-3.5">
+                  <div className="relative w-12 h-12 rounded overflow-hidden bg-[#f5f5f3] shrink-0 border border-[#e5e5ea]">
+                    <Image
+                      src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=200&q=80'}
+                      alt={prop.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => toggleShortlist(prop.id)}
-                    className={`absolute top-4 right-4 p-2.5 rounded-full backdrop-blur-md transition-all cursor-pointer ${
-                      shortlistIds.includes(prop.id)
-                        ? 'bg-[#1d1d1f] text-white shadow-md'
-                        : 'bg-white/90 text-[#1d1d1f] hover:bg-white border border-black/10 shadow-xs'
-                    }`}
-                    title="Save property"
-                  >
-                    <Bookmark className={`h-4 w-4 ${shortlistIds.includes(prop.id) ? 'fill-white' : ''}`} />
-                  </button>
-
-                  {/* Bottom Image Overlay Tag */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-white">
-                    <span className="font-mono bg-black/60 px-2.5 py-1 rounded-md backdrop-blur-sm border border-white/20">
-                      {prop.developer_name}
-                    </span>
-                    <span className="font-mono bg-black/60 px-2.5 py-1 rounded-md backdrop-blur-sm border border-white/20">
-                      {prop.property_type}
+                  <div>
+                    <Link href={`/properties/${prop.id}`} className="text-sm font-semibold text-[#111111] hover:text-[#9f8144] line-clamp-1">
+                      {prop.title}
+                    </Link>
+                    <span className="text-xs text-[#6b6b6b] font-mono block">
+                      {prop.area_name} &bull; {prop.developer_name}
                     </span>
                   </div>
                 </div>
 
-                {/* Content Details */}
-                <div className="p-6 sm:p-8 space-y-6 flex-1 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Title Record" />
-                      <span className="text-xs font-mono text-[#86868b]">Ref: {prop.id}</span>
-                    </div>
+                <div className="col-span-1 md:col-span-2 text-xs text-[#484848]">
+                  <span className="md:hidden text-[#6b6b6b] font-mono text-[10px] mr-2">TYPE:</span>
+                  {prop.property_type} &bull; {prop.bedrooms} Bed
+                </div>
 
-                    <h2 className="text-2xl font-extrabold text-[#1d1d1f] group-hover:text-[#b8860b] transition-colors leading-snug">
+                <div className="col-span-1 md:col-span-2 text-xs font-mono text-[#484848]">
+                  <span className="md:hidden text-[#6b6b6b] text-[10px] mr-2">AREA:</span>
+                  {prop.internal_area_sqft.toLocaleString()} SQFT
+                </div>
+
+                <div className="col-span-1 md:col-span-2 text-left md:text-right">
+                  <span className="md:hidden text-[#6b6b6b] font-mono text-[10px] mr-2">ASKING:</span>
+                  <span className="text-sm font-bold text-[#111111] tabular-nums">
+                    {formatCurrency(prop.asking_price)}
+                  </span>
+                </div>
+
+                <div className="col-span-1 md:col-span-2 flex md:justify-end pt-2 md:pt-0">
+                  <Link
+                    href={`/properties/${prop.id}`}
+                    className="px-3 py-1.5 rounded border border-[#e5e5ea] hover:border-[#111111] text-xs font-medium text-[#111111] hover:bg-[#ffffff] transition-colors inline-flex items-center gap-1"
+                  >
+                    <span>View Dossier</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          /* DOSSIER CARD GRID VIEW */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProperties.map((prop) => (
+              <div
+                key={prop.id}
+                className="bg-[#ffffff] rounded border border-[#e5e5ea] overflow-hidden flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/10] w-full bg-[#f5f5f3] overflow-hidden border-b border-[#e5e5ea]">
+                    <Image
+                      src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80'}
+                      alt={prop.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-2.5 left-2.5">
+                      <ProvenanceTag sourceClass="LICENSED OPERATOR" sourceName={prop.developer_name} />
+                    </div>
+                  </div>
+
+                  <div className="p-5 space-y-2">
+                    <div className="text-[10px] font-mono text-[#6b6b6b]">
+                      {prop.area_name} &bull; {prop.property_type}
+                    </div>
+                    <h3 className="text-base font-semibold text-[#111111] line-clamp-1">
                       {prop.title}
-                    </h2>
-
-                    <p className="text-sm text-[#6e6e73] line-clamp-2 leading-relaxed">
-                      {prop.description}
-                    </p>
-                  </div>
-
-                  {/* Tech Specs Bar */}
-                  <div className="space-y-4 pt-5 border-t border-black/10">
-                    <div className="grid grid-cols-3 gap-2 bg-[#f5f5f7] p-3.5 rounded-2xl border border-black/5 text-center">
-                      <div>
-                        <div className="text-[10px] uppercase font-mono text-[#86868b] font-semibold">Bedrooms</div>
-                        <div className="text-sm font-bold text-[#1d1d1f] mt-0.5">{prop.bedrooms} Bed</div>
-                      </div>
-                      <div>
-                        <div className="text-[10px] uppercase font-mono text-[#86868b] font-semibold">Built-Up Area</div>
-                        <div className="text-sm font-bold text-[#1d1d1f] mt-0.5">{prop.internal_area_sqft.toLocaleString()} sqft</div>
-                      </div>
-                      <div>
-                        <div className="text-[10px] uppercase font-mono text-[#86868b] font-semibold">Tenure</div>
-                        <div className="text-sm font-bold text-[#b8860b] mt-0.5">Freehold</div>
-                      </div>
-                    </div>
-
-                    {/* Price & CTA */}
-                    <div className="flex items-center justify-between pt-2">
-                      <div>
-                        <div className="text-[10px] text-[#86868b] font-mono uppercase tracking-wider font-semibold">Asking Price</div>
-                        <div className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] tabular-nums">
-                          AED {prop.asking_price?.toLocaleString()}
-                        </div>
-                      </div>
-
-                      <Link
-                        href={`/properties/${prop.id}`}
-                        className="px-6 py-3 rounded-full bg-[#1d1d1f] text-white hover:bg-[#000000] text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all shadow-xs cursor-pointer"
-                      >
-                        <span>Dossier</span>
-                        <ArrowRight className="h-3.5 w-3.5 text-white/70" />
-                      </Link>
+                    </h3>
+                    <div className="text-xs font-mono text-[#484848] pt-1">
+                      {prop.bedrooms} Bed &bull; {prop.bathrooms} Bath &bull; {prop.internal_area_sqft.toLocaleString()} SQFT
                     </div>
                   </div>
+                </div>
+
+                <div className="p-5 pt-0 border-t border-[#f5f5f3] mt-2 flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-[#6b6b6b] block">Asking Price</span>
+                    <span className="text-sm font-bold text-[#111111] tabular-nums">
+                      {formatCurrency(prop.asking_price)}
+                    </span>
+                  </div>
+                  <Link
+                    href={`/properties/${prop.id}`}
+                    className="px-3 py-1.5 rounded border border-[#e5e5ea] hover:border-[#111111] text-xs font-medium text-[#111111] inline-flex items-center gap-1"
+                  >
+                    <span>Dossier &rarr;</span>
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
         )}
       </main>
+
     </div>
   )
 }

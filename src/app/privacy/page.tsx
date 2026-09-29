@@ -135,7 +135,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* 4. PRIVATE CLIENT LINK */}
-        <div className="p-8 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+        <div className="p-8 rounded-3xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1">
             <h3 className="text-base font-extrabold text-[#1d1d1f]">Have specific data sovereignty questions?</h3>
             <p className="text-xs text-[#6e6e73]">

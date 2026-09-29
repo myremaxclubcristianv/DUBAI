@@ -31,7 +31,7 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
     >
       <div>
         {/* Image Container with Next/Image */}
-        <div className="relative aspect-[16/10] w-full bg-[#f5f5f7] overflow-hidden">
+        <div className="relative aspect-[16/10] w-full bg-white overflow-hidden">
           {property.images && property.images[0] ? (
             <Image
               src={property.images[0]}
@@ -42,7 +42,7 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
               className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-[#f5f5f7] text-[#86868b]">
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-white text-[#86868b]">
               <Building2 className="h-8 w-8 text-black/10 mb-2" />
               <span className="text-xs font-semibold">Architectural Visual Pending</span>
               <span className="text-[10px] text-[#86868b] mt-0.5">Verified specifications active</span>

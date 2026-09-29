@@ -213,7 +213,7 @@ export default function BuyingGuidePage() {
 
       <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
         {/* 2. CLASSIFICATION LEGEND */}
-        <div className="p-5 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-wrap items-center gap-3 text-xs shadow-xs">
+        <div className="p-5 rounded-3xl border border-black/10 bg-white flex flex-wrap items-center gap-3 text-xs shadow-xs">
           <span className="font-bold text-[#1d1d1f] uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border-emerald-200">
             <span>[OFFICIAL REQUIREMENT]</span>
@@ -358,7 +358,7 @@ export default function BuyingGuidePage() {
                     </div>
                   </div>
 
-                  <div className="p-2.5 rounded-xl bg-[#f5f5f7] text-[#1d1d1f] shrink-0">
+                  <div className="p-2.5 rounded-xl bg-white text-[#1d1d1f] shrink-0">
                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </div>
                 </button>
@@ -415,7 +415,7 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 4. INTAKE PROMPT */}
-        <div className="p-8 sm:p-12 rounded-3xl border border-black/10 bg-[#f5f5f7] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs">
+        <div className="p-8 sm:p-12 rounded-3xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs">
           <div className="space-y-1.5 max-w-xl">
             <h3 className="text-xl font-bold text-[#1d1d1f] tracking-tight">
               Ready to initiate a transaction or verify portfolio due diligence?
@@ -434,7 +434,7 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 5. LEGAL NOTICE */}
-        <div className="p-6 rounded-3xl border border-black/10 bg-[#f5f5f7] text-xs text-[#6e6e73] space-y-2">
+        <div className="p-6 rounded-3xl border border-black/10 bg-white text-xs text-[#6e6e73] space-y-2">
           <div className="flex items-center gap-2 font-bold text-[#1d1d1f]">
             <Info className="h-4 w-4 text-[#b8860b]" />
             <span>Statutory Conveyancing Disclaimer</span>
