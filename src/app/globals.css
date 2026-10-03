@@ -135,3 +135,85 @@ body {
   background: rgba(159, 129, 68, 0.15);
   color: #111111;
 }
+
+/* Restrained Minimal Range Sliders (Apple / Bloomberg Instrument) */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']:focus {
+  outline: none;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #e5e5ea;
+  border-radius: 1px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #111111;
+  margin-top: -5px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type='range']:hover::-webkit-slider-thumb {
+  background: #9f8144;
+  transform: scale(1.15);
+}
+
+input[type='range']:focus::-webkit-slider-thumb {
+  background: #9f8144;
+  transform: scale(1.2);
+}
+
+input[type='range']::-moz-range-track {
+  height: 2px;
+  background: #e5e5ea;
+  border-radius: 1px;
+}
+
+input[type='range']::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #111111;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type='range']:hover::-moz-range-thumb {
+  background: #9f8144;
+}
+
+/* Editorial Underline Inputs (Private Advisory Document Style) */
+.input-editorial-underline {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #e5e5ea;
+  background: transparent;
+  border-radius: 0;
+  padding: 0.75rem 0;
+  font-size: 0.9375rem;
+  color: #111111;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-editorial-underline:focus {
+  border-bottom-color: #9f8144;
+}
+
+.input-editorial-underline::placeholder {
+  color: #a1a1a6;
+}

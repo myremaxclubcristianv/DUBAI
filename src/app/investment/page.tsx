@@ -2,353 +2,370 @@
 
 import * as React from 'react'
 import { useClient } from '@/lib/context/client-context'
-import { ProvenanceTag } from '@/components/layout/layout-primitives'
+import {
+  Eyebrow,
+  SourceBadge,
+  DataRow,
+  PrimaryLink,
+} from '@/components/layout/layout-primitives'
 
 export default function InvestmentPage() {
   const { formatCurrency } = useClient()
 
-  // Deterministic Calculator State
-  const [purchasePrice, setPurchasePrice] = React.useState(10000000)
-  const [isFinanced, setIsFinanced] = React.useState(true)
+  // Capital Underwriting Assumptions
+  const [propertyPrice, setPropertyPrice] = React.useState(10000000)
+  const [financingMode, setFinancingMode] = React.useState<'cash' | 'financed'>('financed')
   const [ltvPercent, setLtvPercent] = React.useState(60)
   const [interestRate, setInterestRate] = React.useState(4.75)
   const [loanTermYears, setLoanTermYears] = React.useState(25)
-  const [estGrossYield, setEstGrossYield] = React.useState(6.5)
+  const [grossYieldPercent, setGrossYieldPercent] = React.useState(6.5)
   const [serviceChargePerSqft, setServiceChargePerSqft] = React.useState(22)
-  const [propertyAreaSqft] = React.useState(2500)
+  const unitAreaSqft = 2500
 
-  // Calculations
-  const buyerDldFee = purchasePrice * 0.02
-  const dldTrusteeAdmin = purchasePrice >= 500000 ? 4000 : 2000
-  const titleDeedFee = 580
-  
-  const loanAmount = isFinanced ? (purchasePrice * (ltvPercent / 100)) : 0
-  const mortgageRegFee = isFinanced ? (loanAmount * 0.0025) : 0
-  const mortgageAdminFee = isFinanced ? 290 : 0
-  
-  const totalStatutoryClosingCosts = buyerDldFee + dldTrusteeAdmin + titleDeedFee + mortgageRegFee + mortgageAdminFee
-  const totalInitialCapitalRequired = (purchasePrice - loanAmount) + totalStatutoryClosingCosts
+  // Deterministic Statutory Fee Schedules
+  const dldFee = propertyPrice * 0.04
+  const dldAdminFee = 4200
+  const registrationTrusteeFee = propertyPrice >= 500000 ? 4200 : 2100
+  const legalConveyanceEst = 10500
 
-  // Mortgage Payment (Monthly)
-  const monthlyRate = (interestRate / 100) / 12
-  const totalMonths = loanTermYears * 12
-  const monthlyMortgagePayment = isFinanced && loanAmount > 0
-    ? (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths))) / (Math.pow(1 + monthlyRate, totalMonths) - 1)
-    : 0
-  const annualMortgagePayment = monthlyMortgagePayment * 12
+  // Mortgage Calculations
+  const loanAmount = financingMode === 'financed' ? propertyPrice * (ltvPercent / 100) : 0
+  const mortgageRegFee = financingMode === 'financed' ? loanAmount * 0.0025 : 0
+  const mortgageAdminFee = financingMode === 'financed' ? 290 : 0
 
-  // Rental Income & Net Yield
-  const annualGrossRent = purchasePrice * (estGrossYield / 100)
-  const annualServiceCharge = serviceChargePerSqft * propertyAreaSqft
+  const totalStatutoryFees = dldFee + dldAdminFee + registrationTrusteeFee + legalConveyanceEst + mortgageRegFee + mortgageAdminFee
+  const totalAcquisitionOutlay = propertyPrice + totalStatutoryFees
+  const initialEquityRequired = (propertyPrice - loanAmount) + totalStatutoryFees
+
+  // Income & Operating Outflows
+  const annualGrossRent = propertyPrice * (grossYieldPercent / 100)
+  const annualServiceCharge = serviceChargePerSqft * unitAreaSqft
   const annualMaintenanceReserve = annualGrossRent * 0.05
   const netOperatingIncome = Math.max(0, annualGrossRent - annualServiceCharge - annualMaintenanceReserve)
-  const unleveredNetYield = (netOperatingIncome / (purchasePrice + buyerDldFee + dldTrusteeAdmin)) * 100
-  const netCashFlowAfterDebt = netOperatingIncome - annualMortgagePayment
-  const cashOnCashReturn = totalInitialCapitalRequired > 0 ? (netCashFlowAfterDebt / totalInitialCapitalRequired) * 100 : 0
+  const netYieldUnlevered = (netOperatingIncome / totalAcquisitionOutlay) * 100
+
+  // Debt Service
+  const monthlyRate = (interestRate / 100) / 12
+  const totalMonths = loanTermYears * 12
+  const monthlyMortgage = (financingMode === 'financed' && loanAmount > 0)
+    ? (loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths))) / (Math.pow(1 + monthlyRate, totalMonths) - 1)
+    : 0
+  const annualDebtService = monthlyMortgage * 12
+  const netCashFlowAfterDebt = netOperatingIncome - annualDebtService
+  const cashOnCashYield = initialEquityRequired > 0 ? (netCashFlowAfterDebt / initialEquityRequired) * 100 : 0
 
   return (
-    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+    <div className="flex flex-col min-h-screen bg-[#ffffff] text-[#111111]">
       
       {/* 1. EDITORIAL HEADER */}
-      <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 border-b border-black/[0.06] bg-[#fafaf8]">
-        <div className="w-full max-w-[1120px] mx-auto px-6 sm:px-8 space-y-6">
-          <div className="flex items-center justify-between">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144]">
-              CAPITAL &bull; UNDERWRITING &bull; STATUTORY FRAMEWORK
-            </span>
-            <ProvenanceTag sourceClass="CALCULATED" sourceName="DLD &bull; CBUAE &bull; FTA Laws" />
-          </div>
-
-          <h1 className="text-[38px] sm:text-[54px] lg:text-[64px] font-light tracking-[-0.03em] leading-[1.04] text-[#111111]">
-            Investment Underwriting &amp; Capital Framework
-          </h1>
+      <section className="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-[#e5e5ea] bg-[#fafaf8]">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
+          <Eyebrow>INVESTMENT RESEARCH &bull; CAPITAL UNDERWRITING</Eyebrow>
           
-          <p className="text-base sm:text-xl text-[#6b6b6b] font-light max-w-2xl leading-relaxed">
-            Institutional research on Dubai freehold acquisitions, statutory transaction schedules, mortgage leverage boundaries, and natural person tax exemptions.
-          </p>
-        </div>
-      </section>
-
-      {/* 2. STATUTORY CAPITAL FRAMEWORK (4 Pillars, Minimal Lines) */}
-      <section className="py-24 sm:py-32 border-b border-black/[0.06] bg-[#ffffff]">
-        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            
-            <div className="space-y-2 border-t border-black/[0.08] pt-4">
-              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">01 &bull; Statutory Fees</span>
-              <h3 className="text-lg font-normal text-[#111111]">DLD Sale Registration</h3>
-              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
-                4% combined statutory transfer fee (standard 2% buyer / 2% seller allocation under Dubai Law No. 7 of 2006).
-              </p>
-              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: DLD Fee Schedule</div>
-            </div>
-
-            <div className="space-y-2 border-t border-black/[0.08] pt-4">
-              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">02 &bull; Bank Financing</span>
-              <h3 className="text-lg font-normal text-[#111111]">CBUAE Mortgage LTV</h3>
-              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
-                Expat LTV limit up to 80% on first residential property (≤ AED 5M) under CBUAE regulations, with 0.25% mortgage registration.
-              </p>
-              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: CBUAE Regulation</div>
-            </div>
-
-            <div className="space-y-2 border-t border-black/[0.08] pt-4">
-              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">03 &bull; Tax Context</span>
-              <h3 className="text-lg font-normal text-[#111111]">No UAE Personal Income Tax</h3>
-              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
-                Natural persons are not subject to personal income or capital gains tax. Real estate investment income is excluded from Corporate Tax.
-              </p>
-              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: FTA Cabinet Dec. 49/2023</div>
-            </div>
-
-            <div className="space-y-2 border-t border-black/[0.08] pt-4">
-              <span className="text-[10px] font-mono text-[#9f8144] font-medium uppercase">04 &bull; Currency Security</span>
-              <h3 className="text-lg font-normal text-[#111111]">Fixed USD Peg</h3>
-              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
-                The UAE Dirham is formally pegged to the US Dollar at 1 USD = 3.6725 AED, eliminating FX risk for USD-denominated capital.
-              </p>
-              <div className="pt-1 text-[10px] font-mono text-[#8e8e93]">Source: Central Bank of the UAE</div>
-            </div>
-
+          <div className="max-w-3xl space-y-4">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] leading-[1.02] text-[#111111]">
+              UNDERWRITE<br />THE ACQUISITION.
+            </h1>
+            <p className="text-lg sm:text-xl text-[#6b6b6b] font-light leading-relaxed">
+              Deterministic financial memorandum for Dubai residential and prime freehold assets. Built on published Dubai Land Department tariffs, Central Bank mortgage caps, and natural person tax exemptions.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* 3. DETERMINISTIC UNDERWRITING CALCULATOR */}
-      <section className="py-24 sm:py-36 border-b border-black/[0.06] bg-[#fafaf8]">
-        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
-          
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-black/[0.06] pb-6">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-                DETERMINISTIC ACQUISITION CALCULATOR
+      {/* 2. STATUTORY PILLARS (Restrained Editorial Strip) */}
+      <section className="py-12 border-b border-[#e5e5ea] bg-[#ffffff]">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="space-y-1.5">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                01 &bull; DLD TRANSFER FEE
               </span>
-              <h2 className="text-2xl sm:text-4xl font-light tracking-tight text-[#111111]">
-                Interactive Underwriting Desk
+              <div className="text-xl font-light text-[#111111]">4.00% Combined</div>
+              <p className="text-xs text-[#6b6b6b] font-light">Law No. 7 of 2006 (Standard statutory 2% buyer / 2% seller allocation)</p>
+            </div>
+
+            <div className="space-y-1.5">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                02 &bull; MORTGAGE CAP
+              </span>
+              <div className="text-xl font-light text-[#111111]">Up to 80% LTV</div>
+              <p className="text-xs text-[#6b6b6b] font-light">CBUAE maximum for first residential property under AED 5,000,000</p>
+            </div>
+
+            <div className="space-y-1.5">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                03 &bull; TAX STATUS
+              </span>
+              <div className="text-xl font-light text-[#111111]">No UAE Personal Income Tax</div>
+              <p className="text-xs text-[#6b6b6b] font-light">Individuals are not subject to personal income tax. Corporate Tax may apply where business activity thresholds are met.</p>
+            </div>
+
+            <div className="space-y-1.5">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                04 &bull; MONETARY ANCHOR
+              </span>
+              <div className="text-xl font-light text-[#111111]">1 USD = 3.6725 AED</div>
+              <p className="text-xs text-[#6b6b6b] font-light">Central Bank of the UAE statutory currency peg</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. CAPITAL INSTRUMENT (One Major Calculation at a Time) */}
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-24 space-y-16 flex-1">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left 6 cols: Input Controls (Apple Instrument Style) */}
+          <div className="lg:col-span-6 space-y-10">
+            <div className="space-y-2">
+              <Eyebrow>INSTRUMENT PARAMETERS</Eyebrow>
+              <h2 className="text-2xl sm:text-3xl font-light text-[#111111]">
+                Acquisition Assumptions
               </h2>
             </div>
-            <div className="flex items-center gap-2">
-              <ProvenanceTag sourceClass="CALCULATED" sourceName="Audited Formulas" />
+
+            {/* Price Selector */}
+            <div className="space-y-3 p-6 sm:p-8 rounded-2xl bg-[#fafaf8] border border-[#e5e5ea]">
+              <div className="flex justify-between items-center text-xs font-mono">
+                <span className="text-[#6b6b6b] uppercase">Property Valuation</span>
+                <SourceBadge sourceClass="USER PROVIDED" />
+              </div>
+              <div className="text-3xl sm:text-4xl font-light font-mono tabular-nums text-[#111111]">
+                {formatCurrency(propertyPrice)}
+              </div>
+              <input
+                type="range"
+                min="2000000"
+                max="50000000"
+                step="500000"
+                value={propertyPrice}
+                onChange={(e) => setPropertyPrice(Number(e.target.value))}
+                className="w-full accent-[#111111] cursor-pointer"
+              />
+              <div className="flex justify-between text-[10px] font-mono text-[#8e8e93]">
+                <span>AED 2,000,000</span>
+                <span>AED 25,000,000</span>
+                <span>AED 50,000,000</span>
+              </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            
-            {/* Left 50%: Inputs Column */}
-            <div className="lg:col-span-6 bg-[#ffffff] p-8 rounded-2xl border border-black/[0.06] space-y-8">
-              <div className="flex items-center justify-between border-b border-black/[0.06] pb-4">
-                <span className="text-xs font-mono font-medium uppercase text-[#111111]">1. Underwriting Assumptions</span>
-                <span className="text-[11px] font-mono text-[#6b6b6b]">All Figures in AED</span>
-              </div>
-
-              {/* Purchase Price Input */}
-              <div className="space-y-2">
-                <div className="flex justify-between text-xs">
-                  <label className="font-semibold text-[#111111]">Agreed Purchase Price</label>
-                  <span className="font-mono font-bold text-[#111111]">{formatCurrency(purchasePrice)}</span>
-                </div>
-                <input
-                  type="range"
-                  min="1000000"
-                  max="50000000"
-                  step="500000"
-                  value={purchasePrice}
-                  onChange={(e) => setPurchasePrice(Number(e.target.value))}
-                  className="w-full accent-[#111111] cursor-pointer"
-                />
-                <div className="flex justify-between text-[10px] font-mono text-[#6b6b6b]">
-                  <span>AED 1M</span>
-                  <span>AED 25M</span>
-                  <span>AED 50M+</span>
+            {/* Structure: Cash vs Financed */}
+            <div className="space-y-4 p-6 sm:p-8 rounded-2xl bg-[#fafaf8] border border-[#e5e5ea]">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-mono uppercase text-[#6b6b6b]">Capital Structure</span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setFinancingMode('financed')}
+                    className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
+                      financingMode === 'financed' ? 'bg-[#111111] text-[#fafaf8]' : 'bg-[#ffffff] text-[#6b6b6b] border border-[#e5e5ea]'
+                    }`}
+                  >
+                    Mortgage Debt
+                  </button>
+                  <button
+                    onClick={() => setFinancingMode('cash')}
+                    className={`px-4 py-1.5 rounded-full text-xs font-mono transition-colors ${
+                      financingMode === 'cash' ? 'bg-[#111111] text-[#fafaf8]' : 'bg-[#ffffff] text-[#6b6b6b] border border-[#e5e5ea]'
+                    }`}
+                  >
+                    100% Equity
+                  </button>
                 </div>
               </div>
 
-              {/* Financing Toggle */}
-              <div className="pt-2 border-t border-[#f5f5f3] space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#111111]">Mortgage Debt Financing</span>
-                  <div className="flex border border-[#e5e5ea] rounded overflow-hidden text-xs">
-                    <button
-                      onClick={() => setIsFinanced(true)}
-                      className={`px-3 py-1 font-medium transition-colors ${
-                        isFinanced ? 'bg-[#111111] text-[#fafaf8]' : 'text-[#6b6b6b]'
-                      }`}
-                    >
-                      Financed
-                    </button>
-                    <button
-                      onClick={() => setIsFinanced(false)}
-                      className={`px-3 py-1 font-medium transition-colors ${
-                        !isFinanced ? 'bg-[#111111] text-[#fafaf8]' : 'text-[#6b6b6b]'
-                      }`}
-                    >
-                      100% Cash
-                    </button>
+              {financingMode === 'financed' && (
+                <div className="space-y-6 pt-4 border-t border-[#e5e5ea]">
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-[#6b6b6b]">Loan to Value (LTV)</span>
+                      <span className="text-[#111111] font-medium">{ltvPercent}% ({formatCurrency(loanAmount)})</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="20"
+                      max="80"
+                      step="5"
+                      value={ltvPercent}
+                      onChange={(e) => setLtvPercent(Number(e.target.value))}
+                      className="w-full accent-[#111111] cursor-pointer"
+                    />
                   </div>
-                </div>
 
-                {isFinanced && (
-                  <div className="space-y-4 pt-2">
+                  <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <div className="flex justify-between text-xs">
-                        <label className="text-[#484848]">Loan-to-Value (LTV %)</label>
-                        <span className="font-mono font-semibold">{ltvPercent}% ({formatCurrency(loanAmount)})</span>
-                      </div>
+                      <label className="text-[11px] font-mono text-[#8e8e93]">MORTGAGE RATE (%)</label>
                       <input
-                        type="range"
-                        min="20"
-                        max="80"
-                        step="5"
-                        value={ltvPercent}
-                        onChange={(e) => setLtvPercent(Number(e.target.value))}
-                        className="w-full accent-[#111111] cursor-pointer"
+                        type="number"
+                        step="0.05"
+                        value={interestRate}
+                        onChange={(e) => setInterestRate(Number(e.target.value))}
+                        className="w-full p-2.5 rounded-lg border border-[#e5e5ea] bg-[#ffffff] text-xs font-mono"
                       />
                     </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="space-y-1">
-                        <label className="text-[11px] text-[#484848]">Mortgage Rate (%)</label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={interestRate}
-                          onChange={(e) => setInterestRate(Number(e.target.value))}
-                          className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
-                        />
-                      </div>
-                      <div className="space-y-1">
-                        <label className="text-[11px] text-[#484848]">Term (Years)</label>
-                        <input
-                          type="number"
-                          value={loanTermYears}
-                          onChange={(e) => setLoanTermYears(Number(e.target.value))}
-                          className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
-                        />
-                      </div>
+                    <div className="space-y-1">
+                      <label className="text-[11px] font-mono text-[#8e8e93]">TENOR (YEARS)</label>
+                      <input
+                        type="number"
+                        value={loanTermYears}
+                        onChange={(e) => setLoanTermYears(Number(e.target.value))}
+                        className="w-full p-2.5 rounded-lg border border-[#e5e5ea] bg-[#ffffff] text-xs font-mono"
+                      />
                     </div>
                   </div>
-                )}
-              </div>
-
-              {/* Yield & Property Specs */}
-              <div className="pt-2 border-t border-[#f5f5f3] space-y-3">
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1">
-                    <label className="text-[11px] text-[#484848]">Estimated Gross Yield (%)</label>
-                    <input
-                      type="number"
-                      step="0.1"
-                      value={estGrossYield}
-                      onChange={(e) => setEstGrossYield(Number(e.target.value))}
-                      className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
-                    />
-                  </div>
-                  <div className="space-y-1">
-                    <label className="text-[11px] text-[#484848]">Service Charge (AED/sqft)</label>
-                    <input
-                      type="number"
-                      value={serviceChargePerSqft}
-                      onChange={(e) => setServiceChargePerSqft(Number(e.target.value))}
-                      className="w-full p-2 border border-[#e5e5ea] rounded text-xs font-mono"
-                    />
-                  </div>
                 </div>
-              </div>
-
+              )}
             </div>
 
-            {/* Right 50%: Deterministic Statutory Outputs Column */}
-            <div className="lg:col-span-6 space-y-6">
+            {/* Operating Parameters */}
+            <div className="space-y-4 p-6 sm:p-8 rounded-2xl bg-[#fafaf8] border border-[#e5e5ea]">
+              <span className="text-xs font-mono uppercase text-[#6b6b6b] block">Operating Yield Parameters</span>
               
-              {/* Closing Cost Memorandum */}
-              <div className="bg-[#ffffff] p-6 sm:p-7 rounded border border-[#e5e5ea] space-y-4">
-                <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
-                  <span className="text-xs font-mono font-semibold uppercase text-[#111111]">2. Statutory Acquisition Cost</span>
-                  <ProvenanceTag sourceClass="CALCULATED" sourceName="DLD Reg. Schedule" />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-[11px] font-mono text-[#8e8e93]">EST. GROSS YIELD (%)</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={grossYieldPercent}
+                    onChange={(e) => setGrossYieldPercent(Number(e.target.value))}
+                    className="w-full p-2.5 rounded-lg border border-[#e5e5ea] bg-[#ffffff] text-xs font-mono"
+                  />
                 </div>
-
-                <div className="space-y-2.5 text-xs font-mono">
-                  <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
-                    <span className="text-[#6b6b6b]">Buyer DLD Transfer Fee (2%)</span>
-                    <span className="font-semibold text-[#111111]">{formatCurrency(buyerDldFee)}</span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
-                    <span className="text-[#6b6b6b]">DLD Registration Trustee Fee</span>
-                    <span className="font-semibold text-[#111111]">{formatCurrency(dldTrusteeAdmin)}</span>
-                  </div>
-                  <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
-                    <span className="text-[#6b6b6b]">Title Deed Certificate Issuance</span>
-                    <span className="font-semibold text-[#111111]">{formatCurrency(titleDeedFee)}</span>
-                  </div>
-                  {isFinanced && (
-                    <>
-                      <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
-                        <span className="text-[#6b6b6b]">Mortgage Registration (0.25%)</span>
-                        <span className="font-semibold text-[#111111]">{formatCurrency(mortgageRegFee)}</span>
-                      </div>
-                      <div className="flex justify-between py-1 border-b border-[#f5f5f3]">
-                        <span className="text-[#6b6b6b]">Mortgage Admin Fee</span>
-                        <span className="font-semibold text-[#111111]">{formatCurrency(mortgageAdminFee)}</span>
-                      </div>
-                    </>
-                  )}
-                  <div className="flex justify-between pt-2 text-sm font-bold border-t border-[#111111]">
-                    <span>Total Initial Capital Outlay</span>
-                    <span className="text-[#111111] tabular-nums">{formatCurrency(totalInitialCapitalRequired)}</span>
-                  </div>
+                <div className="space-y-1">
+                  <label className="text-[11px] font-mono text-[#8e8e93]">SERVICE CHARGE (AED/SQFT)</label>
+                  <input
+                    type="number"
+                    value={serviceChargePerSqft}
+                    onChange={(e) => setServiceChargePerSqft(Number(e.target.value))}
+                    className="w-full p-2.5 rounded-lg border border-[#e5e5ea] bg-[#ffffff] text-xs font-mono"
+                  />
                 </div>
               </div>
-
-              {/* Yield & Cash Flow Summary */}
-              <div className="bg-[#ffffff] p-6 sm:p-7 rounded border border-[#e5e5ea] space-y-4">
-                <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
-                  <span className="text-xs font-mono font-semibold uppercase text-[#111111]">3. Cash Flow &amp; Net Yield Model</span>
-                  <ProvenanceTag sourceClass="CALCULATED" sourceName="Deterministic" />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 text-xs font-mono">
-                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
-                    <span className="text-[10px] text-[#6b6b6b] block">ANNUAL GROSS RENT</span>
-                    <span className="text-base font-bold text-[#111111]">{formatCurrency(annualGrossRent)}</span>
-                  </div>
-                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
-                    <span className="text-[10px] text-[#6b6b6b] block">ANNUAL SERVICE CHARGE</span>
-                    <span className="text-base font-bold text-[#111111]">{formatCurrency(annualServiceCharge)}</span>
-                  </div>
-                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
-                    <span className="text-[10px] text-[#6b6b6b] block">NET OPERATING INCOME</span>
-                    <span className="text-base font-bold text-emerald-800">{formatCurrency(netOperatingIncome)}</span>
-                  </div>
-                  <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea]">
-                    <span className="text-[10px] text-[#6b6b6b] block">UNLEVERED NET YIELD</span>
-                    <span className="text-base font-bold text-emerald-800">{unleveredNetYield.toFixed(2)}%</span>
-                  </div>
-                </div>
-
-                {isFinanced && (
-                  <div className="space-y-2 pt-2 border-t border-[#f5f5f3]">
-                    <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea] text-xs font-mono flex items-center justify-between">
-                      <span className="text-[#6b6b6b]">Est. Monthly Debt Service:</span>
-                      <span className="font-bold text-[#111111]">{formatCurrency(monthlyMortgagePayment)} / month</span>
-                    </div>
-                    <div className="p-3 rounded bg-[#fafaf8] border border-[#e5e5ea] text-xs font-mono flex items-center justify-between">
-                      <span className="text-[#6b6b6b]">Est. Cash-on-Cash Return:</span>
-                      <span className="font-bold text-emerald-800">{cashOnCashReturn.toFixed(2)}% / yr</span>
-                    </div>
-                  </div>
-                )}
-              </div>
-
             </div>
 
           </div>
 
-          <div className="p-4 rounded bg-[#ffffff] border border-[#e5e5ea] text-xs text-[#6b6b6b] leading-relaxed">
-            <strong>Calculation Transparency:</strong> All statutory closing fees are computed strictly in accordance with published schedules from the Dubai Land Department (Law No. 7 of 2006, Resolution No. 30 of 2013) and the Central Bank of the UAE. Net rental calculations are indicative models based on user inputs and do not constitute guaranteed returns.
+          {/* Right 6 cols: Institutional Financial Dossier */}
+          <div className="lg:col-span-6 space-y-8 sticky top-28">
+            <div className="p-8 sm:p-10 rounded-2xl bg-[#ffffff] border border-[#e5e5ea] space-y-8">
+              
+              <div className="space-y-2 border-b border-[#e5e5ea] pb-6">
+                <Eyebrow>FINANCIAL MEMORANDUM</Eyebrow>
+                <h3 className="text-2xl font-light text-[#111111]">
+                  Statutory Acquisition Ledger
+                </h3>
+              </div>
+
+              {/* Breakdown Rows */}
+              <div className="space-y-3">
+                <DataRow
+                  label="Asset Agreed Value"
+                  value={formatCurrency(propertyPrice)}
+                  source={<SourceBadge sourceClass="USER PROVIDED" />}
+                />
+                <DataRow
+                  label="DLD Sale Registration (4%)"
+                  value={formatCurrency(dldFee)}
+                  source={<SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="Law 7/2006" />}
+                />
+                <DataRow
+                  label="DLD Admin & Map Tariff"
+                  value={formatCurrency(dldAdminFee)}
+                  source={<SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="DLD Tariff" />}
+                />
+                <DataRow
+                  label="Registration Trustee Fee"
+                  value={formatCurrency(registrationTrusteeFee)}
+                  source={<SourceBadge sourceClass="OFFICIAL REGULATORY" sourceName="DLD Trustee" />}
+                />
+                {financingMode === 'financed' && (
+                  <>
+                    <DataRow
+                      label="Mortgage Registration (0.25%)"
+                      value={formatCurrency(mortgageRegFee)}
+                      source={<SourceBadge sourceClass="OFFICIAL REGULATORY" sourceName="DLD Schedule" />}
+                    />
+                    <DataRow
+                      label="Mortgage Admin Fee"
+                      value={formatCurrency(mortgageAdminFee)}
+                      source={<SourceBadge sourceClass="OFFICIAL REGULATORY" sourceName="DLD Schedule" />}
+                    />
+                  </>
+                )}
+                <DataRow
+                  label="Statutory Legal & Conveyance Est."
+                  value={formatCurrency(legalConveyanceEst)}
+                  source={<SourceBadge sourceClass="CALCULATED" sourceName="Standard" />}
+                />
+              </div>
+
+              {/* Total Outlay Highlight */}
+              <div className="pt-6 border-t-2 border-[#111111] space-y-2">
+                <div className="flex justify-between items-baseline">
+                  <span className="text-xs font-mono uppercase tracking-widest font-semibold text-[#111111]">
+                    TOTAL ACQUISITION OUTLAY
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-light font-mono tabular-nums text-[#111111]">
+                    {formatCurrency(totalAcquisitionOutlay)}
+                  </span>
+                </div>
+                {financingMode === 'financed' && (
+                  <div className="flex justify-between items-baseline text-xs font-mono text-[#6b6b6b] pt-1">
+                    <span>Initial Equity Required:</span>
+                    <span className="font-semibold text-[#111111]">{formatCurrency(initialEquityRequired)}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Yield & Cash Flow Analysis */}
+              <div className="pt-6 border-t border-[#e5e5ea] space-y-4">
+                <span className="text-xs font-mono uppercase text-[#8e8e93] block">
+                  CASH FLOW &amp; YIELD PROJECTIONS
+                </span>
+
+                <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+                  <div className="p-4 rounded-xl bg-[#fafaf8] border border-[#e5e5ea] space-y-1">
+                    <span className="text-[#8e8e93] block">NET OPERATING INCOME</span>
+                    <span className="text-lg font-light text-emerald-800 block">{formatCurrency(netOperatingIncome)}</span>
+                    <span className="text-[10px] text-[#8e8e93]">Per Annum</span>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[#fafaf8] border border-[#e5e5ea] space-y-1">
+                    <span className="text-[#8e8e93] block">UNLEVERED NET YIELD</span>
+                    <span className="text-lg font-light text-emerald-800 block">{netYieldUnlevered.toFixed(2)}%</span>
+                    <span className="text-[10px] text-[#8e8e93]">Net of service charges</span>
+                  </div>
+                </div>
+
+                {financingMode === 'financed' && (
+                  <div className="p-4 rounded-xl bg-[#fafaf8] border border-[#e5e5ea] space-y-2 text-xs font-mono">
+                    <div className="flex justify-between">
+                      <span className="text-[#6b6b6b]">Monthly Debt Service:</span>
+                      <span className="font-medium text-[#111111]">{formatCurrency(monthlyMortgage)} / mo</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-[#6b6b6b]">Cash-on-Cash Return:</span>
+                      <span className="font-medium text-emerald-800">{cashOnCashYield.toFixed(2)}% / yr</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Action */}
+              <div className="pt-4">
+                <PrimaryLink href="/private-client" className="w-full justify-center">
+                  Request Institutional Mandate
+                </PrimaryLink>
+              </div>
+
+            </div>
           </div>
 
         </div>
-      </section>
+
+      </main>
 
     </div>
   )

@@ -3,220 +3,191 @@
 import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ProvenanceTag } from '@/components/layout/layout-primitives'
 import {
-  ArrowRight,
-} from 'lucide-react'
+  Section,
+  Eyebrow,
+} from '@/components/layout/layout-primitives'
 
-const LIFESTYLE_SECTORS = [
-  {
-    id: 'dining',
-    title: 'Michelin Gastronomy',
-    category: 'DINING & CULINARY',
-    description: 'Verified Michelin-starred tasting menus and chef tables across the Emirate of Dubai, evaluated by anonymous Michelin Guide inspectors.',
-    image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80',
-    provenance: 'Michelin Guide Dubai (Editorial Source)',
-    href: '/lifestyle/dining',
-    subItems: ['Ossiano (1-Star)', 'Trèsind Studio (2-Star)', 'Stay by Yannick Alléno (2-Star)']
-  },
-  {
-    id: 'aviation',
-    title: 'Private Aviation & FBO Terminals',
-    category: 'MOBILITY & AVIATION',
-    description: 'Executive private aviation VIP FBO handling at Al Maktoum International Airport (DWC) and Dubai International (DXB).',
-    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80',
-    provenance: 'Licensed GCAA & DWC Operators',
-    href: '/lifestyle/aviation',
-    subItems: ['DWC VIP Terminal', 'ExecuJet FBO', 'Falcon Aviation Services']
-  },
-  {
-    id: 'yachts',
-    title: 'Superyachts & Marine Berths',
-    category: 'MARINE & HARBOURS',
-    description: 'Deep-water superyacht berths, luxury charter operations, and private mooring management across Dubai Harbour and Dubai Marina.',
-    image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80',
-    provenance: 'Dubai Maritime Authority Licensed',
-    href: '/lifestyle/yachts',
-    subItems: ['Dubai Harbour Marina (160m berths)', 'Bulgari Marina', 'Dubai Marina Yacht Club']
-  },
-  {
-    id: 'hotels',
-    title: 'Ultra-Luxury Hospitality Palaces',
-    category: 'ACCOMMODATION & SUITES',
-    description: 'Private branded hotel suites and palatial residences including Bulgari Resort Dubai, Atlantis The Royal, and The Lana (Dorchester Collection).',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-    provenance: 'Dubai Department of Economy & Tourism',
-    href: '/lifestyle/hotels',
-    subItems: ['Bulgari Resort Jumeira Bay', 'Atlantis The Royal', 'The Lana Dorchester Collection']
-  },
-  {
-    id: 'clubs',
-    title: 'Private Member Salons & Clubs',
-    category: 'PRIVATE NETWORK',
-    description: 'Exclusive private member clubs and business salons in DIFC and Downtown providing discreet networking and dining.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    provenance: 'Licensed Private Member Operators',
-    href: '/lifestyle/clubs',
-    subItems: ['The Arts Club Dubai (DIFC)', 'Capital Club Dubai', 'Surveillant DIFC']
-  },
-  {
-    id: 'safari',
-    title: 'Conservation Desert Sanctuaries',
-    category: 'NATURE & RESERVES',
-    description: 'Eco-luxury wildlife conservation expeditions within the protected Dubai Desert Conservation Reserve (DDCR).',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
-    provenance: 'Dubai Desert Conservation Reserve (DDCR)',
-    href: '/lifestyle/safari',
-    subItems: ['DDCR Protected Sanctuary', 'Al Maha Resort & Spa', 'Platinum Heritage Expeditions']
-  }
-]
-
-export default function LifestylePage() {
-  const featureSector = LIFESTYLE_SECTORS[0]
-  const otherSectors = LIFESTYLE_SECTORS.slice(1)
-
+export default function LifestyleMagazinePage() {
   return (
-    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+    <div className="flex flex-col min-h-screen bg-[#ffffff] text-[#111111]">
       
-      {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-12 sm:pt-16 sm:pb-16 border-b border-[#e5e5ea] bg-[#fafaf8]">
-        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
-              CURATED ACCESS &bull; LIFESTYLE INFRASTRUCTURE
-            </span>
-            <ProvenanceTag sourceClass="EDITORIAL SOURCE" sourceName="Michelin &bull; Licensed Operators" />
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111]">
-            Curated Lifestyle &amp; Marine Protocols
-          </h1>
+      {/* 1. EDITORIAL OPENING */}
+      <section className="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-[#e5e5ea] bg-[#fafaf8]">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
+          <Eyebrow>CURATED LIFESTYLE &bull; EDITORIAL MONOGRAPH</Eyebrow>
           
-          <p className="text-sm sm:text-base text-[#484848] max-w-3xl leading-relaxed">
-            Institutional directory of Dubai private aviation FBOs, certified superyacht harbours, Michelin gastronomy selections, and private member networks.
-          </p>
+          <div className="max-w-3xl space-y-4">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#111111]">
+              LIFESTYLE
+            </h1>
+            <p className="text-lg sm:text-xl text-[#6b6b6b] font-light leading-relaxed">
+              An architectural and cultural monograph exploring private aviation corridors, maritime berths, Michelin-starred culinary institutions, and bespoke desert conservation reserves.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 2. FEATURE SPREAD: Asymmetric Composition */}
-      <section className="py-14 border-b border-[#e5e5ea]">
-        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          
-          <div className="flex items-center justify-between border-b border-[#e5e5ea] pb-3">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
-              FEATURE PROTOCOL &bull; {featureSector.category}
-            </span>
-            <span className="text-xs font-mono text-[#6b6b6b]">{featureSector.provenance}</span>
+      {/* 2. FULL-BLEED IMAGE SPREAD */}
+      <section className="w-full">
+        <div className="relative aspect-[16/9] sm:aspect-[24/10] w-full bg-[#f5f5f3] overflow-hidden">
+          <Image
+            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2200&q=85"
+            alt="Dubai Maritime & Harbour Infrastructure"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute bottom-6 left-6 sm:left-12 px-4 py-1.5 rounded-full bg-[#ffffff]/90 backdrop-blur-md border border-[#e5e5ea] text-xs font-mono text-[#111111]">
+            <span>Dubai Harbour &bull; Deep Water Superyacht Berths</span>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      {/* 3. LARGE WHITESPACE & EDITORIAL THESIS */}
+      <Section spacing="room-200" surface="white" containerSize="reading">
+        <div className="space-y-8">
+          <Eyebrow>MARITIME &amp; AVIATION ACCESS</Eyebrow>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-[#111111] leading-tight">
+            Dubai’s infrastructure is engineered for sovereign mobility and unencumbered global access.
+          </h2>
+          <p className="text-base sm:text-lg text-[#484848] font-light leading-relaxed">
+            From the dedicated VIP FBO lounges at Al Maktoum International Airport (DWC) to custom 160-meter berths at Dubai Harbour, access protocols are structured for maximum discretion and operational reliability.
+          </p>
+        </div>
+      </Section>
+
+      {/* 4. ASYMMETRIC IMAGE PAIR & CULINARY ESSAY */}
+      <Section spacing="room-200" surface="subtle" containerSize="wide">
+        <div className="space-y-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            
+            {/* Image 1 (Left 7 cols) */}
             <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded border border-[#e5e5ea] bg-[#f5f5f3]">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#f5f5f3]">
                 <Image
-                  src={featureSector.image}
-                  alt={featureSector.title}
+                  src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1400&q=85"
+                  alt="Michelin Culinary Heritage"
                   fill
-                  priority
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover"
                 />
               </div>
             </div>
 
-            <div className="lg:col-span-5 space-y-4">
-              <h2 className="text-2xl sm:text-3xl font-semibold text-[#111111]">
-                {featureSector.title}
-              </h2>
-              <p className="text-sm text-[#484848] leading-relaxed">
-                {featureSector.description}
-              </p>
-              
-              <div className="space-y-2 pt-2 border-t border-[#e5e5ea]">
-                <span className="text-[10px] font-mono uppercase text-[#6b6b6b] block font-semibold">
-                  Verified Selections:
-                </span>
-                <ul className="space-y-1 text-xs text-[#484848]">
-                  {featureSector.subItems.map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <span className="text-[#9f8144] font-bold">&bull;</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* Text & Image 2 (Right 5 cols) */}
+            <div className="lg:col-span-5 space-y-8">
+              <div className="space-y-4">
+                <Eyebrow>MICHELIN GASTRONOMY</Eyebrow>
+                <h3 className="text-2xl sm:text-3xl font-light text-[#111111]">
+                  Culinary Distinction
+                </h3>
+                <p className="text-sm sm:text-base text-[#484848] font-light leading-relaxed">
+                  The Dubai Michelin Guide benchmarks two and three-star culinary dining rooms across the Palm Jumeirah, DIFC, and Jumeirah Bay Island, led by acclaimed global masters.
+                </p>
               </div>
 
-              <div className="pt-2">
-                <Link
-                  href={featureSector.href}
-                  className="px-4 py-2 rounded bg-[#111111] hover:bg-[#2a2a2e] text-[#fafaf8] text-xs font-medium inline-flex items-center gap-1.5 transition-colors"
-                >
-                  <span>Explore Gastronomy Guide</span>
-                  <ArrowRight className="h-3 w-3" />
-                </Link>
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#f5f5f3]">
+                <Image
+                  src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85"
+                  alt="DIFC Private Member Clubs"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
               </div>
             </div>
+
+          </div>
+        </div>
+      </Section>
+
+      {/* 5. CURATED DISCIPLINES STRIP */}
+      <Section spacing="room-160" surface="white" containerSize="wide">
+        <div className="space-y-12">
+          <div className="space-y-3">
+            <Eyebrow>LIFESTYLE DIRECTORY DISCIPLINES</Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#111111]">
+              Access Portfolios
+            </h2>
           </div>
 
-        </div>
-      </section>
-
-      {/* 3. LIFESTYLE SECTOR GRID */}
-      <main className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-10">
-        
-        <div className="border-b border-[#e5e5ea] pb-3">
-          <h3 className="text-xl font-semibold text-[#111111]">
-            Curated Lifestyle Infrastructure
-          </h3>
-          <p className="text-xs text-[#6b6b6b]">
-            Verified operators, licensing credentials, and bespoke protocols.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherSectors.map((sec) => (
-            <div
-              key={sec.id}
-              className="bg-[#ffffff] rounded border border-[#e5e5ea] overflow-hidden flex flex-col justify-between"
-            >
-              <div>
-                <div className="relative aspect-[16/10] w-full bg-[#f5f5f3] overflow-hidden border-b border-[#e5e5ea]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Superyachts & Marinas',
+                category: 'MARINE & BERTHS',
+                desc: 'Dubai Harbour, Bulgari Marina, and Dubai Marina deep-water moorings.',
+                href: '/lifestyle/yachts',
+                src: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80',
+              },
+              {
+                title: 'Private Aviation & FBOs',
+                category: 'AVIATION & MOBILITY',
+                desc: 'Al Maktoum International (DWC) VIP Terminal & executive lounges.',
+                href: '/lifestyle/aviation',
+                src: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80',
+              },
+              {
+                title: 'Michelin Dining',
+                category: 'CULINARY GUIDE',
+                desc: 'Official Michelin Guide two-star & one-star tasting tables.',
+                href: '/lifestyle/dining',
+                src: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80',
+              },
+              {
+                title: 'Desert Conservation',
+                category: 'NATURE & RESERVES',
+                desc: 'Dubai Desert Conservation Reserve (DDCR) protected private expeditions.',
+                href: '/lifestyle/safari',
+                src: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80',
+              },
+              {
+                title: 'Private Member Clubs',
+                category: 'PRIVATE NETWORK',
+                desc: 'The Arts Club DIFC and private business salons.',
+                href: '/lifestyle/clubs',
+                src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+              },
+              {
+                title: 'Palatial Hospitality',
+                category: 'HOTELS & RESIDENCES',
+                desc: 'Bulgari Resort, Atlantis The Royal, and The Lana Dorchester Collection.',
+                href: '/lifestyle/hotels',
+                src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80',
+              },
+            ].map((item, idx) => (
+              <Link
+                key={idx}
+                href={item.href}
+                className="group block space-y-4 p-6 rounded-2xl bg-[#fafaf8] border border-[#e5e5ea] hover:border-[#111111] transition-all"
+              >
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-[#f5f5f3]">
                   <Image
-                    src={sec.image}
-                    alt={sec.title}
+                    src={item.src}
+                    alt={item.title}
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 30vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded bg-[#ffffff]/90 text-[10px] font-mono text-[#111111] border border-[#e5e5ea]">
-                    {sec.category}
-                  </div>
                 </div>
-
-                <div className="p-5 space-y-2.5">
-                  <h4 className="text-lg font-semibold text-[#111111]">
-                    {sec.title}
-                  </h4>
-                  <p className="text-xs text-[#484848] line-clamp-3 leading-relaxed">
-                    {sec.description}
+                <div className="space-y-1">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#9f8144]">
+                    {item.category}
+                  </span>
+                  <h3 className="text-xl font-light text-[#111111] group-hover:text-[#9f8144] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-[#6b6b6b] font-light">
+                    {item.desc}
                   </p>
-
-                  <div className="pt-2 border-t border-[#f5f5f3] text-[10px] font-mono text-[#6b6b6b]">
-                    Source: {sec.provenance}
-                  </div>
                 </div>
-              </div>
-
-              <div className="p-5 pt-0 border-t border-[#f5f5f3] mt-2 flex items-center justify-between">
-                <Link
-                  href={sec.href}
-                  className="text-xs font-semibold text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 transition-colors"
-                >
-                  <span>Protocol Dossier &rarr;</span>
-                </Link>
-              </div>
-            </div>
-          ))}
+              </Link>
+            ))}
+          </div>
         </div>
-
-      </main>
+      </Section>
 
     </div>
   )

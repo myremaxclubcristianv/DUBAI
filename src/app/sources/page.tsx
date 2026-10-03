@@ -2,11 +2,11 @@
 
 import * as React from 'react'
 import { OFFICIAL_SOURCES_REGISTRY } from '@/lib/data/sources'
-import { ProvenanceTag } from '@/components/layout/layout-primitives'
 import {
-  Scale,
-  ExternalLink,
-} from 'lucide-react'
+  Eyebrow,
+  SourceBadge,
+} from '@/components/layout/layout-primitives'
+import { ExternalLink, ShieldCheck } from 'lucide-react'
 
 const SOURCE_CLASSES = [
   {
@@ -49,163 +49,100 @@ const SOURCE_CLASSES = [
 
 export default function SourcesPage() {
   return (
-    <div className="bg-[#ffffff] text-[#111111] min-h-screen pb-24">
+    <div className="flex flex-col min-h-screen bg-[#ffffff] text-[#111111]">
       
       {/* 1. EDITORIAL HEADER */}
-      <section className="pt-12 pb-12 sm:pt-16 sm:pb-16 border-b border-[#e5e5ea] bg-[#fafaf8]">
-        <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#9f8144]">
-              DATA PROVENANCE &bull; RESEARCH METHODOLOGY
-            </span>
-            <ProvenanceTag sourceClass="OFFICIAL GOVERNMENT" sourceName="Registry Audit" />
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111]">
-            Sources, Provenance &amp; Methodology Charter
-          </h1>
+      <section className="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-[#e5e5ea] bg-[#fafaf8]">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
+          <Eyebrow>DATA PROVENANCE &bull; RESEARCH METHODOLOGY</Eyebrow>
           
-          <p className="text-sm sm:text-base text-[#484848] max-w-3xl leading-relaxed">
-            The platform architecture enforces zero synthetic data. Every factual assertion, transaction tariff, developer number, and residency protocol is tied to an explicit source class and statutory citation.
-          </p>
+          <div className="max-w-3xl space-y-4">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#111111]">
+              PROVENANCE CHARTER
+            </h1>
+            <p className="text-lg sm:text-xl text-[#6b6b6b] font-light leading-relaxed">
+              The platform enforces zero synthetic data. Every factual assertion, transaction tariff, developer registration number, and residency protocol is anchored in an explicit source class and statutory citation.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* 2. SOURCE TAXONOMY & CLASSIFICATION */}
-      <main className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-16">
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-24 space-y-20 flex-1">
         
         {/* Section 1: Source Classes */}
-        <div className="space-y-6">
-          <div className="border-b border-[#e5e5ea] pb-3">
-            <span className="text-[10px] font-mono uppercase text-[#9f8144] font-semibold block">
-              TAXONOMY HIERARCHY
-            </span>
-            <h2 className="text-2xl font-semibold text-[#111111]">
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <Eyebrow>TAXONOMY HIERARCHY</Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#111111]">
               Source Classification Classes
             </h2>
-            <p className="text-xs text-[#6b6b6b]">
-              We distinguish between primary sovereign legislation, regulatory indices, corporate inventory, and mathematical calculations.
+            <p className="text-base text-[#6b6b6b] font-light max-w-2xl">
+              We strictly separate primary sovereign legislation, regulatory indices, corporate inventory, and mathematical calculations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SOURCE_CLASSES.map((sc, idx) => (
               <div
                 key={idx}
-                className="p-5 rounded border border-[#e5e5ea] bg-[#ffffff] space-y-3 flex flex-col justify-between"
+                className="p-8 rounded-2xl border border-[#e5e5ea] bg-[#ffffff] space-y-4 flex flex-col justify-between"
               >
-                <div className="space-y-2">
-                  <ProvenanceTag sourceClass={sc.badge} />
-                  <p className="text-xs text-[#484848] leading-relaxed pt-1">
+                <div className="space-y-3">
+                  <SourceBadge sourceClass={sc.badge} />
+                  <p className="text-xs sm:text-sm text-[#484848] font-light leading-relaxed">
                     {sc.description}
                   </p>
                 </div>
-                <div className="pt-3 border-t border-[#f5f5f3] text-[10px] font-mono text-[#6b6b6b]">
-                  Classification: {sc.binding}
+                <div className="pt-4 border-t border-[#e5e5ea] text-[10px] font-mono text-[#8e8e93]">
+                  Status: {sc.binding}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Section 2: Price & Valuation Provenance */}
-        <div className="space-y-6">
-          <div className="border-b border-[#e5e5ea] pb-3">
-            <span className="text-[10px] font-mono uppercase text-[#9f8144] font-semibold block">
-              VALUATION INTEGRITY
-            </span>
-            <h2 className="text-2xl font-semibold text-[#111111]">
-              Price Classification Standard
-            </h2>
-            <p className="text-xs text-[#6b6b6b]">
-              Strict separation between vendor asking valuations, achieved transaction records, and calculated estimates.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-5 rounded border border-[#e5e5ea] bg-[#fafaf8] space-y-2">
-              <span className="text-xs font-mono font-bold text-[#111111] block uppercase">ASKING PRICE</span>
-              <p className="text-xs text-[#484848] leading-relaxed">
-                Direct quoted asking price from verified developer inventory or vendor representation. Never represented as achieved final sale value.
-              </p>
-              <div className="pt-2 text-[10px] font-mono text-[#6b6b6b]">Label: ASKING VALUATION</div>
-            </div>
-
-            <div className="p-5 rounded border border-[#e5e5ea] bg-[#fafaf8] space-y-2">
-              <span className="text-xs font-mono font-bold text-[#111111] block uppercase">TRANSACTION PRICE</span>
-              <p className="text-xs text-[#484848] leading-relaxed">
-                Historical closed conveyance price recorded in official Dubai Land Department open data ledgers and registration trustee filings.
-              </p>
-              <div className="pt-2 text-[10px] font-mono text-[#6b6b6b]">Label: RECORDED DLD TRANSACTION</div>
-            </div>
-
-            <div className="p-5 rounded border border-[#e5e5ea] bg-[#fafaf8] space-y-2">
-              <span className="text-xs font-mono font-bold text-[#111111] block uppercase">PRICE ON REQUEST</span>
-              <p className="text-xs text-[#484848] leading-relaxed">
-                Applied when property pricing is confidential or awaiting direct developer release. The platform never fabricates speculative numbers.
-              </p>
-              <div className="pt-2 text-[10px] font-mono text-[#6b6b6b]">Label: PRICE ON REQUEST</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Section 3: Official Sources Registry Table */}
-        <div className="space-y-6">
-          <div className="border-b border-[#e5e5ea] pb-3">
-            <span className="text-[10px] font-mono uppercase text-[#9f8144] font-semibold block">
-              REGISTRY AUDIT
-            </span>
-            <h2 className="text-2xl font-semibold text-[#111111]">
+        {/* Section 2: Official Sources Registry Table */}
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <Eyebrow>REGISTRY AUDIT</Eyebrow>
+            <h2 className="text-3xl sm:text-4xl font-light text-[#111111]">
               Verified Authority Registry
             </h2>
-            <p className="text-xs text-[#6b6b6b]">
-              Primary public sector institutions cited across the platform.
+            <p className="text-base text-[#6b6b6b] font-light max-w-2xl">
+              Primary public sector institutions and statutory registries cited across the platform.
             </p>
           </div>
 
-          <div className="border border-[#e5e5ea] rounded divide-y divide-[#e5e5ea] bg-[#ffffff]">
-            <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 bg-[#fafaf8] text-[10px] font-mono text-[#6b6b6b] uppercase tracking-wider font-semibold">
-              <div className="col-span-4">Authority Entity</div>
-              <div className="col-span-2">Class</div>
-              <div className="col-span-2">Jurisdiction</div>
-              <div className="col-span-3">Primary Mandate</div>
-              <div className="col-span-1 text-right">Portal</div>
-            </div>
-
+          <div className="divide-y divide-[#e5e5ea] border-t border-b border-[#e5e5ea]">
             {OFFICIAL_SOURCES_REGISTRY.map((src) => (
               <div
                 key={src.id}
-                className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4 p-5 md:px-6 md:py-4 items-start hover:bg-[#fafaf8] transition-colors"
+                className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center"
               >
-                <div className="col-span-1 md:col-span-4 space-y-0.5">
-                  <div className="text-sm font-semibold text-[#111111]">{src.name}</div>
-                  <span className="text-xs font-mono text-[#6b6b6b]">Code: {src.code}</span>
+                <div className="md:col-span-4 space-y-0.5">
+                  <span className="text-base font-medium text-[#111111]">{src.name}</span>
+                  <span className="text-xs font-mono text-[#8e8e93] block">Code: {src.code}</span>
                 </div>
 
-                <div className="col-span-1 md:col-span-2 text-xs font-mono text-[#484848] pt-0.5">
-                  <span className="md:hidden text-[#6b6b6b] text-[10px] mr-2">CLASS:</span>
-                  {src.authority_type}
+                <div className="md:col-span-3 text-xs font-mono text-[#484848]">
+                  <span className="text-[#8e8e93] block text-[10px]">CLASS:</span>
+                  {src.authority_type} &bull; {src.jurisdiction}
                 </div>
 
-                <div className="col-span-1 md:col-span-2 text-xs text-[#484848] pt-0.5">
-                  <span className="md:hidden text-[#6b6b6b] text-[10px] mr-2">JURISDICTION:</span>
-                  {src.jurisdiction}
-                </div>
-
-                <div className="col-span-1 md:col-span-3 text-xs text-[#484848] pt-0.5">
-                  <span className="md:hidden text-[#6b6b6b] text-[10px] mr-2">MANDATE:</span>
+                <div className="md:col-span-4 text-xs text-[#484848] font-light">
                   {src.key_mandate}
                 </div>
 
-                <div className="col-span-1 md:col-span-1 flex md:justify-end pt-1">
+                <div className="md:col-span-1 flex justify-end">
                   <a
                     href={src.official_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 font-mono"
+                    className="p-2.5 rounded-full border border-[#e5e5ea] hover:border-[#111111] transition-colors inline-flex items-center"
                     title="Open Official Website"
                   >
-                    <ExternalLink className="h-3.5 w-3.5" />
+                    <ExternalLink className="h-3.5 w-3.5 text-[#6b6b6b]" />
                   </a>
                 </div>
               </div>
@@ -213,14 +150,14 @@ export default function SourcesPage() {
           </div>
         </div>
 
-        {/* Section 4: Regulatory Disclaimer */}
-        <div className="p-6 rounded bg-[#fafaf8] border border-[#e5e5ea] space-y-3 text-xs text-[#484848] leading-relaxed">
-          <h3 className="text-sm font-semibold text-[#111111] flex items-center gap-2">
-            <Scale className="h-4 w-4 text-[#9f8144]" />
+        {/* Regulatory Disclaimer */}
+        <div className="p-8 rounded-2xl bg-[#fafaf8] border border-[#e5e5ea] space-y-3 text-xs text-[#6b6b6b] leading-relaxed">
+          <div className="flex items-center gap-2 font-semibold text-[#111111]">
+            <ShieldCheck className="h-4 w-4 text-[#9f8144]" />
             <span>Statutory Legal &amp; Regulatory Notice</span>
-          </h3>
+          </div>
           <p>
-            The DUBAI Platform is an editorial research and private intelligence platform. Factual references cite official UAE laws including Law No. 7 of 2006 (Land Registration), Law No. 8 of 2007 (Escrow Accounts), Cabinet Resolution No. 65 of 2022 (Golden Visa Regulations), and Federal Decree-Law No. 47 of 2022 (Corporate Tax). Financial calculations are deterministic indicative models based on published schedules. This platform does not provide automated legal advice or licensed brokerage representation without direct consultation.
+            DUBAI Intelligence is an editorial research and private intelligence platform. Factual references cite official UAE laws including Law No. 7 of 2006 (Land Registration), Law No. 8 of 2007 (Escrow Accounts), Cabinet Resolution No. 65 of 2022 (Golden Visa Regulations), and Federal Decree-Law No. 47 of 2022 (Corporate Tax). Financial calculations are deterministic indicative models based on published schedules.
           </p>
         </div>
 

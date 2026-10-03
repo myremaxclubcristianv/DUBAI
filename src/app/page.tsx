@@ -7,582 +7,643 @@ import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { DUBAI_AREAS } from '@/lib/data/areas'
 import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { useClient } from '@/lib/context/client-context'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import {
+  Section,
+  Eyebrow,
+  SourceBadge,
+  DirectoryRow,
+  DataRow,
+  TimelineStep,
+  PrimaryLink,
+  SecondaryLink,
+} from '@/components/layout/layout-primitives'
+import { ArrowRight, ArrowUpRight, ShieldCheck } from 'lucide-react'
 
 export default function Home() {
   const { formatCurrency } = useClient()
 
   // Flagship Property
   const featureProperty = VERIFIED_PROPERTIES[0]
-  // Curated Register Assets
-  const secondaryProperties = VERIFIED_PROPERTIES.slice(1, 6)
-  // Geographic Atlas Districts
+  // Atlas Districts
   const atlasDistricts = DUBAI_AREAS.slice(0, 6)
-  // Registered Master Developers
-  const keyDevelopers = VERIFIED_DEVELOPERS.slice(0, 6)
+  // Key Developers
+  const keyDevelopers = VERIFIED_DEVELOPERS.slice(0, 5)
+
+  // Interactive Atlas Selected District State
+  const [activeDistrictIndex, setActiveDistrictIndex] = React.useState(0)
+  const activeDistrict = atlasDistricts[activeDistrictIndex] || atlasDistricts[0]
+
+  // Capital Underwriting Interactive Calculator State
+  const [propertyPriceAED, setPropertyPriceAED] = React.useState(10000000)
+  const dldFee = propertyPriceAED * 0.04
+  const adminFee = 4200
+  const trusteeFee = propertyPriceAED >= 500000 ? 4200 : 2100
+  const conveyanceEstimate = 10500
+  const totalAcquisitionCost = propertyPriceAED + dldFee + adminFee + trusteeFee + conveyanceEstimate
 
   return (
     <div className="flex flex-col min-h-screen bg-[#ffffff] text-[#111111]">
       
       {/* ========================================================================= */}
-      {/* 01 — HERO: Architectural Statement & Panoramic Visual Presence           */}
+      {/* 01 — HERO: Cinematic Opening (80-90vh, Light Typography, Asymmetric Art)  */}
       {/* ========================================================================= */}
-      <section className="relative pt-20 pb-20 sm:pt-28 sm:pb-28 border-b border-black/[0.06] bg-[#ffffff] overflow-hidden">
-        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
-          
-          {/* Main Hero Statement */}
-          <div className="max-w-4xl space-y-6">
-            <div className="inline-flex items-center gap-2">
-              <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#9f8144] font-medium">
-                DUBAI &bull; PROPERTY &bull; CAPITAL &bull; ACCESS
-              </span>
-            </div>
+      <section className="relative min-h-[85vh] flex items-center pt-16 pb-20 sm:pt-24 sm:pb-28 border-b border-[#e5e5ea] bg-[#ffffff] overflow-hidden">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
-            <h1 className="text-[52px] sm:text-[76px] lg:text-[100px] font-normal tracking-[-0.035em] leading-[0.96] text-[#111111]">
-              PROPERTY.<br />
-              CAPITAL.<br />
-              ACCESS.
-            </h1>
+            {/* Left 45%: Editorial Heading & Statement */}
+            <div className="lg:col-span-6 space-y-8">
+              <div className="space-y-4">
+                <Eyebrow>DUBAI &bull; PROPERTY &bull; CAPITAL &bull; ACCESS</Eyebrow>
+                
+                <h1 className="text-[52px] sm:text-[76px] lg:text-[98px] font-light tracking-[-0.04em] leading-[0.95] text-[#111111]">
+                  PROPERTY.<br />
+                  CAPITAL.<br />
+                  ACCESS.
+                </h1>
+              </div>
 
-            <p className="text-lg sm:text-2xl text-[#6b6b6b] font-light max-w-2xl leading-relaxed pt-2">
-              An institutional research platform and private-client advisory for Dubai real estate acquisitions, statutory conveyancing, deterministic underwriting, and sovereign Golden Visa structuring.
-            </p>
+              <p className="text-lg sm:text-2xl text-[#484848] font-light leading-relaxed max-w-xl">
+                Independent private-client intelligence for Dubai property, capital, residency and access. Sourced directly from published statutory registers and certified developer filings.
+              </p>
 
-            {/* Quiet Action Row */}
-            <div className="pt-4 flex flex-wrap items-center gap-6">
-              <Link
-                href="/properties"
-                className="px-6 py-3 rounded-full bg-[#111111] hover:bg-[#2a2a2e] text-[#fafaf8] text-xs font-medium tracking-tight transition-all inline-flex items-center gap-2"
-              >
-                <span>Explore Curated Properties</span>
-                <ArrowRight className="h-3.5 w-3.5 opacity-70" />
-              </Link>
-              <Link
-                href="/private-client"
-                className="text-xs font-medium text-[#111111] hover:text-[#9f8144] tracking-tight transition-colors inline-flex items-center gap-1.5"
-              >
-                <span>Private Client Mandate</span>
-                <ArrowUpRight className="h-3.5 w-3.5 opacity-60" />
-              </Link>
-            </div>
-          </div>
+              {/* Quiet Action Row */}
+              <div className="flex flex-wrap items-center gap-6 pt-2">
+                <PrimaryLink href="/properties">
+                  Explore Curated Properties
+                </PrimaryLink>
+                <SecondaryLink href="/private-client">
+                  Private Client Mandate
+                </SecondaryLink>
+              </div>
 
-          {/* Grand Architectural Photographic Spread */}
-          <div className="pt-6">
-            <div className="relative aspect-[16/9] sm:aspect-[21/10] w-full overflow-hidden rounded-2xl bg-[#f5f5f3] border border-black/[0.06]">
-              <Image
-                src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=85"
-                alt="Dubai Architectural Skyline"
-                fill
-                priority
-                sizes="(max-width: 1440px) 100vw, 1440px"
-                className="object-cover transition-transform duration-1000 ease-out hover:scale-[1.015]"
-              />
-              <div className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-[#ffffff]/90 backdrop-blur-md border border-black/[0.06] text-[10px] font-mono text-[#484848]">
-                <span>Downtown Core &bull; Photographic Reference</span>
+              {/* Provenance Footnote in Hero */}
+              <div className="pt-4 border-t border-[#e5e5ea]/60 flex items-center gap-3 text-[11px] font-mono text-[#8e8e93]">
+                <ShieldCheck className="h-3.5 w-3.5 text-[#9f8144]" />
+                <span>Source-Led Intelligence &bull; Verified Statutory Sources</span>
               </div>
             </div>
-          </div>
 
+            {/* Right 55%: Grand Architectural Environment (Escaping Card Container) */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative aspect-[4/3] sm:aspect-[16/11] w-full overflow-hidden rounded-2xl bg-[#f5f5f3]">
+                <Image
+                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=85"
+                  alt="Dubai Architectural Environment"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover transition-transform duration-1000 ease-out hover:scale-[1.02]"
+                />
+                <div className="absolute bottom-4 left-4 px-3 py-1 bg-[#ffffff]/90 backdrop-blur-md rounded-full text-[10px] font-mono text-[#484848] border border-[#e5e5ea]">
+                  <span>Downtown Core &bull; Architectural Reference</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 02 — MARKET POSITION: Narrow Editorial Thesis & Minimal Data Band         */}
+      {/* 02 — POSITIONING & STATUTORY MACRO FOUNDATION: Asymmetric Split           */}
       {/* ========================================================================= */}
-      <section className="py-28 sm:py-40 border-b border-black/[0.06] bg-[#fafaf8]">
-        <div className="w-full max-w-[1040px] mx-auto px-6 sm:px-8 space-y-16">
+      <Section spacing="room-200" surface="subtle" containerSize="wide" borderBottom={false}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          <div className="space-y-6">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-              02 &bull; MARKET POSITION
-            </span>
-            <h2 className="text-[36px] sm:text-[54px] lg:text-[62px] font-light tracking-[-0.03em] leading-[1.06] text-[#111111]">
-              Dubai, through the lens of property, capital and access.
+          {/* Left 5 cols: Editorial Thesis */}
+          <div className="lg:col-span-5 space-y-6">
+            <Eyebrow>02 &bull; POSITIONING STATEMENT</Eyebrow>
+            
+            <h2 className="text-[36px] sm:text-[48px] lg:text-[54px] font-light tracking-[-0.03em] leading-[1.06] text-[#111111]">
+              A clearer way to navigate Dubai property, capital, residency and access.
             </h2>
-            <p className="text-base sm:text-xl text-[#6b6b6b] font-light max-w-2xl leading-relaxed">
-              We replace speculative marketing with published statutory codes, certified land registries, and direct institutional underwriting. Every property dossier reflects authentic developer records and official conveyance schedules.
+
+            <p className="text-base sm:text-lg text-[#6b6b6b] font-light leading-relaxed">
+              We replace speculative marketing with published statutory codes, certified land registries, and direct institutional underwriting. Every property dossier reflects authentic developer filings and official conveyance schedules.
             </p>
+
+            <div className="pt-2 flex items-center gap-3 text-xs font-mono text-[#8e8e93]">
+              <ShieldCheck className="h-4 w-4 text-[#9f8144]" />
+              <span>Statutory Basis: Law No. 7 (2006) &bull; Law No. 8 (2007)</span>
+            </div>
           </div>
 
-          {/* Minimal 4-Pillar Factual Data Band (No boxes) */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-6 border-t border-black/[0.08]">
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#8e8e93] block">FOREIGN OWNERSHIP</span>
-              <div className="text-xl sm:text-2xl font-normal text-[#111111] tracking-tight">Designated Areas</div>
-              <p className="text-xs text-[#6b6b6b] font-light">Freehold zones under Reg. No. 3/2006</p>
+          {/* Right 7 cols: Verified Sovereign Pillars */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="p-7 rounded-2xl bg-[#ffffff] border border-[#e5e5ea] space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                01 &bull; DLD TRANSFER FEE
+              </span>
+              <div className="text-2xl sm:text-3xl font-light text-[#111111]">4.00% Combined</div>
+              <div className="text-xs font-mono text-[#9f8144]">Buyer 2% &bull; Seller 2%</div>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                Combined statutory transfer fee under Law No. 7 of 2006 (standard statutory allocation between buyer and seller).
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#8e8e93] block">DLD SALE REGISTRATION</span>
-              <div className="text-xl sm:text-2xl font-normal text-[#111111] tracking-tight">2% + 2% Share</div>
-              <p className="text-xs text-[#6b6b6b] font-light">4% combined statutory transfer fee</p>
+            <div className="p-7 rounded-2xl bg-[#ffffff] border border-[#e5e5ea] space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                02 &bull; TAXATION FRAMEWORK
+              </span>
+              <div className="text-xl sm:text-2xl font-light text-[#111111]">No UAE Personal Income Tax</div>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                UAE individuals are not subject to personal income tax. Corporate Tax may apply to natural persons conducting a Business or Business Activity where the applicable conditions and thresholds are met.
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#8e8e93] block">ESCROW AUDIT</span>
-              <div className="text-xl sm:text-2xl font-normal text-[#111111] tracking-tight">Law No. 8 of 2007</div>
-              <p className="text-xs text-[#6b6b6b] font-light">100% project-linked trust accounts</p>
+            <div className="p-7 rounded-2xl bg-[#ffffff] border border-[#e5e5ea] space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                03 &bull; MONETARY ANCHOR
+              </span>
+              <div className="text-2xl sm:text-3xl font-light text-[#111111]">1 USD = 3.6725 AED</div>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                Central Bank of the UAE statutory currency peg eliminating dollar exchange volatility.
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[#8e8e93] block">RESIDENCY THRESHOLD</span>
-              <div className="text-xl sm:text-2xl font-normal text-[#111111] tracking-tight">≥ AED 2,000,000</div>
-              <p className="text-xs text-[#6b6b6b] font-light">10-Year Golden Visa eligibility</p>
+            <div className="p-7 rounded-2xl bg-[#ffffff] border border-[#e5e5ea] space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93] block">
+                04 &bull; PROPERTY RESIDENCY
+              </span>
+              <div className="text-2xl sm:text-3xl font-light text-[#111111]">&ge; AED 2,000,000</div>
+              <p className="text-xs text-[#6b6b6b] font-light leading-relaxed">
+                Property investment threshold for residency route consideration. Golden Residency eligibility is subject to the applicable current authority rules.
+              </p>
             </div>
           </div>
 
         </div>
-      </section>
+      </Section>
 
       {/* ========================================================================= */}
-      {/* 03 — FLAGSHIP FEATURE PROPERTY: Full-Scale Gallery Spread (NO 3-card grid)*/}
+      {/* 03 — FEATURED PROPERTY: Grand Editorial Highlight (NO CARD GRID)          */}
       {/* ========================================================================= */}
-      <section className="py-28 sm:py-40 border-b border-black/[0.06] bg-[#ffffff]">
-        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 space-y-10">
+      <Section spacing="room-200" surface="white" containerSize="wide" borderBottom={false}>
+        <div className="space-y-10">
           
+          {/* Header row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div className="space-y-2">
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-                03 &bull; FLAGSHIP PROPERTY DOSSIER
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#111111]">
+              <Eyebrow>03 &bull; FEATURED PROPERTY DOSSIER</Eyebrow>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] text-[#111111]">
                 {featureProperty.title}
               </h2>
             </div>
-            <div className="text-left sm:text-right">
-              <span className="text-[10px] font-mono uppercase text-[#8e8e93] block">ASKING PRICE DIRECT</span>
-              <span className="text-2xl sm:text-3xl font-normal text-[#111111] tabular-nums font-mono">
-                {formatCurrency(featureProperty.asking_price)}
+            <div className="text-left sm:text-right font-mono">
+              <span className="text-[11px] text-[#8e8e93] uppercase block">Certified Asking Price</span>
+              <span className="text-2xl sm:text-3xl font-light text-[#111111]">
+                {formatCurrency(featureProperty.asking_price || 0)}
               </span>
             </div>
           </div>
 
-          {/* Expansive Architectural Gallery Visual */}
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-[#f5f5f3] border border-black/[0.06]">
+          {/* Large Cinematic Image (Escaping Card Container) */}
+          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-[#f5f5f3]">
             <Image
-              src={featureProperty.images[0]}
+              src={featureProperty.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=85'}
               alt={featureProperty.title}
               fill
-              priority
-              sizes="(max-width: 1440px) 100vw, 1280px"
-              className="object-cover transition-transform duration-700 hover:scale-[1.01]"
+              sizes="(max-width: 1440px) 100vw, 1440px"
+              className="object-cover transition-transform duration-700 ease-out hover:scale-[1.01]"
             />
-            <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#ffffff]/90 backdrop-blur-md text-[10px] font-mono text-[#111111] border border-black/[0.06]">
-              <span>Dorchester Collection &bull; Ready Title</span>
+            <div className="absolute top-6 left-6">
+              <SourceBadge sourceClass="OFFICIAL CORPORATE" sourceName={featureProperty.developer_name} />
             </div>
           </div>
 
-          {/* Minimal Horizontal Metadata Bar & Action */}
-          <div className="pt-2 flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-black/[0.06] pb-8 text-xs font-mono text-[#6b6b6b]">
-            <div className="flex flex-wrap items-center gap-6 text-[#111111]">
-              <span>{featureProperty.area_name}</span>
-              <span>&bull;</span>
-              <span>{featureProperty.bedrooms} Bedrooms</span>
-              <span>&bull;</span>
-              <span>{featureProperty.internal_area_sqft.toLocaleString()} SQFT</span>
-              <span>&bull;</span>
-              <span>Developer: {featureProperty.developer_name}</span>
-            </div>
-            <Link
-              href={`/properties/${featureProperty.id}`}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-[#111111] hover:text-[#9f8144] transition-colors shrink-0"
-            >
-              <span>View Complete Property Dossier</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 04 — SECONDARY PROPERTY REGISTER: Clean Financial Directory Table         */}
-      {/* ========================================================================= */}
-      <section className="py-24 sm:py-32 border-b border-black/[0.06] bg-[#fafaf8]">
-        <div className="w-full max-w-[1120px] mx-auto px-6 sm:px-8 space-y-10">
-          
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-                04 &bull; PROPERTY REGISTER
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-light tracking-tight text-[#111111]">
-                Curated Inventory
-              </h2>
-            </div>
-            <Link
-              href="/properties"
-              className="text-xs font-medium text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 transition-colors"
-            >
-              <span>Explore All Verified Assets ({VERIFIED_PROPERTIES.length})</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-
-          {/* Minimal Directory List Rows */}
-          <div className="divide-y divide-black/[0.06]">
-            {secondaryProperties.map((prop) => (
-              <div
-                key={prop.id}
-                className="py-6 flex flex-col md:flex-row md:items-center justify-between gap-4 group hover:bg-[#ffffff] px-4 rounded-xl transition-all"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-lg overflow-hidden bg-[#f5f5f3] shrink-0 border border-black/[0.06]">
-                    <Image
-                      src={prop.images[0]}
-                      alt={prop.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <Link
-                      href={`/properties/${prop.id}`}
-                      className="text-base font-normal text-[#111111] group-hover:text-[#9f8144] transition-colors block"
-                    >
-                      {prop.title}
-                    </Link>
-                    <span className="text-xs text-[#8e8e93] font-mono">
-                      {prop.area_name} &bull; {prop.bedrooms} Bed &bull; {prop.internal_area_sqft.toLocaleString()} SQFT
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between md:justify-end gap-6 text-right">
-                  <span className="text-base font-normal text-[#111111] font-mono tabular-nums">
-                    {formatCurrency(prop.asking_price)}
-                  </span>
-                  <Link
-                    href={`/properties/${prop.id}`}
-                    className="text-xs font-medium text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1"
-                  >
-                    <span>Dossier</span>
-                    <ArrowRight className="h-3 w-3 opacity-60" />
-                  </Link>
-                </div>
+          {/* Metadata Row & Editorial Summary: Balanced Horizontal Architecture */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-6 border-t border-[#e5e5ea]/80">
+            <div className="lg:col-span-8 space-y-3">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono uppercase text-[#6b6b6b]">
+                <span className="text-[#111111] font-medium">{featureProperty.area_name}</span>
+                <span>&bull;</span>
+                <span>{featureProperty.property_type}</span>
+                <span>&bull;</span>
+                <span>{featureProperty.bedrooms} Bedrooms</span>
+                <span>&bull;</span>
+                <span>{featureProperty.internal_area_sqft.toLocaleString()} SQ. FT</span>
+                <span>&bull;</span>
+                <span className="text-[#9f8144]">{featureProperty.completion_status}</span>
               </div>
-            ))}
+              <p className="text-sm sm:text-base text-[#484848] font-light leading-relaxed max-w-3xl">
+                {featureProperty.unit_descriptor || featureProperty.editorial_display_name}
+              </p>
+            </div>
+
+            <div className="lg:col-span-4 flex justify-start lg:justify-end">
+              <PrimaryLink href={`/properties/${featureProperty.id}`}>
+                View Complete Dossier
+              </PrimaryLink>
+            </div>
           </div>
 
         </div>
-      </section>
+      </Section>
 
       {/* ========================================================================= */}
-      {/* 05 — CAPITAL UNDERWRITING: Dark Architectural Chapter                      */}
+      {/* 04 — CAPITAL / UNDERWRITING: Financial Research Publication Feel          */}
       {/* ========================================================================= */}
-      <section className="py-32 sm:py-44 border-b border-white/[0.06] bg-[#0c0c0e] text-[#fafaf8]">
-        <div className="w-full max-w-[1120px] mx-auto px-6 sm:px-8 space-y-16">
+      <Section spacing="room-200" surface="subtle" containerSize="editorial" borderBottom={false}>
+        <div className="space-y-14">
           
-          <div className="max-w-3xl space-y-6">
-            <span className="text-[11px] font-mono tracking-[0.2em] uppercase text-[#9f8144] font-medium block">
-              05 &bull; CAPITAL UNDERWRITING
-            </span>
-            <h2 className="text-[36px] sm:text-[54px] lg:text-[64px] font-light tracking-[-0.03em] leading-[1.04] text-[#fafaf8]">
-              Underwrite the acquisition.
-            </h2>
-            <p className="text-base sm:text-xl text-[#a1a1a6] font-light leading-relaxed">
-              Real estate conveyance in Dubai operates under a deterministic statutory fee schedule governed by the Dubai Land Department and the Central Bank of the UAE.
-            </p>
-          </div>
-
-          {/* Minimal 3-Column Capital Breakdown */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pt-6 border-t border-white/[0.1]">
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-[#9f8144] uppercase block">01 &bull; DLD SALE REGISTRATION</span>
-              <div className="text-2xl font-light text-[#fafaf8]">4% Combined Fee</div>
-              <p className="text-xs text-[#8e8e93] font-light leading-relaxed">
-                Standard allocation: 2% Purchaser / 2% Vendor under Dubai Law No. 7 of 2006.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-[#9f8144] uppercase block">02 &bull; MORTGAGE REGISTRATION</span>
-              <div className="text-2xl font-light text-[#fafaf8]">0.25% of Mortgage</div>
-              <p className="text-xs text-[#8e8e93] font-light leading-relaxed">
-                Statutory tariff on financed principal debt under Central Bank and DLD schedules.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <span className="text-[10px] font-mono text-[#9f8144] uppercase block">03 &bull; TAX EXCLUSION</span>
-              <div className="text-2xl font-light text-[#fafaf8]">No Personal Income Tax</div>
-              <p className="text-xs text-[#8e8e93] font-light leading-relaxed">
-                Real estate investment income for natural persons is excluded from Corporate Tax (Cabinet Dec. 49/2023).
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-4">
-            <Link
-              href="/investment"
-              className="px-6 py-3 rounded-full bg-[#fafaf8] hover:bg-[#ffffff] text-[#0c0c0e] text-xs font-medium tracking-tight transition-all inline-flex items-center gap-2"
-            >
-              <span>Open Underwriting Desk</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 06 — SOVEREIGN RESIDENCY: Vertical Editorial Roadmap                      */}
-      {/* ========================================================================= */}
-      <section className="py-28 sm:py-40 border-b border-black/[0.06] bg-[#ffffff]">
-        <div className="w-full max-w-[1040px] mx-auto px-6 sm:px-8 space-y-16">
-          
-          <div className="space-y-4">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-              06 &bull; SOVEREIGN RESIDENCY
-            </span>
-            <h2 className="text-[36px] sm:text-[52px] font-light tracking-[-0.03em] text-[#111111]">
-              A property-based pathway to UAE residency.
+          <div className="space-y-3">
+            <Eyebrow>04 &bull; CAPITAL / UNDERWRITING</Eyebrow>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] leading-tight text-[#111111]">
+              UNDERWRITE<br />THE ACQUISITION.
             </h2>
             <p className="text-base sm:text-lg text-[#6b6b6b] font-light max-w-2xl leading-relaxed">
-              Statutory qualification criteria under Cabinet Resolution No. 65 of 2022. Foreign property investors holding freehold title deeds valued at AED 2,000,000 or greater qualify for a renewable 10-year Golden Visa.
+              Deterministic financial modeling based on published Dubai Land Department transfer schedules, trustee fees, and statutory registration codes.
             </p>
           </div>
 
-          {/* Clean 6-Stage Timeline (Minimal Grid) */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 pt-4">
-            {[
-              { step: '01', title: 'Eligibility', desc: 'Title deed audit' },
-              { step: '02', title: 'Value Audit', desc: '≥ AED 2,000,000' },
-              { step: '03', title: 'Dossier', desc: 'Passport & health policy' },
-              { step: '04', title: 'Filing', desc: 'DLD Cube submission' },
-              { step: '05', title: 'Biometrics', desc: 'DHA medical exam' },
-              { step: '06', title: 'Issuance', desc: '10-Year Golden Visa' },
-            ].map((st) => (
-              <div key={st.step} className="space-y-1.5 border-t border-black/[0.08] pt-4">
-                <span className="text-[10px] font-mono font-bold text-[#9f8144] block">{st.step}</span>
-                <div className="text-sm font-medium text-[#111111]">{st.title}</div>
-                <div className="text-xs text-[#8e8e93] font-light">{st.desc}</div>
+          {/* Interactive Instrument */}
+          <div className="p-8 sm:p-12 rounded-2xl bg-[#ffffff] border border-[#e5e5ea] space-y-10">
+            
+            {/* Value Selector */}
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#6b6b6b]">
+                  Property Acquisition Value (AED)
+                </span>
+                <SourceBadge sourceClass="USER PROVIDED" />
               </div>
-            ))}
-          </div>
+              
+              <div className="flex items-center gap-4">
+                <input
+                  type="range"
+                  min="2000000"
+                  max="50000000"
+                  step="500000"
+                  value={propertyPriceAED}
+                  onChange={(e) => setPropertyPriceAED(Number(e.target.value))}
+                  className="w-full accent-[#111111] cursor-pointer"
+                />
+              </div>
 
-          <div className="pt-2">
-            <Link
-              href="/residency"
-              className="text-xs font-medium text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1.5 transition-colors"
-            >
-              <span>Explore Sovereign Residency Dossier</span>
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
+              <div className="text-3xl sm:text-4xl font-light text-[#111111] font-mono tabular-nums">
+                {formatCurrency(propertyPriceAED)}
+              </div>
+            </div>
+
+            {/* Deterministic Breakdown Rows */}
+            <div className="space-y-3 pt-6 border-t border-[#e5e5ea]/80">
+              <DataRow
+                label="DLD Sale Registration (4.00%)"
+                value={formatCurrency(dldFee)}
+                source={<SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="Law No. 7 (2006)" />}
+              />
+              <DataRow
+                label="DLD Admin & Map Fee"
+                value={formatCurrency(adminFee)}
+                source={<SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="DLD Tariff" />}
+              />
+              <DataRow
+                label="Registration Trustee Fee"
+                value={formatCurrency(trusteeFee)}
+                source={<SourceBadge sourceClass="OFFICIAL REGULATORY" sourceName="Authorized Trustee" />}
+              />
+              <DataRow
+                label="Statutory Conveyance & Legal Estimate"
+                value={formatCurrency(conveyanceEstimate)}
+                source={<SourceBadge sourceClass="CALCULATED" sourceName="Standard Protocol" />}
+              />
+            </div>
+
+            {/* Total Acquisition Output */}
+            <div className="pt-6 border-t-2 border-[#111111] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#111111] font-semibold">
+                  TOTAL ACQUISITION OUTLAY
+                </span>
+                <p className="text-xs text-[#6b6b6b] font-light">
+                  Inclusive of all statutory transfer fees and registration charges.
+                </p>
+              </div>
+              <div className="text-3xl sm:text-4xl font-light text-[#111111] font-mono tabular-nums">
+                {formatCurrency(totalAcquisitionCost)}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between pt-2">
+              <Link
+                href="/investment"
+                className="text-xs font-mono uppercase tracking-wider text-[#9f8144] hover:underline flex items-center gap-1.5"
+              >
+                <span>Open Complete Institutional Underwriting Engine</span>
+                <ArrowRight className="h-3 w-3" />
+              </Link>
+            </div>
+
           </div>
 
         </div>
-      </section>
+      </Section>
 
       {/* ========================================================================= */}
-      {/* 07 — DUBAI GEOGRAPHIC ATLAS: Architectural Directory                      */}
+      {/* 05 — RESIDENCY: Property-Based Residency in the UAE (Vertical Sequence)   */}
       {/* ========================================================================= */}
-      <section className="py-28 sm:py-40 border-b border-black/[0.06] bg-[#fafaf8]">
-        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
+      <Section spacing="room-200" surface="white" containerSize="editorial" borderBottom={false}>
+        <div className="space-y-14">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-                07 &bull; DUBAI ATLAS
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#111111]">
-                Prime Freehold Districts
-              </h2>
-            </div>
-            <Link
-              href="/districts"
-              className="text-xs font-medium text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 transition-colors"
-            >
-              <span>Complete Geographic Atlas ({DUBAI_AREAS.length} Districts)</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="space-y-3">
+            <Eyebrow>05 &bull; RESIDENCY</Eyebrow>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] text-[#111111]">
+              PROPERTY-BASED<br />RESIDENCY IN THE UAE.
+            </h2>
+            <p className="text-base sm:text-lg text-[#6b6b6b] font-light max-w-2xl leading-relaxed">
+              Statutory progression under Cabinet Resolution No. 65 of 2022 for the 10-Year Renewable Golden Visa.
+            </p>
           </div>
 
-          {/* Asymmetric 2-Column Gallery / Directory Split */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left 55%: Featured District Image */}
-            <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#f5f5f3] border border-black/[0.06]">
+          {/* Sequential 6-Stage Timeline */}
+          <div className="divide-y divide-[#e5e5ea]/80 border-t border-b border-[#e5e5ea]/80">
+            <TimelineStep
+              number="01"
+              title="Eligibility & Freehold Zoning"
+              description="Real estate asset must be situated within designated foreign freehold zones established pursuant to Regulation No. 3 of 2006."
+              source="Dubai Land Department (DLD)"
+            />
+            <TimelineStep
+              number="02"
+              title="Ownership & Qualifying Threshold"
+              description="Total property gross valuation must equal or exceed AED 2,000,000. Off-plan properties qualify if verified on the DLD Oqood registry with approved payment milestones."
+              source="Cabinet Resolution No. 65 of 2022"
+            />
+            <TimelineStep
+              number="03"
+              title="Statutory Documentation"
+              description="Submission of official Title Deed / Oqood registration, valid passport, UAE health insurance policy, and certified title clearance certificate."
+              source="GDRFA Dubai & DLD Cube"
+            />
+            <TimelineStep
+              number="04"
+              title="Application Lodgement"
+              description="Direct electronic lodgement via the DLD Cube or GDRFA investor services portal without commercial intermediary friction."
+              source="DLD Cube Investor Portal"
+            />
+            <TimelineStep
+              number="05"
+              title="Authority Review & Medical Clearance"
+              description="Statutory background clearance, biometric capture, and sovereign medical fitness examination."
+              source="Dubai Health Authority (DHA) / GDRFA"
+            />
+            <TimelineStep
+              number="06"
+              title="Golden Visa & Emirates ID Issuance"
+              description="Issuance of the 10-Year renewable self-sponsored residency visa and digital/physical Emirates ID card."
+              source="Federal Authority for Identity and Citizenship (ICP)"
+            />
+          </div>
+
+          <div className="pt-2 flex items-center justify-between">
+            <PrimaryLink href="/residency">
+              Explore Golden Visa Framework
+            </PrimaryLink>
+          </div>
+
+        </div>
+      </Section>
+
+      {/* ========================================================================= */}
+      {/* 06 — DUBAI ATLAS: Geographic Visual & Luxury District Directory            */}
+      {/* ========================================================================= */}
+      <Section spacing="room-200" surface="subtle" containerSize="wide" borderBottom={false}>
+        <div className="space-y-14">
+          
+          <div className="space-y-3">
+            <Eyebrow>06 &bull; DUBAI ATLAS</Eyebrow>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] text-[#111111]">
+              GEOGRAPHIC ATLAS.
+            </h2>
+            <p className="text-base sm:text-lg text-[#6b6b6b] font-light max-w-2xl leading-relaxed">
+              Cartographic and zoning intelligence across the principal designated freehold enclaves of the Emirate.
+            </p>
+          </div>
+
+          {/* Asymmetric 5/7 Split: Interactive District Visual + Luxury Directory */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 items-start">
+            
+            {/* Left 5 cols: Active District Visual Dossier */}
+            <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#f5f5f3] border border-[#e5e5ea]">
                 <Image
-                  src={atlasDistricts[0].image || 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80'}
-                  alt={atlasDistricts[0].name}
+                  src={activeDistrict.image || 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80'}
+                  alt={activeDistrict.name}
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover transition-all duration-700"
                 />
-                <div className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-[#ffffff]/90 backdrop-blur-md text-[10px] font-mono text-[#111111] border border-black/[0.06]">
-                  <span>{atlasDistricts[0].name} &bull; {atlasDistricts[0].sector}</span>
+                <div className="absolute top-4 left-4">
+                  <SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="DLD Zone" />
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#9f8144]">
+                  ACTIVE DISTRICT PREVIEW
+                </span>
+                <h3 className="text-2xl font-light text-[#111111]">
+                  {activeDistrict.name}
+                </h3>
+                <p className="text-sm text-[#484848] font-light leading-relaxed">
+                  {activeDistrict.description}
+                </p>
+                <div className="pt-2">
+                  <SecondaryLink href={`/districts/${activeDistrict.slug}`}>
+                    Explore {activeDistrict.name} Dossier
+                  </SecondaryLink>
                 </div>
               </div>
             </div>
 
-            {/* Right 45%: Clean District Directory List */}
-            <div className="lg:col-span-5 divide-y divide-black/[0.06]">
-              {atlasDistricts.map((dist) => (
-                <div key={dist.id} className="py-4 flex items-center justify-between group">
-                  <div>
-                    <Link
-                      href={`/areas/${dist.slug}`}
-                      className="text-lg font-normal text-[#111111] group-hover:text-[#9f8144] transition-colors"
-                    >
-                      {dist.name}
-                    </Link>
-                    <span className="text-xs text-[#8e8e93] font-mono block">
-                      Dev: {dist.master_developer} &bull; DXB: {dist.transit.airport_mins_dxb}m
+            {/* Right 7 cols: District Directory Rows */}
+            <div className="lg:col-span-7 divide-y divide-[#e5e5ea] border-t border-b border-[#e5e5ea]">
+              {atlasDistricts.map((district, idx) => (
+                <div
+                  key={district.slug}
+                  onMouseEnter={() => setActiveDistrictIndex(idx)}
+                  className={`group flex items-center justify-between py-6 px-4 transition-colors cursor-pointer ${
+                    activeDistrictIndex === idx ? 'bg-[#ffffff]' : 'hover:bg-[#ffffff]/50'
+                  }`}
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-[#8e8e93] w-8">
+                        0{idx + 1}
+                      </span>
+                      <span className="text-xl sm:text-2xl font-light text-[#111111] group-hover:text-[#9f8144] transition-colors">
+                        {district.name}
+                      </span>
+                    </div>
+                    <span className="text-xs font-mono text-[#6b6b6b] pl-11 block">
+                      {district.sector} &bull; Freehold Zone
                     </span>
                   </div>
-                  <Link
-                    href={`/areas/${dist.slug}`}
-                    className="text-xs font-mono text-[#8e8e93] group-hover:text-[#111111] transition-colors"
-                  >
-                    Explore &rarr;
-                  </Link>
+
+                  <div className="flex items-center gap-4">
+                    <Link
+                      href={`/districts/${district.slug}`}
+                      className="p-2 rounded-full border border-[#e5e5ea] group-hover:border-[#111111] transition-colors"
+                    >
+                      <ArrowUpRight className="h-4 w-4 text-[#8e8e93] group-hover:text-[#111111]" />
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
+
           </div>
 
         </div>
-      </section>
+      </Section>
 
       {/* ========================================================================= */}
-      {/* 08 — DEVELOPERS: Minimal Registry Directory Table                         */}
+      {/* 07 — DEVELOPERS: Developer Registry (Clean Vertical Directory)             */}
       {/* ========================================================================= */}
-      <section className="py-28 sm:py-40 border-b border-black/[0.06] bg-[#ffffff]">
-        <div className="w-full max-w-[1120px] mx-auto px-6 sm:px-8 space-y-10">
+      <Section spacing="room-200" surface="white" containerSize="editorial" borderBottom={false}>
+        <div className="space-y-14">
           
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-                08 &bull; DEVELOPER REGISTRY
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#111111]">
-                DLD Master Developers
+            <div className="space-y-3">
+              <Eyebrow>07 &bull; DEVELOPER REGISTRY</Eyebrow>
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] text-[#111111]">
+                MASTER DEVELOPERS.
               </h2>
             </div>
             <Link
               href="/developers"
-              className="text-xs font-medium text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 transition-colors"
+              className="text-xs font-mono uppercase tracking-wider text-[#6b6b6b] hover:text-[#111111] flex items-center gap-1.5"
             >
               <span>View Full Registry</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
-          <div className="divide-y divide-black/[0.06]">
+          {/* Directory Rows */}
+          <div className="divide-y divide-[#e5e5ea] border-t border-b border-[#e5e5ea]">
             {keyDevelopers.map((dev) => (
-              <div
+              <DirectoryRow
                 key={dev.id}
-                className="py-5 flex flex-col md:flex-row md:items-center justify-between gap-3 group"
-              >
-                <div>
-                  <div className="text-base font-normal text-[#111111] group-hover:text-[#9f8144] transition-colors">
-                    {dev.name}
-                  </div>
-                  <span className="text-xs text-[#8e8e93] font-mono">
-                    DLD Reg. No. {dev.dld_developer_number} &bull; Founded {dev.founded_year} &bull; {dev.headquarters}
-                  </span>
-                </div>
-                <div className="text-xs font-mono text-[#6b6b6b]">
-                  {dev.notable_communities.slice(0, 2).join(', ')}
-                </div>
-              </div>
+                href={`/developers/${dev.slug}`}
+                leftLabel={`Est. ${dev.founded_year || 'Verified'}`}
+                title={dev.name}
+                subtitle={`${dev.headquarters || 'Dubai, UAE'} &bull; ${(dev.notable_communities || []).slice(0, 2).join(', ') || 'Major Master Developments'}`}
+                badge={<SourceBadge sourceClass="OFFICIAL CORPORATE" sourceName="Licensed Developer" />}
+                rightValue="DLD Verified"
+              />
             ))}
           </div>
 
         </div>
-      </section>
+      </Section>
 
       {/* ========================================================================= */}
-      {/* 09 — CURATED LIFESTYLE: Asymmetric Editorial Spread                       */}
+      {/* 08 — LIFESTYLE: Magazine Layout (Full Bleed, Asymmetric Imagery, Disciplines)*/}
       {/* ========================================================================= */}
-      <section className="py-28 sm:py-40 border-b border-black/[0.06] bg-[#fafaf8]">
-        <div className="w-full max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 space-y-12">
+      <Section spacing="room-200" surface="subtle" containerSize="wide" borderBottom={false}>
+        <div className="space-y-16">
           
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-                09 &bull; CURATED ACCESS
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-light tracking-tight text-[#111111]">
-                Lifestyle Infrastructure &amp; Protocols
-              </h2>
-            </div>
-            <Link
-              href="/lifestyle"
-              className="text-xs font-medium text-[#111111] hover:text-[#9f8144] inline-flex items-center gap-1 transition-colors"
-            >
-              <span>Lifestyle Protocols</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </Link>
+          <div className="space-y-3 max-w-2xl">
+            <Eyebrow>08 &bull; CURATED LIFESTYLE</Eyebrow>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] text-[#111111]">
+              AN EXPANDED HORIZON.
+            </h2>
+            <p className="text-base sm:text-lg text-[#6b6b6b] font-light leading-relaxed">
+              Curated intelligence covering private aviation, maritime berths, Michelin-starred culinary venues, and bespoke desert sanctuaries.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-8 space-y-3">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#f5f5f3] border border-black/[0.06]">
+          {/* Asymmetric Magazine Image Pair */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 sm:gap-12 items-center">
+            <div className="md:col-span-7">
+              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-[#f5f5f3]">
                 <Image
-                  src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1400&q=80"
-                  alt="Michelin Culinary Dubai"
+                  src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1600&q=85"
+                  alt="Dubai Maritime & Yachting"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
                   className="object-cover"
                 />
-              </div>
-              <div className="flex justify-between text-xs font-mono text-[#8e8e93] pt-1">
-                <span>Ossiano &bull; Atlantis The Palm</span>
-                <span>Michelin Inspection Record</span>
+                <div className="absolute bottom-4 left-4 px-3 py-1 bg-[#ffffff]/90 rounded-full text-[10px] font-mono text-[#484848]">
+                  <span>Dubai Harbour &bull; Maritime Access</span>
+                </div>
               </div>
             </div>
 
-            <div className="lg:col-span-4 space-y-6">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#f5f5f3] border border-black/[0.06]">
+            <div className="md:col-span-5 space-y-6">
+              <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-[#f5f5f3]">
                 <Image
-                  src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=800&q=80"
-                  alt="Superyacht Harbours"
+                  src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=85"
+                  alt="Dubai High Hospitality"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover"
                 />
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-light text-[#111111]">Marine &amp; Aviation</h3>
-                <p className="text-xs text-[#6b6b6b] leading-relaxed">
-                  Direct connectivity to VIP Jet Terminals at Al Maktoum International Airport (DWC) and superyacht berths across Dubai Harbour.
+                <span className="text-xs font-mono uppercase text-[#9f8144] tracking-widest">
+                  CURATED DIRECTORY
+                </span>
+                <p className="text-sm text-[#484848] font-light leading-relaxed">
+                  Verified editorial selections across Michelin gastronomy, Al Maktoum private aviation, and private equestrian clubs.
                 </p>
               </div>
             </div>
           </div>
 
+          {/* Lifestyle Disciplines Strip */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 pt-10 border-t border-[#e5e5ea]">
+            {[
+              { label: 'YACHTS & BERTHS', href: '/lifestyle/yachts' },
+              { label: 'PRIVATE AVIATION', href: '/lifestyle/aviation' },
+              { label: 'MICHELIN DINING', href: '/lifestyle/dining' },
+              { label: 'DESERT RETREATS', href: '/lifestyle/safari' },
+              { label: 'CULTURE & ARTS', href: '/lifestyle/clubs' },
+              { label: 'CONCIERGE MANDATES', href: '/lifestyle/concierge' },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="group py-3 space-y-1 block hover:border-b border-[#111111]"
+              >
+                <span className="text-[11px] font-mono uppercase text-[#111111] group-hover:text-[#9f8144] transition-colors block">
+                  {item.label}
+                </span>
+                <span className="text-[10px] font-mono text-[#8e8e93] block">Explore Access &rarr;</span>
+              </Link>
+            ))}
+          </div>
+
         </div>
-      </section>
+      </Section>
 
       {/* ========================================================================= */}
-      {/* 10 — PRIVATE CLIENT: Quiet Editorial Close                                */}
+      {/* 09 — PRIVATE CLIENT: Quiet Final Emotional Section                        */}
       {/* ========================================================================= */}
-      <section className="py-36 sm:py-48 bg-[#ffffff]">
-        <div className="w-full max-w-[880px] mx-auto px-6 sm:px-8 text-center space-y-8">
+      <Section spacing="room-240" surface="white" containerSize="reading" borderBottom={false}>
+        <div className="space-y-10 text-left sm:text-center mx-auto">
+          <Eyebrow className="text-left sm:text-center">09 &bull; PRIVATE CLIENT</Eyebrow>
           
-          <div className="space-y-4">
-            <span className="text-[11px] font-mono font-medium uppercase tracking-[0.2em] text-[#9f8144] block">
-              10 &bull; PRIVATE CLIENT DESK
-            </span>
-            <h2 className="text-4xl sm:text-6xl lg:text-[68px] font-light tracking-[-0.035em] text-[#111111]">
-              A more discreet way to acquire.
-            </h2>
-            <p className="text-base sm:text-xl text-[#6b6b6b] font-light max-w-xl mx-auto leading-relaxed pt-2">
-              For principals, institutional investors, and family offices seeking a structured, factual approach to navigating Dubai acquisitions and Golden Visa residency.
-            </p>
+          <h2 className="text-[40px] sm:text-[60px] lg:text-[72px] font-light tracking-[-0.035em] leading-[1.02] text-[#111111]">
+            A more discreet<br />way to acquire.
+          </h2>
+
+          <p className="text-lg sm:text-xl text-[#6b6b6b] font-light leading-relaxed max-w-xl mx-auto">
+            Direct advisory mandates for family offices, sovereign entities, and private investors seeking off-market acquisitions and bespoke conveyancing structuring in Dubai.
+          </p>
+
+          <div className="pt-4 flex items-center justify-start sm:justify-center">
+            <PrimaryLink href="/private-client" className="px-9 py-4 text-sm">
+              Private Client Enquiry
+            </PrimaryLink>
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/private-client"
-              className="px-8 py-3.5 rounded-full bg-[#111111] hover:bg-[#2a2a2e] text-[#fafaf8] text-xs font-medium tracking-tight transition-all"
-            >
-              Request Private Advisory Mandate &rarr;
-            </Link>
+          <div className="pt-6 text-[11px] font-mono text-[#8e8e93]">
+            <span>Confidentiality Protected &bull; Licensed Advisory Mandate</span>
           </div>
-
         </div>
-      </section>
+      </Section>
 
     </div>
   )
