@@ -217,3 +217,31 @@ input[type='range']:hover::-moz-range-thumb {
 .input-editorial-underline::placeholder {
   color: #a1a1a6;
 }
+
+/* Institutional Intelligence Ticker Animation */
+@keyframes ticker-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: ticker-scroll 38s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker {
+    animation: none;
+    transform: none;
+  }
+}
