@@ -2,11 +2,10 @@
 
 import * as React from 'react'
 import Link from 'next/link'
-import { PageIntro, SectionHeader } from '@/components/layout/layout-primitives'
+import { PageIntro, Eyebrow } from '@/components/layout/layout-primitives'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
-  ShieldCheck,
   Lock,
   EyeOff,
   Database,
@@ -16,16 +15,16 @@ import {
 
 export default function PrivacyPage() {
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-28 selection:bg-accent/20 selection:text-[#1d1d1f]">
+    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-28 selection:bg-[#c9a962]/20 selection:text-[#f5f5f7]">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Data Protection & UAE Federal Decree-Law No. 45/2021"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="UAE Data Office & Federal Law" />}
-        title={<>Privacy Policy<span className="text-gradient-gold">.</span></>}
+        title={<>Privacy Policy<span className="text-[#c9a962]">.</span></>}
         description="Statutory data governance and confidential client protection framework under UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL) and international privacy standards."
       />
 
-      <main className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-16">
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 space-y-16">
         {/* 2. STATUTORY PRIVACY QUADRANT */}
         <CadranQuadrant
           eyebrow="UAE PDPL STATUTORY PROTOCOLS"
@@ -58,95 +57,80 @@ export default function PrivacyPage() {
             },
             {
               title: 'Cross-Border Data Transfer',
-              value: 'SOVEREIGN HOST',
-              subtext: 'All server operations comply with UAE sovereign cloud and data residency safeguards with TLS 1.3 end-to-end encryption.',
-              delta: 'TLS 1.3 SECURE',
+              value: 'ADEQUACY RULE',
+              subtext: 'International data transfers comply with statutory cross-border safeguard frameworks verified under UAE data protection laws.',
+              delta: 'ADEQUATE SHIELD',
               isPositive: true,
-              statutoryRef: 'PDPL Art. 22 (Transfer Safeguards)',
+              statutoryRef: 'PDPL Art. 22 (Cross-Border)',
             },
           ]}
         />
 
-        {/* 3. DETAILED STATUTORY CLAUSES */}
-        <div className="space-y-10">
-          <SectionHeader
-            align="center"
-            eyebrow="Statutory Provisions"
-            title="Privacy & Data Governance Terms"
-            description="Comprehensive legal terms governing personal information handling, local storage vaults, and advisory communications."
-          />
+        {/* 3. DETAILED PRIVACY CLAUSES */}
+        <div className="space-y-6">
+          <div className="mb-8 space-y-2">
+            <Eyebrow>DATA GOVERNANCE</Eyebrow>
+            <h2 className="text-2xl sm:text-3xl font-light text-[#f5f5f7]">
+              Client Privacy Commitments
+            </h2>
+          </div>
 
-          <div className="space-y-6 text-xs text-[#6e6e73] leading-relaxed">
-            {/* Clause 1 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2 text-[#1d1d1f] font-bold text-sm">
-                <ShieldCheck className="h-4 w-4 text-accent" />
-                <h3>1. Statutory Jurisdiction & Scope</h3>
+          <div className="space-y-4 text-xs text-[#a1a1aa] leading-relaxed font-light">
+            <div className="p-6 sm:p-8 rounded-xs bg-[#111116] border border-white/[0.08] space-y-3">
+              <div className="flex items-center gap-2 text-[#f5f5f7] font-medium text-sm">
+                <Lock className="h-4 w-4 text-[#c9a962]" />
+                <h3>1. Collection of Data &amp; Local Storage</h3>
               </div>
-              <p className="text-[#6e6e73]">
-                This Privacy Policy establishes the protocol by which the Cristian Văduva Private Client Desk collects, processes, and protects information submitted through this platform. In accordance with UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection (PDPL), processing is conducted solely for lawful advisory facilitation and transaction due diligence.
+              <p>
+                The platform utilizes localized client-side browser storage (localStorage) for managing saved searches, property shortlists, and analytical comparison sets. We do not transmit or monetize client preference profiles with third-party marketing networks or lead resellers.
               </p>
             </div>
 
-            {/* Clause 2 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2 text-[#1d1d1f] font-bold text-sm">
-                <Database className="h-4 w-4 text-accent" />
-                <h3>2. Local Browser Storage & Workspace Isolation</h3>
+            <div className="p-6 sm:p-8 rounded-xs bg-[#111116] border border-white/[0.08] space-y-3">
+              <div className="flex items-center gap-2 text-[#f5f5f7] font-medium text-sm">
+                <EyeOff className="h-4 w-4 text-[#c9a962]" />
+                <h3>2. Zero Behavioral Surveillance</h3>
               </div>
-              <p className="text-[#6e6e73]">
-                Property shortlists, financial scenario worksheets, comparison matrices, and saved acquisition filters created within the Client Workspace are retained in your local browser storage (localStorage). This data remains exclusively on your hardware device and is not transmitted to external marketing databases or advertising networks.
+              <p>
+                We do not deploy invasive third-party cross-site cookies, pixel trackers, or fingerprinting scripts. Our analytics adhere to privacy-preserving standards focused solely on aggregate technical performance and route reliability.
               </p>
             </div>
 
-            {/* Clause 3 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2 text-[#1d1d1f] font-bold text-sm">
-                <Lock className="h-4 w-4 text-accent" />
-                <h3>3. Confidential Mandate Inquiries</h3>
+            <div className="p-6 sm:p-8 rounded-xs bg-[#111116] border border-white/[0.08] space-y-3">
+              <div className="flex items-center gap-2 text-[#f5f5f7] font-medium text-sm">
+                <Database className="h-4 w-4 text-[#c9a962]" />
+                <h3>3. Private Client Mandate Handling</h3>
               </div>
-              <p className="text-[#6e6e73]">
-                When you initiate a private mandate through the Private Client Desk or schedule a viewing inspection, details including your name, direct contact coordinates, capital allocation tier, and preferred property specifications are transmitted securely via encrypted channels directly to our authorized executive advisory personnel.
+              <p>
+                Contact details and acquisition parameters submitted through our Private Client intake desk are treated as strictly confidential commercial communications. Information is used exclusively to evaluate acquisition criteria, verify KYC/AML requirements, and coordinate official conveyancing.
               </p>
             </div>
 
-            {/* Clause 4 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2 text-[#1d1d1f] font-bold text-sm">
-                <EyeOff className="h-4 w-4 text-accent" />
-                <h3>4. Non-Disclosure & Anti-Spam Policy</h3>
+            <div className="p-6 sm:p-8 rounded-xs bg-[#111116] border border-white/[0.08] space-y-3">
+              <div className="flex items-center gap-2 text-[#f5f5f7] font-medium text-sm">
+                <FileText className="h-4 w-4 text-[#c9a962]" />
+                <h3>4. Statutory Rights &amp; Data Erasure Requests</h3>
               </div>
-              <p className="text-[#6e6e73]">
-                We maintain an absolute prohibition against selling, renting, or leasing client registries to third-party telemarketers or unauthorized real estate lead aggregators. Client files are handled with single family office discretion.
-              </p>
-            </div>
-
-            {/* Clause 5 */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 space-y-3 shadow-sm">
-              <div className="flex items-center gap-2 text-[#1d1d1f] font-bold text-sm">
-                <FileText className="h-4 w-4 text-accent" />
-                <h3>5. Data Subject Rights & Contact</h3>
-              </div>
-              <p className="text-[#6e6e73]">
-                Under Articles 13, 14, and 15 of Federal Decree-Law No. 45/2021, data subjects maintain the right to access, rectify, restrict, or request the immediate erasure of their personal profile. Direct all statutory compliance inquiries to: <strong className="text-[#1d1d1f]">privacy@cristianvaduva.com</strong>.
+              <p>
+                Under UAE Federal Decree-Law No. 45 of 2021, data subjects maintain the right to access, rectify, restrict processing of, or permanently delete personal records held on file. Inquiries may be directed to our data compliance officer.
               </p>
             </div>
           </div>
         </div>
 
-        {/* 4. PRIVATE CLIENT LINK */}
-        <div className="p-8 rounded-3xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+        {/* 4. PRIVACY DESK CTA */}
+        <div className="p-8 rounded-xs border border-white/[0.08] bg-[#111116] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="space-y-1">
-            <h3 className="text-base font-extrabold text-[#1d1d1f]">Have specific data sovereignty questions?</h3>
-            <p className="text-xs text-[#6e6e73]">
-              Consult with our private client desk regarding family office confidentiality structures and NDA protocols.
+            <h3 className="text-base font-medium text-[#f5f5f7]">Questions regarding your data rights?</h3>
+            <p className="text-xs text-[#a1a1aa] font-light">
+              Our compliance office handles all statutory data inquiries within 48 hours.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="px-6 py-3 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-colors flex items-center gap-2 shrink-0 cursor-pointer shadow-sm hover:shadow-md"
+            className="px-6 py-3 rounded-xs bg-[#c9a962] text-[#08080a] hover:bg-[#dbbe7a] text-xs font-mono uppercase tracking-wider font-semibold transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
           >
-            <span>Access Private Desk</span>
+            <span>Contact Advisory Compliance</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>

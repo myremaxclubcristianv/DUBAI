@@ -34,27 +34,27 @@ export default function CompaniesPage() {
   })
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
-      {/* 1. APPLE HERO INTRO */}
+    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-32 selection:bg-[#c9a962]/20 selection:text-[#f5f5f7]">
+      {/* 1. EDITORIAL HERO INTRO */}
       <PageIntro
         eyebrow="Corporate & Sovereign Registry"
         badge={<SourceBadge status="VERIFIED" sourceName="DED & DFM Public Disclosures" />}
-        title="Institutional Enterprises."
-        subtitle="Comprehensive directory of Dubai’s sovereign investment institutions, major commercial banks, premier insurance underwriters, and world-leading free zone authorities."
+        title={<>Institutional Enterprises<span className="text-[#c9a962]">.</span></>}
+        description="Comprehensive directory of Dubai’s sovereign investment institutions, major commercial banks, premier insurance underwriters, and world-leading free zone authorities."
       />
 
-      <div className="w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-12">
         {/* 2. SEARCH & FILTER BAR */}
-        <div className="bg-white p-4 sm:p-6 rounded-3xl border border-black/5 flex flex-col md:flex-row gap-4 justify-between items-center">
+        <div className="bg-[#111116] p-4 sm:p-6 rounded-xs border border-white/[0.08] flex flex-col md:flex-row gap-4 justify-between items-center">
           {/* Search Box */}
           <div className="relative w-full md:w-96">
-            <Search className="h-4 w-4 text-[#86868b] absolute left-3.5 top-3.5" />
+            <Search className="h-4 w-4 text-[#71717a] absolute left-3.5 top-3.5" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search companies, sectors, or sovereign funds..."
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-black/10 rounded-full text-xs text-[#1d1d1f] focus:outline-none focus:border-[#b8860b]"
+              className="w-full pl-10 pr-4 py-2.5 bg-black/40 border border-white/10 rounded-xs text-xs text-[#f5f5f7] placeholder-[#71717a] focus:outline-none focus:border-[#c9a962]"
             />
           </div>
 
@@ -64,10 +64,10 @@ export default function CompaniesPage() {
               <button
                 key={cat.val}
                 onClick={() => setSelectedCategory(cat.val)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
+                className={`px-3 py-1.5 rounded-xs text-xs font-mono uppercase tracking-wider transition-all ${
                   selectedCategory === cat.val
-                    ? 'bg-[#1d1d1f] text-white shadow-xs'
-                    : 'bg-white border border-black/10 text-[#6e6e73] hover:text-[#1d1d1f] hover:border-black/20'
+                    ? 'bg-[#c9a962] text-[#08080a] font-semibold'
+                    : 'bg-black/30 border border-white/10 text-[#a1a1aa] hover:text-[#f5f5f7] hover:border-white/20'
                 }`}
               >
                 {cat.label}
@@ -77,69 +77,69 @@ export default function CompaniesPage() {
         </div>
 
         {/* 3. COMPANIES CARD GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCompanies.map((company) => (
             <div
               key={company.id}
-              className="bg-white rounded-3xl p-8 border border-black/10 shadow-[0_2px_12px_rgba(0,0,0,0.03)] hover:shadow-lg transition-all flex flex-col justify-between"
+              className="bg-[#111116] rounded-xs p-8 border border-white/[0.08] hover:border-[#c9a962]/40 transition-all flex flex-col justify-between group"
             >
               <div>
                 {/* Header Tag */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-[#1d1d1f] border border-black/5">
+                  <span className="px-2.5 py-0.5 rounded-xs text-[10px] font-mono uppercase tracking-wider bg-white/5 text-[#c9a962] border border-white/10">
                     {company.ownership.replace(/_/g, ' ')}
                   </span>
-                  <span className="text-[11px] font-mono font-semibold text-[#86868b]">
+                  <span className="text-[11px] font-mono text-[#71717a]">
                     Est. {company.establishedYear}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#1d1d1f] mb-1">
+                <h3 className="text-xl font-light text-[#f5f5f7] mb-1 group-hover:text-[#c9a962] transition-colors">
                   {company.name}
                 </h3>
-                <div className="text-xs font-arabic text-[#86868b] mb-3">
+                <div className="text-xs font-arabic text-[#71717a] mb-3">
                   {company.arabicName}
                 </div>
 
-                <p className="text-xs font-semibold text-[#b8860b] mb-4">
+                <p className="text-xs font-mono uppercase text-[#c9a962] mb-4">
                   {company.sector}
                 </p>
 
-                <p className="text-xs text-[#515154] leading-relaxed mb-6">
+                <p className="text-xs text-[#a1a1aa] leading-relaxed mb-6 font-light">
                   {company.description}
                 </p>
 
                 {/* Metric Strip */}
-                <div className="bg-white p-4 rounded-2xl border border-black/5 mb-6">
-                  <span className="text-[10px] uppercase font-bold text-[#86868b] block">
+                <div className="bg-black/40 p-4 rounded-xs border border-white/[0.06] mb-6">
+                  <span className="text-[10px] uppercase font-mono tracking-wider text-[#71717a] block">
                     {company.scaleLabel}
                   </span>
-                  <span className="text-lg font-extrabold text-[#1d1d1f] mt-0.5 block">
+                  <span className="text-lg font-mono font-medium text-[#f5f5f7] mt-0.5 block">
                     {company.scaleMetric}
                   </span>
                 </div>
 
                 {/* Details List */}
-                <div className="space-y-2 text-xs text-[#6e6e73] mb-6">
+                <div className="space-y-2 text-xs text-[#a1a1aa] mb-6 border-t border-white/[0.06] pt-4">
                   <div className="flex justify-between">
-                    <span className="text-[#86868b]">Headquarters:</span>
-                    <span className="font-medium text-[#1d1d1f] text-right truncate pl-2">{company.headquarters}</span>
+                    <span className="text-[#71717a]">Headquarters:</span>
+                    <span className="font-mono text-[#f5f5f7] text-right truncate pl-2">{company.headquarters}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[#86868b]">Leadership:</span>
-                    <span className="font-medium text-[#1d1d1f] text-right truncate pl-2">{company.keyLeadership}</span>
+                    <span className="text-[#71717a]">Leadership:</span>
+                    <span className="font-mono text-[#f5f5f7] text-right truncate pl-2">{company.keyLeadership}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[#86868b]">Regulator:</span>
-                    <span className="font-medium text-[#1d1d1f] text-right truncate pl-2">{company.regulatoryAuthority}</span>
+                    <span className="text-[#71717a]">Regulator:</span>
+                    <span className="font-mono text-[#c9a962] text-right truncate pl-2">{company.regulatoryAuthority}</span>
                   </div>
                 </div>
               </div>
 
               {/* Action Button */}
-              <div className="pt-4 border-t border-black/5 flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-[11px] text-[#86868b]">
-                  <ShieldCheck className="h-3.5 w-3.5 text-[#b8860b]" />
+              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#71717a]">
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#c9a962]" />
                   <span>Verified Registry</span>
                 </div>
 
@@ -147,9 +147,9 @@ export default function CompaniesPage() {
                   href={company.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xs bg-white/5 hover:bg-[#c9a962] hover:text-[#08080a] text-xs font-mono text-[#f5f5f7] transition-all border border-white/10"
                 >
-                  <span>Official Portal</span>
+                  <span>Portal</span>
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </div>

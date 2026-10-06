@@ -79,71 +79,71 @@ const BUYING_STAGES: BuyingStage[] = [
     subtitle: 'Verified Registry Shortlisting & Physical Inspection',
     classification: 'PLATFORM_WORKFLOW',
     classificationLabel: 'PLATFORM WORKFLOW',
-    description: 'Shortlist verified properties and projects with authenticated DLD developer numbers, escrow registration, and exact unit specifications. Schedule private walkthroughs or snagging reviews.',
-    documents: ['Architectural Floor Plan', 'Project Brochure / Spec Sheet', 'Unit Number Identification'],
-    statutory_fees: 'Zero inspection fees',
-    responsibilities: 'Buyer selects candidate assets from verified database inventory.',
-    statutory_source: 'DLD Official Project & Developer Registry.'
+    description: 'Select verified property asset from official developer filings or certified secondary listings. Confirm property title deed number, Makani geographic locator, and RERA permit verification.',
+    documents: ['Property Dossier', 'DLD Title Deed Copy / Oqood Certificate', 'RERA Permit Verification'],
+    statutory_fees: 'Zero viewing or directory fees',
+    responsibilities: 'Buyer coordinates viewing and confirms developer escrow account validity.',
+    statutory_source: 'Dubai Law No. 85 of 2006 Regulating the Real Estate Brokers Register.'
   },
   {
     step: '05',
-    title: 'Title & Developer Due Diligence',
-    subtitle: 'Escrow Account Validation & Title Ledger Check',
-    classification: 'OFFICIAL_REQUIREMENT',
-    classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'Execute formal title search on the DLD REST platform for ready units to verify unencumbered ownership. For off-plan purchases, confirm the developer has an active escrow account with project completion percentage verified by DLD engineering audits.',
-    documents: ['DLD Title Deed E-Certificate', 'DLD Escrow Account Certificate', 'Building Completion Certificate'],
-    statutory_fees: 'Zero fee for online title verification',
-    responsibilities: 'Buyer / Advisor verifies legal title integrity and escrow account compliance.',
-    statutory_source: 'Law No. 8 of 2007 Concerning Escrow Accounts for Real Estate Development in Dubai.'
+    title: 'Formal Offer & Terms Alignment',
+    subtitle: 'Price, Inclusions & Conveyance Timelines',
+    classification: 'GENERAL_GUIDANCE',
+    classificationLabel: 'GENERAL GUIDANCE',
+    description: 'Negotiate price, payment schedule, movable inventory inclusions, tenancy notice periods (if tenanted), and target transfer date with the seller through licensed RERA advisory brokers.',
+    documents: ['Letter of Intent (LOI) / Formal Offer Memo', 'Tenancy Contract & Ejari (if tenanted)'],
+    statutory_fees: 'Zero statutory submission fees',
+    responsibilities: 'Parties agree on commercial covenants before signing legally binding contracts.',
+    statutory_source: 'Law No. 26 of 2007 (as amended by Law No. 33 of 2008) on Landlord and Tenant Relationships.'
   },
   {
     step: '06',
-    title: 'Commercial Offer & Form F (MOU) Execution',
-    subtitle: 'Standardized Contract F & 10% Security Deposit',
+    title: 'Contract Execution (RERA Unified Form F)',
+    subtitle: 'Binding Memorandum of Understanding (MOU)',
     classification: 'OFFICIAL_REQUIREMENT',
     classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'Parties agree on commercial terms and sign the standardized RERA Contract F (Form F) generated via the official Dubai REST portal. The buyer lodges a 10% security deposit cheque held in escrow by the licensed brokerage.',
-    documents: ['Unified RERA Form F Contract', 'Passport Copies & Emirates IDs', '10% Deposit Cheque'],
-    statutory_fees: 'Zero contract generation fee on DLD portal',
-    responsibilities: 'RERA-certified broker prepares Form F; Buyer and Seller sign digitally or physically.',
-    statutory_source: 'Dubai Law No. 85 of 2006 Regulating Real Estate Brokers in Dubai.'
+    description: 'Buyer and Seller sign the official RERA Unified Form F (Contract of Sale) generated via the Dubai REST portal. The contract establishes all terms, penalties, deposit provisions, and closing milestones.',
+    documents: ['RERA Unified Form F', 'Passport & Emirates ID Copies', 'Title Deed Copy'],
+    statutory_fees: 'Zero form generation fee (RERA mandatory unified contract)',
+    responsibilities: 'Both parties sign electronically via Dubai REST app or in counter-signatory presence.',
+    statutory_source: 'RERA Circulars on Unified Real Estate Contracts (Forms A, B, and F).'
   },
   {
     step: '07',
-    title: 'Financing & Mortgage Approval (If Applicable)',
-    subtitle: 'CBUAE Mortgage Standards & Bank NOC',
-    classification: 'VERIFY_WITH_PROFESSIONAL',
-    classificationLabel: 'VERIFY WITH PROFESSIONAL',
-    description: 'For financed transactions, secure final mortgage sanction from a UAE Central Bank licensed bank (maximum 80% LTV for expatriate first homes ≤ AED 5M). Lender issues final offer letter and valuation confirmation.',
-    documents: ['Bank Final Offer Letter (FOL)', 'Property Valuation Report', 'Salary / Corporate Financials'],
-    statutory_fees: 'Bank Valuation Fee (AED 2,500–3,500) • DLD Mortgage Reg Fee (0.25% of loan + AED 250 Title Deed + AED 20 Knowledge/Innovation)',
-    responsibilities: 'Mortgage lender conducts property appraisal and prepares discharge/security paperwork.',
-    statutory_source: 'Central Bank of the UAE Mortgage Regulations.'
+    title: 'Deposit Lodgement into Escrow',
+    subtitle: '10% Security Deposit Manager Cheque',
+    classification: 'OFFICIAL_REQUIREMENT',
+    classificationLabel: 'OFFICIAL REQUIREMENT',
+    description: 'Buyer deposits a 10% security deposit (standard manager cheque payable to the seller or held in custody by a licensed trustee/broker escrow until title conveyance).',
+    documents: ['Manager Cheque for 10% Deposit', 'Signed Deposit Custody Acknowledgement'],
+    statutory_fees: 'Zero statutory escrow fee (standard conveyance practice)',
+    responsibilities: 'Escrow custodian holds cheque and issues written acknowledgment.',
+    statutory_source: 'Dubai Law No. 85 of 2006 Regulating the Real Estate Brokers Register.'
   },
   {
     step: '08',
-    title: 'Developer NOC Clearance (No Objection Certificate)',
-    subtitle: 'Service Charge Settlement & Resale Clearance',
-    classification: 'OFFICIAL_REQUIREMENT',
-    classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'Seller applies to the master developer (e.g., Emaar, Nakheel, Meraas) for an official No Objection Certificate (NOC). The developer verifies that all community service charges and utility arrears are fully settled.',
-    documents: ['Executed Form F', 'Title Deed Copy', 'Service Charge Receipts / Clearance Letter'],
-    statutory_fees: 'Developer NOC fee: typically AED 500 to AED 5,000 + 5% VAT',
-    responsibilities: 'Seller pays outstanding community charges; Developer issues electronic NOC.',
-    statutory_source: 'DLD Master Community Developer Regulations.'
+    title: 'Mortgage Pre-Approval & Property Valuation (If Financed)',
+    subtitle: 'Banking Sanction & DLD Property Appraisal',
+    classification: 'VERIFY_WITH_PROFESSIONAL',
+    classificationLabel: 'VERIFY WITH PROFESSIONAL',
+    description: 'For financed purchases, lender conducts official property appraisal and issues final offer letter. Mortgage contract is registered with the Dubai Land Department upon conveyance.',
+    documents: ['Bank Final Offer Letter', 'Official Property Valuation Report', 'Mortgage Pre-Approval'],
+    statutory_fees: 'Mortgage Registration: 0.25% of loan value + AED 290 admin fee; Bank valuation: ~AED 2,500 – 3,500',
+    responsibilities: 'Bank valuator inspects property; lender coordinates mortgage discharge/issuance.',
+    statutory_source: 'CBUAE Mortgage Lending Regulations & DLD Mortgage Tariffs.'
   },
   {
     step: '09',
-    title: 'Statutory Fee Settlement & Manager Cheques',
-    subtitle: 'Preparation of Official Bank Cheques for DLD Closing',
+    title: 'Developer NOC Application (No Objection Certificate)',
+    subtitle: 'Master Developer Resale Clearance',
     classification: 'OFFICIAL_REQUIREMENT',
     classificationLabel: 'OFFICIAL REQUIREMENT',
-    description: 'Buyer prepares official UAE bank manager cheques for purchase balance, 2% DLD transfer fee, AED 4,200 Registration Trustee fee, and broker commission.',
-    documents: ['Bank Manager Cheques', 'Original Emirates IDs / Passports', 'Approved Developer NOC'],
-    statutory_fees: 'Manager Cheque issuance fee (typically AED 25 per cheque charged by bank)',
-    responsibilities: 'Buyer obtains guaranteed bank manager cheques from their UAE banking institution.',
-    statutory_source: 'DLD Conveyancing Guidelines & Central Bank Standard.'
+    description: 'Seller applies to master developer (Emaar, Nakheel, Meraas, Damac, Sobha) for a No Objection Certificate verifying zero outstanding service charges or statutory violations.',
+    documents: ['Signed Form F', 'Title Deed Copy', 'Clearance Receipts for Service Charges', 'Passport Copies'],
+    statutory_fees: 'Developer NOC Fee: AED 500 – AED 5,000 (+5% VAT) depending on developer schedule',
+    responsibilities: 'Seller applies and settles any outstanding service charges with the developer.',
+    statutory_source: 'Dubai Law No. 6 of 2019 Concerning Ownership of Jointly Owned Real Property.'
   },
   {
     step: '10',
@@ -189,53 +189,53 @@ export default function BuyingGuidePage() {
   const getBadgeStyle = (classification: ClassificationType) => {
     switch (classification) {
       case 'OFFICIAL_REQUIREMENT':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200'
+        return 'bg-emerald-950/40 text-emerald-400 border-emerald-500/30'
       case 'GENERAL_GUIDANCE':
-        return 'bg-blue-50 text-blue-700 border-blue-200'
+        return 'bg-sky-950/40 text-sky-300 border-sky-500/30'
       case 'PLATFORM_WORKFLOW':
-        return 'bg-amber-50 text-amber-700 border-amber-200'
+        return 'bg-[#181820] text-[#c9a962] border-[#c9a962]/30'
       case 'VERIFY_WITH_PROFESSIONAL':
-        return 'bg-purple-50 text-purple-700 border-purple-200'
+        return 'bg-purple-950/40 text-purple-300 border-purple-500/30'
       default:
-        return 'bg-zinc-100 text-zinc-700 border-zinc-200'
+        return 'bg-white/5 text-[#a1a1aa] border-white/10'
     }
   }
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-32 selection:bg-[#0071e3]/10 selection:text-[#1d1d1f]">
+    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-32">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
-        eyebrow="Statutory Conveyancing & Acquisition Roadmap"
-        badge={<SourceBadge status="UAE GOVERNMENT" sourceName="DLD & RERA Standard Framework" />}
+        eyebrow="Statutory Conveyancing &amp; Acquisition Roadmap"
+        badge={<SourceBadge status="UAE GOVERNMENT" sourceName="DLD &amp; RERA Standard Framework" />}
         title="Buying Guide."
-        description="12-Stage acquisition & conveyancing roadmap. From initial objective definition to DLD registration trustee title deed transfer and Golden Visa processing."
+        description="12-Stage acquisition &amp; conveyancing roadmap. From initial objective definition to DLD registration trustee title deed transfer and Golden Visa processing."
       />
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 space-y-14">
         {/* 2. CLASSIFICATION LEGEND */}
-        <div className="p-5 rounded-3xl border border-black/10 bg-white flex flex-wrap items-center gap-3 text-xs shadow-xs">
-          <span className="font-bold text-[#1d1d1f] uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-emerald-50 text-emerald-700 border-emerald-200">
+        <div className="p-4 sm:p-5 rounded-xs border border-white/10 bg-[#111116] flex flex-wrap items-center gap-3 text-xs">
+          <span className="font-semibold text-[#f5f5f7] uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-emerald-950/40 text-emerald-400 border-emerald-500/30">
             <span>[OFFICIAL REQUIREMENT]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-blue-50 text-blue-700 border-blue-200">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-sky-950/40 text-sky-300 border-sky-500/30">
             <span>[GENERAL GUIDANCE]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-amber-50 text-amber-700 border-amber-200">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-[#181820] text-[#c9a962] border-[#c9a962]/30">
             <span>[PLATFORM WORKFLOW]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full border text-[11px] font-mono font-medium bg-purple-50 text-purple-700 border-purple-200">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-purple-950/40 text-purple-300 border-purple-500/30">
             <span>[VERIFY WITH PROFESSIONAL]</span>
           </div>
         </div>
 
         {/* 2B. STATUTORY CONVEYANCING CADRANS */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-black/10 pb-4">
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-[#b8860b]">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-[#c9a962]">
               STATUTORY CONVEYANCING CADRANS
             </span>
-            <span className="text-xs font-mono text-[#86868b]">Executive Council Res. No. 30 of 2013</span>
+            <span className="text-xs font-mono text-[#71717a]">Executive Council Res. No. 30 of 2013</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -334,76 +334,76 @@ export default function BuyingGuidePage() {
             return (
               <div
                 key={stage.step}
-                className="rounded-3xl border border-black/10 bg-white overflow-hidden transition-all shadow-[0_2px_12px_rgba(0,0,0,0.03)] apple-card-hover"
+                className="rounded-sm border border-white/10 bg-[#111116] overflow-hidden transition-all hover:border-white/25"
               >
                 <button
                   type="button"
                   onClick={() => setExpandedStep(isExpanded ? null : stage.step)}
-                  className="w-full p-6 sm:p-7 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
+                  className="w-full p-5 sm:p-6 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
                 >
                   <div className="flex items-start sm:items-center gap-5">
-                    <span className="text-xl sm:text-2xl font-bold font-mono text-[#b8860b] shrink-0">
+                    <span className="text-xl sm:text-2xl font-light font-mono text-[#c9a962] shrink-0">
                       {stage.step}
                     </span>
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="text-base sm:text-lg font-bold text-[#1d1d1f] tracking-tight">
+                        <span className="text-base sm:text-lg font-light text-[#f5f5f7] tracking-tight">
                           {stage.title}
                         </span>
-                        <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border ${getBadgeStyle(stage.classification)}`}>
+                        <span className={`px-2 py-0.5 rounded-xs text-[9px] font-mono font-semibold border ${getBadgeStyle(stage.classification)}`}>
                           [{stage.classificationLabel}]
                         </span>
                       </div>
-                      <p className="text-xs text-[#6e6e73]">{stage.subtitle}</p>
+                      <p className="text-xs text-[#8e8e93] font-mono">{stage.subtitle}</p>
                     </div>
                   </div>
 
-                  <div className="p-2.5 rounded-xl bg-white text-[#1d1d1f] shrink-0">
+                  <div className="p-2 rounded-xs bg-[#181820] text-[#f5f5f7] shrink-0 border border-white/10">
                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </div>
                 </button>
 
                 {isExpanded && (
-                  <div className="px-6 sm:px-7 pb-7 pt-4 border-t border-black/10 bg-[#fbfbfd] space-y-6 animate-in fade-in duration-150">
-                    <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed max-w-4xl">
+                  <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-white/10 bg-[#0d0d11] space-y-5 animate-in fade-in duration-150">
+                    <p className="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed max-w-4xl font-light">
                       {stage.description}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                      <div className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-3 shadow-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b] tracking-widest">
+                      <div className="p-4 rounded-xs bg-[#111116] border border-white/10 flex flex-col justify-between space-y-2">
+                        <span className="text-[10px] font-mono uppercase font-semibold text-[#c9a962] tracking-widest">
                           Required Documentation
                         </span>
-                        <ul className="space-y-2 text-[#6e6e73] pt-2 border-t border-black/5 mt-auto">
+                        <ul className="space-y-1.5 text-[#8e8e93] pt-2 border-t border-white/10 font-light">
                           {stage.documents.map((doc, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle2 className="h-3.5 w-3.5 text-[#b8860b] shrink-0 mt-0.5" />
-                              <span className="text-[#1d1d1f] font-medium">{doc}</span>
+                              <CheckCircle2 className="h-3.5 w-3.5 text-[#c9a962] shrink-0 mt-0.5" />
+                              <span className="text-[#f5f5f7]">{doc}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-3 shadow-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b] tracking-widest">
-                          Statutory & Professional Fees
+                      <div className="p-4 rounded-xs bg-[#111116] border border-white/10 flex flex-col justify-between space-y-2">
+                        <span className="text-[10px] font-mono uppercase font-semibold text-[#c9a962] tracking-widest">
+                          Statutory &amp; Professional Fees
                         </span>
-                        <p className="text-[#1d1d1f] leading-relaxed pt-2 border-t border-black/5 mt-auto font-medium">
+                        <p className="text-[#f5f5f7] leading-relaxed pt-2 border-t border-white/10 font-mono text-xs">
                           {stage.statutory_fees}
                         </p>
                       </div>
 
-                      <div className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col justify-between h-full space-y-3 shadow-xs">
-                        <span className="text-[10px] font-mono uppercase font-bold text-[#b8860b] tracking-widest">
+                      <div className="p-4 rounded-xs bg-[#111116] border border-white/10 flex flex-col justify-between space-y-2">
+                        <span className="text-[10px] font-mono uppercase font-semibold text-[#c9a962] tracking-widest">
                           Primary Responsibility
                         </span>
-                        <p className="text-[#1d1d1f] leading-relaxed pt-2 border-t border-black/5 mt-auto font-medium">
+                        <p className="text-[#a1a1aa] leading-relaxed pt-2 border-t border-white/10 font-light">
                           {stage.responsibilities}
                         </p>
                       </div>
                     </div>
 
-                    <div className="pt-4 border-t border-black/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] font-mono text-[#86868b]">
+                    <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#71717a]">
                       <span>Legal Authority: {stage.statutory_source}</span>
                       <span>DLD Verification: Current Official Framework</span>
                     </div>
@@ -415,28 +415,28 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 4. INTAKE PROMPT */}
-        <div className="p-8 sm:p-12 rounded-3xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-xs">
+        <div className="p-6 sm:p-10 rounded-sm border border-white/15 bg-[#111116] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-[0_12px_40px_rgba(0,0,0,0.8)]">
           <div className="space-y-1.5 max-w-xl">
-            <h3 className="text-xl font-bold text-[#1d1d1f] tracking-tight">
+            <h3 className="text-xl font-light text-[#f5f5f7] tracking-tight">
               Ready to initiate a transaction or verify portfolio due diligence?
             </h3>
-            <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
+            <p className="text-xs text-[#8e8e93] leading-relaxed font-light">
               Cristian Văduva Private Client Advisory coordinates direct DLD conveyancing, trustee settlements, and investor residency files.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#1d1d1f] text-white hover:bg-[#000000] rounded-full text-xs font-bold uppercase tracking-wider transition-all shrink-0 cursor-pointer shadow-sm"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#c9a962] text-[#08080a] hover:bg-[#dbbe7a] rounded-xs text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all shrink-0 cursor-pointer shadow-[0_0_15px_rgba(201,169,98,0.2)]"
           >
             <span>Access Private Client Desk</span>
-            <ArrowRight className="h-4 w-4 text-white/70" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
         {/* 5. LEGAL NOTICE */}
-        <div className="p-6 rounded-3xl border border-black/10 bg-white text-xs text-[#6e6e73] space-y-2">
-          <div className="flex items-center gap-2 font-bold text-[#1d1d1f]">
-            <Info className="h-4 w-4 text-[#b8860b]" />
+        <div className="p-6 rounded-sm border border-white/10 bg-[#111116] text-xs text-[#8e8e93] space-y-2 font-light">
+          <div className="flex items-center gap-2 font-medium text-[#f5f5f7]">
+            <Info className="h-4 w-4 text-[#c9a962]" />
             <span>Statutory Conveyancing Disclaimer</span>
           </div>
           <p className="leading-relaxed text-[11px]">

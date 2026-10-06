@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { X, CheckCircle2, AlertCircle } from 'lucide-react'
+import { X, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react'
 
 export type InterestCategory = 'PROPERTY' | 'INVESTMENT' | 'RESIDENCY' | 'LIFESTYLE' | 'PRIVATE CLIENT'
 
@@ -107,29 +107,29 @@ function ContactModalDialog({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/40 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
       role="dialog"
       aria-modal="true"
       aria-labelledby="contact-modal-title"
     >
       <div
         ref={modalRef}
-        className="w-full max-w-[620px] max-h-[92vh] flex flex-col bg-[#ffffff] border border-[#e5e5ea] shadow-2xl my-auto text-[#111111] overflow-hidden"
+        className="w-full max-w-[620px] max-h-[92vh] flex flex-col bg-[#0d0d11] border border-white/15 shadow-[0_16px_50px_rgba(0,0,0,0.9)] my-auto text-[#f5f5f7] rounded-sm overflow-hidden"
       >
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-5 border-b border-[#e5e5ea] shrink-0">
+        <div className="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-5 border-b border-white/10 shrink-0 bg-[#08080a]">
           <div className="space-y-0.5">
-            <span className="text-[10px] font-mono uppercase tracking-[0.14em] text-[#9f8144] block">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c9a962] block font-semibold">
               Private Client Desk
             </span>
-            <h2 id="contact-modal-title" className="text-base sm:text-lg font-light tracking-tight text-[#111111]">
-              Direct Advisory Intake
+            <h2 id="contact-modal-title" className="text-base sm:text-lg font-light tracking-tight text-[#f5f5f7]">
+              Direct Advisory Intake &amp; Mandate
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-[#8e8e93] hover:text-[#111111] transition-colors cursor-pointer"
+            className="p-1.5 text-[#8e8e93] hover:text-[#f5f5f7] transition-colors cursor-pointer rounded-xs hover:bg-white/5"
             aria-label="Close contact dialog"
           >
             <X className="h-5 w-5" />
@@ -137,25 +137,25 @@ function ContactModalDialog({
         </div>
 
         {/* Modal Body */}
-        <div className="p-5 sm:p-8 overflow-y-auto">
+        <div className="p-5 sm:p-8 overflow-y-auto space-y-5">
           {status === 'SUCCESS' ? (
             <div className="py-10 text-center space-y-4 animate-in fade-in duration-200">
-              <div className="w-12 h-12 mx-auto rounded-full bg-[#9f8144]/10 flex items-center justify-center text-[#9f8144]">
+              <div className="w-12 h-12 mx-auto rounded-full bg-[#c9a962]/10 border border-[#c9a962]/30 flex items-center justify-center text-[#c9a962]">
                 <CheckCircle2 className="h-6 w-6" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-mono text-xs uppercase tracking-[0.16em] text-[#111111] font-semibold">
-                  MESSAGE RECEIVED
+                <h3 className="font-mono text-xs uppercase tracking-[0.2em] text-[#c9a962] font-semibold">
+                  MANDATE TRANSMITTED
                 </h3>
-                <p className="text-sm font-light text-[#6b6b6b] max-w-[380px] mx-auto">
-                  Your enquiry has been sent to the Private Client Desk.
+                <p className="text-sm font-light text-[#a1a1aa] max-w-[380px] mx-auto">
+                  Your enquiry has been delivered directly to the Private Client Desk. A senior advisor will review your brief confidentially.
                 </p>
               </div>
               <div className="pt-4">
                 <button
                   type="button"
                   onClick={handleReset}
-                  className="px-6 py-2.5 bg-[#111111] text-[#ffffff] hover:bg-[#9f8144] transition-colors text-xs font-mono uppercase tracking-[0.12em]"
+                  className="px-6 py-2.5 bg-[#c9a962] text-[#08080a] hover:bg-[#dbbe7a] transition-colors text-xs font-mono uppercase tracking-[0.14em] font-semibold rounded-xs cursor-pointer"
                 >
                   Close
                 </button>
@@ -177,8 +177,8 @@ function ContactModalDialog({
 
               {/* Interest Selector */}
               <div className="space-y-2">
-                <label className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
-                  Area of Interest <span className="text-[#9f8144]">*</span>
+                <label className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
+                  Area of Interest <span className="text-[#c9a962]">*</span>
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {(['PROPERTY', 'INVESTMENT', 'RESIDENCY', 'LIFESTYLE', 'PRIVATE CLIENT'] as InterestCategory[]).map(
@@ -187,10 +187,10 @@ function ContactModalDialog({
                         key={cat}
                         type="button"
                         onClick={() => setInterest(cat)}
-                        className={`px-3 py-2 text-left text-[11px] font-mono uppercase tracking-[0.08em] border transition-colors cursor-pointer ${
+                        className={`px-3 py-2 text-left text-[10px] font-mono uppercase tracking-[0.08em] border rounded-xs transition-colors cursor-pointer ${
                           interest === cat
-                            ? 'bg-[#111111] text-[#ffffff] border-[#111111]'
-                            : 'bg-[#fafaf8] text-[#6b6b6b] border-[#e5e5ea] hover:border-[#111111] hover:text-[#111111]'
+                            ? 'bg-[#c9a962] text-[#08080a] border-[#c9a962] font-semibold'
+                            : 'bg-[#141418] text-[#a1a1aa] border-white/10 hover:border-[#c9a962]/50 hover:text-[#f5f5f7]'
                         }`}
                       >
                         {cat}
@@ -203,8 +203,8 @@ function ContactModalDialog({
               {/* Name & Email Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-name" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
-                    Full Name <span className="text-[#9f8144]">*</span>
+                  <label htmlFor="contact-name" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
+                    Full Name <span className="text-[#c9a962]">*</span>
                   </label>
                   <input
                     ref={nameInputRef}
@@ -215,13 +215,13 @@ function ContactModalDialog({
                     autoComplete="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. John Smith"
-                    className="w-full px-3.5 py-2.5 bg-[#fafaf8] border border-[#e5e5ea] focus:border-[#111111] focus:bg-[#ffffff] outline-none text-xs text-[#111111] transition-colors"
+                    placeholder="e.g. Lord Harrington"
+                    className="w-full px-3.5 py-2.5 bg-[#141418] border border-white/10 focus:border-[#c9a962] outline-none text-xs text-[#f5f5f7] rounded-xs transition-colors"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-email" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
-                    Email Address <span className="text-[#9f8144]">*</span>
+                  <label htmlFor="contact-email" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
+                    Email Address <span className="text-[#c9a962]">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -231,8 +231,8 @@ function ContactModalDialog({
                     autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="e.g. john@example.com"
-                    className="w-full px-3.5 py-2.5 bg-[#fafaf8] border border-[#e5e5ea] focus:border-[#111111] focus:bg-[#ffffff] outline-none text-xs text-[#111111] transition-colors"
+                    placeholder="e.g. client@familyoffice.com"
+                    className="w-full px-3.5 py-2.5 bg-[#141418] border border-white/10 focus:border-[#c9a962] outline-none text-xs text-[#f5f5f7] rounded-xs transition-colors"
                   />
                 </div>
               </div>
@@ -240,7 +240,7 @@ function ContactModalDialog({
               {/* Phone & Country Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-phone" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
+                  <label htmlFor="contact-phone" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
                     Phone (with country code)
                   </label>
                   <input
@@ -250,12 +250,12 @@ function ContactModalDialog({
                     autoComplete="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="e.g. +44 7700 900123"
-                    className="w-full px-3.5 py-2.5 bg-[#fafaf8] border border-[#e5e5ea] focus:border-[#111111] focus:bg-[#ffffff] outline-none text-xs text-[#111111] transition-colors"
+                    placeholder="e.g. +971 50 000 0000"
+                    className="w-full px-3.5 py-2.5 bg-[#141418] border border-white/10 focus:border-[#c9a962] outline-none text-xs text-[#f5f5f7] rounded-xs transition-colors"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label htmlFor="contact-country" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
+                  <label htmlFor="contact-country" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
                     Country of Residence
                   </label>
                   <input
@@ -265,16 +265,16 @@ function ContactModalDialog({
                     autoComplete="country-name"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    placeholder="e.g. United Kingdom"
-                    className="w-full px-3.5 py-2.5 bg-[#fafaf8] border border-[#e5e5ea] focus:border-[#111111] focus:bg-[#ffffff] outline-none text-xs text-[#111111] transition-colors"
+                    placeholder="e.g. United Kingdom / Monaco"
+                    className="w-full px-3.5 py-2.5 bg-[#141418] border border-white/10 focus:border-[#c9a962] outline-none text-xs text-[#f5f5f7] rounded-xs transition-colors"
                   />
                 </div>
               </div>
 
               {/* Budget / Range */}
               <div className="space-y-1.5">
-                <label htmlFor="contact-budget" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
-                  Budget / Mandate Size <span className="text-[10px] text-[#8e8e93] font-normal">(Optional)</span>
+                <label htmlFor="contact-budget" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
+                  Budget / Mandate Size <span className="text-[10px] text-[#71717a] font-normal">(Optional)</span>
                 </label>
                 <input
                   id="contact-budget"
@@ -282,15 +282,15 @@ function ContactModalDialog({
                   type="text"
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
-                  placeholder="e.g. AED 5,000,000 / USD 1.5M+"
-                  className="w-full px-3.5 py-2.5 bg-[#fafaf8] border border-[#e5e5ea] focus:border-[#111111] focus:bg-[#ffffff] outline-none text-xs text-[#111111] transition-colors"
+                  placeholder="e.g. AED 15,000,000 / USD 4M+"
+                  className="w-full px-3.5 py-2.5 bg-[#141418] border border-white/10 focus:border-[#c9a962] outline-none text-xs text-[#f5f5f7] rounded-xs transition-colors"
                 />
               </div>
 
               {/* Message */}
               <div className="space-y-1.5">
-                <label htmlFor="contact-message" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#6b6b6b]">
-                  Brief / Requirement Details <span className="text-[#9f8144]">*</span>
+                <label htmlFor="contact-message" className="block text-[11px] font-mono uppercase tracking-[0.12em] text-[#8e8e93]">
+                  Brief / Requirement Details <span className="text-[#c9a962]">*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -299,37 +299,38 @@ function ContactModalDialog({
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Specify asset types, district preferences, investment horizon or residency requirements..."
-                  className="w-full px-3.5 py-2.5 bg-[#fafaf8] border border-[#e5e5ea] focus:border-[#111111] focus:bg-[#ffffff] outline-none text-xs text-[#111111] transition-colors resize-none"
+                  placeholder="Specify asset types, district preferences, investment horizon or golden residency requirements..."
+                  className="w-full px-3.5 py-2.5 bg-[#141418] border border-white/10 focus:border-[#c9a962] outline-none text-xs text-[#f5f5f7] rounded-xs transition-colors resize-none"
                 />
               </div>
 
               {/* Error Alert */}
               {status === 'ERROR' && (
-                <div className="p-3 bg-[#fafaf8] border border-[#e5e5ea] flex items-start gap-2.5 text-[#111111] text-xs animate-in fade-in duration-150">
-                  <AlertCircle className="h-4 w-4 text-[#8e8e93] shrink-0 mt-0.5" />
+                <div className="p-3 bg-red-950/40 border border-red-500/30 flex items-start gap-2.5 text-red-300 text-xs rounded-xs animate-in fade-in duration-150">
+                  <AlertCircle className="h-4 w-4 text-red-400 shrink-0 mt-0.5" />
                   <div className="space-y-0.5">
                     <p className="font-mono text-[10px] uppercase tracking-wider font-semibold">
                       MESSAGE NOT SENT
                     </p>
-                    <p className="text-[#6b6b6b]">
-                      {errorMessage || 'Please try again or use the direct contact option.'}
+                    <p className="text-red-200">
+                      {errorMessage || 'Please try again or contact the desk directly.'}
                     </p>
                   </div>
                 </div>
               )}
 
               {/* Actions */}
-              <div className="pt-2 flex items-center justify-between border-t border-[#e5e5ea]">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#8e8e93]">
-                  Confidential Transmission
-                </span>
+              <div className="pt-2 flex items-center justify-between border-t border-white/10">
+                <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#71717a]">
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#c9a962]" />
+                  <span>Confidential Transmission</span>
+                </div>
                 <button
                   type="submit"
                   disabled={status === 'SUBMITTING'}
-                  className="px-6 py-2.5 bg-[#111111] text-[#ffffff] hover:bg-[#9f8144] disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-xs font-mono uppercase tracking-[0.12em] font-medium cursor-pointer"
+                  className="px-6 py-2.5 bg-[#c9a962] hover:bg-[#dbbe7a] text-[#08080a] disabled:opacity-50 disabled:cursor-not-allowed transition-all text-xs font-mono uppercase tracking-[0.14em] font-semibold cursor-pointer rounded-xs shadow-[0_0_12px_rgba(201,169,98,0.2)]"
                 >
-                  {status === 'SUBMITTING' ? 'Sending…' : 'Submit Enquiry'}
+                  {status === 'SUBMITTING' ? 'Transmitting…' : 'Submit Mandate'}
                 </button>
               </div>
             </form>

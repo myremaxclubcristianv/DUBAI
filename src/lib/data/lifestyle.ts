@@ -802,3 +802,64 @@ export const VERIFIED_LIFESTYLE: LifestyleRecord[] = [
 export function getLifestyleByCategory(category: string): LifestyleRecord[] {
   return VERIFIED_LIFESTYLE.filter((item) => item.category === category)
 }
+
+export interface LifestyleCategoryMeta {
+  id: string
+  title: string
+  href: string
+  image: string
+  count: string
+  description: string
+}
+
+export const LIFESTYLE_CATEGORIES: LifestyleCategoryMeta[] = [
+  {
+    id: 'aviation',
+    title: 'Private Aviation & FBOs',
+    href: '/lifestyle/aviation',
+    image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1200&q=80',
+    count: 'DWC / DXB',
+    description: 'Executive terminals, VIP lounges, and private jet charters at Al Maktoum International and Dubai International.'
+  },
+  {
+    id: 'yachts',
+    title: 'Superyachts & Marinas',
+    href: '/lifestyle/yachts',
+    image: 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80',
+    count: 'HARBOUR & BULGARI',
+    description: 'Deep-water moorings for vessels up to 160m at Dubai Harbour, Bulgari Marina, and Dubai Marina.'
+  },
+  {
+    id: 'dining',
+    title: 'Michelin Gastronomy',
+    href: '/lifestyle/dining',
+    image: 'https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1200&q=80',
+    count: 'MICHELIN GUIDE',
+    description: 'Two-star and one-star fine dining institutions led by internationally acclaimed master chefs.'
+  },
+  {
+    id: 'hotels',
+    title: 'Palatial Hospitality',
+    href: '/lifestyle/hotels',
+    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
+    count: 'PALATIAL SUITES',
+    description: 'Ultra-luxury suites and branded hotel residences at Bulgari Resort, Atlantis The Royal, and The Lana.'
+  },
+  {
+    id: 'clubs',
+    title: 'Private Member Clubs',
+    href: '/lifestyle/clubs',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    count: 'DIFC & DOWNTOWN',
+    description: 'Discreet salons, private dining rooms, and arts institutions for sovereign principals.'
+  },
+  {
+    id: 'safari',
+    title: 'Desert Conservation',
+    href: '/lifestyle/safari',
+    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
+    count: 'DDCR PROTECTED',
+    description: 'Private desert expeditions and luxury eco-lodges within Dubai Desert Conservation Reserve.'
+  }
+]
+

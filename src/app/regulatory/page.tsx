@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
-import { PageIntro, SectionHeader } from '@/components/layout/layout-primitives'
+import { PageIntro } from '@/components/layout/layout-primitives'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
@@ -60,119 +60,68 @@ const STATUTORY_LAWS: StatutoryLaw[] = [
   {
     id: 'law-8-2007',
     lawNumber: 'Dubai Law No. 8 of 2007',
-    title: 'Concerning Escrow Accounts for Real Estate Development in Dubai',
-    authority: 'Real Estate Regulatory Agency (RERA) / DLD',
+    title: 'Concerning Escrow Accounts for Real Estate Development in the Emirate of Dubai',
+    authority: 'Real Estate Regulatory Agency (RERA)',
     year: '2007',
     category: 'REAL_ESTATE',
-    summary: 'Mandates strict escrow banking mechanisms for all off-plan development projects, protecting purchaser capital from developer diversion.',
+    summary: 'Mandates that all funds collected from off-plan purchasers must be deposited directly into a project-specific escrow account at an accredited financial institution.',
     coreProvisions: [
-      'Requires every developer to open a dedicated DLD-approved Escrow Account with an accredited UAE bank before selling off-plan units.',
-      'Funds deposited by purchasers can only be disbursed to the developer upon certified completion of construction milestones audited by DLD engineers.',
-      'Retains 5% of total project value in escrow for one year post-handover to cover warranty defect liabilities.'
+      'Prohibits developers from selling off-plan units or accepting funds prior to project registration and escrow account activation.',
+      'Requires independent engineering audit certificates from project consultants before funds are disbursed at statutory construction milestones.',
+      'Mandates a statutory 5% retention held in escrow for one year post-handover to cover structural defect liabilities.'
     ],
-    officialGazetteRef: 'Dubai Official Gazette No. 322 (2007)',
+    officialGazetteRef: 'Dubai Official Gazette No. 321 (2007)',
     officialPortalUrl: 'https://dubailand.gov.ae'
   },
   {
-    id: 'res-30-2013',
-    lawNumber: 'Executive Council Resolution No. 30 of 2013',
-    title: 'Approving the Fees of the Land Department',
-    authority: 'Dubai Executive Council',
-    year: '2013',
+    id: 'law-13-2008',
+    lawNumber: 'Dubai Law No. 13 of 2008 (Amended by Law 9/2009)',
+    title: 'Regulating the Interim Real Estate Register in the Emirate of Dubai',
+    authority: 'Dubai Land Department (DLD)',
+    year: '2008',
     category: 'REAL_ESTATE',
-    summary: 'Establishes the statutory fee schedule for all real estate transactions, conveyancing procedures, and title deed issuances across Dubai.',
+    summary: 'Establishes the Oqood (Interim Property Register) framework protecting purchaser rights during off-plan construction phases prior to completion.',
     coreProvisions: [
-      'Fixes the combined DLD property transfer fee at 4.0% of the sale purchase price.',
-      'Allocates the standard statutory breakdown as 2.0% payable by the buyer and 2.0% payable by the seller (unless contractually agreed otherwise).',
-      'Prescribes DLD Registration Trustee fees at AED 4,000 (+5% VAT) for properties ≥ AED 500,000 and AED 2,000 (+5% VAT) for properties < AED 500,000.'
+      'Renders any off-plan contract null and void if not registered on the DLD Interim Register within statutory deadlines.',
+      'Codifies strict statutory notice and cure period procedures (Article 11) for off-plan contract termination and cancellation.',
+      'Regulates allowable developer deduction scales strictly tied to verified construction completion percentages.'
     ],
-    officialGazetteRef: 'Dubai Official Gazette No. 385 (2013)',
+    officialGazetteRef: 'Dubai Official Gazette No. 334 (2008)',
     officialPortalUrl: 'https://dubailand.gov.ae'
   },
   {
     id: 'cabinet-65-2022',
-    lawNumber: 'Cabinet Resolution No. 65 of 2022',
-    title: 'Executive Regulations of Federal Decree-Law on Entry and Residence of Foreigners',
-    authority: 'UAE Federal Cabinet / ICP / GDRFA',
+    lawNumber: 'UAE Cabinet Resolution No. 65 of 2022',
+    title: 'Executive Regulations of Federal Decree-Law No. 29 of 2021 Regarding Foreigners Entry and Residence',
+    authority: 'Federal Authority for Identity, Citizenship, Customs & Port Security (ICP / GDRFA)',
     year: '2022',
     category: 'IMMIGRATION',
-    summary: 'Defines the modern statutory framework for the 10-Year Real Estate Investor Golden Residency Visa and family sponsorship privileges.',
+    summary: 'Enacts the enhanced 10-Year UAE Golden Visa framework for real estate investors acquiring properties valued at AED 2,000,000 or greater.',
     coreProvisions: [
-      'Establishes the minimum qualifying property threshold at AED 2,000,000 in freehold real estate value.',
-      'Permits the qualification threshold to be satisfied through single or multiple aggregated properties.',
-      'Grants Golden Visa holders total exemption from the 6-month stay requirement, allowing continuous stay outside the UAE without status invalidation.',
-      'Authorizes unlimited sponsorship of spouse, unmarried sons up to age 25, unmarried daughters of any age, and domestic staff.'
+      'Eliminates the mandatory 6-month stay rule, allowing investors to remain outside the UAE indefinitely without invalidating residency status.',
+      'Permits Golden Visa eligibility for completed and off-plan properties purchased from approved master developers.',
+      'Allows mortgaged properties from accredited UAE local banks, provided net equity meets or exceeds statutory thresholds.',
+      'Grants 100% self-sponsored renewable residency covering spouse, children of all ages, and domestic personnel.'
     ],
-    officialGazetteRef: 'UAE Federal Official Gazette Issue 738 (2022)',
-    officialPortalUrl: 'https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa'
+    officialGazetteRef: 'Federal Official Gazette No. 726 (2022)',
+    officialPortalUrl: 'https://icp.gov.ae'
   },
   {
     id: 'decree-47-2022',
     lawNumber: 'Federal Decree-Law No. 47 of 2022',
-    title: 'On the Taxation of Corporations and Businesses',
-    authority: 'UAE Ministry of Finance / Federal Tax Authority (FTA)',
+    title: 'Taxation of Corporations and Businesses in the United Arab Emirates',
+    authority: 'Federal Tax Authority (FTA) / Ministry of Finance',
     year: '2022',
     category: 'TAX_CORPORATE',
-    summary: 'Introduces the 9% corporate tax regime while preserving zero personal income tax and capital gains exemption for natural person investors.',
+    summary: 'Introduces the UAE federal 9% corporate tax regime while expressly exempting qualifying natural person real estate investment income and capital appreciation.',
     coreProvisions: [
-      'Establishes a 0% corporate tax rate on taxable corporate profits up to AED 375,000 and 9% on taxable profits exceeding AED 375,000.',
-      'Exempts natural persons from corporate tax on qualifying individual investment income, personal real estate yields, and dividend distributions.',
-      'Maintains 0% personal income tax and 0% capital gains tax on individual property disposals under Cabinet Decision No. 49 of 2023.'
+      'Cabinet Decision No. 49 of 2023 explicitly excludes real estate activities conducted by natural persons in their personal capacity from Corporate Tax.',
+      'Maintains zero personal income tax, zero inheritance tax, zero wealth tax, and zero municipal property taxes for individual homeowners.',
+      'Sets a 0% tax bracket on qualifying taxable profits up to AED 375,000 for standard corporate entities, and 9% on taxable net profits exceeding AED 375,000.'
     ],
-    officialGazetteRef: 'UAE Federal Gazette Issue 741 (2022)',
+    officialGazetteRef: 'Federal Official Gazette No. 737 (2022)',
     officialPortalUrl: 'https://tax.gov.ae'
   },
-  {
-    id: 'decree-43-2013',
-    lawNumber: 'Decree No. 43 of 2013',
-    title: 'Determining the Rent Increase for Real Property in Dubai',
-    authority: 'RERA / Dubai Land Department',
-    year: '2013',
-    category: 'REAL_ESTATE',
-    summary: 'Sets the statutory rent increase formula and maximum legal caps based on the official RERA Rental Index benchmark.',
-    coreProvisions: [
-      '0% increase permitted if current rent is within 10% below average market rent.',
-      'Maximum 5% increase if current rent is 11% to 20% below average market rent.',
-      'Maximum 10% increase if current rent is 21% to 30% below average market rent.',
-      'Maximum 15% increase if current rent is 31% to 40% below average market rent.',
-      'Maximum 20% increase if current rent is more than 40% below average market rent.'
-    ],
-    officialGazetteRef: 'Dubai Official Gazette No. 388 (2013)',
-    officialPortalUrl: 'https://dubailand.gov.ae'
-  },
-  {
-    id: 'law-85-2006',
-    lawNumber: 'Dubai Law No. 85 of 2006',
-    title: 'Regulating the Real Estate Broker Register in the Emirate of Dubai',
-    authority: 'RERA / DLD',
-    year: '2006',
-    category: 'REAL_ESTATE',
-    summary: 'Governs real estate brokerage practice, professional certification, unified contract templates, and commission rules.',
-    coreProvisions: [
-      'Requires all practicing brokers to be certified by RERA and hold active broker registration cards.',
-      'Mandates unified standardized contracts: Form A (Seller Agreement), Form B (Buyer Agreement), and Form F (Unified MOU Sale Contract).',
-      'Regulates standard 2% brokerage commission split and enforces strict fiduciary obligations against misrepresentation.'
-    ],
-    officialGazetteRef: 'Dubai Official Gazette No. 316 (2006)',
-    officialPortalUrl: 'https://dubailand.gov.ae'
-  },
-  {
-    id: 'cbuae-mortgage',
-    lawNumber: 'CBUAE Mortgage Regulations Notice No. 3871/2019',
-    title: 'Regulations on Mortgage Loans for Retail Customers',
-    authority: 'Central Bank of the UAE (CBUAE)',
-    year: '2019',
-    category: 'BANKING_FINANCE',
-    summary: 'Establishes statutory loan-to-value (LTV) ceilings, debt-burden ratios, and stress-test underwriting standards for UAE banking institutions.',
-    coreProvisions: [
-      'Maximum 80% LTV for expatriates on first residential property ≤ AED 5,000,000.',
-      'Maximum 70% LTV for expatriates on residential properties > AED 5,000,000.',
-      'Maximum 60% LTV for second and subsequent investment properties.',
-      'Maximum 50% Debt Burden Ratio (DBR) across all monthly liabilities and maximum 25-year mortgage tenure.'
-    ],
-    officialGazetteRef: 'Central Bank of the UAE Regulatory Gazette',
-    officialPortalUrl: 'https://centralbank.ae'
-  }
 ]
 
 export default function RegulatoryPage() {
@@ -194,16 +143,16 @@ export default function RegulatoryPage() {
   })
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-28 selection:bg-accent/20 selection:text-[#1d1d1f]">
+    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-28 selection:bg-[#c9a962]/20 selection:text-[#f5f5f7]">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Statutory Law & Regulatory Gazette Directory"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="UAE Official Gazettes & Government Laws" />}
-        title={<>Statutory Register<span className="text-gradient-gold">.</span></>}
+        title={<>Statutory Register<span className="text-[#c9a962]">.</span></>}
         description="Comprehensive compendium of official Dubai and UAE statutory laws, executive council resolutions, ministerial decrees, and regulatory fee structures governing real estate title, escrow, and residency."
       />
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-14">
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 space-y-16">
         {/* 2. STATUTORY PILLARS QUADRANT */}
         <CadranQuadrant
           eyebrow="LEGAL SOVEREIGNTY ARCHITECTURE"
@@ -247,28 +196,21 @@ export default function RegulatoryPage() {
 
         {/* 3. SEARCH & CATEGORY FILTER PILLS */}
         <div className="space-y-6">
-          <SectionHeader
-            align="center"
-            eyebrow="Statutory Gazette Register"
-            title="Search the Legal Compendium"
-            description="Filter official legal decrees by regulatory domain, gazette reference, or statutory authority."
-          />
-
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-3xl bg-white border border-black/5 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xs bg-[#111116] border border-white/[0.08]">
             {/* Search Input */}
             <div className="relative flex-1">
-              <Search className="h-4 w-4 text-[#6e6e73] absolute left-4 top-1/2 -translate-y-1/2" />
+              <Search className="h-4 w-4 text-[#71717a] absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by law number, title, or authority..."
-                className="w-full pl-11 pr-4 py-2.5 rounded-2xl bg-white border border-black/10 text-xs text-[#1d1d1f] placeholder-[#6e6e73] focus:outline-none focus:border-accent"
+                className="w-full pl-11 pr-4 py-2.5 rounded-xs bg-black/40 border border-white/10 text-xs text-[#f5f5f7] placeholder-[#71717a] focus:outline-none focus:border-[#c9a962]"
               />
             </div>
 
             {/* Category Filter Pills */}
-            <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-2xl border border-black/10 shrink-0">
+            <div className="flex flex-wrap items-center gap-1.5 shrink-0">
               {[
                 { id: 'ALL', label: 'All Laws' },
                 { id: 'REAL_ESTATE', label: 'Real Estate' },
@@ -279,10 +221,10 @@ export default function RegulatoryPage() {
                 <button
                   key={tab.id}
                   onClick={() => setSelectedCategory(tab.id)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-xs text-xs font-mono uppercase tracking-wider transition-all cursor-pointer ${
                     selectedCategory === tab.id
-                      ? 'bg-[#1d1d1f] text-white shadow-sm'
-                      : 'text-[#6e6e73] hover:text-[#1d1d1f]'
+                      ? 'bg-[#c9a962] text-[#08080a] font-semibold'
+                      : 'bg-black/30 border border-white/10 text-[#a1a1aa] hover:text-[#f5f5f7] hover:border-white/20'
                   }`}
                 >
                   {tab.label}
@@ -297,46 +239,46 @@ export default function RegulatoryPage() {
           {filteredLaws.map((law) => (
             <div
               key={law.id}
-              className="p-6 sm:p-8 rounded-3xl bg-white border border-black/10 hover:border-black/20 hover:shadow-xl transition-all space-y-6 shadow-sm"
+              className="p-6 sm:p-8 rounded-xs bg-[#111116] border border-white/[0.08] hover:border-[#c9a962]/40 transition-all space-y-6 group"
             >
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-black/10 pb-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-white/[0.06] pb-6">
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-accent uppercase tracking-wider">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs font-mono font-medium text-[#c9a962] uppercase tracking-wider">
                       {law.lawNumber}
                     </span>
-                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-white border border-black/5 text-[#6e6e73]">
+                    <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-xs bg-white/5 border border-white/10 text-[#71717a]">
                       {law.year}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#1d1d1f] tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-light text-[#f5f5f7] tracking-tight group-hover:text-[#c9a962] transition-colors">
                     {law.title}
                   </h3>
-                  <div className="text-xs font-mono text-[#6e6e73] pt-1">
-                    Authority: <strong className="text-[#1d1d1f]">{law.authority}</strong>
+                  <div className="text-xs font-mono text-[#71717a] pt-1">
+                    Authority: <strong className="text-[#f5f5f7] font-medium">{law.authority}</strong>
                   </div>
                 </div>
 
                 <div className="shrink-0 flex items-center gap-3">
-                  <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-[#c9a962]/10 border border-[#c9a962]/30 text-accent font-semibold">
+                  <span className="text-[10px] font-mono px-3 py-1 rounded-xs bg-[#c9a962]/10 border border-[#c9a962]/30 text-[#c9a962]">
                     {law.officialGazetteRef}
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed max-w-4xl">
+              <p className="text-xs sm:text-sm text-[#a1a1aa] font-light leading-relaxed max-w-4xl">
                 {law.summary}
               </p>
 
               {/* Core Provisions */}
-              <div className="p-5 rounded-2xl bg-white border border-black/5 space-y-3">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
+              <div className="p-5 rounded-xs bg-black/40 border border-white/[0.06] space-y-3">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#c9a962] block">
                   Core Statutory Provisions
                 </span>
-                <ul className="space-y-2 text-xs text-[#1d1d1f]">
+                <ul className="space-y-2 text-xs text-[#a1a1aa] font-light">
                   {law.coreProvisions.map((prov, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-accent font-bold mt-0.5">›</span>
+                      <span className="text-[#c9a962] font-mono mt-0.5">›</span>
                       <span>{prov}</span>
                     </li>
                   ))}
@@ -344,13 +286,13 @@ export default function RegulatoryPage() {
               </div>
 
               {law.officialPortalUrl && (
-                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#6e6e73]">
+                <div className="pt-2 flex items-center justify-between text-[11px] font-mono text-[#71717a]">
                   <span>Official Legal Verification: Active Gazette</span>
                   <a
                     href={law.officialPortalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-accent hover:underline font-semibold"
+                    className="inline-flex items-center gap-1.5 text-[#c9a962] hover:underline"
                   >
                     <span>Government Portal</span>
                     <ExternalLink className="h-3 w-3" />
@@ -362,18 +304,18 @@ export default function RegulatoryPage() {
         </div>
 
         {/* 5. PRIVATE CLIENT CTA */}
-        <div className="p-8 sm:p-10 rounded-3xl border border-black/10 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
+        <div className="p-8 sm:p-10 rounded-xs border border-white/[0.08] bg-[#111116] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="space-y-2 max-w-xl">
-            <h3 className="text-xl font-extrabold text-[#1d1d1f] tracking-tight">
+            <h3 className="text-xl font-light text-[#f5f5f7] tracking-tight">
               Need statutory due diligence on a specific transaction?
             </h3>
-            <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#a1a1aa] font-light leading-relaxed">
               Cristian Văduva Private Client Advisory coordinates title deed searches, escrow status verification, and conveyancing with DLD Registration Trustees.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="px-6 py-3.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer shadow-sm hover:shadow-md"
+            className="px-6 py-3.5 rounded-xs bg-[#c9a962] text-[#08080a] hover:bg-[#dbbe7a] text-xs font-mono uppercase tracking-wider font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer"
           >
             <span>Access Advisory Desk</span>
             <ArrowRight className="h-4 w-4" />

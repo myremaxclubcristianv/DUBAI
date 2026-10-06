@@ -6,41 +6,41 @@ import Image from 'next/image'
 import { VERIFIED_LIFESTYLE } from '@/lib/data/lifestyle'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { PageIntro } from '@/components/layout/layout-primitives'
-import { ArrowLeft, ExternalLink, MapPin, Users } from 'lucide-react'
+import { ArrowLeft, ExternalLink, MapPin, Users, ShieldCheck } from 'lucide-react'
 
 export default function PrivateClubsPage() {
   const clubsList = VERIFIED_LIFESTYLE.filter((l) => l.category === 'clubs')
 
   return (
-    <div className="bg-white text-[#1d1d1f] min-h-screen pb-24 selection:bg-accent/20 selection:text-[#1d1d1f]">
-      {/* 1. CENTERED PAGE INTRO */}
+    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-24 selection:bg-[#c9a962]/20 selection:text-[#f5f5f7]">
+      {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="DIFC & DET Registered Private Members Clubs"
         badge={<SourceBadge status="LICENSED OPERATOR" sourceName="DIFC Commercial Register" />}
-        title={<>Private Member Clubs & Networking<span className="text-gradient-gold">.</span></>}
+        title={<>Private Member Clubs &amp; Networking<span className="text-[#c9a962]">.</span></>}
         description="Exclusive international private members clubs, sovereign wealth networking hubs, and bespoke cultural salons across Dubai."
       />
 
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-4">
         <Link
           href="/lifestyle"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-[#6e6e73] hover:text-[#1d1d1f] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#a1a1aa] hover:text-[#c9a962] transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          <span>Back to Lifestyle Directory</span>
+          <span>Back to Lifestyle Monograph</span>
         </Link>
       </div>
 
-      <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 space-y-10">
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-6 space-y-10">
         {/* Entities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {clubsList.map((item) => (
             <div
               key={item.id}
-              className="p-6 sm:p-7 bg-white rounded-3xl border border-black/10 hover:border-black/20 hover:shadow-xl transition-all duration-300 flex flex-col justify-between space-y-6 group shadow-sm"
+              className="p-6 sm:p-7 bg-[#111116] rounded-xs border border-white/[0.08] hover:border-[#c9a962]/40 transition-all duration-300 flex flex-col justify-between space-y-6 group"
             >
               <div className="space-y-5">
-                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-white">
+                <div className="relative aspect-[16/10] rounded-xs overflow-hidden bg-[#181820] border border-white/10">
                   <Image
                     src={item.image || 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'}
                     alt={item.title}
@@ -49,62 +49,53 @@ export default function PrivateClubsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-white/90 backdrop-blur-md text-[#1d1d1f] border border-black/10 shadow-sm flex items-center gap-1">
-                      <Users className="h-3 w-3 text-accent" />
-                      Private Members Club
+                    <span className="px-2.5 py-0.5 rounded-xs text-[10px] font-mono font-semibold uppercase bg-black/70 backdrop-blur-md text-[#c9a962] border border-white/10 flex items-center gap-1">
+                      <Users className="h-3 w-3 text-[#c9a962]" />
+                      Private Club
                     </span>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-extrabold text-[#1d1d1f] tracking-tight">{item.title}</h3>
-                  <p className="text-xs text-[#6e6e73] mt-1 font-mono flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5 text-accent shrink-0" />
+                  <h3 className="text-xl font-light text-[#f5f5f7] tracking-tight group-hover:text-[#c9a962] transition-colors">{item.title}</h3>
+                  <p className="text-xs text-[#a1a1aa] flex items-center gap-1.5 mt-1 font-mono">
+                    <MapPin className="h-3.5 w-3.5 text-[#c9a962] shrink-0" />
                     <span className="truncate">{item.location}</span>
                   </p>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#6e6e73] leading-relaxed">
+                <p className="text-xs text-[#a1a1aa] font-light leading-relaxed">
                   {item.description}
                 </p>
 
                 {item.specs && (
-                  <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs space-y-1.5 font-mono">
-                    {Object.entries(item.specs).map(([key, val]) => (
-                      <div key={key} className="flex justify-between text-[11px]">
-                        <span className="text-[#6e6e73]">{key}:</span>
-                        <span className="text-[#1d1d1f] font-semibold text-right">{val}</span>
+                  <div className="p-4 bg-black/40 rounded-xs border border-white/[0.06] text-xs space-y-2 font-mono">
+                    {Object.entries(item.specs).map(([k, v]) => (
+                      <div key={k} className="flex justify-between items-center text-[#a1a1aa]">
+                        <span className="text-[#71717a] capitalize">{k.replace(/_/g, ' ')}:</span>
+                        <span className="font-medium text-[#f5f5f7]">{String(v)}</span>
                       </div>
                     ))}
                   </div>
                 )}
-
-                <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs space-y-1.5 font-mono">
-                  <span className="text-[10px] uppercase tracking-widest text-[#6e6e73] font-semibold block">Membership Protocol</span>
-                  <span className="font-bold text-accent block">
-                    {item.price_display}
-                  </span>
-                </div>
               </div>
 
-              <div className="pt-4 border-t border-black/10 flex items-center justify-between gap-3">
-                {item.official_url && (
+              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                <span className="text-[11px] font-mono text-[#71717a] flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#c9a962]" />
+                  Verified Entity
+                </span>
+                {item.provenance.source_url && (
                   <a
-                    href={item.official_url}
+                    href={item.provenance.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-[#6e6e73] hover:text-[#1d1d1f] flex items-center gap-1 font-mono transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#c9a962] hover:underline"
                   >
-                    <span>Official Portal</span>
+                    <span>Club Portal</span>
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 )}
-                <Link
-                  href="/private-client"
-                  className="px-5 py-2.5 rounded-full bg-[#1d1d1f] text-white hover:bg-black text-xs font-semibold transition-all shadow-sm hover:shadow-md ml-auto"
-                >
-                  <span>Request Introduction</span>
-                </Link>
               </div>
             </div>
           ))}

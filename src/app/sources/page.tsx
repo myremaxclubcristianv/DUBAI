@@ -49,18 +49,21 @@ const SOURCE_CLASSES = [
 
 export default function SourcesPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#ffffff] text-[#111111]">
+    <div className="flex flex-col min-h-screen bg-[#08080a] text-[#f5f5f7]">
       
       {/* 1. EDITORIAL HEADER */}
-      <section className="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-[#e5e5ea] bg-[#fafaf8]">
+      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 bg-[#0d0d11]">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
-          <Eyebrow>DATA PROVENANCE &bull; RESEARCH METHODOLOGY</Eyebrow>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#c9a962]" />
+            <Eyebrow>DATA PROVENANCE &bull; RESEARCH METHODOLOGY &amp; CITATIONS</Eyebrow>
+          </div>
           
           <div className="max-w-3xl space-y-4">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#111111]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#f5f5f7]">
               PROVENANCE CHARTER
             </h1>
-            <p className="text-lg sm:text-xl text-[#6b6b6b] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-[#a1a1aa] font-light leading-relaxed">
               The platform enforces zero synthetic data. Every factual assertion, transaction tariff, developer registration number, and residency protocol is anchored in an explicit source class and statutory citation.
             </p>
           </div>
@@ -68,34 +71,34 @@ export default function SourcesPage() {
       </section>
 
       {/* 2. SOURCE TAXONOMY & CLASSIFICATION */}
-      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-16 sm:py-24 space-y-20 flex-1">
+      <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-14 sm:py-20 space-y-16 flex-1">
         
         {/* Section 1: Source Classes */}
         <div className="space-y-8">
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Eyebrow>TAXONOMY HIERARCHY</Eyebrow>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#111111]">
+            <h2 className="text-2xl sm:text-3xl font-light text-[#f5f5f7]">
               Source Classification Classes
             </h2>
-            <p className="text-base text-[#6b6b6b] font-light max-w-2xl">
+            <p className="text-sm text-[#8e8e93] font-light max-w-2xl">
               We strictly separate primary sovereign legislation, regulatory indices, corporate inventory, and mathematical calculations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SOURCE_CLASSES.map((sc, idx) => (
               <div
                 key={idx}
-                className="p-8 rounded-2xl border border-[#e5e5ea] bg-[#ffffff] space-y-4 flex flex-col justify-between"
+                className="p-6 rounded-sm border border-white/10 bg-[#111116] space-y-4 flex flex-col justify-between hover:border-[#c9a962]/40 transition-all"
               >
                 <div className="space-y-3">
                   <SourceBadge sourceClass={sc.badge} />
-                  <p className="text-xs sm:text-sm text-[#484848] font-light leading-relaxed">
+                  <p className="text-xs text-[#a1a1aa] font-light leading-relaxed">
                     {sc.description}
                   </p>
                 </div>
-                <div className="pt-4 border-t border-[#e5e5ea] text-[10px] font-mono text-[#8e8e93]">
-                  Status: {sc.binding}
+                <div className="pt-3 border-t border-white/10 text-[10px] font-mono text-[#71717a]">
+                  Binding Status: {sc.binding}
                 </div>
               </div>
             ))}
@@ -104,33 +107,33 @@ export default function SourcesPage() {
 
         {/* Section 2: Official Sources Registry Table */}
         <div className="space-y-8">
-          <div className="space-y-3">
+          <div className="space-y-2">
             <Eyebrow>REGISTRY AUDIT</Eyebrow>
-            <h2 className="text-3xl sm:text-4xl font-light text-[#111111]">
+            <h2 className="text-2xl sm:text-3xl font-light text-[#f5f5f7]">
               Verified Authority Registry
             </h2>
-            <p className="text-base text-[#6b6b6b] font-light max-w-2xl">
+            <p className="text-sm text-[#8e8e93] font-light max-w-2xl">
               Primary public sector institutions and statutory registries cited across the platform.
             </p>
           </div>
 
-          <div className="divide-y divide-[#e5e5ea] border-t border-b border-[#e5e5ea]">
+          <div className="divide-y divide-white/10 border-t border-b border-white/10">
             {OFFICIAL_SOURCES_REGISTRY.map((src) => (
               <div
                 key={src.id}
-                className="py-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center"
+                className="py-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center"
               >
                 <div className="md:col-span-4 space-y-0.5">
-                  <span className="text-base font-medium text-[#111111]">{src.name}</span>
-                  <span className="text-xs font-mono text-[#8e8e93] block">Code: {src.code}</span>
+                  <span className="text-base font-light text-[#f5f5f7]">{src.name}</span>
+                  <span className="text-xs font-mono text-[#c9a962] block">Code: {src.code}</span>
                 </div>
 
-                <div className="md:col-span-3 text-xs font-mono text-[#484848]">
-                  <span className="text-[#8e8e93] block text-[10px]">CLASS:</span>
+                <div className="md:col-span-3 text-xs font-mono text-[#a1a1aa]">
+                  <span className="text-[#71717a] block text-[10px]">CLASS:</span>
                   {src.authority_type} &bull; {src.jurisdiction}
                 </div>
 
-                <div className="md:col-span-4 text-xs text-[#484848] font-light">
+                <div className="md:col-span-4 text-xs text-[#8e8e93] font-light">
                   {src.key_mandate}
                 </div>
 
@@ -139,10 +142,10 @@ export default function SourcesPage() {
                     href={src.official_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-full border border-[#e5e5ea] hover:border-[#111111] transition-colors inline-flex items-center"
+                    className="p-2 rounded-xs border border-white/10 hover:border-[#c9a962] hover:bg-[#c9a962]/10 transition-colors inline-flex items-center"
                     title="Open Official Website"
                   >
-                    <ExternalLink className="h-3.5 w-3.5 text-[#6b6b6b]" />
+                    <ExternalLink className="h-3.5 w-3.5 text-[#a1a1aa] hover:text-[#c9a962]" />
                   </a>
                 </div>
               </div>
@@ -151,9 +154,9 @@ export default function SourcesPage() {
         </div>
 
         {/* Regulatory Disclaimer */}
-        <div className="p-8 rounded-2xl bg-[#fafaf8] border border-[#e5e5ea] space-y-3 text-xs text-[#6b6b6b] leading-relaxed">
-          <div className="flex items-center gap-2 font-semibold text-[#111111]">
-            <ShieldCheck className="h-4 w-4 text-[#9f8144]" />
+        <div className="p-6 sm:p-8 rounded-sm bg-[#111116] border border-white/10 space-y-3 text-xs text-[#8e8e93] leading-relaxed font-light">
+          <div className="flex items-center gap-2 font-medium text-[#f5f5f7]">
+            <ShieldCheck className="h-4 w-4 text-[#c9a962]" />
             <span>Statutory Legal &amp; Regulatory Notice</span>
           </div>
           <p>
