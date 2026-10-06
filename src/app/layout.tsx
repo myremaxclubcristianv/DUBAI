@@ -3,8 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { IntelligenceTicker } from "@/components/layout/intelligence-ticker";
-import { AlwaysOnContact } from "@/components/layout/always-on-contact";
 import { ToastProvider } from "@/components/ui/toast";
 import { ClientProvider } from "@/lib/context/client-context";
 
@@ -58,14 +56,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col pb-12 sm:pb-14">
+      <body className="min-h-full flex flex-col bg-white text-slate-900">
         <ToastProvider>
           <ClientProvider>
-            <IntelligenceTicker />
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
-            <AlwaysOnContact />
           </ClientProvider>
         </ToastProvider>
       </body>

@@ -53,41 +53,41 @@ export default function Home() {
             {/* Left Column: Editorial Headline & Actions */}
             <div className="lg:col-span-7 space-y-7 max-w-2xl">
               <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-white/90 backdrop-blur-md border border-sky-200 text-[#0284c7] text-[10px] sm:text-[11px] font-mono tracking-[0.22em] uppercase font-semibold shadow-xs">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] animate-pulse" />
-                  <span>DUBAI REAL ESTATE INTELLIGENCE &amp; PRIVATE WEALTH</span>
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xs bg-white/90 backdrop-blur-md border border-sky-200 text-[#0284c7] text-[10px] sm:text-[11px] font-mono tracking-[0.16em] sm:tracking-[0.22em] uppercase font-semibold shadow-xs">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
+                  <span className="truncate">DUBAI PROPERTY &bull; PRIVATE WEALTH</span>
                 </div>
                 
-                <h1 className="text-[52px] sm:text-[76px] lg:text-[92px] font-light tracking-[-0.04em] leading-[0.94] text-slate-900 font-serif">
+                <h1 className="text-[44px] sm:text-[72px] lg:text-[90px] font-light tracking-[-0.04em] leading-[0.95] text-slate-900 font-serif">
                   Dubai,<br />
                   with better<br />
                   <span className="text-[#0284c7] font-serif italic">decisions.</span>
                 </h1>
               </div>
 
-              <p className="text-base sm:text-lg text-slate-700 font-light leading-relaxed max-w-xl">
+              <p className="text-sm sm:text-base lg:text-lg text-slate-700 font-light leading-relaxed max-w-xl">
                 Source-led property intelligence, verified market data, and private-client advisory for one of the world&apos;s most dynamic real-estate markets. Sourced directly from published statutory registers and certified developer filings.
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-1">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
                 <Link
                   href="/properties"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-md shadow-sky-600/25"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-md shadow-sky-600/25"
                 >
                   <span>EXPLORE PROPERTIES</span>
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/market"
-                  className="inline-flex items-center gap-1.5 px-6 py-3.5 rounded-xs bg-white/90 hover:bg-white text-slate-900 text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all border border-slate-300 backdrop-blur-md shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xs bg-white/90 hover:bg-white text-slate-900 text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all border border-slate-300 backdrop-blur-md shadow-xs"
                 >
                   <span>MARKET INTELLIGENCE</span>
                 </Link>
               </div>
 
               {/* Verified Statutory Footnote */}
-              <div className="pt-4 border-t border-slate-300/80 flex flex-wrap items-center gap-3 text-[11px] font-mono text-slate-600">
+              <div className="pt-4 border-t border-slate-300/80 flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-mono text-slate-600">
                 <div className="flex items-center gap-1.5 text-emerald-800 font-semibold">
                   <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
                   <span>DLD Statutory Registry</span>
@@ -103,43 +103,43 @@ export default function Home() {
 
             {/* Right Column: Floating White DLD Information Cadran */}
             <div className="lg:col-span-5 flex justify-end">
-              <div className="w-full max-w-md p-6 sm:p-7 bg-white/95 backdrop-blur-md rounded-xs border border-slate-200/90 space-y-5 shadow-2xl">
+              <div className="w-full max-w-md p-5 sm:p-7 bg-white/95 backdrop-blur-md rounded-xs border border-slate-200/90 space-y-4 sm:space-y-5 shadow-2xl">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-slate-900 font-bold">
+                  <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.16em] sm:tracking-[0.2em] text-slate-900 font-bold">
                     DLD MARKET BASELINE 2026
                   </span>
-                  <span className="text-[10px] font-mono text-emerald-700 uppercase font-semibold">
+                  <span className="text-[9px] sm:text-[10px] font-mono text-emerald-700 uppercase font-semibold">
                     OFFICIAL UAE PEG
                   </span>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 font-mono text-xs">
-                  <div className="space-y-1">
-                    <span className="text-2xl font-bold text-slate-900 block">4%</span>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">TRANSFER FEE</span>
-                    <span className="text-[9px] text-slate-400 block">Law No. 7/2006</span>
+                <div className="grid grid-cols-3 gap-2 sm:gap-3 font-mono text-xs">
+                  <div className="space-y-0.5 sm:space-y-1">
+                    <span className="text-xl sm:text-2xl font-bold text-slate-900 block">4%</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">TRANSFER FEE</span>
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 block">Law 7/2006</span>
                   </div>
-                  <div className="space-y-1">
-                    <span className="text-2xl font-bold text-slate-900 block">AED 4k</span>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">REGISTRATION</span>
-                    <span className="text-[9px] text-slate-400 block">per transaction</span>
+                  <div className="space-y-0.5 sm:space-y-1">
+                    <span className="text-xl sm:text-2xl font-bold text-slate-900 block">AED 4k</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">REGISTRATION</span>
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 block">per deal</span>
                   </div>
-                  <div className="space-y-1">
-                    <span className="text-2xl font-bold text-[#0284c7] block">3.6725</span>
-                    <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">USD / AED</span>
-                    <span className="text-[9px] text-slate-400 block">Official UAE Peg</span>
+                  <div className="space-y-0.5 sm:space-y-1">
+                    <span className="text-xl sm:text-2xl font-bold text-[#0284c7] block">3.6725</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">USD / AED</span>
+                    <span className="text-[8px] sm:text-[9px] text-slate-400 block">Official Peg</span>
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href="/sources"
-                    className="text-[11px] font-mono uppercase tracking-wider text-[#0284c7] hover:text-[#0369a1] font-semibold inline-flex items-center gap-1.5 transition-colors"
+                    className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#0284c7] hover:text-[#0369a1] font-semibold inline-flex items-center gap-1.5 transition-colors"
                   >
-                    <span>VIEW FULL STATUTORY DETAILS</span>
+                    <span>VIEW STATUTORY DETAILS</span>
                     <ArrowRight className="h-3 w-3" />
                   </Link>
-                  <span className="text-[10px] font-mono text-slate-400 font-medium">DLD &bull; RERA</span>
+                  <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 font-medium">DLD &bull; RERA</span>
                 </div>
               </div>
             </div>
