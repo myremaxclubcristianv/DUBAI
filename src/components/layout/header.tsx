@@ -38,7 +38,7 @@ export function Header() {
             : 'bg-white/90 backdrop-blur-sm border-b border-slate-200/60'
         }`}
       >
-        <div className="w-full max-w-[1440px] mx-auto flex h-[72px] sm:h-[76px] items-center justify-between px-6 sm:px-10 lg:px-16">
+        <div className="w-full max-w-[1440px] mx-auto flex h-[70px] sm:h-[76px] items-center justify-between px-4 sm:px-10 lg:px-16">
           
           {/* LEFT: Dubai Platform Wordmark */}
           <div className="flex items-center gap-4 shrink-0">
