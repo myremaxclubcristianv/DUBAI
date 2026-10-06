@@ -28,21 +28,21 @@ export function SourceBadge({
   const getStatusStyles = (st: SourceStatus) => {
     switch (st) {
       case 'DLD OFFICIAL DATA':
-        return 'bg-emerald-950/40 text-emerald-400 border-emerald-500/30 hover:border-emerald-500/50'
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:border-emerald-300'
       case 'UAE GOVERNMENT':
       case 'FTA OFFICIAL':
       case 'DET OFFICIAL':
       case 'OFFICIAL SOURCE':
-        return 'bg-slate-900/60 text-slate-300 border-slate-700 hover:border-slate-500'
+        return 'bg-sky-50 text-[#0284c7] border-sky-200 hover:border-sky-300'
       case 'DEVELOPER SOURCE':
       case 'LICENSED OPERATOR':
-        return 'bg-[#181820] text-[#c9a962] border-[#c9a962]/30 hover:border-[#c9a962]/60'
+        return 'bg-slate-50 text-slate-800 border-slate-200 hover:border-slate-300'
       case 'CALCULATED':
-        return 'bg-sky-950/40 text-sky-300 border-sky-500/30 hover:border-sky-500/50'
+        return 'bg-sky-50 text-[#0369a1] border-sky-200 hover:border-sky-300'
       case 'PRICE ON REQUEST':
-        return 'bg-[#181820] text-[#a1a1aa] border-white/10'
+        return 'bg-slate-50 text-slate-600 border-slate-200'
       default:
-        return 'bg-[#131318] text-[#8e8e93] border-white/10'
+        return 'bg-slate-50 text-slate-500 border-slate-200'
     }
   }
 
@@ -50,7 +50,7 @@ export function SourceBadge({
     <>
       <div
         className={cn(
-          'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs text-[10px] font-mono tracking-wider uppercase border transition-colors cursor-pointer select-none',
+          'inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs text-[10px] font-mono tracking-wider uppercase border transition-colors cursor-pointer select-none font-semibold',
           getStatusStyles(effectiveStatus),
           className
         )}
@@ -66,65 +66,65 @@ export function SourceBadge({
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-150"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-in fade-in duration-150"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="bg-[#0d0d11] rounded-sm shadow-[0_10px_40px_rgba(0,0,0,0.8)] border border-white/15 max-w-lg w-full p-6 space-y-4 text-left relative"
+            className="bg-white rounded-xs shadow-2xl border border-slate-200 max-w-lg w-full p-6 space-y-4 text-left relative"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between border-b border-white/10 pb-3">
+            <div className="flex items-start justify-between border-b border-slate-100 pb-3">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#c9a962] font-semibold">Data Provenance Record</span>
-                <h3 className="text-base font-light text-[#f5f5f7] mt-0.5 flex items-center gap-2">
+                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#0284c7] font-semibold">Data Provenance Record</span>
+                <h3 className="text-base font-light text-slate-900 mt-0.5 flex items-center gap-2">
                   {effectiveSourceName}
                 </h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-[#8e8e93] hover:text-[#f5f5f7] p-1 rounded-sm hover:bg-white/5 transition-colors cursor-pointer"
+                className="text-slate-400 hover:text-slate-900 p-1 rounded-xs hover:bg-slate-100 transition-colors cursor-pointer"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            <div className="space-y-3 text-xs text-[#a1a1aa]">
-              <div className="flex justify-between items-center py-1 border-b border-white/10">
-                <span className="font-mono text-[#8e8e93]">Verification Status:</span>
-                <span className="font-mono text-[#c9a962] font-semibold">{effectiveStatus}</span>
+            <div className="space-y-3 text-xs text-slate-600">
+              <div className="flex justify-between items-center py-1 border-b border-slate-100">
+                <span className="font-mono text-slate-500">Verification Status:</span>
+                <span className="font-mono text-[#0284c7] font-semibold">{effectiveStatus}</span>
               </div>
 
               {provenance?.legal_decree && (
-                <div className="py-1 border-b border-white/10 space-y-1">
-                  <div className="flex items-center gap-1 font-mono text-[#8e8e93]">
-                    <Scale className="h-3.5 w-3.5 text-[#c9a962]" />
+                <div className="py-1 border-b border-slate-100 space-y-1">
+                  <div className="flex items-center gap-1 font-mono text-slate-500">
+                    <Scale className="h-3.5 w-3.5 text-[#0284c7]" />
                     <span>Statutory / Legal Basis:</span>
                   </div>
-                  <p className="text-[#f5f5f7] font-light pl-4">{provenance.legal_decree}</p>
+                  <p className="text-slate-900 font-light pl-4">{provenance.legal_decree}</p>
                 </div>
               )}
 
               {provenance?.verified_at && (
-                <div className="flex justify-between items-center py-1 border-b border-white/10">
-                  <span className="flex items-center gap-1 font-mono text-[#8e8e93]">
+                <div className="flex justify-between items-center py-1 border-b border-slate-100">
+                  <span className="flex items-center gap-1 font-mono text-slate-500">
                     <Calendar className="h-3.5 w-3.5" />
                     <span>Last Verified:</span>
                   </span>
-                  <span className="font-mono text-[#f5f5f7]">{provenance.verified_at}</span>
+                  <span className="font-mono text-slate-900">{provenance.verified_at}</span>
                 </div>
               )}
 
               {provenance?.conditions && (
-                <div className="py-1 border-b border-white/10 space-y-1">
-                  <span className="font-mono text-[#8e8e93]">Applicable Conditions:</span>
-                  <p className="text-[#c7c7cc] font-light">{provenance.conditions}</p>
+                <div className="py-1 border-b border-slate-100 space-y-1">
+                  <span className="font-mono text-slate-500">Applicable Conditions:</span>
+                  <p className="text-slate-700 font-light">{provenance.conditions}</p>
                 </div>
               )}
 
               {provenance?.notes && (
-                <div className="py-1 border-b border-white/10 space-y-1">
-                  <span className="font-mono text-[#8e8e93]">Methodology &amp; Notes:</span>
-                  <p className="text-[#c7c7cc] font-light">{provenance.notes}</p>
+                <div className="py-1 border-b border-slate-100 space-y-1">
+                  <span className="font-mono text-slate-500">Methodology &amp; Notes:</span>
+                  <p className="text-slate-700 font-light">{provenance.notes}</p>
                 </div>
               )}
 
@@ -134,7 +134,7 @@ export function SourceBadge({
                     href={provenance.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[#c9a962] hover:underline font-mono text-xs"
+                    className="inline-flex items-center gap-1.5 text-[#0284c7] hover:underline font-mono text-xs font-semibold"
                   >
                     <span>View Official Government / Authority Registry</span>
                     <ExternalLink className="h-3 w-3" />
@@ -146,7 +146,7 @@ export function SourceBadge({
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-1.5 bg-[#181820] hover:bg-[#272733] text-[#f5f5f7] text-xs font-mono uppercase tracking-wider rounded-xs border border-white/10 transition-colors cursor-pointer"
+                className="px-4 py-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-wider rounded-xs transition-colors cursor-pointer shadow-xs"
               >
                 Close Record
               </button>

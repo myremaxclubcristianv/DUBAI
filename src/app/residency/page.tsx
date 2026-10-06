@@ -11,21 +11,21 @@ import { AlertCircle, ExternalLink } from 'lucide-react'
 
 export default function ResidencyPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#08080a] text-[#f5f5f7]">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900">
       
       {/* 1. EDITORIAL OPENING */}
-      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 bg-[#0d0d11]">
+      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-slate-200 bg-gradient-to-b from-[#f0f7ff] to-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#c9a962]" />
+            <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
             <Eyebrow>PROPERTY RESIDENCY &bull; STATUTORY SOVEREIGN FRAMEWORK</Eyebrow>
           </div>
           
           <div className="max-w-3xl space-y-4">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] leading-[1.02] text-[#f5f5f7]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] leading-[1.02] text-slate-900 font-serif">
               PROPERTY-BASED<br />RESIDENCY IN THE UAE.
             </h1>
-            <p className="text-base sm:text-lg text-[#a1a1aa] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed">
               Source-led overview of property investor residency routes in Dubai, including the 10-Year Golden Residency framework under Cabinet Resolution No. 65 of 2022 and standard investor permits. Eligibility and validity terms are determined by the relevant statutory authorities.
             </p>
           </div>
@@ -33,39 +33,39 @@ export default function ResidencyPage() {
       </section>
 
       {/* 2. STATUTORY PARAMETERS STRIP */}
-      <section className="py-10 border-b border-white/10 bg-[#08080a]">
+      <section className="py-10 border-b border-slate-200 bg-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 01 &bull; GOLDEN VISA THRESHOLD
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">&ge; AED 2,000,000</div>
-              <p className="text-xs text-[#8e8e93] font-light">Cabinet Res. 65/2022 qualifying real estate valuation across freehold titles</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">&ge; AED 2,000,000</div>
+              <p className="text-xs text-slate-500 font-light">Cabinet Res. 65/2022 qualifying real estate valuation across freehold titles</p>
             </div>
 
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 02 &bull; GOLDEN VISA DURATION
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">10-Year Self-Sponsored</div>
-              <p className="text-xs text-[#8e8e93] font-light">Renewable term published by ICP &amp; GDRFA official portals</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">10-Year Self-Sponsored</div>
+              <p className="text-xs text-slate-500 font-light">Renewable term published by ICP &amp; GDRFA official portals</p>
             </div>
 
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 03 &bull; PROPERTY INVESTOR PERMIT
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">&ge; AED 750,000</div>
-              <p className="text-xs text-[#8e8e93] font-light">DLD / GDRFA 2-year renewable property investor visa route</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">&ge; AED 750,000</div>
+              <p className="text-xs text-slate-500 font-light">DLD / GDRFA 2-year renewable property investor visa route</p>
             </div>
 
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 04 &bull; AUTHORITY DISCRETION
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">Subject to Review</div>
-              <p className="text-xs text-[#8e8e93] font-light">Approval governed by GDRFA, ICP, and DLD Cube verification protocols</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">Subject to Review</div>
+              <p className="text-xs text-slate-500 font-light">Approval governed by GDRFA, ICP, and DLD Cube verification protocols</p>
             </div>
           </div>
         </div>
@@ -77,15 +77,15 @@ export default function ResidencyPage() {
           
           <div className="space-y-3">
             <Eyebrow>CONVEYANCING WORKFLOW</Eyebrow>
-            <h2 className="text-3xl sm:text-5xl font-light tracking-[-0.03em] text-[#f5f5f7]">
+            <h2 className="text-3xl sm:text-5xl font-light tracking-[-0.03em] text-slate-900 font-serif">
               The Statutory Conveyancing Progression
             </h2>
-            <p className="text-base text-[#a1a1aa] font-light max-w-2xl leading-relaxed">
+            <p className="text-base text-slate-600 font-light max-w-2xl leading-relaxed">
               Step-by-step conveyancing and application progression under published Dubai Land Department and immigration procedures.
             </p>
           </div>
 
-          <div className="divide-y divide-white/10 border-t border-b border-white/10">
+          <div className="divide-y divide-slate-200 border-t border-b border-slate-200 bg-white p-6 rounded-xs border shadow-xs">
             <TimelineStep
               number="01"
               title="Eligibility &amp; Freehold Enclave Verification"
@@ -125,29 +125,29 @@ export default function ResidencyPage() {
           </div>
 
           {/* Action & Caveat */}
-          <div className="p-6 sm:p-8 rounded-sm bg-[#111116] border border-white/10 space-y-4">
+          <div className="p-6 sm:p-8 rounded-sm bg-slate-50 border border-slate-200 space-y-4 shadow-xs">
             <div className="flex items-center gap-2">
-              <AlertCircle className="h-4 w-4 text-[#c9a962]" />
-              <span className="text-xs font-mono uppercase tracking-wider text-[#f5f5f7] font-semibold">
+              <AlertCircle className="h-4 w-4 text-[#0284c7]" />
+              <span className="text-xs font-mono uppercase tracking-wider text-slate-900 font-semibold">
                 Statutory Authority Caveat
               </span>
             </div>
-            <p className="text-xs text-[#a1a1aa] leading-relaxed font-light">
+            <p className="text-xs text-slate-600 leading-relaxed font-light">
               Qualifying property ownership must be maintained throughout the residency validity term. Property acquisition does not automatically guarantee visa approval; all applications are subject to sovereign background clearance, medical examination, and official authority discretion. Residency does not confer UAE citizenship or passport rights.
             </p>
-            <div className="pt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-white/10">
+            <div className="pt-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-slate-200">
               <a
                 href="https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-mono text-[#c9a962] hover:underline inline-flex items-center gap-1.5"
+                className="text-xs font-mono text-[#0284c7] hover:underline inline-flex items-center gap-1.5"
               >
-                <span>Review Official UAE Government Portal</span>
+                <span>Official UAE Government Portal</span>
                 <ExternalLink className="h-3 w-3" />
               </a>
 
               <PrimaryLink href="/private-client">
-                Request Private Golden Visa Mandate
+                Request Private Residency Advisory
               </PrimaryLink>
             </div>
           </div>

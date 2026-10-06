@@ -36,17 +36,17 @@ export function CadranDial({
   return (
     <div
       className={cn(
-        'relative p-5 sm:p-6 rounded-sm bg-[#111116] border border-white/10 hover:border-[#c9a962]/40 transition-all flex flex-col justify-between group shadow-[0_4px_20px_rgba(0,0,0,0.4)]',
+        'relative p-5 sm:p-6 rounded-xs bg-white border border-slate-200 hover:border-[#0284c7]/60 transition-all flex flex-col justify-between group shadow-[0_2px_12px_rgba(15,23,42,0.04)] hover:shadow-[0_8px_24px_rgba(2,132,199,0.1)]',
         className
       )}
     >
       <div className="flex items-start justify-between gap-3 relative z-10">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-[#c9a962] font-semibold block mb-0.5">
+          <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-[#0284c7] font-semibold block mb-0.5">
             {label}
           </span>
           {sublabel && (
-            <span className="text-xs text-[#8e8e93] block font-light">
+            <span className="text-xs text-slate-500 block font-light">
               {sublabel}
             </span>
           )}
@@ -57,10 +57,10 @@ export function CadranDial({
             className={cn(
               'px-2 py-0.5 rounded-xs text-[9px] font-mono uppercase tracking-wider font-semibold border shrink-0',
               status === 'VERIFIED' || status === 'OPTIMAL' || status === 'OFFICIAL'
-                ? 'bg-emerald-950/40 text-emerald-400 border-emerald-500/30'
+                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                 : status === 'STABLE'
-                ? 'bg-sky-950/40 text-sky-300 border-sky-500/30'
-                : 'bg-amber-950/40 text-amber-300 border-amber-500/30'
+                ? 'bg-sky-50 text-sky-700 border-sky-200'
+                : 'bg-amber-50 text-amber-700 border-amber-200'
             )}
           >
             {status}
@@ -81,7 +81,7 @@ export function CadranDial({
             strokeWidth="5"
             strokeLinecap="round"
             strokeDasharray={`${arcLength} ${circumference}`}
-            className="text-white/[0.08]"
+            className="text-slate-100"
           />
           {/* Active Accent Arc */}
           <circle
@@ -89,7 +89,7 @@ export function CadranDial({
             cy="50"
             r={radius}
             fill="none"
-            stroke="url(#cadran-champagne-gradient)"
+            stroke="url(#cadran-blue-gradient)"
             strokeWidth="5"
             strokeLinecap="round"
             strokeDasharray={`${arcLength} ${circumference}`}
@@ -97,21 +97,21 @@ export function CadranDial({
             className="transition-all duration-1000 ease-out"
           />
           <defs>
-            <linearGradient id="cadran-champagne-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#c9a962" />
-              <stop offset="100%" stopColor="#e5cca0" />
+            <linearGradient id="cadran-blue-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0284c7" />
+              <stop offset="100%" stopColor="#38bdf8" />
             </linearGradient>
           </defs>
         </svg>
 
         {/* Center Readout */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-          {Icon && <Icon className="h-3.5 w-3.5 text-[#c9a962] mb-0.5 opacity-90" />}
-          <div className="text-lg sm:text-xl font-light font-mono text-[#f5f5f7] tracking-tight tabular-nums">
+          {Icon && <Icon className="h-3.5 w-3.5 text-[#0284c7] mb-0.5 opacity-90" />}
+          <div className="text-lg sm:text-xl font-light font-mono text-slate-900 tracking-tight tabular-nums font-semibold">
             {value}
           </div>
           {unit && (
-            <span className="text-[9px] font-mono text-[#8e8e93] uppercase tracking-wider">
+            <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider">
               {unit}
             </span>
           )}
@@ -119,14 +119,14 @@ export function CadranDial({
       </div>
 
       {/* Footer Benchmark Data */}
-      <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-[#8e8e93] relative z-10">
+      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono text-slate-500 relative z-10">
         {targetValue ? (
-          <span className="truncate max-w-[180px]">Target: <strong className="text-[#f5f5f7] font-normal">{targetValue}</strong></span>
+          <span className="truncate max-w-[180px]">Target: <strong className="text-slate-800 font-semibold">{targetValue}</strong></span>
         ) : (
           <span>Verified Register</span>
         )}
         {statutoryRef && (
-          <span className="truncate max-w-[110px] text-[#71717a]" title={statutoryRef}>
+          <span className="truncate max-w-[110px] text-slate-400" title={statutoryRef}>
             {statutoryRef}
           </span>
         )}
@@ -160,23 +160,23 @@ export function CadranQuadrant({
   return (
     <div
       className={cn(
-        'p-6 sm:p-8 rounded-sm bg-[#111116] border border-white/10 space-y-6 shadow-[0_4px_20px_rgba(0,0,0,0.4)]',
+        'p-6 sm:p-8 rounded-xs bg-white border border-slate-200 space-y-6 shadow-[0_2px_12px_rgba(15,23,42,0.04)]',
         className
       )}
     >
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div>
           {eyebrow && (
-            <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-[#c9a962] font-semibold block mb-0.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.16em] text-[#0284c7] font-semibold block mb-0.5">
               {eyebrow}
             </span>
           )}
-          <h3 className="text-xl sm:text-2xl font-light text-[#f5f5f7] tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-light text-slate-900 tracking-tight">
             {title}
           </h3>
         </div>
         {statutorySource && (
-          <span className="text-xs font-mono text-[#8e8e93] bg-[#08080a] px-3 py-1 rounded-xs border border-white/10 shrink-0">
+          <span className="text-xs font-mono text-slate-600 bg-slate-100 px-3 py-1 rounded-xs border border-slate-200 shrink-0">
             {statutorySource}
           </span>
         )}
@@ -186,11 +186,11 @@ export function CadranQuadrant({
         {quadrants.map((q, idx) => (
           <div
             key={idx}
-            className="p-5 rounded-xs bg-[#0d0d11] border border-white/10 flex flex-col justify-between space-y-3 hover:border-[#c9a962]/40 transition-all duration-200"
+            className="p-5 rounded-xs bg-slate-50/70 border border-slate-200 flex flex-col justify-between space-y-3 hover:border-[#0284c7]/50 transition-all duration-200"
           >
             <div className="space-y-1.5">
               <div className="flex items-start justify-between gap-2">
-                <span className="text-xs font-mono uppercase text-[#a1a1aa]">
+                <span className="text-xs font-mono uppercase text-slate-600 font-medium">
                   {q.title}
                 </span>
                 {q.delta && (
@@ -198,8 +198,8 @@ export function CadranQuadrant({
                     className={cn(
                       'text-[9px] font-mono px-1.5 py-0.5 rounded-xs border font-semibold shrink-0',
                       q.isPositive
-                        ? 'bg-emerald-950/40 text-emerald-400 border-emerald-500/30'
-                        : 'bg-white/5 text-[#a1a1aa] border-white/10'
+                        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                        : 'bg-white text-slate-600 border-slate-200'
                     )}
                   >
                     {q.delta}
@@ -207,17 +207,17 @@ export function CadranQuadrant({
                 )}
               </div>
 
-              <div className="text-2xl sm:text-3xl font-light text-[#f5f5f7] tabular-nums font-mono">
+              <div className="text-2xl sm:text-3xl font-light text-slate-900 tabular-nums font-mono font-semibold">
                 {q.value}
               </div>
             </div>
 
-            <div className="space-y-1.5 pt-3 border-t border-white/10">
-              <p className="text-xs text-[#8e8e93] leading-relaxed font-light">
+            <div className="space-y-1.5 pt-3 border-t border-slate-200">
+              <p className="text-xs text-slate-600 leading-relaxed font-light">
                 {q.subtext}
               </p>
               {q.statutoryRef && (
-                <div className="text-[9px] font-mono text-[#71717a] truncate">
+                <div className="text-[9px] font-mono text-slate-400 truncate">
                   Ref: {q.statutoryRef}
                 </div>
               )}

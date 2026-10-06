@@ -1,35 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  /* Institutional Luxury Dark Palette (Bloomberg / Porsche Design / Architectural Digest) */
-  --bg-pure: #08080a;
-  --bg-subtle: #0d0d11;
-  --bg-surface: #131318;
-  --bg-elevated: #181820;
-  --bg-card: #111116;
-  --bg-dark: #050507;
-  --bg-dark-surface: #0a0a0d;
+  /* White & Dubai Architectural Glass Design System */
+  --bg-pure: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-surface: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+  --bg-blue-subtle: #f0f7ff;
+  --bg-blue-glass: rgba(240, 247, 255, 0.85);
+  --bg-blue-deep: #0b1528;
+  --bg-dark: #070d18;
   
   /* Text & Typographic Hierarchy */
-  --text-main: #f5f5f7;
-  --text-body: #c7c7cc;
-  --text-muted: #8e8e93;
-  --text-tertiary: #636366;
-  --text-inverse: #08080a;
-  --text-inverse-muted: #3a3a3c;
+  --text-main: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #ffffff;
+  --text-inverse-muted: #cbd5e1;
 
   /* Architectural Hairlines & Grid Lines */
-  --border-hairline: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.12);
-  --border-strong: rgba(255, 255, 255, 0.2);
-  --border-dark: #1f1f26;
-  --border-dark-subtle: rgba(255, 255, 255, 0.06);
+  --border-hairline: #f1f5f9;
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --border-blue: rgba(2, 132, 199, 0.25);
+  --border-blue-strong: rgba(2, 132, 199, 0.45);
 
-  /* Curated Metallic Champagne / Sand Accent */
-  --accent-gold: #c9a962;
-  --accent-gold-hover: #dbbe7a;
-  --accent-gold-subtle: rgba(201, 169, 98, 0.12);
-  --accent-gold-border: rgba(201, 169, 98, 0.3);
+  /* Dubai Sky & Glass Blue Identity */
+  --accent-blue: #0284c7;
+  --accent-blue-deep: #0369a1;
+  --accent-blue-light: #e0f2fe;
+  --accent-blue-vibrant: #0ea5e9;
+
+  /* Restrained Metallic Champagne / Gold Accent */
+  --accent-gold: #b89648;
+  --accent-gold-hover: #c9a962;
+  --accent-gold-subtle: rgba(184, 150, 72, 0.12);
+  --accent-gold-border: rgba(184, 150, 72, 0.28);
 
   /* Typography Stack */
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -42,8 +51,11 @@
   --color-bg-surface: var(--bg-surface);
   --color-bg-elevated: var(--bg-elevated);
   --color-bg-card: var(--bg-card);
+  --color-bg-glass: var(--bg-glass);
+  --color-bg-blue-subtle: var(--bg-blue-subtle);
+  --color-bg-blue-glass: var(--bg-blue-glass);
+  --color-bg-blue-deep: var(--bg-blue-deep);
   --color-bg-dark: var(--bg-dark);
-  --color-bg-dark-surface: var(--bg-dark-surface);
   
   --color-text-main: var(--text-main);
   --color-text-body: var(--text-body);
@@ -55,7 +67,11 @@
   --color-border-hairline: var(--border-hairline);
   --color-border-subtle: var(--border-subtle);
   --color-border-strong: var(--border-strong);
-  --color-border-dark: var(--border-dark);
+  --color-border-blue: var(--border-blue);
+
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-deep: var(--accent-blue-deep);
+  --color-accent-blue-light: var(--accent-blue-light);
 
   --color-accent-gold: var(--accent-gold);
   --color-accent-gold-hover: var(--accent-gold-hover);
@@ -76,14 +92,13 @@ html {
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  background-color: #08080a;
-  color: #f5f5f7;
-  color-scheme: dark;
+  background-color: #ffffff;
+  color: #0f172a;
 }
 
 body {
-  background: #08080a;
-  color: #f5f5f7;
+  background: #ffffff;
+  color: #0f172a;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -100,160 +115,65 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Editorial Hairline Borders */
-.border-editorial {
-  border: 1px solid var(--border-hairline);
+/* Selection Styling: Dubai Sky Tint */
+::selection {
+  background-color: rgba(2, 132, 199, 0.18);
+  color: #0369a1;
 }
 
-.border-editorial-b {
-  border-bottom: 1px solid var(--border-hairline);
-}
-
-.border-editorial-t {
-  border-top: 1px solid var(--border-hairline);
-}
-
-/* Restrained Hover Lift & Glow */
-.editorial-hover {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
-}
-
-.editorial-hover:hover {
-  border-color: rgba(201, 169, 98, 0.35);
-}
-
-/* Custom Institutional Minimal Dark Scrollbar */
+/* Custom Architectural Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #08080a;
+  background: #f8fafc;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272f;
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c9a962;
+  background: #94a3b8;
 }
 
-/* Selection */
-::selection {
-  background: rgba(201, 169, 98, 0.25);
-  color: #ffffff;
-}
-
-/* Restrained Minimal Range Sliders (Bloomberg / Institutional Terminal) */
-input[type='range'] {
+/* Range input styling for white/blue architectural theme */
+input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-input[type='range']:focus {
+  background: #e2e8f0;
+  height: 4px;
+  border-radius: 2px;
   outline: none;
 }
 
-input[type='range']::-webkit-slider-runnable-track {
-  height: 2px;
-  background: #27272f;
-  border-radius: 1px;
-}
-
-input[type='range']::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  height: 14px;
-  width: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #c9a962;
-  margin-top: -6px;
+  background: #0284c7;
   cursor: pointer;
-  border: 2px solid #08080a;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.35);
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
-input[type='range']:hover::-webkit-slider-thumb {
-  transform: scale(1.2);
-  background: #dbbe7a;
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #0369a1;
 }
 
-input[type='range']:focus::-webkit-slider-thumb {
-  transform: scale(1.25);
-  background: #dbbe7a;
-}
-
-input[type='range']::-moz-range-track {
-  height: 2px;
-  background: #27272f;
-  border-radius: 1px;
-}
-
-input[type='range']::-moz-range-thumb {
-  height: 14px;
-  width: 14px;
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #c9a962;
-  border: 2px solid #08080a;
+  background: #0284c7;
   cursor: pointer;
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-input[type='range']:hover::-moz-range-thumb {
-  background: #dbbe7a;
-}
-
-/* Editorial Underline Inputs */
-.input-editorial-underline {
-  width: 100%;
-  border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  background: transparent;
-  border-radius: 0;
-  padding: 0.75rem 0;
-  font-size: 0.9375rem;
-  color: #f5f5f7;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.input-editorial-underline:focus {
-  border-bottom-color: #c9a962;
-}
-
-.input-editorial-underline::placeholder {
-  color: #636366;
-}
-
-/* Institutional Intelligence Ticker Animation */
-@keyframes ticker-scroll {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.animate-ticker {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: ticker-scroll 42s linear infinite;
-}
-
-.animate-ticker:hover {
-  animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-ticker {
-    animation: none;
-    transform: none;
-  }
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.35);
 }

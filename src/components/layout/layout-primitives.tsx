@@ -53,7 +53,7 @@ export function Container({
 /* ========================================================================= */
 
 export type SectionSpacing = 'hero' | 'room-240' | 'room-200' | 'room-160' | 'room-120' | 'room-96' | 'room-80' | 'room-64' | 'default' | 'tight' | 'none'
-export type SectionSurface = 'white' | 'pure' | 'subtle' | 'surface' | 'dark' | 'dark-surface' | 'black' | 'charcoal'
+export type SectionSurface = 'white' | 'pure' | 'subtle' | 'surface' | 'blue-glass' | 'sky' | 'dark' | 'dark-surface' | 'black' | 'charcoal'
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   spacing?: SectionSpacing
@@ -68,27 +68,29 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 
 const SECTION_SPACING_CLASSES: Record<SectionSpacing, string> = {
   hero: 'pt-20 pb-20 sm:pt-28 sm:pb-28 lg:pt-32 lg:pb-32',
-  'room-240': 'py-24 sm:py-36 lg:py-48',
-  'room-200': 'py-20 sm:py-28 lg:py-36',
-  'room-160': 'py-16 sm:py-24 lg:py-28',
-  'room-120': 'py-14 sm:py-20 lg:py-24',
-  'room-96': 'py-12 sm:py-16 lg:py-20',
-  'room-80': 'py-10 sm:py-14 lg:py-16',
-  'room-64': 'py-8 sm:py-10 lg:py-12',
-  default: 'py-16 sm:py-24 lg:py-32',
+  'room-240': 'py-20 sm:py-28 lg:py-36',
+  'room-200': 'py-16 sm:py-24 lg:py-32',
+  'room-160': 'py-14 sm:py-20 lg:py-24',
+  'room-120': 'py-12 sm:py-16 lg:py-20',
+  'room-96': 'py-10 sm:py-14 lg:py-16',
+  'room-80': 'py-8 sm:py-12 lg:py-14',
+  'room-64': 'py-6 sm:py-8 lg:py-10',
+  default: 'py-14 sm:py-20 lg:py-24',
   tight: 'py-8 sm:py-12',
   none: 'py-0',
 }
 
 const SECTION_SURFACE_CLASSES: Record<SectionSurface, string> = {
-  white: 'bg-[#08080a] text-[#f5f5f7]',
-  pure: 'bg-[#08080a] text-[#f5f5f7]',
-  subtle: 'bg-[#0d0d11] text-[#f5f5f7]',
-  surface: 'bg-[#131318] text-[#f5f5f7]',
-  dark: 'bg-[#050507] text-[#f5f5f7]',
-  'dark-surface': 'bg-[#181820] text-[#f5f5f7]',
-  black: 'bg-[#08080a] text-[#f5f5f7]',
-  charcoal: 'bg-[#0d0d11] text-[#f5f5f7]',
+  white: 'bg-white text-slate-900',
+  pure: 'bg-white text-slate-900',
+  subtle: 'bg-slate-50/70 text-slate-900',
+  surface: 'bg-slate-100/70 text-slate-900',
+  'blue-glass': 'bg-[#f0f7ff] text-slate-900',
+  sky: 'bg-[#e0f2fe]/40 text-slate-900',
+  dark: 'bg-[#0b1528] text-white',
+  'dark-surface': 'bg-[#111f38] text-white',
+  black: 'bg-[#070d18] text-white',
+  charcoal: 'bg-[#0e1726] text-white',
 }
 
 export function Section({
@@ -110,8 +112,8 @@ export function Section({
         'relative w-full overflow-hidden',
         SECTION_SPACING_CLASSES[spacing],
         SECTION_SURFACE_CLASSES[surface],
-        borderTop && 'border-t border-white/10',
-        borderBottom && 'border-b border-white/10',
+        borderTop && 'border-t border-slate-200/80',
+        borderBottom && 'border-b border-slate-200/80',
         className
       )}
       {...props}
@@ -141,7 +143,7 @@ export function Eyebrow({
     <span
       className={cn(
         'text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase font-semibold block',
-        accent ? 'text-[#c9a962]' : 'text-[#8e8e93]',
+        accent ? 'text-[#0284c7]' : 'text-slate-500',
         className
       )}
       {...props}
@@ -162,15 +164,15 @@ export function EditorialHeading({
   size?: 'hero' | 'section' | 'editorial' | 'dossier' | 'subhead'
 }) {
   const sizeClasses = {
-    hero: 'text-[44px] sm:text-[68px] lg:text-[92px] font-light tracking-[-0.04em] leading-[0.95]',
-    section: 'text-[32px] sm:text-[48px] lg:text-[60px] font-light tracking-[-0.03em] leading-[1.05]',
-    editorial: 'text-[26px] sm:text-[36px] lg:text-[44px] font-light tracking-[-0.025em] leading-[1.12]',
-    dossier: 'text-[22px] sm:text-[28px] lg:text-[34px] font-light tracking-[-0.02em] leading-[1.2]',
-    subhead: 'text-[18px] sm:text-[20px] font-normal tracking-[-0.015em] leading-[1.4]',
+    hero: 'text-[44px] sm:text-[68px] lg:text-[88px] font-light tracking-[-0.04em] leading-[0.95]',
+    section: 'text-[30px] sm:text-[44px] lg:text-[54px] font-light tracking-[-0.03em] leading-[1.05]',
+    editorial: 'text-[24px] sm:text-[32px] lg:text-[40px] font-light tracking-[-0.025em] leading-[1.12]',
+    dossier: 'text-[20px] sm:text-[26px] lg:text-[32px] font-light tracking-[-0.02em] leading-[1.2]',
+    subhead: 'text-[17px] sm:text-[19px] font-normal tracking-[-0.015em] leading-[1.4]',
   }
 
   return (
-    <Tag className={cn(sizeClasses[size], 'text-[#f5f5f7]', className)} {...props}>
+    <Tag className={cn(sizeClasses[size], 'text-slate-900', className)} {...props}>
       {children}
     </Tag>
   )
@@ -185,10 +187,10 @@ export function EditorialText({
   size?: 'large' | 'regular' | 'small' | 'caption'
 }) {
   const sizeClasses = {
-    large: 'text-lg sm:text-xl font-light leading-relaxed text-[#c7c7cc]',
-    regular: 'text-base sm:text-lg font-light leading-relaxed text-[#a1a1aa]',
-    small: 'text-sm font-normal leading-relaxed text-[#8e8e93]',
-    caption: 'text-xs font-mono uppercase tracking-wider text-[#71717a]',
+    large: 'text-lg sm:text-xl font-light leading-relaxed text-slate-700',
+    regular: 'text-base sm:text-lg font-light leading-relaxed text-slate-600',
+    small: 'text-sm font-normal leading-relaxed text-slate-500',
+    caption: 'text-xs font-mono uppercase tracking-wider text-slate-400',
   }
 
   return (
@@ -225,11 +227,11 @@ export function SourceBadge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm text-[10px] font-mono tracking-wider uppercase border',
-        'bg-[#131318] border-white/10 text-[#a1a1aa]',
-        sourceClass === 'OFFICIAL GOVERNMENT' && 'text-emerald-400 border-emerald-500/30 bg-emerald-950/20',
-        sourceClass === 'OFFICIAL REGULATORY' && 'text-sky-300 border-sky-500/30 bg-sky-950/20',
-        sourceClass === 'CALCULATED' && 'text-[#c9a962] border-[#c9a962]/30 bg-[#c9a962]/10',
+        'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-xs text-[10px] font-mono tracking-wider uppercase border',
+        'bg-slate-50 border-slate-200 text-slate-600',
+        sourceClass === 'OFFICIAL GOVERNMENT' && 'text-emerald-700 border-emerald-200 bg-emerald-50',
+        sourceClass === 'OFFICIAL REGULATORY' && 'text-sky-700 border-sky-200 bg-sky-50',
+        sourceClass === 'CALCULATED' && 'text-[#0284c7] border-sky-200 bg-sky-50/50',
         className
       )}
     >
@@ -278,25 +280,25 @@ export function DirectoryRow({
     <Link
       href={href}
       className={cn(
-        'group flex flex-col sm:flex-row sm:items-center justify-between py-5 sm:py-6 border-b border-white/10 hover:border-[#c9a962]/50 hover:bg-white/[0.02] px-4 -mx-4 transition-all gap-4 rounded-sm',
+        'group flex flex-col sm:flex-row sm:items-center justify-between py-5 sm:py-6 border-b border-slate-200/80 hover:border-[#0284c7] hover:bg-sky-50/30 px-4 -mx-4 transition-all gap-4 rounded-xs',
         className
       )}
     >
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
         {leftLabel && (
-          <span className="text-[11px] font-mono uppercase text-[#71717a] w-28 shrink-0">
+          <span className="text-[11px] font-mono uppercase text-slate-500 w-28 shrink-0">
             {leftLabel}
           </span>
         )}
         <div className="space-y-1">
           <div className="flex items-center gap-3">
-            <span className="text-lg sm:text-xl font-light text-[#f5f5f7] group-hover:text-[#c9a962] transition-colors">
+            <span className="text-lg sm:text-xl font-light text-slate-900 group-hover:text-[#0284c7] transition-colors">
               {title}
             </span>
             {badge}
           </div>
           {subtitle && (
-            <p className="text-xs sm:text-sm text-[#8e8e93] font-light">
+            <p className="text-xs sm:text-sm text-slate-500 font-light">
               {subtitle}
             </p>
           )}
@@ -305,11 +307,11 @@ export function DirectoryRow({
 
       <div className="flex items-center gap-6 self-end sm:self-auto shrink-0">
         {rightValue && (
-          <span className="text-sm sm:text-base font-mono text-[#f5f5f7] tabular-nums">
+          <span className="text-sm sm:text-base font-mono text-slate-900 tabular-nums">
             {rightValue}
           </span>
         )}
-        <ArrowUpRight className="h-4 w-4 text-[#71717a] group-hover:text-[#c9a962] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+        <ArrowUpRight className="h-4 w-4 text-slate-400 group-hover:text-[#0284c7] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
       </div>
     </Link>
   )
@@ -332,22 +334,22 @@ export function DataRow({
   return (
     <div
       className={cn(
-        'flex flex-col sm:flex-row sm:items-center justify-between py-3 border-b border-white/10 gap-1',
+        'flex flex-col sm:flex-row sm:items-center justify-between py-3 border-b border-slate-200/80 gap-1',
         className
       )}
     >
       <div className="flex items-center gap-2">
-        <span className="text-xs font-mono uppercase tracking-wider text-[#8e8e93]">
+        <span className="text-xs font-mono uppercase tracking-wider text-slate-600">
           {label}
         </span>
-        {source && <span className="opacity-60">{source}</span>}
+        {source && <span className="opacity-75">{source}</span>}
       </div>
       <div className="flex items-baseline gap-2">
-        <span className="text-sm sm:text-base font-mono tabular-nums text-[#f5f5f7]">
+        <span className="text-sm sm:text-base font-mono tabular-nums text-slate-900 font-medium">
           {value}
         </span>
         {subvalue && (
-          <span className="text-xs font-mono text-[#71717a]">
+          <span className="text-xs font-mono text-slate-500">
             {subvalue}
           </span>
         )}
@@ -370,20 +372,20 @@ export function TimelineStep({
   className?: string
 }) {
   return (
-    <div className={cn('flex gap-6 sm:gap-10 py-6 sm:py-8 border-b border-white/10', className)}>
-      <span className="text-xl sm:text-2xl font-light font-mono text-[#c9a962] shrink-0 w-8 sm:w-10">
+    <div className={cn('flex gap-6 sm:gap-10 py-6 sm:py-8 border-b border-slate-200/80', className)}>
+      <span className="text-xl sm:text-2xl font-light font-mono text-[#0284c7] shrink-0 w-8 sm:w-10">
         {number}
       </span>
       <div className="space-y-2 max-w-2xl">
-        <h3 className="text-lg sm:text-xl font-light text-[#f5f5f7] tracking-tight">
+        <h3 className="text-lg sm:text-xl font-light text-slate-900 tracking-tight">
           {title}
         </h3>
-        <p className="text-sm text-[#a1a1aa] font-light leading-relaxed">
+        <p className="text-sm text-slate-600 font-light leading-relaxed">
           {description}
         </p>
         {source && (
           <div className="pt-1">
-            <span className="text-[10px] font-mono text-[#71717a] uppercase tracking-wider">
+            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
               Statutory Basis: {source}
             </span>
           </div>
@@ -407,7 +409,7 @@ export function PrimaryLink({
     <Link
       href={href}
       className={cn(
-        'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-sm bg-[#c9a962] hover:bg-[#dbbe7a] text-[#08080a] text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all shadow-[0_0_20px_rgba(201,169,98,0.15)] hover:shadow-[0_0_25px_rgba(201,169,98,0.3)]',
+        'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all shadow-[0_2px_10px_rgba(2,132,199,0.25)] hover:shadow-[0_4px_16px_rgba(2,132,199,0.35)]',
         className
       )}
       {...props}
@@ -428,7 +430,7 @@ export function SecondaryLink({
     <Link
       href={href}
       className={cn(
-        'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-sm bg-transparent border border-white/20 hover:border-[#c9a962] text-[#f5f5f7] hover:text-[#c9a962] text-xs font-mono uppercase tracking-[0.14em] font-medium transition-colors',
+        'inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xs bg-white/90 hover:bg-white border border-slate-300 hover:border-[#0284c7] text-slate-800 hover:text-[#0284c7] text-xs font-mono uppercase tracking-[0.14em] font-medium transition-all shadow-[0_1px_3px_rgba(0,0,0,0.05)]',
         className
       )}
       {...props}
@@ -464,11 +466,11 @@ export function SectionHeader({
     <div className={cn('w-full flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14', className)}>
       <div className="space-y-3 max-w-2xl">
         {eyebrow && typeof eyebrow === 'string' ? <Eyebrow>{eyebrow}</Eyebrow> : eyebrow}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.03em] leading-tight text-[#f5f5f7]">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.03em] leading-tight text-slate-900">
           {title}
         </h2>
         {description && (
-          <p className="text-base text-[#a1a1aa] font-light leading-relaxed">
+          <p className="text-base text-slate-600 font-light leading-relaxed">
             {description}
           </p>
         )}
@@ -497,18 +499,18 @@ export function PageIntro({
   surface?: string
 }) {
   return (
-    <section className={cn('pt-14 pb-14 sm:pt-20 sm:pb-20 border-b border-white/10 bg-[#0d0d11]', className)}>
+    <section className={cn('pt-14 pb-14 sm:pt-20 sm:pb-20 border-b border-slate-200/80 bg-[#f0f7ff]/60', className)}>
       <Container size="editorial" className="space-y-6">
         <div className="flex flex-wrap items-center justify-between gap-4">
           {eyebrow && typeof eyebrow === 'string' ? <Eyebrow>{eyebrow}</Eyebrow> : eyebrow}
           {badge}
         </div>
         <div className="space-y-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] leading-[1.05] text-[#f5f5f7]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] leading-[1.05] text-slate-900">
             {title}
           </h1>
           {description && (
-            <p className="text-lg sm:text-xl text-[#a1a1aa] font-light max-w-2xl leading-relaxed">
+            <p className="text-lg sm:text-xl text-slate-600 font-light max-w-2xl leading-relaxed">
               {description}
             </p>
           )}
@@ -527,12 +529,12 @@ export function DataRail({
   className?: string
 }) {
   return (
-    <div className={cn('w-full grid grid-cols-2 lg:grid-cols-4 gap-6 py-6 border-y border-white/10', className)}>
+    <div className={cn('w-full grid grid-cols-2 lg:grid-cols-4 gap-6 py-6 border-y border-slate-200/80 bg-white', className)}>
       {items.map((item, idx) => (
         <div key={idx} className="space-y-1">
-          <span className="text-[10px] font-mono uppercase tracking-wider text-[#71717a] block">{item.label}</span>
-          <span className="text-2xl font-light text-[#f5f5f7] tabular-nums block">{item.value}</span>
-          {item.subtext && <span className="text-xs text-[#a1a1aa] font-light block">{item.subtext}</span>}
+          <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block">{item.label}</span>
+          <span className="text-2xl font-light text-slate-900 tabular-nums block">{item.value}</span>
+          {item.subtext && <span className="text-xs text-slate-600 font-light block">{item.subtext}</span>}
         </div>
       ))}
     </div>

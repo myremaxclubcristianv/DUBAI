@@ -7,12 +7,12 @@ import { PageIntro } from '@/components/layout/layout-primitives'
 
 export default function MapPage() {
   return (
-    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-24 selection:bg-[#c9a962]/20 selection:text-[#f5f5f7]">
+    <div className="bg-white text-slate-900 min-h-screen pb-24">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Geodetic & Sector Intelligence"
         badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD Freehold Coordinates Register" />}
-        title={<>Sector Atlas<span className="text-[#c9a962]">.</span></>}
+        title={<>Sector Atlas<span className="text-[#0284c7]">.</span></>}
         description="Explore Dubai master developments, freehold zoning, airport proximity, and verified geodetic sector coordinates across all key investment submarkets."
       />
 

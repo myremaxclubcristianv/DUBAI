@@ -12,19 +12,19 @@ export default function YachtsPage() {
   const yachtList = VERIFIED_LIFESTYLE.filter((l) => l.category === 'yachts')
 
   return (
-    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-24 selection:bg-[#c9a962]/20 selection:text-[#f5f5f7]">
+    <div className="bg-white text-slate-900 min-h-screen pb-24">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="DMCA Licensed Marine Operators"
         badge={<SourceBadge status="LICENSED OPERATOR" sourceName="Dubai Maritime City Authority" />}
-        title={<>Superyachts &amp; Charters<span className="text-[#c9a962]">.</span></>}
+        title={<>Superyachts &amp; Charters<span className="text-[#0284c7]">.</span></>}
         description="Licensed luxury motor yacht and superyacht charters, private berth reservations, and bespoke marine itineraries departing Dubai Marina Yacht Club and Dubai Harbour."
       />
 
       <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-4">
         <Link
           href="/lifestyle"
-          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#a1a1aa] hover:text-[#c9a962] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-[#0284c7] transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Back to Lifestyle Monograph</span>
@@ -36,10 +36,10 @@ export default function YachtsPage() {
           {yachtList.map((item) => (
             <div
               key={item.id}
-              className="p-6 sm:p-8 bg-[#111116] rounded-xs border border-white/[0.08] hover:border-[#c9a962]/40 transition-all duration-300 flex flex-col justify-between space-y-6 group"
+              className="p-6 sm:p-8 bg-white rounded-xs border border-slate-200 hover:border-[#0284c7]/40 transition-all duration-300 flex flex-col justify-between space-y-6 group shadow-xs hover:shadow-md"
             >
               <div className="space-y-5">
-                <div className="relative aspect-[16/9] rounded-xs overflow-hidden bg-[#181820] border border-white/10">
+                <div className="relative aspect-[16/9] rounded-xs overflow-hidden bg-slate-100 border border-slate-200">
                   <Image
                     src={item.image || 'https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?auto=format&fit=crop&w=1200&q=80'}
                     alt={item.title}
@@ -48,7 +48,7 @@ export default function YachtsPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="px-2.5 py-0.5 rounded-xs text-[10px] font-mono font-semibold uppercase bg-black/70 backdrop-blur-md text-[#c9a962] border border-white/10">
+                    <span className="px-2.5 py-0.5 rounded-xs text-[10px] font-mono font-semibold uppercase bg-white/90 backdrop-blur-md text-[#0284c7] border border-sky-100 shadow-xs">
                       DMCA Licensed
                     </span>
                   </div>
@@ -56,34 +56,34 @@ export default function YachtsPage() {
 
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-xl font-light text-[#f5f5f7] tracking-tight group-hover:text-[#c9a962] transition-colors">{item.title}</h3>
-                    <p className="text-xs text-[#a1a1aa] flex items-center gap-1.5 mt-1 font-mono">
-                      <MapPin className="h-3.5 w-3.5 text-[#c9a962] shrink-0" />
+                    <h3 className="text-xl font-light text-slate-900 tracking-tight group-hover:text-[#0284c7] transition-colors font-serif">{item.title}</h3>
+                    <p className="text-xs text-slate-500 flex items-center gap-1.5 mt-1 font-mono">
+                      <MapPin className="h-3.5 w-3.5 text-[#0284c7] shrink-0" />
                       <span className="truncate">{item.location}</span>
                     </p>
                   </div>
                   <SourceBadge provenance={item.provenance} showDetailButton={false} />
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#a1a1aa] font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
                   {item.description}
                 </p>
 
                 {item.specs && (
-                  <div className="p-4 bg-black/40 rounded-xs border border-white/[0.06] text-xs space-y-2 font-mono">
+                  <div className="p-4 bg-slate-50 rounded-xs border border-slate-200 text-xs space-y-2 font-mono">
                     {Object.entries(item.specs).map(([k, v]) => (
-                      <div key={k} className="flex justify-between items-center text-[#a1a1aa]">
-                        <span className="text-[#71717a] capitalize">{k.replace(/_/g, ' ')}:</span>
-                        <span className="font-medium text-[#f5f5f7]">{String(v)}</span>
+                      <div key={k} className="flex justify-between items-center text-slate-600">
+                        <span className="text-slate-400 capitalize">{k.replace(/_/g, ' ')}:</span>
+                        <span className="font-medium text-slate-900">{String(v)}</span>
                       </div>
                     ))}
                   </div>
                 )}
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                <span className="text-[11px] font-mono text-[#71717a] flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#c9a962]" />
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[11px] font-mono text-slate-500 flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#0284c7]" />
                   Verified DMCA Registry
                 </span>
                 {item.provenance.source_url && (
@@ -91,7 +91,7 @@ export default function YachtsPage() {
                     href={item.provenance.source_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#c9a962] hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono text-[#0284c7] hover:underline font-medium"
                   >
                     <span>Charter Portal</span>
                     <ExternalLink className="h-3 w-3" />

@@ -10,7 +10,7 @@ import {
   SourceBadge,
   PrimaryLink,
 } from '@/components/layout/layout-primitives'
-import { Search, RotateCcw, MapPin } from 'lucide-react'
+import { Search, RotateCcw, MapPin, CheckCircle2 } from 'lucide-react'
 
 export default function PropertiesPage() {
   const [searchQuery, setSearchQuery] = React.useState('')
@@ -64,43 +64,44 @@ export default function PropertiesPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#08080a] text-[#f5f5f7]">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900">
       
       {/* 1. EDITORIAL HEADER */}
-      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 bg-[#0d0d11]">
+      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-slate-200 bg-gradient-to-b from-[#f0f7ff] to-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
           <Eyebrow>PROPERTY DIRECTORY &bull; STATUTORY INVENTORY</Eyebrow>
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-[#f5f5f7]">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-slate-900 font-serif">
                 PROPERTIES
               </h1>
-              <p className="text-base sm:text-lg text-[#a1a1aa] font-light max-w-2xl leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 font-light max-w-2xl leading-relaxed">
                 Curated portfolio of prime Dubai penthouses, villas, and architectural residences with verified title deeds and published acquisition schedules.
               </p>
             </div>
 
-            <div className="text-xs font-mono text-[#8e8e93] pb-1">
-              Showing <span className="text-[#c9a962] font-semibold">{filteredProperties.length}</span> verified asset records
+            <div className="text-xs font-mono text-slate-500 pb-1 flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-[#0284c7]" />
+              <span>Showing <strong className="text-slate-900 font-semibold">{filteredProperties.length}</strong> verified asset records</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. RESTRAINED MINIMAL FILTER BAR */}
-      <section className="sticky top-[72px] sm:top-[80px] z-30 bg-[#08080a]/95 backdrop-blur-md border-b border-white/10 py-3.5 px-6 sm:px-10 lg:px-16">
+      <section className="sticky top-[72px] sm:top-[80px] z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 py-3.5 px-6 sm:px-10 lg:px-16 shadow-xs">
         <div className="w-full max-w-[1440px] mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
           
           {/* Search */}
           <div className="relative w-full md:w-80">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#c9a962]" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#0284c7]" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by development, district, developer..."
-              className="w-full pl-9 pr-4 py-2 bg-[#131318] rounded-xs border border-white/10 text-xs text-[#f5f5f7] placeholder:text-[#636366] focus:outline-none focus:border-[#c9a962] transition-colors font-mono"
+              className="w-full pl-9 pr-4 py-2 bg-slate-50 rounded-xs border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#0284c7] focus:bg-white transition-colors font-mono"
             />
           </div>
 
@@ -109,7 +110,7 @@ export default function PropertiesPage() {
             <select
               value={selectedDistrict}
               onChange={(e) => setSelectedDistrict(e.target.value)}
-              className="px-3.5 py-2 bg-[#131318] rounded-xs border border-white/10 text-xs font-mono text-[#f5f5f7] focus:outline-none focus:border-[#c9a962] cursor-pointer"
+              className="px-3.5 py-2 bg-slate-50 rounded-xs border border-slate-200 text-xs font-mono text-slate-800 focus:outline-none focus:border-[#0284c7] cursor-pointer"
             >
               <option value="ALL">All Districts</option>
               {uniqueDistricts.map((d) => (
@@ -120,7 +121,7 @@ export default function PropertiesPage() {
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="px-3.5 py-2 bg-[#131318] rounded-xs border border-white/10 text-xs font-mono text-[#f5f5f7] focus:outline-none focus:border-[#c9a962] cursor-pointer"
+              className="px-3.5 py-2 bg-slate-50 rounded-xs border border-slate-200 text-xs font-mono text-slate-800 focus:outline-none focus:border-[#0284c7] cursor-pointer"
             >
               <option value="ALL">All Types</option>
               {uniqueTypes.map((t) => (
@@ -131,7 +132,7 @@ export default function PropertiesPage() {
             <select
               value={priceTier}
               onChange={(e) => setPriceTier(e.target.value)}
-              className="px-3.5 py-2 bg-[#131318] rounded-xs border border-white/10 text-xs font-mono text-[#f5f5f7] focus:outline-none focus:border-[#c9a962] cursor-pointer"
+              className="px-3.5 py-2 bg-slate-50 rounded-xs border border-slate-200 text-xs font-mono text-slate-800 focus:outline-none focus:border-[#0284c7] cursor-pointer"
             >
               <option value="ALL">All Price Tiers</option>
               <option value="UNDER_25M">&lt; AED 25M</option>
@@ -141,7 +142,7 @@ export default function PropertiesPage() {
 
             <button
               onClick={handleReset}
-              className="p-2 rounded-xs border border-white/10 text-[#8e8e93] hover:text-[#f5f5f7] hover:bg-white/5 transition-colors cursor-pointer"
+              className="p-2 rounded-xs border border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
               title="Reset Filters"
             >
               <RotateCcw className="h-3.5 w-3.5" />
@@ -154,14 +155,14 @@ export default function PropertiesPage() {
       {/* 3. LARGE EDITORIAL PROPERTY ROWS */}
       <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 py-14 sm:py-20 space-y-12 sm:space-y-16 flex-1">
         {filteredProperties.length === 0 ? (
-          <div className="text-center py-24 border border-white/10 rounded-sm bg-[#0d0d11] p-10 space-y-4">
-            <h3 className="text-xl font-light text-[#f5f5f7]">No Assets Matching Selection</h3>
-            <p className="text-xs text-[#8e8e93] max-w-md mx-auto">
+          <div className="text-center py-24 border border-slate-200 rounded-sm bg-slate-50 p-10 space-y-4">
+            <h3 className="text-xl font-light text-slate-900 font-serif">No Assets Matching Selection</h3>
+            <p className="text-xs text-slate-500 max-w-md mx-auto">
               Please adjust your filters or reset to view all verified statutory properties.
             </p>
             <button
               onClick={handleReset}
-              className="px-6 py-2.5 rounded-xs bg-[#c9a962] text-[#08080a] text-xs font-mono uppercase tracking-wider font-semibold cursor-pointer"
+              className="px-6 py-2.5 rounded-xs bg-[#0284c7] text-white text-xs font-mono uppercase tracking-wider font-semibold cursor-pointer hover:bg-[#0369a1] transition-colors"
             >
               Reset Filters
             </button>
@@ -178,17 +179,17 @@ export default function PropertiesPage() {
             return (
               <article
                 key={prop.id}
-                className="group border-b border-white/10 pb-12 sm:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+                className="group border-b border-slate-200 pb-12 sm:pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
               >
                 {/* Architectural Image */}
                 <div className="lg:col-span-7">
-                  <Link href={`/properties/${prop.id}`} className="block relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-[#111116] border border-white/10 group-hover:border-[#c9a962]/50 transition-all">
+                  <Link href={`/properties/${prop.id}`} className="block relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-slate-100 border border-slate-200 group-hover:border-[#0284c7]/50 transition-all shadow-xs group-hover:shadow-md">
                     <Image
                       src={prop.images[0] || 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=85'}
                       alt={prop.title}
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105 brightness-90 group-hover:brightness-100"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     <div className="absolute top-4 left-4">
                       <SourceBadge sourceClass="OFFICIAL CORPORATE" sourceName={developer} />
@@ -199,39 +200,39 @@ export default function PropertiesPage() {
                 {/* Editorial Metadata & Context */}
                 <div className="lg:col-span-5 space-y-5">
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#c9a962]">
+                    <div className="flex items-center gap-2 text-xs font-mono uppercase text-[#0284c7] font-medium">
                       <MapPin className="h-3.5 w-3.5" />
                       <span>{district}</span>
-                      <span className="text-[#636366]">&bull;</span>
+                      <span className="text-slate-300">&bull;</span>
                       <span>{type}</span>
                     </div>
 
-                    <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-[#f5f5f7] group-hover:text-[#c9a962] transition-colors">
+                    <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-slate-900 group-hover:text-[#0284c7] transition-colors font-serif">
                       <Link href={`/properties/${prop.id}`}>
                         {prop.title}
                       </Link>
                     </h2>
                   </div>
 
-                  <p className="text-sm text-[#a1a1aa] font-light leading-relaxed line-clamp-3">
+                  <p className="text-sm text-slate-600 font-light leading-relaxed line-clamp-3">
                     {prop.unit_descriptor || prop.editorial_display_name}
                   </p>
 
-                  <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono">
+                  <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-4 text-xs font-mono">
                     <div>
-                      <span className="text-[#71717a] block uppercase text-[10px]">INTERNAL AREA</span>
-                      <span className="text-[#f5f5f7] font-light">{size.toLocaleString()} SQ. FT</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">INTERNAL AREA</span>
+                      <span className="text-slate-900 font-semibold">{size.toLocaleString()} SQ. FT</span>
                     </div>
                     <div>
-                      <span className="text-[#71717a] block uppercase text-[10px]">CONFIGURATION</span>
-                      <span className="text-[#f5f5f7] font-light">{beds} Bedrooms</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">CONFIGURATION</span>
+                      <span className="text-slate-900 font-semibold">{beds} Bedrooms</span>
                     </div>
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between">
+                  <div className="pt-4 flex items-center justify-between border-t border-slate-100">
                     <div>
-                      <span className="text-[10px] font-mono uppercase text-[#71717a] block">ASKING VALUATION</span>
-                      <span className="text-xl sm:text-2xl font-light text-[#f5f5f7] font-mono tabular-nums">
+                      <span className="text-[10px] font-mono uppercase text-slate-400 block">ASKING VALUATION</span>
+                      <span className="text-xl sm:text-2xl font-light text-slate-900 font-mono tabular-nums font-semibold">
                         {formatCurrency(price)}
                       </span>
                     </div>

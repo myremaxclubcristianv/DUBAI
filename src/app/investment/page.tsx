@@ -55,21 +55,21 @@ export default function InvestmentPage() {
   const cashOnCashYield = initialEquityRequired > 0 ? (netCashFlowAfterDebt / initialEquityRequired) * 100 : 0
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#08080a] text-[#f5f5f7]">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900">
       
       {/* 1. EDITORIAL HEADER */}
-      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-white/10 bg-[#0d0d11]">
+      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-slate-200 bg-gradient-to-b from-[#f0f7ff] to-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#c9a962]" />
+            <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
             <Eyebrow>INVESTMENT RESEARCH &bull; CAPITAL UNDERWRITING ENGINE</Eyebrow>
           </div>
           
           <div className="max-w-3xl space-y-4">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] leading-[1.02] text-[#f5f5f7]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] leading-[1.02] text-slate-900 font-serif">
               UNDERWRITE<br />THE ACQUISITION.
             </h1>
-            <p className="text-base sm:text-lg text-[#a1a1aa] font-light leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed">
               Deterministic financial memorandum for Dubai residential and prime freehold assets. Built on published Dubai Land Department tariffs, Central Bank mortgage caps, and natural person tax exemptions.
             </p>
           </div>
@@ -77,39 +77,39 @@ export default function InvestmentPage() {
       </section>
 
       {/* 2. STATUTORY PILLARS */}
-      <section className="py-10 border-b border-white/10 bg-[#08080a]">
+      <section className="py-10 border-b border-slate-200 bg-white">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 01 &bull; DLD TRANSFER FEE
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">4.00% Combined</div>
-              <p className="text-xs text-[#8e8e93] font-light">Law No. 7 of 2006 (Standard statutory 2% buyer / 2% seller allocation)</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">4.00% Combined</div>
+              <p className="text-xs text-slate-500 font-light">Law No. 7 of 2006 (Standard statutory 2% buyer / 2% seller allocation)</p>
             </div>
 
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 02 &bull; MORTGAGE CAP
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">Up to 80% LTV</div>
-              <p className="text-xs text-[#8e8e93] font-light">CBUAE maximum for first residential property under AED 5,000,000</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">Up to 80% LTV</div>
+              <p className="text-xs text-slate-500 font-light">CBUAE maximum for first residential property under AED 5,000,000</p>
             </div>
 
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 03 &bull; TAX STATUS
               </span>
-              <div className="text-xl font-light text-emerald-400 font-mono">0% Personal Tax</div>
-              <p className="text-xs text-[#8e8e93] font-light">Individuals are not subject to personal income or capital gains tax.</p>
+              <div className="text-xl font-semibold text-emerald-600 font-mono">0% Personal Tax</div>
+              <p className="text-xs text-slate-500 font-light">Individuals are not subject to personal income or capital gains tax.</p>
             </div>
 
-            <div className="p-5 rounded-xs bg-[#111116] border border-white/10 space-y-1.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a962] block font-semibold">
+            <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 04 &bull; MONETARY ANCHOR
               </span>
-              <div className="text-xl font-light text-[#f5f5f7] font-mono">1 USD = 3.6725 AED</div>
-              <p className="text-xs text-[#8e8e93] font-light">Central Bank of the UAE statutory currency peg</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">1 USD = 3.6725 AED</div>
+              <p className="text-xs text-slate-500 font-light">Central Bank of the UAE statutory currency peg</p>
             </div>
           </div>
         </div>
@@ -124,18 +124,18 @@ export default function InvestmentPage() {
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-2">
               <Eyebrow>INSTRUMENT PARAMETERS</Eyebrow>
-              <h2 className="text-2xl sm:text-3xl font-light text-[#f5f5f7]">
+              <h2 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
                 Acquisition Assumptions
               </h2>
             </div>
 
             {/* Price Selector */}
-            <div className="space-y-3 p-6 sm:p-7 rounded-sm bg-[#111116] border border-white/10">
+            <div className="space-y-3 p-6 sm:p-7 rounded-sm bg-white border border-slate-200 shadow-xs">
               <div className="flex justify-between items-center text-xs font-mono">
-                <span className="text-[#8e8e93] uppercase">Property Valuation</span>
+                <span className="text-slate-500 uppercase font-semibold">Property Valuation</span>
                 <SourceBadge sourceClass="USER PROVIDED" />
               </div>
-              <div className="text-3xl sm:text-4xl font-light font-mono tabular-nums text-[#f5f5f7]">
+              <div className="text-3xl sm:text-4xl font-light font-mono tabular-nums text-slate-900 font-semibold">
                 {formatCurrency(propertyPrice)}
               </div>
               <input
@@ -145,9 +145,9 @@ export default function InvestmentPage() {
                 step="500000"
                 value={propertyPrice}
                 onChange={(e) => setPropertyPrice(Number(e.target.value))}
-                className="w-full"
+                className="w-full accent-[#0284c7]"
               />
-              <div className="flex justify-between text-[10px] font-mono text-[#71717a]">
+              <div className="flex justify-between text-[10px] font-mono text-slate-400">
                 <span>AED 2,000,000</span>
                 <span>AED 25,000,000</span>
                 <span>AED 50,000,000</span>
@@ -155,14 +155,14 @@ export default function InvestmentPage() {
             </div>
 
             {/* Structure: Cash vs Financed */}
-            <div className="space-y-4 p-6 sm:p-7 rounded-sm bg-[#111116] border border-white/10">
+            <div className="space-y-4 p-6 sm:p-7 rounded-sm bg-white border border-slate-200 shadow-xs">
               <div className="flex justify-between items-center">
-                <span className="text-xs font-mono uppercase text-[#8e8e93]">Capital Structure</span>
+                <span className="text-xs font-mono uppercase text-slate-500 font-semibold">Capital Structure</span>
                 <div className="flex gap-2">
                   <button
                     onClick={() => setFinancingMode('financed')}
                     className={`px-3.5 py-1.5 rounded-xs text-xs font-mono transition-colors cursor-pointer ${
-                      financingMode === 'financed' ? 'bg-[#c9a962] text-[#08080a] font-semibold' : 'bg-[#181820] text-[#a1a1aa] border border-white/10'
+                      financingMode === 'financed' ? 'bg-[#0284c7] text-white font-semibold' : 'bg-slate-100 text-slate-700 border border-slate-200'
                     }`}
                   >
                     Mortgage Debt
@@ -170,7 +170,7 @@ export default function InvestmentPage() {
                   <button
                     onClick={() => setFinancingMode('cash')}
                     className={`px-3.5 py-1.5 rounded-xs text-xs font-mono transition-colors cursor-pointer ${
-                      financingMode === 'cash' ? 'bg-[#c9a962] text-[#08080a] font-semibold' : 'bg-[#181820] text-[#a1a1aa] border border-white/10'
+                      financingMode === 'cash' ? 'bg-[#0284c7] text-white font-semibold' : 'bg-slate-100 text-slate-700 border border-slate-200'
                     }`}
                   >
                     100% Equity
@@ -179,11 +179,11 @@ export default function InvestmentPage() {
               </div>
 
               {financingMode === 'financed' && (
-                <div className="space-y-5 pt-4 border-t border-white/10">
+                <div className="space-y-5 pt-4 border-t border-slate-100">
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs font-mono">
-                      <span className="text-[#8e8e93]">Loan to Value (LTV)</span>
-                      <span className="text-[#f5f5f7] font-semibold">{ltvPercent}% ({formatCurrency(loanAmount)})</span>
+                      <span className="text-slate-600">Loan to Value (LTV)</span>
+                      <span className="text-slate-900 font-semibold">{ltvPercent}% ({formatCurrency(loanAmount)})</span>
                     </div>
                     <input
                       type="range"
@@ -192,28 +192,28 @@ export default function InvestmentPage() {
                       step="5"
                       value={ltvPercent}
                       onChange={(e) => setLtvPercent(Number(e.target.value))}
-                      className="w-full"
+                      className="w-full accent-[#0284c7]"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                      <label className="text-[10px] font-mono uppercase text-[#8e8e93]">MORTGAGE RATE (%)</label>
+                      <label className="text-[10px] font-mono uppercase text-slate-500 font-semibold">MORTGAGE RATE (%)</label>
                       <input
                         type="number"
                         step="0.05"
                         value={interestRate}
                         onChange={(e) => setInterestRate(Number(e.target.value))}
-                        className="w-full p-2.5 rounded-xs border border-white/10 bg-[#08080a] text-xs font-mono text-[#f5f5f7] focus:border-[#c9a962] outline-none"
+                        className="w-full p-2.5 rounded-xs border border-slate-200 bg-slate-50 text-xs font-mono text-slate-900 focus:border-[#0284c7] focus:bg-white outline-none"
                       />
                     </div>
                     <div className="space-y-1">
-                      <label className="text-[10px] font-mono uppercase text-[#8e8e93]">TENOR (YEARS)</label>
+                      <label className="text-[10px] font-mono uppercase text-slate-500 font-semibold">TENOR (YEARS)</label>
                       <input
                         type="number"
                         value={loanTermYears}
                         onChange={(e) => setLoanTermYears(Number(e.target.value))}
-                        className="w-full p-2.5 rounded-xs border border-white/10 bg-[#08080a] text-xs font-mono text-[#f5f5f7] focus:border-[#c9a962] outline-none"
+                        className="w-full p-2.5 rounded-xs border border-slate-200 bg-slate-50 text-xs font-mono text-slate-900 focus:border-[#0284c7] focus:bg-white outline-none"
                       />
                     </div>
                   </div>
@@ -222,27 +222,27 @@ export default function InvestmentPage() {
             </div>
 
             {/* Operating Parameters */}
-            <div className="space-y-4 p-6 sm:p-7 rounded-sm bg-[#111116] border border-white/10">
-              <span className="text-xs font-mono uppercase text-[#8e8e93] block">Operating Yield Parameters</span>
+            <div className="space-y-4 p-6 sm:p-7 rounded-sm bg-white border border-slate-200 shadow-xs">
+              <span className="text-xs font-mono uppercase text-slate-500 font-semibold block">Operating Yield Parameters</span>
               
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-[10px] font-mono uppercase text-[#8e8e93]">EST. GROSS YIELD (%)</label>
+                  <label className="text-[10px] font-mono uppercase text-slate-500 font-semibold">EST. GROSS YIELD (%)</label>
                   <input
                     type="number"
                     step="0.1"
                     value={grossYieldPercent}
                     onChange={(e) => setGrossYieldPercent(Number(e.target.value))}
-                    className="w-full p-2.5 rounded-xs border border-white/10 bg-[#08080a] text-xs font-mono text-[#f5f5f7] focus:border-[#c9a962] outline-none"
+                    className="w-full p-2.5 rounded-xs border border-slate-200 bg-slate-50 text-xs font-mono text-slate-900 focus:border-[#0284c7] focus:bg-white outline-none"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] font-mono uppercase text-[#8e8e93]">SERVICE CHARGE (AED/SQFT)</label>
+                  <label className="text-[10px] font-mono uppercase text-slate-500 font-semibold">SERVICE CHARGE (AED/SQFT)</label>
                   <input
                     type="number"
                     value={serviceChargePerSqft}
                     onChange={(e) => setServiceChargePerSqft(Number(e.target.value))}
-                    className="w-full p-2.5 rounded-xs border border-white/10 bg-[#08080a] text-xs font-mono text-[#f5f5f7] focus:border-[#c9a962] outline-none"
+                    className="w-full p-2.5 rounded-xs border border-slate-200 bg-slate-50 text-xs font-mono text-slate-900 focus:border-[#0284c7] focus:bg-white outline-none"
                   />
                 </div>
               </div>
@@ -252,11 +252,11 @@ export default function InvestmentPage() {
 
           {/* Right 6 cols: Institutional Financial Dossier */}
           <div className="lg:col-span-6 space-y-8 sticky top-28">
-            <div className="p-6 sm:p-8 rounded-sm bg-[#111116] border border-white/15 space-y-6 shadow-[0_12px_40px_rgba(0,0,0,0.8)]">
+            <div className="p-6 sm:p-8 rounded-sm bg-white border border-sky-100 space-y-6 shadow-md">
               
-              <div className="space-y-1 border-b border-white/10 pb-4">
+              <div className="space-y-1 border-b border-slate-200 pb-4">
                 <Eyebrow>FINANCIAL MEMORANDUM</Eyebrow>
-                <h3 className="text-xl font-light text-[#f5f5f7]">
+                <h3 className="text-xl font-light text-slate-900 font-serif">
                   Statutory Acquisition Ledger
                 </h3>
               </div>
@@ -305,52 +305,52 @@ export default function InvestmentPage() {
               </div>
 
               {/* Total Outlay Highlight */}
-              <div className="pt-4 border-t border-white/15 space-y-2">
+              <div className="pt-4 border-t border-slate-200 space-y-2">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-xs font-mono uppercase tracking-widest font-semibold text-[#c9a962]">
+                  <span className="text-xs font-mono uppercase tracking-widest font-semibold text-[#0284c7]">
                     TOTAL ACQUISITION OUTLAY
                   </span>
-                  <span className="text-2xl sm:text-3xl font-light font-mono tabular-nums text-[#f5f5f7]">
+                  <span className="text-2xl sm:text-3xl font-light font-mono tabular-nums text-slate-900 font-semibold">
                     {formatCurrency(totalAcquisitionOutlay)}
                   </span>
                 </div>
                 {financingMode === 'financed' && (
-                  <div className="flex justify-between items-baseline text-xs font-mono text-[#8e8e93] pt-1">
+                  <div className="flex justify-between items-baseline text-xs font-mono text-slate-500 pt-1">
                     <span>Initial Equity Required:</span>
-                    <span className="font-semibold text-[#f5f5f7]">{formatCurrency(initialEquityRequired)}</span>
+                    <span className="font-semibold text-slate-900">{formatCurrency(initialEquityRequired)}</span>
                   </div>
                 )}
               </div>
 
               {/* Yield & Cash Flow Analysis */}
-              <div className="pt-4 border-t border-white/10 space-y-4">
-                <span className="text-xs font-mono uppercase text-[#8e8e93] block">
+              <div className="pt-4 border-t border-slate-200 space-y-4">
+                <span className="text-xs font-mono uppercase text-slate-500 font-semibold block">
                   CASH FLOW &amp; YIELD PROJECTIONS
                 </span>
 
                 <div className="grid grid-cols-2 gap-4 text-xs font-mono">
-                  <div className="p-3.5 rounded-xs bg-[#08080a] border border-white/10 space-y-1">
-                    <span className="text-[#8e8e93] block text-[10px]">NET OPERATING INCOME</span>
-                    <span className="text-base font-light text-emerald-400 block">{formatCurrency(netOperatingIncome)}</span>
-                    <span className="text-[9px] text-[#71717a]">Per Annum</span>
+                  <div className="p-3.5 rounded-xs bg-slate-50 border border-slate-200 space-y-1">
+                    <span className="text-slate-500 block text-[10px]">NET OPERATING INCOME</span>
+                    <span className="text-base font-semibold text-emerald-600 block">{formatCurrency(netOperatingIncome)}</span>
+                    <span className="text-[9px] text-slate-400">Per Annum</span>
                   </div>
 
-                  <div className="p-3.5 rounded-xs bg-[#08080a] border border-white/10 space-y-1">
-                    <span className="text-[#8e8e93] block text-[10px]">UNLEVERED NET YIELD</span>
-                    <span className="text-base font-light text-emerald-400 block">{netYieldUnlevered.toFixed(2)}%</span>
-                    <span className="text-[9px] text-[#71717a]">Net of service charges</span>
+                  <div className="p-3.5 rounded-xs bg-slate-50 border border-slate-200 space-y-1">
+                    <span className="text-slate-500 block text-[10px]">UNLEVERED NET YIELD</span>
+                    <span className="text-base font-semibold text-emerald-600 block">{netYieldUnlevered.toFixed(2)}%</span>
+                    <span className="text-[9px] text-slate-400">Net of service charges</span>
                   </div>
                 </div>
 
                 {financingMode === 'financed' && (
-                  <div className="p-3.5 rounded-xs bg-[#08080a] border border-white/10 space-y-2 text-xs font-mono">
+                  <div className="p-3.5 rounded-xs bg-slate-50 border border-slate-200 space-y-2 text-xs font-mono">
                     <div className="flex justify-between">
-                      <span className="text-[#8e8e93]">Monthly Debt Service:</span>
-                      <span className="font-medium text-[#f5f5f7]">{formatCurrency(monthlyMortgage)} / mo</span>
+                      <span className="text-slate-600">Monthly Debt Service:</span>
+                      <span className="font-medium text-slate-900">{formatCurrency(monthlyMortgage)} / mo</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-[#8e8e93]">Cash-on-Cash Return:</span>
-                      <span className="font-medium text-emerald-400">{cashOnCashYield.toFixed(2)}% / yr</span>
+                      <span className="text-slate-600">Cash-on-Cash Return:</span>
+                      <span className="font-semibold text-emerald-600">{cashOnCashYield.toFixed(2)}% / yr</span>
                     </div>
                   </div>
                 )}

@@ -189,20 +189,20 @@ export default function BuyingGuidePage() {
   const getBadgeStyle = (classification: ClassificationType) => {
     switch (classification) {
       case 'OFFICIAL_REQUIREMENT':
-        return 'bg-emerald-950/40 text-emerald-400 border-emerald-500/30'
+        return 'bg-emerald-50 text-emerald-700 border-emerald-300 font-medium'
       case 'GENERAL_GUIDANCE':
-        return 'bg-sky-950/40 text-sky-300 border-sky-500/30'
+        return 'bg-sky-50 text-[#0284c7] border-sky-200 font-medium'
       case 'PLATFORM_WORKFLOW':
-        return 'bg-[#181820] text-[#c9a962] border-[#c9a962]/30'
+        return 'bg-slate-100 text-slate-800 border-slate-300 font-medium'
       case 'VERIFY_WITH_PROFESSIONAL':
-        return 'bg-purple-950/40 text-purple-300 border-purple-500/30'
+        return 'bg-purple-50 text-purple-700 border-purple-200 font-medium'
       default:
-        return 'bg-white/5 text-[#a1a1aa] border-white/10'
+        return 'bg-slate-50 text-slate-600 border-slate-200'
     }
   }
 
   return (
-    <div className="bg-[#08080a] text-[#f5f5f7] min-h-screen pb-32">
+    <div className="bg-white text-slate-900 min-h-screen pb-32">
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Statutory Conveyancing &amp; Acquisition Roadmap"
@@ -213,29 +213,29 @@ export default function BuyingGuidePage() {
 
       <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 space-y-14">
         {/* 2. CLASSIFICATION LEGEND */}
-        <div className="p-4 sm:p-5 rounded-xs border border-white/10 bg-[#111116] flex flex-wrap items-center gap-3 text-xs">
-          <span className="font-semibold text-[#f5f5f7] uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-emerald-950/40 text-emerald-400 border-emerald-500/30">
+        <div className="p-4 sm:p-5 rounded-xs border border-slate-200 bg-slate-50 flex flex-wrap items-center gap-3 text-xs shadow-xs">
+          <span className="font-semibold text-slate-900 uppercase tracking-widest font-mono text-[10px]">Classification Standard:</span>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-emerald-50 text-emerald-700 border-emerald-200">
             <span>[OFFICIAL REQUIREMENT]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-sky-950/40 text-sky-300 border-sky-500/30">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-sky-50 text-[#0284c7] border-sky-200">
             <span>[GENERAL GUIDANCE]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-[#181820] text-[#c9a962] border-[#c9a962]/30">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-white text-slate-800 border-slate-300">
             <span>[PLATFORM WORKFLOW]</span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-purple-950/40 text-purple-300 border-purple-500/30">
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-xs border text-[11px] font-mono bg-purple-50 text-purple-700 border-purple-200">
             <span>[VERIFY WITH PROFESSIONAL]</span>
           </div>
         </div>
 
         {/* 2B. STATUTORY CONVEYANCING CADRANS */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-[#c9a962]">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.2em] text-[#0284c7]">
               STATUTORY CONVEYANCING CADRANS
             </span>
-            <span className="text-xs font-mono text-[#71717a]">Executive Council Res. No. 30 of 2013</span>
+            <span className="text-xs font-mono text-slate-500">Executive Council Res. No. 30 of 2013</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -334,7 +334,7 @@ export default function BuyingGuidePage() {
             return (
               <div
                 key={stage.step}
-                className="rounded-sm border border-white/10 bg-[#111116] overflow-hidden transition-all hover:border-white/25"
+                className="rounded-sm border border-slate-200 bg-white overflow-hidden transition-all hover:border-[#0284c7]/40 shadow-xs"
               >
                 <button
                   type="button"
@@ -342,68 +342,68 @@ export default function BuyingGuidePage() {
                   className="w-full p-5 sm:p-6 text-left flex items-start sm:items-center justify-between gap-4 cursor-pointer"
                 >
                   <div className="flex items-start sm:items-center gap-5">
-                    <span className="text-xl sm:text-2xl font-light font-mono text-[#c9a962] shrink-0">
+                    <span className="text-xl sm:text-2xl font-light font-mono text-[#0284c7] font-semibold shrink-0">
                       {stage.step}
                     </span>
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="text-base sm:text-lg font-light text-[#f5f5f7] tracking-tight">
+                        <span className="text-base sm:text-lg font-light text-slate-900 tracking-tight font-serif">
                           {stage.title}
                         </span>
                         <span className={`px-2 py-0.5 rounded-xs text-[9px] font-mono font-semibold border ${getBadgeStyle(stage.classification)}`}>
                           [{stage.classificationLabel}]
                         </span>
                       </div>
-                      <p className="text-xs text-[#8e8e93] font-mono">{stage.subtitle}</p>
+                      <p className="text-xs text-slate-500 font-mono">{stage.subtitle}</p>
                     </div>
                   </div>
 
-                  <div className="p-2 rounded-xs bg-[#181820] text-[#f5f5f7] shrink-0 border border-white/10">
+                  <div className="p-2 rounded-xs bg-slate-100 text-slate-900 shrink-0 border border-slate-200">
                     {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                   </div>
                 </button>
 
                 {isExpanded && (
-                  <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-white/10 bg-[#0d0d11] space-y-5 animate-in fade-in duration-150">
-                    <p className="text-xs sm:text-sm text-[#a1a1aa] leading-relaxed max-w-4xl font-light">
+                  <div className="px-5 sm:px-6 pb-6 pt-3 border-t border-slate-100 bg-slate-50/70 space-y-5 animate-in fade-in duration-150">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-4xl font-light">
                       {stage.description}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                      <div className="p-4 rounded-xs bg-[#111116] border border-white/10 flex flex-col justify-between space-y-2">
-                        <span className="text-[10px] font-mono uppercase font-semibold text-[#c9a962] tracking-widest">
+                      <div className="p-4 rounded-xs bg-white border border-slate-200 flex flex-col justify-between space-y-2 shadow-xs">
+                        <span className="text-[10px] font-mono uppercase font-semibold text-[#0284c7] tracking-widest">
                           Required Documentation
                         </span>
-                        <ul className="space-y-1.5 text-[#8e8e93] pt-2 border-t border-white/10 font-light">
+                        <ul className="space-y-1.5 text-slate-600 pt-2 border-t border-slate-100 font-light">
                           {stage.documents.map((doc, idx) => (
                             <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle2 className="h-3.5 w-3.5 text-[#c9a962] shrink-0 mt-0.5" />
-                              <span className="text-[#f5f5f7]">{doc}</span>
+                              <CheckCircle2 className="h-3.5 w-3.5 text-[#0284c7] shrink-0 mt-0.5" />
+                              <span className="text-slate-900 font-medium">{doc}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="p-4 rounded-xs bg-[#111116] border border-white/10 flex flex-col justify-between space-y-2">
-                        <span className="text-[10px] font-mono uppercase font-semibold text-[#c9a962] tracking-widest">
+                      <div className="p-4 rounded-xs bg-white border border-slate-200 flex flex-col justify-between space-y-2 shadow-xs">
+                        <span className="text-[10px] font-mono uppercase font-semibold text-[#0284c7] tracking-widest">
                           Statutory &amp; Professional Fees
                         </span>
-                        <p className="text-[#f5f5f7] leading-relaxed pt-2 border-t border-white/10 font-mono text-xs">
+                        <p className="text-slate-900 leading-relaxed pt-2 border-t border-slate-100 font-mono text-xs font-medium">
                           {stage.statutory_fees}
                         </p>
                       </div>
 
-                      <div className="p-4 rounded-xs bg-[#111116] border border-white/10 flex flex-col justify-between space-y-2">
-                        <span className="text-[10px] font-mono uppercase font-semibold text-[#c9a962] tracking-widest">
+                      <div className="p-4 rounded-xs bg-white border border-slate-200 flex flex-col justify-between space-y-2 shadow-xs">
+                        <span className="text-[10px] font-mono uppercase font-semibold text-[#0284c7] tracking-widest">
                           Primary Responsibility
                         </span>
-                        <p className="text-[#a1a1aa] leading-relaxed pt-2 border-t border-white/10 font-light">
+                        <p className="text-slate-600 leading-relaxed pt-2 border-t border-slate-100 font-light">
                           {stage.responsibilities}
                         </p>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-[#71717a]">
+                    <div className="pt-3 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] font-mono text-slate-500">
                       <span>Legal Authority: {stage.statutory_source}</span>
                       <span>DLD Verification: Current Official Framework</span>
                     </div>
@@ -415,18 +415,18 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 4. INTAKE PROMPT */}
-        <div className="p-6 sm:p-10 rounded-sm border border-white/15 bg-[#111116] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-[0_12px_40px_rgba(0,0,0,0.8)]">
+        <div className="p-6 sm:p-10 rounded-sm border border-sky-100 bg-[#f0f7ff] flex flex-col sm:flex-row sm:items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1.5 max-w-xl">
-            <h3 className="text-xl font-light text-[#f5f5f7] tracking-tight">
+            <h3 className="text-xl font-light text-slate-900 tracking-tight font-serif">
               Ready to initiate a transaction or verify portfolio due diligence?
             </h3>
-            <p className="text-xs text-[#8e8e93] leading-relaxed font-light">
+            <p className="text-xs text-slate-600 leading-relaxed font-light">
               Cristian Văduva Private Client Advisory coordinates direct DLD conveyancing, trustee settlements, and investor residency files.
             </p>
           </div>
           <Link
             href="/private-client"
-            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#c9a962] text-[#08080a] hover:bg-[#dbbe7a] rounded-xs text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all shrink-0 cursor-pointer shadow-[0_0_15px_rgba(201,169,98,0.2)]"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#0284c7] text-white hover:bg-[#0369a1] rounded-xs text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all shrink-0 cursor-pointer shadow-xs"
           >
             <span>Access Private Client Desk</span>
             <ArrowRight className="h-3.5 w-3.5" />
@@ -434,10 +434,10 @@ export default function BuyingGuidePage() {
         </div>
 
         {/* 5. LEGAL NOTICE */}
-        <div className="p-6 rounded-sm border border-white/10 bg-[#111116] text-xs text-[#8e8e93] space-y-2 font-light">
-          <div className="flex items-center gap-2 font-medium text-[#f5f5f7]">
-            <Info className="h-4 w-4 text-[#c9a962]" />
-            <span>Statutory Conveyancing Disclaimer</span>
+        <div className="p-6 rounded-sm border border-slate-200 bg-slate-50 text-xs text-slate-600 space-y-2 font-light shadow-xs">
+          <div className="flex items-center gap-2 font-medium text-slate-900">
+            <Info className="h-4 w-4 text-[#0284c7]" />
+            <span className="font-semibold">Statutory Conveyancing Disclaimer</span>
           </div>
           <p className="leading-relaxed text-[11px]">
             This guide outlines the standard statutory procedure established by Dubai Land Department and RERA for freehold property transactions. Complex transactions involving corporate offshore entities (DIFC, JAFZA, BVI) or Power of Attorney representations require notarized and MoFA-attested documentation.
