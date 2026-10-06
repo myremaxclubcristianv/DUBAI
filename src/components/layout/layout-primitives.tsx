@@ -172,7 +172,7 @@ export function EditorialHeading({
   }
 
   return (
-    <Tag className={cn(sizeClasses[size], 'text-slate-900', className)} {...props}>
+    <Tag className={cn('font-serif', sizeClasses[size], 'text-slate-900', className)} {...props}>
       {children}
     </Tag>
   )
@@ -466,7 +466,7 @@ export function SectionHeader({
     <div className={cn('w-full flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14', className)}>
       <div className="space-y-3 max-w-2xl">
         {eyebrow && typeof eyebrow === 'string' ? <Eyebrow>{eyebrow}</Eyebrow> : eyebrow}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.03em] leading-tight text-slate-900">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-[-0.03em] leading-tight text-slate-900 font-serif">
           {title}
         </h2>
         {description && (
@@ -506,7 +506,7 @@ export function PageIntro({
           {badge}
         </div>
         <div className="space-y-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] leading-[1.05] text-slate-900">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-[-0.03em] leading-[1.05] text-slate-900 font-serif">
             {title}
           </h1>
           {description && (
