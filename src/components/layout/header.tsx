@@ -8,14 +8,10 @@ import { GlobalSearchDialog } from '@/components/ui/global-search-dialog'
 import { useClient, SupportedCurrency } from '@/lib/context/client-context'
 
 const NAV_ITEMS = [
-  { label: 'Home', href: '/' },
   { label: 'Properties', href: '/properties' },
+  { label: 'Areas', href: '/areas' },
   { label: 'Market', href: '/market' },
-  { label: 'Investment', href: '/investment' },
-  { label: 'Districts', href: '/districts' },
-  { label: 'Developers', href: '/developers' },
-  { label: 'Lifestyle', href: '/lifestyle' },
-  { label: 'More', href: '/sources' },
+  { label: 'Private Client', href: '/private-client' },
 ]
 
 export function Header() {
@@ -44,7 +40,7 @@ export function Header() {
       >
         <div className="w-full max-w-[1440px] mx-auto flex h-[72px] sm:h-[76px] items-center justify-between px-6 sm:px-10 lg:px-16">
           
-          {/* LEFT: DUBAI Identity */}
+          {/* LEFT: Dubai Platform Wordmark */}
           <div className="flex items-center gap-4 shrink-0">
             <Link href="/" className="group flex flex-col">
               <div className="flex items-center gap-2">
@@ -59,15 +55,15 @@ export function Header() {
             </Link>
           </div>
 
-          {/* CENTER: Editorial Navigation */}
-          <nav className="hidden xl:flex items-center gap-6 text-[12px] font-normal">
+          {/* CENTER: Clean Architectural Navigation */}
+          <nav className="hidden md:flex items-center gap-8 text-[12px] font-normal">
             {NAV_ITEMS.map((item) => {
-              const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
+              const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`py-1 transition-all uppercase text-[11px] font-mono tracking-[0.14em] relative ${
+                  className={`py-1 transition-all uppercase text-[11px] font-mono tracking-[0.16em] relative ${
                     isActive
                       ? 'text-[#0284c7] font-semibold'
                       : 'text-slate-600 hover:text-slate-900'
@@ -82,10 +78,10 @@ export function Header() {
             })}
           </nav>
 
-          {/* RIGHT: Currency, Search & Private Client Action */}
+          {/* RIGHT: AED Currency Selector, Search & Private Client Desk */}
           <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-            {/* Currency Selector */}
-            <div className="hidden lg:flex items-center gap-1 px-2 py-1 rounded-xs bg-slate-100 border border-slate-200 text-[11px] font-mono text-slate-600">
+            {/* AED Currency Selector */}
+            <div className="flex items-center gap-1 px-2 py-1 rounded-xs bg-slate-100 border border-slate-200 text-[11px] font-mono text-slate-600">
               {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr) => (
                 <button
                   key={curr}
@@ -109,11 +105,11 @@ export function Header() {
               aria-label="Open Search"
             >
               <Search className="h-3.5 w-3.5 text-[#0284c7]" />
-              <span className="text-[11px] font-mono hidden md:inline">Search</span>
+              <span className="text-[11px] font-mono hidden lg:inline">Search</span>
               <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 rounded bg-white text-slate-500 border border-slate-200 shadow-2xs">⌘K</kbd>
             </button>
 
-            {/* Primary Action Button */}
+            {/* Private Client Desk Button */}
             <Link
               href="/private-client"
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-[11px] font-mono uppercase tracking-[0.14em] font-semibold transition-all shadow-[0_2px_8px_rgba(2,132,199,0.25)]"
@@ -125,7 +121,7 @@ export function Header() {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-slate-800 hover:text-[#0284c7] transition-colors xl:hidden cursor-pointer shrink-0 text-xs font-mono uppercase tracking-wider flex items-center gap-1.5"
+              className="p-2 text-slate-800 hover:text-[#0284c7] transition-colors md:hidden cursor-pointer shrink-0 text-xs font-mono uppercase tracking-wider flex items-center gap-1.5"
               aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? (
@@ -145,7 +141,7 @@ export function Header() {
 
         {/* MOBILE DRAWER */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden border-t border-slate-200 bg-white px-6 py-8 space-y-6 shadow-xl animate-in fade-in duration-200">
+          <div className="md:hidden border-t border-slate-200 bg-white px-6 py-8 space-y-6 shadow-xl animate-in fade-in duration-200">
             {/* Currency Selector on Mobile */}
             <div className="flex items-center justify-between pb-4 border-b border-slate-200 text-xs">
               <span className="font-mono uppercase text-[10px] text-slate-500 tracking-widest">Base Currency</span>
