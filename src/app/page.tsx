@@ -110,7 +110,7 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 02 — CINEMATIC BURJ KHALIFA HERO (85-95vh DESKTOP / 75-85vh MOBILE)      */}
       {/* ========================================================================= */}
-      <section className="relative w-full min-h-[85vh] lg:min-h-[92vh] flex items-center border-b border-slate-200 overflow-hidden bg-slate-950">
+      <section className="relative w-full min-h-[640px] max-h-[940px] h-[86vh] lg:h-[92vh] flex items-center border-b border-slate-200 overflow-hidden bg-slate-950">
         
         {/* Full-Width Cinematic Daytime Dubai Sky & Burj Khalifa Photography */}
         <div className="absolute inset-0 z-0">
