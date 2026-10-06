@@ -353,7 +353,7 @@ export default function Home() {
                 {/* Dominant Architectural Image */}
                 <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1800&q=90"
+                    src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1800&q=90"
                     alt="Palm Jumeirah luxury waterfront architectural villa"
                     fill
                     priority
