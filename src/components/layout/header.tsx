@@ -8,14 +8,14 @@ import { GlobalSearchDialog } from '@/components/ui/global-search-dialog'
 import { useClient, SupportedCurrency } from '@/lib/context/client-context'
 
 const NAV_ITEMS = [
+  { label: 'Home', href: '/' },
   { label: 'Properties', href: '/properties' },
-  { label: 'Intelligence', href: '/market' },
+  { label: 'Market', href: '/market' },
+  { label: 'Investment', href: '/investment' },
   { label: 'Districts', href: '/districts' },
   { label: 'Developers', href: '/developers' },
-  { label: 'Investment', href: '/investment' },
-  { label: 'Residency', href: '/residency' },
   { label: 'Lifestyle', href: '/lifestyle' },
-  { label: 'Private Client', href: '/private-client' },
+  { label: 'More', href: '/sources' },
 ]
 
 export function Header() {
@@ -49,20 +49,20 @@ export function Header() {
             <Link href="/" className="group flex flex-col">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#0284c7]" />
-                <span className="text-[16px] sm:text-[17px] font-semibold tracking-[0.06em] text-slate-900 uppercase group-hover:text-[#0284c7] transition-colors">
+                <span className="text-[17px] sm:text-[18px] font-semibold tracking-[0.08em] text-slate-900 uppercase group-hover:text-[#0284c7] transition-colors">
                   DUBAI
                 </span>
               </div>
               <span className="text-[9px] font-mono tracking-[0.2em] text-slate-500 uppercase hidden sm:block">
-                CRISTIANVADUVA.COM &bull; INTELLIGENCE
+                CRISTIANVADUVA.COM
               </span>
             </Link>
           </div>
 
           {/* CENTER: Editorial Navigation */}
-          <nav className="hidden xl:flex items-center gap-7 text-[12px] font-normal">
+          <nav className="hidden xl:flex items-center gap-6 text-[12px] font-normal">
             {NAV_ITEMS.map((item) => {
-              const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+              const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
               return (
                 <Link
                   key={item.href}
@@ -118,7 +118,7 @@ export function Header() {
               href="/private-client"
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-[11px] font-mono uppercase tracking-[0.14em] font-semibold transition-all shadow-[0_2px_8px_rgba(2,132,199,0.25)]"
             >
-              <span>Private Client</span>
+              <span>Private Client Desk</span>
               <ArrowUpRight className="h-3 w-3" />
             </Link>
 
