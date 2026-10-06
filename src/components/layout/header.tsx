@@ -66,16 +66,16 @@ export function Header() {
           {/* RIGHT: AED Currency Selector & Refined Private Client Desk */}
           <div className="flex items-center gap-4 sm:gap-6 shrink-0">
             {/* AED Currency Selector */}
-            <div className="flex items-center gap-1 px-2 py-1 bg-slate-50 border border-slate-200 text-[11px] font-mono text-slate-600">
+            <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 py-1 bg-slate-50 border border-slate-200 text-[10px] sm:text-[11px] font-mono text-slate-600">
               {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr) => (
                 <button
                   key={curr}
                   onClick={() => setCurrency(curr as SupportedCurrency)}
-                  className={`px-1.5 py-0.5 transition-colors cursor-pointer ${
+                  className={`px-1 sm:px-1.5 py-0.5 transition-colors cursor-pointer ${
                     currency === curr
                       ? 'text-white bg-[#0284c7] font-bold'
                       : 'text-slate-600 hover:text-slate-900'
-                  }`}
+                  } ${curr === 'EUR' || curr === 'GBP' ? 'hidden sm:inline-block' : ''}`}
                 >
                   {curr}
                 </button>

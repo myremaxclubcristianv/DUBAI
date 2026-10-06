@@ -516,50 +516,97 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Asymmetric Architectural District Modules */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {atlasDistricts.map((district) => (
+          {/* Asymmetric Architectural District Composition (1 Dominant + 3 Supporting) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            {/* 1. Dominant Primary District (7 Cols) */}
+            <div className="lg:col-span-7 flex flex-col">
               <Link
-                key={district.id}
-                href={district.href}
-                className="p-5 rounded-xs bg-slate-900/80 backdrop-blur-md border border-white/15 hover:border-[#38bdf8]/60 hover:bg-slate-900 transition-all space-y-4 group flex flex-col justify-between"
+                href={atlasDistricts[0].href}
+                className="p-6 sm:p-8 rounded-xs bg-slate-900/85 backdrop-blur-md border border-white/15 hover:border-[#38bdf8]/60 hover:bg-slate-900 transition-all group flex flex-col justify-between h-full shadow-2xl space-y-6"
               >
-                <div className="space-y-3">
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xs bg-slate-800">
+                <div className="space-y-5">
+                  <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden rounded-xs bg-slate-800 border border-white/10">
                     <Image
-                      src={district.image}
-                      alt={district.name}
+                      src={atlasDistricts[0].image}
+                      alt={atlasDistricts[0].name}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      sizes="(max-width: 1024px) 100vw, 60vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-xs text-[9px] font-mono font-semibold uppercase bg-slate-950/90 text-[#38bdf8] border border-[#38bdf8]/30">
-                      {district.num}
+                    <div className="absolute top-3 left-3 flex items-center gap-2">
+                      <span className="px-2.5 py-1 rounded-xs text-[10px] font-mono font-semibold uppercase bg-slate-950/90 text-[#38bdf8] border border-[#38bdf8]/30">
+                        {atlasDistricts[0].num}
+                      </span>
+                      <span className="px-2.5 py-1 rounded-xs text-[10px] font-mono font-medium uppercase bg-slate-950/90 text-white border border-white/20">
+                        {atlasDistricts[0].tag}
+                      </span>
                     </div>
                   </div>
 
-                  <div>
-                    <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest block font-semibold">
-                      {district.tag}
+                  <div className="space-y-2">
+                    <span className="text-[10px] font-mono text-[#38bdf8] uppercase tracking-[0.2em] block font-semibold">
+                      PRIMARY FREEHOLD CORE &bull; REG. 3/2006
                     </span>
-                    <h3 className="text-lg font-light text-white group-hover:text-[#38bdf8] transition-colors mt-0.5 font-serif">
-                      {district.name}
+                    <h3 className="text-2xl sm:text-4xl font-light text-white group-hover:text-[#38bdf8] transition-colors font-serif">
+                      {atlasDistricts[0].name}
                     </h3>
-                    <p className="text-xs text-slate-300 font-light mt-1 line-clamp-2 leading-relaxed">
-                      {district.descriptor}
+                    <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-xl">
+                      {atlasDistricts[0].descriptor} Master-planned commercial, cultural, and ultra-prime residential epicenter anchored by the Burj Khalifa and Dubai Opera.
                     </p>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400 text-[10px] uppercase">DOSSIER</span>
-                  <span className="text-[#38bdf8] font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
-                    <span>Explore</span>
-                    <ArrowRight className="h-3 w-3" />
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+                  <span className="text-slate-400 text-[11px] uppercase">STATUTORY DOSSIER</span>
+                  <span className="text-[#38bdf8] font-semibold group-hover:translate-x-1.5 transition-transform flex items-center gap-2">
+                    <span>Explore Downtown Dossier</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </div>
               </Link>
-            ))}
+            </div>
+
+            {/* 2. Three Supporting Districts (5 Cols Stack) */}
+            <div className="lg:col-span-5 flex flex-col justify-between gap-4">
+              {atlasDistricts.slice(1).map((district) => (
+                <Link
+                  key={district.id}
+                  href={district.href}
+                  className="p-4 sm:p-5 rounded-xs bg-slate-900/80 backdrop-blur-md border border-white/15 hover:border-[#38bdf8]/60 hover:bg-slate-900 transition-all group flex items-center gap-4 sm:gap-5 flex-1 shadow-md"
+                >
+                  <div className="relative aspect-[4/3] w-28 sm:w-36 shrink-0 overflow-hidden rounded-xs bg-slate-800 border border-white/10">
+                    <Image
+                      src={district.image}
+                      alt={district.name}
+                      fill
+                      sizes="(max-width: 640px) 120px, 160px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded-xs text-[8px] font-mono font-semibold uppercase bg-slate-950/90 text-[#38bdf8] border border-[#38bdf8]/30">
+                      {district.num}
+                    </div>
+                  </div>
+
+                  <div className="space-y-1 flex-1 min-w-0">
+                    <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest block font-semibold truncate">
+                      {district.tag}
+                    </span>
+                    <h3 className="text-base sm:text-lg font-light text-white group-hover:text-[#38bdf8] transition-colors truncate font-serif">
+                      {district.name}
+                    </h3>
+                    <p className="text-xs text-slate-300 font-light line-clamp-1">
+                      {district.descriptor}
+                    </p>
+                    <div className="pt-1 flex items-center gap-1 text-[11px] font-mono text-[#38bdf8] group-hover:translate-x-1 transition-transform">
+                      <span>Dossier</span>
+                      <ArrowRight className="h-3 w-3" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
           </div>
 
         </div>
