@@ -426,48 +426,48 @@ export default function Home() {
       {/* ========================================================================= */}
       {/* 05 — FULL-WIDTH MARKET DATA RIBBON (ONE CONTINUOUS INSTITUTIONAL OBJECT)  */}
       {/* ========================================================================= */}
-      <section className="border-b border-slate-200 bg-white py-10">
+      <section className="border-b border-slate-200 bg-slate-50/50 py-8 sm:py-10">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16">
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
             
             <div className="py-4 lg:py-0 lg:px-8 first:pl-0 space-y-1">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 block font-semibold">
-                18,642
+                DLD RECORDED
               </span>
               <div className="text-2xl sm:text-3xl lg:text-4xl font-light font-mono text-slate-900 tabular-nums font-bold">
                 18,642
               </div>
-              <span className="text-xs text-slate-500 font-mono block uppercase">TRANSACTIONS</span>
+              <span className="text-xs text-slate-500 font-mono block uppercase">TRANSACTIONS &bull; DLD</span>
             </div>
 
             <div className="py-4 lg:py-0 lg:px-8 space-y-1">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 block font-semibold">
-                AED 1,680
+                FREEHOLD MEDIAN
               </span>
               <div className="text-2xl sm:text-3xl lg:text-4xl font-light font-mono text-[#0284c7] tabular-nums font-bold">
                 AED 1,680
               </div>
-              <span className="text-xs text-slate-500 font-mono block uppercase">AVG / SQFT</span>
+              <span className="text-xs text-slate-500 font-mono block uppercase">AVG / SQFT &bull; INDEX</span>
             </div>
 
             <div className="py-4 lg:py-0 lg:px-8 space-y-1">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 block font-semibold">
-                AED 52.1B
+                MONTHLY CAPITAL
               </span>
               <div className="text-2xl sm:text-3xl lg:text-4xl font-light font-mono text-slate-900 tabular-nums font-bold">
                 AED 52.1B
               </div>
-              <span className="text-xs text-slate-500 font-mono block uppercase">TOTAL VALUE</span>
+              <span className="text-xs text-slate-500 font-mono block uppercase">TOTAL VALUE &bull; REGISTRY</span>
             </div>
 
             <div className="py-4 lg:py-0 lg:px-8 last:pr-0 space-y-1">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 block font-semibold">
-                5.8%
+                RERA BENCHMARK
               </span>
               <div className="text-2xl sm:text-3xl lg:text-4xl font-light font-mono text-emerald-700 tabular-nums font-bold">
                 5.8%
               </div>
-              <span className="text-xs text-slate-500 font-mono block uppercase">PRIME YIELD</span>
+              <span className="text-xs text-slate-500 font-mono block uppercase">PRIME YIELD &bull; NET</span>
             </div>
 
           </div>
