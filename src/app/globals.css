@@ -43,6 +43,7 @@
   /* Typography Stack */
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --font-serif: var(--font-newsreader), "Newsreader", "Times New Roman", "Playfair Display", Georgia, serif;
 }
 
 @theme inline {
@@ -79,6 +80,7 @@
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 }
 
 * {
