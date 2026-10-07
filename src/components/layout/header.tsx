@@ -25,22 +25,19 @@ export function Header() {
       <header className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 transition-colors">
         <div className="w-full max-w-[1440px] mx-auto flex h-[76px] sm:h-[80px] items-center justify-between px-4 sm:px-10 lg:px-16">
           
-          {/* LEFT: Dubai Platform Wordmark */}
+          {/* LEFT: Architectural Dubai Wordmark */}
           <div className="flex items-center gap-4 shrink-0">
             <Link href="/" className="group flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-[#0284c7]" />
-                <span className="text-[17px] sm:text-[18px] font-semibold tracking-[0.1em] text-slate-900 uppercase group-hover:text-[#0284c7] transition-colors font-sans">
-                  DUBAI
-                </span>
-              </div>
-              <span className="text-[9px] font-mono tracking-[0.2em] text-slate-400 uppercase hidden sm:block">
+              <span className="text-[17px] sm:text-[18px] font-semibold tracking-[0.14em] text-slate-950 uppercase group-hover:text-slate-600 transition-colors font-sans">
+                DUBAI
+              </span>
+              <span className="text-[8.5px] font-mono tracking-[0.24em] text-slate-400 uppercase hidden sm:block">
                 CRISTIANVADUVA.COM
               </span>
             </Link>
           </div>
 
-          {/* CENTER: Clean Architectural Navigation with generous spacing */}
+          {/* CENTER: Clean Architectural Navigation */}
           <nav className="hidden md:flex items-center gap-10 lg:gap-12 text-[12px] font-normal">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
@@ -50,31 +47,31 @@ export function Header() {
                   href={item.href}
                   className={`py-1 transition-all uppercase text-[11px] font-mono tracking-[0.18em] relative ${
                     isActive
-                      ? 'text-[#0284c7] font-semibold'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'text-slate-950 font-bold'
+                      : 'text-slate-600 hover:text-slate-950'
                   }`}
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-[#0284c7]" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-slate-950" />
                   )}
                 </Link>
               )
             })}
           </nav>
 
-          {/* RIGHT: AED Currency Selector & Refined Private Client Desk */}
+          {/* RIGHT: Currency Selector & Refined Private Client Desk */}
           <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-            {/* AED Currency Selector */}
+            {/* Currency Selector */}
             <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 py-1 bg-slate-50 border border-slate-200 text-[10px] sm:text-[11px] font-mono text-slate-600">
               {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr) => (
                 <button
                   key={curr}
                   onClick={() => setCurrency(curr as SupportedCurrency)}
-                  className={`px-1 sm:px-1.5 py-0.5 transition-colors cursor-pointer ${
+                  className={`px-1.5 py-0.5 transition-colors cursor-pointer ${
                     currency === curr
-                      ? 'text-white bg-[#0284c7] font-bold'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'text-white bg-slate-900 font-bold'
+                      : 'text-slate-600 hover:text-slate-950'
                   } ${curr === 'EUR' || curr === 'GBP' ? 'hidden sm:inline-block' : ''}`}
                 >
                   {curr}
@@ -85,28 +82,28 @@ export function Header() {
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-600 hover:text-slate-900 transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
               title="Search Directory (⌘K)"
               aria-label="Open Search"
             >
-              <Search className="h-3.5 w-3.5 text-[#0284c7]" />
+              <Search className="h-3.5 w-3.5 text-slate-500" />
               <span className="text-[11px] font-mono hidden lg:inline">Search</span>
               <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 bg-white text-slate-500 border border-slate-200">⌘K</kbd>
             </button>
 
-            {/* Refined Private Client Desk (Text / Action link, not an oversized button) */}
+            {/* Private Client Desk Action Link */}
             <Link
               href="/private-client"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.16em] text-slate-900 hover:text-[#0284c7] font-semibold transition-colors group"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.16em] text-slate-950 hover:text-slate-600 font-semibold transition-colors group"
             >
-              <span className="border-b border-slate-900 group-hover:border-[#0284c7] pb-0.5">Private Client Desk</span>
+              <span className="border-b border-slate-950 group-hover:border-slate-400 pb-0.5">Private Client Desk</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
 
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-1.5 text-slate-800 hover:text-[#0284c7] transition-colors md:hidden cursor-pointer shrink-0 text-xs font-mono uppercase tracking-wider flex items-center gap-1.5"
+              className="p-1.5 text-slate-900 hover:text-slate-600 transition-colors md:hidden cursor-pointer shrink-0 text-xs font-mono uppercase tracking-wider flex items-center gap-1.5"
               aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? (
@@ -135,9 +132,9 @@ export function Header() {
                   <button
                     key={curr}
                     onClick={() => setCurrency(curr as SupportedCurrency)}
-                    className={`text-xs font-mono px-2.5 py-1 rounded-xs transition-colors ${
+                    className={`text-xs font-mono px-2.5 py-1 transition-colors ${
                       currency === curr
-                        ? 'bg-[#0284c7] text-white font-bold'
+                        ? 'bg-slate-900 text-white font-bold'
                         : 'bg-slate-100 text-slate-700'
                     }`}
                   >
@@ -154,7 +151,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center justify-between py-3 text-base font-light text-slate-800 hover:text-[#0284c7] border-b border-slate-100"
+                  className="flex items-center justify-between py-3 text-base font-light text-slate-900 hover:text-slate-600 border-b border-slate-100"
                 >
                   <span className="font-mono text-xs uppercase tracking-widest">{item.label}</span>
                   <ArrowUpRight className="h-3.5 w-3.5 text-slate-400" />
@@ -163,7 +160,7 @@ export function Header() {
               <Link
                 href="/sources"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center justify-between py-3 text-base font-light text-slate-600 hover:text-[#0284c7] border-b border-slate-100"
+                className="flex items-center justify-between py-3 text-base font-light text-slate-600 hover:text-slate-900 border-b border-slate-100"
               >
                 <span className="font-mono text-xs uppercase tracking-widest">Sources &amp; Provenance</span>
                 <ArrowUpRight className="h-3.5 w-3.5 text-slate-400" />
@@ -175,7 +172,7 @@ export function Header() {
               <Link
                 href="/private-client"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full py-3.5 rounded-xs bg-[#0284c7] text-white text-center text-xs font-mono uppercase tracking-[0.14em] font-semibold flex items-center justify-center gap-2 shadow-sm"
+                className="w-full py-3.5 bg-slate-900 text-white text-center text-xs font-mono uppercase tracking-[0.14em] font-semibold flex items-center justify-center gap-2 shadow-sm"
               >
                 <span>Private Client Advisory</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
