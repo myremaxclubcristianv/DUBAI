@@ -6,16 +6,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getPropertyById, VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { useClient } from '@/lib/context/client-context'
-import {
-  Section,
-  Eyebrow,
-  SourceBadge,
-  DataRow,
-  SecondaryLink,
-} from '@/components/layout/layout-primitives'
 import { ContactModal } from '@/components/layout/contact-modal'
 import {
   ArrowLeft,
+  ArrowRight,
   ShieldCheck,
   Share2,
   Bookmark,
@@ -72,7 +66,6 @@ export default function PropertyDetailPage() {
           setTimeout(() => setCopiedShare(false), 2500)
         }
       } catch {
-        // Fallback to clipboard
         await navigator.clipboard.writeText(window.location.href)
         setCopiedShare(true)
         setTimeout(() => setCopiedShare(false), 2500)
@@ -81,63 +74,68 @@ export default function PropertyDetailPage() {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900">
+    <div className="flex flex-col min-h-screen bg-white text-slate-950 selection:bg-slate-900 selection:text-white">
       
       {/* 1. TOP STATUTORY BREADCRUMB BAR */}
-      <div className="border-b border-slate-200 bg-slate-50 py-3.5">
-        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+      <div className="border-b border-slate-200 bg-slate-50/70 py-3.5">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 flex items-center justify-between font-mono text-xs">
           <Link
             href="/properties"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-[#0284c7] transition-colors"
+            className="inline-flex items-center gap-2 uppercase tracking-wider text-slate-600 hover:text-slate-950 transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Property Directory</span>
+            <span>Back to Property Inventory</span>
           </Link>
           <div className="flex items-center gap-3">
-            <SourceBadge sourceClass="OFFICIAL CORPORATE" sourceName={developer} />
+            <span className="px-2.5 py-1 bg-white border border-slate-200 text-slate-900 font-semibold text-[10px] uppercase">
+              {developer}
+            </span>
+            <span className="px-2.5 py-1 bg-white border border-slate-200 text-emerald-800 font-semibold text-[10px] uppercase">
+              DLD VERIFIED ASSET
+            </span>
           </div>
         </div>
       </div>
 
       {/* 2. OPENING DOSSIER HEADER */}
-      <section className="pt-10 sm:pt-14 pb-8 border-b border-slate-200 bg-gradient-to-b from-[#f0f7ff] to-white">
-        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-8">
+      <section className="pt-10 sm:pt-14 pb-8 border-b border-slate-200 bg-white">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 space-y-8">
           
           {/* Title & Valuation Row */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3 max-w-3xl">
-              <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono uppercase text-[#0284c7]">
-                <span className="flex items-center gap-1 font-medium">
+              <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono uppercase text-slate-600">
+                <span className="flex items-center gap-1 font-semibold text-slate-950">
                   <MapPin className="h-3.5 w-3.5" />
                   <span>{district}</span>
                 </span>
                 <span className="text-slate-300">&bull;</span>
-                <span className="text-slate-700">{type}</span>
+                <span>{type}</span>
                 <span className="text-slate-300">&bull;</span>
-                <span className="px-2 py-0.5 rounded-xs bg-sky-100/60 border border-sky-200 text-sky-900 font-medium">
+                <span className="px-2 py-0.5 bg-slate-100 border border-slate-200 text-slate-900 font-semibold">
                   {status}
                 </span>
               </div>
               
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.035em] text-slate-900 font-serif">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-light tracking-[-0.035em] text-slate-950 font-serif">
                 {property.title}
               </h1>
 
-              {/* Persistent Share & Action Row */}
+              {/* Action Row */}
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   onClick={handleShare}
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xs bg-white hover:bg-slate-100 border border-slate-200 text-xs font-mono uppercase tracking-wider text-slate-800 hover:text-[#0284c7] transition-colors cursor-pointer shadow-xs"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white hover:bg-slate-50 border border-slate-200 text-xs font-mono uppercase tracking-wider text-slate-800 transition-colors cursor-pointer shadow-2xs"
                   title="Share Property Listing Dossier"
                 >
                   {copiedShare ? (
                     <>
-                      <Check className="h-3.5 w-3.5 text-emerald-600" />
-                      <span className="text-emerald-700 font-medium">Dossier Link Copied</span>
+                      <Check className="h-3.5 w-3.5 text-emerald-700" />
+                      <span className="text-emerald-800 font-semibold">Dossier Link Copied</span>
                     </>
                   ) : (
                     <>
-                      <Share2 className="h-3.5 w-3.5 text-[#0284c7]" />
+                      <Share2 className="h-3.5 w-3.5 text-slate-600" />
                       <span>Share Listing</span>
                     </>
                   )}
@@ -145,10 +143,10 @@ export default function PropertyDetailPage() {
 
                 <button
                   onClick={() => toggleShortlist(property.id, property.title)}
-                  className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xs border text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
+                  className={`inline-flex items-center gap-2 px-3.5 py-1.5 border text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer ${
                     saved
-                      ? 'bg-[#0284c7] text-white border-[#0284c7]'
-                      : 'bg-white hover:bg-slate-100 text-slate-800 border-slate-200 shadow-xs'
+                      ? 'bg-slate-950 text-white border-slate-950'
+                      : 'bg-white hover:bg-slate-50 text-slate-800 border-slate-200 shadow-2xs'
                   }`}
                 >
                   <Bookmark className={`h-3.5 w-3.5 ${saved ? 'fill-current' : ''}`} />
@@ -157,7 +155,7 @@ export default function PropertyDetailPage() {
 
                 <button
                   onClick={() => setIsContactModalOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-wider font-semibold transition-all cursor-pointer shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-wider font-semibold transition-all cursor-pointer shadow-2xs"
                 >
                   <span>Request Private Briefing</span>
                 </button>
@@ -165,20 +163,22 @@ export default function PropertyDetailPage() {
             </div>
 
             {/* Price Box */}
-            <div className="text-left lg:text-right font-mono space-y-1 p-5 rounded-xs bg-white border border-sky-100 shadow-sm shrink-0">
-              <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Asking Valuation</span>
-              <div className="text-2xl sm:text-4xl font-light text-slate-900 tabular-nums font-semibold">
+            <div className="text-left lg:text-right font-mono space-y-1 p-5 bg-slate-50 border border-slate-200 shadow-2xs shrink-0">
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider block font-semibold">
+                Asking Valuation
+              </span>
+              <div className="text-2xl sm:text-4xl font-light text-slate-950 tabular-nums font-bold">
                 {formatCurrency(price)}
               </div>
-              <div className="text-xs text-[#0284c7] font-semibold">
+              <div className="text-xs text-slate-600 font-semibold">
                 AED {property.price_per_sqft?.toLocaleString()} / sqft
               </div>
             </div>
           </div>
 
-          {/* Large Architectural Gallery View */}
+          {/* Dominant Architectural Gallery View */}
           <div className="space-y-3">
-            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-sm bg-slate-100 border border-slate-200 shadow-md">
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-slate-100 border border-slate-200 shadow-md">
               <Image
                 src={images[activeImageIndex] || images[0]}
                 alt={property.title}
@@ -189,12 +189,15 @@ export default function PropertyDetailPage() {
               />
               {isGoldenVisaEligible && (
                 <div className="absolute top-4 left-4">
-                  <span className="px-3.5 py-1.5 rounded-xs text-[10px] font-mono uppercase bg-emerald-50/95 backdrop-blur-md text-emerald-800 flex items-center gap-1.5 border border-emerald-300 font-semibold shadow-xs">
-                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+                  <span className="px-3.5 py-1.5 text-[10px] font-mono uppercase bg-white/95 backdrop-blur-xs text-emerald-800 flex items-center gap-1.5 border border-slate-200 font-semibold shadow-2xs">
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
                     <span>Golden Visa Eligible (&ge; AED 2M)</span>
                   </span>
                 </div>
               )}
+              <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-slate-950/80 text-[9px] font-mono text-slate-300">
+                VIEW {activeImageIndex + 1} OF {images.length}
+              </div>
             </div>
 
             {/* Thumbnail Strip */}
@@ -204,10 +207,10 @@ export default function PropertyDetailPage() {
                   <button
                     key={idx}
                     onClick={() => setActiveImageIndex(idx)}
-                    className={`relative aspect-[16/10] w-28 sm:w-36 shrink-0 overflow-hidden rounded-xs border transition-all cursor-pointer ${
+                    className={`relative aspect-[16/10] w-28 sm:w-36 shrink-0 overflow-hidden border transition-all cursor-pointer ${
                       activeImageIndex === idx
-                        ? 'border-[#0284c7] ring-2 ring-[#0284c7]'
-                        : 'border-slate-200 opacity-70 hover:opacity-100'
+                        ? 'border-slate-950 ring-2 ring-slate-950'
+                        : 'border-slate-200 opacity-65 hover:opacity-100'
                     }`}
                   >
                     <Image
@@ -226,115 +229,59 @@ export default function PropertyDetailPage() {
         </div>
       </section>
 
-      {/* 3. PROPERTY OVERVIEW & METRICS GRID */}
-      <Section spacing="room-120" surface="subtle" containerSize="editorial">
-        <div className="space-y-10">
-          <div className="space-y-4">
-            <Eyebrow>01 &bull; ASSET SPECIFICATION &amp; METRICS</Eyebrow>
-            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
+      {/* 3. PROPERTY SPECIFICATIONS & METRICS */}
+      <section className="py-16 sm:py-20 bg-slate-50/60 border-b border-slate-200">
+        <div className="w-full max-w-[1120px] mx-auto px-4 sm:px-10 lg:px-16 space-y-10">
+          <div className="space-y-2">
+            <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-slate-500 font-semibold block">
+              01 &bull; ASSET SPECIFICATION &amp; METRICS
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-950 font-serif">
               {property.unit_descriptor || property.editorial_display_name}
             </h2>
           </div>
 
-          {/* Key Metric Rows */}
-          <div className="divide-y divide-slate-200 border-t border-b border-slate-200 bg-white p-6 rounded-xs border shadow-xs">
-            <DataRow label="Internal Living Area" value={`${size.toLocaleString()} SQ. FT`} />
-            <DataRow label="Bedrooms / Suites" value={`${beds} Bedrooms`} />
-            <DataRow label="Bathrooms" value={`${baths} Bathrooms`} />
-            <DataRow label="Asset Type" value={type} />
-            <DataRow label="Master Developer" value={developer} />
-            <DataRow label="Zoning Status" value="Designated Foreign Freehold" />
-            <DataRow label="Completion Schedule" value={status} />
-          </div>
-        </div>
-      </Section>
-
-      {/* 4. ARCHITECTURAL DOSSIER & AMENITIES */}
-      <Section spacing="room-120" surface="pure" containerSize="wide">
-        <div className="space-y-10">
-          <Eyebrow>02 &bull; ARCHITECTURAL DOSSIER</Eyebrow>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-slate-100 border border-slate-200 shadow-sm">
-                <Image
-                  src={images[1] || images[0]}
-                  alt="Architectural Detailing"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover"
-                />
-              </div>
+          <div className="divide-y divide-slate-200 border-t border-b border-slate-200 bg-white p-6 sm:p-8 border shadow-2xs font-mono text-xs">
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Internal Living Area</span>
+              <span className="text-slate-950 font-bold">{size.toLocaleString()} SQ. FT</span>
             </div>
-
-            <div className="lg:col-span-5 space-y-6">
-              <h3 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
-                Spatial Flow &amp; Specification
-              </h3>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">
-                Engineered with floor-to-ceiling structural glazing, expansive sea and skyline apertures, and refined bespoke joinery aligned with Dubai&apos;s most rigorous architectural benchmarks.
-              </p>
-              
-              {property.amenities && (
-                <div className="pt-4 space-y-3">
-                  <span className="text-xs font-mono uppercase text-slate-400 block">
-                    Curated Amenities
-                  </span>
-                  <div className="flex flex-wrap gap-2">
-                    {property.amenities.map((item, idx) => (
-                      <span key={idx} className="px-3 py-1 rounded-xs bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Bedrooms / Suites</span>
+              <span className="text-slate-950 font-bold">{beds} Bedrooms</span>
+            </div>
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Bathrooms</span>
+              <span className="text-slate-950 font-bold">{baths} Bathrooms</span>
+            </div>
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Asset Type</span>
+              <span className="text-slate-950 font-bold">{type}</span>
+            </div>
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Master Developer</span>
+              <span className="text-slate-950 font-bold">{developer}</span>
+            </div>
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Zoning Status</span>
+              <span className="text-slate-950 font-bold">Designated Foreign Freehold (Law 7/2006)</span>
+            </div>
+            <div className="flex justify-between py-3">
+              <span className="text-slate-500 uppercase">Completion Schedule</span>
+              <span className="text-slate-950 font-bold">{status}</span>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* 5. LOCATION & DISTRICT CONTEXT */}
-      <Section spacing="room-120" surface="subtle" containerSize="wide">
-        <div className="space-y-10">
-          <Eyebrow>03 &bull; DISTRICT CONTEXT</Eyebrow>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5 space-y-6">
-              <h3 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
-                Enclave of {district}
-              </h3>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">
-                Positioned within one of Dubai&apos;s prime freehold enclaves under Regulation No. 3 of 2006, offering unencumbered 100% foreign title ownership, dedicated infrastructure, and private access arteries.
-              </p>
-              <div className="pt-2">
-                <SecondaryLink href="/districts">
-                  Explore Dubai Atlas
-                </SecondaryLink>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm bg-slate-100 border border-slate-200 shadow-sm">
-                <Image
-                  src={images[2] || images[0]}
-                  alt={district}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* 6. STATUTORY ACQUISITION SCHEDULE */}
-      <Section spacing="room-160" surface="pure" containerSize="editorial">
-        <div className="space-y-10">
+      {/* 4. STATUTORY CONVEYANCING SCHEDULE */}
+      <section className="py-16 sm:py-24 bg-white border-b border-slate-200">
+        <div className="w-full max-w-[1120px] mx-auto px-4 sm:px-10 lg:px-16 space-y-10">
           <div className="space-y-3">
-            <Eyebrow>04 &bull; STATUTORY UNDERWRITING &amp; CONVEYANCING</Eyebrow>
-            <h2 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
+            <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-slate-500 font-semibold block">
+              02 &bull; STATUTORY UNDERWRITING &amp; CONVEYANCING
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-light text-slate-950 font-serif">
               Statutory Conveyancing Schedule
             </h2>
             <p className="text-sm text-slate-600 font-light max-w-2xl leading-relaxed">
@@ -342,45 +289,40 @@ export default function PropertyDetailPage() {
             </p>
           </div>
 
-          <div className="p-6 sm:p-10 rounded-sm bg-white border border-slate-200 space-y-8 shadow-sm">
-            <div className="space-y-3">
-              <DataRow
-                label="Asking Asset Valuation"
-                value={formatCurrency(price)}
-                source={<SourceBadge sourceClass="OFFICIAL CORPORATE" sourceName="Developer Registry" />}
-              />
-              <DataRow
-                label="DLD Sale Registration (4%)"
-                value={formatCurrency(dldTransferFee)}
-                source={<SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="Law No. 7 of 2006" />}
-              />
-              <DataRow
-                label="DLD Admin & Map Tariff"
-                value="AED 4,200"
-                source={<SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="DLD Published Tariff" />}
-              />
-              <DataRow
-                label="Registration Trustee Fee"
-                value={formatCurrency(trusteeFee)}
-                source={<SourceBadge sourceClass="OFFICIAL REGULATORY" sourceName="DLD Authorized Trustee" />}
-              />
-              <DataRow
-                label="Estimated Statutory Conveyancing"
-                value={formatCurrency(conveyanceFee)}
-                source={<SourceBadge sourceClass="CALCULATED" sourceName="Standard Escrow Protocol" />}
-              />
+          <div className="p-6 sm:p-10 bg-white border border-slate-200 space-y-8 shadow-sm">
+            <div className="space-y-3 font-mono text-xs">
+              <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                <span className="text-slate-600">Asking Asset Valuation</span>
+                <span className="text-slate-950 font-bold">{formatCurrency(price)}</span>
+              </div>
+              <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                <span className="text-slate-600">DLD Sale Registration (4%)</span>
+                <span className="text-slate-950 font-bold">{formatCurrency(dldTransferFee)}</span>
+              </div>
+              <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                <span className="text-slate-600">DLD Admin &amp; Map Tariff</span>
+                <span className="text-slate-950 font-bold">AED 4,200</span>
+              </div>
+              <div className="flex items-center justify-between py-2 border-b border-slate-100">
+                <span className="text-slate-600">Registration Trustee Fee</span>
+                <span className="text-slate-950 font-bold">{formatCurrency(trusteeFee)}</span>
+              </div>
+              <div className="flex items-center justify-between py-2">
+                <span className="text-slate-600">Estimated Statutory Conveyancing</span>
+                <span className="text-slate-950 font-bold">{formatCurrency(conveyanceFee)}</span>
+              </div>
             </div>
 
             <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
-                <span className="text-xs font-mono uppercase tracking-widest text-[#0284c7] font-semibold">
+                <span className="text-xs font-mono uppercase tracking-widest text-slate-950 font-bold">
                   TOTAL STATUTORY OUTLAY
                 </span>
                 <p className="text-xs text-slate-500 font-light">
                   Inclusive of all statutory transfer and registration charges.
                 </p>
               </div>
-              <div className="text-2xl sm:text-4xl font-light text-slate-900 font-mono tabular-nums font-semibold">
+              <div className="text-2xl sm:text-4xl font-light text-slate-950 font-mono tabular-nums font-bold">
                 {formatCurrency(totalAcquisition)}
               </div>
             </div>
@@ -388,27 +330,27 @@ export default function PropertyDetailPage() {
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => setIsContactModalOpen(true)}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xs bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all cursor-pointer text-center shadow-xs"
+                className="w-full sm:w-auto px-6 py-3.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all cursor-pointer text-center shadow-xs"
               >
                 Request Private Viewing &amp; Mandate
               </button>
               <Link
                 href="/investment"
-                className="px-6 py-3.5 rounded-xs border border-slate-200 hover:border-[#0284c7] text-xs font-mono uppercase tracking-wider text-slate-800 hover:text-[#0284c7] text-center transition-colors bg-slate-50"
+                className="px-6 py-3.5 border border-slate-200 hover:border-slate-950 text-xs font-mono uppercase tracking-wider text-slate-800 hover:text-slate-950 text-center transition-colors bg-slate-50"
               >
                 Open Full Underwriting Engine
               </Link>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* 7. PROVENANCE & AUDIT GUARANTEE */}
-      <Section spacing="room-96" surface="subtle" containerSize="reading">
-        <div className="p-6 sm:p-8 rounded-sm bg-white border border-slate-200 space-y-3 text-xs font-light text-slate-600 shadow-xs">
+      {/* 5. PROVENANCE & AUDIT GUARANTEE */}
+      <section className="py-12 bg-slate-50/60">
+        <div className="w-full max-w-[880px] mx-auto px-4 sm:px-10 space-y-3 text-xs font-light text-slate-600">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
-            <span className="font-mono text-xs uppercase tracking-wider text-slate-900 font-semibold">
+            <ShieldCheck className="h-4 w-4 text-emerald-700" />
+            <span className="font-mono text-xs uppercase tracking-wider text-slate-950 font-bold">
               Statutory Provenance Guarantee
             </span>
           </div>
@@ -416,7 +358,7 @@ export default function PropertyDetailPage() {
             All data records for <strong>{property.title}</strong> have been audited against official Dubai Land Department registry filings and developer sales schedules. Specifications and tariffs represent verified statutory submissions.
           </p>
         </div>
-      </Section>
+      </section>
 
       {/* Contact Modal */}
       <ContactModal

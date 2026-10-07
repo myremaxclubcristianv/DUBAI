@@ -9,7 +9,6 @@ import {
   ArrowUpRight,
   ShieldCheck,
   Compass,
-  Landmark,
 } from 'lucide-react'
 
 export default function DistrictsAtlasPage() {
@@ -17,22 +16,21 @@ export default function DistrictsAtlasPage() {
   const activeDistrict = DUBAI_AREAS[activeDistrictIndex] || DUBAI_AREAS[0]
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-[#0284c7]/20">
+    <div className="flex flex-col min-h-screen bg-white text-slate-950 selection:bg-slate-900 selection:text-white">
       
       {/* 1. EDITORIAL ATLAS HEADER */}
-      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-slate-200 bg-gradient-to-b from-[#f0f7ff] to-white relative">
+      <section className="pt-16 pb-14 sm:pt-24 sm:pb-20 border-b border-slate-200 bg-white relative">
         <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 space-y-6">
           
           <div className="flex flex-wrap items-center justify-between gap-4 font-mono text-xs">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#0284c7]" />
-              <span className="text-[10px] tracking-[0.24em] uppercase text-slate-600 font-semibold">
+              <span className="text-[10px] tracking-[0.24em] uppercase text-slate-500 font-semibold">
                 GEOGRAPHIC ATLAS &bull; FREEHOLD ZONES REGULATION 3 (2006)
               </span>
             </div>
             <div className="flex items-center gap-3 text-[11px] text-slate-500">
-              <span className="text-emerald-700 font-semibold flex items-center gap-1">
-                <ShieldCheck className="h-3.5 w-3.5" />
+              <span className="text-emerald-800 font-semibold flex items-center gap-1">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
                 DLD Designated Freehold
               </span>
               <span>&bull;</span>
@@ -42,7 +40,7 @@ export default function DistrictsAtlasPage() {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-t border-slate-200/80 pt-6">
             <div className="space-y-3 max-w-2xl">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-slate-900 font-serif">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-slate-950 font-serif">
                 DUBAI ATLAS
               </h1>
               <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed">
@@ -50,9 +48,9 @@ export default function DistrictsAtlasPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-white border border-slate-200 font-mono text-xs text-slate-600 shadow-2xs space-y-1">
-              <div className="flex items-center gap-2 text-slate-900 font-semibold">
-                <Compass className="h-4 w-4 text-[#0284c7]" />
+            <div className="p-4 bg-slate-50 border border-slate-200 font-mono text-xs text-slate-600 shadow-2xs space-y-1">
+              <div className="flex items-center gap-2 text-slate-950 font-bold">
+                <Compass className="h-4 w-4 text-slate-900" />
                 <span>{DUBAI_AREAS.length} Master Freehold Zones</span>
               </div>
               <div className="text-[10px] text-slate-400">
@@ -84,10 +82,10 @@ export default function DistrictsAtlasPage() {
                   className="object-cover transition-all duration-700"
                 />
                 <div className="absolute top-4 left-4 flex gap-2">
-                  <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-white/95 backdrop-blur-xs text-emerald-800 border border-emerald-200">
+                  <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-white/95 backdrop-blur-xs text-emerald-800 border border-slate-200">
                     DLD REG. 3/2006
                   </span>
-                  <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-slate-950/80 text-white">
+                  <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-slate-950/90 text-white">
                     SECTOR {activeDistrict.sector || '01'}
                   </span>
                 </div>
@@ -98,10 +96,10 @@ export default function DistrictsAtlasPage() {
 
               <div className="p-6 sm:p-8 space-y-4">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] font-semibold block">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-slate-500 font-semibold block">
                     {activeDistrict.sector} &bull; FREEHOLD ZONE
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
+                  <h2 className="text-2xl sm:text-3xl font-light text-slate-950 font-serif">
                     {activeDistrict.name}
                   </h2>
                 </div>
@@ -113,7 +111,7 @@ export default function DistrictsAtlasPage() {
                 <div className="pt-3 border-t border-slate-100 grid grid-cols-2 gap-4 font-mono text-xs text-slate-600">
                   <div>
                     <span className="text-slate-400 block uppercase text-[10px]">Master Developer</span>
-                    <span className="text-slate-900 font-semibold">{activeDistrict.master_developer || 'Master Planned'}</span>
+                    <span className="text-slate-950 font-semibold">{activeDistrict.master_developer || 'Master Planned'}</span>
                   </div>
                   <div>
                     <span className="text-slate-400 block uppercase text-[10px]">Tenure Status</span>
@@ -124,7 +122,7 @@ export default function DistrictsAtlasPage() {
                 <div className="pt-3">
                   <Link
                     href={`/districts/${activeDistrict.slug}`}
-                    className="w-full py-3 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-colors flex items-center justify-center gap-2 shadow-2xs"
+                    className="w-full py-3 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-colors flex items-center justify-center gap-2 shadow-2xs"
                   >
                     <span>OPEN {activeDistrict.name} DOSSIER</span>
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -142,7 +140,7 @@ export default function DistrictsAtlasPage() {
                 key={district.slug || district.id}
                 onMouseEnter={() => setActiveDistrictIndex(idx)}
                 className={`group flex items-center justify-between py-5 px-4 sm:px-6 transition-all cursor-pointer ${
-                  activeDistrictIndex === idx ? 'bg-sky-50/70 border-l-2 border-l-[#0284c7]' : 'hover:bg-slate-50'
+                  activeDistrictIndex === idx ? 'bg-slate-50 border-l-2 border-l-slate-950' : 'hover:bg-slate-50/60'
                 }`}
               >
                 <div className="space-y-1">
@@ -152,7 +150,7 @@ export default function DistrictsAtlasPage() {
                     </span>
                     <Link
                       href={`/districts/${district.slug}`}
-                      className="text-lg sm:text-xl font-light text-slate-900 group-hover:text-[#0284c7] transition-colors font-serif"
+                      className="text-lg sm:text-xl font-light text-slate-950 group-hover:text-slate-600 transition-colors font-serif"
                     >
                       {district.name}
                     </Link>
@@ -165,9 +163,9 @@ export default function DistrictsAtlasPage() {
                 <div className="flex items-center gap-4">
                   <Link
                     href={`/districts/${district.slug}`}
-                    className="p-2 border border-slate-200 group-hover:border-[#0284c7] group-hover:bg-[#0284c7]/10 transition-all"
+                    className="p-2 border border-slate-200 group-hover:border-slate-950 group-hover:bg-slate-100 transition-all"
                   >
-                    <ArrowUpRight className="h-4 w-4 text-slate-400 group-hover:text-[#0284c7]" />
+                    <ArrowUpRight className="h-4 w-4 text-slate-400 group-hover:text-slate-950" />
                   </Link>
                 </div>
               </div>
