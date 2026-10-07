@@ -133,7 +133,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-white text-slate-950 selection:bg-slate-900 selection:text-white">
       
       {/* ========================================================================= */}
-      {/* 01 — HERO COMPOSITION (90vh VIEWPORT ARCHITECTURAL FOUNDATION)            */}
+      {/* 01 — HERO COMPOSITION (90vh VIEWPORT ARCHITECTURAL BURJ KHALIFA FOUNDATION)*/}
       {/* ========================================================================= */}
       <section className="relative w-full min-h-[640px] max-h-[960px] h-[88vh] lg:h-[92vh] flex items-center border-b border-slate-200 overflow-hidden bg-slate-950">
         
@@ -223,11 +223,11 @@ export default function Home() {
 
             </div>
 
-            {/* Right 5 Columns: Floating Architectural DLD Market Baseline Cadran */}
+            {/* Right 5 Columns: Architectural DLD Market Baseline Plate */}
             <div className="lg:col-span-5 flex justify-start lg:justify-end w-full">
               <div className="w-full max-w-md bg-white border border-slate-200 p-6 sm:p-8 space-y-6 shadow-2xl relative">
                 
-                {/* Cadran Header with Institutional Metadata */}
+                {/* Plate Header with Institutional Metadata */}
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3.5">
                   <div className="space-y-0.5">
                     <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-slate-900 font-bold block">
@@ -242,7 +242,7 @@ export default function Home() {
                   </span>
                 </div>
 
-                {/* Cadran Data Grid with Defined Typographic Hierarchy */}
+                {/* Plate Data Grid with Defined Typographic Hierarchy */}
                 <div className="grid grid-cols-3 gap-3 sm:gap-4 font-mono">
                   <div className="space-y-1">
                     <span className="text-2xl sm:text-3xl font-light text-slate-950 block font-sans tracking-tight font-semibold">
@@ -273,7 +273,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Cadran Footnote & Action */}
+                {/* Plate Footnote & Action */}
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <Link
                     href="/sources"

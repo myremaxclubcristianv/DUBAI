@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Architectural Pure Palette */
+  /* Architectural Pure & Deep Dubai Palette */
   --bg-pure: #ffffff;
   --bg-subtle: #f8fafc;
   --bg-surface: #f1f5f9;
   --bg-card: #ffffff;
   --bg-elevated: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.92);
-  --bg-blue-deep: #070e1c;
-  --bg-dark: #050a14;
+  --bg-charcoal: #0f172a;
+  --bg-deep-blue: #070e1c;
+  --bg-night: #050a14;
   
   /* Text & Typographic Hierarchy */
   --text-main: #020617;
@@ -24,10 +24,11 @@
   --border-subtle: #e2e8f0;
   --border-strong: #cbd5e1;
   --border-dark: rgba(255, 255, 255, 0.12);
+  --border-gold: rgba(184, 150, 72, 0.28);
 
   /* Restrained Metallic Accent */
   --accent-gold: #b89648;
-  --accent-gold-subtle: rgba(184, 150, 72, 0.12);
+  --accent-gold-subtle: rgba(184, 150, 72, 0.10);
 
   /* Typography Stack */
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
@@ -41,9 +42,9 @@
   --color-bg-surface: var(--bg-surface);
   --color-bg-elevated: var(--bg-elevated);
   --color-bg-card: var(--bg-card);
-  --color-bg-glass: var(--bg-glass);
-  --color-bg-blue-deep: var(--bg-blue-deep);
-  --color-bg-dark: var(--bg-dark);
+  --color-bg-charcoal: var(--bg-charcoal);
+  --color-bg-deep-blue: var(--bg-deep-blue);
+  --color-bg-night: var(--bg-night);
   
   --color-text-main: var(--text-main);
   --color-text-body: var(--text-body);
@@ -56,6 +57,7 @@
   --color-border-subtle: var(--border-subtle);
   --color-border-strong: var(--border-strong);
   --color-border-dark: var(--border-dark);
+  --color-border-gold: var(--border-gold);
 
   --color-accent-gold: var(--accent-gold);
 
