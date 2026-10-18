@@ -9,6 +9,7 @@ import { useClient, SupportedCurrency } from '@/lib/context/client-context'
 
 const NAV_ITEMS = [
   { label: 'Properties', href: '/properties' },
+  { label: 'Developments', href: '/developments' },
   { label: 'Areas', href: '/areas' },
   { label: 'Market', href: '/market' },
   { label: 'Private Client', href: '/private-client' },
@@ -25,20 +26,21 @@ export function Header() {
       <header className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 transition-colors">
         <div className="w-full max-w-[1440px] mx-auto flex h-[76px] sm:h-[80px] items-center justify-between px-4 sm:px-10 lg:px-16">
           
-          {/* LEFT: Architectural Dubai Wordmark */}
+          {/* LEFT: Architectural Dubai Wordmark + Restrained Vertical Separator + Platform Descriptor */}
           <div className="flex items-center gap-4 shrink-0">
-            <Link href="/" className="group flex flex-col">
-              <span className="text-[17px] sm:text-[18px] font-semibold tracking-[0.14em] text-slate-950 uppercase group-hover:text-slate-600 transition-colors font-sans">
+            <Link href="/" className="flex items-center gap-3.5 group">
+              <span className="text-[18px] sm:text-[19px] font-semibold tracking-[0.16em] text-slate-950 uppercase group-hover:text-slate-600 transition-colors font-sans">
                 DUBAI
               </span>
-              <span className="text-[8.5px] font-mono tracking-[0.24em] text-slate-400 uppercase hidden sm:block">
-                CRISTIANVADUVA.COM
+              <span className="h-4 w-[1px] bg-slate-300 hidden sm:block" aria-hidden="true" />
+              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-500 uppercase hidden sm:inline-block font-medium">
+                REAL ESTATE INTELLIGENCE
               </span>
             </Link>
           </div>
 
           {/* CENTER: Clean Architectural Navigation */}
-          <nav className="hidden md:flex items-center gap-10 lg:gap-12 text-[12px] font-normal">
+          <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-[12px] font-normal ml-8 lg:ml-14">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
               return (
@@ -53,25 +55,27 @@ export function Header() {
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-slate-950" />
+                    <span className="absolute -bottom-1.5 left-0 right-0 h-[1.5px] bg-slate-950" />
                   )}
                 </Link>
               )
             })}
           </nav>
 
-          {/* RIGHT: Currency Selector & Refined Private Client Desk */}
-          <div className="flex items-center gap-4 sm:gap-6 shrink-0">
-            {/* Currency Selector */}
-            <div className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 py-1 bg-slate-50 border border-slate-200 text-[10px] sm:text-[11px] font-mono text-slate-600">
-              {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr) => (
+          {/* RIGHT: Currency Selector, Search & Refined Private Client Desk Action */}
+          <div className="flex items-center gap-3.5 sm:gap-5 shrink-0">
+            {/* Segmented Architectural Currency Selector */}
+            <div className="flex items-center border border-slate-200 bg-slate-50/80 text-[11px] font-mono">
+              {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr, idx) => (
                 <button
                   key={curr}
                   onClick={() => setCurrency(curr as SupportedCurrency)}
-                  className={`px-1.5 py-0.5 transition-colors cursor-pointer ${
+                  className={`px-2 sm:px-2.5 py-1 transition-colors cursor-pointer ${
+                    idx > 0 ? 'border-l border-slate-200' : ''
+                  } ${
                     currency === curr
-                      ? 'text-white bg-slate-900 font-bold'
-                      : 'text-slate-600 hover:text-slate-950'
+                      ? 'text-white bg-slate-950 font-semibold'
+                      : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
                   } ${curr === 'EUR' || curr === 'GBP' ? 'hidden sm:inline-block' : ''}`}
                 >
                   {curr}
@@ -82,22 +86,22 @@ export function Header() {
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-2 px-2.5 py-1 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
+              className="flex items-center gap-2 px-2.5 sm:px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 text-xs text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
               title="Search Directory (⌘K)"
               aria-label="Open Search"
             >
               <Search className="h-3.5 w-3.5 text-slate-500" />
-              <span className="text-[11px] font-mono hidden lg:inline">Search</span>
-              <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 bg-white text-slate-500 border border-slate-200">⌘K</kbd>
+              <span className="text-[11px] font-mono hidden lg:inline tracking-wider uppercase">Search</span>
+              <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 bg-slate-100 text-slate-500 border border-slate-200">⌘K</kbd>
             </button>
 
-            {/* Private Client Desk Action Link */}
+            {/* Private Client Desk Action Button */}
             <Link
               href="/private-client"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-[0.16em] text-slate-950 hover:text-slate-600 font-semibold transition-colors group"
+              className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 border border-slate-950 bg-slate-950 hover:bg-slate-800 text-white text-[11px] font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-xs"
             >
-              <span className="border-b border-slate-950 group-hover:border-slate-400 pb-0.5">Private Client Desk</span>
-              <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span>Private Client Desk</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
 
             {/* Mobile Menu Trigger */}

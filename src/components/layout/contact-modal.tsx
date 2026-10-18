@@ -5,26 +5,38 @@ import { X, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react'
 
 export type InterestCategory = 'PROPERTY' | 'INVESTMENT' | 'RESIDENCY' | 'LIFESTYLE' | 'PRIVATE CLIENT'
 
-interface ContactModalProps {
+export interface ContactModalProps {
   isOpen: boolean
   onClose: () => void
   initialInterest?: InterestCategory
+  initialMessage?: string
+  initialBudget?: string
+  title?: string
+  eyebrow?: string
 }
 
 function ContactModalDialog({
   onClose,
   initialInterest = 'PROPERTY',
+  initialMessage = '',
+  initialBudget = '',
+  title = 'Direct Advisory Intake & Mandate',
+  eyebrow = 'Private Client Desk',
 }: {
   onClose: () => void
   initialInterest?: InterestCategory
+  initialMessage?: string
+  initialBudget?: string
+  title?: string
+  eyebrow?: string
 }) {
   const [interest, setInterest] = React.useState<InterestCategory>(initialInterest)
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [country, setCountry] = React.useState('')
-  const [budget, setBudget] = React.useState('')
-  const [message, setMessage] = React.useState('')
+  const [budget, setBudget] = React.useState(initialBudget)
+  const [message, setMessage] = React.useState(initialMessage)
   const [honeypot, setHoneypot] = React.useState('')
 
   const [status, setStatus] = React.useState<'IDLE' | 'SUBMITTING' | 'SUCCESS' | 'ERROR'>('IDLE')
@@ -120,10 +132,10 @@ function ContactModalDialog({
         <div className="flex items-center justify-between px-6 sm:px-8 py-4 sm:py-5 border-b border-slate-200 shrink-0 bg-gradient-to-r from-[#f0f7ff] to-white">
           <div className="space-y-0.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#0284c7] block font-semibold">
-              Private Client Desk
+              {eyebrow}
             </span>
             <h2 id="contact-modal-title" className="text-base sm:text-lg font-light tracking-tight text-slate-900 font-serif">
-              Direct Advisory Intake &amp; Mandate
+              {title}
             </h2>
           </div>
           <button
@@ -341,14 +353,26 @@ function ContactModalDialog({
   )
 }
 
-export function ContactModal({ isOpen, onClose, initialInterest = 'PROPERTY' }: ContactModalProps) {
+export function ContactModal({
+  isOpen,
+  onClose,
+  initialInterest = 'PROPERTY',
+  initialMessage = '',
+  initialBudget = '',
+  title = 'Direct Advisory Intake & Mandate',
+  eyebrow = 'Private Client Desk',
+}: ContactModalProps) {
   if (!isOpen) return null
 
   return (
     <ContactModalDialog
-      key={`${initialInterest}-${isOpen}`}
+      key={`${initialInterest}-${isOpen}-${initialMessage.slice(0, 30)}`}
       onClose={onClose}
       initialInterest={initialInterest}
+      initialMessage={initialMessage}
+      initialBudget={initialBudget}
+      title={title}
+      eyebrow={eyebrow}
     />
   )
 }

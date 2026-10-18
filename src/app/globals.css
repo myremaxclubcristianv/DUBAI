@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -33,7 +34,7 @@
   /* Typography Stack */
   --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), "SF Mono", Menlo, Monaco, Consolas, monospace;
-  --font-serif: var(--font-newsreader), "Newsreader", "Times New Roman", "Playfair Display", Georgia, serif;
+  --font-serif: "Cormorant Garamond", var(--font-newsreader), "Newsreader", "Times New Roman", "Playfair Display", Georgia, serif;
 }
 
 @theme inline {
@@ -63,36 +64,36 @@
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
-  --font-serif: var(--font-serif);
+  --font-serif: "Cormorant Garamond", var(--font-newsreader), "Newsreader", Georgia, serif;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  overflow-x: hidden;
-  background-color: #ffffff;
-  color: #020617;
-}
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+    background-color: #ffffff;
+    color: #020617;
+  }
 
-body {
-  background: #ffffff;
-  color: #020617;
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.012em;
-  line-height: 1.55;
-  min-width: 320px;
-  width: 100%;
-  position: relative;
-  overflow-x: hidden;
+  body {
+    background: #ffffff;
+    color: #020617;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.012em;
+    line-height: 1.55;
+    min-width: 320px;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+  }
 }
 
 /* Institutional Tabular Numbers */

@@ -6,31 +6,32 @@ import { ArrowUpRight, ShieldCheck } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white text-slate-600">
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 py-16 sm:py-24 space-y-16">
+    <footer className="border-t border-slate-800 bg-[#070e1c] text-slate-400">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 py-20 lg:py-28 space-y-16">
         
         {/* Top Brand & Institutional Provenance Identity */}
-        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-10 pb-12 border-b border-slate-200">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-10 pb-12 border-b border-slate-800/80">
           <div className="space-y-4 max-w-xl">
-            <div className="space-y-1">
-              <span className="text-[20px] sm:text-[22px] font-semibold tracking-[0.08em] uppercase text-slate-950 block font-sans">
+            <div className="flex items-center gap-3.5">
+              <span className="text-[20px] sm:text-[22px] font-semibold tracking-[0.16em] uppercase text-white block font-sans">
                 DUBAI
               </span>
-              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-500 uppercase block font-semibold">
+              <span className="h-4 w-[1px] bg-slate-700 hidden sm:block" aria-hidden="true" />
+              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-400 uppercase hidden sm:block font-medium">
                 STATUTORY PROPERTY &bull; INVESTMENT INTELLIGENCE
               </span>
             </div>
-            <p className="text-sm text-slate-600 font-light leading-relaxed">
-              Source-led intelligence for Dubai property, capital underwriting, golden residency, and private client advisory. Sourced directly from published statutory registers, federal decree-laws, and verified master developer records.
+            <p className="text-sm text-slate-400 font-light leading-relaxed">
+              Source-led intelligence for Dubai property assets, statutory investment underwriting, and private client advisory. All data anchored directly in verified Dubai Land Department registers, federal decree-laws, and master developer filings.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 font-mono text-[11px] text-slate-600">
-            <span className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-800 shadow-2xs">
+          <div className="flex flex-wrap items-center gap-3 font-mono text-[11px] text-slate-300">
+            <span className="px-3.5 py-1.5 bg-slate-900/90 border border-slate-800 text-slate-300">
               USD Peg: 1 USD = 3.6725 AED
             </span>
-            <span className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-800 flex items-center gap-1.5">
-              <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
+            <span className="px-3.5 py-1.5 bg-slate-900/90 border border-slate-800 text-slate-300 flex items-center gap-1.5">
+              <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
               <span>Statutory Data Provenance</span>
             </span>
           </div>
@@ -38,87 +39,88 @@ export function Footer() {
 
         {/* Navigation Columns */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10 sm:gap-12">
-          {/* Column 1: Core Platform */}
+          {/* Column 1: Platform */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-900 block font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Platform
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
-              <li><Link href="/properties" className="text-slate-600 hover:text-slate-950 transition-colors">Properties Directory</Link></li>
-              <li><Link href="/market" className="text-slate-600 hover:text-slate-950 transition-colors">Dubai Intelligence</Link></li>
-              <li><Link href="/investment" className="text-slate-600 hover:text-slate-950 transition-colors">Capital &amp; Underwriting</Link></li>
-              <li><Link href="/residency" className="text-slate-600 hover:text-slate-950 transition-colors">Golden Residency</Link></li>
-              <li><Link href="/districts" className="text-slate-600 hover:text-slate-950 transition-colors">Dubai Atlas</Link></li>
-              <li><Link href="/developers" className="text-slate-600 hover:text-slate-950 transition-colors">Developers Registry</Link></li>
+            <ul className="space-y-3 text-xs font-light">
+              <li><Link href="/properties" className="text-slate-400 hover:text-white transition-colors">Properties Directory</Link></li>
+              <li><Link href="/developments" className="text-slate-400 hover:text-white transition-colors">Signature Developments</Link></li>
+              <li><Link href="/market" className="text-slate-400 hover:text-white transition-colors">Dubai Intelligence</Link></li>
+              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Capital &amp; Underwriting</Link></li>
+              <li><Link href="/residency" className="text-slate-400 hover:text-white transition-colors">Golden Residency</Link></li>
+              <li><Link href="/districts" className="text-slate-400 hover:text-white transition-colors">Dubai Atlas</Link></li>
+              <li><Link href="/developers" className="text-slate-400 hover:text-white transition-colors">Developers Registry</Link></li>
             </ul>
           </div>
 
           {/* Column 2: Governance & Macro */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-900 block font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Governance
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
-              <li><Link href="/legal" className="text-slate-600 hover:text-slate-950 transition-colors">Statutory Framework</Link></li>
-              <li><Link href="/government" className="text-slate-600 hover:text-slate-950 transition-colors">Official Authorities</Link></li>
-              <li><Link href="/economy" className="text-slate-600 hover:text-slate-950 transition-colors">D33 Economic Agenda</Link></li>
-              <li><Link href="/infrastructure" className="text-slate-600 hover:text-slate-950 transition-colors">Sovereign Infrastructure</Link></li>
-              <li><Link href="/regulatory" className="text-slate-600 hover:text-slate-950 transition-colors">RERA Compliance</Link></li>
-              <li><Link href="/insurance" className="text-slate-600 hover:text-slate-950 transition-colors">Healthcare &amp; Insurance</Link></li>
+            <ul className="space-y-3 text-xs font-light">
+              <li><Link href="/legal" className="text-slate-400 hover:text-white transition-colors">Statutory Framework</Link></li>
+              <li><Link href="/government" className="text-slate-400 hover:text-white transition-colors">Official Authorities</Link></li>
+              <li><Link href="/economy" className="text-slate-400 hover:text-white transition-colors">D33 Economic Agenda</Link></li>
+              <li><Link href="/infrastructure" className="text-slate-400 hover:text-white transition-colors">Sovereign Infrastructure</Link></li>
+              <li><Link href="/regulatory" className="text-slate-400 hover:text-white transition-colors">RERA Compliance</Link></li>
+              <li><Link href="/insurance" className="text-slate-400 hover:text-white transition-colors">Healthcare &amp; Insurance</Link></li>
             </ul>
           </div>
 
           {/* Column 3: Private Client */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-900 block font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Private Client
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
+            <ul className="space-y-3 text-xs font-light">
               <li>
-                <Link href="/private-client" className="text-slate-950 hover:text-slate-600 flex items-center gap-1 font-semibold">
+                <Link href="/private-client" className="text-white hover:text-slate-200 flex items-center gap-1 font-semibold">
                   Private Mandates <ArrowUpRight className="h-3 w-3" />
                 </Link>
               </li>
-              <li><Link href="/client" className="text-slate-600 hover:text-slate-950 transition-colors">Client Portfolio</Link></li>
-              <li><Link href="/buying-guide" className="text-slate-600 hover:text-slate-950 transition-colors">Conveyancing Flow</Link></li>
-              <li><Link href="/lifestyle" className="text-slate-600 hover:text-slate-950 transition-colors">Curated Lifestyle</Link></li>
-              <li><Link href="/network" className="text-slate-600 hover:text-slate-950 transition-colors">Advisory Network</Link></li>
+              <li><Link href="/client" className="text-slate-400 hover:text-white transition-colors">Client Portfolio</Link></li>
+              <li><Link href="/buying-guide" className="text-slate-400 hover:text-white transition-colors">Conveyancing Flow</Link></li>
+              <li><Link href="/lifestyle" className="text-slate-400 hover:text-white transition-colors">Curated Lifestyle</Link></li>
+              <li><Link href="/network" className="text-slate-400 hover:text-white transition-colors">Advisory Network</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Ecosystem */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-900 block font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Ecosystem
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
+            <ul className="space-y-3 text-xs font-light">
               <li>
-                <a href="https://cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 flex items-center gap-1 transition-colors">
+                <a href="https://cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
                   CristianVaduva.com <ArrowUpRight className="h-3 w-3 opacity-50" />
                 </a>
               </li>
               <li>
-                <a href="https://homefind.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 flex items-center gap-1 transition-colors">
+                <a href="https://homefind.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
                   HomeFind <ArrowUpRight className="h-3 w-3 opacity-50" />
                 </a>
               </li>
               <li>
-                <a href="https://insurance.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 flex items-center gap-1 transition-colors">
+                <a href="https://insurance.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
                   Insurance <ArrowUpRight className="h-3 w-3 opacity-50" />
                 </a>
               </li>
               <li>
-                <a href="https://credite.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 flex items-center gap-1 transition-colors">
+                <a href="https://credite.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
                   Credite <ArrowUpRight className="h-3 w-3 opacity-50" />
                 </a>
               </li>
               <li>
-                <a href="https://fly.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 flex items-center gap-1 transition-colors">
+                <a href="https://fly.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
                   Fly &bull; Aviation <ArrowUpRight className="h-3 w-3 opacity-50" />
                 </a>
               </li>
               <li>
-                <a href="https://constructions.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 flex items-center gap-1 transition-colors">
+                <a href="https://constructions.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
                   Constructions <ArrowUpRight className="h-3 w-3 opacity-50" />
                 </a>
               </li>
@@ -127,30 +129,30 @@ export function Footer() {
 
           {/* Column 5: Integrity & Sources */}
           <div className="space-y-4">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-900 block font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Integrity
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
-              <li><Link href="/sources" className="text-slate-600 hover:text-slate-950 transition-colors">Sources &amp; Provenance</Link></li>
-              <li><Link href="/methodology" className="text-slate-600 hover:text-slate-950 transition-colors">Underwriting Methodology</Link></li>
-              <li><Link href="/terms" className="text-slate-600 hover:text-slate-950 transition-colors">Terms of Platform</Link></li>
-              <li><Link href="/privacy" className="text-slate-600 hover:text-slate-950 transition-colors">Data Privacy</Link></li>
-              <li><Link href="/accessibility" className="text-slate-600 hover:text-slate-950 transition-colors">Accessibility</Link></li>
+            <ul className="space-y-3 text-xs font-light">
+              <li><Link href="/sources" className="text-slate-400 hover:text-white transition-colors">Sources &amp; Provenance</Link></li>
+              <li><Link href="/methodology" className="text-slate-400 hover:text-white transition-colors">Underwriting Methodology</Link></li>
+              <li><Link href="/terms" className="text-slate-400 hover:text-white transition-colors">Terms of Platform</Link></li>
+              <li><Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">Data Privacy</Link></li>
+              <li><Link href="/accessibility" className="text-slate-400 hover:text-white transition-colors">Accessibility</Link></li>
             </ul>
           </div>
         </div>
 
         {/* Minimal Bottom Bar */}
-        <div className="pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] text-slate-500 font-light">
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-[11px] text-slate-500 font-light">
           <p>
             &copy; {new Date().getFullYear()} DUBAI.CRISTIANVADUVA.COM. All statutory rights reserved. Sourced from official UAE registries.
           </p>
           <div className="flex flex-wrap gap-4 font-mono text-[10px]">
-            <a href="https://dubailand.gov.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 transition-colors">DLD</a>
-            <a href="https://www.gdrfad.gov.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 transition-colors">GDRFA</a>
-            <a href="https://tax.gov.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 transition-colors">FTA</a>
-            <a href="https://www.difc.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 transition-colors">DIFC</a>
-            <a href="https://u.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-950 transition-colors">U.AE</a>
+            <a href="https://dubailand.gov.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">DLD</a>
+            <a href="https://www.gdrfad.gov.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">GDRFA</a>
+            <a href="https://tax.gov.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">FTA</a>
+            <a href="https://www.difc.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">DIFC</a>
+            <a href="https://u.ae/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">U.AE</a>
           </div>
         </div>
 
