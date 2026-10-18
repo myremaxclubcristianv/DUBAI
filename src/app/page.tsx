@@ -277,7 +277,7 @@ export default function Home() {
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                   <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider">
-                    DLD &bull; STATUTORY LEDGER
+                    DLD • STATUTORY LEDGER
                   </span>
                 </div>
 
@@ -314,7 +314,7 @@ export default function Home() {
                 </p>
                 <div className="pt-3 border-t border-slate-200 text-[10px] text-slate-950 font-semibold flex items-center gap-1.5">
                   <span>24 FREEHOLD DISTRICTS</span>
-                  <span>&bull;</span>
+                  <span>•</span>
                   <span>LAW NO. 7/2006</span>
                 </div>
               </div>
@@ -382,7 +382,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-2 text-[11px] text-slate-500">
               <span>PALM JUMEIRAH</span>
-              <span>&bull;</span>
+              <span>•</span>
               <span className="text-slate-900 font-semibold">PRIME WATERFRONT SECTOR</span>
             </div>
           </div>
@@ -401,7 +401,7 @@ export default function Home() {
                   {featuredProperty.editorial_display_name || featuredProperty.title}
                 </h3>
                 <span className="text-xs font-mono text-slate-600 block">
-                  Palm Jumeirah &bull; West Crescent &bull; {featuredProperty.developer_name || 'OMNIYAT'}
+                  Palm Jumeirah • West Crescent • {featuredProperty.developer_name || 'OMNIYAT'}
                 </span>
               </div>
 
@@ -483,7 +483,7 @@ export default function Home() {
                     </span>
                   </div>
                   <div className="absolute bottom-3 right-3 px-3 py-1 bg-slate-950/85 backdrop-blur-xs text-[9px] font-mono text-slate-300 uppercase tracking-wider">
-                    FIG 02.1 &bull; WATERFRONT RESIDENCE DOSSIER
+                    FIG 02.1 • WATERFRONT RESIDENCE DOSSIER
                   </div>
                 </div>
               </div>
@@ -500,8 +500,8 @@ export default function Home() {
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-6">
           
           <div className="flex items-center justify-between pb-3 border-b border-slate-100 text-[10px] font-mono text-slate-400 uppercase tracking-[0.2em]">
-            <span>STATUTORY BENCHMARKS &bull; OFFICIAL UAE LEGISLATIVE LEDGER</span>
-            <span className="hidden sm:inline">CENTRAL BANK &bull; DLD STATUTORY DECREES</span>
+            <span>STATUTORY BENCHMARKS • OFFICIAL UAE LEGISLATIVE LEDGER</span>
+            <span className="hidden sm:inline">CENTRAL BANK • DLD STATUTORY DECREES</span>
           </div>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
@@ -759,7 +759,7 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                     <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-slate-950 uppercase">
-                      {dim.num} &bull; {dim.label}
+                      {dim.num} • {dim.label}
                     </span>
                     <span className="text-[9px] font-mono text-slate-400 tracking-wider uppercase">{dim.code}</span>
                   </div>
@@ -813,7 +813,7 @@ export default function Home() {
               <span>/</span>
               <span>DIRECT MANDATE</span>
             </div>
-            <span className="text-slate-500">MANDATE DESK &bull; 2026</span>
+            <span className="text-slate-500">MANDATE DESK • 2026</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -903,11 +903,11 @@ export default function Home() {
           {/* Discreet Bottom Parameter Strip */}
           <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4 text-[10px] font-mono text-slate-400">
             <span>Direct Principal Representation</span>
-            <span>&bull;</span>
+            <span>•</span>
             <span>Escrow Protected Conveyancing</span>
-            <span>&bull;</span>
+            <span>•</span>
             <span>GDRFA Golden Visa Structuring</span>
-            <span>&bull;</span>
+            <span>•</span>
             <span>Statutory Compliance Oversight</span>
           </div>
 
