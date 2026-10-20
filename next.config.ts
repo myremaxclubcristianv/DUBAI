@@ -43,7 +43,27 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/investment/calculator',
-        destination: '/investment',
+        destination: '/investment/calculators',
+        permanent: true,
+      },
+      {
+        source: '/calculators',
+        destination: '/investment/calculators',
+        permanent: true,
+      },
+      {
+        source: '/tools',
+        destination: '/investment/calculators',
+        permanent: true,
+      },
+      {
+        source: '/corporate-tax',
+        destination: '/tax',
+        permanent: true,
+      },
+      {
+        source: '/tax-guide',
+        destination: '/tax',
         permanent: true,
       },
       {

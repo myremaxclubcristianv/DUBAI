@@ -96,17 +96,44 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
         description: 'Transparent acquisition economics & statutory fee schedules.',
         items: [
           { label: 'Investment Overview', href: '/investment', description: 'Statutory framework, yields & capital mechanics' },
-          { label: 'Purchase Cost Calculator', href: '/investment#calculator', description: '4% DLD transfer fee & trustee schedules' },
+          { label: 'Calculators Lab (9 Engines)', href: '/investment/calculators', description: 'Interactive financial modeling desks', badge: '9 Tools' },
+          { label: 'Short vs Long-Term Rent', href: '/investment/calculators', description: 'Holiday home vs annual Ejari yield spread' },
           { label: 'Market Intelligence', href: '/market', description: 'Historical transactions, volumes & rental trends' },
-          { label: 'D33 Economic Agenda', href: '/economy', description: 'Dubai sovereign growth roadmap to 2033' },
         ],
       },
       {
         title: 'Sovereign Framework',
         description: 'Direct institutional data and infrastructure.',
         items: [
+          { label: 'D33 Economic Agenda', href: '/economy', description: 'Dubai sovereign growth roadmap to 2033' },
           { label: 'Sovereign Infrastructure', href: '/infrastructure', description: 'Metro Blue Line, Al Maktoum Airport & power' },
           { label: 'Government Authorities', href: '/government', description: 'DLD, RERA, FTA, DIFC & federal bodies' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'business',
+    label: 'Business',
+    href: '/business',
+    sections: [
+      {
+        title: 'Business Setup Hub',
+        description: 'Commercial incorporation and regulatory licensing navigator.',
+        items: [
+          { label: 'Business Hub Overview', href: '/business', description: 'Founders guide to launching in Dubai' },
+          { label: 'Company Setup Navigator', href: '/business#navigator', description: 'Interactive 4-step jurisdiction finder', badge: 'Interactive' },
+          { label: 'Mainland vs Free Zone', href: '/business#mainland-freezone', description: 'Commercial differences and licensing powers' },
+          { label: 'Free Zone Directory', href: '/business#freezones', description: 'DIFC, DMCC, Meydan, IFZA, Dubai South' },
+        ],
+      },
+      {
+        title: 'Statutory Compliance & Fiscal',
+        description: 'Corporate taxation, VAT, and recurring governance.',
+        items: [
+          { label: 'Business Cost Calculator', href: '/business#calculator', description: 'First-year vs annual renewal expenditure' },
+          { label: 'Compliance Calendar', href: '/business#calendar', description: 'Statutory filing deadlines & licensing renewals' },
+          { label: 'UAE Tax & QFZP Guide', href: '/tax', description: 'Law 47/2022 Corporate Tax, VAT & Double Tax Treaties', badge: 'Statutory' },
         ],
       },
     ],
@@ -154,37 +181,39 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
     ],
   },
   {
-    id: 'guides',
-    label: 'Guides & Legal',
-    href: '/buying-guide',
+    id: 'romania',
+    label: 'Romania',
+    href: '/romania',
     sections: [
       {
-        title: 'Transactional Guides',
-        description: 'Step-by-step conveyancing and leasing processes.',
+        title: 'Romania Real Estate Catalog',
+        description: 'Curated premium Romanian properties from HomeFind with EUR/RON pricing.',
         items: [
-          { label: 'Property Buying Guide', href: '/buying-guide', description: 'MOU Form F, NOC, trustee conveyancing flow' },
-          { label: 'Rental & Leasing Advisory', href: '/rent', description: 'Tenancy laws, Ejari & RERA rent index rules' },
-          { label: 'Statutory Legal Framework', href: '/legal', description: 'Law No. 7/2006, Escrow Law No. 8/2007' },
-          { label: 'RERA Compliance & Forms', href: '/regulatory', description: 'Broker agreements, permits & advertising standards' },
+          { label: 'Romania Property Catalog', href: '/romania', description: 'Explore all 55 verified Romanian listings', badge: '55 Live' },
+          { label: 'Bucharest Luxury Properties', href: '/romania?city=București', description: 'Primăverii, Floreasca, Herăstrău & Kiseleff' },
+          { label: 'Ilfov / Voluntari Estates', href: '/romania?city=Voluntari', description: 'Piperă & Northern Bucharest suburban villas' },
+          { label: 'Constanța & Black Sea Coast', href: '/romania?city=Constanța', description: 'Mamaia waterfront luxury apartments' },
+          { label: 'Brașov Mountain Chalets', href: '/romania?city=Brașov', description: 'Transylvanian alpine retreats & villas' },
         ],
       },
       {
-        title: 'Platform Transparency',
-        description: 'Methodology and independent citation sources.',
+        title: 'Cross-Border Economics',
+        description: 'Bilateral legal treaties and portfolio comparison.',
         items: [
-          { label: 'Sources & Provenance Registry', href: '/sources', description: 'Verified registries, official decrees & APIs' },
-          { label: 'Underwriting Methodology', href: '/methodology', description: 'Hedonic valuation & data hygiene policies' },
+          { label: 'Dubai vs Romania Comparison', href: '/investment/calculators', description: 'Side-by-side purchase fees, yields & taxes', badge: 'Modeler' },
+          { label: 'Romania-UAE Double Tax Treaty', href: '/tax', description: 'Law 38/1993 bilateral fiscal avoidance treaty' },
+          { label: 'Multi-Currency Matrix', href: '/investment/calculators', description: 'EUR, RON, USD & AED conversion benchmarks' },
         ],
       },
     ],
   },
   {
-    id: 'private-client',
-    label: 'Private Client',
+    id: 'advisory',
+    label: 'Advisory',
     href: '/private-client',
     sections: [
       {
-        title: 'Bespoke Advisory',
+        title: 'Bespoke Advisory & Lifestyle',
         description: 'Confidential client representation and asset management.',
         items: [
           { label: 'Private Client Desk', href: '/private-client', description: 'Discreet acquisition & divestment advisory' },
@@ -193,22 +222,14 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
           { label: 'Advisory Network', href: '/network', description: 'Conveyancers, tax advisors & family office partners' },
         ],
       },
-    ],
-  },
-  {
-    id: 'about',
-    label: 'About',
-    href: '/methodology',
-    sections: [
       {
-        title: 'About the Platform',
-        description: 'Independent research platform & statutory disclosure.',
+        title: 'Platform Transparency & Legal',
+        description: 'Statutory citations and research methodology.',
         items: [
+          { label: 'Property Buying Guide', href: '/buying-guide', description: 'MOU Form F, NOC, trustee conveyancing flow' },
+          { label: 'Sources & Provenance Registry', href: '/sources', description: 'Verified registries, official decrees & APIs' },
+          { label: 'Statutory Legal Framework', href: '/legal', description: 'Law No. 7/2006, Escrow Law No. 8/2007' },
           { label: 'Platform Methodology', href: '/methodology', description: 'Standards of independence and analytical rigor' },
-          { label: 'Investment Risk Disclaimer', href: '/investment-disclaimer', description: 'Non-advisory status & statutory legal disclosures' },
-          { label: 'Terms of Service', href: '/terms', description: 'Usage conditions, IP rights & limitation of liability' },
-          { label: 'Data Privacy & Security', href: '/privacy', description: 'GDPR/UAE PDPL compliance & confidentiality' },
-          { label: 'Accessibility Statement', href: '/accessibility', description: 'WCAG 2.1 AA accessibility commitment' },
         ],
       },
     ],
@@ -323,7 +344,7 @@ export function Header() {
           <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
             {/* Currency Selector */}
             <div className="flex items-center border border-slate-200 bg-slate-50/80 text-[11px] font-mono">
-              {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr, idx) => (
+              {(['AED', 'USD', 'EUR', 'RON'] as const).map((curr, idx) => (
                 <button
                   key={curr}
                   onClick={() => setCurrency(curr as SupportedCurrency)}
@@ -333,7 +354,7 @@ export function Header() {
                     currency === curr
                       ? 'text-white bg-slate-950 font-semibold'
                       : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
-                  } ${curr === 'EUR' || curr === 'GBP' ? 'hidden sm:inline-block' : ''}`}
+                  } ${curr === 'EUR' || curr === 'RON' ? 'hidden sm:inline-block' : ''}`}
                 >
                   {curr}
                 </button>

@@ -77,21 +77,35 @@ export function Footer() {
         {/* STRUCTURED 8-COLUMN INFORMATION ARCHITECTURE */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 sm:gap-6">
           
-          {/* Column 1: Properties */}
+          {/* Column 1: Dubai Properties */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Properties
+              Dubai Properties
             </span>
             <ul className="space-y-2 text-xs font-light">
               <li><Link href="/buy" className="text-slate-300 hover:text-white transition-colors font-medium">Buy Dubai</Link></li>
               <li><Link href="/rent" className="text-slate-300 hover:text-white transition-colors font-medium">Rent Mandates</Link></li>
               <li><Link href="/properties" className="text-slate-400 hover:text-white transition-colors">All Properties</Link></li>
-              <li><Link href="/projects" className="text-slate-400 hover:text-white transition-colors">Off-Plan Projects</Link></li>
+              <li><Link href="/projects" className="text-slate-400 hover:text-white transition-colors">Off-Plan Escrow</Link></li>
               <li><Link href="/developments/brabus-island" className="text-slate-400 hover:text-white transition-colors">Brabus Island</Link></li>
             </ul>
           </div>
 
-          {/* Column 2: Areas */}
+          {/* Column 2: Romania Catalog */}
+          <div className="space-y-3.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
+              Romania Catalog
+            </span>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/romania" className="text-emerald-400 hover:text-white transition-colors font-medium">All 55 Properties</Link></li>
+              <li><Link href="/romania?city=București" className="text-slate-400 hover:text-white transition-colors">Bucharest Luxury</Link></li>
+              <li><Link href="/romania?city=Voluntari" className="text-slate-400 hover:text-white transition-colors">Voluntari &amp; Pipera</Link></li>
+              <li><Link href="/romania?city=Constanța" className="text-slate-400 hover:text-white transition-colors">Constanța Coast</Link></li>
+              <li><Link href="/romania?city=Brașov" className="text-slate-400 hover:text-white transition-colors">Brașov Mountain</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Areas & Atlas */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Areas &amp; Atlas
@@ -101,64 +115,49 @@ export function Footer() {
               <li><Link href="/areas/downtown-dubai" className="text-slate-400 hover:text-white transition-colors">Downtown Dubai</Link></li>
               <li><Link href="/areas/palm-jumeirah" className="text-slate-400 hover:text-white transition-colors">Palm Jumeirah</Link></li>
               <li><Link href="/areas/dubai-marina" className="text-slate-400 hover:text-white transition-colors">Dubai Marina</Link></li>
-              <li><Link href="/areas/difc" className="text-slate-400 hover:text-white transition-colors">DIFC Financial</Link></li>
               <li><Link href="/map" className="text-slate-400 hover:text-white transition-colors">Interactive Map</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Investment */}
+          {/* Column 4: Investment Lab */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Investment
+              Investment Lab
             </span>
             <ul className="space-y-2 text-xs font-light">
-              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Capital Underwriting</Link></li>
-              <li><Link href="/investment#calculator" className="text-slate-400 hover:text-white transition-colors">Cost Calculator</Link></li>
+              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Underwriting Desk</Link></li>
+              <li><Link href="/investment/calculators" className="text-slate-300 hover:text-white font-medium transition-colors">Calculators (9 Engines)</Link></li>
+              <li><Link href="/investment/calculators" className="text-slate-400 hover:text-white transition-colors">Short vs Long Rent</Link></li>
+              <li><Link href="/investment/calculators" className="text-slate-400 hover:text-white transition-colors">Dubai vs Romania</Link></li>
               <li><Link href="/market" className="text-slate-400 hover:text-white transition-colors">Market Intelligence</Link></li>
-              <li><Link href="/economy" className="text-slate-400 hover:text-white transition-colors">D33 Economic Agenda</Link></li>
-              <li><Link href="/infrastructure" className="text-slate-400 hover:text-white transition-colors">Infrastructure</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Residency */}
+          {/* Column 5: Business Hub */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Residency
+              Business Hub
+            </span>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/business" className="text-slate-300 hover:text-white transition-colors font-medium">Business Hub</Link></li>
+              <li><Link href="/business#navigator" className="text-slate-400 hover:text-white transition-colors">Setup Navigator</Link></li>
+              <li><Link href="/business#mainland-freezone" className="text-slate-400 hover:text-white transition-colors">Mainland vs Free Zone</Link></li>
+              <li><Link href="/business#freezones" className="text-slate-400 hover:text-white transition-colors">Free Zone Directory</Link></li>
+              <li><Link href="/tax" className="text-emerald-400 hover:text-white transition-colors font-medium">UAE Tax &amp; QFZP</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 6: Residency & Living */}
+          <div className="space-y-3.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
+              Residency &amp; Living
             </span>
             <ul className="space-y-2 text-xs font-light">
               <li><Link href="/residency" className="text-slate-400 hover:text-white transition-colors">Golden Visa</Link></li>
               <li><Link href="/residency#eligibility" className="text-slate-400 hover:text-white transition-colors">AED 2M Threshold</Link></li>
-              <li><Link href="/residency#documentation" className="text-slate-400 hover:text-white transition-colors">Documentation</Link></li>
-              <li><Link href="/residency#process" className="text-slate-400 hover:text-white transition-colors">Application Flow</Link></li>
               <li><Link href="/insurance" className="text-slate-400 hover:text-white transition-colors">Health Insurance</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 5: Developers */}
-          <div className="space-y-3.5">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Developers
-            </span>
-            <ul className="space-y-2 text-xs font-light">
-              <li><Link href="/developers" className="text-slate-400 hover:text-white transition-colors">Developers Registry</Link></li>
-              <li><Link href="/developments" className="text-slate-400 hover:text-white transition-colors">Developments</Link></li>
-              <li><Link href="/developers/emaar-properties" className="text-slate-400 hover:text-white transition-colors">Emaar Properties</Link></li>
-              <li><Link href="/developers/nakheel" className="text-slate-400 hover:text-white transition-colors">Nakheel PJSC</Link></li>
-              <li><Link href="/developers/omniyat" className="text-slate-400 hover:text-white transition-colors">OMNIYAT</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 6: Guides & Legal */}
-          <div className="space-y-3.5">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Guides &amp; Legal
-            </span>
-            <ul className="space-y-2 text-xs font-light">
-              <li><Link href="/buying-guide" className="text-slate-400 hover:text-white transition-colors">Buying Guide</Link></li>
-              <li><Link href="/rent" className="text-slate-400 hover:text-white transition-colors">Renting Guide</Link></li>
-              <li><Link href="/legal" className="text-slate-400 hover:text-white transition-colors">Statutory Law</Link></li>
-              <li><Link href="/regulatory" className="text-slate-400 hover:text-white transition-colors">RERA Compliance</Link></li>
-              <li><Link href="/government" className="text-slate-400 hover:text-white transition-colors">Authorities</Link></li>
+              <li><Link href="/lifestyle" className="text-slate-400 hover:text-white transition-colors">Curated Lifestyle</Link></li>
+              <li><Link href="/lifestyle/yachts" className="text-slate-400 hover:text-white transition-colors">Yachts &amp; Aviation</Link></li>
             </ul>
           </div>
 
@@ -174,28 +173,27 @@ export function Footer() {
                 </Link>
               </li>
               <li><Link href="/client" className="text-slate-400 hover:text-white transition-colors">Client Workspace</Link></li>
-              <li><Link href="/lifestyle" className="text-slate-400 hover:text-white transition-colors">Curated Lifestyle</Link></li>
-              <li><Link href="/lifestyle/yachts" className="text-slate-400 hover:text-white transition-colors">Yacht Charters</Link></li>
               <li><Link href="/network" className="text-slate-400 hover:text-white transition-colors">Advisory Network</Link></li>
+              <li><Link href="/buying-guide" className="text-slate-400 hover:text-white transition-colors">Buying Guide</Link></li>
+              <li><Link href="/developers" className="text-slate-400 hover:text-white transition-colors">Developer Registry</Link></li>
             </ul>
           </div>
 
-          {/* Column 8: About & Integrity */}
+          {/* Column 8: About & Trust */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               About &amp; Trust
             </span>
             <ul className="space-y-2 text-xs font-light">
-              <li><Link href="/sources" className="text-slate-400 hover:text-white transition-colors">Sources &amp; Data</Link></li>
+              <li><Link href="/sources" className="text-slate-400 hover:text-white transition-colors">Sources Registry</Link></li>
               <li><Link href="/methodology" className="text-slate-400 hover:text-white transition-colors">Methodology</Link></li>
               <li>
                 <Link href="/investment-disclaimer" className="text-amber-300 hover:text-white font-medium flex items-center gap-1 transition-colors">
                   Risk Disclaimer <ArrowUpRight className="h-3 w-3 opacity-60" />
                 </Link>
               </li>
-              <li><Link href="/terms" className="text-slate-400 hover:text-white transition-colors">Terms of Platform</Link></li>
+              <li><Link href="/terms" className="text-slate-400 hover:text-white transition-colors">Terms of Service</Link></li>
               <li><Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/accessibility" className="text-slate-400 hover:text-white transition-colors">Accessibility</Link></li>
             </ul>
           </div>
 

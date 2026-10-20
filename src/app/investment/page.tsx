@@ -84,13 +84,22 @@ export default function InvestmentPage() {
               </p>
             </div>
 
-            <div className="p-4 bg-slate-50 border border-slate-200 font-mono text-xs text-slate-600 shadow-2xs space-y-1">
-              <div className="text-slate-950 font-bold">
-                1 USD = 3.6725 AED
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="p-4 bg-slate-50 border border-slate-200 font-mono text-xs text-slate-600 shadow-2xs space-y-1">
+                <div className="text-slate-950 font-bold">
+                  1 USD = 3.6725 AED
+                </div>
+                <div className="text-[10px] text-slate-500">
+                  Official UAE Monetary Peg
+                </div>
               </div>
-              <div className="text-[10px] text-slate-500">
-                Official UAE Monetary Peg
-              </div>
+              <Link
+                href="/investment/calculators"
+                className="px-5 py-4 bg-slate-950 hover:bg-slate-800 text-white font-mono text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-xs"
+              >
+                <span>Launch Calculators Lab (9 Engines)</span>
+                <ArrowRight className="h-3.5 w-3.5 text-accent" />
+              </Link>
             </div>
           </div>
 

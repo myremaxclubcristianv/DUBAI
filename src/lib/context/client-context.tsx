@@ -27,7 +27,7 @@ export interface ClientViewingRequest {
   status: 'REQUESTED' | 'PREPARED_LOCALLY' | 'CONFIRMED'
 }
 
-export type SupportedCurrency = 'AED' | 'USD' | 'EUR' | 'GBP'
+export type SupportedCurrency = 'AED' | 'USD' | 'EUR' | 'GBP' | 'RON'
 
 interface ClientContextType {
   currency: SupportedCurrency
@@ -134,6 +134,10 @@ export function ClientProvider({ children }: { children: React.ReactNode }) {
         case 'GBP': {
           const gbpVal = Math.round(amountAed / 4.7)
           return `£${gbpVal.toLocaleString('en-US')}`
+        }
+        case 'RON': {
+          const ronVal = Math.round(amountAed * 1.2488)
+          return `${ronVal.toLocaleString('en-US')} RON`
         }
         case 'AED':
         default:

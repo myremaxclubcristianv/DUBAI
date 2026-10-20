@@ -1,7 +1,6 @@
 'use client'
 
-import * as React from 'react'
-import { OFFICIAL_SOURCES_REGISTRY } from '@/lib/data/sources'
+import { OFFICIAL_SOURCE_REGISTRY } from '@/lib/data/source-registry'
 import {
   Eyebrow,
   SourceBadge,
@@ -110,42 +109,75 @@ export default function SourcesPage() {
           <div className="space-y-2">
             <Eyebrow>REGISTRY AUDIT</Eyebrow>
             <h2 className="text-2xl sm:text-3xl font-light text-slate-900 font-serif">
-              Verified Authority Registry
+              Structured Source Register &amp; Statutory Provenance
             </h2>
             <p className="text-sm text-slate-500 font-light max-w-2xl">
-              Primary public sector institutions and statutory registries cited across the platform.
+              Primary public sector institutions, sovereign open data portals, statutory decrees, and central bank benchmarks powering the platform.
             </p>
           </div>
 
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200 bg-white rounded-xs border shadow-xs">
-            {OFFICIAL_SOURCES_REGISTRY.map((src) => (
+            {OFFICIAL_SOURCE_REGISTRY.map((src) => (
               <div
                 key={src.id}
-                className="py-5 px-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-sky-50/40 transition-colors"
+                className="py-6 px-6 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start hover:bg-sky-50/30 transition-colors"
               >
-                <div className="md:col-span-4 space-y-0.5">
-                  <span className="text-base font-medium text-slate-900 font-serif">{src.name}</span>
-                  <span className="text-xs font-mono text-[#0284c7] block">Code: {src.code}</span>
+                <div className="lg:col-span-4 space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-sm">
+                      {src.category}
+                    </span>
+                    <span className="text-[10px] font-mono text-slate-400">
+                      Freq: {src.updateFrequency}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-medium text-slate-900 font-serif leading-snug pt-1">
+                    {src.name}
+                  </h3>
+                  <div className="text-xs font-mono text-[#0284c7]">
+                    Authority: {src.authority}
+                  </div>
+                  {src.governingLawOrDecree && (
+                    <div className="text-[11px] text-slate-600 font-light italic">
+                      Decree: {src.governingLawOrDecree}
+                    </div>
+                  )}
                 </div>
 
-                <div className="md:col-span-3 text-xs font-mono text-slate-600">
-                  <span className="text-slate-400 block text-[10px]">CLASS:</span>
-                  {src.authority_type} &bull; {src.jurisdiction}
+                <div className="lg:col-span-4 space-y-2 text-xs">
+                  <div>
+                    <span className="text-slate-400 block text-[10px] font-mono uppercase font-semibold">Dataset / Endpoint:</span>
+                    <span className="text-slate-800 font-medium">{src.datasetOrEndpoint}</span>
+                  </div>
+                  <div>
+                    <span className="text-slate-400 block text-[10px] font-mono uppercase font-semibold">Field Mapping:</span>
+                    <div className="flex flex-wrap gap-1 pt-1 font-mono text-[10px] text-slate-600">
+                      {src.fieldMapping.map((field, fIdx) => (
+                        <span key={fIdx} className="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded-xs">
+                          {field}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="md:col-span-4 text-xs text-slate-600 font-light">
-                  {src.key_mandate}
+                <div className="lg:col-span-3 space-y-1 text-xs text-slate-600">
+                  <span className="text-slate-400 block text-[10px] font-mono uppercase font-semibold">Method &amp; Limitations:</span>
+                  <div className="text-[11px] font-mono text-slate-700">Access: {src.accessMethod}</div>
+                  <p className="text-[11px] text-slate-500 font-light leading-relaxed">
+                    {src.knownLimitations}
+                  </p>
                 </div>
 
-                <div className="md:col-span-1 flex justify-end">
+                <div className="lg:col-span-1 flex lg:justify-end pt-1">
                   <a
-                    href={src.official_url}
+                    href={src.officialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-xs border border-slate-200 hover:border-[#0284c7] hover:bg-[#0284c7]/10 transition-colors inline-flex items-center"
+                    className="p-2.5 rounded-sm border border-slate-200 hover:border-[#0284c7] hover:bg-[#0284c7]/10 transition-colors inline-flex items-center gap-1 text-xs font-mono text-[#0284c7]"
                     title="Open Official Website"
                   >
-                    <ExternalLink className="h-3.5 w-3.5 text-slate-400 hover:text-[#0284c7]" />
+                    <ExternalLink className="h-4 w-4" />
                   </a>
                 </div>
               </div>

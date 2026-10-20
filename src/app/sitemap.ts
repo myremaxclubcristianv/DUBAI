@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { DUBAI_AREAS } from '@/lib/data/areas'
+import { ROMANIA_PROPERTIES } from '@/lib/data/romania-properties'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dubai.cristianvaduva.com'
@@ -11,13 +12,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/properties',
     '/buy',
     '/rent',
+    '/romania',
+    '/business',
+    '/tax',
+    '/investment',
+    '/investment/calculators',
     '/developments',
     '/developments/brabus-island',
     '/projects',
     '/developers',
     '/areas',
     '/market',
-    '/investment',
     '/residency',
     '/network',
     '/buying-guide',
@@ -67,6 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }))
 
+  const romaniaPropertyRoutes = ROMANIA_PROPERTIES.map((prop) => ({
+    url: `${baseUrl}/romania/properties/${prop.id}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }))
+
   const areaRoutes = DUBAI_AREAS.map((area) => ({
     url: `${baseUrl}/areas/${area.slug}`,
     lastModified: currentDate,
@@ -74,5 +86,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }))
 
-  return [...staticRoutes, ...propertyRoutes, ...areaRoutes]
+  return [...staticRoutes, ...propertyRoutes, ...romaniaPropertyRoutes, ...areaRoutes]
 }
