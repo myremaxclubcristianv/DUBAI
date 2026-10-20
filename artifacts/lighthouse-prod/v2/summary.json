@@ -1,0 +1,94 @@
+{
+  "commit": "0306d89",
+  "deploymentUrl": "https://dubai.cristianvaduva.com",
+  "testedAt": "2026-10-20T21:23:38.863Z",
+  "profile": "mobile simulated (--form-factor=mobile --throttling-method=simulate)",
+  "median": {
+    "performance": 98,
+    "accessibility": 96,
+    "bestPractices": 100,
+    "seo": 100,
+    "lcpMs": 2461,
+    "fcpMs": 1025,
+    "tbtMs": 3,
+    "cls": 0.015,
+    "ttfb": 661,
+    "loadDelay": 763,
+    "loadTime": 545,
+    "renderDelay": 102
+  },
+  "runs": [
+    {
+      "run": 1,
+      "file": "artifacts/lighthouse-prod/v2/mobile-1.json",
+      "scores": {
+        "performance": 98,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2474,
+        "fcpMs": 1025,
+        "tbtMs": 3,
+        "cls": 0.015
+      },
+      "lcpPhases": {
+        "ttfb": 674,
+        "loadDelay": 720,
+        "loadTime": 1000,
+        "renderDelay": 80
+      },
+      "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+      "fetchTime": "2026-10-20T21:22:05.735Z"
+    },
+    {
+      "run": 2,
+      "file": "artifacts/lighthouse-prod/v2/mobile-2.json",
+      "scores": {
+        "performance": 98,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2461,
+        "fcpMs": 1049,
+        "tbtMs": 2,
+        "cls": 0.015
+      },
+      "lcpPhases": {
+        "ttfb": 661,
+        "loadDelay": 763,
+        "loadTime": 486,
+        "renderDelay": 550
+      },
+      "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+      "fetchTime": "2026-10-20T21:22:23.620Z"
+    },
+    {
+      "run": 3,
+      "file": "artifacts/lighthouse-prod/v2/mobile-3.json",
+      "scores": {
+        "performance": 98,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcpMs": 2280,
+        "fcpMs": 975,
+        "tbtMs": 13,
+        "cls": 0.015
+      },
+      "lcpPhases": {
+        "ttfb": 600,
+        "loadDelay": 1033,
+        "loadTime": 545,
+        "renderDelay": 102
+      },
+      "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+      "fetchTime": "2026-10-20T21:22:41.235Z"
+    }
+  ]
+}

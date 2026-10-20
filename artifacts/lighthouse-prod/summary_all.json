@@ -1,0 +1,1040 @@
+{
+  "batch1": {
+    "mobile": {
+      "mode": "mobile",
+      "runs": [
+        {
+          "mode": "mobile",
+          "run": 1,
+          "fetchTime": "2026-10-20T20:52:00.081Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 92,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 2542,
+            "fcpMs": 1293,
+            "cls": 0.015,
+            "tbtMs": 11
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 2494,
+              "percent": "98%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 20,
+              "percent": "1%"
+            },
+            "renderDelay": {
+              "timingMs": 28,
+              "percent": "1%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 2,
+          "fetchTime": "2026-10-20T20:52:27.209Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 84,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3647,
+            "fcpMs": 2477,
+            "cls": 0,
+            "tbtMs": 13
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 647,
+              "percent": "18%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 28,
+              "percent": "1%"
+            },
+            "renderDelay": {
+              "timingMs": 2972,
+              "percent": "81%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 3,
+          "fetchTime": "2026-10-20T20:52:46.420Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 84,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3615,
+            "fcpMs": 2440,
+            "cls": 0,
+            "tbtMs": 13
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 615,
+              "percent": "17%"
+            },
+            "loadDelay": {
+              "timingMs": 85,
+              "percent": "2%"
+            },
+            "loadTime": {
+              "timingMs": 293,
+              "percent": "8%"
+            },
+            "renderDelay": {
+              "timingMs": 2622,
+              "percent": "73%"
+            }
+          },
+          "runtimeError": null
+        }
+      ],
+      "median": {
+        "performance": 84,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100,
+        "lcpMs": 3615,
+        "fcpMs": 2440,
+        "cls": 0,
+        "tbtMs": 13,
+        "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+        "ttfbMs": 647,
+        "loadDelayMs": 0,
+        "loadTimeMs": 28,
+        "renderDelayMs": 2622
+      }
+    },
+    "desktop": {
+      "mode": "desktop",
+      "runs": [
+        {
+          "mode": "desktop",
+          "run": 1,
+          "fetchTime": "2026-10-20T20:53:05.963Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 701,
+            "fcpMs": 344,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 422,
+              "percent": "60%"
+            },
+            "loadDelay": {
+              "timingMs": 74,
+              "percent": "11%"
+            },
+            "loadTime": {
+              "timingMs": 190,
+              "percent": "27%"
+            },
+            "renderDelay": {
+              "timingMs": 16,
+              "percent": "2%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 2,
+          "fetchTime": "2026-10-20T20:53:24.537Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 653,
+            "fcpMs": 312,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 213,
+              "percent": "33%"
+            },
+            "loadDelay": {
+              "timingMs": 98,
+              "percent": "15%"
+            },
+            "loadTime": {
+              "timingMs": 326,
+              "percent": "50%"
+            },
+            "renderDelay": {
+              "timingMs": 16,
+              "percent": "2%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 3,
+          "fetchTime": "2026-10-20T20:53:42.669Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 627,
+            "fcpMs": 322,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 227,
+              "percent": "36%"
+            },
+            "loadDelay": {
+              "timingMs": 140,
+              "percent": "22%"
+            },
+            "loadTime": {
+              "timingMs": 225,
+              "percent": "36%"
+            },
+            "renderDelay": {
+              "timingMs": 36,
+              "percent": "6%"
+            }
+          },
+          "runtimeError": null
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100,
+        "lcpMs": 653,
+        "fcpMs": 322,
+        "cls": 0.021,
+        "tbtMs": 0,
+        "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+        "ttfbMs": 227,
+        "loadDelayMs": 98,
+        "loadTimeMs": 225,
+        "renderDelayMs": 16
+      }
+    }
+  },
+  "batch2": {
+    "mobile": {
+      "mode": "mobile",
+      "runs": [
+        {
+          "mode": "mobile",
+          "run": 4,
+          "fetchTime": "2026-10-20T20:58:10.710Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 82,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3824,
+            "fcpMs": 2511,
+            "cls": 0,
+            "tbtMs": 38
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 674,
+              "percent": "18%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "renderDelay": {
+              "timingMs": 3150,
+              "percent": "82%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 5,
+          "fetchTime": "2026-10-20T20:58:29.969Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 89,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3353,
+            "fcpMs": 2178,
+            "cls": 0,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 653,
+              "percent": "19%"
+            },
+            "loadDelay": {
+              "timingMs": 268,
+              "percent": "8%"
+            },
+            "loadTime": {
+              "timingMs": 376,
+              "percent": "11%"
+            },
+            "renderDelay": {
+              "timingMs": 2056,
+              "percent": "61%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 6,
+          "fetchTime": "2026-10-20T20:58:48.867Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 85,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3516,
+            "fcpMs": 2493,
+            "cls": 0,
+            "tbtMs": 22
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 666,
+              "percent": "19%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "renderDelay": {
+              "timingMs": 2850,
+              "percent": "81%"
+            }
+          },
+          "runtimeError": null
+        }
+      ],
+      "median": {
+        "performance": 85,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100,
+        "lcpMs": 3516,
+        "fcpMs": 2493,
+        "cls": 0,
+        "tbtMs": 22,
+        "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+        "ttfbMs": 666,
+        "loadDelayMs": 0,
+        "loadTimeMs": 0,
+        "renderDelayMs": 2850
+      }
+    },
+    "desktop": {
+      "mode": "desktop",
+      "runs": [
+        {
+          "mode": "desktop",
+          "run": 4,
+          "fetchTime": "2026-10-20T20:59:08.554Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 673,
+            "fcpMs": 332,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 233,
+              "percent": "35%"
+            },
+            "loadDelay": {
+              "timingMs": 126,
+              "percent": "19%"
+            },
+            "loadTime": {
+              "timingMs": 276,
+              "percent": "41%"
+            },
+            "renderDelay": {
+              "timingMs": 38,
+              "percent": "6%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 5,
+          "fetchTime": "2026-10-20T20:59:27.836Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 782,
+            "fcpMs": 455,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 1695,
+              "percent": "217%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "renderDelay": {
+              "timingMs": -913,
+              "percent": "-117%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 6,
+          "fetchTime": "2026-10-20T20:59:47.754Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 674,
+            "fcpMs": 401,
+            "cls": 0,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 234,
+              "percent": "35%"
+            },
+            "loadDelay": {
+              "timingMs": 105,
+              "percent": "16%"
+            },
+            "loadTime": {
+              "timingMs": 269,
+              "percent": "40%"
+            },
+            "renderDelay": {
+              "timingMs": 67,
+              "percent": "10%"
+            }
+          },
+          "runtimeError": null
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100,
+        "lcpMs": 674,
+        "fcpMs": 401,
+        "cls": 0.021,
+        "tbtMs": 0,
+        "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+        "ttfbMs": 234,
+        "loadDelayMs": 105,
+        "loadTimeMs": 269,
+        "renderDelayMs": 38
+      }
+    }
+  },
+  "overall": {
+    "mobile": {
+      "mode": "mobile",
+      "runs": [
+        {
+          "mode": "mobile",
+          "run": 1,
+          "fetchTime": "2026-10-20T20:52:00.081Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 92,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 2542,
+            "fcpMs": 1293,
+            "cls": 0.015,
+            "tbtMs": 11
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 2494,
+              "percent": "98%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 20,
+              "percent": "1%"
+            },
+            "renderDelay": {
+              "timingMs": 28,
+              "percent": "1%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 2,
+          "fetchTime": "2026-10-20T20:52:27.209Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 84,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3647,
+            "fcpMs": 2477,
+            "cls": 0,
+            "tbtMs": 13
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 647,
+              "percent": "18%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 28,
+              "percent": "1%"
+            },
+            "renderDelay": {
+              "timingMs": 2972,
+              "percent": "81%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 3,
+          "fetchTime": "2026-10-20T20:52:46.420Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 84,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3615,
+            "fcpMs": 2440,
+            "cls": 0,
+            "tbtMs": 13
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 615,
+              "percent": "17%"
+            },
+            "loadDelay": {
+              "timingMs": 85,
+              "percent": "2%"
+            },
+            "loadTime": {
+              "timingMs": 293,
+              "percent": "8%"
+            },
+            "renderDelay": {
+              "timingMs": 2622,
+              "percent": "73%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 4,
+          "fetchTime": "2026-10-20T20:58:10.710Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 82,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3824,
+            "fcpMs": 2511,
+            "cls": 0,
+            "tbtMs": 38
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 674,
+              "percent": "18%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "renderDelay": {
+              "timingMs": 3150,
+              "percent": "82%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 5,
+          "fetchTime": "2026-10-20T20:58:29.969Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 89,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3353,
+            "fcpMs": 2178,
+            "cls": 0,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 653,
+              "percent": "19%"
+            },
+            "loadDelay": {
+              "timingMs": 268,
+              "percent": "8%"
+            },
+            "loadTime": {
+              "timingMs": 376,
+              "percent": "11%"
+            },
+            "renderDelay": {
+              "timingMs": 2056,
+              "percent": "61%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "mobile",
+          "run": 6,
+          "fetchTime": "2026-10-20T20:58:48.867Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 85,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 3516,
+            "fcpMs": 2493,
+            "cls": 0,
+            "tbtMs": 22
+          },
+          "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 666,
+              "percent": "19%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "renderDelay": {
+              "timingMs": 2850,
+              "percent": "81%"
+            }
+          },
+          "runtimeError": null
+        }
+      ],
+      "median": {
+        "performance": 85,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100,
+        "lcpMs": 3615,
+        "fcpMs": 2477,
+        "cls": 0,
+        "tbtMs": 13,
+        "lcpElement": "<img src=\"/images/hero-burj-mobile.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+        "ttfbMs": 666,
+        "loadDelayMs": 0,
+        "loadTimeMs": 28,
+        "renderDelayMs": 2850
+      }
+    },
+    "desktop": {
+      "mode": "desktop",
+      "runs": [
+        {
+          "mode": "desktop",
+          "run": 1,
+          "fetchTime": "2026-10-20T20:53:05.963Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 701,
+            "fcpMs": 344,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 422,
+              "percent": "60%"
+            },
+            "loadDelay": {
+              "timingMs": 74,
+              "percent": "11%"
+            },
+            "loadTime": {
+              "timingMs": 190,
+              "percent": "27%"
+            },
+            "renderDelay": {
+              "timingMs": 16,
+              "percent": "2%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 2,
+          "fetchTime": "2026-10-20T20:53:24.537Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 653,
+            "fcpMs": 312,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 213,
+              "percent": "33%"
+            },
+            "loadDelay": {
+              "timingMs": 98,
+              "percent": "15%"
+            },
+            "loadTime": {
+              "timingMs": 326,
+              "percent": "50%"
+            },
+            "renderDelay": {
+              "timingMs": 16,
+              "percent": "2%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 3,
+          "fetchTime": "2026-10-20T20:53:42.669Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 627,
+            "fcpMs": 322,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 227,
+              "percent": "36%"
+            },
+            "loadDelay": {
+              "timingMs": 140,
+              "percent": "22%"
+            },
+            "loadTime": {
+              "timingMs": 225,
+              "percent": "36%"
+            },
+            "renderDelay": {
+              "timingMs": 36,
+              "percent": "6%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 4,
+          "fetchTime": "2026-10-20T20:59:08.554Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 673,
+            "fcpMs": 332,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 233,
+              "percent": "35%"
+            },
+            "loadDelay": {
+              "timingMs": 126,
+              "percent": "19%"
+            },
+            "loadTime": {
+              "timingMs": 276,
+              "percent": "41%"
+            },
+            "renderDelay": {
+              "timingMs": 38,
+              "percent": "6%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 5,
+          "fetchTime": "2026-10-20T20:59:27.836Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 98,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 782,
+            "fcpMs": 455,
+            "cls": 0.021,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 1695,
+              "percent": "217%"
+            },
+            "loadDelay": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "loadTime": {
+              "timingMs": 0,
+              "percent": "0%"
+            },
+            "renderDelay": {
+              "timingMs": -913,
+              "percent": "-117%"
+            }
+          },
+          "runtimeError": null
+        },
+        {
+          "mode": "desktop",
+          "run": 6,
+          "fetchTime": "2026-10-20T20:59:47.754Z",
+          "finalUrl": "https://dubai.cristianvaduva.com/",
+          "scores": {
+            "performance": 100,
+            "accessibility": 96,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcpMs": 674,
+            "fcpMs": 401,
+            "cls": 0,
+            "tbtMs": 0
+          },
+          "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+          "lcpPhases": {
+            "ttfb": {
+              "timingMs": 234,
+              "percent": "35%"
+            },
+            "loadDelay": {
+              "timingMs": 105,
+              "percent": "16%"
+            },
+            "loadTime": {
+              "timingMs": 269,
+              "percent": "40%"
+            },
+            "renderDelay": {
+              "timingMs": 67,
+              "percent": "10%"
+            }
+          },
+          "runtimeError": null
+        }
+      ],
+      "median": {
+        "performance": 100,
+        "accessibility": 96,
+        "bestPractices": 100,
+        "seo": 100,
+        "lcpMs": 674,
+        "fcpMs": 344,
+        "cls": 0.021,
+        "tbtMs": 0,
+        "lcpElement": "<img src=\"https://dubai.cristianvaduva.com/images/hero-burj-desktop.webp\" alt=\"Burj Khalifa and Dubai Downtown skyline in daytime light\" fetchpriority=\"high\" decoding=\"async\" width=\"640\" height=\"427\" class=\"w-full h-full object-cover object-[center_34%]\">",
+        "ttfbMs": 234,
+        "loadDelayMs": 105,
+        "loadTimeMs": 269,
+        "renderDelayMs": 36
+      }
+    }
+  }
+}
