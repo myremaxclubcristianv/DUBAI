@@ -3,7 +3,6 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { PageIntro, Eyebrow } from '@/components/layout/layout-primitives'
-import { SourceBadge } from '@/components/ui/source-badge'
 import { CadranQuadrant } from '@/components/ui/luxury-cadran'
 import {
   Scale,

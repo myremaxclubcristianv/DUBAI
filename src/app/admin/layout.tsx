@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import { checkIsAdminAuthenticated } from '@/lib/actions/admin'
+import { AdminAuthGate } from '@/components/admin/admin-auth-gate'
 
 export const metadata: Metadata = {
   title: 'Platform Administration Desk',
@@ -7,8 +9,17 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  alternates: {
+    canonical: 'https://dubai.cristianvaduva.com/admin',
+  },
 }
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const auth = await checkIsAdminAuthenticated()
+
+  if (!auth.authenticated) {
+    return <AdminAuthGate reason={auth.reason} />
+  }
+
   return children
 }

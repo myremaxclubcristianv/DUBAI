@@ -133,14 +133,23 @@ export default function Home() {
         
         {/* Full Visual Field: Daytime Burj Khalifa Photography */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1280&q=75"
-            alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[center_34%]"
-          />
+          <picture className="w-full h-full block">
+            <source
+              media="(max-width: 640px)"
+              srcSet="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=640&q=75"
+            />
+            <source
+              media="(max-width: 1024px)"
+              srcSet="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1024&q=75"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1280&q=75"
+              alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-full object-cover object-[center_34%]"
+            />
+          </picture>
           {/* Architectural Light Gradient for High Legibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent lg:via-white/80 lg:to-slate-950/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/40 lg:hidden" />
@@ -242,28 +251,28 @@ export default function Home() {
                     <span className="text-2xl sm:text-3xl font-light text-slate-950 block font-sans tracking-tight font-semibold">
                       4.00%
                     </span>
-                    <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
+                    <span className="text-[9px] sm:text-[10px] text-slate-600 uppercase tracking-wider font-semibold block">
                       TRANSFER TARIFF
                     </span>
-                    <span className="text-[8px] text-slate-400 block">Res. No. 30/2013</span>
+                    <span className="text-[8px] text-slate-500 block">Res. No. 30/2013</span>
                   </div>
                   <div className="px-4 space-y-1">
                     <span className="text-2xl sm:text-3xl font-light text-slate-950 block font-sans tracking-tight font-semibold">
                       AED 4K
                     </span>
-                    <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
+                    <span className="text-[9px] sm:text-[10px] text-slate-600 uppercase tracking-wider font-semibold block">
                       REGISTRATION
                     </span>
-                    <span className="text-[8px] text-slate-400 block">Trustee (≥AED 500k)</span>
+                    <span className="text-[8px] text-slate-500 block">Trustee (≥AED 500k)</span>
                   </div>
                   <div className="pl-4 space-y-1">
                     <span className="text-2xl sm:text-3xl font-light text-slate-950 block font-sans tracking-tight font-semibold">
                       3.6725
                     </span>
-                    <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
+                    <span className="text-[9px] sm:text-[10px] text-slate-600 uppercase tracking-wider font-semibold block">
                       AED / USD
                     </span>
-                    <span className="text-[8px] text-slate-400 block">CBUAE Fixed Peg</span>
+                    <span className="text-[8px] text-slate-500 block">CBUAE Fixed Peg</span>
                   </div>
                 </div>
 
@@ -276,7 +285,7 @@ export default function Home() {
                     <span className="border-b border-slate-950 group-hover:border-slate-600 pb-0.5">VIEW STATUTORY BASELINE</span>
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                   </Link>
-                  <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider">
+                  <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider">
                     DLD PUBLIC REFERENCE TARIFF
                   </span>
                 </div>
@@ -306,7 +315,7 @@ export default function Home() {
               </div>
 
               <div className="space-y-3 font-mono text-xs">
-                <div className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
+                <div className="text-[10px] text-slate-600 uppercase tracking-wider font-semibold">
                   STATUTORY MONOGRAPH
                 </div>
                 <p className="text-slate-700 font-sans text-xs leading-relaxed">
@@ -322,7 +331,7 @@ export default function Home() {
 
             {/* Zone 2 (Cols 4-8): Large Serif Editorial Statement */}
             <div className="lg:col-span-5 space-y-6 lg:border-r lg:border-slate-200 lg:px-8">
-              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-400 uppercase block font-semibold">
+              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-600 uppercase block font-semibold">
                 EDITORIAL PERSPECTIVE
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-light tracking-[-0.03em] leading-[1.12] text-slate-950 font-serif">
@@ -335,7 +344,7 @@ export default function Home() {
 
             {/* Zone 3 (Cols 9-12): Supporting Analytical Text in a Separate Column */}
             <div className="lg:col-span-4 space-y-6 lg:pl-8">
-              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-400 uppercase block font-semibold">
+              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-600 uppercase block font-semibold">
                 SECTOR BIFURCATION
               </span>
               
@@ -469,14 +478,19 @@ export default function Home() {
             <div className="lg:col-span-8">
               <div className="border border-slate-300 bg-white shadow-xl overflow-hidden group">
                 <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-slate-100">
-                  <Image
-                    src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1000&q=75"
-                    alt="Palm Jumeirah aerial archipelago and waterfront architecture (illustrative area photography)"
-                    fill
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 68vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-102"
-                  />
+                  <picture className="w-full h-full block">
+                    <source
+                      media="(max-width: 640px)"
+                      srcSet="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=500&q=70"
+                    />
+                    <img
+                      src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1000&q=75"
+                      alt="Palm Jumeirah aerial archipelago and waterfront architecture (illustrative area photography)"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-102"
+                    />
+                  </picture>
                   <div className="absolute top-4 left-4 flex gap-2">
                     <span className="px-3 py-1 text-[10px] font-mono font-semibold uppercase bg-slate-950 text-white shadow-sm">
                       PALM JUMEIRAH
@@ -764,12 +778,12 @@ export default function Home() {
                     <span className="text-[11px] font-mono font-bold tracking-[0.18em] text-slate-950 uppercase">
                       {dim.num} • {dim.label}
                     </span>
-                    <span className="text-[9px] font-mono text-slate-400 tracking-wider uppercase">{dim.code}</span>
+                    <span className="text-[9px] font-mono text-slate-600 tracking-wider uppercase">{dim.code}</span>
                   </div>
 
-                  <h4 className="text-sm font-semibold text-slate-950 leading-snug">
+                  <h3 className="text-sm font-semibold text-slate-950 leading-snug">
                     {dim.title}
-                  </h4>
+                  </h3>
 
                   <p className="text-xs text-slate-600 font-light leading-relaxed">
                     {dim.desc}

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageIntro, Eyebrow } from '@/components/layout/layout-primitives'
-import { SourceBadge } from '@/components/ui/source-badge'
 import {
   AlertTriangle,
   Scale,
@@ -10,7 +9,6 @@ import {
   DollarSign,
   FileText,
   ArrowRight,
-  ExternalLink,
 } from 'lucide-react'
 
 export const metadata: Metadata = {

@@ -88,11 +88,11 @@ export function Header() {
               onClick={() => setIsSearchOpen(true)}
               className="flex items-center gap-2 px-2.5 sm:px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 text-xs text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
               title="Search Directory (⌘K)"
-              aria-label="Open Search"
+              aria-label="Search"
             >
-              <Search className="h-3.5 w-3.5 text-slate-500" />
+              <Search className="h-3.5 w-3.5 text-slate-600" />
               <span className="text-[11px] font-mono hidden lg:inline tracking-wider uppercase">Search</span>
-              <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 bg-slate-100 text-slate-500 border border-slate-200">⌘K</kbd>
+              <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 bg-slate-100 text-slate-700 border border-slate-300">⌘K</kbd>
             </button>
 
             {/* Private Client Desk Action Button */}

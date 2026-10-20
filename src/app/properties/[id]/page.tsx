@@ -9,7 +9,6 @@ import { useClient } from '@/lib/context/client-context'
 import { ContactModal } from '@/components/layout/contact-modal'
 import {
   ArrowLeft,
-  ArrowRight,
   ShieldCheck,
   Share2,
   Bookmark,
