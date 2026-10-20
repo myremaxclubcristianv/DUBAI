@@ -56,9 +56,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true }, { status: 200 })
     }
 
-    const { name, email, phone, country, interest, budget, message } = body
+    const { name, email, phone, country, interest, budget, message, consent } = body
 
     // 3. Validation
+    if (consent !== true) {
+      return NextResponse.json(
+        { success: false, error: 'Consent to the privacy policy is required to transmit an enquiry.' },
+        { status: 400 }
+      )
+    }
+
     if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 100) {
       return NextResponse.json(
         { success: false, error: 'Full name is required (between 2 and 100 characters).' },

@@ -22,6 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/map',
     '/private-client',
     '/regulatory',
+    '/legal',
+    '/sources',
+    '/methodology',
+    '/investment-disclaimer',
+    '/government',
+    '/economy',
+    '/infrastructure',
+    '/insurance',
+    '/companies',
     '/privacy',
     '/terms',
     '/accessibility',
@@ -38,7 +47,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${route}`,
     lastModified: currentDate,
     changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : route.startsWith('/properties') || route.startsWith('/investment') || route.startsWith('/residency') ? 0.9 : 0.8,
+    priority:
+      route === ''
+        ? 1.0
+        : route.startsWith('/properties') ||
+          route.startsWith('/investment') ||
+          route.startsWith('/residency') ||
+          route.startsWith('/areas')
+        ? 0.9
+        : 0.8,
   }))
 
   const propertyRoutes = VERIFIED_PROPERTIES.map((prop) => ({

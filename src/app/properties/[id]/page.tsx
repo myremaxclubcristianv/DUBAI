@@ -90,8 +90,8 @@ export default function PropertyDetailPage() {
             <span className="px-2.5 py-1 bg-white border border-slate-200 text-slate-900 font-semibold text-[10px] uppercase">
               {developer}
             </span>
-            <span className="px-2.5 py-1 bg-white border border-slate-200 text-emerald-800 font-semibold text-[10px] uppercase">
-              DLD VERIFIED ASSET
+            <span className="px-2.5 py-1 bg-white border border-slate-200 text-slate-800 font-semibold text-[10px] uppercase">
+              CURATED ASSET DOSSIER
             </span>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function PropertyDetailPage() {
             {/* Price Box */}
             <div className="text-left lg:text-right font-mono space-y-1 p-5 bg-slate-50 border border-slate-200 shadow-2xs shrink-0">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider block font-semibold">
-                Asking Valuation
+                Asking Price — Subject to Confirmation
               </span>
               <div className="text-2xl sm:text-4xl font-light text-slate-950 tabular-nums font-bold">
                 {formatCurrency(price)}
@@ -191,7 +191,7 @@ export default function PropertyDetailPage() {
                 <div className="absolute top-4 left-4">
                   <span className="px-3.5 py-1.5 text-[10px] font-mono uppercase bg-white/95 backdrop-blur-xs text-emerald-800 flex items-center gap-1.5 border border-slate-200 font-semibold shadow-2xs">
                     <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
-                    <span>Golden Visa Eligible (&ge; AED 2M)</span>
+                    <span>Meets AED 2M Golden Visa Baseline (Subject to Approval)</span>
                   </span>
                 </div>
               )}
@@ -345,17 +345,20 @@ export default function PropertyDetailPage() {
         </div>
       </section>
 
-      {/* 5. PROVENANCE & AUDIT GUARANTEE */}
-      <section className="py-12 bg-slate-50/60">
-        <div className="w-full max-w-[880px] mx-auto px-4 sm:px-10 space-y-3 text-xs font-light text-slate-600">
+      {/* 5. PROVENANCE & LISTING REPRESENTATION DISCLOSURE */}
+      <section className="py-12 bg-slate-50/80 border-t border-slate-200">
+        <div className="w-full max-w-[880px] mx-auto px-4 sm:px-10 space-y-4 text-xs font-light text-slate-600">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-emerald-700" />
+            <ShieldCheck className="h-4 w-4 text-slate-700" />
             <span className="font-mono text-xs uppercase tracking-wider text-slate-950 font-bold">
-              Statutory Provenance Guarantee
+              Listing Supply &amp; Representation Disclosure
             </span>
           </div>
           <p className="leading-relaxed">
-            All data records for <strong>{property.title}</strong> have been audited against official Dubai Land Department registry filings and developer sales schedules. Specifications and tariffs represent verified statutory submissions.
+            Property listings and opportunities may be supplied or presented by independent local real estate agencies, developers, owners, or other third parties. Unless explicitly stated and documented, these parties are not employees, agents, representatives, or contractual partners of this platform. Listing information, availability, asking prices, photographs, ownership details, and transaction terms must be confirmed directly with the responsible listing party before proceeding. Any agency or brokerage relationship is established separately and must be verified by the customer.
+          </p>
+          <p className="text-[11px] font-mono text-slate-500 pt-1 border-t border-slate-200">
+            Reference: Official DLD statutory schedules and RERA regulations cited for comparative orientation.
           </p>
         </div>
       </section>

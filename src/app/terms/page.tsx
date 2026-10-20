@@ -12,6 +12,7 @@ import {
   FileCheck,
   AlertTriangle,
   ArrowRight,
+  ShieldAlert,
 } from 'lucide-react'
 
 export default function TermsPage() {
@@ -20,12 +21,27 @@ export default function TermsPage() {
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Statutory Mandate & Professional Practice Terms"
-        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="DLD & RERA Code of Ethics" />}
+        badge={
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs text-[10px] font-mono tracking-wider uppercase border bg-slate-50 text-slate-800 border-slate-200 font-semibold">
+            Platform Governance &bull; Terms of Service
+          </span>
+        }
         title={<>Terms of Service<span className="text-[#0284c7]">.</span></>}
-        description="Statutory terms of use, data provenance verification rules, and private client advisory protocols governing the Cristian Văduva Real Estate Intelligence platform."
+        description="Statutory terms of use, data provenance verification rules, independent research status, and private client advisory protocols governing the Cristian Văduva Real Estate Intelligence platform."
       />
 
       <main className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 pt-10 space-y-16">
+        {/* Independent Platform Status Banner */}
+        <div className="p-6 sm:p-7 border border-amber-200 bg-amber-50/60 rounded-xs space-y-3">
+          <div className="flex items-center gap-2 text-amber-950 font-semibold text-sm">
+            <ShieldAlert className="h-4 w-4 text-amber-700 shrink-0" />
+            <span>Independent Platform Status</span>
+          </div>
+          <p className="text-xs sm:text-sm text-amber-950 font-light leading-relaxed">
+            Dubai (dubai.cristianvaduva.com) is an independent real estate research and advisory platform. It is not affiliated with, endorsed by, sponsored by, or operated by the Dubai Land Department (DLD), the General Directorate of Residency and Foreigners Affairs (GDRFA), the Federal Tax Authority (FTA), the Dubai International Financial Centre (DIFC), or any other UAE government authority mentioned on this website.
+          </p>
+        </div>
+
         {/* 2. STATUTORY TERMS QUADRANT */}
         <CadranQuadrant
           eyebrow="RERA CODE OF ETHICS & LEGAL STANDARDS"
@@ -58,8 +74,8 @@ export default function TermsPage() {
             },
             {
               title: 'Independent Professional Counsel',
-              value: 'FIDUCIARY DUTY',
-              subtext: 'Market analysis and financial modeling tools are provided for institutional orientation and do not constitute binding legal or tax advice.',
+              value: 'INDEPENDENT DILIGENCE',
+              subtext: 'Market analysis and financial modeling tools are provided for institutional research and do not constitute formal legal, tax, or investment advice.',
               delta: 'DISCLAIMER',
               isPositive: true,
               statutoryRef: 'UAE Commercial Code',
@@ -84,7 +100,7 @@ export default function TermsPage() {
                 <h3>1. Platform Scope &amp; Intellectual Authority</h3>
               </div>
               <p>
-                This platform provides institutional-grade real estate market intelligence, statutory transaction roadmaps, and private client advisory coordination for Dubai freehold properties. All platform methodologies, custom analytical calculators, and data classification structures are proprietary.
+                This platform provides independent real estate market intelligence, statutory transaction roadmaps, and private client advisory coordination for Dubai freehold properties. All platform methodologies, custom analytical calculators, and data classification structures are proprietary. The platform does not assume discretionary agency or asset custody duties, and market indicators are provided for research purposes.
               </p>
             </div>
 
@@ -92,10 +108,13 @@ export default function TermsPage() {
             <div className="p-6 sm:p-8 rounded-xs bg-white border border-slate-200/90 shadow-sm space-y-3">
               <div className="flex items-center gap-2 text-slate-900 font-medium text-sm">
                 <Building className="h-4 w-4 text-[#0284c7]" />
-                <h3>2. Verified Listings &amp; Pricing Integrity</h3>
+                <h3>2. Property Listings Supplied by Third Parties</h3>
               </div>
               <p>
-                Property details, unit layouts, and developer data presented on the platform are verified against active Dubai Land Department records and authorized master developer releases. Advertised prices represent verified asking prices or starting developer launch tiers and do not constitute binding bilateral options until Form F execution.
+                Property listings and opportunities may be supplied or presented by independent local real estate agencies, developers, owners, or other third parties. Unless explicitly stated and documented, these parties are not employees, agents, representatives, or contractual partners of this platform. Listing information, availability, asking prices, photographs, ownership details, and transaction terms must be confirmed directly with the responsible listing party before proceeding. Any agency or brokerage relationship is established separately and must be verified by the customer.
+              </p>
+              <p className="text-slate-500 text-[11px] font-mono">
+                Advertised prices represent seller or listing-party asking prices and do not constitute official government valuations or binding bilateral options until Form F execution.
               </p>
             </div>
 
@@ -106,7 +125,7 @@ export default function TermsPage() {
                 <h3>3. Statutory Conveyancing &amp; Closing Fees</h3>
               </div>
               <p>
-                Every transaction executed in Dubai is subject to statutory government tariffs, including the 4% Dubai Land Department transfer fee (Executive Council Resolution No. 30 of 2013), DLD Registration Trustee conveyancing fees (AED 4,000 + 5% VAT), and standard RERA brokerage commissions (2% + 5% VAT) unless explicitly modified by contract.
+                Every transaction executed in Dubai is subject to statutory government tariffs, including the 4% Dubai Land Department transfer fee (Executive Council Resolution No. 30 of 2013), DLD Registration Trustee conveyancing fees (AED 4,000 + 5% VAT for values ≥ AED 500k; AED 2,000 + VAT below AED 500k), and standard RERA brokerage commissions (2% + 5% VAT) unless explicitly modified by contract.
               </p>
             </div>
 
@@ -117,7 +136,7 @@ export default function TermsPage() {
                 <h3>4. Investment Underwriting Disclaimer</h3>
               </div>
               <p>
-                Financial projections, rental yield estimations, debt-service calculations, and tax arbitrage comparisons generated through our investment tools are mathematical models designed for due diligence support. Past performance and historical market appreciation trends are not guarantees of future investment performance.
+                Financial projections, rental yield estimations, debt-service calculations, and tax comparisons generated through our investment tools are mathematical models designed for due diligence support. Past performance and historical market appreciation trends are not guarantees of future investment performance. No guarantee is provided regarding capital appreciation, rental yield, liquidity, or occupancy. For complete risk disclosures, refer to the dedicated <Link href="/investment-disclaimer" className="text-[#0284c7] font-medium underline">Investment Disclaimer</Link>.
               </p>
             </div>
 
@@ -137,9 +156,9 @@ export default function TermsPage() {
         {/* 4. PRIVATE CLIENT LINK */}
         <div className="p-8 rounded-xs border border-slate-200 bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="space-y-1">
-            <h3 className="text-base font-medium text-slate-900">Require a formal advisory agreement?</h3>
+            <h3 className="text-base font-medium text-slate-900">Require bespoke acquisition advisory?</h3>
             <p className="text-xs text-slate-600 font-light">
-              Contact Cristian Văduva Private Client Advisory for bespoke institutional representation and POA services.
+              Contact Cristian Văduva Private Client Advisory for bespoke research and transaction coordination.
             </p>
           </div>
           <Link

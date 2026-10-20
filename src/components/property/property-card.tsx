@@ -58,9 +58,12 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
               {property.property_type}
             </span>
             {isGoldenVisa && (
-              <span className="px-2 py-0.5 rounded-xs text-[9px] font-mono uppercase bg-emerald-50/95 backdrop-blur-md text-emerald-700 border border-emerald-200 flex items-center gap-1 shadow-2xs">
+              <span
+                title="Meets AED 2M statutory investment baseline under Cabinet Resolution No. 65 of 2022. Final residency grant subject to GDRFA case-by-case approval."
+                className="px-2 py-0.5 rounded-xs text-[9px] font-mono uppercase bg-emerald-50/95 backdrop-blur-md text-emerald-700 border border-emerald-200 flex items-center gap-1 shadow-2xs"
+              >
                 <ShieldCheck className="h-2.5 w-2.5" />
-                <span>Golden Visa</span>
+                <span>≥ AED 2M Threshold</span>
               </span>
             )}
           </div>
@@ -128,8 +131,8 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
               </span>
             </div>
             <div className="text-right">
-              <span className="text-[9px] text-[#0284c7] uppercase tracking-wider block font-semibold">
-                STATUTORY DLD
+              <span className="text-[9px] text-slate-500 uppercase tracking-wider block font-semibold">
+                ASKING RATE
               </span>
               <span className="text-xs text-slate-500 tabular-nums">
                 AED {property.price_per_sqft?.toLocaleString()} / sqft

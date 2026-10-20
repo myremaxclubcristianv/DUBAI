@@ -40,7 +40,7 @@ export function PropertyComparison() {
             Side-by-side comparative analysis of verified properties, acquisition capital, and service charges.
           </p>
         </div>
-        <SourceBadge status="OFFICIAL SOURCE" sourceName="Direct Verified Records Comparison" />
+        <SourceBadge status="CALCULATED" sourceName="Comparative Asset Model" />
       </div>
 
       <div className="p-6 sm:p-8 space-y-6">

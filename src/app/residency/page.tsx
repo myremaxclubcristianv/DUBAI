@@ -34,38 +34,43 @@ export default function ResidencyPage() {
 
       {/* 2. STATUTORY PARAMETERS STRIP */}
       <section className="py-10 border-b border-slate-200 bg-white">
-        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-4">
+          <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pb-2 border-b border-slate-100">
+            <span>STATUTORY CRITERIA OVERVIEW</span>
+            <span>Last checked: October 2026 (ICP / GDRFA published criteria)</span>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
-                01 &bull; GOLDEN VISA THRESHOLD
+                01 &bull; GOLDEN VISA BASELINE THRESHOLD
               </span>
               <div className="text-xl font-semibold text-slate-900 font-mono">&ge; AED 2,000,000</div>
-              <p className="text-xs text-slate-500 font-light">Cabinet Res. 65/2022 qualifying real estate valuation across freehold titles</p>
+              <p className="text-xs text-slate-500 font-light">Cabinet Res. 65/2022 minimum qualifying valuation across registered freehold title</p>
             </div>
 
             <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
                 02 &bull; GOLDEN VISA DURATION
               </span>
-              <div className="text-xl font-semibold text-slate-900 font-mono">10-Year Self-Sponsored</div>
-              <p className="text-xs text-slate-500 font-light">Renewable term published by ICP &amp; GDRFA official portals</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">10-Year Renewable</div>
+              <p className="text-xs text-slate-500 font-light">Renewable term published by ICP &amp; GDRFA official portals for qualifying investors</p>
             </div>
 
             <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
-                03 &bull; PROPERTY INVESTOR PERMIT
+                03 &bull; STANDARD INVESTOR PERMIT
               </span>
               <div className="text-xl font-semibold text-slate-900 font-mono">&ge; AED 750,000</div>
-              <p className="text-xs text-slate-500 font-light">DLD / GDRFA 2-year renewable property investor visa route</p>
+              <p className="text-xs text-slate-500 font-light">DLD / GDRFA 2-year renewable property investor visa route for completed units</p>
             </div>
 
             <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
-                04 &bull; AUTHORITY DISCRETION
+                04 &bull; SOVEREIGN APPROVAL DISCRETION
               </span>
-              <div className="text-xl font-semibold text-slate-900 font-mono">Subject to Review</div>
-              <p className="text-xs text-slate-500 font-light">Approval governed by GDRFA, ICP, and DLD Cube verification protocols</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">Individual Review</div>
+              <p className="text-xs text-slate-500 font-light">Threshold alone does not guarantee approval; governed strictly by GDRFA, ICP, and security clearance</p>
             </div>
           </div>
         </div>

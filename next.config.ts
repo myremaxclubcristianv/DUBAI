@@ -10,6 +10,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/districts',
+        destination: '/areas',
+        permanent: true,
+      },
+      {
+        source: '/districts/:slug',
+        destination: '/areas/:slug',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

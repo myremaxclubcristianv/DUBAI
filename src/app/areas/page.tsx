@@ -34,7 +34,7 @@ export default function DistrictsAtlasPage() {
                 DLD Designated Freehold
               </span>
               <span>&bull;</span>
-              <span>100% Foreign Title</span>
+              <span>Designated Freehold Zones (Decree 3/2006)</span>
             </div>
           </div>
           
@@ -121,7 +121,7 @@ export default function DistrictsAtlasPage() {
 
                 <div className="pt-3">
                   <Link
-                    href={`/districts/${activeDistrict.slug}`}
+                    href={`/areas/${activeDistrict.slug}`}
                     className="w-full py-3 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-colors flex items-center justify-center gap-2 shadow-2xs"
                   >
                     <span>OPEN {activeDistrict.name} DOSSIER</span>
@@ -149,20 +149,20 @@ export default function DistrictsAtlasPage() {
                       {String(idx + 1).padStart(2, '0')}
                     </span>
                     <Link
-                      href={`/districts/${district.slug}`}
+                      href={`/areas/${district.slug}`}
                       className="text-lg sm:text-xl font-light text-slate-950 group-hover:text-slate-600 transition-colors font-serif"
                     >
                       {district.name}
                     </Link>
                   </div>
                   <span className="text-xs font-mono text-slate-500 pl-10 block">
-                    {district.sector} &bull; Master: {district.master_developer || 'Verified Freehold'}
+                    {district.sector} &bull; Master: {district.master_developer || 'Designated Freehold'}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-4">
                   <Link
-                    href={`/districts/${district.slug}`}
+                    href={`/areas/${district.slug}`}
                     className="p-2 border border-slate-200 group-hover:border-slate-950 group-hover:bg-slate-100 transition-all"
                   >
                     <ArrowUpRight className="h-4 w-4 text-slate-400 group-hover:text-slate-950" />

@@ -80,12 +80,12 @@ export default function PropertiesPage() {
               </span>
             </div>
             <div className="flex items-center gap-3 text-[11px] text-slate-500">
-              <span className="text-emerald-800 font-semibold flex items-center gap-1">
-                <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
-                DLD Certified Title Deeds
+              <span className="text-slate-800 font-semibold flex items-center gap-1">
+                <ShieldCheck className="h-3.5 w-3.5 text-slate-700" />
+                Freehold Register Reference
               </span>
               <span>&bull;</span>
-              <span>100% Foreign Freehold</span>
+              <span>Designated Freehold Zones (Decree 3/2006)</span>
             </div>
           </div>
           
@@ -95,14 +95,14 @@ export default function PropertiesPage() {
                 PROPERTIES
               </h1>
               <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed">
-                Curated portfolio of prime Dubai penthouses, villas, and architectural residences with verified title deeds and published acquisition schedules.
+                Curated portfolio of prime Dubai penthouses, villas, and architectural residences with independent statutory underwriting and published acquisition schedules.
               </p>
             </div>
 
             <div className="p-4 bg-slate-50 border border-slate-200 font-mono text-xs text-slate-600 shadow-2xs space-y-1">
               <div className="flex items-center gap-2 text-slate-950 font-bold">
                 <CheckCircle2 className="h-4 w-4 text-slate-900" />
-                <span>{filteredProperties.length} Verified Asset Records</span>
+                <span>{filteredProperties.length} Curated Listing Records</span>
               </div>
               <div className="text-[10px] text-slate-400">
                 Law No. 7/2006 &bull; Escrow Ring-Fenced
@@ -183,6 +183,15 @@ export default function PropertiesPage() {
 
       {/* 3. ASYMMETRICAL EDITORIAL PROPERTY DOSSIER ROWS */}
       <main className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 py-14 sm:py-20 space-y-12 sm:space-y-16 flex-1">
+        {/* Third-Party Listing Disclosure Notice */}
+        <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 text-xs text-slate-600 font-light leading-relaxed space-y-1 shadow-2xs">
+          <span className="font-mono text-[10px] uppercase tracking-wider text-slate-900 font-bold block">
+            Listing Supply &amp; Representation Disclosure
+          </span>
+          <p>
+            Property listings and opportunities may be supplied or presented by independent local real estate agencies, developers, owners, or other third parties. Unless explicitly stated and documented, these parties are not employees, agents, representatives, or contractual partners of this platform. Listing information, availability, asking prices, photographs, ownership details, and transaction terms must be confirmed directly with the responsible listing party before proceeding. Any agency or brokerage relationship is established separately and must be verified by the customer.
+          </p>
+        </div>
         {filteredProperties.length === 0 ? (
           <div className="text-center py-24 border border-slate-200 bg-slate-50 p-10 space-y-4">
             <h3 className="text-xl font-light text-slate-950 font-serif">No Assets Matching Selection</h3>

@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Link from 'next/link'
 import { X, CheckCircle2, AlertCircle, ShieldCheck } from 'lucide-react'
 
 export type InterestCategory = 'PROPERTY' | 'INVESTMENT' | 'RESIDENCY' | 'LIFESTYLE' | 'PRIVATE CLIENT'
@@ -37,6 +38,7 @@ function ContactModalDialog({
   const [country, setCountry] = React.useState('')
   const [budget, setBudget] = React.useState(initialBudget)
   const [message, setMessage] = React.useState(initialMessage)
+  const [consent, setConsent] = React.useState(false)
   const [honeypot, setHoneypot] = React.useState('')
 
   const [status, setStatus] = React.useState<'IDLE' | 'SUBMITTING' | 'SUCCESS' | 'ERROR'>('IDLE')
@@ -81,6 +83,7 @@ function ContactModalDialog({
           interest,
           budget,
           message,
+          consent,
           b_website: honeypot, // Honeypot
         }),
       })
@@ -112,6 +115,7 @@ function ContactModalDialog({
     setCountry('')
     setBudget('')
     setMessage('')
+    setConsent(false)
     setStatus('IDLE')
     setErrorMessage(null)
     onClose()
@@ -316,6 +320,52 @@ function ContactModalDialog({
                 />
               </div>
 
+              {/* Data Processing & Explicit Privacy Consent (Unselected by Default) */}
+              <div className="pt-2 border-t border-slate-100 space-y-2">
+                <label htmlFor="contact-consent" className="flex items-start gap-2.5 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    id="contact-consent"
+                    name="consent"
+                    required
+                    checked={consent}
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 rounded-xs border-slate-300 text-[#0284c7] focus:ring-[#0284c7] cursor-pointer shrink-0"
+                  />
+                  <span className="text-[11px] text-slate-600 font-light leading-relaxed">
+                    I consent to the collection and confidential processing of my contact details for the sole purpose of evaluating and responding to this advisory mandate, in accordance with the{' '}
+                    <Link href="/privacy" target="_blank" className="text-[#0284c7] underline hover:text-[#0369a1]">
+                      Privacy Policy
+                    </Link>
+                    . Data is not shared with or sold to third parties.
+                  </span>
+                </label>
+              </div>
+
+              {/* Direct Advisory Desk Alternative */}
+              <div className="p-3 bg-slate-50 border border-slate-200/80 rounded-xs space-y-1">
+                <span className="font-mono text-[9px] uppercase tracking-wider text-slate-500 block font-semibold">
+                  DIRECT PRINCIPAL CHANNELS (IMMEDIATE INTAKE)
+                </span>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono">
+                  <a
+                    href="mailto:cristianvaduva@duck.com"
+                    className="text-slate-800 hover:text-[#0284c7] transition-colors underline"
+                  >
+                    cristianvaduva@duck.com
+                  </a>
+                  <span className="text-slate-400">•</span>
+                  <a
+                    href="https://wa.me/436509536345"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-800 hover:text-[#0284c7] transition-colors underline"
+                  >
+                    WhatsApp: +43 650 953 6345
+                  </a>
+                </div>
+              </div>
+
               {/* Error Alert */}
               {status === 'ERROR' && (
                 <div className="p-3 bg-red-50 border border-red-200 flex items-start gap-2.5 text-red-700 text-xs rounded-xs animate-in fade-in duration-150">
@@ -325,7 +375,7 @@ function ContactModalDialog({
                       MESSAGE NOT SENT
                     </p>
                     <p className="text-red-700">
-                      {errorMessage || 'Please try again or contact the desk directly.'}
+                      {errorMessage || 'Please try again or contact the desk directly via WhatsApp/email above.'}
                     </p>
                   </div>
                 </div>
@@ -339,7 +389,7 @@ function ContactModalDialog({
                 </div>
                 <button
                   type="submit"
-                  disabled={status === 'SUBMITTING'}
+                  disabled={status === 'SUBMITTING' || !consent}
                   className="px-6 py-2.5 bg-[#0284c7] hover:bg-[#0369a1] text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all text-xs font-mono uppercase tracking-[0.14em] font-semibold cursor-pointer rounded-xs shadow-xs"
                 >
                   {status === 'SUBMITTING' ? 'Transmitting…' : 'Submit Mandate'}

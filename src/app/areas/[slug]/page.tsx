@@ -37,14 +37,14 @@ export default function DistrictDetailPage() {
       <div className="border-b border-slate-200 bg-slate-50/90 backdrop-blur-md py-4 sticky top-16 z-30">
         <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
           <Link
-            href="/districts"
+            href="/areas"
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-[#0284c7] transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Back to Dubai Atlas</span>
           </Link>
           <div className="flex items-center gap-3">
-            <SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="DLD Regulation 3/2006" />
+            <SourceBadge sourceClass="OFFICIAL GOVERNMENT" sourceName="Decree No. 3/2006 (Freehold)" />
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export default function DistrictDetailPage() {
                 {area.sector} SECTOR
               </span>
               <span>&bull;</span>
-              <span className="text-slate-700">100% FOREIGN FREEHOLD TITLE</span>
+              <span className="text-slate-700">DESIGNATED FREEHOLD ZONE (DECREE NO. 3/2006)</span>
             </div>
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-[-0.035em] text-slate-900 font-serif">
               {area.name}
@@ -193,7 +193,7 @@ export default function DistrictDetailPage() {
             <DataRow label="DXB International Airport" value={`${area.transit?.airport_mins_dxb || 20} Minutes`} />
             <DataRow label="DWC Al Maktoum International" value={`${area.transit?.airport_mins_dwc || 35} Minutes`} />
             <DataRow label="Downtown Core & Burj Khalifa" value={`${area.transit?.downtown_mins || 15} Minutes`} />
-            <DataRow label="Foreign Ownership Law" value="100% Freehold (Regulation 3/2006)" />
+            <DataRow label="Foreign Ownership Law" value="Designated Freehold Zone (Decree No. 3/2006 & Law No. 7/2006)" />
           </div>
         </div>
       </Section>
@@ -210,11 +210,11 @@ export default function DistrictDetailPage() {
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
-              {area.investment_profile || 'Designated freehold territory granting absolute ownership rights in perpetuity to foreign nationals. Qualifying properties above AED 2,000,000 confer eligibility for the 10-Year Golden Visa.'}
+              {area.investment_profile || 'Designated freehold territory granting real property ownership rights to non-UAE nationals in designated zones pursuant to Law No. 7 of 2006 and Decree No. 3 of 2006. Qualifying properties meeting or exceeding AED 2,000,000 baseline qualify for GDRFA Real Estate Golden Visa evaluation, subject to case-by-case authority clearance (last checked October 2026).'}
             </p>
             <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span>Authority: Dubai Land Department</span>
-              <span>Source Class: OFFICIAL GOVERNMENT</span>
+              <span>Authority: Dubai Land Department &amp; GDRFA</span>
+              <span>Source Class: OFFICIAL UAE REFERENCE</span>
             </div>
           </div>
         </div>

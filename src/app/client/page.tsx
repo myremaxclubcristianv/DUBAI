@@ -52,7 +52,11 @@ export default function ClientPortalPage() {
       {/* 1. EDITORIAL PAGE INTRO */}
       <PageIntro
         eyebrow="Private Client Workspace & Analytical Dossier Desk"
-        badge={<SourceBadge status="OFFICIAL SOURCE" sourceName="Client Session & Saved Criteria" />}
+        badge={
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-xs text-[10px] font-mono tracking-wider uppercase border bg-slate-50 text-slate-700 border-slate-200 font-semibold">
+            Local Session &bull; Browser Storage
+          </span>
+        }
         title={<>Client Workspace<span className="text-[#0284c7]">.</span></>}
         description="Draft stored locally in this browser. Side-by-side asset comparison matrix, saved property shortlists, custom acquisition filters, and underwriting worksheets."
       />

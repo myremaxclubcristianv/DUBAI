@@ -31,10 +31,10 @@ export default function Home() {
       descriptor:
         'Master-planned commercial, cultural, and ultra-prime residential epicenter anchored by the Burj Khalifa, Dubai Opera, and sovereign corporate headquarters under Law No. 7 of 2006.',
       image:
-        'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=90',
+        'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80',
       href: '/areas/downtown-dubai',
       coordinates: '25.1972° N • 55.2744° E',
-      statutoryRef: 'DLD Freehold Sector 01 • Reg. 3/2006',
+      statutoryRef: 'Freehold Sector 01 • Decree No. 3/2006',
     },
     {
       id: 'palm-jumeirah',
@@ -43,7 +43,7 @@ export default function Home() {
       tag: 'BEACHFRONT ARCHIPELAGO',
       descriptor: 'World-renowned private waterfront fronds and shoreline penthouses with strict supply constraints.',
       image:
-        'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1200&q=85',
+        'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=600&q=80',
       href: '/areas/palm-jumeirah',
       coordinates: '25.1124° N • 55.1390° E',
     },
@@ -54,7 +54,7 @@ export default function Home() {
       tag: 'GOLF ESTATE & PARKS',
       descriptor: 'Expansive green master-planned family domains, championship 18-hole golf, and elite education hubs.',
       image:
-        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85',
+        'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80',
       href: '/areas/dubai-hills-estate',
       coordinates: '25.1097° N • 55.2536° E',
     },
@@ -65,7 +65,7 @@ export default function Home() {
       tag: 'FINANCIAL FREE ZONE',
       descriptor: 'Independent common-law jurisdiction, sovereign capital institutions, fine art galleries, and Michelin dining.',
       image:
-        'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=1200&q=85',
+        'https://images.unsplash.com/photo-1577083552431-6e5fd01aa342?auto=format&fit=crop&w=600&q=80',
       href: '/areas/difc',
       coordinates: '25.2048° N • 55.2708° E',
     },
@@ -134,7 +134,7 @@ export default function Home() {
         {/* Full Visual Field: Daytime Burj Khalifa Photography */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2560&q=95"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1280&q=75"
             alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
             fill
             priority
@@ -205,14 +205,14 @@ export default function Home() {
               <div className="pt-8 border-t border-slate-300/80 flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-[11px] font-mono text-slate-600">
                 <div className="flex items-center gap-1.5 text-slate-950 font-semibold">
                   <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
-                  <span>DLD Statutory Registry</span>
+                  <span>DLD Regulatory Reference</span>
                 </div>
                 <span className="text-slate-300">•</span>
                 <span>Law No. 7 (2006) Freehold</span>
                 <span className="text-slate-300">•</span>
                 <span>Law No. 8 (2007) Escrow</span>
                 <span className="text-slate-300">•</span>
-                <span className="text-slate-900 font-semibold">100% Foreign Ownership</span>
+                <span className="text-slate-900 font-semibold">Designated Freehold Zones (Decree 3/2006)</span>
               </div>
 
             </div>
@@ -245,7 +245,7 @@ export default function Home() {
                     <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
                       TRANSFER TARIFF
                     </span>
-                    <span className="text-[8px] text-slate-400 block">Law No. 7/2006</span>
+                    <span className="text-[8px] text-slate-400 block">Res. No. 30/2013</span>
                   </div>
                   <div className="px-4 space-y-1">
                     <span className="text-2xl sm:text-3xl font-light text-slate-950 block font-sans tracking-tight font-semibold">
@@ -254,7 +254,7 @@ export default function Home() {
                     <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
                       REGISTRATION
                     </span>
-                    <span className="text-[8px] text-slate-400 block">Baseline per deal</span>
+                    <span className="text-[8px] text-slate-400 block">Trustee (≥AED 500k)</span>
                   </div>
                   <div className="pl-4 space-y-1">
                     <span className="text-2xl sm:text-3xl font-light text-slate-950 block font-sans tracking-tight font-semibold">
@@ -263,7 +263,7 @@ export default function Home() {
                     <span className="text-[9px] sm:text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
                       AED / USD
                     </span>
-                    <span className="text-[8px] text-slate-400 block">Official UAE Peg</span>
+                    <span className="text-[8px] text-slate-400 block">CBUAE Fixed Peg</span>
                   </div>
                 </div>
 
@@ -277,7 +277,7 @@ export default function Home() {
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                   <span className="text-[9px] font-mono text-slate-400 uppercase tracking-wider">
-                    DLD • STATUTORY LEDGER
+                    DLD PUBLIC REFERENCE TARIFF
                   </span>
                 </div>
 
@@ -437,7 +437,7 @@ export default function Home() {
               {/* Group 3: Price */}
               <div className="space-y-1">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
-                  OFFICIAL ASKING PRICE
+                  ASKING PRICE (SUBJECT TO CONFIRMATION)
                 </span>
                 <div className="font-mono text-3xl font-bold text-slate-950 tabular-nums">
                   {formatCurrency(featuredProperty.asking_price)}
@@ -450,7 +450,7 @@ export default function Home() {
               <div className="h-[1px] bg-slate-200" />
 
               {/* Group 4: Dossier Action */}
-              <div>
+              <div className="space-y-3">
                 <Link
                   href={`/properties/${featuredProperty.id}`}
                   className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-sm group"
@@ -458,6 +458,9 @@ export default function Home() {
                   <span>ACCESS FULL ASSET DOSSIER</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
+                <p className="text-[10px] text-slate-500 font-mono leading-relaxed">
+                  Listing details supplied by listing party and subject to confirmation.
+                </p>
               </div>
 
             </div>
@@ -467,10 +470,10 @@ export default function Home() {
               <div className="border border-slate-300 bg-white shadow-xl overflow-hidden group">
                 <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-slate-100">
                   <Image
-                    src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=2000&q=90"
-                    alt="Palm Jumeirah aerial archipelago and waterfront architecture"
+                    src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1000&q=75"
+                    alt="Palm Jumeirah aerial archipelago and waterfront architecture (illustrative area photography)"
                     fill
-                    priority
+                    loading="lazy"
                     sizes="(max-width: 1024px) 100vw, 68vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-102"
                   />
@@ -479,11 +482,11 @@ export default function Home() {
                       PALM JUMEIRAH
                     </span>
                     <span className="px-3 py-1 text-[10px] font-mono font-semibold uppercase bg-white/95 backdrop-blur-md text-slate-900 border border-slate-200 shadow-sm">
-                      VERIFIED ASSET
+                      CURATED PORTFOLIO ASSET
                     </span>
                   </div>
                   <div className="absolute bottom-3 right-3 px-3 py-1 bg-slate-950/85 backdrop-blur-xs text-[9px] font-mono text-slate-300 uppercase tracking-wider">
-                    FIG 02.1 • WATERFRONT RESIDENCE DOSSIER
+                    FIG 02.1 • ILLUSTRATIVE AREA PHOTOGRAPHY — PALM JUMEIRAH
                   </div>
                 </div>
               </div>
@@ -515,7 +518,7 @@ export default function Home() {
                 4.00%
               </div>
               <p className="text-xs text-slate-600 font-mono leading-relaxed">
-                Statutory tariff schedule per Executive Council Res. 30/2013.
+                Statutory tariff schedule per Executive Council Res. No. 30 of 2013. Checked October 2026.
               </p>
             </div>
 
@@ -528,7 +531,7 @@ export default function Home() {
                 AED 2.0M
               </div>
               <p className="text-xs text-slate-600 font-mono leading-relaxed">
-                Freehold title value qualifying for 10-year residency (Cabinet Res. 65/2022).
+                Statutory baseline under Cabinet Res. 65/2022. Eligibility subject to GDRFA case-by-case review (last checked October 2026).
               </p>
             </div>
 
@@ -541,7 +544,7 @@ export default function Home() {
                 3.6725
               </div>
               <p className="text-xs text-slate-600 font-mono leading-relaxed">
-                Official UAE Central Bank parity rate fixed since November 1997.
+                Official Central Bank of the UAE fixed parity rate established November 1997. Source: CBUAE.
               </p>
             </div>
 
@@ -551,10 +554,10 @@ export default function Home() {
                 FOREIGN FREEHOLD
               </span>
               <div className="text-4xl sm:text-5xl font-light font-mono text-emerald-800 tabular-nums font-semibold tracking-tight">
-                100%
+                DESIGNATED
               </div>
               <p className="text-xs text-slate-600 font-mono leading-relaxed">
-                Full foreign title ownership across designated sectors under Law No. 7/2006.
+                Permitted across designated investment sectors pursuant to Law No. 7/2006 &amp; Decree No. 3/2006.
               </p>
             </div>
 
@@ -570,7 +573,7 @@ export default function Home() {
         {/* Subtle Aerial Backdrop Texture */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <Image
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2560&q=90"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=70"
             alt="Dubai Coastline Aerial Atlas"
             fill
             sizes="100vw"
@@ -732,7 +735,7 @@ export default function Home() {
 
               <div className="p-6 bg-slate-50 border border-slate-200 space-y-2 font-mono text-xs">
                 <span className="text-[10px] uppercase tracking-wider text-slate-500 font-semibold block">
-                  FIDUCIARY PRINCIPLE
+                  UNDERWRITING PRINCIPLE
                 </span>
                 <p className="text-slate-700 font-sans text-xs leading-relaxed">
                   Every asset is underwritten against verified Dubai Land Department historical transfer records, RERA rental indices, and statutory escrow protection filings under UAE law.
@@ -791,7 +794,7 @@ export default function Home() {
         {/* Subtle Luxury Architectural Image Treatment */}
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=90"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70"
             alt="Private Client Office Architectural Interior"
             fill
             sizes="100vw"
@@ -821,7 +824,7 @@ export default function Home() {
             {/* Left 7 Columns: Serif Headline, Advisory Thesis & Clear Action */}
             <div className="lg:col-span-7 space-y-7">
               <span className="text-[10px] font-mono tracking-[0.24em] text-slate-400 uppercase font-semibold block">
-                FIDUCIARY MANDATE ADVISORY
+                INDEPENDENT MANDATE ADVISORY
               </span>
 
               <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-light tracking-[-0.03em] font-serif leading-[1.08] text-white">
@@ -829,7 +832,7 @@ export default function Home() {
               </h2>
 
               <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-xl">
-                We advise family offices, institutional investors, and private principals acquiring prime residential assets and off-market opportunities across Dubai with absolute discretion and fiduciary rigor.
+                We advise family offices, institutional investors, and private principals acquiring prime residential assets and off-market opportunities across Dubai with absolute discretion and rigorous analytical discipline.
               </p>
 
               <div className="pt-2">
@@ -877,7 +880,7 @@ export default function Home() {
 
                 <div className="space-y-1">
                   <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                    FIDUCIARY PROCESS
+                    TRANSACTION GOVERNANCE
                   </span>
                   <p className="text-slate-200 font-sans text-xs leading-relaxed">
                     Escrow-backed conveyancing, GDRFA Golden Visa structuring, and custodian bank coordination.
