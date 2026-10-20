@@ -61,8 +61,8 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
         source: `PROPERTY_VIEWING: ${property.title}`,
         page: `/properties/${property.id}`,
       }),
-    }).catch((err) => {
-      console.warn('[Viewing Modal] Remote notification failed:', err)
+    }).catch(() => {
+      console.warn('[Viewing Modal] Remote notification dispatch failed')
     })
 
     setIsSubmitted(true)

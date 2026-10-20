@@ -213,7 +213,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // 7. Telegram Bot Dispatch
+    // 7. Telegram Bot Dispatch (Server-side via secure environment variables only)
     const botToken = process.env.TELEGRAM_BOT_TOKEN?.trim()
     const chatId = process.env.TELEGRAM_CHAT_ID?.trim()
 
@@ -280,17 +280,16 @@ export async function POST(request: NextRequest) {
         if (telegramRes.ok) {
           telegramSent = true
         } else {
-          const errText = await telegramRes.text()
           telegramError = `Telegram HTTP ${telegramRes.status}`
-          console.error(`[Contact API] Telegram dispatch error (status ${telegramRes.status}):`, errText.slice(0, 120))
+          console.error(`[Contact API] Telegram dispatch error (HTTP status ${telegramRes.status})`)
         }
-      } catch (err) {
-        telegramError = err instanceof Error ? err.message : 'Network error'
-        console.error('[Contact API] Telegram fetch exception:', telegramError)
+      } catch {
+        telegramError = 'Network error'
+        console.error('[Contact API] Telegram fetch network exception')
       }
     } else {
       telegramError = 'unprovisioned'
-      console.warn('[Contact API] Telegram credentials not provisioned (TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID missing).')
+      console.warn('[Contact API] Telegram credentials not provisioned in environment variables.')
     }
 
     // 8. Delivery Response Resolution

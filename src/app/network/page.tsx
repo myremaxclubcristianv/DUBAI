@@ -95,8 +95,8 @@ export default function NetworkPage() {
           source: `NETWORK_DESK: ${introTargetPillar}`,
           page: '/network',
         }),
-      }).catch((err) => {
-        console.warn('[Network Desk] Remote dispatch failed:', err)
+      }).catch(() => {
+        console.warn('[Network Desk] Remote dispatch failed')
       })
 
       addToast({

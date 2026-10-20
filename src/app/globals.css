@@ -162,3 +162,25 @@ input[type="range"]::-moz-range-thumb {
   border: 2px solid #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
+
+/* Sovereign Market Ticker / Marquee */
+@keyframes ticker-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker-marquee {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 38s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker-marquee:hover {
+  animation-play-state: paused;
+}
+

@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { GlobalSearchDialog } from '@/components/ui/global-search-dialog'
 import { ContactModal } from '@/components/layout/contact-modal'
+import { MarketTicker } from '@/components/layout/market-ticker'
 import { useClient, SupportedCurrency } from '@/lib/context/client-context'
 
 interface NavSubItem {
@@ -314,6 +315,9 @@ export function Header() {
         ref={headerRef}
         className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 transition-colors"
       >
+        {/* TOP: Sovereign Market Ticker */}
+        <MarketTicker />
+
         <div className="w-full max-w-[1440px] mx-auto flex h-[76px] sm:h-[80px] items-center justify-between px-4 sm:px-6 lg:px-4 xl:px-6 2xl:px-8">
           
           {/* LEFT: Wordmark + Sovereign Hierarchy */}
