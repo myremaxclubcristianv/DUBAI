@@ -65,12 +65,12 @@ export function MortgageCalculator() {
                 onChange={(e) => handleBuyerTypeChange(e.target.value as typeof buyerType)}
                 className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-medium cursor-pointer"
               >
-                <option value="EXPAT_FIRST_HOME">Expatriate Resident — First Home (Max 80% LTV ≤ 5M / 70% &gt; 5M)</option>
-                <option value="EXPAT_SUBSEQUENT">Expatriate Resident — Subsequent / Investment Property (Max 60% LTV)</option>
-                <option value="UAE_NATIONAL">UAE National — First Home (Max 85% LTV ≤ 5M / 75% &gt; 5M)</option>
-                <option value="UAE_NATIONAL_SUBSEQUENT">UAE National — Subsequent / Investment Property (Max 65% LTV)</option>
-                <option value="OFF_PLAN">Off-Plan Under-Construction Property (Max 50% LTV Statutory Cap)</option>
-                <option value="NON_RESIDENT">Non-Resident International Buyer (Max 50%–60% LTV Discretionary)</option>
+                <option value="EXPAT_FIRST_HOME">Expatriate Resident — First Home (CBUAE Statutory: Max 80% LTV ≤ 5M / 70% &gt; 5M)</option>
+                <option value="EXPAT_SUBSEQUENT">Expatriate Resident — Subsequent / Investment Property (CBUAE Statutory: Max 60% LTV)</option>
+                <option value="UAE_NATIONAL">UAE National — First Home (CBUAE Statutory: Max 85% LTV ≤ 5M / 75% &gt; 5M)</option>
+                <option value="UAE_NATIONAL_SUBSEQUENT">UAE National — Subsequent / Investment Property (CBUAE Statutory: Max 65% LTV)</option>
+                <option value="OFF_PLAN">Off-Plan Under-Construction Property (CBUAE Statutory: Max 50% LTV Cap)</option>
+                <option value="NON_RESIDENT">Non-Resident International Buyer (Commercial Bank Discretionary Underwriting)</option>
               </select>
             </div>
 
@@ -80,7 +80,7 @@ export function MortgageCalculator() {
                   <label className="font-semibold text-[#1d1d1f]">Property Purchase Price</label>
                   {isPriceOver5M && (
                     <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
-                      &gt; AED 5M Threshold
+                      &gt; AED 5M Statutory Threshold
                     </span>
                   )}
                 </div>
@@ -155,7 +155,15 @@ export function MortgageCalculator() {
             {!result.is_ltv_compliant && (
               <div className="p-3 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-amber-900">
                 <span>
-                  Down payment is below the CBUAE statutory minimum of <strong>{result.min_down_payment_pct}%</strong> (Max {result.max_ltv_pct}% LTV).
+                  {result.framework_type === 'COMMERCIAL_BANK_DISCRETIONARY' ? (
+                    <>
+                      Down payment is below the typical commercial banking benchmark of <strong>{result.min_down_payment_pct}%</strong> (Max {result.max_ltv_pct}% LTV indicative). Note: Non-resident financing is subject to individual bank risk policy.
+                    </>
+                  ) : (
+                    <>
+                      Down payment is below the CBUAE statutory minimum of <strong>{result.min_down_payment_pct}%</strong> (Max {result.max_ltv_pct}% LTV under Notice No. 3871/2013).
+                    </>
+                  )}
                 </span>
                 <button
                   type="button"
@@ -171,11 +179,26 @@ export function MortgageCalculator() {
           <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs text-[#6e6e73] space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-[#1d1d1f]">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-              <span>Central Bank Regulatory Framework:</span>
+              <span>
+                {result.framework_type === 'COMMERCIAL_BANK_DISCRETIONARY'
+                  ? 'Commercial Bank Underwriting Policy:'
+                  : 'CBUAE Statutory Regulatory Framework:'}
+              </span>
+              <span
+                className={`text-[9px] font-mono px-1.5 py-0.5 rounded font-bold uppercase ${
+                  result.framework_type === 'COMMERCIAL_BANK_DISCRETIONARY'
+                    ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                    : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                }`}
+              >
+                {result.framework_type === 'COMMERCIAL_BANK_DISCRETIONARY'
+                  ? 'Discretionary Policy'
+                  : 'Statutory Ceiling'}
+              </span>
             </div>
             <p className="text-[11px] leading-relaxed">{result.ltv_ceiling_info}</p>
             <div className="text-[10px] font-mono text-slate-400 pt-1">
-              Statutory Ref: {result.statutory_citation}
+              Source: {result.statutory_citation}
             </div>
           </div>
         </div>

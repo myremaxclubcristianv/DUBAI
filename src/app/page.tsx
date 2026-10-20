@@ -144,12 +144,14 @@ export default function Home() {
               height={960}
             />
             <img
-              src="/images/hero-burj-desktop.webp"
+              src="/images/hero-burj-mobile.webp"
+              srcSet="/images/hero-burj-mobile.webp 640w, /images/hero-burj-desktop.webp 1440w"
+              sizes="(max-width: 640px) 100vw, 1440px"
               alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
               fetchPriority="high"
               decoding="sync"
-              width={1440}
-              height={960}
+              width={640}
+              height={427}
               className="w-full h-full object-cover object-[center_34%]"
             />
           </picture>

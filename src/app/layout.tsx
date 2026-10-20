@@ -105,15 +105,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           as="image"
           type="image/webp"
           href="/images/hero-burj-mobile.webp"
-          media="(max-width: 640px)"
-          fetchPriority="high"
-        />
-        <link
-          rel="preload"
-          as="image"
-          type="image/webp"
-          href="/images/hero-burj-desktop.webp"
-          media="(min-width: 641px)"
+          imageSrcSet="/images/hero-burj-mobile.webp 640w, /images/hero-burj-desktop.webp 1440w"
+          imageSizes="(max-width: 640px) 100vw, 1440px"
           fetchPriority="high"
         />
         <script

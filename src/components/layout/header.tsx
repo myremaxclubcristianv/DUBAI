@@ -376,6 +376,7 @@ export function Header() {
             {/* Desktop Private Client Desk Action Button */}
             <Link
               href="/private-client"
+              prefetch={false}
               className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-950 bg-slate-950 hover:bg-slate-800 text-white text-[10px] font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-xs"
             >
               <span>Private Client</span>
@@ -427,6 +428,7 @@ export function Header() {
                   <div className="pt-2">
                     <Link
                       href={activeCategoryData.href}
+                      prefetch={false}
                       onClick={() => setActiveDesktopCategory(null)}
                       className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-slate-900 font-bold hover:text-slate-600 transition-colors"
                     >
@@ -456,6 +458,7 @@ export function Header() {
                           <li key={itemIdx}>
                             <Link
                               href={subItem.href}
+                              prefetch={false}
                               onClick={() => setActiveDesktopCategory(null)}
                               className="group block p-2 rounded-xs hover:bg-slate-50 transition-colors"
                             >
@@ -517,6 +520,7 @@ export function Header() {
             <div className="grid grid-cols-2 gap-3">
               <Link
                 href="/buy"
+                prefetch={false}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-3 bg-slate-950 text-white text-center rounded-xs shadow-xs hover:bg-slate-800 transition-colors"
               >
@@ -525,6 +529,7 @@ export function Header() {
               </Link>
               <Link
                 href="/rent"
+                prefetch={false}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-3 bg-slate-50 border border-slate-200 text-slate-900 text-center rounded-xs hover:bg-slate-100 transition-colors"
               >
@@ -542,6 +547,7 @@ export function Header() {
                     <div className="flex items-center justify-between">
                       <Link
                         href={cat.href}
+                        prefetch={false}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="py-1 text-sm font-mono font-semibold text-slate-900 hover:text-slate-600 uppercase tracking-wider"
                       >
@@ -577,6 +583,7 @@ export function Header() {
                                 <Link
                                   key={subIdx}
                                   href={sub.href}
+                                  prefetch={false}
                                   onClick={() => setIsMobileMenuOpen(false)}
                                   className="flex items-center justify-between py-1.5 text-xs font-mono text-slate-700 hover:text-slate-950"
                                 >
@@ -604,6 +611,7 @@ export function Header() {
             <div className="pt-2 space-y-2.5">
               <Link
                 href="/private-client"
+                prefetch={false}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full py-3.5 bg-slate-950 text-white text-center text-xs font-mono uppercase tracking-[0.14em] font-semibold flex items-center justify-center gap-2 shadow-sm"
               >

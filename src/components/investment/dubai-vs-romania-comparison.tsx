@@ -4,47 +4,7 @@ import * as React from 'react'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { Scale } from 'lucide-react'
 
-interface RoTaxCalculationResult {
-  roTaxOnRentEur: number
-  roIncomeTaxEur: number
-  roCassEur: number
-  roCassBracketInfo: string
-}
-
-function roCalculateRentalTax(grossEur: number, eurToRon: number): RoTaxCalculationResult {
-  const grossRon = grossEur * eurToRon
-  const taxableBaseRon = grossRon * 0.8
-  const incomeTaxRon = taxableBaseRon * 0.1
-
-  const MIN_WAGE_RON = 3700 // HG 598/2024 statutory minimum gross wage
-  const threshold6 = 6 * MIN_WAGE_RON // 22,200 RON
-  const threshold12 = 12 * MIN_WAGE_RON // 44,400 RON
-  const threshold24 = 24 * MIN_WAGE_RON // 88,800 RON
-
-  let cassRon = 0
-  let cassBracketInfo = 'Below 6 min wages (0 CASS)'
-
-  if (taxableBaseRon >= threshold24) {
-    cassRon = threshold24 * 0.1 // 8,880 RON max cap
-    cassBracketInfo = 'Capped at 24 min wages (8,880 RON / yr)'
-  } else if (taxableBaseRon >= threshold12) {
-    cassRon = threshold12 * 0.1 // 4,440 RON
-    cassBracketInfo = '12 min wages bracket (4,440 RON / yr)'
-  } else if (taxableBaseRon >= threshold6) {
-    cassRon = threshold6 * 0.1 // 2,220 RON
-    cassBracketInfo = '6 min wages bracket (2,220 RON / yr)'
-  }
-
-  const incomeTaxEur = incomeTaxRon / eurToRon
-  const cassEur = cassRon / eurToRon
-
-  return {
-    roTaxOnRentEur: incomeTaxEur + cassEur,
-    roIncomeTaxEur: incomeTaxEur,
-    roCassEur: cassEur,
-    roCassBracketInfo: cassBracketInfo,
-  }
-}
+import { calculateRomanianRentalTax } from '@/lib/calculators/investment'
 
 export function DubaiVsRomaniaComparison() {
   // Dubai Inputs (in AED)
@@ -58,6 +18,8 @@ export function DubaiVsRomaniaComparison() {
   const [roMonthlyRentEur, setRoMonthlyRentEur] = React.useState<number>(1400)
   const [roMaintenanceMonthlyEur, setRoMaintenanceMonthlyEur] = React.useState<number>(100)
   const [roVacancyPct, setRoVacancyPct] = React.useState<number>(8)
+
+  const [fiscalYear, setFiscalYear] = React.useState<number>(2026)
 
   // Benchmark Conversion Rates
   const EUR_TO_RON = 4.9765
@@ -91,12 +53,9 @@ export function DubaiVsRomaniaComparison() {
   const roOperatingExpensesEur = roMaintenanceMonthlyEur * 12
   const roNetBeforeTaxEur = Math.max(0, roEffectiveRentEur - roOperatingExpensesEur)
 
-  // Romanian Tax Law: Law 227/2015 amended by OUG 115/2023 & Law 296/2023
-  const { roTaxOnRentEur, roIncomeTaxEur, roCassEur, roCassBracketInfo } = roCalculateRentalTax(
-    roEffectiveRentEur,
-    EUR_TO_RON
-  )
-  const roNetCashFlowEur = roNetBeforeTaxEur - roTaxOnRentEur
+  // Romanian Tax Law: Law 227/2015 amended by OUG 115/2023; FY 2026 baseline HG nr. 1506/2024
+  const roTaxResult = calculateRomanianRentalTax(roEffectiveRentEur, EUR_TO_RON, fiscalYear)
+  const roNetCashFlowEur = roNetBeforeTaxEur - roTaxResult.totalTaxEur
 
   const roGrossYield = (roAnnualGrossRentEur / roPriceEur) * 100
   const roNetYieldOnOutlay = (roNetCashFlowEur / roTotalCashOutlayEur) * 100
@@ -303,6 +262,38 @@ export function DubaiVsRomaniaComparison() {
                 />
               </div>
             </div>
+            <div className="pt-2 border-t border-black/10">
+              <div className="flex items-center justify-between text-xs mb-1.5">
+                <span className="font-semibold text-[#1d1d1f]">An Fiscal de Referință (ANAF)</span>
+                <span className="text-[10px] font-mono text-blue-900 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                  Salariu Minim: {roTaxResult.minWageMonthlyRon.toLocaleString()} RON/lună
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <button
+                  type="button"
+                  onClick={() => setFiscalYear(2026)}
+                  className={`py-1.5 px-3 rounded-lg border font-mono text-center cursor-pointer transition-colors ${
+                    fiscalYear === 2026
+                      ? 'bg-blue-950 text-white border-blue-950 font-bold shadow-xs'
+                      : 'bg-white text-[#6e6e73] border-black/10 hover:text-[#1d1d1f]'
+                  }`}
+                >
+                  2026 (4.050 RON · HG 1506/2024)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFiscalYear(2024)}
+                  className={`py-1.5 px-3 rounded-lg border font-mono text-center cursor-pointer transition-colors ${
+                    fiscalYear === 2024
+                      ? 'bg-blue-950 text-white border-blue-950 font-bold shadow-xs'
+                      : 'bg-white text-[#6e6e73] border-black/10 hover:text-[#1d1d1f]'
+                  }`}
+                >
+                  2024 Arhivă (3.700 RON · HG 598)
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Romania Results Card */}
@@ -326,12 +317,21 @@ export function DubaiVsRomaniaComparison() {
                 <span className="text-[#1d1d1f]">{roGrossYield.toFixed(2)}%</span>
               </div>
               <div className="flex justify-between text-[#6e6e73]">
-                <span>Fiscal Code Rental Tax + CASS:</span>
-                <span className="text-amber-700 font-bold">€{Math.round(roTaxOnRentEur).toLocaleString()} / yr</span>
+                <span>Total Fiscal Code Tax (Impozit + CASS):</span>
+                <span className="text-amber-700 font-bold">€{Math.round(roTaxResult.totalTaxEur).toLocaleString()} / yr ({roTaxResult.effectiveTaxRatePct.toFixed(1)}% efectiv)</span>
               </div>
-              <div className="text-[10px] text-amber-800 font-mono flex justify-between">
-                <span>Tax Breakdown:</span>
-                <span>€{Math.round(roIncomeTaxEur).toLocaleString()} (10% on 80% base) + €{Math.round(roCassEur).toLocaleString()} CASS ({roCassBracketInfo})</span>
+              <div className="p-3 bg-amber-50/70 border border-amber-200 rounded-xl space-y-1.5 text-[11px] font-mono text-amber-950">
+                <div className="flex justify-between font-bold">
+                  <span>Impozit pe venit (10% pe 80% din brut):</span>
+                  <span>€{Math.round(roTaxResult.incomeTaxEur).toLocaleString()} ({Math.round(roTaxResult.incomeTaxRon).toLocaleString()} RON)</span>
+                </div>
+                <div className="flex justify-between font-bold">
+                  <span>Contribuție Sănătate (CASS):</span>
+                  <span>€{Math.round(roTaxResult.cassDueEur).toLocaleString()} ({Math.round(roTaxResult.cassDueRon).toLocaleString()} RON)</span>
+                </div>
+                <div className="text-[10px] text-amber-800 pt-1 border-t border-amber-200/60 leading-tight">
+                  Încadrare: {roTaxResult.cassBracketInfo} (Baza netă: {Math.round(roTaxResult.taxableBaseRon).toLocaleString()} RON).
+                </div>
               </div>
               <div className="flex justify-between text-[#6e6e73]">
                 <span>Capital Gains Tax at Exit:</span>
@@ -344,11 +344,17 @@ export function DubaiVsRomaniaComparison() {
             </div>
           </div>
 
-          <div className="text-[11px] text-[#6e6e73] space-y-1">
-            <div className="font-semibold text-[#1d1d1f]">Key Romania Structural Considerations:</div>
-            <p>• Rental income subject to Romanian Fiscal Code (Law 227/2015): 10% on 80% net base + CASS health contribution.</p>
-            <p>• Property sales trigger 1% or 3% notary transfer tax withheld at deed signing (Law 370/2022).</p>
-            <p>• Properties traded in EUR but local rental contracts often indexed to RON inflation.</p>
+          <div className="text-[11px] text-[#6e6e73] space-y-1.5 bg-slate-50 p-4 rounded-xl border border-slate-200">
+            <div className="font-semibold text-[#1d1d1f]">Ipoteze Fiscale & Proveniență ANAF:</div>
+            <p className="text-[10px] leading-relaxed">
+              • <strong>Baza CASS:</strong> Art. 170 alin. (2) lit. d) Cod Fiscal — plafoanele de 6 ({roTaxResult.cassThreshold6Ron.toLocaleString()} RON), 12 ({roTaxResult.cassThreshold12Ron.toLocaleString()} RON) și 24 ({roTaxResult.cassThreshold24Ron.toLocaleString()} RON) salarii minime se raportează la venitul net (80% din brut).
+            </p>
+            <p className="text-[10px] leading-relaxed">
+              • <strong>Regulă de cumul:</strong> {roTaxResult.incomeAggregationAssumption}
+            </p>
+            <div className="text-[9px] font-mono text-slate-400 pt-1">
+              Surse: {roTaxResult.statutoryCitations.minWage}; {roTaxResult.statutoryCitations.incomeTax}. Verificare: {roTaxResult.sourceVerificationDate}.
+            </div>
           </div>
         </div>
 
