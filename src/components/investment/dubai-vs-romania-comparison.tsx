@@ -4,6 +4,48 @@ import * as React from 'react'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { Scale } from 'lucide-react'
 
+interface RoTaxCalculationResult {
+  roTaxOnRentEur: number
+  roIncomeTaxEur: number
+  roCassEur: number
+  roCassBracketInfo: string
+}
+
+function roCalculateRentalTax(grossEur: number, eurToRon: number): RoTaxCalculationResult {
+  const grossRon = grossEur * eurToRon
+  const taxableBaseRon = grossRon * 0.8
+  const incomeTaxRon = taxableBaseRon * 0.1
+
+  const MIN_WAGE_RON = 3700 // HG 598/2024 statutory minimum gross wage
+  const threshold6 = 6 * MIN_WAGE_RON // 22,200 RON
+  const threshold12 = 12 * MIN_WAGE_RON // 44,400 RON
+  const threshold24 = 24 * MIN_WAGE_RON // 88,800 RON
+
+  let cassRon = 0
+  let cassBracketInfo = 'Below 6 min wages (0 CASS)'
+
+  if (taxableBaseRon >= threshold24) {
+    cassRon = threshold24 * 0.1 // 8,880 RON max cap
+    cassBracketInfo = 'Capped at 24 min wages (8,880 RON / yr)'
+  } else if (taxableBaseRon >= threshold12) {
+    cassRon = threshold12 * 0.1 // 4,440 RON
+    cassBracketInfo = '12 min wages bracket (4,440 RON / yr)'
+  } else if (taxableBaseRon >= threshold6) {
+    cassRon = threshold6 * 0.1 // 2,220 RON
+    cassBracketInfo = '6 min wages bracket (2,220 RON / yr)'
+  }
+
+  const incomeTaxEur = incomeTaxRon / eurToRon
+  const cassEur = cassRon / eurToRon
+
+  return {
+    roTaxOnRentEur: incomeTaxEur + cassEur,
+    roIncomeTaxEur: incomeTaxEur,
+    roCassEur: cassEur,
+    roCassBracketInfo: cassBracketInfo,
+  }
+}
+
 export function DubaiVsRomaniaComparison() {
   // Dubai Inputs (in AED)
   const [dubaiPriceAed, setDubaiPriceAed] = React.useState<number>(3500000)
@@ -49,21 +91,15 @@ export function DubaiVsRomaniaComparison() {
   const roOperatingExpensesEur = roMaintenanceMonthlyEur * 12
   const roNetBeforeTaxEur = Math.max(0, roEffectiveRentEur - roOperatingExpensesEur)
 
-  // Romanian Tax Law: 10% tax on net rent with 20% flat expense deduction = 8% effective rate on gross rent
-  const roTaxOnRentEur = roGrossRentTax(roEffectiveRentEur)
+  // Romanian Tax Law: Law 227/2015 amended by OUG 115/2023 & Law 296/2023
+  const { roTaxOnRentEur, roIncomeTaxEur, roCassEur, roCassBracketInfo } = roCalculateRentalTax(
+    roEffectiveRentEur,
+    EUR_TO_RON
+  )
   const roNetCashFlowEur = roNetBeforeTaxEur - roTaxOnRentEur
 
   const roGrossYield = (roAnnualGrossRentEur / roPriceEur) * 100
   const roNetYieldOnOutlay = (roNetCashFlowEur / roTotalCashOutlayEur) * 100
-
-  function roGrossRentTax(gross: number): number {
-    // 20% flat deduction, 10% tax on the remaining 80% = 8% effective
-    const taxableBase = gross * 0.8
-    const incomeTax = taxableBase * 0.1
-    // Health CASS contribution approx. ~€400-800 if over 6 minimum wages
-    const cassContribution = gross > 8000 ? 550 : 0
-    return incomeTax + cassContribution
-  }
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden shadow-sm">
@@ -291,7 +327,11 @@ export function DubaiVsRomaniaComparison() {
               </div>
               <div className="flex justify-between text-[#6e6e73]">
                 <span>Fiscal Code Rental Tax + CASS:</span>
-                <span className="text-amber-700 font-bold">€{Math.round(roTaxOnRentEur).toLocaleString()} / yr (~8-10%)</span>
+                <span className="text-amber-700 font-bold">€{Math.round(roTaxOnRentEur).toLocaleString()} / yr</span>
+              </div>
+              <div className="text-[10px] text-amber-800 font-mono flex justify-between">
+                <span>Tax Breakdown:</span>
+                <span>€{Math.round(roIncomeTaxEur).toLocaleString()} (10% on 80% base) + €{Math.round(roCassEur).toLocaleString()} CASS ({roCassBracketInfo})</span>
               </div>
               <div className="flex justify-between text-[#6e6e73]">
                 <span>Capital Gains Tax at Exit:</span>

@@ -46,10 +46,15 @@ export function MultiCurrencyConverter() {
             </h2>
           </div>
           <p className="text-xs text-[#6e6e73] mt-1">
-            Converts capital between AED, USD, EUR, and RON using the official Central Bank of the UAE fixed dollar peg and BNR reference rates.
+            Official statutory benchmark grid: Central Bank of the UAE sovereign dollar peg (1 USD = 3.6725 AED) &amp; BNR official fixing (1 EUR = 4.9765 RON). Reference Period: Q4 2026.
           </p>
         </div>
-        <SourceBadge status="VERIFIED" sourceName="CBUAE Statutory Peg & BNR Reference" />
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-mono px-2.5 py-1 rounded bg-slate-100 text-slate-700 border border-slate-200">
+            Ref: Q4 2026 Grid
+          </span>
+          <SourceBadge status="VERIFIED" sourceName="CBUAE Statutory Peg & BNR Reference" />
+        </div>
       </div>
 
       <div className="p-6 sm:p-8 space-y-8">

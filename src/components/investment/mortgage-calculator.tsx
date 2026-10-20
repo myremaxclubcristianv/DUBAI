@@ -10,7 +10,11 @@ export function MortgageCalculator() {
   const [downPaymentPct, setDownPaymentPct] = React.useState<number>(20)
   const [interestRate, setInterestRate] = React.useState<number>(4.45)
   const [tenureYears, setTenureYears] = React.useState<number>(25)
-  const [buyerType, setBuyerType] = React.useState<'EXPAT_FIRST_HOME' | 'EXPAT_SUBSEQUENT' | 'UAE_NATIONAL' | 'NON_RESIDENT'>('EXPAT_FIRST_HOME')
+  const [buyerType, setBuyerType] = React.useState<
+    'EXPAT_FIRST_HOME' | 'EXPAT_SUBSEQUENT' | 'UAE_NATIONAL' | 'UAE_NATIONAL_SUBSEQUENT' | 'OFF_PLAN' | 'NON_RESIDENT'
+  >('EXPAT_FIRST_HOME')
+
+  const isPriceOver5M = purchasePrice > 5000000
 
   const result = React.useMemo(() => {
     return calculateMortgage({
@@ -19,8 +23,19 @@ export function MortgageCalculator() {
       annualInterestRatePct: interestRate,
       tenureYears,
       buyerType,
+      isOffPlan: buyerType === 'OFF_PLAN',
     })
   }, [purchasePrice, downPaymentPct, interestRate, tenureYears, buyerType])
+
+  const handleBuyerTypeChange = (val: typeof buyerType) => {
+    setBuyerType(val)
+    if (val === 'OFF_PLAN') setDownPaymentPct(50)
+    else if (val === 'NON_RESIDENT') setDownPaymentPct(50)
+    else if (val === 'EXPAT_SUBSEQUENT') setDownPaymentPct(40)
+    else if (val === 'UAE_NATIONAL_SUBSEQUENT') setDownPaymentPct(35)
+    else if (val === 'UAE_NATIONAL') setDownPaymentPct(purchasePrice > 5000000 ? 25 : 15)
+    else setDownPaymentPct(purchasePrice > 5000000 ? 30 : 20)
+  }
 
   return (
     <div className="bg-white rounded-3xl border border-black/10 overflow-hidden shadow-sm">
@@ -43,29 +58,32 @@ export function MortgageCalculator() {
           <div className="space-y-5">
             <div>
               <label className="block text-xs font-semibold text-[#1d1d1f] mb-1.5">
-                Buyer Legal Classification (UAE Central Bank LTV Ceiling)
+                Buyer Legal Classification &amp; Property Status (CBUAE LTV Framework)
               </label>
               <select
                 value={buyerType}
-                onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                  const val = e.target.value as 'EXPAT_FIRST_HOME' | 'EXPAT_SUBSEQUENT' | 'UAE_NATIONAL' | 'NON_RESIDENT'
-                  setBuyerType(val)
-                  if (val === 'NON_RESIDENT') setDownPaymentPct(40)
-                  else if (val === 'EXPAT_SUBSEQUENT') setDownPaymentPct(35)
-                  else setDownPaymentPct(20)
-                }}
+                onChange={(e) => handleBuyerTypeChange(e.target.value as typeof buyerType)}
                 className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-medium cursor-pointer"
               >
-                <option value="EXPAT_FIRST_HOME">Expatriate Resident (First Home — Max 80% LTV)</option>
-                <option value="UAE_NATIONAL">UAE National (First Home — Max 85% LTV)</option>
-                <option value="EXPAT_SUBSEQUENT">Expatriate / National (Second/Investment Property — Max 60-65% LTV)</option>
-                <option value="NON_RESIDENT">Non-Resident International Buyer (Max 50-60% LTV)</option>
+                <option value="EXPAT_FIRST_HOME">Expatriate Resident — First Home (Max 80% LTV ≤ 5M / 70% &gt; 5M)</option>
+                <option value="EXPAT_SUBSEQUENT">Expatriate Resident — Subsequent / Investment Property (Max 60% LTV)</option>
+                <option value="UAE_NATIONAL">UAE National — First Home (Max 85% LTV ≤ 5M / 75% &gt; 5M)</option>
+                <option value="UAE_NATIONAL_SUBSEQUENT">UAE National — Subsequent / Investment Property (Max 65% LTV)</option>
+                <option value="OFF_PLAN">Off-Plan Under-Construction Property (Max 50% LTV Statutory Cap)</option>
+                <option value="NON_RESIDENT">Non-Resident International Buyer (Max 50%–60% LTV Discretionary)</option>
               </select>
             </div>
 
             <div>
               <div className="flex justify-between text-xs mb-2">
-                <label className="font-semibold text-[#1d1d1f]">Property Purchase Price</label>
+                <div className="flex items-center gap-2">
+                  <label className="font-semibold text-[#1d1d1f]">Property Purchase Price</label>
+                  {isPriceOver5M && (
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">
+                      &gt; AED 5M Threshold
+                    </span>
+                  )}
+                </div>
                 <span className="font-mono text-accent font-bold">AED {purchasePrice.toLocaleString()}</span>
               </div>
               <input
@@ -74,7 +92,15 @@ export function MortgageCalculator() {
                 max={30000000}
                 step={50000}
                 value={purchasePrice}
-                onChange={(e) => setPurchasePrice(Number(e.target.value))}
+                onChange={(e) => {
+                  const newPrice = Number(e.target.value)
+                  setPurchasePrice(newPrice)
+                  // If crossed 5M boundary and was at min down payment, auto-suggest adjustment
+                  if (newPrice > 5000000 && purchasePrice <= 5000000) {
+                    if (buyerType === 'EXPAT_FIRST_HOME' && downPaymentPct < 30) setDownPaymentPct(30)
+                    if (buyerType === 'UAE_NATIONAL' && downPaymentPct < 25) setDownPaymentPct(25)
+                  }
+                }}
                 className="w-full accent-[#1d1d1f] bg-black/10 h-1.5 rounded-lg cursor-pointer appearance-none"
               />
             </div>
@@ -86,11 +112,13 @@ export function MortgageCalculator() {
                 </label>
                 <input
                   type="number"
-                  min={15}
+                  min={10}
                   max={90}
                   value={downPaymentPct}
                   onChange={(e) => setDownPaymentPct(Number(e.target.value))}
-                  className="w-full px-3.5 py-2.5 bg-white border border-black/10 rounded-xl text-xs text-[#1d1d1f] focus:outline-none focus:border-accent transition-colors font-mono"
+                  className={`w-full px-3.5 py-2.5 bg-white border rounded-xl text-xs text-[#1d1d1f] focus:outline-none transition-colors font-mono ${
+                    !result.is_ltv_compliant ? 'border-amber-500 bg-amber-50/30' : 'border-black/10 focus:border-accent'
+                  }`}
                 />
               </div>
 
@@ -123,14 +151,32 @@ export function MortgageCalculator() {
                 />
               </div>
             </div>
+
+            {!result.is_ltv_compliant && (
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-amber-900">
+                <span>
+                  Down payment is below the CBUAE statutory minimum of <strong>{result.min_down_payment_pct}%</strong> (Max {result.max_ltv_pct}% LTV).
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setDownPaymentPct(result.min_down_payment_pct)}
+                  className="px-2.5 py-1 bg-amber-900 text-white rounded-lg text-[11px] font-mono font-bold whitespace-nowrap cursor-pointer hover:bg-amber-800"
+                >
+                  Set to {result.min_down_payment_pct}%
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="p-4 bg-white rounded-2xl border border-black/5 text-xs text-[#6e6e73] space-y-1.5">
             <div className="flex items-center gap-1.5 font-semibold text-[#1d1d1f]">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-              <span>Central Bank Regulatory Ceiling:</span>
+              <span>Central Bank Regulatory Framework:</span>
             </div>
             <p className="text-[11px] leading-relaxed">{result.ltv_ceiling_info}</p>
+            <div className="text-[10px] font-mono text-slate-400 pt-1">
+              Statutory Ref: {result.statutory_citation}
+            </div>
           </div>
         </div>
 

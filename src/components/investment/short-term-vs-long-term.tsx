@@ -14,13 +14,14 @@ export function ShortTermVsLongTermCalculator() {
   const [longTermMaintenancePct, setLongTermMaintenancePct] = React.useState<number>(3)
 
   // Short-Term Assumptions
+  // Short-Term Assumptions
   const [averageDailyRate, setAverageDailyRate] = React.useState<number>(950)
   const [occupancyRatePct, setOccupancyRatePct] = React.useState<number>(75)
-  const operatorManagementPct = 18
-  const dtcmFeeAnnual = 4500 // Permit + Tourism Dirham portion
-  const utilitiesWifiAnnual = 18000 // DEWA, Chiller, High-speed Internet
-  const turnoverCleaningAnnual = 12000 // Guest turnover, linens, amenities
-  const furnishingAmortizationAnnual = 18000 // AED 54k over 3 yrs
+  const [operatorManagementPct, setOperatorManagementPct] = React.useState<number>(18)
+  const [dtcmFeeAnnual, setDtcmFeeAnnual] = React.useState<number>(4500) // DTCM Permit + Tourism Dirham (Res 49/2014 & 2/2014)
+  const [utilitiesWifiAnnual, setUtilitiesWifiAnnual] = React.useState<number>(18000) // Landlord-borne DEWA, Chiller & WiFi
+  const [turnoverCleaningAnnual, setTurnoverCleaningAnnual] = React.useState<number>(12000) // Turnover & linen servicing
+  const [furnishingAmortizationAnnual, setFurnishingAmortizationAnnual] = React.useState<number>(18000) // Fitout amortization
 
   // Long-Term Math
   const ltGross = longTermAnnualRent
@@ -183,23 +184,72 @@ export function ShortTermVsLongTermCalculator() {
                 />
               </div>
 
-              <div className="space-y-2 text-[11px] text-slate-300 pt-2 border-t border-white/10">
-                <div className="flex justify-between">
-                  <span>Operator Mgmt:</span>
-                  <span className="font-mono text-white font-semibold">{operatorManagementPct}% of gross</span>
+              <div className="space-y-3 text-[11px] text-slate-300 pt-3 border-t border-white/10">
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span>Operator Management Fee:</span>
+                    <span className="font-mono text-emerald-400 font-bold">{operatorManagementPct}% of gross</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={10}
+                    max={30}
+                    step={1}
+                    value={operatorManagementPct}
+                    onChange={(e) => setOperatorManagementPct(Number(e.target.value))}
+                    className="w-full accent-emerald-400 bg-white/20 h-1 rounded cursor-pointer"
+                  />
                 </div>
-                <div className="flex justify-between">
-                  <span>DEWA, Chiller & WiFi:</span>
-                  <span className="font-mono text-white font-semibold">AED {utilitiesWifiAnnual.toLocaleString()}</span>
+
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <div>
+                    <label className="text-slate-400 block text-[10px]">DEWA, Chiller &amp; WiFi (AED)</label>
+                    <input
+                      type="number"
+                      step={500}
+                      value={utilitiesWifiAnnual}
+                      onChange={(e) => setUtilitiesWifiAnnual(Number(e.target.value))}
+                      className="w-full mt-1 p-1 bg-white/10 border border-white/20 rounded font-mono text-xs text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-slate-400 block text-[10px]">DTCM Permit &amp; Tourism (AED)</label>
+                    <input
+                      type="number"
+                      step={250}
+                      value={dtcmFeeAnnual}
+                      onChange={(e) => setDtcmFeeAnnual(Number(e.target.value))}
+                      className="w-full mt-1 p-1 bg-white/10 border border-white/20 rounded font-mono text-xs text-white"
+                    />
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span>DTCM Permit & Tourism fee:</span>
-                  <span className="font-mono text-white font-semibold">AED {dtcmFeeAnnual.toLocaleString()}</span>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <label className="text-slate-400 block text-[10px]">Turnover Cleaning (AED)</label>
+                    <input
+                      type="number"
+                      step={500}
+                      value={turnoverCleaningAnnual}
+                      onChange={(e) => setTurnoverCleaningAnnual(Number(e.target.value))}
+                      className="w-full mt-1 p-1 bg-white/10 border border-white/20 rounded font-mono text-xs text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-slate-400 block text-[10px]">Furnishing Amort. (AED)</label>
+                    <input
+                      type="number"
+                      step={500}
+                      value={furnishingAmortizationAnnual}
+                      onChange={(e) => setFurnishingAmortizationAnnual(Number(e.target.value))}
+                      className="w-full mt-1 p-1 bg-white/10 border border-white/20 rounded font-mono text-xs text-white"
+                    />
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span>Furnishing Amortization:</span>
-                  <span className="font-mono text-white font-semibold">AED {furnishingAmortizationAnnual.toLocaleString()}</span>
-                </div>
+
+                <p className="text-[10px] text-slate-400 italic pt-1">
+                  *Statutory Citation: DTCM Executive Council Resolution No. 49 of 2014 &amp; Resolution No. 2 of 2014 (Holiday Homes licensing &amp; Tourism Dirham tariffs).
+                </p>
               </div>
             </div>
 

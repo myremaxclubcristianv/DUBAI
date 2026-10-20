@@ -1,11 +1,9 @@
-'use client'
-
 import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
-import { useClient } from '@/lib/context/client-context'
-import { ContactModal } from '@/components/layout/contact-modal'
+import { HomeConsultationCta } from '@/components/home/home-consultation-cta'
+import { FeaturedPriceTag } from '@/components/home/featured-price-tag'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -13,9 +11,6 @@ import {
 } from 'lucide-react'
 
 export default function Home() {
-  const { formatCurrency } = useClient()
-  const [isContactModalOpen, setIsContactModalOpen] = React.useState(false)
-
   // Featured Palm Jumeirah property from verified registry
   const featuredProperty =
     VERIFIED_PROPERTIES.find((p) => p.area_id === 'area-palm-jumeirah') ||
@@ -138,17 +133,23 @@ export default function Home() {
               media="(max-width: 640px)"
               type="image/webp"
               srcSet="/images/hero-burj-mobile.webp"
+              width={640}
+              height={427}
             />
             <source
               media="(min-width: 641px)"
               type="image/webp"
               srcSet="/images/hero-burj-desktop.webp"
+              width={1440}
+              height={960}
             />
             <img
               src="/images/hero-burj-desktop.webp"
               alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
               fetchPriority="high"
-              decoding="async"
+              decoding="sync"
+              width={1440}
+              height={960}
               className="w-full h-full object-cover object-[center_34%]"
             />
           </picture>
@@ -451,7 +452,7 @@ export default function Home() {
                   ASKING PRICE (SUBJECT TO CONFIRMATION)
                 </span>
                 <div className="font-mono text-3xl font-bold text-slate-950 tabular-nums">
-                  {formatCurrency(featuredProperty.asking_price)}
+                  <FeaturedPriceTag priceAed={featuredProperty.asking_price} />
                 </div>
                 <span className="text-[10px] font-mono text-slate-500 block">
                   Approx. AED {(featuredProperty.asking_price ? Math.round(featuredProperty.asking_price / featuredProperty.internal_area_sqft) : 5828).toLocaleString()} / sq ft
@@ -858,14 +859,7 @@ export default function Home() {
               </p>
 
               <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="px-8 py-4 bg-white hover:bg-slate-100 text-slate-950 text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-xl flex items-center justify-center gap-3 cursor-pointer group"
-                >
-                  <span>REQUEST PRIVATE MANDATE</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
+                <HomeConsultationCta />
               </div>
             </div>
 
@@ -938,13 +932,6 @@ export default function Home() {
 
         </div>
       </section>
-
-      {/* Confidential Intake Modal */}
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-        initialInterest="PRIVATE CLIENT"
-      />
 
     </div>
   )

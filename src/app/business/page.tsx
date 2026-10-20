@@ -399,6 +399,17 @@ export default function BusinessHubPage() {
                   </p>
                 </div>
 
+                {/* Statutory Caveat: Preliminary Guidance Only */}
+                <div className="p-3.5 bg-slate-900 border border-slate-800 text-[11px] text-slate-300 space-y-1">
+                  <div className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[10px]">
+                    <ShieldCheck className="h-3.5 w-3.5" />
+                    <span>Preliminary Regulatory Guidance Only</span>
+                  </div>
+                  <p className="text-[11px] leading-relaxed text-slate-400">
+                    This automated navigator generates preliminary guidance based on current UAE licensing frameworks. It does not constitute a definitive legal determination. Final structure, external ministerial NOCs, and activity combinations must be confirmed directly with the relevant licensing authority (DET or Free Zone) or a qualified corporate structuring counsel.
+                  </p>
+                </div>
+
                 {/* Key Metrics Grid */}
                 <div className="grid grid-cols-2 gap-3 pt-2 text-xs font-mono">
                   <div className="p-3 bg-slate-900 border border-slate-800 space-y-1">
@@ -815,13 +826,13 @@ export default function BusinessHubPage() {
               <div className="p-6 bg-white border border-slate-200 space-y-3 shadow-2xs">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase font-bold text-slate-950">
                   <DollarSign className="h-4 w-4 text-blue-800" />
-                  <span>Quarterly VAT Returns (5%)</span>
+                  <span>VAT Returns &amp; Remittances (5%)</span>
                 </div>
                 <p className="text-xs text-slate-600 font-light leading-relaxed">
-                  Businesses exceeding the mandatory VAT registration threshold of AED 375,000 must file VAT returns and submit tax remittances by the 28th day following the close of their designated tax quarter via the EmaraTax digital portal.
+                  Businesses exceeding the mandatory VAT threshold of AED 375,000 must file returns and pay tax by the 28th day following the close of their assigned tax period via EmaraTax. Tax periods are assigned by the FTA upon registration (standard period is quarterly, with monthly filing assigned to larger businesses or designated sectors under Federal Decree-Law No. 8 of 2017).
                 </p>
                 <div className="pt-2 border-t border-slate-100 text-[10px] font-mono text-slate-400">
-                  Cycle: Quarterly &bull; Authority: Federal Tax Authority (FTA)
+                  Cycle: Assigned by FTA (Quarterly or Monthly) &bull; Authority: Federal Tax Authority (FTA)
                 </div>
               </div>
 

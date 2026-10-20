@@ -1,7 +1,11 @@
 'use client'
 
 import * as React from 'react'
-import { calculateAcquisitionCosts, calculateMortgage } from '@/lib/calculators/investment'
+import {
+  calculateAcquisitionCosts,
+  calculateMortgage,
+  calculateRemainingMortgageBalance,
+} from '@/lib/calculators/investment'
 import { SourceBadge } from '@/components/ui/source-badge'
 import { Calculator, RotateCcw } from 'lucide-react'
 
@@ -46,9 +50,14 @@ export function ScenarioWorkspace() {
   const netAnnualCashFlow = annualNOI - annualDebtService
   const cumulativeCashFlow = netAnnualCashFlow * holdingPeriodYears
 
-  // Exit & ROI
-  const exitProceedsBeforeDebt = exitPrice - (exitPrice * 0.02)
-  const estimatedRemainingLoan = Math.max(0, loanPrincipal * (1 - (holdingPeriodYears / loanTermYears) * 0.65))
+  // Exit & ROI (Brokerage 2% + 5% VAT = 2.1% net)
+  const exitProceedsBeforeDebt = exitPrice - (exitPrice * 0.021)
+  const estimatedRemainingLoan = calculateRemainingMortgageBalance(
+    loanPrincipal,
+    interestRate,
+    loanTermYears,
+    holdingPeriodYears
+  )
   const netExitProceeds = exitProceedsBeforeDebt - estimatedRemainingLoan
   const netProfit = (netExitProceeds - totalEquityRequired) + cumulativeCashFlow
   const simpleROI = totalEquityRequired > 0 ? ((netProfit / totalEquityRequired) * 100).toFixed(1) : '0.0'

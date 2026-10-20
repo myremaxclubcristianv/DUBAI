@@ -373,6 +373,10 @@ export interface MortgageResult {
   total_lifetime_cost: number
   initial_equity_outlay: number // Down payment + total acquisition fees
   ltv_ceiling_info: string
+  max_ltv_pct: number
+  min_down_payment_pct: number
+  is_ltv_compliant: boolean
+  statutory_citation: string
   amortization_schedule_sample: {
     year: number
     principal_paid: number
@@ -393,20 +397,148 @@ export type MortgageBorrowerCategory =
   | 'OFF_PLAN'
   | 'NON_RESIDENT'
 
+export interface CbuaeLtvRule {
+  maxLtvPct: number
+  minDownPaymentPct: number
+  label: string
+  source: string
+  appliesTo: string
+}
+
+export function getCbuaeLtvRule(
+  buyerType: MortgageBorrowerCategory,
+  purchasePrice: number,
+  isOffPlan: boolean = false
+): CbuaeLtvRule {
+  if (isOffPlan || buyerType === 'OFF_PLAN') {
+    return {
+      maxLtvPct: 50,
+      minDownPaymentPct: 50,
+      label: 'Off-Plan Property (All Buyers)',
+      source: 'CBUAE Mortgage Regulations Notice No. 3871/2013 (Article 4 - Off-plan financing cap)',
+      appliesTo: 'Maximum 50% LTV regardless of nationality or first-time purchase status',
+    }
+  }
+
+  const isOver5M = purchasePrice > 5000000
+
+  switch (buyerType) {
+    case 'UAE_NATIONAL':
+    case 'UAE_NATIONAL_FIRST_HOME_LE5M':
+    case 'UAE_NATIONAL_FIRST_HOME_GT5M': {
+      if (isOver5M) {
+        return {
+          maxLtvPct: 75,
+          minDownPaymentPct: 25,
+          label: 'UAE National — First Home (> AED 5M)',
+          source: 'Central Bank of the UAE Mortgage Regulations Notice No. 3871/2013',
+          appliesTo: 'Maximum 75% LTV (Minimum 25% down payment for properties over AED 5 Million)',
+        }
+      }
+      return {
+        maxLtvPct: 85,
+        minDownPaymentPct: 15,
+        label: 'UAE National — First Home (≤ AED 5M)',
+        source: 'Central Bank of the UAE Mortgage Regulations Notice No. 3871/2013',
+        appliesTo: 'Maximum 85% LTV (Minimum 15% down payment for properties up to AED 5 Million)',
+      }
+    }
+    case 'UAE_NATIONAL_SUBSEQUENT':
+      return {
+        maxLtvPct: 65,
+        minDownPaymentPct: 35,
+        label: 'UAE National — Subsequent / Investment Property',
+        source: 'Central Bank of the UAE Mortgage Regulations Notice No. 3871/2013',
+        appliesTo: 'Maximum 65% LTV (Minimum 35% down payment on second and subsequent acquisitions)',
+      }
+    case 'EXPAT_SUBSEQUENT':
+      return {
+        maxLtvPct: 60,
+        minDownPaymentPct: 40,
+        label: 'Expatriate Resident — Subsequent / Investment Property',
+        source: 'Central Bank of the UAE Mortgage Regulations Notice No. 3871/2013',
+        appliesTo: 'Maximum 60% LTV (Minimum 40% down payment on second and subsequent acquisitions)',
+      }
+    case 'NON_RESIDENT':
+      return {
+        maxLtvPct: 50,
+        minDownPaymentPct: 50,
+        label: 'Non-Resident International Buyer',
+        source: 'UAE Commercial Banking Discretionary Guidelines',
+        appliesTo: 'Standard 50% LTV (Subject to foreign income verification; select banks offer up to 60%)',
+      }
+    case 'EXPAT_FIRST_HOME':
+    case 'EXPAT_FIRST_HOME_LE5M':
+    case 'EXPAT_FIRST_HOME_GT5M':
+    default: {
+      if (isOver5M) {
+        return {
+          maxLtvPct: 70,
+          minDownPaymentPct: 30,
+          label: 'Expatriate Resident — First Home (> AED 5M)',
+          source: 'Central Bank of the UAE Mortgage Regulations Notice No. 3871/2013 & Rulebook',
+          appliesTo: 'Maximum 70% LTV (Minimum 30% down payment for properties over AED 5 Million)',
+        }
+      }
+      return {
+        maxLtvPct: 80,
+        minDownPaymentPct: 20,
+        label: 'Expatriate Resident — First Home (≤ AED 5M)',
+        source: 'Central Bank of the UAE Mortgage Regulations Notice No. 3871/2013 & Rulebook',
+        appliesTo: 'Maximum 80% LTV (Minimum 20% down payment for properties up to AED 5 Million)',
+      }
+    }
+  }
+}
+
+/**
+ * Actuarial remaining mortgage balance formula:
+ * B_k = P * ((1+r)^N - (1+r)^k) / ((1+r)^N - 1)
+ * where r = monthlyRate, N = totalMonths, k = holdingMonths
+ */
+export function calculateRemainingMortgageBalance(
+  principal: number,
+  annualInterestRatePct: number,
+  tenureYears: number,
+  holdingYears: number
+): number {
+  if (holdingYears >= tenureYears) return 0
+  if (holdingYears <= 0) return principal
+  if (principal <= 0) return 0
+
+  const monthlyRate = annualInterestRatePct / 100 / 12
+  const totalMonths = tenureYears * 12
+  const holdingMonths = Math.min(totalMonths, Math.round(holdingYears * 12))
+
+  if (monthlyRate === 0) {
+    return Math.round(principal * (1 - holdingMonths / totalMonths))
+  }
+
+  const factorTotal = Math.pow(1 + monthlyRate, totalMonths)
+  const factorHolding = Math.pow(1 + monthlyRate, holdingMonths)
+  const balance = principal * ((factorTotal - factorHolding) / (factorTotal - 1))
+  return Math.max(0, Math.round(balance))
+}
+
 export function calculateMortgage(params: {
   purchasePrice: number
   downPaymentPct: number // e.g. 20%
   annualInterestRatePct: number // e.g. 4.5%
   tenureYears: number // e.g. 25
   buyerType?: MortgageBorrowerCategory
+  isOffPlan?: boolean
 }): MortgageResult {
   const {
     purchasePrice,
     downPaymentPct,
     annualInterestRatePct,
     tenureYears,
-    buyerType = 'EXPAT_FIRST_HOME_LE5M',
+    buyerType = 'EXPAT_FIRST_HOME',
+    isOffPlan = false,
   } = params
+
+  const ltvRule = getCbuaeLtvRule(buyerType, purchasePrice, isOffPlan)
+  const is_ltv_compliant = downPaymentPct >= ltvRule.minDownPaymentPct
 
   const down_payment_aed = purchasePrice * (downPaymentPct / 100)
   const loan_amount = Math.max(0, purchasePrice - down_payment_aed)
@@ -426,28 +558,14 @@ export function calculateMortgage(params: {
     }
   }
 
-  const total_lifetime_payments = monthly_payment_aed * totalMonths
+  const rounded_monthly_payment = Math.round(monthly_payment_aed)
+  const total_lifetime_payments = rounded_monthly_payment * totalMonths
   const total_interest_payable = Math.max(0, total_lifetime_payments - loan_amount)
 
   const acquisition = calculateAcquisitionCosts(purchasePrice, true, 100 - downPaymentPct)
   const initial_equity_outlay = down_payment_aed + acquisition.total_statutory_fees
 
-  let ltv_ceiling_info = 'Expat First Home (≤ AED 5M) LTV ceiling: 80% (Central Bank of the UAE Mortgage Regulations & Rulebook)'
-  if (buyerType === 'UAE_NATIONAL' || buyerType === 'UAE_NATIONAL_FIRST_HOME_LE5M') {
-    ltv_ceiling_info = 'UAE National First Home (≤ AED 5M) LTV ceiling: 85% (Central Bank of the UAE Mortgage Regulations)'
-  } else if (buyerType === 'UAE_NATIONAL_FIRST_HOME_GT5M') {
-    ltv_ceiling_info = 'UAE National First Home (> AED 5M) LTV ceiling: 75% (Central Bank of the UAE Mortgage Regulations)'
-  } else if (buyerType === 'UAE_NATIONAL_SUBSEQUENT') {
-    ltv_ceiling_info = 'UAE National Subsequent/Investment Property LTV ceiling: 65% (Central Bank of the UAE Mortgage Regulations)'
-  } else if (buyerType === 'EXPAT_FIRST_HOME_GT5M') {
-    ltv_ceiling_info = 'Expat First Home (> AED 5M) LTV ceiling: 70% (Central Bank of the UAE Mortgage Regulations & Rulebook)'
-  } else if (buyerType === 'EXPAT_SUBSEQUENT') {
-    ltv_ceiling_info = 'Expat Subsequent/Investment Property LTV ceiling: 60% (Central Bank of the UAE Mortgage Regulations)'
-  } else if (buyerType === 'OFF_PLAN') {
-    ltv_ceiling_info = 'Off-Plan Property LTV ceiling: 50% (Central Bank of the UAE Mortgage Regulations)'
-  } else if (buyerType === 'NON_RESIDENT') {
-    ltv_ceiling_info = 'Non-Resident Mortgages: Lender-specific commercial bank policy (generally 50-60% LTV; confirm with lending institution)'
-  }
+  const ltv_ceiling_info = `${ltvRule.label}: Ceiling ${ltvRule.maxLtvPct}% LTV (Min. ${ltvRule.minDownPaymentPct}% down payment). ${ltvRule.appliesTo}.`
 
   // Calculate annual sample amortization breakdown for first 5 years and year 10, 15, 20, 25
   const amortization_schedule_sample: MortgageResult['amortization_schedule_sample'] = []
@@ -484,6 +602,10 @@ export function calculateMortgage(params: {
     total_lifetime_cost: Math.round(total_lifetime_payments + down_payment_aed),
     initial_equity_outlay: Math.round(initial_equity_outlay),
     ltv_ceiling_info,
+    max_ltv_pct: ltvRule.maxLtvPct,
+    min_down_payment_pct: ltvRule.minDownPaymentPct,
+    is_ltv_compliant,
+    statutory_citation: ltvRule.source,
     amortization_schedule_sample,
   }
 }
