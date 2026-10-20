@@ -103,14 +103,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="preload"
           as="image"
-          href="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=640&q=75"
+          type="image/webp"
+          href="/images/hero-burj-mobile.webp"
           media="(max-width: 640px)"
           fetchPriority="high"
         />
         <link
           rel="preload"
           as="image"
-          href="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1280&q=75"
+          type="image/webp"
+          href="/images/hero-burj-desktop.webp"
           media="(min-width: 641px)"
           fetchPriority="high"
         />

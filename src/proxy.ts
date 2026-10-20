@@ -15,7 +15,7 @@ export function proxy(request: NextRequest) {
     default-src 'self';
     script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data: https://images.unsplash.com;
+    img-src 'self' blob: data: https://images.unsplash.com https://gremutoprvrtujeybpcl.supabase.co;
     font-src 'self' data:;
     connect-src ${connectSrc};
     object-src 'none';

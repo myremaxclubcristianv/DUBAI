@@ -74,102 +74,134 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Navigation & Research Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 sm:gap-10">
-          {/* Column 1: Platform */}
+        {/* STRUCTURED 8-COLUMN INFORMATION ARCHITECTURE */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 sm:gap-6">
+          
+          {/* Column 1: Properties */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Platform
+              Properties
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
-              <li><Link href="/properties" className="text-slate-400 hover:text-white transition-colors">Properties Directory</Link></li>
-              <li><Link href="/developments" className="text-slate-400 hover:text-white transition-colors">Signature Developments</Link></li>
-              <li><Link href="/market" className="text-slate-400 hover:text-white transition-colors">Dubai Market Intelligence</Link></li>
-              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Capital &amp; Underwriting</Link></li>
-              <li><Link href="/residency" className="text-slate-400 hover:text-white transition-colors">Golden Residency Framework</Link></li>
-              <li><Link href="/areas" className="text-slate-400 hover:text-white transition-colors">Dubai Atlas (Districts)</Link></li>
-              <li><Link href="/developers" className="text-slate-400 hover:text-white transition-colors">Developers Registry</Link></li>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/buy" className="text-slate-300 hover:text-white transition-colors font-medium">Buy Dubai</Link></li>
+              <li><Link href="/rent" className="text-slate-300 hover:text-white transition-colors font-medium">Rent Mandates</Link></li>
+              <li><Link href="/properties" className="text-slate-400 hover:text-white transition-colors">All Properties</Link></li>
+              <li><Link href="/projects" className="text-slate-400 hover:text-white transition-colors">Off-Plan Projects</Link></li>
+              <li><Link href="/developments/brabus-island" className="text-slate-400 hover:text-white transition-colors">Brabus Island</Link></li>
             </ul>
           </div>
 
-          {/* Column 2: Governance & Macro */}
+          {/* Column 2: Areas */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Governance
+              Areas &amp; Atlas
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
-              <li><Link href="/legal" className="text-slate-400 hover:text-white transition-colors">Statutory Framework</Link></li>
-              <li><Link href="/government" className="text-slate-400 hover:text-white transition-colors">Official Authorities</Link></li>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/areas" className="text-slate-400 hover:text-white transition-colors">Dubai Atlas</Link></li>
+              <li><Link href="/areas/downtown-dubai" className="text-slate-400 hover:text-white transition-colors">Downtown Dubai</Link></li>
+              <li><Link href="/areas/palm-jumeirah" className="text-slate-400 hover:text-white transition-colors">Palm Jumeirah</Link></li>
+              <li><Link href="/areas/dubai-marina" className="text-slate-400 hover:text-white transition-colors">Dubai Marina</Link></li>
+              <li><Link href="/areas/difc" className="text-slate-400 hover:text-white transition-colors">DIFC Financial</Link></li>
+              <li><Link href="/map" className="text-slate-400 hover:text-white transition-colors">Interactive Map</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Investment */}
+          <div className="space-y-3.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
+              Investment
+            </span>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Capital Underwriting</Link></li>
+              <li><Link href="/investment#calculator" className="text-slate-400 hover:text-white transition-colors">Cost Calculator</Link></li>
+              <li><Link href="/market" className="text-slate-400 hover:text-white transition-colors">Market Intelligence</Link></li>
               <li><Link href="/economy" className="text-slate-400 hover:text-white transition-colors">D33 Economic Agenda</Link></li>
-              <li><Link href="/infrastructure" className="text-slate-400 hover:text-white transition-colors">Sovereign Infrastructure</Link></li>
-              <li><Link href="/regulatory" className="text-slate-400 hover:text-white transition-colors">RERA Compliance</Link></li>
-              <li><Link href="/insurance" className="text-slate-400 hover:text-white transition-colors">Healthcare &amp; Insurance</Link></li>
+              <li><Link href="/infrastructure" className="text-slate-400 hover:text-white transition-colors">Infrastructure</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Private Client */}
+          {/* Column 4: Residency */}
+          <div className="space-y-3.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
+              Residency
+            </span>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/residency" className="text-slate-400 hover:text-white transition-colors">Golden Visa</Link></li>
+              <li><Link href="/residency#eligibility" className="text-slate-400 hover:text-white transition-colors">AED 2M Threshold</Link></li>
+              <li><Link href="/residency#documentation" className="text-slate-400 hover:text-white transition-colors">Documentation</Link></li>
+              <li><Link href="/residency#process" className="text-slate-400 hover:text-white transition-colors">Application Flow</Link></li>
+              <li><Link href="/insurance" className="text-slate-400 hover:text-white transition-colors">Health Insurance</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 5: Developers */}
+          <div className="space-y-3.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
+              Developers
+            </span>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/developers" className="text-slate-400 hover:text-white transition-colors">Developers Registry</Link></li>
+              <li><Link href="/developments" className="text-slate-400 hover:text-white transition-colors">Developments</Link></li>
+              <li><Link href="/developers/emaar-properties" className="text-slate-400 hover:text-white transition-colors">Emaar Properties</Link></li>
+              <li><Link href="/developers/nakheel" className="text-slate-400 hover:text-white transition-colors">Nakheel PJSC</Link></li>
+              <li><Link href="/developers/omniyat" className="text-slate-400 hover:text-white transition-colors">OMNIYAT</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 6: Guides & Legal */}
+          <div className="space-y-3.5">
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
+              Guides &amp; Legal
+            </span>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/buying-guide" className="text-slate-400 hover:text-white transition-colors">Buying Guide</Link></li>
+              <li><Link href="/rent" className="text-slate-400 hover:text-white transition-colors">Renting Guide</Link></li>
+              <li><Link href="/legal" className="text-slate-400 hover:text-white transition-colors">Statutory Law</Link></li>
+              <li><Link href="/regulatory" className="text-slate-400 hover:text-white transition-colors">RERA Compliance</Link></li>
+              <li><Link href="/government" className="text-slate-400 hover:text-white transition-colors">Authorities</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 7: Private Client */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
               Private Client
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
+            <ul className="space-y-2 text-xs font-light">
               <li>
                 <Link href="/private-client" className="text-white hover:text-slate-200 flex items-center gap-1 font-semibold">
-                  Private Mandates <ArrowUpRight className="h-3 w-3" />
+                  Private Desk <ArrowUpRight className="h-3 w-3" />
                 </Link>
               </li>
-              <li><Link href="/client" className="text-slate-400 hover:text-white transition-colors">Client Portfolio</Link></li>
-              <li><Link href="/buying-guide" className="text-slate-400 hover:text-white transition-colors">Conveyancing Flow</Link></li>
+              <li><Link href="/client" className="text-slate-400 hover:text-white transition-colors">Client Workspace</Link></li>
               <li><Link href="/lifestyle" className="text-slate-400 hover:text-white transition-colors">Curated Lifestyle</Link></li>
+              <li><Link href="/lifestyle/yachts" className="text-slate-400 hover:text-white transition-colors">Yacht Charters</Link></li>
               <li><Link href="/network" className="text-slate-400 hover:text-white transition-colors">Advisory Network</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Integrity & Disclaimers */}
+          {/* Column 8: About & Integrity */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Integrity &amp; Legal
+              About &amp; Trust
             </span>
-            <ul className="space-y-2.5 text-xs font-light">
-              <li><Link href="/sources" className="text-slate-400 hover:text-white transition-colors">Sources &amp; Provenance</Link></li>
-              <li><Link href="/methodology" className="text-slate-400 hover:text-white transition-colors">Underwriting Methodology</Link></li>
+            <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/sources" className="text-slate-400 hover:text-white transition-colors">Sources &amp; Data</Link></li>
+              <li><Link href="/methodology" className="text-slate-400 hover:text-white transition-colors">Methodology</Link></li>
               <li>
                 <Link href="/investment-disclaimer" className="text-amber-300 hover:text-white font-medium flex items-center gap-1 transition-colors">
-                  Investment Risk Disclaimer <ArrowUpRight className="h-3 w-3 opacity-60" />
+                  Risk Disclaimer <ArrowUpRight className="h-3 w-3 opacity-60" />
                 </Link>
               </li>
               <li><Link href="/terms" className="text-slate-400 hover:text-white transition-colors">Terms of Platform</Link></li>
-              <li><Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">Data Privacy</Link></li>
-              <li><Link href="/accessibility" className="text-slate-400 hover:text-white transition-colors">Accessibility Statement</Link></li>
+              <li><Link href="/privacy" className="text-slate-400 hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/accessibility" className="text-slate-400 hover:text-white transition-colors">Accessibility</Link></li>
             </ul>
           </div>
 
-          {/* Column 5: Ecosystem Grouping */}
-          <div className="col-span-2 sm:col-span-1 space-y-3.5">
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Ecosystem
-            </span>
-            <div className="space-y-2 text-xs font-light">
-              <a href="https://cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
-                Cristian Văduva <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </a>
-              <a href="https://executive.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
-                Executive Advisory <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </a>
-              <a href="https://aixluxury.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
-                AiXLuxury <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </a>
-              <a href="https://credite.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
-                CV Finance <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </a>
-              <a href="https://os.cristianvaduva.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
-                OS Platform <ArrowUpRight className="h-3 w-3 opacity-50" />
-              </a>
-            </div>
-          </div>
         </div>
 
-        {/* Detailed Ecosystem Directory Strip (All 11 Destinations) */}
+        {/* Detailed Ecosystem Directory Strip (All 11 Verified Destinations) */}
         <div className="pt-8 border-t border-slate-800/80 space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 font-bold">

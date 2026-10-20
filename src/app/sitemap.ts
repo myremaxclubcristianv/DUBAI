@@ -9,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
     '/properties',
+    '/buy',
+    '/rent',
     '/developments',
     '/developments/brabus-island',
     '/projects',

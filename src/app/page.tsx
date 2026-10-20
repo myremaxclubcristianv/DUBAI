@@ -136,14 +136,16 @@ export default function Home() {
           <picture className="w-full h-full block">
             <source
               media="(max-width: 640px)"
-              srcSet="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=640&q=75"
+              type="image/webp"
+              srcSet="/images/hero-burj-mobile.webp"
             />
             <source
-              media="(max-width: 1024px)"
-              srcSet="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1024&q=75"
+              media="(min-width: 641px)"
+              type="image/webp"
+              srcSet="/images/hero-burj-desktop.webp"
             />
             <img
-              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1280&q=75"
+              src="/images/hero-burj-desktop.webp"
               alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
               fetchPriority="high"
               decoding="async"
@@ -481,10 +483,16 @@ export default function Home() {
                   <picture className="w-full h-full block">
                     <source
                       media="(max-width: 640px)"
-                      srcSet="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=500&q=70"
+                      type="image/webp"
+                      srcSet="/images/palm-jumeirah-mobile.webp"
+                    />
+                    <source
+                      media="(min-width: 641px)"
+                      type="image/webp"
+                      srcSet="/images/palm-jumeirah-desktop.webp"
                     />
                     <img
-                      src="https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1000&q=75"
+                      src="/images/palm-jumeirah-desktop.webp"
                       alt="Palm Jumeirah aerial archipelago and waterfront architecture (illustrative area photography)"
                       loading="lazy"
                       decoding="async"

@@ -287,7 +287,7 @@ export default function PropertiesPage() {
                         ASKING VALUATION
                       </span>
                       <span className="text-xl sm:text-2xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                        {formatCurrency(price)}
+                        {price > 0 ? formatCurrency(price) : 'Price on Request'}
                       </span>
                     </div>
 

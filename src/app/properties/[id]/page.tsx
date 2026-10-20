@@ -164,13 +164,15 @@ export default function PropertyDetailPage() {
             {/* Price Box */}
             <div className="text-left lg:text-right font-mono space-y-1 p-5 bg-slate-50 border border-slate-200 shadow-2xs shrink-0">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider block font-semibold">
-                Asking Price — Subject to Confirmation
+                {price > 0 ? 'Asking Price — Subject to Confirmation' : 'Pricing Status'}
               </span>
               <div className="text-2xl sm:text-4xl font-light text-slate-950 tabular-nums font-bold">
-                {formatCurrency(price)}
+                {price > 0 ? formatCurrency(price) : 'Price on Request'}
               </div>
               <div className="text-xs text-slate-600 font-semibold">
-                AED {property.price_per_sqft?.toLocaleString()} / sqft
+                {property.price_per_sqft
+                  ? `AED ${property.price_per_sqft?.toLocaleString()} / sqft`
+                  : `${size > 0 ? size.toLocaleString() + ' SQ. FT Dossier' : 'Private Portfolio Unit'}`}
               </div>
             </div>
           </div>
@@ -292,11 +294,13 @@ export default function PropertyDetailPage() {
             <div className="space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
                 <span className="text-slate-600">Asking Asset Valuation</span>
-                <span className="text-slate-950 font-bold">{formatCurrency(price)}</span>
+                <span className="text-slate-950 font-bold">{price > 0 ? formatCurrency(price) : 'Price on Request'}</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
                 <span className="text-slate-600">DLD Sale Registration (4%)</span>
-                <span className="text-slate-950 font-bold">{formatCurrency(dldTransferFee)}</span>
+                <span className="text-slate-950 font-bold">
+                  {price > 0 ? formatCurrency(dldTransferFee) : '4% of Contracted Valuation'}
+                </span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
                 <span className="text-slate-600">DLD Admin &amp; Map Tariff</span>
@@ -304,7 +308,7 @@ export default function PropertyDetailPage() {
               </div>
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
                 <span className="text-slate-600">Registration Trustee Fee</span>
-                <span className="text-slate-950 font-bold">{formatCurrency(trusteeFee)}</span>
+                <span className="text-slate-950 font-bold">AED 4,200</span>
               </div>
               <div className="flex items-center justify-between py-2">
                 <span className="text-slate-600">Estimated Statutory Conveyancing</span>
@@ -318,11 +322,13 @@ export default function PropertyDetailPage() {
                   TOTAL STATUTORY OUTLAY
                 </span>
                 <p className="text-xs text-slate-500 font-light">
-                  Inclusive of all statutory transfer and registration charges.
+                  {price > 0
+                    ? 'Inclusive of all statutory transfer and registration charges.'
+                    : 'Total includes agreed transaction price + 4% DLD + AED 18,900 statutory & trustee fees.'}
                 </p>
               </div>
               <div className="text-2xl sm:text-4xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                {formatCurrency(totalAcquisition)}
+                {price > 0 ? formatCurrency(totalAcquisition) : 'Price on Request + 4% DLD'}
               </div>
             </div>
 
