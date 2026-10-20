@@ -147,7 +147,7 @@ export default function Home() {
               src="/images/hero-burj-mobile.webp"
               alt="Burj Khalifa and Dubai Downtown skyline in daytime light"
               fetchPriority="high"
-              decoding="sync"
+              decoding="async"
               width={640}
               height={427}
               className="w-full h-full object-cover object-[center_34%]"
