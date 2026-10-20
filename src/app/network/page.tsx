@@ -81,9 +81,27 @@ export default function NetworkPage() {
         status: 'NEW',
       })
 
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          interest: 'PRIVATE CLIENT',
+          budget: formData.capitalTier,
+          message: `Ecosystem introduction requested for pillar: ${introTargetPillar}. Entity: ${formData.entityType} | Capital: ${formData.capitalTier} | Brief: ${formData.interestSummary || 'Direct introduction request'}`,
+          consent: true,
+          source: `NETWORK_DESK: ${introTargetPillar}`,
+          page: '/network',
+        }),
+      }).catch((err) => {
+        console.warn('[Network Desk] Remote dispatch failed:', err)
+      })
+
       addToast({
-        title: 'Introduction Request Prepared',
-        description: 'Your private advisory intake has been recorded locally. An executive relationship advisor will contact you.',
+        title: 'Introduction Request Transmitted',
+        description: 'Your private advisory intake has been recorded and transmitted to the desk.',
         type: 'success',
       })
 

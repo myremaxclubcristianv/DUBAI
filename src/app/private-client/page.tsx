@@ -21,11 +21,42 @@ export default function PrivateClientPage() {
   const [email, setEmail] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [notes, setNotes] = React.useState('')
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null)
   const [isSubmitted, setIsSubmitted] = React.useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitted(true)
+    setIsSubmitting(true)
+    setErrorMessage(null)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fullName,
+          email,
+          phone,
+          interest: 'PRIVATE CLIENT',
+          budget: allocationTier,
+          message: `Mandate: ${mandateType} | Allocation: ${allocationTier} | Directives: ${notes || 'Direct principal intake'}`,
+          consent: true,
+          source: 'PRIVATE_CLIENT_PAGE',
+          page: '/private-client',
+        }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setIsSubmitted(true)
+      } else {
+        setErrorMessage(data.message || data.error || 'Failed to transmit brief. Please contact via WhatsApp or email directly.')
+      }
+    } catch {
+      setErrorMessage('Network connection error. Please contact via WhatsApp or email directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -279,6 +310,12 @@ export default function PrivateClientPage() {
                     </div>
                   </div>
 
+                  {errorMessage && (
+                    <div className="p-3 bg-red-950/80 border border-red-500/50 text-red-200 text-xs rounded-xs font-mono">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   <div className="pt-4 flex items-center justify-between">
                     <button
                       type="button"
@@ -290,9 +327,10 @@ export default function PrivateClientPage() {
 
                     <button
                       type="submit"
-                      className="px-8 py-4 bg-[#0284c7] hover:bg-[#0369a1] text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all cursor-pointer shadow-md"
+                      disabled={isSubmitting}
+                      className="px-8 py-4 bg-[#0284c7] hover:bg-[#0369a1] disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all cursor-pointer shadow-md"
                     >
-                      Submit Private Client Brief &rarr;
+                      {isSubmitting ? 'Transmitting…' : 'Submit Private Client Brief →'}
                     </button>
                   </div>
                 </div>

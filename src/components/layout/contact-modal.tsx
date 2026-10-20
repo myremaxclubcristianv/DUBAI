@@ -14,6 +14,9 @@ export interface ContactModalProps {
   initialBudget?: string
   title?: string
   eyebrow?: string
+  propertyTitle?: string
+  propertyId?: string
+  source?: string
 }
 
 function ContactModalDialog({
@@ -23,6 +26,9 @@ function ContactModalDialog({
   initialBudget = '',
   title = 'Direct Advisory Intake & Mandate',
   eyebrow = 'Private Client Desk',
+  propertyTitle,
+  propertyId,
+  source = 'HEADER_ENQUIRE',
 }: {
   onClose: () => void
   initialInterest?: InterestCategory
@@ -30,6 +36,9 @@ function ContactModalDialog({
   initialBudget?: string
   title?: string
   eyebrow?: string
+  propertyTitle?: string
+  propertyId?: string
+  source?: string
 }) {
   const [interest, setInterest] = React.useState<InterestCategory>(initialInterest)
   const [name, setName] = React.useState('')
@@ -43,6 +52,7 @@ function ContactModalDialog({
 
   const [status, setStatus] = React.useState<'IDLE' | 'SUBMITTING' | 'SUCCESS' | 'ERROR'>('IDLE')
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null)
+  const submissionIdRef = React.useRef<string | null>(null)
 
   const nameInputRef = React.useRef<HTMLInputElement>(null)
   const modalRef = React.useRef<HTMLDivElement>(null)
@@ -69,6 +79,14 @@ function ContactModalDialog({
     setStatus('SUBMITTING')
     setErrorMessage(null)
 
+    // Generate unique submission id per form filling attempt if not already set
+    if (!submissionIdRef.current) {
+      submissionIdRef.current =
+        typeof crypto !== 'undefined' && crypto.randomUUID
+          ? crypto.randomUUID()
+          : `sub-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -84,6 +102,11 @@ function ContactModalDialog({
           budget,
           message,
           consent,
+          property_title: propertyTitle,
+          property_id: propertyId,
+          source,
+          page: typeof window !== 'undefined' ? window.location.pathname : '/',
+          submission_id: submissionIdRef.current,
           b_website: honeypot, // Honeypot
         }),
       })
@@ -92,10 +115,19 @@ function ContactModalDialog({
 
       if (response.ok && data.success) {
         setStatus('SUCCESS')
+        submissionIdRef.current = null // Reset for any subsequent distinct submission
       } else {
         setStatus('ERROR')
         if (data.error === 'service_unavailable') {
-          setErrorMessage('Contact service is temporarily unavailable.')
+          setErrorMessage(
+            data.message ||
+              'Contact service is temporarily unconfigured or unavailable. Please reach out directly via WhatsApp or email.'
+          )
+        } else if (data.error === 'delivery_failed') {
+          setErrorMessage(
+            data.message ||
+              'Direct transmission could not be confirmed. Please reach out directly via WhatsApp or email.'
+          )
         } else if (typeof data.error === 'string') {
           setErrorMessage(data.error)
         } else {
@@ -104,7 +136,7 @@ function ContactModalDialog({
       }
     } catch {
       setStatus('ERROR')
-      setErrorMessage('Please try again or use the direct contact option.')
+      setErrorMessage('Network error during transmission. Please try again or use direct WhatsApp.')
     }
   }
 
@@ -411,18 +443,24 @@ export function ContactModal({
   initialBudget = '',
   title = 'Direct Advisory Intake & Mandate',
   eyebrow = 'Private Client Desk',
+  propertyTitle,
+  propertyId,
+  source = 'HEADER_ENQUIRE',
 }: ContactModalProps) {
   if (!isOpen) return null
 
   return (
     <ContactModalDialog
-      key={`${initialInterest}-${isOpen}-${initialMessage.slice(0, 30)}`}
+      key={`${initialInterest}-${isOpen}-${propertyId || ''}-${initialMessage.slice(0, 30)}`}
       onClose={onClose}
       initialInterest={initialInterest}
       initialMessage={initialMessage}
       initialBudget={initialBudget}
       title={title}
       eyebrow={eyebrow}
+      propertyTitle={propertyTitle}
+      propertyId={propertyId}
+      source={source}
     />
   )
 }

@@ -44,6 +44,27 @@ export function ViewingModal({ property, isOpen, onClose }: ViewingModalProps) {
       localStorage.setItem('dubai_viewing_requests', JSON.stringify([viewingRequest, ...existing]))
     } catch {}
 
+    // Dispatch to /api/contact to trigger Telegram notification & CRM storage
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: fullName,
+        email,
+        phone,
+        interest: 'PROPERTY',
+        budget: 'Viewing Inspection',
+        property_title: property.title,
+        property_id: property.id,
+        message: `Property viewing appointment requested for ${property.title} (${property.area_name}, Ref: ${property.id}). Requested Date: ${date || 'Next available'} | Slot: ${timeSlot}. Client Notes: ${notes || 'None'}`,
+        consent: true,
+        source: `PROPERTY_VIEWING: ${property.title}`,
+        page: `/properties/${property.id}`,
+      }),
+    }).catch((err) => {
+      console.warn('[Viewing Modal] Remote notification failed:', err)
+    })
+
     setIsSubmitted(true)
   }
 

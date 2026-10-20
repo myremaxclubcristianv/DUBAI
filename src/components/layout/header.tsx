@@ -312,17 +312,34 @@ export function Header() {
       >
         <div className="w-full max-w-[1440px] mx-auto flex h-[76px] sm:h-[80px] items-center justify-between px-4 sm:px-6 lg:px-10">
           
-          {/* LEFT: Wordmark + Separator + Descriptor */}
-          <div className="flex items-center gap-3.5 shrink-0">
-            <Link href="/" className="flex items-center gap-3 group">
-              <span className="text-[18px] sm:text-[19px] font-semibold tracking-[0.16em] text-slate-950 uppercase group-hover:text-slate-600 transition-colors font-sans">
+          {/* LEFT: Wordmark + Sovereign Hierarchy */}
+          <div className="flex flex-col items-start justify-center shrink-0 leading-none">
+            <Link href="/" className="group inline-flex items-center">
+              <span className="text-[17px] sm:text-[19px] font-bold tracking-[0.18em] text-slate-950 uppercase group-hover:text-slate-700 transition-colors font-sans">
                 DUBAI
               </span>
-              <span className="h-4 w-[1px] bg-slate-300 hidden sm:block" aria-hidden="true" />
-              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-500 uppercase hidden 2xl:inline-block font-medium">
-                REAL ESTATE INTELLIGENCE
-              </span>
             </Link>
+            <div className="flex flex-col items-start mt-0.5 space-y-[1.5px] font-mono">
+              <span className="text-[8px] sm:text-[8.5px] uppercase tracking-[0.14em] text-slate-500 font-medium whitespace-nowrap">
+                POWERED BY{' '}
+                <a
+                  href="https://cristianvaduva.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-700 hover:text-slate-950 underline decoration-slate-300 hover:decoration-slate-950 transition-colors font-semibold"
+                >
+                  CRISTIANVADUVA.COM
+                </a>
+              </span>
+              <a
+                href="https://aixluxury.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[7.5px] sm:text-[8px] uppercase tracking-[0.18em] text-slate-500 hover:text-slate-950 transition-colors font-semibold whitespace-nowrap"
+              >
+                AIXLUXURY.COM
+              </a>
+            </div>
           </div>
 
           {/* CENTER: 8 Desktop Mega-Menu Categories */}
