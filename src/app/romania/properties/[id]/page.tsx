@@ -254,22 +254,45 @@ export default function RomaniaPropertyDetailPage() {
               FIȘĂ TEHNICĂ IMOBILIARĂ
             </span>
             <div className="divide-y divide-slate-200 border border-slate-200 bg-white p-6 font-mono text-xs shadow-2xs">
-              <div className="flex justify-between py-3">
-                <span className="text-slate-500 uppercase">Suprafață Utilă</span>
-                <span className="text-slate-950 font-bold">{property.surface_sqm} MP ({property.surface_sqft.toLocaleString()} SQ. FT)</span>
-              </div>
-              <div className="flex justify-between py-3">
-                <span className="text-slate-500 uppercase">Număr Camere</span>
-                <span className="text-slate-950 font-bold">{property.rooms} Camere</span>
-              </div>
-              <div className="flex justify-between py-3">
-                <span className="text-slate-500 uppercase">Dormitoare</span>
-                <span className="text-slate-950 font-bold">{property.bedrooms} Dormitoare</span>
-              </div>
-              <div className="flex justify-between py-3">
-                <span className="text-slate-500 uppercase">Băi</span>
-                <span className="text-slate-950 font-bold">{property.bathrooms} Băi</span>
-              </div>
+              {property.property_type === 'Land' ? (
+                <>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Suprafață Teren</span>
+                    <span className="text-slate-950 font-bold">
+                      {property.surface_sqm >= 10000
+                        ? `${(property.surface_sqm / 10000).toLocaleString('ro-RO')} HA (${property.surface_sqm.toLocaleString('ro-RO')} MP)`
+                        : `${property.surface_sqm.toLocaleString('ro-RO')} MP (${property.surface_sqft.toLocaleString()} SQ. FT)`}
+                    </span>
+                  </div>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Regim Urbanistic</span>
+                    <span className="text-slate-950 font-bold">Teren Intravilan / Proiect Investiție</span>
+                  </div>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Documentație</span>
+                    <span className="text-slate-950 font-bold">Cadastru &amp; Intabulare / CU / PUZ</span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Suprafață Utilă</span>
+                    <span className="text-slate-950 font-bold">{property.surface_sqm} MP ({property.surface_sqft.toLocaleString()} SQ. FT)</span>
+                  </div>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Număr Camere</span>
+                    <span className="text-slate-950 font-bold">{property.rooms} Camere</span>
+                  </div>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Dormitoare</span>
+                    <span className="text-slate-950 font-bold">{property.bedrooms} Dormitoare</span>
+                  </div>
+                  <div className="flex justify-between py-3">
+                    <span className="text-slate-500 uppercase">Băi</span>
+                    <span className="text-slate-950 font-bold">{property.bathrooms} Băi</span>
+                  </div>
+                </>
+              )}
               <div className="flex justify-between py-3">
                 <span className="text-slate-500 uppercase">Tip Imobil</span>
                 <span className="text-slate-950 font-bold">{property.property_type}</span>

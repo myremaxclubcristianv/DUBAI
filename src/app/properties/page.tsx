@@ -272,12 +272,24 @@ export default function PropertiesPage() {
 
                   <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-4 text-xs font-mono">
                     <div>
-                      <span className="text-slate-400 block uppercase text-[10px]">INTERNAL AREA</span>
-                      <span className="text-slate-950 font-semibold">{size.toLocaleString()} SQ. FT</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">
+                        {prop.property_type === 'Plot' ? 'PLOT AREA' : 'INTERNAL AREA'}
+                      </span>
+                      <span className="text-slate-950 font-semibold">
+                        {prop.property_type === 'Plot' && prop.plot_area_sqft
+                          ? `${prop.plot_area_sqft.toLocaleString()} SQ. FT`
+                          : `${size.toLocaleString()} SQ. FT`}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-slate-400 block uppercase text-[10px]">CONFIGURATION</span>
-                      <span className="text-slate-950 font-semibold">{beds} Bedrooms</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">
+                        {prop.property_type === 'Plot' ? 'PERMISSIBLE BUA' : 'CONFIGURATION'}
+                      </span>
+                      <span className="text-slate-950 font-semibold">
+                        {prop.property_type === 'Plot'
+                          ? `G+2 Custom (${size.toLocaleString()} sq.ft)`
+                          : `${beds} Bedrooms`}
+                      </span>
                     </div>
                   </div>
 

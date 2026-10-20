@@ -290,12 +290,24 @@ export default function BuyPage() {
 
                   <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-4 text-xs font-mono">
                     <div>
-                      <span className="text-slate-400 block uppercase text-[10px]">INTERNAL AREA</span>
-                      <span className="text-slate-950 font-semibold">{size > 0 ? `${size.toLocaleString()} SQ. FT` : 'Available upon Request'}</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">
+                        {prop.property_type === 'Plot' ? 'PLOT AREA' : 'INTERNAL AREA'}
+                      </span>
+                      <span className="text-slate-950 font-semibold">
+                        {prop.property_type === 'Plot' && prop.plot_area_sqft
+                          ? `${prop.plot_area_sqft.toLocaleString()} SQ. FT PLOT`
+                          : size > 0 ? `${size.toLocaleString()} SQ. FT` : 'Available upon Request'}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-slate-400 block uppercase text-[10px]">CONFIGURATION</span>
-                      <span className="text-slate-950 font-semibold">{beds > 0 ? `${beds} Bedrooms` : 'Multi-Suite Residence'}</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">
+                        {prop.property_type === 'Plot' ? 'PERMISSIBLE BUA' : 'CONFIGURATION'}
+                      </span>
+                      <span className="text-slate-950 font-semibold">
+                        {prop.property_type === 'Plot'
+                          ? `G+2 Custom (${size.toLocaleString()} sq.ft)`
+                          : beds > 0 ? `${beds} Bedrooms` : 'Multi-Suite Residence'}
+                      </span>
                     </div>
                   </div>
 

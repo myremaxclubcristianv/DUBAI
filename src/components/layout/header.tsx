@@ -11,6 +11,7 @@ import {
   ChevronDown,
 } from 'lucide-react'
 import { GlobalSearchDialog } from '@/components/ui/global-search-dialog'
+import { ContactModal } from '@/components/layout/contact-modal'
 import { useClient, SupportedCurrency } from '@/lib/context/client-context'
 
 interface NavSubItem {
@@ -33,7 +34,7 @@ interface NavCategory {
   sections?: NavSection[]
 }
 
-const NAVIGATION_CATEGORIES: NavCategory[] = [
+export const NAVIGATION_CATEGORIES: NavCategory[] = [
   {
     id: 'properties',
     label: 'Properties',
@@ -43,19 +44,23 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
         title: 'Market Inventory',
         description: 'Verified physical Dubai listings with complete data provenance.',
         items: [
-          { label: 'Buy Property', href: '/buy', description: 'Curated prime Dubai residential sales inventory', badge: '19 Live' },
+          { label: 'Buy Property', href: '/buy', description: 'Curated prime Dubai residential sales inventory', badge: '20 Live' },
           { label: 'Rent Property', href: '/rent', description: 'Bespoke corporate & executive leasing mandates', badge: 'Advisory' },
           { label: 'Off-Plan Projects', href: '/projects', description: 'Verified escrow-backed developments' },
+          { label: 'Luxury & Penthouses', href: '/properties?luxury=true', description: 'Ultra-prime penthouses & waterfront mansions' },
+          { label: 'Freehold Plots & Land', href: '/properties?type=Plot', description: 'Designated freehold land plots for bespoke development', badge: 'Plots' },
           { label: 'All Property Dossiers', href: '/properties', description: 'Comprehensive search, filters & maps' },
         ],
       },
       {
-        title: 'Signature Portfolios',
+        title: 'Signature Locations',
         description: 'Direct master developer and private opportunities.',
         items: [
-          { label: 'Palm Jumeirah Villas', href: '/properties?district=Palm+Jumeirah', description: 'Waterfront archipelago residences' },
-          { label: 'Downtown Penthouses', href: '/properties?district=Downtown+Dubai', description: 'Burj Khalifa & Opera district suites' },
-          { label: 'Emirates Hills Mansions', href: '/properties?district=Emirates+Hills', description: 'Private championship golf estates' },
+          { label: 'Palm Jumeirah Waterfront', href: '/properties?district=Palm+Jumeirah', description: 'Waterfront archipelago residences' },
+          { label: 'Downtown Dubai Penthouses', href: '/properties?district=Downtown+Dubai', description: 'Burj Khalifa & Opera district suites' },
+          { label: 'Dubai Hills Golf Mansions', href: '/properties?district=Dubai+Hills+Estate', description: 'Championship golf course custom estates' },
+          { label: 'Emirates Hills Estates', href: '/properties?district=Emirates+Hills', description: 'Private championship golf estates' },
+          { label: 'Al Barari Sanctuaries', href: '/properties?district=Al+Barari', description: 'Secluded botanical luxury villas' },
         ],
       },
     ],
@@ -66,22 +71,23 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
     href: '/areas',
     sections: [
       {
-        title: 'Dubai Atlas',
+        title: 'Dubai Atlas & Districts',
         description: 'Official master-planned freehold enclaves (Law No. 7/2006).',
         items: [
-          { label: 'All Dubai Districts', href: '/areas', description: 'Explore all 16 master-planned freehold zones' },
+          { label: 'All 16 Master Districts', href: '/areas', description: 'Explore all 16 master-planned freehold zones' },
           { label: 'Downtown Dubai', href: '/areas/downtown-dubai', description: 'Burj Khalifa, Dubai Mall & Opera District' },
           { label: 'Palm Jumeirah', href: '/areas/palm-jumeirah', description: 'Global benchmark for private island living' },
           { label: 'Dubai Marina & Harbour', href: '/areas/dubai-marina', description: 'Prime waterfront yacht basin towers' },
-          { label: 'DIFC & Downtown', href: '/areas/difc', description: 'Financial center high-density residential' },
+          { label: 'DIFC Financial District', href: '/areas/difc', description: 'Financial center high-density residential' },
           { label: 'Dubai Hills Estate', href: '/areas/dubai-hills-estate', description: 'Championship golf & suburban master-plan' },
         ],
       },
       {
-        title: 'Interactive Tools',
-        description: 'Geospatial zoning and transit connectivity.',
+        title: 'Geospatial & Infrastructure',
+        description: 'Zoning, transit connectivity and master infrastructure.',
         items: [
-          { label: 'Interactive Dubai Map', href: '/map', description: 'Explore zoning, amenities, and metro radius' },
+          { label: 'Interactive Dubai Map', href: '/map', description: 'Explore zoning, amenities, and metro radius', badge: 'Interactive' },
+          { label: 'Sovereign Infrastructure', href: '/infrastructure', description: 'Metro Blue Line, Al Maktoum Airport & power' },
         ],
       },
     ],
@@ -92,48 +98,24 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
     href: '/investment',
     sections: [
       {
-        title: 'Financial Underwriting',
+        title: 'Financial Underwriting & Yields',
         description: 'Transparent acquisition economics & statutory fee schedules.',
         items: [
-          { label: 'Investment Overview', href: '/investment', description: 'Statutory framework, yields & capital mechanics' },
-          { label: 'Calculators Lab (9 Engines)', href: '/investment/calculators', description: 'Interactive financial modeling desks', badge: '9 Tools' },
-          { label: 'Short vs Long-Term Rent', href: '/investment/calculators', description: 'Holiday home vs annual Ejari yield spread' },
-          { label: 'Market Intelligence', href: '/market', description: 'Historical transactions, volumes & rental trends' },
+          { label: 'Investment Intelligence', href: '/investment', description: 'Statutory framework, yields & capital mechanics' },
+          { label: 'Calculators Lab (9 Engines)', href: '/investment/calculators', description: 'Interactive financial modeling desks', badge: '9 Engines' },
+          { label: 'Short vs Long-Term Rent', href: '/investment/calculators#rental-spread', description: 'Holiday home vs annual Ejari yield spread' },
+          { label: 'Historical Market Trends', href: '/market', description: 'Historical transactions, volumes & rental trends' },
         ],
       },
       {
-        title: 'Sovereign Framework',
-        description: 'Direct institutional data and infrastructure.',
-        items: [
-          { label: 'D33 Economic Agenda', href: '/economy', description: 'Dubai sovereign growth roadmap to 2033' },
-          { label: 'Sovereign Infrastructure', href: '/infrastructure', description: 'Metro Blue Line, Al Maktoum Airport & power' },
-          { label: 'Government Authorities', href: '/government', description: 'DLD, RERA, FTA, DIFC & federal bodies' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'business',
-    label: 'Business',
-    href: '/business',
-    sections: [
-      {
-        title: 'Business Setup Hub',
+        title: 'Business Setup Hub & Economy',
         description: 'Commercial incorporation and regulatory licensing navigator.',
         items: [
           { label: 'Business Hub Overview', href: '/business', description: 'Founders guide to launching in Dubai' },
-          { label: 'Company Setup Navigator', href: '/business#navigator', description: 'Interactive 4-step jurisdiction finder', badge: 'Interactive' },
           { label: 'Mainland vs Free Zone', href: '/business#mainland-freezone', description: 'Commercial differences and licensing powers' },
           { label: 'Free Zone Directory', href: '/business#freezones', description: 'DIFC, DMCC, Meydan, IFZA, Dubai South' },
-        ],
-      },
-      {
-        title: 'Statutory Compliance & Fiscal',
-        description: 'Corporate taxation, VAT, and recurring governance.',
-        items: [
           { label: 'Business Cost Calculator', href: '/business#calculator', description: 'First-year vs annual renewal expenditure' },
-          { label: 'Compliance Calendar', href: '/business#calendar', description: 'Statutory filing deadlines & licensing renewals' },
-          { label: 'UAE Tax & QFZP Guide', href: '/tax', description: 'Law 47/2022 Corporate Tax, VAT & Double Tax Treaties', badge: 'Statutory' },
+          { label: 'D33 Economic Agenda', href: '/economy', description: 'Dubai sovereign growth roadmap to 2033' },
         ],
       },
     ],
@@ -144,21 +126,22 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
     href: '/residency',
     sections: [
       {
-        title: 'Golden Visa Program',
+        title: 'UAE Golden Visa Program',
         description: '10-Year self-sponsored UAE residency through real estate.',
         items: [
-          { label: 'Golden Visa Overview', href: '/residency', description: 'Statutory framework under Federal Decree 29/2021' },
+          { label: 'Golden Visa Overview', href: '/residency', description: 'Statutory framework under Federal Decree 29/2021', badge: '10-Year' },
           { label: 'Investment Threshold (≥ AED 2M)', href: '/residency#eligibility', description: 'Title deed valuation and mortgage criteria' },
           { label: 'Required Documentation', href: '/residency#documentation', description: 'DLD clearance, health insurance, passport' },
           { label: 'Application Workflow', href: '/residency#process', description: 'Step-by-step sovereign filing process' },
-          { label: 'Residency FAQ', href: '/residency#faq', description: 'Family sponsorship, validity & travel rules' },
+          { label: 'Family Sponsorship Rules', href: '/residency#faq', description: 'Family sponsorship, validity & travel rules' },
         ],
       },
       {
-        title: 'Essential Services',
-        description: 'Healthcare and private operational support.',
+        title: 'Relocation & Compliance',
+        description: 'Healthcare, banking, and private operational support.',
         items: [
-          { label: 'Mandatory Health Insurance', href: '/insurance', description: 'Statutory health coverage rules in Dubai' },
+          { label: 'Mandatory Health Insurance', href: '/insurance', description: 'Statutory health coverage rules in Dubai', badge: 'Statutory' },
+          { label: 'Private Client Advisory', href: '/private-client', description: 'Confidential relocation & family office desks' },
         ],
       },
     ],
@@ -173,9 +156,74 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
         description: 'Official DLD registered real estate development entities.',
         items: [
           { label: 'Developer Registry', href: '/developers', description: 'Licensed developers with verified track records' },
+          { label: 'Emaar Properties', href: '/developers/emaar-properties', description: 'Downtown Dubai, Dubai Hills, Dubai Creek' },
+          { label: 'Nakheel', href: '/developers/nakheel', description: 'Palm Jumeirah, Palm Jebel Ali, Dubai Islands' },
+          { label: 'Omniyat', href: '/developers/omniyat', description: 'Ultra-prime architectural luxury & branded suites' },
+          { label: 'Meraas', href: '/developers/meraas', description: 'Bluewaters, City Walk, Jumeira Bay Island' },
+          { label: 'Sobha Realty', href: '/developers/sobha-realty', description: 'Sobha Hartland craftsmanship & waterfront' },
+        ],
+      },
+      {
+        title: 'Landmarks & Developments',
+        description: 'Iconic master-plans and project developments.',
+        items: [
           { label: 'Signature Developments', href: '/developments', description: 'Iconic architectural landmarks across Dubai' },
-          { label: 'Brabus Island', href: '/developments/brabus-island', description: 'Ultra-prime branded waterfront showcase' },
           { label: 'Off-Plan Projects', href: '/projects', description: 'Escrow-protected development launches' },
+          { label: 'Brabus Island Showcase', href: '/developments/brabus-island', description: 'Ultra-prime branded waterfront showcase', badge: 'Abu Dhabi' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'intelligence',
+    label: 'Guides & Intel',
+    href: '/buying-guide',
+    sections: [
+      {
+        title: 'Guides & Legal Framework',
+        description: 'Statutory citations, purchase flows and regulatory governance.',
+        items: [
+          { label: 'Property Buying Guide', href: '/buying-guide', description: 'MOU Form F, NOC, trustee conveyancing flow', badge: 'MOU Form F' },
+          { label: 'Statutory Legal Framework', href: '/legal', description: 'Law No. 7/2006 Freehold, Law No. 8/2007 Escrow' },
+          { label: 'Regulatory Governance & DLD', href: '/regulatory', description: 'RERA powers, trustee offices, title deeds' },
+          { label: 'Purchase Costs & Fees', href: '/buying-guide#costs', description: '4% DLD fee, trustee fee, NOC & conveyancing' },
+        ],
+      },
+      {
+        title: 'Fiscal, Macro & Provenance',
+        description: 'Corporate taxation, double tax treaties, and research standards.',
+        items: [
+          { label: 'UAE Tax & QFZP Guide', href: '/tax', description: 'Law 47/2022 Corporate Tax, VAT & Double Tax Treaties', badge: 'Law 47/2022' },
+          { label: 'Market Intelligence', href: '/market', description: 'Historical transactions, volumes & rental trends' },
+          { label: 'Sources & Provenance Registry', href: '/sources', description: 'Verified registries, official decrees & APIs', badge: 'Zero Fake Data' },
+          { label: 'Platform Methodology', href: '/methodology', description: 'Standards of independence and analytical rigor' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'privateClient',
+    label: 'Private Client',
+    href: '/private-client',
+    sections: [
+      {
+        title: 'Bespoke Advisory Desk',
+        description: 'Confidential client representation and asset management.',
+        items: [
+          { label: 'Private Client Desk', href: '/private-client', description: 'Discreet acquisition & divestment advisory', badge: 'Bespoke' },
+          { label: 'Client Workspace', href: '/client', description: 'Saved portfolios, comparison & underwriting notes', badge: 'Portal' },
+          { label: 'Advisory Network', href: '/network', description: 'Conveyancers, tax advisors & family office partners' },
+        ],
+      },
+      {
+        title: 'Curated Lifestyle Directory',
+        description: 'Private aviation, yachts, supercars, and fine dining.',
+        items: [
+          { label: 'Lifestyle Directory', href: '/lifestyle', description: 'Overview of ultra-prime Dubai lifestyle ecosystem' },
+          { label: 'Superyachts & Marinas', href: '/lifestyle/yachts', description: 'Dubai Harbour, Palm Marina, Bulgari Marina' },
+          { label: 'Private Aviation', href: '/lifestyle/aviation', description: 'Al Maktoum Jet Aviation, VIP terminals' },
+          { label: 'Luxury Cars & Mobility', href: '/lifestyle/cars', description: 'Supercar dealerships & concierge mobility' },
+          { label: 'Fine Dining & Member Clubs', href: '/lifestyle/dining', description: 'Michelin-starred venues & private clubs' },
         ],
       },
     ],
@@ -194,6 +242,7 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
           { label: 'Ilfov / Voluntari Estates', href: '/romania?city=Voluntari', description: 'Piperă & Northern Bucharest suburban villas' },
           { label: 'Constanța & Black Sea Coast', href: '/romania?city=Constanța', description: 'Mamaia waterfront luxury apartments' },
           { label: 'Brașov Mountain Chalets', href: '/romania?city=Brașov', description: 'Transylvanian alpine retreats & villas' },
+          { label: 'Land & Development Plots', href: '/romania?type=Land', description: 'Intravilan land plots Stoenești, Cernica, Corbeanca', badge: 'Terenuri' },
         ],
       },
       {
@@ -207,33 +256,6 @@ const NAVIGATION_CATEGORIES: NavCategory[] = [
       },
     ],
   },
-  {
-    id: 'advisory',
-    label: 'Advisory',
-    href: '/private-client',
-    sections: [
-      {
-        title: 'Bespoke Advisory & Lifestyle',
-        description: 'Confidential client representation and asset management.',
-        items: [
-          { label: 'Private Client Desk', href: '/private-client', description: 'Discreet acquisition & divestment advisory' },
-          { label: 'Client Workspace', href: '/client', description: 'Saved portfolios, comparison & underwriting notes' },
-          { label: 'Curated Lifestyle Directory', href: '/lifestyle', description: 'Yachts, private aviation, clubs & dining' },
-          { label: 'Advisory Network', href: '/network', description: 'Conveyancers, tax advisors & family office partners' },
-        ],
-      },
-      {
-        title: 'Platform Transparency & Legal',
-        description: 'Statutory citations and research methodology.',
-        items: [
-          { label: 'Property Buying Guide', href: '/buying-guide', description: 'MOU Form F, NOC, trustee conveyancing flow' },
-          { label: 'Sources & Provenance Registry', href: '/sources', description: 'Verified registries, official decrees & APIs' },
-          { label: 'Statutory Legal Framework', href: '/legal', description: 'Law No. 7/2006, Escrow Law No. 8/2007' },
-          { label: 'Platform Methodology', href: '/methodology', description: 'Standards of independence and analytical rigor' },
-        ],
-      },
-    ],
-  },
 ]
 
 export function Header() {
@@ -241,6 +263,7 @@ export function Header() {
   const { currency, setCurrency } = useClient()
   const [isSearchOpen, setIsSearchOpen] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = React.useState(false)
   const [activeDesktopCategory, setActiveDesktopCategory] = React.useState<string | null>(null)
   const [openMobileAccordion, setOpenMobileAccordion] = React.useState<string | null>(null)
   const headerRef = React.useRef<HTMLElement>(null)
@@ -287,7 +310,7 @@ export function Header() {
         ref={headerRef}
         className="sticky top-0 z-50 w-full bg-white border-b border-slate-200 transition-colors"
       >
-        <div className="w-full max-w-[1440px] mx-auto flex h-[76px] sm:h-[80px] items-center justify-between px-4 sm:px-8 lg:px-12">
+        <div className="w-full max-w-[1440px] mx-auto flex h-[76px] sm:h-[80px] items-center justify-between px-4 sm:px-6 lg:px-10">
           
           {/* LEFT: Wordmark + Separator + Descriptor */}
           <div className="flex items-center gap-3.5 shrink-0">
@@ -296,7 +319,7 @@ export function Header() {
                 DUBAI
               </span>
               <span className="h-4 w-[1px] bg-slate-300 hidden sm:block" aria-hidden="true" />
-              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-500 uppercase hidden xl:inline-block font-medium">
+              <span className="text-[10px] font-mono tracking-[0.2em] text-slate-500 uppercase hidden 2xl:inline-block font-medium">
                 REAL ESTATE INTELLIGENCE
               </span>
             </Link>
@@ -305,7 +328,7 @@ export function Header() {
           {/* CENTER: 8 Desktop Mega-Menu Categories */}
           <nav
             aria-label="Main Navigation"
-            className="hidden lg:flex items-center gap-4 xl:gap-6 text-[11px] font-mono uppercase tracking-[0.14em]"
+            className="hidden lg:flex items-center gap-3 xl:gap-5 text-[11px] font-mono uppercase tracking-[0.12em]"
           >
             {NAVIGATION_CATEGORIES.map((cat) => {
               const isSelected = activeDesktopCategory === cat.id
@@ -340,8 +363,8 @@ export function Header() {
             })}
           </nav>
 
-          {/* RIGHT: Currency Selector, Search & Private Client Action */}
-          <div className="flex items-center gap-2.5 sm:gap-4 shrink-0">
+          {/* RIGHT: Currency Selector, Search & Direct Actions */}
+          <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
             {/* Currency Selector */}
             <div className="flex items-center border border-slate-200 bg-slate-50/80 text-[11px] font-mono">
               {(['AED', 'USD', 'EUR', 'RON'] as const).map((curr, idx) => (
@@ -364,7 +387,7 @@ export function Header() {
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 text-xs text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 text-xs text-slate-700 hover:text-slate-950 transition-colors cursor-pointer"
               title="Search Directory (⌘K)"
               aria-label="Search directory"
             >
@@ -373,15 +396,14 @@ export function Header() {
               <kbd className="hidden sm:inline-block text-[9px] font-mono px-1 py-0.5 bg-slate-100 text-slate-700 border border-slate-300">⌘K</kbd>
             </button>
 
-            {/* Desktop Private Client Desk Action Button */}
-            <Link
-              href="/private-client"
-              prefetch={false}
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-950 bg-slate-950 hover:bg-slate-800 text-white text-[10px] font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-xs"
+            {/* Direct Enquire Action Button */}
+            <button
+              onClick={() => setIsContactModalOpen(true)}
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 border border-slate-950 bg-slate-950 hover:bg-slate-800 text-white text-[10px] font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-xs cursor-pointer"
             >
-              <span>Private Client</span>
+              <span>Enquire</span>
               <ArrowUpRight className="h-3 w-3" />
-            </Link>
+            </button>
 
             {/* Mobile Menu Trigger */}
             <button
@@ -439,7 +461,7 @@ export function Header() {
                 </div>
 
                 {/* Subsections Grid (9 cols) */}
-                <div className="col-span-9 grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="col-span-9 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8">
                   {activeCategoryData.sections.map((sec, secIdx) => (
                     <div key={secIdx} className="space-y-3">
                       <div className="space-y-1 pb-2 border-b border-slate-100">
@@ -500,7 +522,7 @@ export function Header() {
                 Valuation Currency
               </span>
               <div className="flex gap-1.5">
-                {(['AED', 'USD', 'EUR', 'GBP'] as const).map((curr) => (
+                {(['AED', 'USD', 'EUR', 'RON'] as const).map((curr) => (
                   <button
                     key={curr}
                     onClick={() => setCurrency(curr as SupportedCurrency)}
@@ -516,16 +538,16 @@ export function Header() {
               </div>
             </div>
 
-            {/* Quick Priority Entry Points: Buy & Rent */}
-            <div className="grid grid-cols-2 gap-3">
+            {/* Quick Priority Entry Points: Buy, Rent & Enquire */}
+            <div className="grid grid-cols-3 gap-2">
               <Link
                 href="/buy"
                 prefetch={false}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-3 bg-slate-950 text-white text-center rounded-xs shadow-xs hover:bg-slate-800 transition-colors"
               >
-                <span className="block font-mono text-xs uppercase tracking-widest font-bold">Buy Property</span>
-                <span className="block text-[10px] text-slate-300 font-light mt-0.5">19 Verified Sales</span>
+                <span className="block font-mono text-xs uppercase tracking-widest font-bold">Buy</span>
+                <span className="block text-[10px] text-slate-300 font-light mt-0.5">20 Verified</span>
               </Link>
               <Link
                 href="/rent"
@@ -533,9 +555,19 @@ export function Header() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-3 bg-slate-50 border border-slate-200 text-slate-900 text-center rounded-xs hover:bg-slate-100 transition-colors"
               >
-                <span className="block font-mono text-xs uppercase tracking-widest font-bold">Rent Advisory</span>
-                <span className="block text-[10px] text-slate-500 font-light mt-0.5">Bespoke Mandates</span>
+                <span className="block font-mono text-xs uppercase tracking-widest font-bold">Rent</span>
+                <span className="block text-[10px] text-slate-500 font-light mt-0.5">Advisory</span>
               </Link>
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  setIsContactModalOpen(true)
+                }}
+                className="p-3 bg-amber-50 border border-amber-200 text-amber-950 text-center rounded-xs hover:bg-amber-100 transition-colors cursor-pointer"
+              >
+                <span className="block font-mono text-xs uppercase tracking-widest font-bold">Enquire</span>
+                <span className="block text-[10px] text-amber-800 font-light mt-0.5">Direct Desk</span>
+              </button>
             </div>
 
             {/* Mobile Categories Accordion */}
@@ -609,15 +641,16 @@ export function Header() {
 
             {/* Direct Mobile Contact Desk */}
             <div className="pt-2 space-y-2.5">
-              <Link
-                href="/private-client"
-                prefetch={false}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full py-3.5 bg-slate-950 text-white text-center text-xs font-mono uppercase tracking-[0.14em] font-semibold flex items-center justify-center gap-2 shadow-sm"
+              <button
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  setIsContactModalOpen(true)
+                }}
+                className="w-full py-3.5 bg-slate-950 hover:bg-slate-800 text-white text-center text-xs font-mono uppercase tracking-[0.14em] font-semibold flex items-center justify-center gap-2 shadow-sm cursor-pointer transition-colors"
               >
-                <span>Private Client Advisory Desk</span>
+                <span>Schedule Confidential Consultation</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
+              </button>
               <div className="grid grid-cols-2 gap-2 text-center text-xs font-mono">
                 <a
                   href="mailto:cristianvaduva@duck.com"
@@ -642,6 +675,9 @@ export function Header() {
 
       {/* Global Search Dialog Modal */}
       <GlobalSearchDialog isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
+      {/* Direct Contact & Enquiry Intake Modal */}
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </>
   )
 }

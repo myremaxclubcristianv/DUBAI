@@ -184,7 +184,7 @@ export default function RomaniaCatalogPage() {
             >
               <option value="ALL">Toate Tipologiile</option>
               {uniqueTypes.map((t) => (
-                <option key={t} value={t}>{t}</option>
+                <option key={t} value={t}>{t === 'Land' ? 'Terenuri / Land (6)' : t}</option>
               ))}
             </select>
 
@@ -323,12 +323,24 @@ export default function RomaniaCatalogPage() {
 
                   <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-4 text-xs font-mono">
                     <div>
-                      <span className="text-slate-400 block uppercase text-[10px]">SUPRAFAȚĂ UTILĂ</span>
-                      <span className="text-slate-950 font-semibold">{prop.surface_sqm} MP ({prop.surface_sqft.toLocaleString()} SQ. FT)</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">
+                        {prop.property_type === 'Land' ? 'SUPRAFAȚĂ TEREN' : 'SUPRAFAȚĂ UTILĂ'}
+                      </span>
+                      <span className="text-slate-950 font-semibold">
+                        {prop.surface_sqm >= 10000 && prop.property_type === 'Land'
+                          ? `${(prop.surface_sqm / 10000).toLocaleString('ro-RO')} HA (${prop.surface_sqm.toLocaleString('ro-RO')} MP)`
+                          : `${prop.surface_sqm.toLocaleString('ro-RO')} MP (${prop.surface_sqft.toLocaleString()} SQ. FT)`}
+                      </span>
                     </div>
                     <div>
-                      <span className="text-slate-400 block uppercase text-[10px]">COMPARTIMENTARE</span>
-                      <span className="text-slate-950 font-semibold">{prop.rooms} Camere &bull; {prop.bedrooms} Dormitoare</span>
+                      <span className="text-slate-400 block uppercase text-[10px]">
+                        {prop.property_type === 'Land' ? 'REGIM URBANISTIC' : 'COMPARTIMENTARE'}
+                      </span>
+                      <span className="text-slate-950 font-semibold">
+                        {prop.property_type === 'Land'
+                          ? 'Teren Intravilan / Proiect'
+                          : `${prop.rooms} Camere • ${prop.bedrooms} Dormitoare`}
+                      </span>
                     </div>
                   </div>
 

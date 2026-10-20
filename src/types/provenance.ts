@@ -106,7 +106,7 @@ export interface PropertyRecord {
   official_project_name?: string
   editorial_display_name?: string
   unit_descriptor?: string
-  property_type: 'Apartment' | 'Villa' | 'Penthouse' | 'Townhouse' | 'Mansion' | 'Branded Residence'
+  property_type: 'Apartment' | 'Villa' | 'Penthouse' | 'Townhouse' | 'Mansion' | 'Branded Residence' | 'Plot' | 'Land'
   listing_type: 'Sale' | 'Rent'
   completion_status: 'Ready' | 'Off-Plan'
   description?: string

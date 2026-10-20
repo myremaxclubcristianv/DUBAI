@@ -243,18 +243,37 @@ export default function PropertyDetailPage() {
           </div>
 
           <div className="divide-y divide-slate-200 border-t border-b border-slate-200 bg-white p-6 sm:p-8 border shadow-2xs font-mono text-xs">
-            <div className="flex justify-between py-3">
-              <span className="text-slate-500 uppercase">Internal Living Area</span>
-              <span className="text-slate-950 font-bold">{size.toLocaleString()} SQ. FT</span>
-            </div>
-            <div className="flex justify-between py-3">
-              <span className="text-slate-500 uppercase">Bedrooms / Suites</span>
-              <span className="text-slate-950 font-bold">{beds} Bedrooms</span>
-            </div>
-            <div className="flex justify-between py-3">
-              <span className="text-slate-500 uppercase">Bathrooms</span>
-              <span className="text-slate-950 font-bold">{baths} Bathrooms</span>
-            </div>
+            {property.property_type === 'Plot' ? (
+              <>
+                <div className="flex justify-between py-3">
+                  <span className="text-slate-500 uppercase">Plot Area</span>
+                  <span className="text-slate-950 font-bold">{property.plot_area_sqft?.toLocaleString() || size.toLocaleString()} SQ. FT</span>
+                </div>
+                <div className="flex justify-between py-3">
+                  <span className="text-slate-500 uppercase">Max Permissible BUA</span>
+                  <span className="text-slate-950 font-bold">{size.toLocaleString()} SQ. FT</span>
+                </div>
+                <div className="flex justify-between py-3">
+                  <span className="text-slate-500 uppercase">Permitted Typology</span>
+                  <span className="text-slate-950 font-bold">Bespoke Architectural Mansion (G+2 + Basement)</span>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex justify-between py-3">
+                  <span className="text-slate-500 uppercase">Internal Living Area</span>
+                  <span className="text-slate-950 font-bold">{size > 0 ? `${size.toLocaleString()} SQ. FT` : 'Available on Request'}</span>
+                </div>
+                <div className="flex justify-between py-3">
+                  <span className="text-slate-500 uppercase">Bedrooms / Suites</span>
+                  <span className="text-slate-950 font-bold">{beds > 0 ? `${beds} Bedrooms` : 'Private Suite Specification'}</span>
+                </div>
+                <div className="flex justify-between py-3">
+                  <span className="text-slate-500 uppercase">Bathrooms</span>
+                  <span className="text-slate-950 font-bold">{baths > 0 ? `${baths} Bathrooms` : 'En-Suite Facilities'}</span>
+                </div>
+              </>
+            )}
             <div className="flex justify-between py-3">
               <span className="text-slate-500 uppercase">Asset Type</span>
               <span className="text-slate-950 font-bold">{type}</span>
