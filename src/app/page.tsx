@@ -137,7 +137,7 @@ export default function Home() {
       <section className="relative w-full min-h-[640px] lg:min-h-[840px] lg:h-[90vh] flex items-center border-b border-slate-200 overflow-hidden bg-slate-100 py-12 lg:py-0">
         
         {/* Full Visual Field: Daytime Burj Khalifa Photography */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-x-0 top-0 h-[100svh] lg:inset-0 lg:h-full z-0">
           <picture className="w-full h-full block">
             <source
               media="(max-width: 640px)"
@@ -160,12 +160,12 @@ export default function Home() {
               decoding="async"
               width={640}
               height={427}
-              className="w-full h-full object-cover object-[center_34%]"
+              className="w-full h-full object-cover object-[48%_60%] lg:object-[center_34%]"
             />
           </picture>
           {/* Architectural Light Gradient for High Legibility */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent lg:via-white/80 lg:to-slate-950/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/40 lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/50 to-transparent lg:from-white lg:via-white/80 lg:to-slate-950/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-100 via-transparent to-white/10 lg:hidden" />
           
           {/* Subtle Architectural Grid Lines */}
           <div className="absolute inset-0 pointer-events-none hidden lg:block opacity-15">
