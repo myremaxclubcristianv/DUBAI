@@ -34,15 +34,12 @@ export const metadata: Metadata = {
     template: "%s | Dubai Real Estate & Investment Intelligence",
   },
   description:
-    "Independent Dubai real estate research, statutory investment underwriting, and private client advisory with complete data provenance.",
+    "Independent Dubai real estate research, market intelligence, statutory investment underwriting, and data provenance.",
   metadataBase: new URL("https://dubai.cristianvaduva.com"),
-  alternates: {
-    canonical: "https://dubai.cristianvaduva.com",
-  },
   openGraph: {
     title: "Dubai Real Estate & Investment Intelligence",
     description:
-      "Independent Dubai real estate research, statutory investment underwriting, and private client advisory with complete data provenance.",
+      "Independent Dubai real estate research, market intelligence, statutory investment underwriting, and data provenance.",
     url: "https://dubai.cristianvaduva.com",
     type: "website",
     locale: "en_US",
@@ -52,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dubai Real Estate & Investment Intelligence",
     description:
-      "Independent Dubai real estate research, statutory investment underwriting, and private client advisory with complete data provenance.",
+      "Independent Dubai real estate research, market intelligence, statutory investment underwriting, and data provenance.",
   },
   robots: {
     index: true,
@@ -69,7 +66,7 @@ const jsonLd = {
       "url": "https://dubai.cristianvaduva.com",
       "name": "Dubai Real Estate & Investment Intelligence",
       "description":
-        "Independent property research, statutory investment underwriting, and private client advisory in Dubai.",
+        "Independent property research, statutory investment underwriting, and market intelligence in Dubai.",
       "publisher": {
         "@id": "https://dubai.cristianvaduva.com/#organization",
       },

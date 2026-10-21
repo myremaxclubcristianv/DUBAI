@@ -20,7 +20,6 @@ export default function RomaniaCatalogPage() {
   const [selectedListingType, setSelectedListingType] = React.useState<string>('ALL')
   const [selectedPropertyType, setSelectedPropertyType] = React.useState<string>('ALL')
   const [priceTier, setPriceTier] = React.useState<string>('ALL')
-  const [currencyMode, setCurrencyMode] = React.useState<'EUR' | 'RON'>('EUR')
   const [searchQuery, setSearchQuery] = React.useState<string>('')
 
   const uniqueCities = React.useMemo(() => {
@@ -69,14 +68,6 @@ export default function RomaniaCatalogPage() {
     setSelectedPropertyType('ALL')
     setPriceTier('ALL')
     setSearchQuery('')
-  }
-
-  const formatPrice = (pEur?: number, pRon?: number, isRent?: boolean) => {
-    if (!pEur && !pRon) return 'Preț la cerere'
-    if (currencyMode === 'RON' && pRon) {
-      return isRent ? `${pRon.toLocaleString('ro-RO')} RON / lună` : `${pRon.toLocaleString('ro-RO')} RON`
-    }
-    return isRent ? `€${pEur?.toLocaleString('ro-RO')} / lună` : `€${pEur?.toLocaleString('ro-RO')}`
   }
 
   return (
@@ -188,45 +179,13 @@ export default function RomaniaCatalogPage() {
               ))}
             </select>
 
-            {/* Price Tier */}
-            <select
-              value={priceTier}
-              onChange={(e) => setPriceTier(e.target.value)}
-              className="px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 focus:outline-none focus:border-slate-900 cursor-pointer"
-            >
-              <option value="ALL">Toate Prețurile</option>
-              <option value="UNDER_200K">&lt; €200.000</option>
-              <option value="200K_500K">€200.000 – €500.000</option>
-              <option value="ABOVE_500K">&gt; €500.000</option>
-              <option value="ON_REQUEST">Preț la cerere</option>
-            </select>
-
-            {/* Currency Mode Switcher */}
-            <div className="flex items-center border border-slate-200 bg-slate-50 text-xs font-mono">
-              <button
-                onClick={() => setCurrencyMode('EUR')}
-                className={`px-2.5 py-1.5 transition-colors cursor-pointer ${
-                  currencyMode === 'EUR' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600 hover:text-slate-950'
-                }`}
-              >
-                EUR (€)
-              </button>
-              <button
-                onClick={() => setCurrencyMode('RON')}
-                className={`px-2.5 py-1.5 border-l border-slate-200 transition-colors cursor-pointer ${
-                  currencyMode === 'RON' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600 hover:text-slate-950'
-                }`}
-              >
-                RON (lei)
-              </button>
-            </div>
-
             <button
               onClick={handleReset}
-              className="p-2 border border-slate-200 text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="px-3 py-2 border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer text-xs font-mono flex items-center gap-1.5"
               title="Resetează Filtrele"
             >
               <RotateCcw className="h-3.5 w-3.5" />
+              <span>Resetează Filtrele</span>
             </button>
           </div>
         </div>
@@ -235,13 +194,16 @@ export default function RomaniaCatalogPage() {
       {/* 3. PROPERTY DOSSIER GRID */}
       <main className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 py-14 sm:py-20 space-y-12 sm:space-y-16 flex-1">
         
-        {/* Isolation Disclosure */}
-        <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 text-xs text-slate-600 font-light leading-relaxed space-y-1 shadow-2xs">
+        {/* Mandatory Independent Research & Representation Disclaimer */}
+        <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 text-xs text-slate-600 font-light leading-relaxed space-y-2 shadow-2xs">
           <span className="font-mono text-[10px] uppercase tracking-wider text-slate-900 font-bold block">
-            Secțiune Teritorială Autonomă &bull; România
+            Notă de Conformitate &bull; Declarație de Independență
           </span>
           <p>
-            Acest catalog conține exclusiv proprietăți imobiliare situate pe teritoriul României, sincronizate direct din platforma HomeFind. Pentru achiziții imobiliare în Dubai și analiză fiscală comparativă (TVA, impozit pe venit, randamente), accesați secțiunea principală a platformei.
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+          <p className="text-[11px] text-slate-500 pt-1 border-t border-slate-200">
+            Catalogul include listări sincronizate din platforma HomeFind. Prețurile comerciale exacte, disponibilitatea și documentația cadastrală sunt confirmate la cerere prin intermediul partenerilor responsabili.
           </p>
         </div>
 
@@ -261,8 +223,6 @@ export default function RomaniaCatalogPage() {
         ) : (
           filteredProperties.map((prop, idx) => {
             const isRent = prop.listing_type === 'Rent'
-            const displayPrice = formatPrice(prop.price_eur, prop.price_ron, isRent)
-
             return (
               <article
                 key={prop.id}
@@ -347,10 +307,10 @@ export default function RomaniaCatalogPage() {
                   <div className="pt-4 flex items-center justify-between border-t border-slate-100">
                     <div>
                       <span className="text-[10px] font-mono uppercase text-slate-400 block font-semibold">
-                        {isRent ? 'CHIRIE SOLICITATĂ' : 'PREȚ SOLICITAT'}
+                        STATUT COMERCIAL
                       </span>
-                      <span className="text-xl sm:text-2xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                        {displayPrice}
+                      <span className="text-base sm:text-lg font-light text-slate-950 font-mono tracking-wider font-bold">
+                        PREȚ LA CERERE
                       </span>
                     </div>
 
@@ -358,7 +318,7 @@ export default function RomaniaCatalogPage() {
                       href={`/romania/properties/${prop.id}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-colors shadow-2xs"
                     >
-                      <span>VEZI DOSAR</span>
+                      <span>SOLICITĂ INFORMAȚII</span>
                       <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>

@@ -239,7 +239,7 @@ export interface GoldenVisaCriteria {
 
 export const GOLDEN_VISA_CRITERIA: GoldenVisaCriteria = {
   minimum_property_value_aed: 2000000,
-  visa_duration_years: 5, // 5-Year Renewable Real Estate Investor Residency (with 10-Year Golden Visa tracks evaluated case-by-case by GDRFA)
+  visa_duration_years: 5, // 5-Year Renewable Real Estate Investor Residency codified on u.ae / ICP portal (Cabinet Resolution No. 65 of 2022)
   eligible_property_types: [
     'Freehold Residential Properties (Villas, Apartments, Penthouses, Townhouses)',
     'Single or Combined Portfolio of Freehold Properties totaling ≥ AED 2,000,000',
@@ -254,7 +254,7 @@ export const GOLDEN_VISA_CRITERIA: GoldenVisaCriteria = {
   stay_outside_uae_rule:
     'No maximum limit on consecutive days spent outside the UAE for Golden Visa categories.',
   legal_source: 'Cabinet Resolution No. 65 of 2022 Promulgating the Executive Regulations of Federal Decree-Law No. 29 of 2021 regarding Entry and Residence of Foreigners',
-  disclaimer: 'GENERAL INFORMATION — NOT INDIVIDUAL IMMIGRATION OR LEGAL ADVICE. Final issuance and duration are subject to GDRFA and DLD case-by-case approval.',
+  disclaimer: 'GENERAL INFORMATION — NOT INDIVIDUAL IMMIGRATION OR LEGAL ADVICE. Statutory duration (5-year renewable baseline), criteria, and final approval are subject exclusively to competent sovereign authority review (ICP, GDRFA, and DLD Cube).',
   provenance: createOfficialProvenance(
     'GDRFA',
     'Cabinet Resolution No. 65 of 2022',

@@ -26,7 +26,8 @@ export async function GET(request: NextRequest) {
         title: string
         subtitle?: string
         slug?: string
-        price?: number
+        price?: number | null
+        commercial_pricing_status?: string
         status?: string
       }> = []
 
@@ -44,7 +45,8 @@ export async function GET(request: NextRequest) {
           title: p.title,
           subtitle: `${p.bedrooms} Beds • ${p.area_name} • ${p.property_type}`,
           slug: p.slug,
-          price: p.asking_price,
+          price: null,
+          commercial_pricing_status: 'REQUEST PRICE',
           status: p.completion_status,
         }))
         results = results.concat(filtered)
@@ -63,7 +65,8 @@ export async function GET(request: NextRequest) {
           title: proj.name,
           subtitle: `${proj.area_name} • By ${proj.developer_name}`,
           slug: proj.slug,
-          price: proj.starting_price,
+          price: null,
+          commercial_pricing_status: 'REQUEST PRICE',
           status: proj.completion_status,
         }))
         results = results.concat(filtered)
@@ -126,7 +129,7 @@ export async function GET(request: NextRequest) {
 
     let query = supabase
       .from('properties')
-      .select('id, title, property_type, asking_price, bedrooms, completion_status, area_name', { count: 'exact' })
+      .select('id, title, property_type, bedrooms, completion_status, area_name', { count: 'exact' })
       .range(offset, offset + limit - 1)
 
     if (q) {
@@ -139,6 +142,12 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ success: false, error: 'Failed to complete database search query.' }, { status: 500 })
     }
 
+    const sanitizedData = (data || []).map((item) => ({
+      ...item,
+      asking_price: null,
+      commercial_pricing_status: 'REQUEST PRICE',
+    }))
+
     return NextResponse.json({
       success: true,
       query: q,
@@ -148,7 +157,7 @@ export async function GET(request: NextRequest) {
       total_pages: Math.ceil((count || 0) / limit),
       source: 'SUPABASE_POSTGRESQL',
       backend_status: 'CONNECTED',
-      results: data || [],
+      results: sanitizedData,
     })
   } catch {
     return NextResponse.json(

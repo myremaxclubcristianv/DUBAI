@@ -88,8 +88,8 @@ export default function TaxGuidePage() {
             </div>
             <div className="p-4 bg-white border border-slate-200 space-y-1">
               <span className="text-[10px] text-slate-500 uppercase font-bold">ROMANIA-UAE TREATY</span>
-              <div className="text-xl font-bold text-slate-950">Law 38/1993</div>
-              <p className="text-[11px] text-slate-500">Bilateral avoidance of double taxation on income &amp; capital.</p>
+              <div className="text-xl font-bold text-slate-950">Law 74/1993</div>
+              <p className="text-[11px] text-slate-500">Bilateral avoidance of double taxation on income &amp; wealth (signed 11 April 1993).</p>
             </div>
           </div>
         </div>
@@ -340,20 +340,20 @@ export default function TaxGuidePage() {
           </div>
         </section>
 
-        {/* SECTION 5: ROMANIA - UAE DOUBLE TAX AVOIDANCE TREATY */}
+        {/* SECTION 5: ROMANIA - UAE DOUBLE TAX AVOIDANCE CONVENTION */}
         <section className="space-y-6">
           <div className="space-y-1">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 font-bold">
-              05 &bull; BILATERAL TREATY
+              05 &bull; BILATERAL TAX CONVENTION
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-slate-950 font-serif">
-              Romania &ndash; UAE Double Taxation Avoidance Convention (Law No. 38/1993)
+              Romania &ndash; UAE Convention for Avoidance of Double Taxation (Law No. 74/1993)
             </h2>
           </div>
 
           <div className="p-6 sm:p-8 bg-white border border-slate-200 space-y-6">
             <p className="text-sm text-slate-700 leading-relaxed">
-              Romania and the United Arab Emirates are bound by a bilateral treaty for the Avoidance of Double Taxation and the Prevention of Fiscal Evasion with respect to Taxes on Income and on Capital, ratified in Romania via <strong>Law No. 38 of 11 May 1993</strong>.
+              Romania and the United Arab Emirates established their initial bilateral tax convention for the Avoidance of Double Taxation and the Prevention of Fiscal Evasion with respect to Taxes on Income and on Wealth, signed in Abu Dhabi on 11 April 1993 and ratified in Romania by <strong>Law No. 74 of 3 November 1993</strong> (published in Monitorul Oficial al României, Partea I, No. 262 of 9 November 1993), later updated under the modern bilateral agreement ratified by Law No. 26/2016 (Monitorul Oficial No. 225 of 25 March 2016).
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
@@ -361,24 +361,36 @@ export default function TaxGuidePage() {
                 <div className="flex items-center gap-2">
                   <Landmark className="h-4 w-4 text-slate-800" />
                   <h3 className="font-mono font-bold uppercase tracking-wider text-slate-900">
-                    Article 6: Immovable Property (Real Estate)
+                    Article 6 &bull; Immovable Property (Real Estate)
                   </h3>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Under Article 6 of the Convention, income derived by a resident of a Contracting State from immovable property situated in the other Contracting State <strong>may be taxed in that other State</strong>. Consequently, income derived from Dubai real property is governed by UAE domestic law, where natural person rental income is subjected to a statutory 0% tax.
+                  Article 6 provides that income derived by a resident of a Contracting State from immovable property situated in the other Contracting State may be taxed in the State where the property is situated. Under UAE domestic law (Cabinet Decision No. 49/2023), real estate income derived by natural persons is not currently subject to UAE personal income tax.
                 </p>
+                <div className="pt-2 text-[11px] text-slate-500 font-mono">
+                  Source: Law 74/1993 &bull; Verified October 2026
+                </div>
               </div>
 
               <div className="p-5 bg-slate-50 border border-slate-200 space-y-3">
                 <div className="flex items-center gap-2">
                   <UserCheck className="h-4 w-4 text-slate-800" />
                   <h3 className="font-mono font-bold uppercase tracking-wider text-slate-900">
-                    Romanian Tax Residency Rules (Codul Fiscal)
+                    Romanian Tax Residency &amp; Declarația Unică
                   </h3>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Romanian citizens and foreign individuals who remain Romanian tax residents under Law 227/2015 remain liable to Romanian tax on worldwide income unless they officially transfer tax residency abroad (by filing the <em>Chestionar de rezidență fiscală</em> with ANAF upon departure), spending over 183 days abroad and transferring their center of vital interests outside Romania.
+                  A tax treaty does not automatically eliminate filing obligations in Romania. Individuals who remain Romanian tax residents under Law 227/2015 (Codul Fiscal) are subject to worldwide income reporting via Declarația Unică (Form 212). The specific method for avoiding double taxation (credit or exemption) must be reviewed with an authorized tax advisor (consultant fiscal autorizat).
                 </p>
+                <div className="pt-2">
+                  <Link
+                    href="/ghiduri/impozitare-romania-dubai"
+                    className="text-slate-900 font-mono text-[11px] font-bold hover:underline inline-flex items-center gap-1"
+                  >
+                    <span>Citește Ghidul Complet în Română</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -389,11 +401,11 @@ export default function TaxGuidePage() {
           <div className="flex items-center gap-2 text-accent">
             <ShieldCheck className="h-5 w-5" />
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-accent">
-              Statutory Disclaimer &amp; Professional Council Requirement
+              Statutory Educational Disclaimer &amp; Professional Counsel Notice
             </h3>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed font-light">
-            This guide is prepared solely for informational and educational purposes based on Federal Decree-Law No. 47 of 2022, Federal Decree-Law No. 8 of 2017, Cabinet Decision No. 49 of 2023, and the Romania&ndash;UAE Double Tax Treaty (Law 38/1993). Nothing on this platform constitutes formal tax, legal, or accounting advice. Prospective investors and corporate founders must obtain independent, formal advice from an FTA-registered tax agent or chartered accountant to assess their specific personal tax domicile and corporate structures.
+            This guide is prepared strictly for informational and educational purposes based on UAE Federal Decree-Law No. 47 of 2022, Federal Decree-Law No. 8 of 2017, Cabinet Decision No. 49 of 2023, the Romanian Fiscal Code (Law 227/2015), and the Romania&ndash;UAE Tax Convention (Law 74/1993). Nothing on this platform constitutes formal individual tax, legal, or financial advice. Investors must seek counsel from a licensed tax advisor (consultant fiscal CCF) and certified FTA tax agent to evaluate their specific domicile, residency questionnaires, and corporate structuring.
           </p>
         </section>
 

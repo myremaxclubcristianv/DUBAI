@@ -239,9 +239,9 @@ export const DUBAI_DEMOGRAPHICS: DemographicSegment[] = [
     detail: 'One of the most productive, economically active, and digitally proficient urban demographic profiles in the world.'
   },
   {
-    category: 'Golden Visa Long-Term Holders',
+    category: 'Golden Visa & Long-Term Holders',
     count: '210,000+',
     percentage: '5.4%',
-    detail: '10-year residency grants conferred upon property investors, entrepreneurs, scientists, senior executives, and exceptional talents.'
+    detail: 'Long-term residency grants conferred upon qualifying property investors (5-year renewable) and 10-year Golden Visa categories (including qualifying public investments, entrepreneurs, scientists, senior executives, and exceptional talents).'
   }
 ]

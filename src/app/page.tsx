@@ -4,11 +4,21 @@ import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { HomeConsultationCta } from '@/components/home/home-consultation-cta'
 import { FeaturedPriceTag } from '@/components/home/featured-price-tag'
+import type { Metadata } from 'next'
 import {
   ArrowRight,
   ArrowUpRight,
   ShieldCheck,
 } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Dubai Real Estate & Investment Intelligence | Cristian Văduva',
+  description:
+    'Independent Dubai real estate research, market intelligence, statutory investment underwriting, and data provenance.',
+  alternates: {
+    canonical: 'https://dubai.cristianvaduva.com',
+  },
+}
 
 export default function Home() {
   // Featured Palm Jumeirah property from verified registry
@@ -95,10 +105,10 @@ export default function Home() {
     {
       num: '04',
       code: 'YLD',
-      label: 'YIELD',
-      title: 'Net Achieved Yield Curves',
-      desc: 'Realised net rental yields calculated from verified Ejari lease filings after deducting official RERA service charge indexes.',
-      statutoryRef: 'Ejari Realised Net Curves',
+      label: 'RENTAL UNDERWRITING',
+      title: 'Rental Rates & Net Yield Modeling',
+      desc: 'Statutory Ejari registered lease benchmarks analyzed against community RERA service charge indexes to model net operating income.',
+      statutoryRef: 'Ejari Benchmarks & Service Charge Index',
     },
     {
       num: '05',
@@ -176,10 +186,10 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/95 backdrop-blur-md border border-slate-200 text-slate-900 text-[10px] sm:text-[11px] font-mono tracking-[0.22em] uppercase font-semibold shadow-2xs">
-                    <span>DUBAI / REAL ESTATE INTELLIGENCE</span>
+                    <span>DUBAI / INDEPENDENT REAL ESTATE RESEARCH &amp; MARKET INTELLIGENCE</span>
                   </div>
                   <span className="text-[10px] font-mono tracking-[0.2em] text-slate-500 uppercase hidden sm:inline-block">
-                    25.1972° N • 55.2744° E
+                    RESEARCH PLATFORM FOR INVESTORS
                   </span>
                 </div>
                 
@@ -191,7 +201,7 @@ export default function Home() {
               </div>
 
               <p className="text-base sm:text-lg text-slate-700 font-light leading-[1.75] max-w-xl">
-                Dubai is not a singular market—it is an archipelago of distinct economic micro-climates. We provide source-led intelligence, statutory due diligence, and private advisory to underwrite acquisitions with institutional precision.
+                Dubai is not a singular market—it is an archipelago of distinct economic micro-climates. We provide independent market research, statutory due diligence guidance, and educational resources for investors exploring Dubai real estate.
               </p>
 
               {/* Clearly Separated Primary and Secondary Actions */}
@@ -449,13 +459,13 @@ export default function Home() {
               {/* Group 3: Price */}
               <div className="space-y-1">
                 <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
-                  ASKING PRICE (SUBJECT TO CONFIRMATION)
+                  COMMERCIAL PRICING STATUS
                 </span>
                 <div className="font-mono text-3xl font-bold text-slate-950 tabular-nums">
                   <FeaturedPriceTag priceAed={featuredProperty.asking_price} />
                 </div>
                 <span className="text-[10px] font-mono text-slate-500 block">
-                  Approx. AED {(featuredProperty.asking_price ? Math.round(featuredProperty.asking_price / featuredProperty.internal_area_sqft) : 5828).toLocaleString()} / sq ft
+                  Research entry &bull; Pricing available upon direct investor inquiry
                 </span>
               </div>
 
@@ -467,11 +477,11 @@ export default function Home() {
                   href={`/properties/${featuredProperty.id}`}
                   className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.16em] font-semibold transition-all shadow-sm group"
                 >
-                  <span>ACCESS FULL ASSET DOSSIER</span>
+                  <span>REQUEST ASSET INFORMATION &amp; PRICE</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <p className="text-[10px] text-slate-500 font-mono leading-relaxed">
-                  Listing details supplied by listing party and subject to confirmation.
+                  Research entry &bull; Details referenced from secondary sources &bull; Subject to partner confirmation.
                 </p>
               </div>
 
@@ -548,13 +558,13 @@ export default function Home() {
             {/* Metric 2: Golden Visa Threshold */}
             <div className="py-6 lg:py-0 lg:px-8 space-y-1.5">
               <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-500 block font-semibold">
-                GOLDEN VISA THRESHOLD
+                INVESTOR RESIDENCY BASELINE
               </span>
               <div className="text-4xl sm:text-5xl font-light font-mono text-slate-950 tabular-nums font-semibold tracking-tight">
                 AED 2.0M
               </div>
               <p className="text-xs text-slate-600 font-mono leading-relaxed">
-                Statutory baseline under Cabinet Res. 65/2022. Eligibility subject to GDRFA case-by-case review (last checked October 2026).
+                Statutory baseline under Cabinet Res. 65/2022 (5-year renewable). Eligibility subject to competent authority approval.
               </p>
             </div>
 
@@ -810,7 +820,7 @@ export default function Home() {
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION H: PRIVATE CLIENT (CINEMATIC DEEP NAVY ACQUISITION OFFICE)        */}
+      {/* SECTION H: INDEPENDENT RESEARCH & INQUIRY PROTOCOL                         */}
       {/* ========================================================================= */}
       <section className="py-24 lg:py-32 bg-[#060c18] text-white relative overflow-hidden border-b border-slate-900">
         
@@ -818,7 +828,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0 opacity-15 pointer-events-none">
           <Image
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70"
-            alt="Private Client Office Architectural Interior"
+            alt="Research and Inquiry Desk Architectural Interior"
             fill
             sizes="100vw"
             className="object-cover object-center"
@@ -833,13 +843,13 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <span className="text-white font-bold">05</span>
               <span>/</span>
-              <span>PRIVATE CLIENT</span>
+              <span>INDEPENDENT RESEARCH</span>
               <span>/</span>
-              <span>CONFIDENTIAL</span>
+              <span>PROPERTY INTELLIGENCE</span>
               <span>/</span>
-              <span>DIRECT MANDATE</span>
+              <span>PARTNER REFERRALS</span>
             </div>
-            <span className="text-slate-500">MANDATE DESK • 2026</span>
+            <span className="text-slate-500">RESEARCH PROTOCOL &bull; 2026</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -847,15 +857,15 @@ export default function Home() {
             {/* Left 7 Columns: Serif Headline, Advisory Thesis & Clear Action */}
             <div className="lg:col-span-7 space-y-7">
               <span className="text-[10px] font-mono tracking-[0.24em] text-slate-400 uppercase font-semibold block">
-                INDEPENDENT MANDATE ADVISORY
+                PROPERTY RESEARCH FOR ROMANIAN &amp; INTERNATIONAL INVESTORS
               </span>
 
               <h2 className="text-3xl sm:text-5xl lg:text-[54px] font-light tracking-[-0.03em] font-serif leading-[1.08] text-white">
-                For acquisitions that require discretion, speed and precision.
+                Independent analysis and research before capital allocation.
               </h2>
 
               <p className="text-sm sm:text-base text-slate-300 font-light leading-relaxed max-w-xl">
-                We advise family offices, institutional investors, and private principals acquiring prime residential assets and off-market opportunities across Dubai with absolute discretion and rigorous analytical discipline.
+                We provide independent market research, property information, and educational resources for investors exploring Dubai real estate. For regulated transactional services, viewings, and conveyancing, inquiries are routed to licensed local partners upon confirmation.
               </p>
 
               <div className="pt-2">
@@ -867,17 +877,17 @@ export default function Home() {
             <div className="lg:col-span-5 bg-white/[0.03] backdrop-blur-md border border-white/15 p-8 sm:p-9 space-y-6">
               <div className="border-b border-white/10 pb-3">
                 <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 font-semibold block">
-                  SERVICE PARAMETERS
+                  OPERATIONAL PARAMETERS
                 </span>
               </div>
 
               <div className="space-y-4 font-mono text-xs">
                 <div className="space-y-1">
                   <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                    MANDATE THRESHOLD
+                    MARKET RESEARCH SCOPE
                   </span>
                   <p className="text-slate-200 font-sans text-xs leading-relaxed">
-                    Single-asset acquisitions from AED 15M+ and curated multi-unit residential or commercial portfolios.
+                    Independent coverage of prime residential master developments, off-plan projects, and district fundamentals.
                   </p>
                 </div>
 
@@ -885,10 +895,10 @@ export default function Home() {
 
                 <div className="space-y-1">
                   <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                    STATUTORY DILIGENCE
+                    SOURCE DATA REFERENCE
                   </span>
                   <p className="text-slate-200 font-sans text-xs leading-relaxed">
-                    Direct title deed verification, escrow account audit checks under Law No. 8/2007, and RERA compliance.
+                    Data sourced from official DLD transaction records, RERA rental indices, and statutory escrow frameworks under UAE law.
                   </p>
                 </div>
 
@@ -896,10 +906,10 @@ export default function Home() {
 
                 <div className="space-y-1">
                   <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                    TRANSACTION GOVERNANCE
+                    LICENSED PARTNER ROUTING
                   </span>
                   <p className="text-slate-200 font-sans text-xs leading-relaxed">
-                    Escrow-backed conveyancing, GDRFA Golden Visa structuring, and custodian bank coordination.
+                    Transaction facilitation, legal conveyancing, and property viewings conducted via verified licensed professionals.
                   </p>
                 </div>
 
@@ -907,10 +917,10 @@ export default function Home() {
 
                 <div className="space-y-1">
                   <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                    STRICT CONFIDENTIALITY
+                    DATA PRIVACY &amp; CONSENT
                   </span>
                   <p className="text-slate-200 font-sans text-xs leading-relaxed">
-                    Direct principal representation governed by binding non-disclosure covenants.
+                    Inquiries are processed with explicit consent before transmission to authorized partners. No unsolicited outreach.
                   </p>
                 </div>
               </div>
@@ -921,15 +931,33 @@ export default function Home() {
 
           {/* Discreet Bottom Parameter Strip */}
           <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4 text-[10px] font-mono text-slate-400">
-            <span>Direct Principal Representation</span>
-            <span>•</span>
-            <span>Escrow Protected Conveyancing</span>
-            <span>•</span>
-            <span>GDRFA Golden Visa Structuring</span>
-            <span>•</span>
-            <span>Statutory Compliance Oversight</span>
+            <span>Independent Research Platform</span>
+            <span>&bull;</span>
+            <span>Source Referenced Data</span>
+            <span>&bull;</span>
+            <span>Licensed Partner Facilitation</span>
+            <span>&bull;</span>
+            <span>Educational Guidance</span>
           </div>
 
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* SECTION I: MANDATORY PLATFORM DISCLAIMER (ROMANIAN & ENGLISH)             */}
+      {/* ========================================================================= */}
+      <section className="py-12 bg-slate-50 border-b border-slate-200 text-slate-700 font-mono text-xs leading-relaxed">
+        <div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 space-y-4">
+          <div className="text-[10px] uppercase tracking-[0.2em] text-slate-900 font-bold flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-emerald-700" />
+            <span>AVIZ DE CONFORMITATE &bull; STATUT EDITORIAL INDEPENDENT</span>
+          </div>
+          <p className="text-slate-700 font-sans text-xs sm:text-sm leading-relaxed max-w-4xl">
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+          <p className="text-slate-500 font-sans text-[11px] leading-relaxed max-w-4xl pt-1">
+            DUBAI is an independent real estate research and market intelligence platform. Publication of any project or property does not imply a sales mandate, a representation relationship, or independent verification of every detail. For transactions, viewings, and regulated services, users are referred to licensed professionals and authorized partners upon confirmation of availability and credentials.
+          </p>
         </div>
       </section>
 

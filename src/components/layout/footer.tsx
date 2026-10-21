@@ -37,14 +37,14 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Direct Advisory Desk & Contact Strip */}
+        {/* Research & Property Inquiry Desk Strip */}
         <div className="p-6 sm:p-8 bg-slate-900/60 border border-slate-800/90 rounded-xs flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-1">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#38bdf8] block font-semibold">
-              DIRECT CLIENT ADVISORY DESK
+              RESEARCH &amp; PROPERTY INQUIRY DESK
             </span>
             <p className="text-xs sm:text-sm text-slate-300 font-light">
-              For confidential mandate discussions, off-market asset underwriting, and private principal appointments:
+              Pentru solicitări de cercetare imobiliară, documentație sau redirecționare către parteneri licențiați:
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-xs">
@@ -84,24 +84,27 @@ export function Footer() {
             </span>
             <ul className="space-y-2 text-xs font-light">
               <li><Link href="/buy" className="text-slate-300 hover:text-white transition-colors font-medium">Buy Dubai</Link></li>
-              <li><Link href="/rent" className="text-slate-300 hover:text-white transition-colors font-medium">Rent Mandates</Link></li>
+              <li><Link href="/rent" className="text-slate-300 hover:text-white transition-colors font-medium">Rent Inquiries</Link></li>
               <li><Link href="/properties" className="text-slate-400 hover:text-white transition-colors">All Properties</Link></li>
               <li><Link href="/projects" className="text-slate-400 hover:text-white transition-colors">Off-Plan Escrow</Link></li>
               <li><Link href="/developments/brabus-island" className="text-slate-400 hover:text-white transition-colors">Brabus Island</Link></li>
             </ul>
           </div>
 
-          {/* Column 2: Romania Catalog */}
+          {/* Column 2: Ghiduri Investiții RO */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Romania Catalog
+              Ghiduri RO
             </span>
             <ul className="space-y-2 text-xs font-light">
-              <li><Link href="/romania" className="text-emerald-400 hover:text-white transition-colors font-medium">All 55 Properties</Link></li>
-              <li><Link href="/romania?city=București" className="text-slate-400 hover:text-white transition-colors">Bucharest Luxury</Link></li>
-              <li><Link href="/romania?city=Voluntari" className="text-slate-400 hover:text-white transition-colors">Voluntari &amp; Pipera</Link></li>
-              <li><Link href="/romania?city=Constanța" className="text-slate-400 hover:text-white transition-colors">Constanța Coast</Link></li>
-              <li><Link href="/romania?city=Brașov" className="text-slate-400 hover:text-white transition-colors">Brașov Mountain</Link></li>
+              <li><Link href="/ghiduri" className="text-emerald-400 hover:text-white transition-colors font-medium">Hub Investiții RO</Link></li>
+              <li><Link href="/ghiduri/cum-cumperi-proprietate-dubai" className="text-slate-300 hover:text-white transition-colors">Ghid Pas cu Pas</Link></li>
+              <li><Link href="/ghiduri/costuri-achizitie-dubai" className="text-slate-400 hover:text-white transition-colors">Costuri Cumpărare</Link></li>
+              <li><Link href="/ghiduri/golden-visa-uae" className="text-slate-400 hover:text-white transition-colors">Golden Visa UAE</Link></li>
+              <li><Link href="/ghiduri/impozitare-romania-dubai" className="text-slate-400 hover:text-white transition-colors">Impozitare RO-UAE</Link></li>
+              <li><Link href="/ghiduri/dubai-vs-bucuresti" className="text-slate-400 hover:text-white transition-colors">Dubai vs București</Link></li>
+              <li><Link href="/ghiduri/riscuri-off-plan-dubai" className="text-slate-400 hover:text-white transition-colors">Riscuri Off-Plan</Link></li>
+              <li><Link href="/ghiduri/verificare-broker-anunt-dubai" className="text-slate-400 hover:text-white transition-colors">Verificare Broker</Link></li>
             </ul>
           </div>
 
@@ -125,10 +128,10 @@ export function Footer() {
               Investment Lab
             </span>
             <ul className="space-y-2 text-xs font-light">
-              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Underwriting Desk</Link></li>
+              <li><Link href="/raport-trimestrial" className="text-[#c9a962] hover:text-white transition-colors font-medium">Raport Trimestrial</Link></li>
+              <li><Link href="/investment" className="text-slate-400 hover:text-white transition-colors">Research Framework</Link></li>
               <li><Link href="/investment/calculators" className="text-slate-300 hover:text-white font-medium transition-colors">Calculators (9 Engines)</Link></li>
               <li><Link href="/investment/calculators" className="text-slate-400 hover:text-white transition-colors">Short vs Long Rent</Link></li>
-              <li><Link href="/investment/calculators" className="text-slate-400 hover:text-white transition-colors">Dubai vs Romania</Link></li>
               <li><Link href="/market" className="text-slate-400 hover:text-white transition-colors">Market Intelligence</Link></li>
             </ul>
           </div>
@@ -164,16 +167,16 @@ export function Footer() {
           {/* Column 7: Private Client */}
           <div className="space-y-3.5">
             <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white block font-bold">
-              Private Client
+              Inquiry &amp; Partners
             </span>
             <ul className="space-y-2 text-xs font-light">
               <li>
-                <Link href="/private-client" className="text-white hover:text-slate-200 flex items-center gap-1 font-semibold">
-                  Private Desk <ArrowUpRight className="h-3 w-3" />
+                <Link href="/vizionari" className="text-white hover:text-slate-200 flex items-center gap-1 font-semibold">
+                  Solicită Vizionare <ArrowUpRight className="h-3 w-3" />
                 </Link>
               </li>
+              <li><Link href="/studii-de-caz" className="text-slate-400 hover:text-white transition-colors">Studii de Caz</Link></li>
               <li><Link href="/client" className="text-slate-400 hover:text-white transition-colors">Client Workspace</Link></li>
-              <li><Link href="/network" className="text-slate-400 hover:text-white transition-colors">Advisory Network</Link></li>
               <li><Link href="/buying-guide" className="text-slate-400 hover:text-white transition-colors">Buying Guide</Link></li>
               <li><Link href="/developers" className="text-slate-400 hover:text-white transition-colors">Developer Registry</Link></li>
             </ul>
@@ -185,6 +188,7 @@ export function Footer() {
               About &amp; Trust
             </span>
             <ul className="space-y-2 text-xs font-light">
+              <li><Link href="/newsletter" className="text-emerald-400 hover:text-white transition-colors font-medium">Newsletter RO</Link></li>
               <li><Link href="/sources" className="text-slate-400 hover:text-white transition-colors">Sources Registry</Link></li>
               <li><Link href="/methodology" className="text-slate-400 hover:text-white transition-colors">Methodology</Link></li>
               <li>
@@ -257,14 +261,17 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Independent Status Statutory Notice */}
-        <div className="p-5 bg-slate-950/80 border border-slate-800 text-xs font-light text-slate-400 space-y-2 leading-relaxed">
-          <div className="flex items-center gap-2 text-slate-300 font-mono text-[10px] uppercase tracking-wider font-semibold">
-            <AlertCircle className="h-3.5 w-3.5 text-amber-400" />
-            <span>Independent Platform Notice &amp; Legal Attribution</span>
+        {/* Independent Status Statutory Notice & Mandatory Platform Disclaimer */}
+        <div className="p-6 bg-slate-950 border border-slate-800/90 text-xs font-light text-slate-300 space-y-3 leading-relaxed">
+          <div className="flex items-center gap-2 text-slate-200 font-mono text-[10px] uppercase tracking-wider font-semibold">
+            <AlertCircle className="h-4 w-4 text-[#c9a962]" />
+            <span>AVIZ DE CONFORMITATE &bull; STATUT EDITORIAL INDEPENDENT</span>
           </div>
-          <p>
-            Dubai is an independent real estate research and advisory platform. It is not affiliated with, endorsed by, sponsored by, or operated by the Dubai Land Department, GDRFA, the Federal Tax Authority, DIFC, or any other government authority mentioned on this website. Property listings and opportunities may be supplied or presented by independent local real estate agencies, developers, owners, or other third parties.
+          <p className="text-slate-300 font-sans text-xs leading-relaxed">
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+          <p className="text-slate-400 font-sans text-[11px] leading-relaxed pt-1 border-t border-slate-800/60">
+            DUBAI is an independent real estate research and market intelligence platform. It is not affiliated with, endorsed by, sponsored by, or operated by the Dubai Land Department, GDRFA, the Federal Tax Authority, DIFC, or any other government authority. Property listings and project data are referenced from official registries, verified source documents, and public developer filings.
           </p>
         </div>
 

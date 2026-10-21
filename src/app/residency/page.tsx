@@ -26,7 +26,7 @@ export default function ResidencyPage() {
               PROPERTY-BASED<br />RESIDENCY IN THE UAE.
             </h1>
             <p className="text-base sm:text-lg text-slate-600 font-light leading-relaxed">
-              Source-led overview of property investor residency routes in Dubai, including the 10-Year Golden Residency framework under Cabinet Resolution No. 65 of 2022 and standard investor permits. Eligibility and validity terms are determined by the relevant statutory authorities.
+              Source-led overview of property investor residency routes in Dubai, including the 5-Year renewable real estate residency framework under Cabinet Resolution No. 65 of 2022 (and distinction from 10-Year Golden Visa categories, such as qualifying public investments or exceptional talents). Eligibility and validity terms are determined by the relevant statutory authorities.
             </p>
           </div>
         </div>
@@ -51,10 +51,10 @@ export default function ResidencyPage() {
 
             <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#0284c7] block font-semibold">
-                02 &bull; GOLDEN VISA DURATION
+                02 &bull; REAL ESTATE RESIDENCY DURATION
               </span>
-              <div className="text-xl font-semibold text-slate-900 font-mono">10-Year Renewable</div>
-              <p className="text-xs text-slate-500 font-light">Renewable term published by ICP &amp; GDRFA official portals for qualifying investors</p>
+              <div className="text-xl font-semibold text-slate-900 font-mono">5-Year Renewable</div>
+              <p className="text-xs text-slate-500 font-light">Official statutory duration codified on u.ae / ICP portal (10-year Golden Visa applies to qualifying public investments, talents, entrepreneurs, and graduates)</p>
             </div>
 
             <div className="p-5 rounded-xs bg-slate-50 border border-slate-200 space-y-1.5 shadow-xs">

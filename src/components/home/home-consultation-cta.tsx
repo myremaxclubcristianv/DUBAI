@@ -13,7 +13,7 @@ export function HomeConsultationCta() {
         onClick={() => setIsOpen(true)}
         className="inline-flex items-center gap-2.5 px-7 py-4 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.18em] font-semibold transition-all shadow-md cursor-pointer group"
       >
-        <span>SCHEDULE CONFIDENTIAL CONSULTATION</span>
+        <span>REQUEST INFORMATION</span>
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </button>
       <ContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />

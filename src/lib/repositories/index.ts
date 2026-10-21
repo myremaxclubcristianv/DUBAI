@@ -197,7 +197,8 @@ export const SearchRepository = {
       title: string
       subtitle?: string
       slug?: string
-      price?: number
+      price?: number | null
+      commercial_pricing_status?: string
       status?: string
     }> = []
 
@@ -215,7 +216,8 @@ export const SearchRepository = {
         title: p.title,
         subtitle: `${p.bedrooms} Beds • ${p.area_name} • ${p.property_type}`,
         slug: p.slug,
-        price: p.asking_price,
+        price: null,
+        commercial_pricing_status: 'REQUEST PRICE',
         status: p.completion_status,
       }))
       results.push(...properties)

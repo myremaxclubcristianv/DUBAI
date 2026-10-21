@@ -59,7 +59,7 @@ export const VERIFIED_INSURANCE_PILLARS: InsurancePillar[] = [
     minimumRequirements: 'Full reinstatement value replacement basis without under-insurance penalties.',
     typicalAnnualCost: '0.04% to 0.08% of building structural value (e.g. AED 1,200/yr for an AED 2M apartment; AED 4,500/yr for an AED 8M villa).',
     approvedProviders: ['Orient Insurance PJSC', 'Sukoon Insurance', 'GIG Gulf', 'Dubai Insurance Company', 'Salama Islamic Arab Insurance'],
-    goldenVisaCompliance: 'Provides asset risk hedging for freehold property titles anchoring 10-year investor visas.',
+    goldenVisaCompliance: 'Provides asset risk hedging for freehold property titles anchoring real estate investor residency (5-year renewable baseline / long-term investor visas).',
     provenance: {
       source_name: 'UAE Central Bank Insurance Regulation Department',
       source_type: 'STATUTORY_RECORDS',

@@ -24,17 +24,7 @@ export default function RomaniaPropertyDetailPage() {
   const [activeImageIndex, setActiveImageIndex] = React.useState(0)
   const [copiedShare, setCopiedShare] = React.useState(false)
   const [isContactModalOpen, setIsContactModalOpen] = React.useState(false)
-  const [currencyMode, setCurrencyMode] = React.useState<'EUR' | 'RON'>('EUR')
-
   const isRent = property.listing_type === 'Rent'
-  const pEur = property.price_eur || 0
-  const pRon = property.price_ron || Math.round(pEur * 4.9765)
-
-  // Romanian Statutory Acquisition Costs Calculation (for Sales)
-  const notaryFee = Math.round(pEur * 0.012) // ~1.2% notary scale
-  const ancpiFee = Math.round(pEur * 0.0015) // 0.15% ANCPI registration for individuals
-  const agencyCommission = Math.round(pEur * 0.02) // ~2% standard agency fee
-  const totalAcquisitionEur = pEur + notaryFee + ancpiFee + agencyCommission
 
   const images = property.images && property.images.length > 0 ? property.images : [
     'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85'
@@ -127,45 +117,17 @@ export default function RomaniaPropertyDetailPage() {
               </div>
             </div>
 
-            {/* Price Box with Currency Switcher */}
+            {/* Price Box */}
             <div className="text-left lg:text-right font-mono space-y-2 p-5 bg-slate-50 border border-slate-200 shadow-2xs shrink-0">
-              <div className="flex items-center lg:justify-end gap-2">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">
-                  {isRent ? 'Chirie Lunară' : 'Preț Solicitat'}
-                </span>
-                <div className="flex items-center border border-slate-200 bg-white text-[10px]">
-                  <button
-                    onClick={() => setCurrencyMode('EUR')}
-                    className={`px-2 py-0.5 ${currencyMode === 'EUR' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600'}`}
-                  >
-                    EUR
-                  </button>
-                  <button
-                    onClick={() => setCurrencyMode('RON')}
-                    className={`px-2 py-0.5 border-l border-slate-200 ${currencyMode === 'RON' ? 'bg-slate-900 text-white font-bold' : 'text-slate-600'}`}
-                  >
-                    RON
-                  </button>
-                </div>
+              <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold block">
+                Statut Comercial &bull; {isRent ? 'Închiriere' : 'Vânzare'}
+              </span>
+              <div className="text-2xl sm:text-3xl font-light text-slate-950 tabular-nums font-bold tracking-tight">
+                PREȚ LA CERERE
               </div>
-
-              <div className="text-2xl sm:text-4xl font-light text-slate-950 tabular-nums font-bold">
-                {pEur > 0 ? (
-                  currencyMode === 'RON'
-                    ? `${pRon.toLocaleString('ro-RO')} RON${isRent ? ' / lună' : ''}`
-                    : `€${pEur.toLocaleString('ro-RO')}${isRent ? ' / lună' : ''}`
-                ) : (
-                  'Preț la cerere'
-                )}
+              <div className="text-xs text-slate-600 font-medium">
+                Fișă de cercetare imobiliară &bull; Solicită detalii
               </div>
-
-              {pEur > 0 && (
-                <div className="text-xs text-slate-600 font-semibold">
-                  {currencyMode === 'RON'
-                    ? `€${pEur.toLocaleString('ro-RO')} (echivalent BNR)`
-                    : `${pRon.toLocaleString('ro-RO')} RON (1 EUR = 4.97 RON)`}
-                </div>
-              )}
             </div>
           </div>
 
@@ -326,68 +288,83 @@ export default function RomaniaPropertyDetailPage() {
       </section>
 
       {/* 4. STATUTORY CONVEYANCING SCHEDULE (ROMANIA) */}
-      {!isRent && pEur > 0 && (
+      {!isRent && (
         <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
           <div className="w-full max-w-[1120px] mx-auto px-4 sm:px-10 lg:px-16 space-y-8">
             <div className="space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-slate-500 font-semibold block">
-                CADRU FISCAL &bull; COSTURI ESTIMATE DE ACHIZIȚIE ÎN ROMÂNIA
+                CADRU FISCAL &bull; STRUCTURA COSTURILOR DE ACHIZIȚIE ÎN ROMÂNIA
               </span>
               <h2 className="text-2xl sm:text-3xl font-light text-slate-950 font-serif">
                 Estimare Costuri Notariale &amp; Taxe de Intabulare
               </h2>
               <p className="text-sm text-slate-600 font-light max-w-2xl leading-relaxed">
-                Calcul estimativ conform grilei notariale UNNPR și tarifelor Agenției Naționale de Cadastru și Publicitate Imobiliară (ANCPI).
+                Calcul orientativ conform grilei notariale UNNPR și tarifelor Agenției Naționale de Cadastru și Publicitate Imobiliară (ANCPI).
               </p>
             </div>
 
             <div className="p-6 sm:p-10 bg-white border border-slate-200 space-y-8 shadow-sm">
               <div className="space-y-3 font-mono text-xs">
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-600">Preț Tranzacție</span>
-                  <span className="text-slate-950 font-bold">€{pEur.toLocaleString('ro-RO')} ({pRon.toLocaleString('ro-RO')} RON)</span>
+                  <span className="text-slate-600">Onorariu Notarial Estimativ</span>
+                  <span className="text-slate-950 font-bold">~1.2% + TVA (conform grilei UNNPR)</span>
                 </div>
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-600">Onorariu Notarial Estimativ (~1.2% + TVA)</span>
-                  <span className="text-slate-950 font-bold">€{notaryFee.toLocaleString('ro-RO')}</span>
+                  <span className="text-slate-600">Taxă Intabulare ANCPI</span>
+                  <span className="text-slate-950 font-bold">0.15% (persoane fizice) / 0.50% (persoane juridice)</span>
                 </div>
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-600">Taxă Intabulare ANCPI (0.15% persoane fizice)</span>
-                  <span className="text-slate-950 font-bold">€{ancpiFee.toLocaleString('ro-RO')}</span>
+                  <span className="text-slate-600">Comision Intermediere Agenție Imobiliară</span>
+                  <span className="text-slate-950 font-bold">Standard de piață ~2% + TVA (dacă este aplicabil)</span>
                 </div>
                 <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                  <span className="text-slate-600">Comision Intermediere Agenție (~2% + TVA)</span>
-                  <span className="text-slate-950 font-bold">€{agencyCommission.toLocaleString('ro-RO')}</span>
+                  <span className="text-slate-600">Impozit pe Transfer Proprietate (Vânzător)</span>
+                  <span className="text-slate-950 font-bold">1% (deținere &gt; 3 ani) / 3% (deținere &le; 3 ani)</span>
                 </div>
               </div>
 
               <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1">
                   <span className="text-xs font-mono uppercase tracking-widest text-slate-950 font-bold">
-                    TOTAL ESTIMAT ACHIZIȚIE
+                    TOTAL ESTIMAT COSTURI ACHIZIȚIE CUMPĂRĂTOR
                   </span>
                   <p className="text-xs text-slate-500 font-light">
-                    Costuri adiționale de tranzacționare în România: aprox. 3.35% din prețul imobilului.
+                    Total cheltuieli adiacente cumpărător în România: aprox. 3.35% – 3.50% din valoarea tranzacționată.
                   </p>
-                </div>
-                <div className="text-2xl sm:text-4xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                  €{totalAcquisitionEur.toLocaleString('ro-RO')}
                 </div>
               </div>
 
               <div className="pt-4 flex flex-wrap items-center gap-4">
                 <Link
-                  href="/investment/calculators#compare-markets"
+                  href="/ghiduri/dubai-vs-bucuresti"
                   className="px-5 py-2.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-wider font-semibold transition-colors flex items-center gap-2"
                 >
                   <Scale className="h-3.5 w-3.5" />
-                  <span>Compară Fiscalitatea cu Dubai (0% Tax)</span>
+                  <span>Compară Cadrul Fiscal România vs Dubai</span>
+                </Link>
+                <Link
+                  href="/ghiduri/costuri-achizitie-dubai"
+                  className="px-5 py-2.5 border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 text-xs font-mono uppercase tracking-wider font-semibold transition-colors flex items-center gap-2"
+                >
+                  <span>Ghid Costuri Dubai</span>
                 </Link>
               </div>
             </div>
           </div>
         </section>
       )}
+
+      {/* 5. MANDATORY PLATFORM DISCLAIMER */}
+      <section className="py-12 bg-slate-100/70 border-t border-slate-200 text-slate-600 font-mono text-[11px] leading-relaxed">
+        <div className="w-full max-w-[1120px] mx-auto px-4 sm:px-10 lg:px-16 space-y-3">
+          <div className="font-bold uppercase tracking-wider text-slate-900">
+            AVIZ DE CONFORMITATE ȘI STATUT EDITORIAL INDEPENDENT
+          </div>
+          <p>
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+        </div>
+      </section>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>

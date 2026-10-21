@@ -32,12 +32,20 @@ export async function GET(request: NextRequest) {
       offset,
     }
 
+    function maskProperties<T extends object>(props: T[]) {
+      return props.map((p) => ({
+        ...p,
+        asking_price: null,
+        commercial_pricing_status: 'REQUEST PRICE',
+      }))
+    }
+
     if (!isSupabaseServerConfigured()) {
       // Return audited repository records with explicit static baseline metadata
       const result = await PropertyRepository.find(filters)
       return NextResponse.json({
         success: true,
-        data: result.data,
+        data: maskProperties(result.data),
         total: result.total,
         page,
         limit,
@@ -52,7 +60,7 @@ export async function GET(request: NextRequest) {
       const result = await PropertyRepository.find(filters)
       return NextResponse.json({
         success: true,
-        data: result.data,
+        data: maskProperties(result.data),
         total: result.total,
         page,
         limit,
@@ -113,7 +121,7 @@ export async function GET(request: NextRequest) {
       const fallbackResult = await PropertyRepository.find(filters)
       return NextResponse.json({
         success: true,
-        data: fallbackResult.data,
+        data: maskProperties(fallbackResult.data),
         total: fallbackResult.total,
         page,
         limit,
@@ -123,9 +131,15 @@ export async function GET(request: NextRequest) {
       })
     }
 
+    const sanitizedData = (data || []).map((p: object) => ({
+      ...p,
+      asking_price: null,
+      commercial_pricing_status: 'REQUEST PRICE',
+    }))
+
     return NextResponse.json({
       success: true,
-      data: data || [],
+      data: sanitizedData,
       total: count || 0,
       page,
       limit,

@@ -422,7 +422,7 @@ export default function BusinessHubPage() {
                   </div>
                   <div className="p-3 bg-slate-900 border border-slate-800 space-y-1">
                     <span className="text-slate-400 block text-[10px]">FOREIGN OWNERSHIP</span>
-                    <span className="text-white font-bold">100% Guaranteed</span>
+                    <span className="text-white font-bold">100% Permitted (Decree 32/2021)</span>
                   </div>
                   <div className="p-3 bg-slate-900 border border-slate-800 space-y-1">
                     <span className="text-slate-400 block text-[10px]">MIN. CAPITAL DEPOSIT</span>

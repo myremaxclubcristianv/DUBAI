@@ -102,7 +102,7 @@ export default function ProjectsPage() {
           quadrants={[
             {
               title: 'Mandatory Escrow Trust Account',
-              value: '100% Escrow',
+              value: 'Statutory Escrow',
               subtext: 'Every off-plan project maintains a ring-fenced escrow account with DLD-approved financial institutions.',
               delta: 'Law No. 8 of 2007',
               isPositive: true,

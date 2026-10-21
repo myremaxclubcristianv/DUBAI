@@ -5,7 +5,6 @@ import { useParams } from 'next/navigation'
 import Link from 'next/link'
 import { getDeveloperBySlug, VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
-import { useClient } from '@/lib/context/client-context'
 import {
   Section,
   Eyebrow,
@@ -20,7 +19,6 @@ export default function DeveloperDetailPage() {
   const slug = params?.slug as string
   const developer = getDeveloperBySlug(slug) || VERIFIED_DEVELOPERS[0]
 
-  const { formatCurrency } = useClient()
 
   const developerProperties = VERIFIED_PROPERTIES.filter(
     (p) => p.developer_name?.toLowerCase().includes(developer.name.toLowerCase())
@@ -129,7 +127,7 @@ export default function DeveloperDetailPage() {
                         {prop.title}
                       </h4>
                       <span className="text-xs font-mono text-slate-500">
-                        {prop.area_name} &bull; {prop.property_type} &bull; <span className="text-slate-900 font-semibold">{formatCurrency(prop.asking_price || 0)}</span>
+                        {prop.area_name} &bull; {prop.property_type} &bull; <span className="text-slate-900 font-semibold">REQUEST PRICE</span>
                       </span>
                     </div>
                     <PrimaryLink href={`/properties/${prop.id}`}>
@@ -153,7 +151,7 @@ export default function DeveloperDetailPage() {
             </h3>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
-            All developments by {developer.name} comply with the trust and escrow framework stipulated under Dubai Law No. 8 of 2007. Buyer capital is ring-fenced and disbursed exclusively against certified engineer progress audits verified by RERA.
+            All developments by {developer.name} comply with the trust and escrow framework stipulated under Dubai Law No. 8 of 2007. Buyer capital is held in statutory project escrow accounts and released in phased tranches linked to certified engineering progress audits verified by RERA.
           </p>
           <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-[11px] font-mono text-slate-400">
             <span>Registration: Dubai Land Department</span>

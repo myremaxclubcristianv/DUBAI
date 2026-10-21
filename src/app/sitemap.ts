@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
 import { DUBAI_AREAS } from '@/lib/data/areas'
+import { VERIFIED_DEVELOPERS } from '@/lib/data/developers'
 import { ROMANIA_PROPERTIES } from '@/lib/data/romania-properties'
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -41,6 +42,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/privacy',
     '/terms',
     '/accessibility',
+    '/ghiduri',
+    '/ghiduri/cum-cumperi-proprietate-dubai',
+    '/ghiduri/costuri-achizitie-dubai',
+    '/ghiduri/golden-visa-uae',
+    '/ghiduri/impozitare-romania-dubai',
+    '/ghiduri/dubai-vs-bucuresti',
+    '/ghiduri/riscuri-off-plan-dubai',
+    '/ghiduri/verificare-broker-anunt-dubai',
+    '/raport-trimestrial',
+    '/newsletter',
+    '/vizionari',
+    '/studii-de-caz',
     '/lifestyle',
     '/lifestyle/aviation',
     '/lifestyle/cars',
@@ -58,6 +71,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       route === ''
         ? 1.0
         : route.startsWith('/properties') ||
+          route.startsWith('/ghiduri') ||
+          route.startsWith('/raport-trimestrial') ||
           route.startsWith('/investment') ||
           route.startsWith('/residency') ||
           route.startsWith('/areas')
@@ -86,5 +101,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }))
 
-  return [...staticRoutes, ...propertyRoutes, ...romaniaPropertyRoutes, ...areaRoutes]
+  const developerRoutes = VERIFIED_DEVELOPERS.map((dev) => ({
+    url: `${baseUrl}/developers/${dev.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }))
+
+  return [...staticRoutes, ...propertyRoutes, ...romaniaPropertyRoutes, ...areaRoutes, ...developerRoutes]
 }

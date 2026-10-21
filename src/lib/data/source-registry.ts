@@ -101,7 +101,7 @@ export const OFFICIAL_SOURCE_REGISTRY: SourceRegistryEntry[] = [
     name: 'GDRFA & DLD Cube — Sovereign Residency Framework',
     category: 'RESIDENCY',
     officialUrl: 'https://www.gdrfad.gov.ae/',
-    datasetOrEndpoint: '10-Year Golden Visa & Real Estate Investor Visa Regulations',
+    datasetOrEndpoint: 'UAE Real Estate Investor Residency & Golden Visa Regulations (Cabinet Res. 65/2022)',
     authority: 'General Directorate of Residency and Foreigners Affairs (GDRFA) & DLD Cube',
     governingLawOrDecree: 'Federal Decree-Law No. 29 of 2021 on Entry and Residence of Foreigners; Cabinet Resolution No. 65 of 2022',
     accessMethod: 'STATUTORY_DECREE',

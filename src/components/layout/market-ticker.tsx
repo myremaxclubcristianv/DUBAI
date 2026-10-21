@@ -21,24 +21,24 @@ const TICKER_ITEMS: TickerItem[] = [
   },
   {
     id: 'dld-volume',
-    label: 'DLD SOVEREIGN VOLUME',
-    value: 'AED 432.8B',
-    tag: '+18.4% YoY',
+    label: 'DLD ANNUAL LEDGER',
+    value: 'OFFICIAL OPEN DATA',
+    tag: 'DLD METRICS',
     href: '/market',
   },
   {
     id: 'prime-yield',
-    label: 'PRIME EJARI NET YIELD',
-    value: '6.8% – 8.4%',
-    tag: 'VERIFIED',
+    label: 'RERA RENTAL BENCHMARK',
+    value: 'EJARI LEASE INDEX',
+    tag: 'DECREE 43/2013',
     href: '/investment/calculators',
   },
   {
     id: 'golden-visa',
     label: 'UAE GOLDEN VISA',
     value: '≥ AED 2,000,000',
-    tag: '10-YEAR DECREE',
-    href: '/residency',
+    tag: 'CABINET RES. 65/2022',
+    href: '/ghiduri/golden-visa-uae',
   },
   {
     id: 'corporate-tax',
@@ -50,22 +50,22 @@ const TICKER_ITEMS: TickerItem[] = [
   {
     id: 'escrow',
     label: 'OFF-PLAN ESCROW',
-    value: '100% PROTECTED',
+    value: 'STATUTORY TRUST',
     tag: 'LAW 8/2007',
-    href: '/buying-guide',
+    href: '/ghiduri/riscuri-off-plan-dubai',
   },
   {
     id: 'romania-treaty',
     label: 'ROMANIA–UAE TREATY',
-    value: '0% DOUBLE TAX',
-    tag: 'LAW 38/1993',
-    href: '/romania',
+    value: 'LAW 74/1993',
+    tag: 'SIGNED 11 APR 1993',
+    href: '/ghiduri/impozitare-romania-dubai',
   },
   {
     id: 'provenance',
-    label: 'DATA PROVENANCE',
-    value: 'PHYSICAL TITLE AUDIT',
-    tag: 'ZERO FAKE DATA',
+    label: 'DATA INTEGRITY',
+    value: 'SOURCE REFERENCED',
+    tag: 'RESEARCH PLATFORM',
     href: '/sources',
   },
 ]
@@ -73,7 +73,7 @@ const TICKER_ITEMS: TickerItem[] = [
 export function MarketTicker() {
   return (
     <aside
-      aria-label="Dubai Sovereign Market Ticker"
+      aria-label="Dubai Real Estate Market Research Ticker"
       className="w-full bg-[#050a14] border-b border-white/10 text-slate-300 overflow-hidden select-none relative z-40 h-[28px] flex items-center"
     >
       {/* Live Badge Pillar */}

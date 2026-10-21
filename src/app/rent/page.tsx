@@ -197,6 +197,16 @@ export default function RentPage() {
           </div>
         </section>
 
+        {/* Mandatory Platform Disclaimer */}
+        <section className="p-6 bg-slate-50 border border-slate-200 text-slate-600 font-mono text-[11px] leading-relaxed space-y-2">
+          <div className="font-bold uppercase tracking-wider text-slate-900">
+            AVIZ DE CONFORMITATE &bull; STATUT EDITORIAL INDEPENDENT
+          </div>
+          <p>
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+        </section>
+
       </main>
 
       <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />

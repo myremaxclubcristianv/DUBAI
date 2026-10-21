@@ -4,7 +4,6 @@ import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
-import { useClient } from '@/lib/context/client-context'
 import {
   Search,
   SlidersHorizontal,
@@ -16,11 +15,9 @@ import {
 } from 'lucide-react'
 
 export default function BuyPage() {
-  const { formatCurrency } = useClient()
   const [selectedDistrict, setSelectedDistrict] = React.useState<string>('ALL')
   const [selectedType, setSelectedType] = React.useState<string>('ALL')
   const [selectedStatus, setSelectedStatus] = React.useState<string>('ALL')
-  const [priceTier, setPriceTier] = React.useState<string>('ALL')
   const [searchQuery, setSearchQuery] = React.useState<string>('')
 
   // Strictly filter for sale listings located in Dubai
@@ -38,7 +35,6 @@ export default function BuyPage() {
 
   const filteredProperties = React.useMemo(() => {
     return saleProperties.filter((p) => {
-      const pPrice = p.asking_price || 0
 
       // District Filter
       if (selectedDistrict !== 'ALL' && p.area_name !== selectedDistrict) return false
@@ -48,12 +44,6 @@ export default function BuyPage() {
 
       // Completion Status Filter
       if (selectedStatus !== 'ALL' && p.completion_status !== selectedStatus) return false
-
-      // Price Tier Filter
-      if (priceTier === 'UNDER_25M' && (pPrice === 0 || pPrice >= 25000000)) return false
-      if (priceTier === '25M_50M' && (pPrice < 25000000 || pPrice > 50000000)) return false
-      if (priceTier === 'ABOVE_50M' && pPrice <= 50000000) return false
-      if (priceTier === 'ON_REQUEST' && pPrice > 0) return false
 
       // Free text search
       if (searchQuery.trim() !== '') {
@@ -67,13 +57,12 @@ export default function BuyPage() {
 
       return true
     })
-  }, [saleProperties, selectedDistrict, selectedType, selectedStatus, priceTier, searchQuery])
+  }, [saleProperties, selectedDistrict, selectedType, selectedStatus, searchQuery])
 
   const handleReset = () => {
     setSelectedDistrict('ALL')
     setSelectedType('ALL')
     setSelectedStatus('ALL')
-    setPriceTier('ALL')
     setSearchQuery('')
   }
 
@@ -175,17 +164,6 @@ export default function BuyPage() {
               <option value="Off-Plan">Off-Plan / Under Construction</option>
             </select>
 
-            <select
-              value={priceTier}
-              onChange={(e) => setPriceTier(e.target.value)}
-              className="px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 focus:outline-none focus:border-slate-900 cursor-pointer"
-            >
-              <option value="ALL">All Valuations</option>
-              <option value="UNDER_25M">&lt; AED 25M</option>
-              <option value="25M_50M">AED 25M – 50M</option>
-              <option value="ABOVE_50M">&gt; AED 50M</option>
-              <option value="ON_REQUEST">Price on Request</option>
-            </select>
 
             <button
               onClick={handleReset}
@@ -225,7 +203,6 @@ export default function BuyPage() {
           </div>
         ) : (
           filteredProperties.map((prop, idx) => {
-            const price = prop.asking_price || 0
             const district = prop.area_name || ''
             const type = prop.property_type || ''
             const developer = prop.developer_name || ''
@@ -314,10 +291,13 @@ export default function BuyPage() {
                   <div className="pt-4 flex items-center justify-between border-t border-slate-100">
                     <div>
                       <span className="text-[10px] font-mono uppercase text-slate-400 block font-semibold">
-                        ASKING VALUATION
+                        COMMERCIAL PRICING STATUS
                       </span>
                       <span className="text-xl sm:text-2xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                        {price > 0 ? formatCurrency(price) : 'Price on Request'}
+                        REQUEST PRICE
+                      </span>
+                      <span className="text-[10px] text-slate-500 block font-mono">
+                        Research entry &bull; Inquire for details
                       </span>
                     </div>
 
@@ -325,7 +305,7 @@ export default function BuyPage() {
                       href={`/properties/${prop.id}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-colors shadow-2xs"
                     >
-                      <span>VIEW DOSSIER</span>
+                      <span>REQUEST INFORMATION</span>
                       <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>
@@ -334,6 +314,16 @@ export default function BuyPage() {
             )
           })
         )}
+
+        {/* Mandatory Platform Disclaimer */}
+        <section className="p-6 bg-slate-50 border border-slate-200 text-slate-600 font-mono text-[11px] leading-relaxed space-y-2">
+          <div className="font-bold uppercase tracking-wider text-slate-900">
+            AVIZ DE CONFORMITATE &bull; STATUT EDITORIAL INDEPENDENT
+          </div>
+          <p>
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+        </section>
       </main>
     </div>
   )

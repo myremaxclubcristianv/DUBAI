@@ -7,6 +7,9 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  alternates: {
+    canonical: 'https://dubai.cristianvaduva.com/client',
+  },
 }
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {

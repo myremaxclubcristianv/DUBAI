@@ -21,7 +21,7 @@ export default function PropertyDetailPage() {
   const id = params?.id as string
   const property = getPropertyById(id) || VERIFIED_PROPERTIES[0]
 
-  const { formatCurrency, isShortlisted, toggleShortlist } = useClient()
+  const { isShortlisted, toggleShortlist } = useClient()
   const [copiedShare, setCopiedShare] = React.useState(false)
   const [activeImageIndex, setActiveImageIndex] = React.useState(0)
   const [isContactModalOpen, setIsContactModalOpen] = React.useState(false)
@@ -36,13 +36,6 @@ export default function PropertyDetailPage() {
   const baths = property.bathrooms || 0
   const status = property.completion_status || 'Ready'
   const isGoldenVisaEligible = price >= 2000000
-
-  // Statutory Calculations
-  const dldTransferFee = price * 0.04
-  const adminFee = 4200
-  const trusteeFee = price >= 500000 ? 4200 : 2100
-  const conveyanceFee = 10500
-  const totalAcquisition = price + dldTransferFee + adminFee + trusteeFee + conveyanceFee
 
   const images = property.images && property.images.length > 0 ? property.images : [
     'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1600&q=85',
@@ -156,23 +149,21 @@ export default function PropertyDetailPage() {
                   onClick={() => setIsContactModalOpen(true)}
                   className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-wider font-semibold transition-all cursor-pointer shadow-2xs"
                 >
-                  <span>Request Private Briefing</span>
+                  <span>Request Price &amp; Info</span>
                 </button>
               </div>
             </div>
 
-            {/* Price Box */}
+            {/* Commercial Pricing Box */}
             <div className="text-left lg:text-right font-mono space-y-1 p-5 bg-slate-50 border border-slate-200 shadow-2xs shrink-0">
               <span className="text-[10px] text-slate-500 uppercase tracking-wider block font-semibold">
-                {price > 0 ? 'Asking Price — Subject to Confirmation' : 'Pricing Status'}
+                Commercial Pricing Status
               </span>
-              <div className="text-2xl sm:text-4xl font-light text-slate-950 tabular-nums font-bold">
-                {price > 0 ? formatCurrency(price) : 'Price on Request'}
+              <div className="text-2xl sm:text-3xl font-light text-slate-950 tracking-wider font-bold">
+                REQUEST PRICE
               </div>
               <div className="text-xs text-slate-600 font-semibold">
-                {property.price_per_sqft
-                  ? `AED ${property.price_per_sqft?.toLocaleString()} / sqft`
-                  : `${size > 0 ? size.toLocaleString() + ' SQ. FT Dossier' : 'Private Portfolio Unit'}`}
+                {size > 0 ? `${size.toLocaleString()} SQ. FT Research Dossier` : 'Price & Specification upon Request'}
               </div>
             </div>
           </div>
@@ -192,12 +183,12 @@ export default function PropertyDetailPage() {
                 <div className="absolute top-4 left-4">
                   <span className="px-3.5 py-1.5 text-[10px] font-mono uppercase bg-white/95 backdrop-blur-xs text-emerald-800 flex items-center gap-1.5 border border-slate-200 font-semibold shadow-2xs">
                     <ShieldCheck className="h-3.5 w-3.5 text-emerald-700" />
-                    <span>Meets AED 2M Golden Visa Baseline (Subject to Approval)</span>
+                    <span>Estimated Baseline: Cabinet Res. 65/2022 (Subject to GDRFA Approval)</span>
                   </span>
                 </div>
               )}
               <div className="absolute bottom-3 right-3 px-2.5 py-1 bg-slate-950/80 text-[9px] font-mono text-slate-300">
-                VIEW {activeImageIndex + 1} OF {images.length}
+                VIEW {activeImageIndex + 1} OF {images.length} &bull; REPRESENTATIVE IMAGERY
               </div>
             </div>
 
@@ -299,55 +290,51 @@ export default function PropertyDetailPage() {
         <div className="w-full max-w-[1120px] mx-auto px-4 sm:px-10 lg:px-16 space-y-10">
           <div className="space-y-3">
             <span className="text-[10px] font-mono uppercase tracking-[0.24em] text-slate-500 font-semibold block">
-              02 &bull; STATUTORY UNDERWRITING &amp; CONVEYANCING
+              02 &bull; STATUTORY ACQUISITION FRAMEWORK
             </span>
             <h2 className="text-2xl sm:text-3xl font-light text-slate-950 font-serif">
-              Statutory Conveyancing Schedule
+              Statutory Transaction &amp; DLD Schedule
             </h2>
             <p className="text-sm text-slate-600 font-light max-w-2xl leading-relaxed">
-              Official acquisition framework calculated in compliance with DLD registration tariffs and statutory trustee requirements.
+              Official statutory transfer and registration schedules established pursuant to Executive Council Resolution No. 30 of 2013 and Dubai Land Department official tariffs.
             </p>
           </div>
 
           <div className="p-6 sm:p-10 bg-white border border-slate-200 space-y-8 shadow-sm">
             <div className="space-y-3 font-mono text-xs">
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                <span className="text-slate-600">Asking Asset Valuation</span>
-                <span className="text-slate-950 font-bold">{price > 0 ? formatCurrency(price) : 'Price on Request'}</span>
+                <span className="text-slate-600">Purchase Price Valuation</span>
+                <span className="text-slate-950 font-bold">Price on Request (Contracted Between Parties)</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                <span className="text-slate-600">DLD Sale Registration (4%)</span>
-                <span className="text-slate-950 font-bold">
-                  {price > 0 ? formatCurrency(dldTransferFee) : '4% of Contracted Valuation'}
-                </span>
+                <span className="text-slate-600">DLD Transfer Tariff (Exec. Council Res. 30/2013)</span>
+                <span className="text-slate-950 font-bold">4.00% of Contracted Value</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                <span className="text-slate-600">DLD Admin &amp; Map Tariff</span>
-                <span className="text-slate-950 font-bold">AED 4,200</span>
+                <span className="text-slate-600">DLD Knowledge &amp; Innovation Fee</span>
+                <span className="text-slate-950 font-bold">AED 580 (Standard Title Deed issuance)</span>
               </div>
               <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                <span className="text-slate-600">Registration Trustee Fee</span>
-                <span className="text-slate-950 font-bold">AED 4,200</span>
+                <span className="text-slate-600">Registration Trustee Fee (DLD Tariff)</span>
+                <span className="text-slate-950 font-bold">AED 4,000 + 5% VAT (Valuation ≥ AED 500k)</span>
               </div>
               <div className="flex items-center justify-between py-2">
-                <span className="text-slate-600">Estimated Statutory Conveyancing</span>
-                <span className="text-slate-950 font-bold">{formatCurrency(conveyanceFee)}</span>
+                <span className="text-slate-600">Independent Legal &amp; Conveyancing Fee</span>
+                <span className="text-slate-950 font-bold">Variable (Arranged with Licensed Practitioner)</span>
               </div>
             </div>
 
             <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
                 <span className="text-xs font-mono uppercase tracking-widest text-slate-950 font-bold">
-                  TOTAL STATUTORY OUTLAY
+                  TOTAL STATUTORY OUTLAY FRAMEWORK
                 </span>
                 <p className="text-xs text-slate-500 font-light">
-                  {price > 0
-                    ? 'Inclusive of all statutory transfer and registration charges.'
-                    : 'Total includes agreed transaction price + 4% DLD + AED 18,900 statutory & trustee fees.'}
+                  Inclusive of agreed purchase price + 4% DLD transfer fee + statutory trustee and registration fees.
                 </p>
               </div>
-              <div className="text-2xl sm:text-4xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                {price > 0 ? formatCurrency(totalAcquisition) : 'Price on Request + 4% DLD'}
+              <div className="text-xl sm:text-2xl font-light text-slate-950 font-mono tracking-wider font-bold">
+                CONTRACTED VALUATION + 4% DLD
               </div>
             </div>
 
@@ -356,33 +343,36 @@ export default function PropertyDetailPage() {
                 onClick={() => setIsContactModalOpen(true)}
                 className="w-full sm:w-auto px-6 py-3.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all cursor-pointer text-center shadow-xs"
               >
-                Request Private Viewing &amp; Mandate
+                Request Property Information &amp; Price
               </button>
-              <Link
-                href="/investment"
-                className="px-6 py-3.5 border border-slate-200 hover:border-slate-950 text-xs font-mono uppercase tracking-wider text-slate-800 hover:text-slate-950 text-center transition-colors bg-slate-50"
+              <button
+                onClick={() => setIsContactModalOpen(true)}
+                className="w-full sm:w-auto px-6 py-3.5 border border-slate-300 hover:border-slate-950 text-xs font-mono uppercase tracking-wider text-slate-800 hover:text-slate-950 text-center transition-colors bg-white shadow-2xs"
               >
-                Open Full Underwriting Engine
-              </Link>
+                Request Viewing via Authorized Partner
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. PROVENANCE & LISTING REPRESENTATION DISCLOSURE */}
-      <section className="py-12 bg-slate-50/80 border-t border-slate-200">
-        <div className="w-full max-w-[880px] mx-auto px-4 sm:px-10 space-y-4 text-xs font-light text-slate-600">
+      {/* 5. MANDATORY INDEPENDENT RESEARCH & REPRESENTATION DISCLAIMER */}
+      <section className="py-12 bg-slate-50 border-t border-slate-200">
+        <div className="w-full max-w-[960px] mx-auto px-4 sm:px-10 space-y-4 text-xs font-light text-slate-700">
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-slate-700" />
+            <ShieldCheck className="h-4 w-4 text-slate-800" />
             <span className="font-mono text-xs uppercase tracking-wider text-slate-950 font-bold">
-              Listing Supply &amp; Representation Disclosure
+              Independent Platform Disclaimer &bull; Declarație de Independență
             </span>
           </div>
-          <p className="leading-relaxed">
-            Property listings and opportunities may be supplied or presented by independent local real estate agencies, developers, owners, or other third parties. Unless explicitly stated and documented, these parties are not employees, agents, representatives, or contractual partners of this platform. Listing information, availability, asking prices, photographs, ownership details, and transaction terms must be confirmed directly with the responsible listing party before proceeding. Any agency or brokerage relationship is established separately and must be verified by the customer.
+          <p className="leading-relaxed bg-white p-4 border border-slate-200 text-slate-800">
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
           </p>
-          <p className="text-[11px] font-mono text-slate-500 pt-1 border-t border-slate-200">
-            Reference: Official DLD statutory schedules and RERA regulations cited for comparative orientation.
+          <p className="text-[11px] text-slate-500 leading-relaxed">
+            DUBAI is an independent real estate research and property intelligence platform. Publication of any project or property does not imply a sales mandate, agency representation, or independent verification of every piece of data. For transactions, viewings, and regulated services, users are referred to authorized, licensed professionals and partners upon confirmation of availability and credentials.
+          </p>
+          <p className="text-[10px] font-mono text-slate-400 pt-2 border-t border-slate-200">
+            Official legal references: Law No. 7 of 2006 (Land Registration), Law No. 8 of 2007 (Escrow Accounts), Regulation No. 3 of 2006 (Designated Freehold Areas), and Executive Council Resolution No. 30 of 2013 (DLD Transfer Fees).
           </p>
         </div>
       </section>

@@ -55,10 +55,10 @@ const BUYING_STAGES: BuyingStage[] = [
     subtitle: 'Statutory Fee Schedule & All-in Capital Modeling',
     classification: 'PLATFORM_WORKFLOW',
     classificationLabel: 'PLATFORM WORKFLOW',
-    description: 'Model all acquisition cash requirements including the buyer DLD transfer fee (2% standard buyer share of the combined 4% transaction fee), trustee registration charges (AED 4,200 / AED 2,100), document tariffs, brokerage fee (2% + 5% VAT), and contingency reserve using the platform investment calculator.',
+    description: 'Model all acquisition cash requirements including the applicable DLD transfer fee allocation (statutory 4% combined fee, allocated contractually between buyer and seller in Form F), trustee registration charges (AED 4,200 / AED 2,100), document tariffs, brokerage fee (2% + 5% VAT where applicable), and contingency reserve using the platform investment calculator.',
     documents: ['Platform Scenario Worksheet', 'Proof of Liquid Capital / Bank Statements'],
-    statutory_fees: 'Zero fees for modeling; combined statutory transfer fee is 4% of purchase price (2% buyer + 2% seller standard breakdown)',
-    responsibilities: 'Investor calculates estimated buyer acquisition costs before formal bidding.',
+    statutory_fees: 'Zero fees for modeling; statutory DLD transfer fee is 4% total (default 2% buyer / 2% seller split subject to contract terms)',
+    responsibilities: 'Investor calculates estimated buyer acquisition costs based on negotiated contractual terms.',
     statutory_source: 'Executive Council Resolution No. 30 of 2013 on Dubai Land Department Fees.'
   },
   {
@@ -172,14 +172,14 @@ const BUYING_STAGES: BuyingStage[] = [
   {
     step: '12',
     title: 'Golden Visa & Investor Residency Filing (If Qualifying)',
-    subtitle: 'DLD Cube Express 10-Year Residency Track',
+    subtitle: 'DLD Cube Property Investor Residency Track (5-Year Renewable Statutory Baseline)',
     classification: 'GENERAL_GUIDANCE',
     classificationLabel: 'GENERAL GUIDANCE',
-    description: 'For acquisitions meeting or exceeding AED 2,000,000, apply for the 10-Year Real Estate Investor Golden Residency Visa via DLD Cube. Complete medical fitness examination, Emirates ID biometrics, and family sponsorship.',
+    description: 'For acquisitions meeting or exceeding AED 2,000,000, apply for real estate investor residency via DLD Cube. Codified on the federal portal (u.ae / ICP) as a 5-year renewable statutory category (distinguished from 10-year Golden Visa routes, such as qualifying public investments or exceptional talents). Includes DHA medical examination, Emirates ID biometrics, and family sponsorship.',
     documents: ['New Title Deed (Value ≥ AED 2M)', 'Passport Copy', 'DHA Health Insurance', 'Police Clearance Certificate'],
-    statutory_fees: 'DLD Cube Golden Visa processing fee (~AED 9,500 to AED 10,500 inclusive of medical, Emirates ID, and stamping)',
+    statutory_fees: 'DLD Cube residency processing fee (~AED 8,500 to AED 11,500 inclusive of medical, Emirates ID, and stamping)',
     responsibilities: 'Investor files residency petition through DLD Cube VIP service centre.',
-    statutory_source: 'Cabinet Resolution No. 65 of 2022 on Entry and Residence of Foreigners.'
+    statutory_source: 'Cabinet Resolution No. 65 of 2022 and UAE Government Portal (u.ae / ICP).'
   }
 ]
 

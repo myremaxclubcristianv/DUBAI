@@ -231,7 +231,7 @@ export default function MarketPage() {
                 </div>
               </div>
               <p className="text-xs text-slate-600 pt-2 border-t border-slate-200 leading-relaxed font-light">
-                Property value threshold for 10-Year Golden Residency per Cabinet Resolution No. 65 of 2022.
+                Property value threshold for Real Estate Investor Residency per Cabinet Resolution No. 65 of 2022 (minimum AED 2M).
               </p>
             </div>
 

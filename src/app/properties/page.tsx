@@ -4,7 +4,6 @@ import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
-import { useClient } from '@/lib/context/client-context'
 import {
   Search,
   RotateCcw,
@@ -19,8 +18,7 @@ export default function PropertiesPage() {
   const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedDistrict, setSelectedDistrict] = React.useState('ALL')
   const [selectedType, setSelectedType] = React.useState('ALL')
-  const [priceTier, setPriceTier] = React.useState('ALL')
-  const { formatCurrency } = useClient()
+  const [selectedStatus, setSelectedStatus] = React.useState('ALL')
 
   const uniqueDistricts = React.useMemo(() => {
     return Array.from(new Set(VERIFIED_PROPERTIES.map((p) => p.area_name))).filter(Boolean).sort()
@@ -34,9 +32,9 @@ export default function PropertiesPage() {
     return VERIFIED_PROPERTIES.filter((p) => {
       const pDistrict = p.area_name || ''
       const pType = p.property_type || ''
-      const pPrice = p.asking_price || 0
       const pTitle = p.title || ''
       const pDeveloper = p.developer_name || ''
+      const pStatus = p.completion_status || ''
 
       if (searchQuery) {
         const q = searchQuery.toLowerCase().trim()
@@ -50,20 +48,17 @@ export default function PropertiesPage() {
 
       if (selectedDistrict !== 'ALL' && pDistrict !== selectedDistrict) return false
       if (selectedType !== 'ALL' && pType !== selectedType) return false
-
-      if (priceTier === 'UNDER_25M' && pPrice >= 25000000) return false
-      if (priceTier === '25M_50M' && (pPrice < 25000000 || pPrice > 50000000)) return false
-      if (priceTier === 'ABOVE_50M' && pPrice <= 50000000) return false
+      if (selectedStatus !== 'ALL' && pStatus !== selectedStatus) return false
 
       return true
     })
-  }, [searchQuery, selectedDistrict, selectedType, priceTier])
+  }, [searchQuery, selectedDistrict, selectedType, selectedStatus])
 
   const handleReset = () => {
     setSearchQuery('')
     setSelectedDistrict('ALL')
     setSelectedType('ALL')
-    setPriceTier('ALL')
+    setSelectedStatus('ALL')
   }
 
   return (
@@ -159,14 +154,13 @@ export default function PropertiesPage() {
             </select>
 
             <select
-              value={priceTier}
-              onChange={(e) => setPriceTier(e.target.value)}
+              value={selectedStatus}
+              onChange={(e) => setSelectedStatus(e.target.value)}
               className="px-3 py-2 bg-slate-50 border border-slate-200 text-xs font-mono text-slate-800 focus:outline-none focus:border-slate-900 cursor-pointer"
             >
-              <option value="ALL">All Price Tiers</option>
-              <option value="UNDER_25M">&lt; AED 25M</option>
-              <option value="25M_50M">AED 25M – 50M</option>
-              <option value="ABOVE_50M">&gt; AED 50M</option>
+              <option value="ALL">All Completion Statuses</option>
+              <option value="Ready">Ready / Handed Over</option>
+              <option value="Off-Plan">Off-Plan Under Construction</option>
             </select>
 
             <button
@@ -183,20 +177,23 @@ export default function PropertiesPage() {
 
       {/* 3. ASYMMETRICAL EDITORIAL PROPERTY DOSSIER ROWS */}
       <main className="w-full max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16 py-14 sm:py-20 space-y-12 sm:space-y-16 flex-1">
-        {/* Third-Party Listing Disclosure Notice */}
-        <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 text-xs text-slate-600 font-light leading-relaxed space-y-1 shadow-2xs">
+        {/* Mandatory Independent Research & Representation Disclaimer */}
+        <div className="p-4 sm:p-5 bg-slate-50 border border-slate-200 text-xs text-slate-600 font-light leading-relaxed space-y-2 shadow-2xs">
           <span className="font-mono text-[10px] uppercase tracking-wider text-slate-900 font-bold block">
-            Listing Supply &amp; Representation Disclosure
+            Independent Research Notice &bull; Notă de Conformitate &amp; Reprezentare
           </span>
           <p>
-            Property listings and opportunities may be supplied or presented by independent local real estate agencies, developers, owners, or other third parties. Unless explicitly stated and documented, these parties are not employees, agents, representatives, or contractual partners of this platform. Listing information, availability, asking prices, photographs, ownership details, and transaction terms must be confirmed directly with the responsible listing party before proceeding. Any agency or brokerage relationship is established separately and must be verified by the customer.
+            DUBAI este o platformă independentă de cercetare și informare imobiliară. Publicarea unui proiect sau a unei proprietăți nu implică existența unui mandat de vânzare, a unei relații de reprezentare ori a unei verificări independente a fiecărei informații. Pentru tranzacții, vizionări și servicii reglementate, utilizatorii vor fi îndrumați către profesioniști și parteneri autorizați, după confirmarea disponibilității și a statutului acestora.
+          </p>
+          <p className="text-[11px] text-slate-500 pt-1 border-t border-slate-200">
+            Property listings are research entries. Commercial pricing, availability, and specific inventory must be confirmed through official channels or authorized partner representation.
           </p>
         </div>
         {filteredProperties.length === 0 ? (
           <div className="text-center py-24 border border-slate-200 bg-slate-50 p-10 space-y-4">
             <h3 className="text-xl font-light text-slate-950 font-serif">No Assets Matching Selection</h3>
             <p className="text-xs text-slate-500 max-w-md mx-auto">
-              Please adjust your search criteria or reset filters to view all verified statutory properties.
+              Please adjust your search criteria or reset filters to view all research entries.
             </p>
             <button
               onClick={handleReset}
@@ -207,7 +204,6 @@ export default function PropertiesPage() {
           </div>
         ) : (
           filteredProperties.map((prop, idx) => {
-            const price = prop.asking_price || 0
             const district = prop.area_name || ''
             const type = prop.property_type || ''
             const developer = prop.developer_name || ''
@@ -239,8 +235,8 @@ export default function PropertiesPage() {
                       <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-white/95 backdrop-blur-xs text-slate-950 border border-slate-200">
                         {developer}
                       </span>
-                      <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-white text-emerald-800 border border-slate-200">
-                        VERIFIED
+                      <span className="px-2.5 py-1 text-[10px] font-mono font-semibold uppercase bg-white text-slate-700 border border-slate-200">
+                        RESEARCH ENTRY
                       </span>
                     </div>
                     <div className="absolute bottom-3 right-3 px-2 py-0.5 bg-slate-950/80 text-[9px] font-mono text-slate-300">
@@ -296,10 +292,10 @@ export default function PropertiesPage() {
                   <div className="pt-4 flex items-center justify-between border-t border-slate-100">
                     <div>
                       <span className="text-[10px] font-mono uppercase text-slate-400 block font-semibold">
-                        ASKING VALUATION
+                        COMMERCIAL PRICING
                       </span>
-                      <span className="text-xl sm:text-2xl font-light text-slate-950 font-mono tabular-nums font-bold">
-                        {price > 0 ? formatCurrency(price) : 'Price on Request'}
+                      <span className="text-base sm:text-lg font-light text-slate-950 font-mono tracking-wider font-bold">
+                        REQUEST PRICE
                       </span>
                     </div>
 
@@ -307,7 +303,7 @@ export default function PropertiesPage() {
                       href={`/properties/${prop.id}`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-950 hover:bg-slate-800 text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-colors shadow-2xs"
                     >
-                      <span>VIEW DOSSIER</span>
+                      <span>REQUEST INFORMATION</span>
                       <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
                   </div>

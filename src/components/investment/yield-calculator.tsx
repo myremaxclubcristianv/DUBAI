@@ -161,7 +161,7 @@ export function YieldCalculator() {
               <span>Transparent Statutory Inclusions:</span>
             </div>
             <p className="text-[11px] leading-relaxed">
-              Acquisition cost includes statutory DLD buyer transfer fee (2%), scenario document tariffs (AED 250 title + AED 250 map + AED 20 fees = AED 520 for residential unit), AED 4,200 trustee partner fee, and customary 2.1% brokerage assumption (total AED {(result.total_acquisition_cost - purchasePrice).toLocaleString()}).
+              Acquisition cost models statutory DLD buyer transfer fee share (2% baseline assumption of the 4% statutory transfer fee, subject to transaction agreement), scenario document tariffs (AED 250 title + AED 250 map + AED 20 fees = AED 520 for residential unit), AED 4,200 trustee partner fee, and customary 2.1% brokerage assumption (total AED {(result.total_acquisition_cost - purchasePrice).toLocaleString()}).
             </p>
           </div>
         </div>

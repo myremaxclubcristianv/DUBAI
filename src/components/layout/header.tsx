@@ -129,10 +129,10 @@ export const NAVIGATION_CATEGORIES: NavCategory[] = [
     href: '/residency',
     sections: [
       {
-        title: 'UAE Golden Visa Program',
-        description: '10-Year self-sponsored UAE residency through real estate.',
+        title: 'UAE Property Investor Residency',
+        description: 'Statutory self-sponsored residency under Cabinet Res. 65/2022.',
         items: [
-          { label: 'Golden Visa Overview', href: '/residency', description: 'Statutory framework under Federal Decree 29/2021', badge: '10-Year' },
+          { label: 'Investor Residency Overview', href: '/residency', description: 'Statutory framework under Cabinet Res. 65/2022', badge: 'AED 2M' },
           { label: 'Investment Threshold (≥ AED 2M)', href: '/residency#eligibility', description: 'Title deed valuation and mortgage criteria' },
           { label: 'Required Documentation', href: '/residency#documentation', description: 'DLD clearance, health insurance, passport' },
           { label: 'Application Workflow', href: '/residency#process', description: 'Step-by-step sovereign filing process' },
@@ -199,7 +199,7 @@ export const NAVIGATION_CATEGORIES: NavCategory[] = [
         items: [
           { label: 'UAE Tax & QFZP Guide', href: '/tax', description: 'Law 47/2022 Corporate Tax, VAT & Double Tax Treaties', badge: 'Law 47/2022' },
           { label: 'Market Intelligence', href: '/market', description: 'Historical transactions, volumes & rental trends' },
-          { label: 'Sources & Provenance Registry', href: '/sources', description: 'Verified registries, official decrees & APIs', badge: 'Zero Fake Data' },
+          { label: 'Sources & Provenance Registry', href: '/sources', description: 'Verified registries, official decrees & APIs', badge: 'Source Tracked' },
           { label: 'Platform Methodology', href: '/methodology', description: 'Standards of independence and analytical rigor' },
         ],
       },
@@ -235,28 +235,38 @@ export const NAVIGATION_CATEGORIES: NavCategory[] = [
   },
   {
     id: 'romania',
-    label: 'Romania',
-    href: '/romania',
+    label: 'România & Ghiduri',
+    shortLabel: 'RO / Ghiduri',
+    href: '/ghiduri',
     sections: [
       {
-        title: 'Romania Real Estate Catalog',
-        description: 'Curated premium Romanian properties from HomeFind with EUR/RON pricing.',
+        title: 'Hub Ghiduri Investitori Români',
+        description: 'Ghiduri editoriale complete, legislație, costuri și due diligence Dubai.',
         items: [
-          { label: 'Romania Property Catalog', href: '/romania', description: 'Explore all 55 verified Romanian listings', badge: '55 Live' },
-          { label: 'Bucharest Luxury Properties', href: '/romania?city=București', description: 'Primăverii, Floreasca, Herăstrău & Kiseleff' },
-          { label: 'Ilfov / Voluntari Estates', href: '/romania?city=Voluntari', description: 'Piperă & Northern Bucharest suburban villas' },
-          { label: 'Constanța & Black Sea Coast', href: '/romania?city=Constanța', description: 'Mamaia waterfront luxury apartments' },
-          { label: 'Brașov Mountain Chalets', href: '/romania?city=Brașov', description: 'Transylvanian alpine retreats & villas' },
-          { label: 'Land & Development Plots', href: '/romania?type=Land', description: 'Intravilan land plots Stoenești, Cernica, Corbeanca', badge: 'Terenuri' },
+          { label: 'Toate Ghidurile RO', href: '/ghiduri', description: 'Index complet ghiduri și resurse educaționale', badge: 'Hub' },
+          { label: 'Cum Cumperi Pas cu Pas', href: '/ghiduri/cum-cumperi-proprietate-dubai', description: 'Procesul complet de achiziție din România' },
+          { label: 'Costuri Reale de Achiziție', href: '/ghiduri/costuri-achizitie-dubai', description: 'Taxă DLD 4%, trustee, NOC și cheltuieli conexe' },
+          { label: 'Ghid Golden Visa UAE', href: '/ghiduri/golden-visa-uae', description: 'Pragul de AED 2M și documente necesare' },
+          { label: 'Impozitare România & Dubai', href: '/ghiduri/impozitare-romania-dubai', description: 'Convenția Legea 74/1993, Declarația Unică ANAF' },
+          { label: 'Dubai vs București', href: '/ghiduri/dubai-vs-bucuresti', description: 'Comparație randamente nete, riscuri și fiscalitate' },
+          { label: 'Riscuri Off-Plan', href: '/ghiduri/riscuri-off-plan-dubai', description: 'Conturi escrow Legea 8/2007 și verificări esențiale' },
+          { label: 'Verificare Broker & Anunț', href: '/ghiduri/verificare-broker-anunt-dubai', description: 'Verificare BRN, ORN, licențe și permise Trakheesi' },
+          { label: 'Raport Trimestrial DLD', href: '/raport-trimestrial', description: 'Monitorul oficial al pieței pentru investitori români', badge: 'Trimestrial' },
+          { label: 'Solicită Vizionare', href: '/vizionari', description: 'Programare vizionări prin parteneri autorizați' },
+          { label: 'Newsletter Lunar', href: '/newsletter', description: 'Educație și analize lunare fără spam' },
+          { label: 'Studii de Caz', href: '/studii-de-caz', description: 'Metodologie de analiză tranzacțională' },
         ],
       },
       {
-        title: 'Cross-Border Economics',
-        description: 'Bilateral legal treaties and portfolio comparison.',
+        title: 'Catalog Imobiliar România',
+        description: 'Proprietăți verificate din România cu prețuri la cerere.',
         items: [
-          { label: 'Dubai vs Romania Comparison', href: '/investment/calculators', description: 'Side-by-side purchase fees, yields & taxes', badge: 'Modeler' },
-          { label: 'Romania-UAE Double Tax Treaty', href: '/tax', description: 'Law 38/1993 bilateral fiscal avoidance treaty' },
-          { label: 'Multi-Currency Matrix', href: '/investment/calculators', description: 'EUR, RON, USD & AED conversion benchmarks' },
+          { label: 'Toate cele 55 Proprietăți', href: '/romania', description: 'Catalogul complet rezidențial și terenuri', badge: '55 Live' },
+          { label: 'București Luxury', href: '/romania?city=București', description: 'Primăverii, Floreasca, Herăstrău & Kiseleff' },
+          { label: 'Ilfov / Pipera & Voluntari', href: '/romania?city=Voluntari', description: 'Vile rezidențiale în zona de nord' },
+          { label: 'Constanța & Litoral', href: '/romania?city=Constanța', description: 'Apartamente premium pe malul mării' },
+          { label: 'Brașov & Munte', href: '/romania?city=Brașov', description: 'Chalets și proprietăți montane' },
+          { label: 'Terenuri Intravilane', href: '/romania?type=Land', description: 'Terenuri pentru investiții și dezvoltare', badge: 'Terenuri' },
         ],
       },
     ],
@@ -391,8 +401,34 @@ export function Header() {
             })}
           </nav>
 
-          {/* RIGHT: Currency Selector, Search & Direct Actions */}
+          {/* RIGHT: Language, Currency, Search & Direct Actions */}
           <div className="flex items-center gap-1.5 lg:gap-2 xl:gap-2.5 2xl:gap-3.5 shrink-0">
+            {/* Language Selector EN / RO */}
+            <div className="flex items-center border border-slate-200 bg-slate-50/80 text-[10px] xl:text-[10.5px] 2xl:text-[11px] font-mono">
+              <Link
+                href="/"
+                className={`px-1.5 xl:px-2 py-0.5 xl:py-1 transition-colors ${
+                  !pathname.startsWith('/ghiduri') && !pathname.startsWith('/romania') && !pathname.startsWith('/raport-trimestrial') && !pathname.startsWith('/newsletter') && !pathname.startsWith('/vizionari') && !pathname.startsWith('/studii-de-caz')
+                    ? 'text-white bg-slate-950 font-semibold'
+                    : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
+                }`}
+                title="English Language"
+              >
+                EN
+              </Link>
+              <Link
+                href="/ghiduri"
+                className={`px-1.5 xl:px-2 py-0.5 xl:py-1 border-l border-slate-200 transition-colors ${
+                  pathname.startsWith('/ghiduri') || pathname.startsWith('/romania') || pathname.startsWith('/raport-trimestrial') || pathname.startsWith('/newsletter') || pathname.startsWith('/vizionari') || pathname.startsWith('/studii-de-caz')
+                    ? 'text-white bg-slate-950 font-semibold'
+                    : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
+                }`}
+                title="Limba Română (Ghiduri Investitori)"
+              >
+                RO
+              </Link>
+            </div>
+
             {/* Currency Selector */}
             <div className="flex items-center border border-slate-200 bg-slate-50/80 text-[10px] xl:text-[10.5px] 2xl:text-[11px] font-mono">
               {(['AED', 'USD', 'EUR', 'RON'] as const).map((curr, idx) => (

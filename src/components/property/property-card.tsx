@@ -15,7 +15,7 @@ interface PropertyCardProps {
 }
 
 export function PropertyCard({ property, className = '', priority = false }: PropertyCardProps) {
-  const { isShortlisted, toggleShortlist, formatCurrency } = useClient()
+  const { isShortlisted, toggleShortlist } = useClient()
   const saved = isShortlisted(property.id)
   const isGoldenVisa = property.asking_price ? property.asking_price >= 2000000 : false
 
@@ -59,11 +59,11 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
             </span>
             {isGoldenVisa && (
               <span
-                title="Meets AED 2M statutory investment baseline under Cabinet Resolution No. 65 of 2022. Final residency grant subject to GDRFA case-by-case approval."
+                title="Estimated investment scope aligning with Cabinet Resolution No. 65 of 2022 baseline (minimum AED 2M, 5-year renewable). Final residency grant subject to competent authority approval."
                 className="px-2 py-0.5 rounded-xs text-[9px] font-mono uppercase bg-emerald-50/95 backdrop-blur-md text-emerald-700 border border-emerald-200 flex items-center gap-1 shadow-2xs"
               >
                 <ShieldCheck className="h-2.5 w-2.5" />
-                <span>≥ AED 2M Threshold</span>
+                <span>Investor Residency (AED 2M)</span>
               </span>
             )}
           </div>
@@ -120,22 +120,22 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
             </div>
           </div>
 
-          {/* Price & Valuation */}
+          {/* Price & Valuation Plate — Request Price Position */}
           <div className="pt-0.5 flex items-baseline justify-between font-mono">
             <div>
               <span className="text-[9px] uppercase text-slate-400 tracking-wider block">
-                Asking Price
+                Commercial Pricing
               </span>
-              <span className="text-lg font-light text-slate-900 tabular-nums font-semibold">
-                {formatCurrency(property.asking_price)}
+              <span className="text-sm font-mono text-slate-900 font-semibold tracking-wider">
+                REQUEST PRICE
               </span>
             </div>
             <div className="text-right">
-              <span className="text-[9px] text-slate-500 uppercase tracking-wider block font-semibold">
-                ASKING RATE
+              <span className="text-[9px] text-slate-400 uppercase tracking-wider block">
+                Dossier Status
               </span>
-              <span className="text-xs text-slate-500 tabular-nums">
-                AED {property.price_per_sqft?.toLocaleString()} / sqft
+              <span className="text-[10px] text-slate-600 font-medium">
+                Research Entry
               </span>
             </div>
           </div>
@@ -148,7 +148,7 @@ export function PropertyCard({ property, className = '', priority = false }: Pro
           href={`/properties/${property.id}`}
           className="w-full py-2.5 px-4 rounded-xs bg-slate-100 hover:bg-[#0284c7] text-slate-800 hover:text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold text-center transition-all flex items-center justify-center gap-1.5 border border-slate-200 hover:border-[#0284c7] shadow-2xs"
         >
-          <span>Inspect Dossier</span>
+          <span>Request Price &amp; Info</span>
           <ArrowUpRight className="h-3.5 w-3.5" />
         </Link>
       </div>

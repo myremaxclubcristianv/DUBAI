@@ -266,14 +266,14 @@ export function calculateAcquisitionCosts(
       ]
     : [
         {
-          label: `Buyer DLD Transfer Fee (${buyerTransferSharePct.toFixed(1)}% standard buyer share of combined 4% fee)`,
+          label: `Buyer DLD Transfer Fee (${buyerTransferSharePct.toFixed(1)}% contractual allocation of 4% statutory fee)`,
           amount: dld_buyer_transfer_fee,
           legal_source: 'Dubai Law No. 7 of 2006 & Executive Council Resolution No. 30 of 2013',
           vat_included: false,
           vat_amount: 0,
           category: 'GOVERNMENT',
           regulatory_tier: 'MANDATORY_STATUTORY',
-          assumptions: 'Exempt from UAE VAT under Federal Decree-Law No. 8/2017. Customary market convention allocates 2% to buyer and 2% to seller; statutory liability is joint and several unless agreed otherwise.',
+          assumptions: 'Exempt from UAE VAT under Federal Decree-Law No. 8/2017. Statutory DLD transfer fee is 4% total; allocation between buyer and seller is governed contractually in the sales agreement (statutory default is joint/equal split unless agreed otherwise).',
         },
         {
           label: `DLD Title Deed & Document Tariffs (AED 250 Title + AED ${dld_map_fee} Map + AED 20 Knowledge/Innovation)`,

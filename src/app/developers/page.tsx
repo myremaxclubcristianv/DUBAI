@@ -38,7 +38,7 @@ export default function DevelopersPage() {
                 DLD Escrow Regulated
               </span>
               <span>&bull;</span>
-              <span>100% Ring-Fenced Accounts</span>
+              <span>Statutory Escrow Accounts (Law 8/2007)</span>
             </div>
           </div>
           

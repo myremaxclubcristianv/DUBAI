@@ -6,7 +6,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getAreaBySlug, DUBAI_AREAS } from '@/lib/data/areas'
 import { VERIFIED_PROPERTIES } from '@/lib/data/properties'
-import { useClient } from '@/lib/context/client-context'
 import {
   Section,
   Eyebrow,
@@ -22,7 +21,6 @@ export default function DistrictDetailPage() {
   const slug = params?.slug as string
   const area = getAreaBySlug(slug) || DUBAI_AREAS[0]
 
-  const { formatCurrency } = useClient()
 
   const matchingProperties = VERIFIED_PROPERTIES.filter(
     (p) => p.area_name?.toLowerCase().includes(area.name.toLowerCase())
@@ -165,9 +163,9 @@ export default function DistrictDetailPage() {
 
                   <div className="flex items-center gap-6 self-end md:self-auto">
                     <div className="text-left md:text-right font-mono">
-                      <span className="text-[10px] text-slate-400 uppercase block">Asking Price</span>
-                      <span className="text-lg font-semibold text-slate-900">
-                        {formatCurrency(prop.asking_price || 0)}
+                      <span className="text-[10px] text-slate-400 uppercase block">Commercial Pricing</span>
+                      <span className="text-sm font-semibold text-slate-900 tracking-wider">
+                        REQUEST PRICE
                       </span>
                     </div>
                     <PrimaryLink href={`/properties/${prop.id}`}>
@@ -210,7 +208,7 @@ export default function DistrictDetailPage() {
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 font-light leading-relaxed">
-              {area.investment_profile || 'Designated freehold territory granting real property ownership rights to non-UAE nationals in designated zones pursuant to Law No. 7 of 2006 and Decree No. 3 of 2006. Qualifying properties meeting or exceeding AED 2,000,000 baseline qualify for GDRFA Real Estate Golden Visa evaluation, subject to case-by-case authority clearance (last checked October 2026).'}
+              {area.investment_profile || 'Designated freehold territory granting real property ownership rights to non-UAE nationals in designated zones pursuant to Law No. 7 of 2006 and Decree No. 3 of 2006. Qualifying properties meeting or exceeding the statutory AED 2,000,000 baseline qualify for UAE Real Estate Investor Residency evaluation under Cabinet Resolution No. 65 of 2022, subject to competent authority review (last checked October 2026).'}
             </p>
             <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-400">
               <span>Authority: Dubai Land Department &amp; GDRFA</span>

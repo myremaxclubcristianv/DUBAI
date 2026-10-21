@@ -62,7 +62,7 @@ export default function PrivateClientPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#070e1c] text-white selection:bg-[#0284c7]/30 selection:text-white">
       
-      {/* 1. QUIET EDITORIAL DARK HEADER (PRIVATE ACQUISITION OFFICE) */}
+      {/* 1. QUIET EDITORIAL DARK HEADER (PRIVATE INQUIRY DESK) */}
       <section className="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-white/10 relative overflow-hidden">
         <div className="absolute top-0 right-1/4 w-[600px] h-[400px] bg-[#0284c7]/10 rounded-full blur-3xl pointer-events-none" />
         
@@ -70,7 +70,7 @@ export default function PrivateClientPage() {
           <div className="flex items-center justify-start sm:justify-center gap-2 font-mono text-xs text-[#38bdf8]">
             <span className="w-2 h-2 bg-[#38bdf8]" />
             <span className="tracking-[0.24em] uppercase font-semibold">
-              PRIVATE CLIENT ADVISORY &bull; DIRECT MANDATES
+              PRIVATE INQUIRY DESK &bull; DIRECT CLIENT INTAKE
             </span>
           </div>
           
@@ -79,18 +79,18 @@ export default function PrivateClientPage() {
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
-            Direct institutional advisory for family offices, sovereign principals, and private clients seeking off-market acquisitions and bespoke Golden Visa structuring in Dubai.
+            Dedicated property intelligence, customized research briefs, and authorized local partner coordination for private investors acquiring freehold assets in Dubai.
           </p>
 
           <div className="pt-4 flex flex-wrap items-center justify-start sm:justify-center gap-3 font-mono text-[11px] text-slate-400">
             <span className="flex items-center gap-1.5 text-emerald-400">
               <ShieldCheck className="h-3.5 w-3.5" />
-              Direct Principal Representation
+              Independent Property Intelligence
             </span>
             <span>&bull;</span>
-            <span>Escrow Ring-Fenced (Law 8/2007)</span>
+            <span>Escrow Protected (Law 8/2007)</span>
             <span>&bull;</span>
-            <span>Strict NDA Protocol</span>
+            <span>Strict Privacy Protocol</span>
           </div>
         </div>
       </section>
@@ -106,13 +106,13 @@ export default function PrivateClientPage() {
             
             <div className="space-y-2">
               <span className="text-[10px] font-mono text-[#38bdf8] uppercase tracking-widest font-semibold block">
-                CONFIDENTIAL MANDATE REGISTERED
+                CONFIDENTIAL INQUIRY REGISTERED
               </span>
               <h2 className="text-3xl font-light text-white font-serif">
-                Direct Intake Initialized
+                Brief Successfully Transmitted
               </h2>
               <p className="text-sm text-slate-300 font-light leading-relaxed pt-2">
-                Thank you, <strong>{fullName}</strong>. A senior private client advisor will initiate encrypted correspondence to your designated contact within 24 hours.
+                Thank you, <strong>{fullName}</strong>. Our research desk will review your requirements and coordinate with authorized local partners within 24 hours.
               </p>
             </div>
 
@@ -135,7 +135,7 @@ export default function PrivateClientPage() {
                 01 &bull; Scope &amp; Allocation
               </span>
               <span className={step === 2 ? 'text-[#38bdf8] font-semibold' : 'text-slate-500'}>
-                02 &bull; Principal Credentials
+                02 &bull; Contact Details
               </span>
             </div>
 
@@ -145,33 +145,33 @@ export default function PrivateClientPage() {
                 <div className="space-y-10">
                   <div className="space-y-4">
                     <label className="text-lg sm:text-2xl font-light text-white block font-serif">
-                      Select your primary mandate scope:
+                      Select your primary research scope:
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
                         {
                           id: 'ACQUISITION',
                           icon: Building,
-                          title: 'Property Acquisition',
-                          desc: 'Curated prime freehold and off-market penthouses with verified title deeds.',
+                          title: 'Property Acquisition Research',
+                          desc: 'Curated prime freehold and off-market opportunities with verified title registries.',
                         },
                         {
                           id: 'UNDERWRITING',
                           icon: Scale,
-                          title: 'Investment Underwriting',
-                          desc: 'Deterministic financial modeling and net yield verification.',
+                          title: 'Financial Underwriting',
+                          desc: 'Deterministic analytical modeling, gross-to-net yield verification, and DLD fee schedules.',
                         },
                         {
                           id: 'GOLDEN_VISA',
                           icon: Award,
-                          title: 'Golden Visa Conveyancing',
-                          desc: '10-Year residency and DLD Cube coordination under Cabinet Res. 65/2022.',
+                          title: 'Golden Visa Eligibility',
+                          desc: 'Residency eligibility roadmap and DLD Cube coordination under Cabinet Res. 65/2022.',
                         },
                         {
                           id: 'COMPREHENSIVE',
                           icon: Globe,
-                          title: 'Family Office Mandate',
-                          desc: 'Holistic portfolio allocation, corporate structuring, and conveyancing.',
+                          title: 'Multi-Asset Research',
+                          desc: 'Custom cross-border portfolio comparison, Romania vs Dubai economics, and market monitors.',
                         },
                       ].map((item) => {
                         const Icon = item.icon
@@ -244,24 +244,24 @@ export default function PrivateClientPage() {
                 <div className="space-y-8">
                   <div className="space-y-2">
                     <h2 className="text-2xl font-light text-white font-serif">
-                      Principal Contact Credentials
+                      Contact Details &amp; Requirements
                     </h2>
                     <p className="text-xs text-slate-400 font-light">
-                      Discreet direct communication line. Information is processed under confidential advisory protocol.
+                      Direct communication line. All information is processed under strict privacy and data protection protocols.
                     </p>
                   </div>
 
                   <div className="space-y-6">
                     <div className="space-y-1">
                       <label className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">
-                        Principal or Representative Name
+                        Full Name / Representative
                       </label>
                       <input
                         type="text"
                         required
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        placeholder="e.g. Lord Alexander Wright"
+                        placeholder="e.g. Andrei Ionescu"
                         className="w-full pb-2 pt-1 border-b border-white/20 bg-transparent text-white text-lg focus:outline-none focus:border-[#38bdf8] transition-colors placeholder:text-slate-600 font-serif"
                       />
                     </div>
@@ -269,14 +269,14 @@ export default function PrivateClientPage() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                       <div className="space-y-1">
                         <label className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">
-                          Corporate or Private Email
+                          Email Address
                         </label>
                         <input
                           type="email"
                           required
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="principal@familyoffice.com"
+                          placeholder="client@example.com"
                           className="w-full pb-2 pt-1 border-b border-white/20 bg-transparent text-white text-base focus:outline-none focus:border-[#38bdf8] transition-colors placeholder:text-slate-600 font-mono"
                         />
                       </div>
@@ -290,7 +290,7 @@ export default function PrivateClientPage() {
                           required
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="+971 50 000 0000"
+                          placeholder="+40 700 000 000 / +971 50 000 0000"
                           className="w-full pb-2 pt-1 border-b border-white/20 bg-transparent text-white text-base focus:outline-none focus:border-[#38bdf8] transition-colors placeholder:text-slate-600 font-mono"
                         />
                       </div>
@@ -298,13 +298,13 @@ export default function PrivateClientPage() {
 
                     <div className="space-y-1 pt-2">
                       <label className="text-[10px] font-mono uppercase tracking-widest text-slate-400 block">
-                        Specific Mandate Directives (Optional)
+                        Research Directives &amp; Preferences (Optional)
                       </label>
                       <textarea
                         rows={2}
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
-                        placeholder="Preferred enclaves (Palm Jumeirah, Jumeirah Bay), timeline, or structuring requirements..."
+                        placeholder="Preferred enclaves (Palm Jumeirah, Dubai Marina, Downtown), timeline, or structuring requirements..."
                         className="w-full pb-2 pt-1 border-b border-white/20 bg-transparent text-white text-sm focus:outline-none focus:border-[#38bdf8] transition-colors placeholder:text-slate-600 resize-none font-sans"
                       />
                     </div>
@@ -330,7 +330,7 @@ export default function PrivateClientPage() {
                       disabled={isSubmitting}
                       className="px-8 py-4 bg-[#0284c7] hover:bg-[#0369a1] disabled:opacity-50 disabled:cursor-not-allowed text-white text-xs font-mono uppercase tracking-[0.14em] font-semibold transition-all cursor-pointer shadow-md"
                     >
-                      {isSubmitting ? 'Transmitting…' : 'Submit Private Client Brief →'}
+                      {isSubmitting ? 'Transmitting…' : 'Submit Property Research Brief →'}
                     </button>
                   </div>
                 </div>
@@ -342,7 +342,7 @@ export default function PrivateClientPage() {
             <div className="pt-8 border-t border-white/10 flex items-center gap-3 text-xs text-slate-400 font-light">
               <Lock className="h-4 w-4 text-[#38bdf8] shrink-0" />
               <span>
-                Data Transmission &amp; Privacy: Your brief is encrypted and transmitted directly to our licensed private advisory desk. Zero public exposure.
+                Data Transmission &amp; Privacy: Your inquiry is encrypted and transmitted directly to our research desk. Consultations and transactions are conducted through authorized licensed partners.
               </span>
             </div>
 
@@ -350,6 +350,23 @@ export default function PrivateClientPage() {
         )}
 
       </main>
+
+      {/* 3. MANDATORY PLATFORM DISCLAIMER */}
+      <section className="border-t border-white/10 bg-black/40 py-10 px-4 sm:px-10 text-slate-400 text-xs leading-relaxed font-sans">
+        <div className="w-full max-w-[960px] mx-auto space-y-4">
+          <div className="flex items-center gap-2 font-mono text-[11px] text-[#38bdf8] font-bold uppercase tracking-wider">
+            <span>DECLINARE DE RESPONSABILITATE &bull; REGULATORY &amp; LEGAL DISCLAIMER</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-[11px] leading-relaxed">
+            <p>
+              Platforma DUBAI (dubai.cristianvaduva.com) funcționează exclusiv ca serviciu independent de cercetare imobiliară, analiză de piață și agregare de date deschise (open data). Platforma nu este agenție imobiliară licențiată RERA/DED în Dubai și nu oferă consultanță financiară, juridică sau fiscală reglementată. Tranzacțiile imobiliare, contractele oficiale (Form F / Unified Sale Contract) și transferurile de titlu sunt intermediate exclusiv prin brokeri și agenții partenere autorizate și licențiate conform legislației Emiratelor Arabe Unite.
+            </p>
+            <p>
+              DUBAI (dubai.cristianvaduva.com) operates strictly as an independent real estate research, market intelligence, and open data aggregation platform. The platform is not a RERA/DED licensed real estate brokerage in Dubai and does not provide regulated financial, legal, or tax advisory services. All property transactions, official Unified Sale Contracts (Form F), and title conveyancing are facilitated exclusively through authorized, licensed local partners.
+            </p>
+          </div>
+        </div>
+      </section>
 
     </div>
   )
