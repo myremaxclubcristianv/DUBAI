@@ -277,15 +277,45 @@ export async function POST(request: NextRequest) {
           }),
         })
 
-        if (telegramRes.ok) {
+        const teleData = (await telegramRes.json().catch(() => null)) as {
+          ok?: boolean
+          description?: string
+        } | null
+
+        if (telegramRes.ok && teleData?.ok) {
           telegramSent = true
         } else {
-          telegramError = `Telegram HTTP ${telegramRes.status}`
-          console.error(`[Contact API] Telegram dispatch error (HTTP status ${telegramRes.status})`)
+          const errDesc = teleData?.description || `HTTP ${telegramRes.status}`
+          telegramError = errDesc
+          console.error(`[Contact API] Telegram dispatch error: ${errDesc}`)
+
+          // Fallback: If Telegram rejected due to HTML entity or formatting error, retry in plain text
+          if (telegramRes.status === 400 && errDesc.toLowerCase().includes('parse')) {
+            try {
+              const plainText = telegramHtml.replace(/<[^>]+>/g, '')
+              const retryRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: plainText,
+                  disable_web_page_preview: true,
+                }),
+              })
+              const retryData = (await retryRes.json().catch(() => null)) as { ok?: boolean; description?: string } | null
+              if (retryRes.ok && retryData?.ok) {
+                telegramSent = true
+                telegramError = null
+                console.info('[Contact API] Telegram dispatch recovered via plain-text fallback')
+              }
+            } catch (retryErr) {
+              console.error('[Contact API] Telegram plain-text fallback exception:', retryErr instanceof Error ? retryErr.message : 'Unknown')
+            }
+          }
         }
-      } catch {
-        telegramError = 'Network error'
-        console.error('[Contact API] Telegram fetch network exception')
+      } catch (err) {
+        telegramError = err instanceof Error ? err.message : 'Network error'
+        console.error('[Contact API] Telegram fetch network exception:', telegramError)
       }
     } else {
       telegramError = 'unprovisioned'

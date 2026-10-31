@@ -4,6 +4,15 @@ import { createServerClient, isSupabaseServerConfigured } from '@/lib/supabase/s
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 const PHONE_REGEX = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{5,20}$/
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -87,14 +96,14 @@ export async function POST(request: NextRequest) {
         const text = [
           '🏛 <b>DUBAI PLATFORM — LEAD / SOLICITARE NOUĂ</b>',
           '━━━━━━━━━━━━━━━━━━━━',
-          `• <b>Nume:</b> ${full_name.trim()}`,
-          `• <b>Email:</b> ${email.trim().toLowerCase()}`,
-          `• <b>Telefon:</b> ${phone.trim()}`,
-          `• <b>Categorie:</b> ${cleanCategory}`,
-          cleanNotes ? `• <b>Detalii:</b> ${cleanNotes}` : '',
-          `• <b>Sursă:</b> ${cleanSource}`,
+          `• <b>Nume:</b> ${escapeHtml(full_name.trim())}`,
+          `• <b>Email:</b> ${escapeHtml(email.trim().toLowerCase())}`,
+          `• <b>Telefon:</b> ${escapeHtml(phone.trim())}`,
+          `• <b>Categorie:</b> ${escapeHtml(cleanCategory)}`,
+          cleanNotes ? `• <b>Detalii:</b> ${escapeHtml(cleanNotes)}` : '',
+          `• <b>Sursă:</b> ${escapeHtml(cleanSource)}`,
           `• <b>Timestamp:</b> ${new Date().toISOString()}`,
-          crmStored ? `• <b>CRM ID:</b> <code>#${recordData?.id}</code>` : '',
+          crmStored && recordData?.id ? `• <b>CRM ID:</b> <code>#${escapeHtml(String(recordData.id))}</code>` : '',
           '━━━━━━━━━━━━━━━━━━━━',
         ].filter(Boolean).join('\n')
 
@@ -108,11 +117,40 @@ export async function POST(request: NextRequest) {
           }),
         })
 
-        if (teleRes.ok) {
+        const teleData = (await teleRes.json().catch(() => null)) as {
+          ok?: boolean
+          description?: string
+        } | null
+
+        if (teleRes.ok && teleData?.ok) {
           telegramDispatched = true
+        } else {
+          const errDesc = teleData?.description || `HTTP ${teleRes.status}`
+          console.error(`[Leads API] Telegram dispatch error: ${errDesc}`)
+
+          if (teleRes.status === 400 && errDesc.toLowerCase().includes('parse')) {
+            try {
+              const plainText = text.replace(/<[^>]+>/g, '')
+              const retryRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: plainText,
+                }),
+              })
+              const retryData = (await retryRes.json().catch(() => null)) as { ok?: boolean } | null
+              if (retryRes.ok && retryData?.ok) {
+                telegramDispatched = true
+                console.info('[Leads API] Telegram dispatch recovered via plain-text fallback')
+              }
+            } catch (retryErr) {
+              console.error('[Leads API] Telegram plain-text fallback exception:', retryErr instanceof Error ? retryErr.message : 'Unknown')
+            }
+          }
         }
       } catch (teleErr) {
-        console.warn('[Leads API] Telegram dispatch exception:', teleErr)
+        console.error('[Leads API] Telegram dispatch exception:', teleErr instanceof Error ? teleErr.message : 'Network error')
       }
     }
 

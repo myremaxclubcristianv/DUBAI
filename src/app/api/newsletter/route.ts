@@ -3,6 +3,15 @@ import { isSupabaseServerConfigured, createServerClient } from '@/lib/supabase/s
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -65,7 +74,7 @@ export async function POST(request: NextRequest) {
 
     if (botToken && chatId) {
       try {
-        const text = `📬 <b>DUBAI PLATFORM — NOU ABONAT NEWSLETTER RO</b>\n━━━━━━━━━━━━━━━━━━━━\n• <b>Email:</b> <code>${cleanEmail}</code>\n• <b>Nume:</b> ${cleanName || 'Nespecificat'}\n• <b>Sursă:</b> /newsletter\n• <b>Timestamp:</b> ${new Date().toISOString()}\n━━━━━━━━━━━━━━━━━━━━`
+        const text = `📬 <b>DUBAI PLATFORM — NOU ABONAT NEWSLETTER RO</b>\n━━━━━━━━━━━━━━━━━━━━\n• <b>Email:</b> <code>${escapeHtml(cleanEmail)}</code>\n• <b>Nume:</b> ${escapeHtml(cleanName || 'Nespecificat')}\n• <b>Sursă:</b> /newsletter\n• <b>Timestamp:</b> ${new Date().toISOString()}\n━━━━━━━━━━━━━━━━━━━━`
         const teleRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -75,11 +84,41 @@ export async function POST(request: NextRequest) {
             parse_mode: 'HTML',
           }),
         })
-        if (teleRes.ok) {
+
+        const teleData = (await teleRes.json().catch(() => null)) as {
+          ok?: boolean
+          description?: string
+        } | null
+
+        if (teleRes.ok && teleData?.ok) {
           dispatched = true
+        } else {
+          const errDesc = teleData?.description || `HTTP ${teleRes.status}`
+          console.error(`[Newsletter API] Telegram dispatch error: ${errDesc}`)
+
+          if (teleRes.status === 400 && errDesc.toLowerCase().includes('parse')) {
+            try {
+              const plainText = text.replace(/<[^>]+>/g, '')
+              const retryRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: plainText,
+                }),
+              })
+              const retryData = (await retryRes.json().catch(() => null)) as { ok?: boolean } | null
+              if (retryRes.ok && retryData?.ok) {
+                dispatched = true
+                console.info('[Newsletter API] Telegram dispatch recovered via plain-text fallback')
+              }
+            } catch (retryErr) {
+              console.error('[Newsletter API] Telegram plain-text fallback exception:', retryErr instanceof Error ? retryErr.message : 'Unknown')
+            }
+          }
         }
       } catch (teleErr) {
-        console.warn('[Newsletter API] Telegram dispatch exception:', teleErr)
+        console.error('[Newsletter API] Telegram dispatch exception:', teleErr instanceof Error ? teleErr.message : 'Network error')
       }
     }
 
